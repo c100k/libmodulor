@@ -1,0 +1,7 @@
+{
+    "name": "libmodulor",
+    "version": "0.1.0",
+    "author": "Chafik H'nini <chafik.hnini@gmail.com>",
+    "private": true,
+    "type": "module"
+}
