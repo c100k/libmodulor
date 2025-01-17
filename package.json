@@ -3,5 +3,108 @@
     "version": "0.1.0",
     "author": "Chafik H'nini <chafik.hnini@gmail.com>",
     "private": true,
-    "type": "module"
+    "type": "module",
+    "module": "./dist/esm/index.js",
+    "exports": {
+        ".": {
+            "import": "./dist/esm/index.js"
+        },
+        "./cli": {
+            "import": "./dist/products/Wizard/index.js"
+        },
+        "./locales/en": {
+            "import": "./dist/esm/i18n/locales/en.js"
+        },
+        "./locales/fr": {
+            "import": "./dist/esm/i18n/locales/fr.js"
+        },
+        "./node-mcp": {
+            "import": "./dist/esm/index.node-mcp.js"
+        },
+        "./node-test": {
+            "import": "./dist/esm/index.node-test.js"
+        },
+        "./node": {
+            "import": "./dist/esm/index.node.js"
+        },
+        "./react-web-pure": {
+            "import": "./dist/esm/index.react-web-pure.js"
+        },
+        "./react": {
+            "import": "./dist/esm/index.react.js"
+        },
+        "./rn": {
+            "import": "./dist/esm/index.rn.js"
+        },
+        "./std-jwt-manager-jose": {
+            "import": "./dist/esm/index.std-jwt-manager-jose.js"
+        },
+        "./uc-data-store-knex": {
+            "import": "./dist/esm/index.uc-data-store-knex.js"
+        },
+        "./vite": {
+            "import": "./dist/esm/index.vite.js"
+        },
+        "./web": {
+            "import": "./dist/esm/index.web.js"
+        }
+    },
+    "peerDependencies": {
+        "@hono/node-server": "^1.13.7",
+        "@modelcontextprotocol/sdk": "^1.1.1",
+        "@stricli/core": "^1.1.0",
+        "buffer": "^6.0.3",
+        "cookie-parser": "^1.4.7",
+        "express": "^4.21.2",
+        "express-fileupload": "^1.5.1",
+        "fast-check": "^3.23.2",
+        "helmet": "^8.0.0",
+        "hono": "^4.6.16",
+        "inversify": "^6.2.1",
+        "jose": "^5.9.6",
+        "knex": "^3.1.0",
+        "pg": "^8.13.1",
+        "react": "^18.3.1",
+        "react-dom": "^18.3.1",
+        "reflect-metadata": "^0.2.2",
+        "sqlite3": "^5.1.7",
+        "typescript": "^5.7.3",
+        "vite": "^6.0.7"
+    },
+    "peerDependenciesMeta": {
+        "@hono/node-server": {
+            "optional": true
+        },
+        "@modelcontextprotocol/sdk": {
+            "optional": true
+        },
+        "@stricli/core": {
+            "optional": true
+        },
+        "hono": {
+            "optional": true
+        },
+        "knex": {
+            "optional": true
+        },
+        "jose": {
+            "optional": true
+        },
+        "pg": {
+            "optional": true
+        },
+        "react": {
+            "optional": true
+        },
+        "react-dom": {
+            "optional": true
+        },
+        "sqlite3": {
+            "optional": true
+        },
+        "vite": {
+            "optional": true
+        }
+    },
+    "sideEffects": false
 }
