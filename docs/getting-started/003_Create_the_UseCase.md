@@ -1,4 +1,4 @@
-### Create the UseCase
+# Create the UseCase
 
 > [!NOTE]
 > Starting now, you'll see `UC` or `uc` a lot. It's the abbreviation of `UseCase`. Acronyms are not good in codebases, except those that are commonly used ([debate](https://stackoverflow.com/questions/2236807/java-naming-convention-with-acronyms)). In any case, when you write `UseCase` hundreds of times, you're happy to be able to write `UC` instead. Thus, `UCD` stands for `Use Case Definition`, `UCIF` stands for `Use Case Input Field` and so on.
@@ -27,7 +27,7 @@ touch src/apps/Trading/src/dt/TISIN.ts
 touch src/apps/Trading/src/ucds/{BuyAssetServerMain.ts,BuyAssetUCD.ts}
 ```
 
-#### TISIN.ts
+## TISIN.ts
 
 An asset is usually identified by a unique code called [ISIN](https://www.isin.org). This is a typical business data type that has specific rules and that is not simply a `string`.
 
@@ -56,7 +56,7 @@ export class TISIN extends TString<ISIN, 'ISIN'> {
 }
 ```
 
-#### BuyAssetUCD.ts
+## BuyAssetUCD.ts
 
 ```typescript
 import {
@@ -149,7 +149,7 @@ export const BuyAssetUCD: UCDef<BuyAssetInput, BuyAssetOPI0> = {
 };
 ```
 
-#### BuyAssetServerMain.ts
+## BuyAssetServerMain.ts
 
 ```typescript
 import {

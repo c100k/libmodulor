@@ -1,4 +1,4 @@
-### Create the server Target
+# Create the server Target
 
 We'll use the pre-built [express](https://expressjs.com) `ServerManager`.
 
@@ -9,7 +9,7 @@ touch tsconfig.build.json
 touch .env
 ```
 
-#### container.ts
+## container.ts
 
 ```typescript
 import {
@@ -50,7 +50,7 @@ container.bind<ServerManager>('ServerManager').to(NodeExpressServerManager);
 export default container;
 ```
 
-#### index.ts
+## index.ts
 
 ```typescript
 import {
@@ -72,7 +72,7 @@ await container.resolve(ServerBooter).exec({
 });
 ```
 
-#### tsconfig.build.json
+## tsconfig.build.json
 
 ```json
 {
@@ -85,7 +85,7 @@ await container.resolve(ServerBooter).exec({
 }
 ```
 
-#### .env
+## .env
 
 ```properties
 app_logger_level=trace # the default is 'debug'
@@ -94,7 +94,7 @@ app_logger_level=trace # the default is 'debug'
 > [!TIP]
 > A setting named `my_setting` in the code can be overriden with an environment variable called `app_my_setting`.
 
-#### Build & Run
+## Build & Run
 
 Update `package.json` to add new entries to the `scripts`.
 

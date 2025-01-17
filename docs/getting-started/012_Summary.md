@@ -1,4 +1,4 @@
-### Summary
+# Summary
 
 ```sh
 git log --oneline

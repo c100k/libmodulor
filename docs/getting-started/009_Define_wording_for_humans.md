@@ -1,4 +1,4 @@
-### Define wording for humans
+# Define wording for humans
 
 By default, the UI simply "humanizes" the use case field keys. It's fine for technical people, but not for humans.
 

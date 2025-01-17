@@ -1,4 +1,4 @@
-### Create the mcp-server Target
+# Create the mcp-server Target
 
 We'll use the pre-built local [stdio transport](https://modelcontextprotocol.io/docs/concepts/transports#standard-input-output-stdio) server.
 
@@ -11,7 +11,7 @@ mkdir src/products/SuperTrader/mcp-server
 touch src/products/SuperTrader/mcp-server/{container.ts,index.ts}
 ```
 
-#### container.ts
+## container.ts
 
 ```typescript
 import {
@@ -48,7 +48,7 @@ container
 export default container;
 ```
 
-#### index.ts
+## index.ts
 
 ```typescript
 import {
@@ -73,7 +73,7 @@ await container.resolve(MCPServerBooter).exec({
 > [!NOTE]
 > Note how we increase the level of logs to `error` because logging on stdout [messes with the stdio transport](https://modelcontextprotocol.io/docs/tools/debugging#server-side-logging).
 
-#### Claude Desktop
+## Claude Desktop
 
 If you don't have [Claude Desktop](https://claude.ai/download) on your machine, install it.
 
@@ -120,7 +120,7 @@ tail -f ~/Library/Logs/Claude/mcp-server-libmodulor-tuto.log
 
 To open the Chrome Developer Tools wihtin Claude, press <kbd>cmd</kbd> + <kbd>option</kbd> + <kbd>shift</kbd> + <kbd>I</kbd> (should be easy if you're an emacs user).
 
-#### Build & Run
+## Build & Run
 
 Press <kbd>ctrl</kbd> + <kbd>C</kbd> to stop the server.
 

@@ -1,6 +1,6 @@
-### Test the App
+# Test the App
 
-#### Preliminary test
+## Preliminary test
 
 By default, we rely on [vitest](https://vitest.dev) to run the tests and [@vitest/coverage-v8](https://vitest.dev/guide/coverage) for the coverage.
 
@@ -32,7 +32,7 @@ mkdir src/apps/Trading/test
 touch src/apps/Trading/test/Configurator.ts
 ```
 
-#### Configurator.ts
+## Configurator.ts
 
 ```typescript
 import { type AppTesterCtx, type CryptoManager, bindCommon } from 'libmodulor';
@@ -64,7 +64,7 @@ export class Configurator extends SimpleAppTesterConfigurator {
 }
 ```
 
-#### Automated test
+## Automated test
 
 Generate the automated tests and execute them with the CLI (it does more than a simple `yarn test`).
 

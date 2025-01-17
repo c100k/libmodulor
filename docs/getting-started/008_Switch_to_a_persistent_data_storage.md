@@ -1,4 +1,4 @@
-### Switch to a persistent data storage
+# Switch to a persistent data storage
 
 By default, the data is stored in memory on the server. Therefore, whenever we restart it, we lose everything. That is not very practical in real life scenarios. Let's use SQLite instead.
 

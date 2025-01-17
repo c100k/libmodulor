@@ -1,4 +1,4 @@
-### Create the Product
+# Create the Product
 
 Like the app, the product has a `i18n.ts` and `manifest.ts`.
 
@@ -7,7 +7,7 @@ mkdir -p src/products/SuperTrader
 touch src/products/SuperTrader/{i18n.ts,manifest.ts}
 ```
 
-#### i18n.ts
+## i18n.ts
 
 ```typescript
 import type { ProductI18n } from 'libmodulor';
@@ -25,7 +25,7 @@ export const I18n: ProductI18n = {
 };
 ```
 
-#### manifest.ts
+## manifest.ts
 
 ```typescript
 import type { ProductManifest } from 'libmodulor';

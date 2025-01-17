@@ -1,4 +1,4 @@
-### Create the web Target
+# Create the web Target
 
 We'll use the pre-built [React](https://react.dev) components to build a SPA (Single Page Application), bundled with [vite](https://vite.dev) and served with the server defined above.
 
@@ -16,7 +16,7 @@ touch src/products/SuperTrader/web/{container.ts,index.html,index.tsx}
 touch src/products/SuperTrader/web/components/App.tsx
 ```
 
-#### vite.config.web.ts
+## vite.config.web.ts
 
 ```typescript
 import { join } from 'node:path';
@@ -45,7 +45,7 @@ export default defineConfig({
 });
 ```
 
-#### container.ts
+## container.ts
 
 ```typescript
 import {
@@ -74,7 +74,7 @@ bindProduct(container, Manifest, I18n);
 export default container;
 ```
 
-#### index.html
+## index.html
 
 ```html
 <!DOCTYPE html>
@@ -91,7 +91,7 @@ export default container;
 </html>
 ```
 
-#### App.tsx
+## App.tsx
 
 Update `src/apps/Trading/index.ts` to expose the use case.
 
@@ -205,7 +205,7 @@ export default function App(): ReactElement {
 }
 ```
 
-#### index.tsx
+## index.tsx
 
 ```typescript
 import { DIContextProvider } from 'libmodulor/react';
@@ -229,7 +229,7 @@ ReactDOM.createRoot(rootElt).render(
 );
 ```
 
-#### Build & Run
+## Build & Run
 
 Update `package.json` to add the `web` build to the `build` command.
 

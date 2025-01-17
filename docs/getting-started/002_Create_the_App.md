@@ -1,4 +1,4 @@
-### Create the App
+# Create the App
 
 An app is composed of three main files : `i18n.ts`, `manifest.ts` and `index.ts`.
 
@@ -11,7 +11,7 @@ touch src/apps/Trading/index.ts
 > [!NOTE]
 > There is a lot of controversy about barrel files. In this specific context, they are useful to only expose the necessary things to the upper layers and keep the app isolated.
 
-#### i18n.ts
+## i18n.ts
 
 ```typescript
 import type { AppI18n } from 'libmodulor';
@@ -21,7 +21,7 @@ export const I18n: AppI18n = {
 };
 ```
 
-#### manifest.ts
+## manifest.ts
 
 ```typescript
 import type { AppManifest } from 'libmodulor';
@@ -33,7 +33,7 @@ export const Manifest = {
 } satisfies AppManifest;
 ```
 
-#### index.ts
+## index.ts
 
 ```typescript
 // Expose only what's necessary

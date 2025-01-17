@@ -1,4 +1,4 @@
-### Create the project
+# Create the project
 
 > [!IMPORTANT]
 > At this stage, I'm following a documentation and spec first process. Thus, the source code is not yet published, just like the package on `npm`. Therefore, the commands below are not fully executable since `yarn install` will fail fetching the dependency. Currently, the main goal is to expose the docs, optimize the process, and most of all, get feedback on the mechanism. Thank you.
@@ -22,7 +22,7 @@ git init
 touch .gitignore biome.json package.json README.md tsconfig.json vitest.config.ts
 ```
 
-#### .gitignore
+## .gitignore
 
 ```.gitignore
 coverage
@@ -32,7 +32,7 @@ src/apps/**/test/reports
 .env
 ```
 
-#### biome.json
+## biome.json
 
 ```json
 {
@@ -56,7 +56,7 @@ src/apps/**/test/reports
 }
 ```
 
-#### package.json
+## package.json
 
 ```json
 {
@@ -93,7 +93,7 @@ src/apps/**/test/reports
 }
 ```
 
-#### README.md
+## README.md
 
 ```md
 # libmodulor-tuto
@@ -101,7 +101,7 @@ src/apps/**/test/reports
 🚀🚀🚀
 ```
 
-#### tsconfig.json
+## tsconfig.json
 
 ```json
 {
@@ -138,7 +138,7 @@ src/apps/**/test/reports
 }
 ```
 
-#### vitest.config.ts
+## vitest.config.ts
 
 ```typescript
 import { defineConfig } from 'vitest/config';
@@ -156,7 +156,7 @@ export default defineConfig({
 });
 ```
 
-#### Install
+## Install
 
 ```sh
 yarn install

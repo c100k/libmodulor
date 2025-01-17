@@ -1,4 +1,4 @@
-### Create the cli Target
+# Create the cli Target
 
 We'll use the pre-built [Node.js parseArgs](https://nodejs.org/api/util.html#utilparseargsconfig) CLI program.
 
@@ -7,7 +7,7 @@ mkdir src/products/SuperTrader/cli
 touch src/products/SuperTrader/cli/{container.ts,index.ts}
 ```
 
-#### container.ts
+## container.ts
 
 ```typescript
 import {
@@ -35,7 +35,7 @@ bindProduct(container, Manifest, I18n);
 export default container;
 ```
 
-#### index.ts
+## index.ts
 
 ```typescript
 import {
@@ -57,7 +57,7 @@ await container.resolve(NodeCoreCLIManager).handleCommand({
 });
 ```
 
-#### Build & Run
+## Build & Run
 
 Update `package.json` to add a new entry to the `scripts`.
 
