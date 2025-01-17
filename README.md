@@ -137,9 +137,9 @@ block-beta
 
 _If you're not seeing the mermaid chart (e.g. on npm), head to GitHub._
 
-Note that we'll only develop one use case in this Guide but you get the idea.
+Please note that we'll only develop one use case to keep the Guide straightforward but you'll quickly get the idea to develop all the orders by yourself.
 
-Here are the steps we're going to follow.
+Here are the steps we're going to follow. Don't worry. Even though it seems a lot, it will be super quick, efficient and straight to the point.
 
 1. [Create the project](./docs/getting-started/001_Create_the_project.md)
 1. [Create the App](./docs/getting-started/002_Create_the_App.md)
