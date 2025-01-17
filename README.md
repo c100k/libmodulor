@@ -154,4 +154,4 @@ Here are the steps we're going to follow.
 1. [Create the mcp-server Target](./docs/getting-started/011_Create_the_mcp_server_Target.md)
 1. [Summary](./docs/getting-started/012_Summary.md)
 
-Let's go : [Create the project](./docs/getting-started/001_Create_the_project.md)
+Let's go with the first step : [Create the project](./docs/getting-started/001_Create_the_project.md)
