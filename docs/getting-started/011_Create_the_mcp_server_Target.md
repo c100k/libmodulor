@@ -3,7 +3,7 @@
 We'll use the pre-built local [stdio transport](https://modelcontextprotocol.io/docs/concepts/transports#standard-input-output-stdio) server.
 
 ```sh
-yarn add "@modelcontextprotocol/sdk@^1.0.4"
+yarn add "@modelcontextprotocol/sdk@^1.1.1"
 ```
 
 ```sh
