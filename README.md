@@ -208,8 +208,8 @@ src/apps/**/test/reports
         "test": "tsc && vitest run"
     },
     "dependencies": {
-        "libmodulor": "c100k/libmodulor#master",
         "inversify": "^6.2.1",
+        "libmodulor": "c100k/libmodulor#master",
         "reflect-metadata": "^0.2.2"
     },
     "devDependencies": {
