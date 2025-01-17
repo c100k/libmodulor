@@ -45,3 +45,5 @@ export { Manifest } from './src/manifest.js';
 ```sh
 yarn lint && git add . && git commit -m "feat: add the app"
 ```
+
+Now that's done, let's [Create the UseCase](./003_Create_the_UseCase.md).

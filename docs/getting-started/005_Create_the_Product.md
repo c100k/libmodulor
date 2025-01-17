@@ -42,3 +42,5 @@ export const Manifest: ProductManifest = {
 ```sh
 yarn lint && git add . && git commit -m "feat: add the product"
 ```
+
+Now that's done, let's [Create the server Target](./006_Create_the_server_Target.md).

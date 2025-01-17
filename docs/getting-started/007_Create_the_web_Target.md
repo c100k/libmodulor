@@ -258,3 +258,5 @@ Et voilà ! The server is running ! Fill the form and see how it automatically s
 ```sh
 yarn lint && git add . && git commit -m "feat: add the web target"
 ```
+
+Now that's done, let's [Switch to a persistent data storage](./008_Switch_to_a_persistent_data_storage.md).

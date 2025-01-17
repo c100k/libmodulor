@@ -126,3 +126,5 @@ As you can see, validation comes out of the box. Later we'll see how to add even
 ```sh
 yarn lint && git add . && git commit -m "feat: add the server target"
 ```
+
+Now that's done, let's [Create the web Target](./007_Create_the_web_Target.md).

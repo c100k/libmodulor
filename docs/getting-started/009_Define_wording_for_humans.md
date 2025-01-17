@@ -38,3 +38,5 @@ Refresh the page. You should see a better wording. Try to type an invalid `ISIN`
 ```sh
 yarn lint && git add . && git commit -m "feat: define wording for humans"
 ```
+
+Now that's done, let's [Create the cli Target](./010_Create_the_cli_Target.md).

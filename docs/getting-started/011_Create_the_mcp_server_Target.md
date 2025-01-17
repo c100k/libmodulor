@@ -153,3 +153,5 @@ open dist/products/SuperTrader/server/uc-data-store.sqlite
 ```sh
 yarn lint && git add . && git commit -m "feat: add the mcp-server target"
 ```
+
+For now, we're done. Let's review what we've built : [Summary](./012_Summary.md).

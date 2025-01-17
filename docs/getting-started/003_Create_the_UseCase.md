@@ -201,3 +201,5 @@ For now, we won't detail all this code but take the time to read it and understa
 ```sh
 yarn lint && git add . && git commit -m "feat: add the use case"
 ```
+
+Now that's done, let's [Test the App](./004_Test_the_App.md).

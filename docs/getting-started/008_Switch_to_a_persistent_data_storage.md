@@ -48,3 +48,5 @@ You should see all your submissions stored in the database.
 ```sh
 yarn lint && git add . && git commit -m "feat: persist data in SQLite"
 ```
+
+Now that's done, let's [Define wording for humans](./009_Define_wording_for_humans.md).

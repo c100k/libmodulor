@@ -167,3 +167,5 @@ yarn lint && git add . && git commit -m "chore: init source code"
 ```
 
 Optionally, you can create a remote repository (e.g. on GitHub) and push it.
+
+Now that's done, let's [Create the App](./002_Create_the_App.md).

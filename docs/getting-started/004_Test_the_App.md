@@ -110,3 +110,5 @@ Note also the generated "Coverage Report" and the "Simple HTML Report". The form
 ```sh
 yarn lint && git add . && git commit -m "test: init app tests"
 ```
+
+Now that's done, let's [Create the Product](./005_Create_the_Product.md).
