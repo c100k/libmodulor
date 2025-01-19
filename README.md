@@ -103,6 +103,62 @@ _Examples : `web-react`, `web-angular`, `server-node`, `cli-node`, `cli-stricli`
 
 Note that it's the only place where the "infrastructure" choices are applied.
 
+## At a glance
+
+Here is what a typical use case looks like. For more details, please follow the Guide below.
+
+```typescript
+import { UCInput, /* omitted for brevity */ } from 'libmodulor';
+import { Manifest } from '../manifest.js';
+import { SignInServerMain } from './SignInServerMain.js';
+
+export interface SignInInput extends UCInput {
+    email: UCInputFieldValue<Email>;
+    password: UCInputFieldValue<Password>;
+}
+
+export interface SignInOPI0 extends UCOPIBase {
+    jwt: JWT;
+}
+
+export const SignInUCD: UCDef<SignInInput, SignInOPI0> = {
+    io: {
+        input: {
+            fields: {
+                email: {
+                    type: new TEmail(),
+                },
+                password: {
+                    type: new TPassword({ minLength: 10 }),
+                },
+            },
+        },
+        output: {
+            parts: {
+                _0: {
+                    fields: {
+                        jwt: {
+                            type: new TJWT(),
+                        },
+                    },
+                },
+            },
+        },
+    },
+    lifecycle: {
+        client: {
+            main: SendClientMain,
+            policy: AnonymousUCPolicy,
+        },
+        server: {
+            main: SignInServerMain,
+            policy: AnonymousUCPolicy,
+        },
+    },
+    metadata: Manifest.ucReg.SignIn,
+};
+```
+
 ## Getting Started
 
 Enough theory, let's dive in and learn by doing.
