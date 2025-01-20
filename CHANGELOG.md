@@ -1,5 +1,9 @@
 # CHANGELOG
 
-## v0.1.0 (unreleased)
+## v0.2.0 (unreleased)
 
-Tic Tac... Tic Tac... Tic Tac... Coming soon !
+TBD
+
+## v0.1.0 (2025-01-17)
+
+Released the first package with the documentation and a stub entrypoint.
