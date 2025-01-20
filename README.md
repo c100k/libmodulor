@@ -1,5 +1,8 @@
 # libmodulor
 
+[![npm version](https://img.shields.io/npm/v/libmodulor.svg?style=for-the-badge&color=blue)](https://www.npmjs.com/package/libmodulor)
+[![license](https://img.shields.io/badge/license-LGPL-green.svg?style=for-the-badge)](https://github.com/c100k/libmodulor/blob/master/LICENSE)
+
 An opinionated TypeScript library to create business oriented applications.
 
 Applications created with `libmodulor` have **6 main properties** :
@@ -21,7 +24,14 @@ Applications created with `libmodulor` have **6 main properties** :
 
 All that said, the end goal is really to have a **production-grade library** to help everyone build **quality projects faster**. If you want to help in any way or have questions, feel free to contact me (cf. `author` in `package.json`).
 
-## Philosophy
+## Table of Contents
+
+- 📚 [Philosophy](#philosophy)
+- 💡 [How it works](#how-it-works)
+- 👀 [At a glance](#at-a-glance)
+- 🚀 [Getting Started](#getting-started)
+
+## 📚 Philosophy
 
 One might argue that, with so many "JS frameworks" on the market, there are already too many ways to build new applications today. And they would be right.
 
@@ -41,7 +51,7 @@ Thus, you are free to use :
 
 The main goal is to offer higher level primitives that make building business applications faster, without having to use a boilerplate or worse, no/low code, and thus, avoid vendor lock-in.
 
-## How it works
+## 💡 How it works
 
 The library defines a **4-layer architecture** composed of : `UseCase`, `App`, `Product`, `Target`.
 
@@ -103,7 +113,7 @@ _Examples : `web-react`, `web-angular`, `server-node`, `cli-node`, `cli-stricli`
 
 Note that it's the only place where the "infrastructure" choices are applied.
 
-## At a glance
+## 👀 At a glance
 
 Here is what a typical use case looks like. For more details, please follow the Guide below.
 
@@ -159,7 +169,7 @@ export const SignInUCD: UCDef<SignInInput, SignInOPI0> = {
 };
 ```
 
-## Getting Started
+## 🚀 Getting Started
 
 Enough theory, let's dive in and learn by doing.
 
