@@ -13,7 +13,10 @@ Update `src/products/SuperTrader/server/container.ts` to change the implementati
     TARGET_DEFAULT_SERVER_MANAGER_SETTINGS,
 +    type UCDataStore,
 [...]
-+import { KnexUCDataStore } from 'libmodulor/uc-data-store/knex';
++import {
++    KnexUCDataStore,
++    type KnexUCDataStoreSettings,
++} from 'libmodulor/uc-data-store-knex';
 [...]
 +type S = KnexUCDataStoreSettings & ServerManagerSettings;
 [...]

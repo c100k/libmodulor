@@ -83,9 +83,9 @@ yarn run:server
 Execute the CLI in another terminal or tab.
 
 ```sh
-yarn run:cli BuyAsset
+yarn run:cli Trading_BuyAsset
 # ❌ ISIN must be filled
-yarn run:cli BuyAsset --isin US02079K3059 --limit 123.5 --qty 150
+yarn run:cli Trading_BuyAsset --isin US02079K3059 --limit 123.5 --qty 150
 # ✅ {"parts":{"_0":{"items":[{"executedDirectly":false,"id":"da3dc295-6d7c-41b1-a00a-62683f3e6ab9"}],"total":1}}}
 ```
 
