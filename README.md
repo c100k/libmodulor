@@ -17,19 +17,13 @@ Applications created with `libmodulor` have **6 main properties** :
 > [!WARNING]
 > The project is still in active development. Although already used in pilot projects, it's not suitable for all production scenarios yet.
 > Being developed by only one person, it may keep going for years or stop at any time.
-> In the meantime, it's still a "research project" that needs improvement. Thus, it will be subject to BREAKING CHANGES as long as the version is not 1.0.0.
+> In the meantime, it's still a "research project" that needs improvement. Thus, it will be subject to BREAKING CHANGES as long as the version is not `1.0.0`.
+> All that said, the end goal is really to have a **production-grade library** to help everyone build **quality projects faster**. If you want to help in any way or have questions, feel free to contact me (cf. `author` in `package.json`).
 
 > [!NOTE]
-> At the beginning, the whole documentation will be contained in this single file to make it easier to have the big picture and <kbd>cmd</kbd> + <kbd>F</kbd>. At some point, each section will move to a dedicated page. I'll even consider having a beautiful documentation website like all the cool kids.
+> At the beginning, the whole documentation will be on GitHub, starting from this file, to make it easier to have the big picture, maintain and <kbd>cmd</kbd> + <kbd>F</kbd>. At some point, I'll consider having a beautiful documentation website like all the cool kids.
 
-All that said, the end goal is really to have a **production-grade library** to help everyone build **quality projects faster**. If you want to help in any way or have questions, feel free to contact me (cf. `author` in `package.json`).
-
-## Table of Contents
-
-- 📚 [Philosophy](#philosophy)
-- 💡 [How it works](#how-it-works)
-- 👀 [At a glance](#at-a-glance)
-- 🚀 [Getting Started](#getting-started)
+---
 
 ## 📚 Philosophy
 
