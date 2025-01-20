@@ -4,6 +4,9 @@
     "version": "0.1.0",
     "license": "LGPL-3.0",
     "author": "Chafik H'nini <chafik.hnini@gmail.com>",
+    "homepage": "https://github.com/c100k/libmodulor#readme",
+    "bugs": "https://github.com/c100k/libmodulor/issues",
+    "keywords": ["library", "typescript", "business application", "use case", "app", "product", "target", "auto-test", "auto-documentation"],
     "type": "module",
     "module": "./dist/esm/index.js",
     "exports": {
