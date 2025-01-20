@@ -69,7 +69,7 @@ src/apps/**/test/reports
     },
     "dependencies": {
         "inversify": "^6.2.1",
-        "libmodulor": "^0.1.0",
+        "libmodulor": "^0.2.0",
         "reflect-metadata": "^0.2.2"
     },
     "devDependencies": {
