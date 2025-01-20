@@ -72,7 +72,7 @@ src/apps/**/test/reports
     },
     "dependencies": {
         "inversify": "^6.2.1",
-        "libmodulor": "c100k/libmodulor#master",
+        "libmodulor": "^0.1.0",
         "reflect-metadata": "^0.2.2"
     },
     "devDependencies": {
