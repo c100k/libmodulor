@@ -1,8 +1,5 @@
 # Create the project
 
-> [!IMPORTANT]
-> At this stage, I'm following a documentation and spec first process. Thus, the source code is not yet published, just like the package on `npm`. Therefore, the commands below are not fully executable since `yarn install` will fail fetching the dependency. Currently, the main goal is to expose the docs, optimize the process, and most of all, get feedback on the mechanism. Thank you.
-
 Assuming you have the following installed (otherwise, install them or adapt the commands) :
 
 - `node` >= 22
