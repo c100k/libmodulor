@@ -110,7 +110,7 @@ class BuyAssetClientMain implements UCMain<BuyAssetInput, BuyAssetOPI0> {
 
 export const BuyAssetUCD: UCDef<BuyAssetInput, BuyAssetOPI0> = {
     io: {
-        input: {
+        i: {
             fields: {
                 isin: {
                     type: new TISIN(),
@@ -123,7 +123,7 @@ export const BuyAssetUCD: UCDef<BuyAssetInput, BuyAssetOPI0> = {
                 },
             },
         },
-        output: {
+        o: {
             parts: {
                 _0: {
                     fields: {

@@ -110,11 +110,11 @@ yarn build && yarn run:server
 Et voilà ! The server is running !
 
 ```sh
-curl -X POST -H "Content-Type: application/json" http://localhost:7443/api/v1/BuyAsset
+curl -X POST -H "Content-Type: application/json" http://localhost:7443/api/v1/Trading_BuyAsset
 # ❌ {"message":"Invalid credentials"}
-curl -X POST -H "Content-Type: application/json" -H "X-API-Key: PublicApiKeyToBeChangedWhenDeploying" http://localhost:7443/api/v1/BuyAsset
+curl -X POST -H "Content-Type: application/json" -H "X-API-Key: PublicApiKeyToBeChangedWhenDeploying" http://localhost:7443/api/v1/Trading_BuyAsset
 # ❌ {"message":"isin must be filled"}
-curl -X POST -H "Content-Type: application/json" -H "X-API-Key: PublicApiKeyToBeChangedWhenDeploying" -d '{"isin":"US02079K3059","limit":123.5,"qty":150}' http://localhost:7443/api/v1/BuyAsset
+curl -X POST -H "Content-Type: application/json" -H "X-API-Key: PublicApiKeyToBeChangedWhenDeploying" -d '{"isin":"US02079K3059","limit":123.5,"qty":150}' http://localhost:7443/api/v1/Trading_BuyAsset
 # ✅ {"parts":{"_0":{"items":[{"executedDirectly":false,"id":"95dddca5-5e9d-48ac-a90c-71a58d4e8554"}],"total":1}}}
 ```
 

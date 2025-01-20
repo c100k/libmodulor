@@ -10,8 +10,8 @@
         ".": {
             "import": "./dist/esm/index.js"
         },
-        "./cli": {
-            "import": "./dist/products/Wizard/index.js"
+        "./helper": {
+            "import": "./dist/products/Helper/index.js"
         },
         "./locales/en": {
             "import": "./dist/esm/i18n/locales/en.js"

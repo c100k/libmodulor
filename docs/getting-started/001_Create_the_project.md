@@ -66,7 +66,7 @@ src/apps/**/test/reports
     "type": "module",
     "private": true,
     "scripts": {
-        "cli": "node ./node_modules/libmodulor/dist/esm/products/Wizard/index.js",
+        "helper": "node ./node_modules/libmodulor/dist/esm/products/Helper/index.js",
         "lint": "biome check --write .",
         "test": "tsc && vitest run"
     },

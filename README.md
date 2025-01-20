@@ -123,7 +123,7 @@ export interface SignInOPI0 extends UCOPIBase {
 
 export const SignInUCD: UCDef<SignInInput, SignInOPI0> = {
     io: {
-        input: {
+        i: {
             fields: {
                 email: {
                     type: new TEmail(),
@@ -133,7 +133,7 @@ export const SignInUCD: UCDef<SignInInput, SignInOPI0> = {
                 },
             },
         },
-        output: {
+        o: {
             parts: {
                 _0: {
                     fields: {
