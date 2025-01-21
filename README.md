@@ -197,7 +197,7 @@ block-beta
 
 _If you're not seeing the mermaid chart (e.g. on npm), head to GitHub._
 
-Please note that we'll only develop one use case to keep the Guide straightforward but you'll quickly get the idea to develop all the orders by yourself.
+Please note that we'll only develop one use case to keep the Guide straightforward but you'll quickly get the idea to develop all the others by yourself.
 
 Here are the steps we're going to follow. Don't worry. Even though it seems a lot, it will be super quick, efficient and straight to the point.
 
