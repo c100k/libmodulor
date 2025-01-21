@@ -1,6 +1,6 @@
 # Create the cli Target
 
-We'll use the pre-built [Node.js parseArgs](https://nodejs.org/api/util.html#utilparseargsconfig) CLI program.
+We'll use the pre-built [Node.js parseArgs](https://nodejs.org/api/util.html#utilparseargsconfig) `CLIManager`.
 
 ```sh
 mkdir src/products/SuperTrader/cli
@@ -89,7 +89,7 @@ yarn run:cli Trading_BuyAsset --isin US02079K3059 --limit 123.5 --qty 150
 # ✅ {"parts":{"_0":{"items":[{"executedDirectly":false,"id":"da3dc295-6d7c-41b1-a00a-62683f3e6ab9"}],"total":1}}}
 ```
 
-Open the SQLite database with you with your favorite DB editor (e.g. TablePlus, DBeaver...).
+Open the SQLite database with your favorite DB editor (e.g. TablePlus, DBeaver...).
 
 ```sh
 open dist/products/SuperTrader/server/uc-data-store.sqlite

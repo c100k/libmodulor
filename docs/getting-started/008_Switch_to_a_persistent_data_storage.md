@@ -40,7 +40,7 @@ yarn build && yarn run:server
 
 Fill and submit the use case multiple times.
 
-Open the SQLite database with you with your favorite DB editor (e.g. TablePlus, DBeaver...).
+Open the SQLite database with your favorite DB editor (e.g. TablePlus, DBeaver...).
 
 ```sh
 open dist/products/SuperTrader/server/uc-data-store.sqlite

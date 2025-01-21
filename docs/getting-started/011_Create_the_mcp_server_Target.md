@@ -1,6 +1,6 @@
 # Create the mcp-server Target
 
-We'll use the pre-built local [stdio transport](https://modelcontextprotocol.io/docs/concepts/transports#standard-input-output-stdio) server.
+We'll use the pre-built local [stdio transport](https://modelcontextprotocol.io/docs/concepts/transports#standard-input-output-stdio) `ServerManager`.
 
 ```sh
 yarn add "@modelcontextprotocol/sdk@^1.1.1"
@@ -144,7 +144,7 @@ And let the magic happens.
 
 <img src="/docs/assets/trading-target-mcp-server.png" width="600px">
 
-Open the SQLite database with you with your favorite DB editor (e.g. TablePlus, DBeaver...).
+Open the SQLite database with your favorite DB editor (e.g. TablePlus, DBeaver...).
 
 ```sh
 open dist/products/SuperTrader/server/uc-data-store.sqlite

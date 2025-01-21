@@ -99,7 +99,7 @@ Update `src/apps/Trading/index.ts` to expose the use case.
 export { BuyAssetUCD } from './src/ucds/BuyAssetUCD.js';
 ```
 
-Naturally, in real life scenarios, we would never have such a bloated `App.tsx` and we could create fine-grained components. Everybody does that, right ?
+Naturally, in real life scenarios, we would never have such a bloated `App.tsx`. Instead, we would create fine-grained components. Everybody does that, right ? Right ?
 
 ```tsx
 import { type Logger, type ProductManifest, UCOutputReader } from 'libmodulor';
