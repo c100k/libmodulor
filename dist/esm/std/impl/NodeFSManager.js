@@ -1,0 +1,126 @@
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+import { appendFile, chmod, cp, mkdir, readFile, readdir, rm, stat, writeFile, } from 'node:fs/promises';
+import { extname, join, parse } from 'node:path';
+import { injectable } from 'inversify';
+import { FSManagerItemInfoType, } from '../FSManager.js';
+let NodeFSManager = class NodeFSManager {
+    async canHandleFiles() {
+        return true;
+    }
+    async cat(path, opts) {
+        return readFile(path, opts?.encoding ?? 'utf8');
+    }
+    async chmod(path, mode) {
+        return chmod(path, mode);
+    }
+    async cp(src, dest) {
+        await cp(src, dest, { recursive: true });
+    }
+    async echoIn(src, content) {
+        await appendFile(src, content);
+    }
+    async exists(path) {
+        try {
+            await stat(path);
+            return true;
+        }
+        catch (err) {
+            if (err.code !== 'ENOENT') {
+                throw err;
+            }
+            return false;
+        }
+    }
+    fileExtension(fileName) {
+        return extname(fileName)
+            .replace('.', '')
+            .toLowerCase();
+    }
+    async info(path) {
+        const parsedPath = parse(path);
+        const stats = await stat(path);
+        const { birthtime, size } = stats;
+        const mimeType = null;
+        const type = this.determineType(stats);
+        return {
+            ...parsedPath,
+            birthtime: birthtime.toISOString(),
+            mimeType,
+            size,
+            type,
+        };
+    }
+    async ls(path, opts) {
+        const items = await readdir(path, {
+            recursive: opts?.recursive,
+            withFileTypes: true,
+        });
+        return items.map((item) => ({
+            path: opts?.withFullPath
+                ? this.path(item.path, item.name)
+                : item.name,
+            type: this.determineType(item),
+        }));
+    }
+    async mkdir(path, opts) {
+        await mkdir(path, { recursive: opts?.recursive });
+    }
+    path(...parts) {
+        return join(...parts);
+    }
+    async pickFiles(source, opts) {
+        const validSources = ['path'];
+        if (!validSources.includes(source)) {
+            throw new Error(`You cannot pick a file via ${source}`);
+        }
+        const path = opts?.path;
+        if (!path) {
+            return [];
+        }
+        switch (source) {
+            case 'path': {
+                const { base: name, mimeType: type } = await this.info(path);
+                if (!type) {
+                    return [];
+                }
+                return [
+                    {
+                        name,
+                        path,
+                        type,
+                    },
+                ];
+            }
+            case 'camera':
+            case 'library':
+                return [];
+            default:
+                ((_) => { })(source);
+                return [];
+        }
+    }
+    async rm(path) {
+        await rm(path, { recursive: true });
+    }
+    async touch(path, content) {
+        await writeFile(path, content);
+    }
+    determineType(stats) {
+        if (stats.isDirectory()) {
+            return FSManagerItemInfoType.DIR;
+        }
+        if (stats.isFile()) {
+            return FSManagerItemInfoType.FILE;
+        }
+        return FSManagerItemInfoType.OTHER;
+    }
+};
+NodeFSManager = __decorate([
+    injectable()
+], NodeFSManager);
+export { NodeFSManager };

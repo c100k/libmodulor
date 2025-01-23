@@ -1,0 +1,11 @@
+import { type UC, type UCInput, type UCOPIBase } from '../uc/index.js';
+export type UCInputFiller<I extends UCInput | undefined = undefined, OPI0 extends UCOPIBase | undefined = undefined, OPI1 extends UCOPIBase | undefined = undefined> = (uc: UC<I, OPI0, OPI1>) => void;
+export declare const DEFAULT_UC_INPUT_FILLERS: readonly ["ALL_WITH_EXAMPLES", "ONLY_MANDATORY_WITH_EXAMPLES", "ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPLES"];
+export type DefaultUCInputFiller = (typeof DEFAULT_UC_INPUT_FILLERS)[number];
+export type CustomUCInputFiller = string;
+export type UCInputFillerName = DefaultUCInputFiller | (CustomUCInputFiller & {});
+export type UCInputFillerSet<T extends UCInputFillerName = DefaultUCInputFiller, I extends UCInput | undefined = undefined, OPI0 extends UCOPIBase | undefined = undefined, OPI1 extends UCOPIBase | undefined = undefined> = Record<T, UCInputFiller<I, OPI0, OPI1>>;
+export declare function defaultUCInputFillers<I extends UCInput | undefined = undefined, OPI0 extends UCOPIBase | undefined = undefined, OPI1 extends UCOPIBase | undefined = undefined>(): UCInputFillerSet<DefaultUCInputFiller, I, OPI0, OPI1>;
+export declare function allWithExamples<I extends UCInput | undefined = undefined, OPI0 extends UCOPIBase | undefined = undefined, OPI1 extends UCOPIBase | undefined = undefined>(uc: UC<I, OPI0, OPI1>): void;
+export declare function onlyMandatoryWithExamples<I extends UCInput | undefined = undefined, OPI0 extends UCOPIBase | undefined = undefined, OPI1 extends UCOPIBase | undefined = undefined>(uc: UC<I, OPI0, OPI1>): void;
+export declare function onlySetProgrammaticallyWithExamples<I extends UCInput | undefined = undefined, OPI0 extends UCOPIBase | undefined = undefined, OPI1 extends UCOPIBase | undefined = undefined>(uc: UC<I, OPI0, OPI1>): void;

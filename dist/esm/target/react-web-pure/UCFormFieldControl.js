@@ -1,0 +1,34 @@
+import React, {} from 'react';
+import { UCInputFieldChangeOperator, ucifRepeatability, } from '../../uc/index.js';
+import { htmlInputDef } from '../lib/web/input.js';
+const CHECKED_FIELD_TYPES = ['checkbox', 'radio'];
+const FILE_FIELD_TYPES = ['file'];
+const MULTIPLE_VALUES_SEPARATOR = ',';
+export function UCFormFieldControl({ disabled, errMsg = null, execState, field, onChange: onChangeBase, }) {
+    const attrs = htmlInputDef(field, execState, errMsg);
+    const onChange = (e) => {
+        const target = e.currentTarget;
+        const type = target.type;
+        let value = target.value;
+        if (CHECKED_FIELD_TYPES.includes(type) && 'checked' in target) {
+            value = target.checked;
+        }
+        else if (FILE_FIELD_TYPES.includes(type) && 'files' in target) {
+            value = target.files?.item(0);
+        }
+        const [isRepeatable] = ucifRepeatability(field.def);
+        if (isRepeatable && typeof value === 'string') {
+            const valueArr = value
+                .split(MULTIPLE_VALUES_SEPARATOR)
+                .map((v) => v.trim());
+            onChangeBase(field, UCInputFieldChangeOperator.SET, valueArr);
+        }
+        else {
+            onChangeBase(field, UCInputFieldChangeOperator.SET, value);
+        }
+    };
+    if (attrs.internal?.multiline) {
+        return (React.createElement("textarea", { ...attrs.spec, disabled: disabled, onChange: onChange }));
+    }
+    return React.createElement("input", { ...attrs.spec, disabled: disabled, onChange: onChange });
+}
