@@ -69,13 +69,13 @@ src/apps/**/test/reports
     },
     "dependencies": {
         "inversify": "^6.2.1",
-        "libmodulor": "^0.2.0",
+        "libmodulor": "^0.3.0",
         "reflect-metadata": "^0.2.2"
     },
     "devDependencies": {
         "@biomejs/biome": "^1.9.4",
-        "@types/node": "^22.10.2",
-        "@vitest/coverage-v8": "^2.1.1",
+        "@types/node": "^22.10.7",
+        "@vitest/coverage-v8": "^3.0.2",
         "buffer": "^6.0.3",
         "cookie-parser": "^1.4.7",
         "express": "^4.21.2",
@@ -83,9 +83,9 @@ src/apps/**/test/reports
         "fast-check": "^3.23.2",
         "helmet": "^8.0.0",
         "jose": "^5.9.6",
-        "typescript": "^5.7.2",
-        "vite": "^6.0.5",
-        "vitest": "^2.1.8"
+        "typescript": "^5.7.3",
+        "vite": "^6.0.11",
+        "vitest": "^3.0.3"
     }
 }
 ```
