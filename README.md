@@ -81,23 +81,23 @@ _Examples : `SignIn`, `CreatePost`, `TransferAccount`, `InviteContacts`_...
 
 Note how it always starts with a verb.
 
+Concretely, it's a file named `*UCD.ts` containing the definition of the use case (io, lifecycle, policies, etc.).
+
 ### App
 
-An app is a logical group of use cases.
-
-It's like a "module" (_whatever that means_), inspired by [Domain-driven design (DDD)](https://en.wikipedia.org/wiki/Domain-driven_design) bounded contexts.
+An app is a logical group of use cases. It's like a "module" (_whatever that means_), inspired by [Domain-driven design (DDD)](https://en.wikipedia.org/wiki/Domain-driven_design) bounded contexts.
 
 _Examples : `Auth`, `Accounting`, `CMS`..._
 
+Concretely, it's a folder containing metadata files (`i18n.ts`, `manifest.ts`...) and a `ucds` folder which contains the use case definitions.
+
 ### Product
 
-A product is a logical group of apps that are assembled together.
-
-Behind this barbaric definition, it's simply what end users know and use.
+A product is a logical group of apps that are assembled together. It's simply what end users know and use.
 
 _Examples : `GitHub`, `Facebook`, `LinkedIn`, `Airbnb`..._
 
-When defined correctly, apps are reusable across multiple products (e.g. `Auth`).
+Concretely, it's a folder containing  `i18n.ts`, `manifest.(js|ts)` and the elements corresponding to the desired targets. For example, it will contain the screens of a mobile app or the pages of a website.
 
 ### Target
 
@@ -105,7 +105,7 @@ A target defines how a product is "exposed" to the end user. It's a combination 
 
 _Examples : `web-react`, `web-angular`, `server-node`, `cli-node`, `cli-stricli`..._
 
-Note that it's the only place where the "infrastructure" choices are applied.
+Note that it's the only place where the "infrastructure" choices are applied. Targets can be generic and reusable across products.
 
 ## 👀 At a glance
 
