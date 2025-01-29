@@ -1,4 +1,4 @@
-# Create the web Target
+# Expose the web Target
 
 We'll use the pre-built [React](https://react.dev) components to build a SPA (Single Page Application), bundled with [vite](https://vite.dev) and served with the server defined above.
 

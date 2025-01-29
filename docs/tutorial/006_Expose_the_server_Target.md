@@ -1,4 +1,4 @@
-# Create the server Target
+# Expose the server Target
 
 We'll use the pre-built [express](https://expressjs.com) `ServerManager`.
 

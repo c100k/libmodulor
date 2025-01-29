@@ -1,4 +1,4 @@
-# Create the mcp-server Target
+# Expose the mcp-server Target
 
 We'll use the pre-built local [stdio transport](https://modelcontextprotocol.io/docs/concepts/transports#standard-input-output-stdio) `ServerManager`.
 

@@ -5,7 +5,7 @@
 
 First, we'll init a repository (a repository can contain multiple apps and products).
 
-Then, we'll build a small trading application. It will contain one `App` named `Trading`, which will contain one `UseCase` named `BuyAsset`. The `App` will be mounted in a `Product` called `SuperTrader` which will be exposed via a `server` `Target`, a `web` `Target`, a `cli` `Target` and finally, a `mcp-server` `Target`.
+Then, we'll build a small trading application. It will contain one `App` named `Trading`, which will contain one `UseCase` named `BuyAsset`. The `App` will be mounted in a `Product` called `SuperTrader` which will be exposed via a `server`, `web`, `cli` and `mcp-server` `Targets`.
 
 > [!NOTE]
 > MCP stands for [Model Context Protocol](https://modelcontextprotocol.io) introduced recently by [@anthropics](https://github.com/anthropics).
@@ -37,12 +37,12 @@ Here are the steps we're going to follow. Don't worry. Even though it seems a lo
 1. [Create the UseCase](./tutorial/003_Create_the_UseCase.md)
 1. [Test the App](./tutorial/004_Test_the_App.md)
 1. [Create the Product](./tutorial/005_Create_the_Product.md)
-1. [Create the server Target](./tutorial/006_Create_the_server_Target.md)
-1. [Create the web Target](./tutorial/007_Create_the_web_Target.md)
+1. [Expose the server Target](./tutorial/006_Expose_the_server_Target.md)
+1. [Expose the web Target](./tutorial/007_Expose_the_web_Target.md)
 1. [Switch to a persistent data storage](./tutorial/008_Switch_to_a_persistent_data_storage.md)
 1. [Define wording for humans](./tutorial/009_Define_wording_for_humans.md)
-1. [Create the cli Target](./tutorial/010_Create_the_cli_Target.md)
-1. [Create the mcp-server Target](./tutorial/011_Create_the_mcp_server_Target.md)
+1. [Expose the cli Target](./tutorial/010_Expose_the_cli_Target.md)
+1. [Expose the mcp-server Target](./tutorial/011_Expose_the_mcp_server_Target.md)
 1. [Summary](./tutorial/012_Summary.md)
 
 Let's go with the first step : [Create the project](./tutorial/001_Create_the_project.md).

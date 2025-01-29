@@ -1,4 +1,4 @@
-# Create the cli Target
+# Expose the cli Target
 
 We'll use the pre-built [Node.js parseArgs](https://nodejs.org/api/util.html#utilparseargsconfig) `CLIManager`.
 
