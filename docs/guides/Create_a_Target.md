@@ -12,11 +12,11 @@ As seen in the [introduction](../Introduction.md) :
 - [react-native-pure](../../dist/esm/target/react-native-pure/UCForm.js) : a simple GUI implementation based on [React Native](https://reactnative.dev)
 - [react-web-pure](../../dist/esm/target/react-web-pure/UCForm.js) : a simple GUI implementation based on [React](https://react.dev)
 
-## Create your own
+---
 
 Depending on your needs, you might want to create your own targets for your products. Indeed, there is a high probability that the included ones do not fit your criteria, especially the GUI ones (`react-native-pure`, `react-web-pure`).
 
-### CLI
+## CLI
 
 A CLI target exposes a `Product` so it can be used in a [Terminal Emulator](https://en.wikipedia.org/wiki/List_of_terminal_emulators) :
 
@@ -47,9 +47,7 @@ Important aspects to take into account (non-exhaustive list) :
 
 Here is a great list of [solutions](https://bloomberg.github.io/stricli/docs/getting-started/alternatives) to build your own.
 
----
-
-### Server
+## Server
 
 A server target exposes a `Product` so it can be called as a REST-like API :
 
@@ -80,9 +78,7 @@ Important aspects to take into account (non-exhaustive list) :
 > [!NOTE]
 > This is the implementation actually used when auto testing an `App`.
 
----
-
-### GUI
+## GUI
 
 A GUI target exposes a `Product` as a user interface.
 
@@ -102,9 +98,7 @@ Important aspects to take into account (non-exhaustive list) :
 
 See [generic React components](../../dist/esm/target/lib/react) with [react-native-pure](../../dist/esm/target/react-native-pure/UCForm.js) and [react-web-pure](../../dist/esm/target/react-web-pure/UCForm.js) as an example.
 
----
-
-### Others
+## Others
 
 The list above corresponds to the current state of human interfaces in Software. We can bet that new ones will arrive pretty soon. So the only limit is your imagination.
 
