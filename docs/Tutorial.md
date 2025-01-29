@@ -32,17 +32,17 @@ Note that we'll develop only one use case to keep the Tutorial straightforward. 
 
 Here are the steps we're going to follow. Don't worry. Even though it seems a lot, it will be super quick, efficient and straight to the point.
 
-1. [Create the project](./getting-started/001_Create_the_project.md)
-1. [Create the App](./getting-started/002_Create_the_App.md)
-1. [Create the UseCase](./getting-started/003_Create_the_UseCase.md)
-1. [Test the App](./getting-started/004_Test_the_App.md)
-1. [Create the Product](./getting-started/005_Create_the_Product.md)
-1. [Create the server Target](./getting-started/006_Create_the_server_Target.md)
-1. [Create the web Target](./getting-started/007_Create_the_web_Target.md)
-1. [Switch to a persistent data storage](./getting-started/008_Switch_to_a_persistent_data_storage.md)
-1. [Define wording for humans](./getting-started/009_Define_wording_for_humans.md)
-1. [Create the cli Target](./getting-started/010_Create_the_cli_Target.md)
-1. [Create the mcp-server Target](./getting-started/011_Create_the_mcp_server_Target.md)
-1. [Summary](./getting-started/012_Summary.md)
+1. [Create the project](./tutorial/001_Create_the_project.md)
+1. [Create the App](./tutorial/002_Create_the_App.md)
+1. [Create the UseCase](./tutorial/003_Create_the_UseCase.md)
+1. [Test the App](./tutorial/004_Test_the_App.md)
+1. [Create the Product](./tutorial/005_Create_the_Product.md)
+1. [Create the server Target](./tutorial/006_Create_the_server_Target.md)
+1. [Create the web Target](./tutorial/007_Create_the_web_Target.md)
+1. [Switch to a persistent data storage](./tutorial/008_Switch_to_a_persistent_data_storage.md)
+1. [Define wording for humans](./tutorial/009_Define_wording_for_humans.md)
+1. [Create the cli Target](./tutorial/010_Create_the_cli_Target.md)
+1. [Create the mcp-server Target](./tutorial/011_Create_the_mcp_server_Target.md)
+1. [Summary](./tutorial/012_Summary.md)
 
-Let's go with the first step : [Create the project](./getting-started/001_Create_the_project.md).
+Let's go with the first step : [Create the project](./tutorial/001_Create_the_project.md).
