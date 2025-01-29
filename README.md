@@ -27,7 +27,7 @@ Applications created with `libmodulor` have **6 main properties** :
 
 ## 🚀 Getting Started
 
-To get started, we recommend reading the [📚 Introduction](./docs/Introduction.md) first. It will give you an overview of what `libmodulor` is and how it works.
+To get started, we recommend reading the [📖 Introduction](./docs/Introduction.md) first. It will give you an overview of what `libmodulor` is and how it works.
 
 Then, you can follow the [🚀 Tutorial](./docs/Tutorial.md) that will show you all the main notions by building something with `libmodulor`.
 

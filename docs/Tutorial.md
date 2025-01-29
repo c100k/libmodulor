@@ -1,4 +1,4 @@
-# Tutorial
+# 🚀 Tutorial
 
 > [!NOTE]
 > This Tutorial is voluntarily very verbose and not scripted so you can get a full overview of how things work. `npx` magic is good. But understanding what happens behind the scenes is good as well.
