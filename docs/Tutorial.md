@@ -1,0 +1,48 @@
+# Tutorial
+
+> [!NOTE]
+> This Tutorial is voluntarily very verbose and not scripted so you can get a full overview of how things work. `npx` magic is good. But understanding what happens behind the scenes is good as well.
+
+First, we'll init a repository (a repository can contain multiple apps and products).
+
+Then, we'll build a small trading application. It will contain one `App` named `Trading`, which will contain one `UseCase` named `BuyAsset`. The `App` will be mounted in a `Product` called `SuperTrader` which will be exposed via a `server` `Target`, a `web` `Target`, a `cli` `Target` and finally, a `mcp-server` `Target`.
+
+> [!NOTE]
+> MCP stands for [Model Context Protocol](https://modelcontextprotocol.io) introduced recently by [@anthropics](https://github.com/anthropics).
+
+If we adapt the abstract mermaid chart shown in the introduction, concretely, it looks like this :
+
+```mermaid
+block-beta
+    server
+    web
+    cli
+    mcp_server
+    columns 4
+    SuperTrader:4
+    Trading:2
+    Auth:2
+    BuyAsset
+    ListOrders
+    SignUp
+    SignIn
+```
+
+Note that we'll develop only one use case to keep the Tutorial straightforward. Hopefully you'll get onboarded quickly and will build all the others by yourself.
+
+Here are the steps we're going to follow. Don't worry. Even though it seems a lot, it will be super quick, efficient and straight to the point.
+
+1. [Create the project](./getting-started/001_Create_the_project.md)
+1. [Create the App](./getting-started/002_Create_the_App.md)
+1. [Create the UseCase](./getting-started/003_Create_the_UseCase.md)
+1. [Test the App](./getting-started/004_Test_the_App.md)
+1. [Create the Product](./getting-started/005_Create_the_Product.md)
+1. [Create the server Target](./getting-started/006_Create_the_server_Target.md)
+1. [Create the web Target](./getting-started/007_Create_the_web_Target.md)
+1. [Switch to a persistent data storage](./getting-started/008_Switch_to_a_persistent_data_storage.md)
+1. [Define wording for humans](./getting-started/009_Define_wording_for_humans.md)
+1. [Create the cli Target](./getting-started/010_Create_the_cli_Target.md)
+1. [Create the mcp-server Target](./getting-started/011_Create_the_mcp_server_Target.md)
+1. [Summary](./getting-started/012_Summary.md)
+
+Let's go with the first step : [Create the project](./getting-started/001_Create_the_project.md).
