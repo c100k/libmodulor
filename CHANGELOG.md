@@ -6,6 +6,10 @@
 
 To help with the creation of specific targets, we've added a new one : `react-native-pure`. It's as simple as `react-web-pure`, with no specific UI style. It's a good starting point to take inspiration to create your own UI target, with your own style.
 
+**Misc**
+
+- Improved the docs for a better readability (https://github.com/c100k/libmodulor/pull/10)
+
 ## v0.3.0 (2025-01-23)
 
 **feat(uc): introduce alternate mounting point**
