@@ -55,15 +55,15 @@
     },
     "peerDependencies": {
         "@hono/node-server": "^1.13.7",
-        "@modelcontextprotocol/sdk": "^1.1.1",
-        "@stricli/core": "^1.1.0",
+        "@modelcontextprotocol/sdk": "^1.4.1",
+        "@stricli/core": "^1.1.1",
         "buffer": "^6.0.3",
         "cookie-parser": "^1.4.7",
         "express": "^4.21.2",
         "express-fileupload": "^1.5.1",
         "fast-check": "^3.23.2",
         "helmet": "^8.0.0",
-        "hono": "^4.6.16",
+        "hono": "^4.6.19",
         "inversify": "^6.2.1",
         "jose": "^5.9.6",
         "knex": "^3.1.0",
@@ -73,7 +73,7 @@
         "reflect-metadata": "^0.2.2",
         "sqlite3": "^5.1.7",
         "typescript": "^5.7.3",
-        "vite": "^6.0.7"
+        "vite": "^6.0.11"
     },
     "peerDependenciesMeta": {
         "@hono/node-server": {
