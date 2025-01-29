@@ -96,7 +96,7 @@ open dist/products/SuperTrader/server/uc-data-store.sqlite
 ```
 
 ```sh
-yarn lint && git add . && git commit -m "feat: add the cli target"
+yarn lint && yarn test && git add . && git commit -m "feat: add the cli target"
 ```
 
 Now that's done, let's [Expose the mcp-server Target](./011_Expose_the_mcp_server_Target.md).

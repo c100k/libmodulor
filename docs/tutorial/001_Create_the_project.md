@@ -160,7 +160,7 @@ yarn install
 ```
 
 ```sh
-yarn lint && git add . && git commit -m "chore: init source code"
+yarn lint && yarn test && git add . && git commit -m "chore: init source code"
 ```
 
 Optionally, you can create a remote repository (e.g. on GitHub) and push it.

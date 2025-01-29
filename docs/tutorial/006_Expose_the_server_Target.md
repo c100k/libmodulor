@@ -124,7 +124,7 @@ As you can see, validation comes out of the box. Later we'll see how to add even
 > The `public_api_key` is just a first layer of security to "authenticate" the client apps calling the server. Hopefully this is not the only security mechanism because of course, this key must be present in clear client side (web, cli, curl...). We'll dive deeper in security when we study the policies.
 
 ```sh
-yarn lint && git add . && git commit -m "feat: add the server target"
+yarn lint && yarn test && git add . && git commit -m "feat: add the server target"
 ```
 
 Now that's done, let's [Expose the web Target](./007_Expose_the_web_Target.md).

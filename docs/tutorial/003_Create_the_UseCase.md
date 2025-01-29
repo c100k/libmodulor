@@ -199,7 +199,7 @@ For now, we won't detail all this code but take the time to read it and understa
 > Unlike `ClientMain`, `ServerMain` is put in another file for "historical" reasons, mainly for stripping and tree shaking reasons. More on this later.
 
 ```sh
-yarn lint && git add . && git commit -m "feat: add the use case"
+yarn lint && yarn test && git add . && git commit -m "feat: add the use case"
 ```
 
 Now that's done, let's [Test the App](./004_Test_the_App.md).

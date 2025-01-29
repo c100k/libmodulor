@@ -35,8 +35,24 @@ Refresh the page. You should see a better wording. Try to type an invalid `ISIN`
 
 <img src="/docs/assets/trading-target-web-human.png" width="600px">
 
+Now run the tests.
+
 ```sh
-yarn lint && git add . && git commit -m "feat: define wording for humans"
+yarn test
+```
+
+They should fail. But for expected reasons. Since we've changed the wording, some error messages have changed as well.
+
+Run the tests again, updating the snapshots.
+
+```sh
+yarn test -u
+```
+
+They should now pass.
+
+```sh
+yarn lint && yarn test && git add . && git commit -m "feat: define wording for humans"
 ```
 
 Now that's done, let's [Expose the cli Target](./010_Expose_the_cli_Target.md).
