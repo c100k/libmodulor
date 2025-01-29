@@ -24,6 +24,13 @@ The main goal is to offer higher level primitives that make building business ap
 
 `libmodulor` defines a **4-layer architecture** composed of : `UseCase`, `App`, `Product`, `Target`.
 
+Semantically,
+
+- a `UseCase` is part of an `App`
+- an `App` is mounted in a `Product`
+- a `Product` is exposed via a `Target`
+- a `Target` is installed/deployed somewhere
+
 ```mermaid
 block-beta
     Target1:2
