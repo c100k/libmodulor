@@ -31,6 +31,9 @@
         "./node": {
             "import": "./dist/esm/index.node.js"
         },
+        "./react-native-pure": {
+            "import": "./dist/esm/index.react-native-pure.js"
+        },
         "./react-web-pure": {
             "import": "./dist/esm/index.react-web-pure.js"
         },
@@ -70,6 +73,7 @@
         "pg": "^8.13.1",
         "react": "^18.3.1",
         "react-dom": "^18.3.1",
+        "react-native": "^0.76.6",
         "reflect-metadata": "^0.2.2",
         "sqlite3": "^5.1.7",
         "typescript": "^5.7.3",
@@ -101,6 +105,9 @@
             "optional": true
         },
         "react-dom": {
+            "optional": true
+        },
+        "react-native": {
             "optional": true
         },
         "sqlite3": {

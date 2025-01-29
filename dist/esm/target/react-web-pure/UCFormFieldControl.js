@@ -4,7 +4,7 @@ import { htmlInputDef } from '../lib/web/input.js';
 const CHECKED_FIELD_TYPES = ['checkbox', 'radio'];
 const FILE_FIELD_TYPES = ['file'];
 const MULTIPLE_VALUES_SEPARATOR = ',';
-export function UCFormFieldControl({ disabled, errMsg = null, execState, field, onChange: onChangeBase, }) {
+export function UCFormFieldControl({ errMsg = null, execState, field, onChange: onChangeBase, }) {
     const attrs = htmlInputDef(field, execState, errMsg);
     const onChange = (e) => {
         const target = e.currentTarget;
@@ -28,7 +28,7 @@ export function UCFormFieldControl({ disabled, errMsg = null, execState, field, 
         }
     };
     if (attrs.internal?.multiline) {
-        return (React.createElement("textarea", { ...attrs.spec, disabled: disabled, onChange: onChange }));
+        return React.createElement("textarea", { ...attrs.spec, onChange: onChange });
     }
-    return React.createElement("input", { ...attrs.spec, disabled: disabled, onChange: onChange });
+    return React.createElement("input", { ...attrs.spec, onChange: onChange });
 }
