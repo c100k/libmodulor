@@ -48,6 +48,7 @@ export default defineConfig({
 ## container.ts
 
 ```typescript
+import { Container } from 'inversify';
 import {
     CONTAINER_OPTS,
     type ServerClientManagerSettings,
@@ -56,7 +57,6 @@ import {
     bindProduct,
 } from 'libmodulor';
 import { bindWeb } from 'libmodulor/web';
-import { Container } from 'inversify';
 
 import { I18n } from '../i18n.js';
 import { Manifest } from '../manifest.js';

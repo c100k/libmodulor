@@ -12,6 +12,7 @@ touch .env
 ## container.ts
 
 ```typescript
+import { Container } from 'inversify';
 import {
     CONTAINER_OPTS,
     EnvSettingsManager,
@@ -27,7 +28,6 @@ import {
     bindNodeCore,
     bindServer,
 } from 'libmodulor/node';
-import { Container } from 'inversify';
 
 import { I18n } from '../i18n.js';
 import { Manifest } from '../manifest.js';
@@ -127,4 +127,4 @@ As you can see, validation comes out of the box. Later we'll see how to add even
 yarn lint && git add . && git commit -m "feat: add the server target"
 ```
 
-Now that's done, let's [Create the web Target](./007_Create_the_web_Target.md).
+Now that's done, let's [Expose the web Target](./007_Expose_the_web_Target.md).

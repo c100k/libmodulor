@@ -10,6 +10,7 @@ touch src/products/SuperTrader/cli/{container.ts,index.ts}
 ## container.ts
 
 ```typescript
+import { Container } from 'inversify';
 import {
     CONTAINER_OPTS,
     type ServerClientManagerSettings,
@@ -18,7 +19,6 @@ import {
     bindProduct,
 } from 'libmodulor';
 import { bindNodeCLI, bindNodeCore } from 'libmodulor/node';
-import { Container } from 'inversify';
 
 import { I18n } from '../i18n.js';
 import { Manifest } from '../manifest.js';
@@ -99,4 +99,4 @@ open dist/products/SuperTrader/server/uc-data-store.sqlite
 yarn lint && git add . && git commit -m "feat: add the cli target"
 ```
 
-Now that's done, let's [Create the mcp-server Target](./011_Create_the_mcp_server_Target.md).
+Now that's done, let's [Expose the mcp-server Target](./011_Expose_the_mcp_server_Target.md).

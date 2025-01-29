@@ -59,6 +59,7 @@ export class TISIN extends TString<ISIN, 'ISIN'> {
 ## BuyAssetUCD.ts
 
 ```typescript
+import { inject, injectable } from 'inversify';
 import {
     type AggregateOPI0,
     type Amount,
@@ -75,7 +76,6 @@ import {
     type UCTransporter,
     type UIntQuantity,
 } from 'libmodulor';
-import { inject, injectable } from 'inversify';
 
 import { Manifest } from '../manifest.js';
 
@@ -152,6 +152,7 @@ export const BuyAssetUCD: UCDef<BuyAssetInput, BuyAssetOPI0> = {
 ## BuyAssetServerMain.ts
 
 ```typescript
+import { inject, injectable } from 'inversify';
 import {
     type UCMain,
     type UCMainInput,
@@ -159,7 +160,6 @@ import {
     type UCOutput,
     UCOutputBuilder,
 } from 'libmodulor';
-import { inject, injectable } from 'inversify';
 
 import type { BuyAssetInput, BuyAssetOPI0 } from './BuyAssetUCD.js';
 

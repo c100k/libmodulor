@@ -35,6 +35,7 @@ touch src/apps/Trading/test/Configurator.ts
 ## Configurator.ts
 
 ```typescript
+import { injectable } from 'inversify';
 import { type AppTesterCtx, type CryptoManager, bindCommon } from 'libmodulor';
 import {
     NodeDeterministicCryptoManager,
@@ -42,7 +43,6 @@ import {
     bindServer,
 } from 'libmodulor/node';
 import { SimpleAppTesterConfigurator } from 'libmodulor/node-test';
-import { injectable } from 'inversify';
 
 @injectable()
 export class Configurator extends SimpleAppTesterConfigurator {

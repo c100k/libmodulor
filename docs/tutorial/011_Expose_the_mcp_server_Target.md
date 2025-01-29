@@ -3,7 +3,7 @@
 We'll use the pre-built local [stdio transport](https://modelcontextprotocol.io/docs/concepts/transports#standard-input-output-stdio) `ServerManager`.
 
 ```sh
-yarn add "@modelcontextprotocol/sdk@^1.1.1"
+yarn add "@modelcontextprotocol/sdk@^1.4.1"
 ```
 
 ```sh
@@ -14,6 +14,7 @@ touch src/products/SuperTrader/mcp-server/{container.ts,index.ts}
 ## container.ts
 
 ```typescript
+import { Container } from 'inversify';
 import {
     CONTAINER_OPTS,
     type ServerClientManagerSettings,
@@ -24,7 +25,6 @@ import {
 } from 'libmodulor';
 import { bindNodeCore, bindServer } from 'libmodulor/node';
 import { NodeLocalStdioMCPServerManager } from 'libmodulor/node-mcp';
-import { Container } from 'inversify';
 
 import { I18n } from '../i18n.js';
 import { Manifest } from '../manifest.js';
