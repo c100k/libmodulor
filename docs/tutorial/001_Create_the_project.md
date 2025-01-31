@@ -26,6 +26,8 @@ coverage
 dist
 node_modules
 src/apps/**/test/reports
+src/apps/**/test/*.test.ts
+src/products/**/rn/.expo
 .env
 ```
 
