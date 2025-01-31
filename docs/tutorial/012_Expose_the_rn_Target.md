@@ -11,3 +11,7 @@ yarn add "react-native@^0.76.6" "expo@^52.0.28"
 
 mkdir -p src/products/SuperTrader/rn/components
 ```
+
+To be continued...
+
+For now, we're done. Let's review what we've built : [Summary](./030_Summary.md).
