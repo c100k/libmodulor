@@ -5,7 +5,7 @@
 
 First, we'll init a repository (a repository can contain multiple apps and products).
 
-Then, we'll build a small trading application. It will contain one `App` named `Trading`, which will contain one `UseCase` named `BuyAsset`. The `App` will be mounted in a `Product` called `SuperTrader` which will be exposed via a `server`, `web`, `cli` and `mcp-server` `Targets`.
+Then, we'll build a small trading application. It will contain one `App` named `Trading`, which will contain one `UseCase` named `BuyAsset`. The `App` will be mounted in a `Product` called `SuperTrader` which will be exposed via a `server`, `web`, `cli`, `mcp-server` and `rn` `Targets`.
 
 > [!NOTE]
 > MCP stands for [Model Context Protocol](https://modelcontextprotocol.io) introduced recently by [@anthropics](https://github.com/anthropics).
@@ -43,6 +43,7 @@ Here are the steps we're going to follow. Don't worry. Even though it seems a lo
 1. [Define wording for humans](./tutorial/009_Define_wording_for_humans.md)
 1. [Expose the cli Target](./tutorial/010_Expose_the_cli_Target.md)
 1. [Expose the mcp-server Target](./tutorial/011_Expose_the_mcp_server_Target.md)
-1. [Summary](./tutorial/012_Summary.md)
+1. [Expose the rn Target](./tutorial/012_Expose_the_rn_Target.md)
+1. [Summary](./tutorial/030_Summary.md)
 
 Let's go with the first step : [Create the project](./tutorial/001_Create_the_project.md).

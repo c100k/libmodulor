@@ -25,7 +25,7 @@ total: 'Total',
 > [!NOTE]
 > We distinguish what's related to the app from what's related to the product. Usually, in the app's `i18n`, you'll add only translations following a certain convention like `dt_*` (data type choices), `err_*` (error messages), `uc_*` (use cases), `ucif_*` (use case input fields), `ucof_*` (use case output fields), `validation_*` (validation messages), etc.
 
-Press <kbd>ctrl</kbd> + <kbd>C</kbd> to stop the server.
+Press <kbd>ctrl</kbd> + <kbd>C</kbd> to stop the server if it's running.
 
 ```sh
 yarn build && yarn run:server

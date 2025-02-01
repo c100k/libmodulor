@@ -26,6 +26,8 @@ coverage
 dist
 node_modules
 src/apps/**/test/reports
+src/apps/**/test/*.test.ts
+src/products/**/rn/.expo
 .env
 ```
 
@@ -69,7 +71,7 @@ src/apps/**/test/reports
     },
     "dependencies": {
         "inversify": "^6.2.1",
-        "libmodulor": "^0.3.0",
+        "libmodulor": "^0.4.0",
         "reflect-metadata": "^0.2.2"
     },
     "devDependencies": {

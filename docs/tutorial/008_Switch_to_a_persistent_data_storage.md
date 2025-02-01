@@ -32,7 +32,7 @@ container.rebind<SettingsManager>('SettingsManager').to(EnvSettingsManager);
 +container.rebind<UCDataStore>('UCDataStore').to(KnexUCDataStore);
 ```
 
-Press <kbd>ctrl</kbd> + <kbd>C</kbd> to stop the server.
+Press <kbd>ctrl</kbd> + <kbd>C</kbd> to stop the server if it's running.
 
 ```sh
 yarn build && yarn run:server

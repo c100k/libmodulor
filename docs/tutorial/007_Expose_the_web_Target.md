@@ -244,7 +244,7 @@ Update `src/products/SuperTrader/server/container.ts` to mount the `public` dire
 +server_static_dir_path: 'public',
 ```
 
-Press <kbd>ctrl</kbd> + <kbd>C</kbd> to stop the server (we'll setup hot reload later).
+Press <kbd>ctrl</kbd> + <kbd>C</kbd> to stop the server if it's running (we'll setup hot reload later).
 
 ```sh
 yarn build && yarn run:server
