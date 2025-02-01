@@ -29,7 +29,7 @@ Applications created with `libmodulor` have **6 main properties** :
 
 To get started, we recommend reading the [📖 Introduction](./docs/Introduction.md) first. It will give you an overview of what `libmodulor` is and how it works.
 
-Then, you can follow the [🚀 Tutorial](./docs/Tutorial.md) that will show you all the main notions by building something real.
+Then, you can follow the [🚀 Tutorial](./docs/Tutorial.md) that will show you all the main notions by building something real. We'll build a small Trading app that will allow us to buy an asset from a web page, a Terminal, Claude Desktop, Android and iOS ! All within a single, simple codebase.
 
 Finally, for more advanced usages, go to the [📜 Guides](./docs/Guides.md).
 
