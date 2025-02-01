@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## v0.5.0 (unreleased)
+
+**Misc**
+
+- Added the Tutorial code in the repo at `examples/libmodulor-tuto` and added a new "Expose a rn Target" step (https://github.com/c100k/libmodulor/pull/11)
+
 ## v0.4.0 (2025-01-31)
 
 **feat(target): introduce react-native-pure**
