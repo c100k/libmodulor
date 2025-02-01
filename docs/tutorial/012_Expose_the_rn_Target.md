@@ -8,14 +8,18 @@ We'll use the pre-built [React Native](https://reactnative.dev) components with 
 ```sh
 yarn add "react-native@^0.76.6" "expo@^52.0.28"
 yarn add --dev "@babel/plugin-transform-class-static-block@^7.26.0" "babel-plugin-parameter-decorator@^1.0.16" "babel-plugin-transform-typescript-metadata@^0.3.2"
+```
 
+First, setup your environment as explained in the [react-native documentation](https://reactnative.dev/docs/environment-setup).
+
+> [!NOTE]
+> We're voluntarily not using a command like `yarn create expo-app rn --template blank-typescript` because it generates too much noise.
+
+```sh
 mkdir -p src/products/SuperTrader/rn/{assets,components}
 touch src/products/SuperTrader/rn/{babel.config.cjs,container.ts,index.tsx,metro.config.cjs,tsconfig.json}
 touch src/products/SuperTrader/rn/components/App.tsx
 ```
-
-> [!NOTE]
-> We're voluntarily not using a command like `yarn create expo-app rn --template blank-typescript` because it generates too much noise.
 
 Grab the expo related files that are not really important in the context of this Tutorial.
 
@@ -505,14 +509,24 @@ In `package.json`, replace the `build` script by the following.
 +"build": "./build.sh",
 ```
 
+Add the scripts to run the app on `android` and `ios`.
+
+```diff
+"run:cli": "cd dist/products/SuperTrader/cli && node index.js",
++"run:rn:android": "cd dist/products/SuperTrader/rn && expo start --android",
++"run:rn:ios": "cd dist/products/SuperTrader/rn && expo start --ios",
+"run:server": "cd dist/products/SuperTrader/server && node --env-file .env index.js",
+```
+
 Press <kbd>ctrl</kbd> + <kbd>C</kbd> to stop the server (we'll setup hot reload later).
 
 ```sh
 yarn build && yarn run:server
+yarn run:rn:android
 yarn run:rn:ios
 ```
 
-Et voilà ! The app is installing and running on your iOS Simulator.
+Et voilà ! The app is installing and running on your Android Emulator and iOS Simulator.
 
 <img src="/docs/assets/trading-target-rn.png" width="600px">
 
