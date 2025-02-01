@@ -122,7 +122,7 @@ To open the Chrome Developer Tools wihtin Claude, press <kbd>cmd</kbd> + <kbd>op
 
 ## Build & Run
 
-Press <kbd>ctrl</kbd> + <kbd>C</kbd> to stop the server.
+Press <kbd>ctrl</kbd> + <kbd>C</kbd> to stop the server if it's running.
 
 ```sh
 yarn build && yarn run:server

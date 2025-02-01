@@ -369,6 +369,8 @@ registerRootComponent(Index);
 
 Naturally, in real life scenarios, we would never have such a bloated `App.tsx`. Instead, we would create fine-grained components. Everybody does that, right ? Right ?
 
+See how this `App.tsx` is really similar to the web's target one. By re-using `UCPanel` and simply switching its props from the `web` to `react-native` ones, we are able to render the same thing, adapted to native mobile.
+
 ```tsx
 import { type Logger, type ProductManifest, UCOutputReader } from 'libmodulor';
 import {
@@ -518,7 +520,7 @@ Add the scripts to run the app on `android` and `ios`.
 "run:server": "cd dist/products/SuperTrader/server && node --env-file .env index.js",
 ```
 
-Press <kbd>ctrl</kbd> + <kbd>C</kbd> to stop the server (we'll setup hot reload later).
+Press <kbd>ctrl</kbd> + <kbd>C</kbd> to stop the server if it's running.
 
 ```sh
 yarn build && yarn run:server
