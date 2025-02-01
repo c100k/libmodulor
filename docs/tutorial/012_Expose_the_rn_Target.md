@@ -24,11 +24,11 @@ touch src/products/SuperTrader/rn/components/App.tsx
 Grab the expo related files that are not really important in the context of this Tutorial.
 
 ```sh
-wget -O src/products/SuperTrader/rn/assets/adaptive-icon.png https://raw.githubusercontent.com/c100k/libmodulor/docs-add-examples-tuto/examples/libmodulor-tuto/src/products/SuperTrader/rn/assets/adaptive-icon.png
-wget -O src/products/SuperTrader/rn/assets/favicon.png https://raw.githubusercontent.com/c100k/libmodulor/docs-add-examples-tuto/examples/libmodulor-tuto/src/products/SuperTrader/rn/assets/favicon.png
-wget -O src/products/SuperTrader/rn/assets/icon.png https://raw.githubusercontent.com/c100k/libmodulor/docs-add-examples-tuto/examples/libmodulor-tuto/src/products/SuperTrader/rn/assets/icon.png
-wget -O src/products/SuperTrader/rn/assets/splash-icon.png https://raw.githubusercontent.com/c100k/libmodulor/docs-add-examples-tuto/examples/libmodulor-tuto/src/products/SuperTrader/rn/assets/splash-icon.png
-wget -O src/products/SuperTrader/rn/app.json https://raw.githubusercontent.com/c100k/libmodulor/docs-add-examples-tuto/examples/libmodulor-tuto/src/products/SuperTrader/rn/app.json
+wget -O src/products/SuperTrader/rn/assets/adaptive-icon.png https://raw.githubusercontent.com/c100k/libmodulor/master/examples/libmodulor-tuto/src/products/SuperTrader/rn/assets/adaptive-icon.png
+wget -O src/products/SuperTrader/rn/assets/favicon.png https://raw.githubusercontent.com/c100k/libmodulor/master/examples/libmodulor-tuto/src/products/SuperTrader/rn/assets/favicon.png
+wget -O src/products/SuperTrader/rn/assets/icon.png https://raw.githubusercontent.com/c100k/libmodulor/master/examples/libmodulor-tuto/src/products/SuperTrader/rn/assets/icon.png
+wget -O src/products/SuperTrader/rn/assets/splash-icon.png https://raw.githubusercontent.com/c100k/libmodulor/master/examples/libmodulor-tuto/src/products/SuperTrader/rn/assets/splash-icon.png
+wget -O src/products/SuperTrader/rn/app.json https://raw.githubusercontent.com/c100k/libmodulor/master/examples/libmodulor-tuto/src/products/SuperTrader/rn/app.json
 ```
 
 ## babel.config.cjs
