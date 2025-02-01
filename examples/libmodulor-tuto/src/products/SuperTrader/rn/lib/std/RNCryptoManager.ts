@@ -16,9 +16,13 @@ import type {
 } from 'libmodulor';
 
 // TODO : Implement RNCryptoManager
-// Of course, it works without it for now, but when we enable authentication and/or client-side only UCs it will need at least `randomUUID()`
+
 @injectable()
 export class RNCryptoManager implements CryptoManager {
+    public async clear(): Promise<void> {
+        throw new Error('Method not implemented.');
+    }
+
     public hash(
         _algorithm: CryptoManagerHashAlgorithm,
         _base: string,
@@ -45,7 +49,7 @@ export class RNCryptoManager implements CryptoManager {
         throw new Error('Method not implemented.');
     }
 
-    public pbkdf2(
+    public async pbkdf2(
         _password: Password,
         _salt: CryptoManagerSalt,
         _iterationsCount: UIntQuantity,
@@ -55,7 +59,7 @@ export class RNCryptoManager implements CryptoManager {
         throw new Error('Method not implemented.');
     }
 
-    public randomString(
+    public async randomString(
         _length: UIntQuantity,
     ): Promise<CryptoManagerRandomString> {
         throw new Error('Method not implemented.');
@@ -65,15 +69,11 @@ export class RNCryptoManager implements CryptoManager {
         throw new Error('Method not implemented.');
     }
 
-    public scrypt(
+    public async scrypt(
         _password: Password,
         _salt: CryptoManagerSalt,
         _keyLength: UIntQuantity,
     ): Promise<CryptoManagerSaltedScrypt> {
-        throw new Error('Method not implemented.');
-    }
-
-    public clear(): Promise<void> {
         throw new Error('Method not implemented.');
     }
 }

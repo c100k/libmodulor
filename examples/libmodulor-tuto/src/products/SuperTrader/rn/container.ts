@@ -3,7 +3,6 @@ import {
     CONTAINER_OPTS,
     type CryptoManager,
     type FSManager,
-    FakeFSManager,
     type ServerClientManagerSettings,
     TARGET_DEFAULT_SERVER_CLIENT_MANAGER_SETTINGS,
     bindCommon,
@@ -14,6 +13,7 @@ import { bindRN } from 'libmodulor/rn';
 import { I18n } from '../i18n.js';
 import { Manifest } from '../manifest.js';
 import { RNCryptoManager } from './lib/std/RNCryptoManager.js';
+import { RNFSManager } from './lib/std/RNFSManager.js';
 
 type S = ServerClientManagerSettings;
 
@@ -26,6 +26,6 @@ bindRN(container);
 bindProduct(container, Manifest, I18n);
 
 container.bind<CryptoManager>('CryptoManager').to(RNCryptoManager);
-container.bind<FSManager>('FSManager').to(FakeFSManager);
+container.bind<FSManager>('FSManager').to(RNFSManager);
 
 export default container;
