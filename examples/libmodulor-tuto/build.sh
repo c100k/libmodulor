@@ -1,5 +1,3 @@
-rm -rf dist
-
 # build all targets
 tsc --project tsconfig.build.json
 

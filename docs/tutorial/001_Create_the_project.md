@@ -71,7 +71,7 @@ src/products/**/rn/.expo
     },
     "dependencies": {
         "inversify": "^6.2.1",
-        "libmodulor": "^0.3.0",
+        "libmodulor": "^0.4.0",
         "reflect-metadata": "^0.2.2"
     },
     "devDependencies": {

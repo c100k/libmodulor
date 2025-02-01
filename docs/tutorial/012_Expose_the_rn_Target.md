@@ -338,33 +338,6 @@ export class RNFSManager implements FSManager {
 }
 ```
 
-## index.tsx
-
-```tsx
-import { registerRootComponent } from 'expo';
-import { DIContextProvider } from 'libmodulor/react';
-import React, { type ReactElement } from 'react';
-import { SafeAreaView } from 'react-native';
-
-import App from './components/App.js';
-import container from './container.js';
-
-function Index(): ReactElement {
-    return (
-        <SafeAreaView>
-            <DIContextProvider container={container}>
-                <App />
-            </DIContextProvider>
-        </SafeAreaView>
-    );
-}
-
-// registerRootComponent calls AppRegistry.registerComponent('main', () => App);
-// It also ensures that whether you load the app in Expo Go or in a native build,
-// the environment is set up appropriately
-registerRootComponent(Index);
-```
-
 ## App.tsx
 
 Naturally, in real life scenarios, we would never have such a bloated `App.tsx`. Instead, we would create fine-grained components. Everybody does that, right ? Right ?
@@ -478,6 +451,33 @@ export default function App(): ReactElement {
 }
 ```
 
+## index.tsx
+
+```tsx
+import { registerRootComponent } from 'expo';
+import { DIContextProvider } from 'libmodulor/react';
+import React, { type ReactElement } from 'react';
+import { SafeAreaView } from 'react-native';
+
+import App from './components/App.js';
+import container from './container.js';
+
+function Index(): ReactElement {
+    return (
+        <SafeAreaView>
+            <DIContextProvider container={container}>
+                <App />
+            </DIContextProvider>
+        </SafeAreaView>
+    );
+}
+
+// registerRootComponent calls AppRegistry.registerComponent('main', () => App);
+// It also ensures that whether you load the app in Expo Go or in a native build,
+// the environment is set up appropriately
+registerRootComponent(Index);
+```
+
 ## Build & Run
 
 Our `build` script in `package.json` starts to be really long and hardly readable. Let's switch to a dedicate file.
@@ -487,8 +487,6 @@ touch build.sh && chmod u+x build.sh
 ```
 
 ```sh
-rm -rf dist
-
 # build all targets
 tsc --project tsconfig.build.json
 
@@ -524,13 +522,25 @@ Press <kbd>ctrl</kbd> + <kbd>C</kbd> to stop the server if it's running.
 
 ```sh
 yarn build && yarn run:server
+```
+
+```sh
 yarn run:rn:android
+```
+
+```sh
 yarn run:rn:ios
 ```
 
-Et voilà ! The app is installing and running on your Android Emulator and iOS Simulator.
+Et voilà ! The app is installing and running on your Android Emulator and iOS Simulator. Fill the form and see how it automatically submits to the server with client side and server side validation out of the box.
 
 <img src="/docs/assets/trading-target-rn.png" width="600px">
+
+Open the SQLite database with your favorite DB editor (e.g. TablePlus, DBeaver...).
+
+```sh
+open dist/products/SuperTrader/server/uc-data-store.sqlite
+```
 
 ```sh
 yarn lint && yarn test && git add . && git commit -m "feat: add the rn target"
