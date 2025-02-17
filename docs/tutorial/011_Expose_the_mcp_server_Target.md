@@ -3,7 +3,7 @@
 We'll use the pre-built local [stdio transport](https://modelcontextprotocol.io/docs/concepts/transports#standard-input-output-stdio) `ServerManager`.
 
 ```sh
-yarn add "@modelcontextprotocol/sdk@^1.4.1"
+yarn add "@modelcontextprotocol/sdk@^1.5.0"
 ```
 
 ```sh

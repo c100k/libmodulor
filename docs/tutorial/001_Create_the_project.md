@@ -70,14 +70,14 @@ src/products/**/rn/.expo
         "test": "tsc && vitest run"
     },
     "dependencies": {
-        "inversify": "^6.2.1",
+        "inversify": "^6.2.2",
         "libmodulor": "^0.4.0",
         "reflect-metadata": "^0.2.2"
     },
     "devDependencies": {
         "@biomejs/biome": "^1.9.4",
-        "@types/node": "^22.10.7",
-        "@vitest/coverage-v8": "^3.0.2",
+        "@types/node": "^22.13.4",
+        "@vitest/coverage-v8": "^3.0.5",
         "buffer": "^6.0.3",
         "cookie-parser": "^1.4.7",
         "express": "^4.21.2",
@@ -86,8 +86,8 @@ src/products/**/rn/.expo
         "helmet": "^8.0.0",
         "jose": "^5.9.6",
         "typescript": "^5.7.3",
-        "vite": "^6.0.11",
-        "vitest": "^3.0.3"
+        "vite": "^6.1.0",
+        "vitest": "^3.0.5"
     }
 }
 ```
