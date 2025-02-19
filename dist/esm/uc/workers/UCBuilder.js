@@ -6,6 +6,13 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 import { injectable } from 'inversify';
 import { UC } from '../UC.js';
+/**
+ * Build a Use Case
+ *
+ * When initially implemented this, {@link I18nManager} was injected to provide the `languageCode` to the {@link UC}.
+ *
+ * But this dependency has been removed when introducing {@link WordingManager}. Let's keep it for now in case we need to inject something.
+ */
 let UCBuilder = class UCBuilder {
     exec({ appManifest, auth, def }) {
         return new UC(appManifest, def, auth);

@@ -23,12 +23,20 @@ export class TJWT extends TString {
                 });
             }
             const [header, payload, _signature] = parts;
+            // Using atob on Node.js platforms triggers the following deprecation message :
+            //
+            // This function is only provided for compatibility with legacy web platform APIs and should never be used in new code,
+            // because they use strings to represent binary data and predate the introduction of typed arrays in JavaScript.
+            // For code running using Node.js APIs, converting between base64-encoded strings and binary data should be performed using Buffer.from(str, 'base64') andbuf.toString('base64').
+            //
+            // However this code must be executable everywhere (including and especially browsers) so we need to use it, for portability reasons
             if (header) {
                 JSON.parse(atob(header));
             }
             if (payload) {
                 JSON.parse(atob(payload));
             }
+            // signature is ignored for now
         }
         catch (err) {
             validation.add({

@@ -20,6 +20,11 @@ let RequestLogger = class RequestLogger {
     }
     exec({ body, method, url }) {
         const prefix = [method, url].join(' ');
+        // By security, we don't log the body in production, in case it contains sensitive info (e.g. password when authenticating).
+        // That being said, in some cases, it can be handy to investigate issues.
+        // Let's think about it and how we can do it properly.
+        // One way is to this.logger.trace the body, considering it will never be the default in production since it produces too many logs.
+        // TODO : Consider logging request body even in production
         if (this.environmentManager.isProd()) {
             this.logger.debug(prefix);
             return;

@@ -75,7 +75,9 @@ export class UCOutputReader {
             total = part.total;
         }
         return {
-            fields: allFieldsKeys.map((fieldKey) => new UCOutputField(fieldKey, allFields[fieldKey])),
+            fields: allFieldsKeys.map((fieldKey) => 
+            // biome-ignore lint/suspicious/noExplicitAny: can be anything
+            new UCOutputField(fieldKey, allFields[fieldKey])),
             idx,
             items,
             key,

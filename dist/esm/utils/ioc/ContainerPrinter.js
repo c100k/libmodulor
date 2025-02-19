@@ -18,6 +18,8 @@ let ContainerPrinter = class ContainerPrinter {
         this.logger = logger;
     }
     async exec({ container }) {
+        // See https://github.com/inversify/InversifyJS/issues/1584
+        // @ts-ignore
         const dictionary = container._bindingDictionary._map;
         const entries = [];
         const keys = [...dictionary.keys()].map(this.symToString);

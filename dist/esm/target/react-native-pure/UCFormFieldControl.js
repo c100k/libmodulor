@@ -6,6 +6,7 @@ import { rnInputDef } from '../lib/rn/input.js';
 const MULTIPLE_VALUES_SEPARATOR = ',';
 export function UCFormFieldControl({ errMsg = null, execState, field, onChange: onChangeBase, }) {
     const [internalValue, setInternalValue] = useState(field.getValue());
+    // biome-ignore lint/correctness/useExhaustiveDependencies: false positive : It is actually necessary (only `field` does not trigger the effect)
     useEffect(() => {
         setInternalValue(field.getValue());
     }, [field.getValue()]);

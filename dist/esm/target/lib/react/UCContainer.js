@@ -15,6 +15,7 @@ export function UCContainer({ children, uc, }) {
         })();
     }, [uc, ucExecChecker]);
     if (isAllowed === undefined) {
+        // TODO : Add some loader while we check if can do
         return React.createElement(React.Fragment, null);
     }
     if (isAllowed === false) {

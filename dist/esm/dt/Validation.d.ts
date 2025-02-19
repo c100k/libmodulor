@@ -19,6 +19,14 @@ export declare class Validation {
     get(idx?: NumIndex): [ViolationI18nable, string] | null;
     getViolations(): Violation[];
     getViolationsAsI18nables(): ViolationI18nable[];
+    /**
+     * Check whether the validation has succeeded or not
+     *
+     * If you want to get a violation, use directly {@link get} and check if it's null.
+     * No need to check if `!validation.isOK()` and then call `validation.get()`.
+     *
+     * @returns
+     */
     isOK(): boolean;
     private violationAsI18nable;
 }

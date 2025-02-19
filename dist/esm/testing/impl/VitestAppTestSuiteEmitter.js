@@ -19,6 +19,7 @@ let VitestAppTestSuiteEmitter = class VitestAppTestSuiteEmitter {
     }
     async exec({ appPath, depsMapping, idx, monkeyTestingTimeoutInMs, serverPortRangeStart, }) {
         const testPath = this.fsManager.path(appPath, APP_TEST_DIR_NAME);
+        // Since we're using 'recursive: true', there will be no error if the directory already exists
         await this.fsManager.mkdir(testPath, { recursive: true });
         const outPath = this.fsManager.path(testPath, APP_TEST_MAIN_FILE_NAME);
         let tpl = template(serverPortRangeStart, idx, monkeyTestingTimeoutInMs);
@@ -37,6 +38,11 @@ VitestAppTestSuiteEmitter = __decorate([
     __metadata("design:paramtypes", [Object])
 ], VitestAppTestSuiteEmitter);
 export { VitestAppTestSuiteEmitter };
+// For now, we can have it here. When it becomes harder to maintain, we can introduce some kind of template engine.
+// Be aware that this will introduce complexities on building the lib.
+// We'll need to include these templates in the build and make them accessible via package.json "exports" or any other mechanism.
+// Hence the choice to keep it simple for now.
+// Defined it as function in case we need to pass args.
 const template = (serverPortRangeStart, idx, monkeyTestingTimeoutInMs) => `/*
     All this code has been auto generated.
     DO NOT EDIT.

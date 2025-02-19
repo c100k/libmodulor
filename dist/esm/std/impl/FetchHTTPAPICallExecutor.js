@@ -5,8 +5,19 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 import { injectable } from 'inversify';
+/**
+ * Nowadays, most platforms include it as a global :
+ *
+ *   - Node : https://nodejs.org/api/globals.html#fetch
+ *   - RN   : https://reactnative.dev/docs/network#using-fetch
+ *   - Web  : https://developer.mozilla.org/fr/docs/Web/API/Fetch_API
+ *
+ * So we should be safe using it almost everywhere.
+ */
 let FetchHTTPAPICallExecutor = class FetchHTTPAPICallExecutor {
     fn() {
+        // The generalization in HTTPAPICallExecutor is not exactly the same as the actual implementation
+        // @ts-ignore
         return fetch;
     }
 };

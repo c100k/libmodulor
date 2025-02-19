@@ -4,6 +4,8 @@
 
 **Misc**
 
+- Simplified the signature of `UCDef.ext.http.transform` removing the generic `T` return
+- Added JSDocs and comments for a better in-place documentation (i.e. in .d.ts files)
 - Added the Tutorial code in the repo at `examples/libmodulor-tuto` and added a new "Expose a rn Target" step (https://github.com/c100k/libmodulor/pull/11)
 
 ## v0.4.0 (2025-01-31)
@@ -21,7 +23,7 @@ To help with the creation of specific targets, we've added a new one : `react-na
 
 **feat(uc): introduce alternate mounting point**
 
-Added a new property `UcDef.ext.http.mountAlsoAt` to be able to define path aliases. See the comment below to understand why.
+Added a new property `UCDef.ext.http.mountAlsoAt` to be able to define path aliases. See the comment below to understand why.
 
 ```typescript
 /**

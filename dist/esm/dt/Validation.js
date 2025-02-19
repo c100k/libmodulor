@@ -24,6 +24,14 @@ export class Validation {
     getViolationsAsI18nables() {
         return this.violations.map((v) => this.violationAsI18nable(v));
     }
+    /**
+     * Check whether the validation has succeeded or not
+     *
+     * If you want to get a violation, use directly {@link get} and check if it's null.
+     * No need to check if `!validation.isOK()` and then call `validation.get()`.
+     *
+     * @returns
+     */
     isOK() {
         return this.violations.length === 0;
     }

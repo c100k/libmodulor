@@ -18,10 +18,12 @@ export class TNumber extends TBase {
         return 'Number';
     }
     assign(raw) {
+        // It's not a string at all
         if (typeof raw !== 'string') {
             super.assign(raw);
             return this;
         }
+        // It's a string, let's try to parse it
         const parsed = Number.parseFloat(raw);
         super.assign(parsed);
         return this;

@@ -21,6 +21,7 @@ const ERR_UCD_IMPORTS_INTERNAL_MAX_DEPTH = (maxDepth) => `Internal imports must 
 const ERR_UCD_INPUT_FIELD_PATTERN = () => `The input field def must match ${UC_INPUT_FIELD_PATTERN}`;
 const ERR_UCD_INPUT_TYPE_NAME = (ucName) => `The input type must be named ${ucName}${UC_INPUT_SUFFIX}`;
 const ERR_UCD_OPI_TYPE_NAME = (ucName, idx) => `The OPI must be named ${ucName}${UC_OPI_SUFFIX}${idx}`;
+// TODO : Improve the check* methods that look a little bit hacky
 let UCDefSourcesChecker = class UCDefSourcesChecker {
     fsManager;
     logger;
@@ -37,6 +38,7 @@ let UCDefSourcesChecker = class UCDefSourcesChecker {
     }
     async exec({ ctx }) {
         const { appPath, opts } = ctx;
+        // TODO : Consider removing this and using profiling when needed
         const startTime = new Date().getTime();
         this.logger.debug('UCDefSourceChecker starting', {
             appPath,
@@ -96,6 +98,7 @@ let UCDefSourcesChecker = class UCDefSourcesChecker {
                 continue;
             }
             const [_name, type] = parts;
+            // trim because we process `name: Type` if the code is linted correctly
             f.err =
                 type?.trim().match(new RegExp(UC_INPUT_FIELD_PATTERN)) !== null
                     ? null
@@ -155,6 +158,7 @@ let UCDefSourcesChecker = class UCDefSourcesChecker {
         const fieldsKey = `${key}Fields`;
         item[fieldsKey] = fields;
         for (const f of item[fieldsKey]) {
+            // There are no specific validation rules for OPIx for now
             f.err = null;
         }
     }

@@ -1,21 +1,41 @@
 export var UCInputFieldChangeOperator;
 (function (UCInputFieldChangeOperator) {
+    /**
+     * Considering the cardinality of the field (min > 1), add a new value
+     */
     UCInputFieldChangeOperator["ADD"] = "ADD";
+    /**
+     * Considering the cardinality of the field (min > 1), remove a value
+     */
     UCInputFieldChangeOperator["REMOVE"] = "REMOVE";
+    /**
+     * Reset the value of the field
+     */
     UCInputFieldChangeOperator["RESET"] = "RESET";
+    /**
+     * Considering the cardinality of the field (max <= 1), set the value
+     */
     UCInputFieldChangeOperator["SET"] = "SET";
 })(UCInputFieldChangeOperator || (UCInputFieldChangeOperator = {}));
 export var UCInputFieldFillingMode;
 (function (UCInputFieldFillingMode) {
+    /**
+     * Set programmatically on behalf of the user (e.g. a foreign key id for a given object)
+     */
     UCInputFieldFillingMode["AUTO_PRE"] = "AUTO_PRE";
+    /**
+     * Set manually by the user (e.g. a form field, a cli flag, etc.)
+     */
     UCInputFieldFillingMode["MANUAL"] = "MANUAL";
 })(UCInputFieldFillingMode || (UCInputFieldFillingMode = {}));
 export function ucifExamples(def) {
     const { type } = def;
     const examples = type.getExamples();
+    // Leaving the value `undefined` means you want the default value
     if (examples === undefined) {
         return [type.example()];
     }
+    // Setting the examples to `[]` means you don't want them
     if (examples.length === 0) {
         return undefined;
     }
@@ -37,6 +57,17 @@ export function ucifHint(def) {
     }
     return examples.join(', ');
 }
+/**
+ * The unique id associated to this field
+ *
+ * By default it would return `inputfield-myField`.
+ * If you have the same field multiple times in one context (e.g. a web page), pass a unique element to the `prefix`.
+ * For example `uc1-inputfield-myField` and `uc2-inputfield-myField`
+ *
+ * @param prefix
+ * @param separator
+ * @returns
+ */
 export function ucifId(key, prefix = 'inputfield', separator = '-') {
     return `${prefix}${separator}${key}`;
 }
@@ -60,12 +91,14 @@ export function ucifIsSensitive(def) {
 }
 export function ucifMustBeFilledManually(def, opts) {
     const { fillingMode } = def;
+    // If there is no mode, we consider it as UCInputFieldFillingMode.MANUAL
     if (!fillingMode) {
         return true;
     }
     const fillingModes = [
         UCInputFieldFillingMode.MANUAL,
     ];
+    // If there is no context, it means that the field cannot be set via UCInputFieldFillingMode.AUTO_PRE (e.g. in CLI target)
     if (opts?.noContext) {
         fillingModes.push(UCInputFieldFillingMode.AUTO_PRE);
     }

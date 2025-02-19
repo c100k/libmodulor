@@ -43,6 +43,7 @@ let UCExecutor = class UCExecutor {
                 o: null,
             },
         };
+        // In a typical scenario, client calls the server so only the client actually needs to be called here
         await this.execClient(appManifest, ucd, out);
         return {
             out,

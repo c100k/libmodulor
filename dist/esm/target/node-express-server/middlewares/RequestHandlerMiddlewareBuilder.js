@@ -49,6 +49,8 @@ let RequestHandlerMiddlewareBuilder = class RequestHandlerMiddlewareBuilder {
                     if (ucor.canItem00()) {
                         item = ucor.item00().item;
                     }
+                    // Be careful with this, as some are incompatible.
+                    // For instance, if there is a REDIRECT and then a CLEAR_AUTH, the latter won't be executed as we return after the redirect.
                     for (const se of sideEffects) {
                         const { type } = se;
                         switch (type) {
@@ -74,6 +76,7 @@ let RequestHandlerMiddlewareBuilder = class RequestHandlerMiddlewareBuilder {
                 res.send(output && transform ? transform(output) : output);
             }
             catch (err) {
+                // Always catch otherwise it breaks the middleware chain and hangs forever
                 nextFn(err);
             }
         };
@@ -82,6 +85,7 @@ let RequestHandlerMiddlewareBuilder = class RequestHandlerMiddlewareBuilder {
         switch (envelope) {
             case 'form-data': {
                 const input = req.body;
+                // files is present when using express-fileupload
                 if ('files' in req && req.files) {
                     for (const [field, value] of Object.entries(req.files)) {
                         input[field] = Array.isArray(value)
@@ -89,6 +93,8 @@ let RequestHandlerMiddlewareBuilder = class RequestHandlerMiddlewareBuilder {
                             : this.toFile(value);
                     }
                 }
+                // TODO : Change this ugly code
+                // When a field has multiple values, they key is `field[]` and not `field`
                 const sanitized = {};
                 for (const [k, v] of Object.entries(input)) {
                     const sanitizedKey = k.split('[')[0];
@@ -96,6 +102,8 @@ let RequestHandlerMiddlewareBuilder = class RequestHandlerMiddlewareBuilder {
                         continue;
                     }
                     sanitized[sanitizedKey] = v;
+                    // For some reason, when there is only one value, it is received as scalar and not as an array
+                    // Even if there is only one, we want an array
                     if (k.includes('[') && !Array.isArray(v)) {
                         sanitized[sanitizedKey] = [v];
                     }

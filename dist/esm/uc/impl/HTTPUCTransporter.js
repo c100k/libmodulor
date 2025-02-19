@@ -40,6 +40,7 @@ let HTTPUCTransporter = class HTTPUCTransporter {
         const publicApiKeyCheckType = sec?.publicApiKeyCheckType ?? DEFAULT_UC_SEC_PAKCT;
         switch (publicApiKeyCheckType) {
             case 'off':
+                // Nothing to do
                 break;
             case 'on': {
                 const publicApiKey = await this.serverClientManager.publicApiKey();
@@ -102,6 +103,9 @@ let HTTPUCTransporter = class HTTPUCTransporter {
             },
             urlBuilder: async () => `${baseURL}${path}`,
         });
+        // In case of 204, we get an empty object.
+        // Even though it makes deserializing easier, this is not considered a valid output.
+        // So we handle the case here.
         if (!res || Object.keys(res).length === 0) {
             return;
         }

@@ -32,6 +32,7 @@ let MCPServerBooter = class MCPServerBooter {
                 srcImporter,
             });
             for await (const uc of ucs) {
+                // Declared only for compatibility with ServerManager's contract but not used
                 const contract = ucHTTPContract(uc);
                 await this.ucManager.initServer(uc);
                 await this.serverManager.mount(uc.appManifest, uc.def, contract);

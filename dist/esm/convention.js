@@ -1,4 +1,10 @@
+/*
+ * Common
+ */
 export const SRC_DIR_NAME = 'src';
+/*
+ * App
+ */
 export const APPS_ROOT_DIR_NAME = 'apps';
 export const APPS_ROOT_ALIAS = `@${APPS_ROOT_DIR_NAME}`;
 export const APPS_ROOT_PATH = [SRC_DIR_NAME, APPS_ROOT_DIR_NAME];
@@ -7,22 +13,28 @@ export const APP_I18N_NAME = 'I18n';
 export const APP_I18N_FILE_NAME = `${APP_I18N_NAME.toLowerCase()}.ts`;
 export const APP_INDEX_NAME = 'index';
 export const APP_INDEX_FILE_NAME = `${APP_INDEX_NAME}.ts`;
-export const APP_INDEX_FILE_NAME_FOR_IMPORT = 'index.js';
+export const APP_INDEX_FILE_NAME_FOR_IMPORT = 'index.js'; // ESM
 export const APP_MANIFEST_NAME = 'Manifest';
 export const APP_MANIFEST_FILE_EXT = '.ts';
 export const APP_MANIFEST_FILE_NAME = `${APP_MANIFEST_NAME.toLowerCase()}.ts`;
 export const APP_NAME_PLACEHOLDER = 'AppX';
-export const APP_ROOT_FROM_UCD = ['..', '..', '..'];
+export const APP_ROOT_FROM_UCD = ['..', '..', '..']; // $root/src/ucds/XyzUCD.ts
 export const APP_SRC_DIR_NAME = SRC_DIR_NAME;
 export const APP_SRC_UCDS_DIR_NAME = 'ucds';
 export const APP_TEST_DIR_NAME = 'test';
 export const APP_TEST_MAIN_FILE_NAME = 'App.test.ts';
 export const APP_TEST_REPORTS_DIR_NAME = 'reports';
+/*
+ * Product
+ */
 export const PRODUCTS_ROOT_ALIAS = '@p';
 export const PRODUCTS_ROOT_PATH = [SRC_DIR_NAME, 'products'];
 export const PRODUCT_MANIFEST_NAME = 'Manifest';
-export const PRODUCT_MANIFEST_FILE_NAME = `${PRODUCT_MANIFEST_NAME.toLowerCase()}.js`;
+export const PRODUCT_MANIFEST_FILE_NAME = `${PRODUCT_MANIFEST_NAME.toLowerCase()}.js`; // .js vs .ts so it can be used by bundlers like Webpack
 export const PRODUCT_NAME_PLACEHOLDER = 'ProductX';
+/*
+ * Use Case
+ */
 export const UC_DEF_SUFFIX = 'UCD';
 export const UC_DEF_FILE_NAME_EXT = '.ts';
 export const UC_DEF_FILE_NAME_SUFFIX = `${UC_DEF_SUFFIX}${UC_DEF_FILE_NAME_EXT}`;

@@ -15,6 +15,7 @@ import { inject, injectable } from 'inversify';
 let ConsoleLogger = class ConsoleLogger {
     static { ConsoleLogger_1 = this; }
     settingsManager;
+    // Ordered by level
     static LEVELS = [
         'trace',
         'debug',
@@ -34,30 +35,35 @@ let ConsoleLogger = class ConsoleLogger {
         if (!this.shouldLog('debug')) {
             return;
         }
+        // biome-ignore lint/suspicious/noConsole: we want it
         console.debug(`${this.t()} [debug] ${message}`, ...meta);
     }
     error(err) {
         if (!this.shouldLog('error')) {
             return;
         }
+        // biome-ignore lint/suspicious/noConsole: we want it
         console.error(err);
     }
     info(message, ...meta) {
         if (!this.shouldLog('info')) {
             return;
         }
+        // biome-ignore lint/suspicious/noConsole: we want it
         console.info(`${this.t()} [info] ${message}`, ...meta);
     }
     trace(message, ...meta) {
         if (!this.shouldLog('trace')) {
             return;
         }
-        console.debug(`${this.t()} [trace] ${message}`, ...meta);
+        // biome-ignore lint/suspicious/noConsole: we want it
+        console.trace(`${this.t()} [trace] ${message}`, ...meta);
     }
     warn(message, ...meta) {
         if (!this.shouldLog('warn')) {
             return;
         }
+        // biome-ignore lint/suspicious/noConsole: we want it
         console.warn(`${this.t()} [warn] ${message}`, ...meta);
     }
     shouldLog(level) {

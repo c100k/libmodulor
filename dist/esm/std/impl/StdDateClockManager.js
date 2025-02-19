@@ -10,6 +10,9 @@ let StdDateClockManager = class StdDateClockManager {
         return new Date();
     }
     nowToKey() {
+        // The rationale behind this being hardcoded is to avoid adding a library (luxon, date-fns) just for that.
+        // For instance, luxon adds a huge amount of code to a basic web target when bundled, for nothing.
+        // See https://github.com/moment/luxon/issues/854#issuecomment-1729384672
         return this.now()
             .toISOString()
             .replaceAll(/-|T|:/g, '')

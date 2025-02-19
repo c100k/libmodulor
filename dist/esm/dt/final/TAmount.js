@@ -1,4 +1,5 @@
 import { TNumber } from '../base/TNumber.js';
+// NOTE : We accept negative values (used for example in accounting)
 export class TAmount extends TNumber {
     currencyCode;
     constructor(currencyCode, constraints, decimalsCount) {

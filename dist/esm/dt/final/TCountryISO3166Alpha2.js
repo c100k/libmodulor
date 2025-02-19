@@ -1,5 +1,6 @@
 import { TString } from '../base/TString.js';
 export class TCountryISO3166Alpha2 extends TString {
+    // From https://www.iban.com/country-codes
     static OPTIONS = [
         ['Afghanistan', 'AF'],
         ['Albania', 'AL'],

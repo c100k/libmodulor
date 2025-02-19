@@ -20,6 +20,7 @@ let FakeEmailManager = class FakeEmailManager {
         this.entries.push({ def, replyTo, to });
     }
     async verify() {
+        // Nothing to do
     }
 };
 FakeEmailManager = __decorate([

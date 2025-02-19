@@ -13,6 +13,9 @@ let NodeFSManager = class NodeFSManager {
         return true;
     }
     async cat(path, opts) {
+        // Be careful : omitting to pass an encoding makes it return a Buffer and not a string
+        // This can be problematic in some callers, manipulating the file as a string (e.g. startsWith, includes, etc.)
+        // So make sure to fallback on a default encoding
         return readFile(path, opts?.encoding ?? 'utf8');
     }
     async chmod(path, mode) {
@@ -25,6 +28,8 @@ let NodeFSManager = class NodeFSManager {
         await appendFile(src, content);
     }
     async exists(path) {
+        // Before, we could use fs.exists(path) but it's been deprecated : @deprecated since v1.0.0 Use `fs.stat()` or `fs.access()` instead
+        // Both functions are very unpractical to use because we need to wrap everything in a try/catch. It's too verbose !
         try {
             await stat(path);
             return true;
@@ -45,6 +50,11 @@ let NodeFSManager = class NodeFSManager {
         const parsedPath = parse(path);
         const stats = await stat(path);
         const { birthtime, size } = stats;
+        // For now there is nothing in the standard library to detect it.
+        // There are 3rd party packages like mime, mime-type, etc. but we prefer
+        // limiting the external dependencies.
+        // One can also call `file -b --mime-type /some/path` via exec/spawn if their
+        // system has this utility.
         const mimeType = null;
         const type = this.determineType(stats);
         return {

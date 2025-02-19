@@ -6,6 +6,8 @@ export class TFile extends TObject {
     fileConstraints;
     constructor(fileConstraints) {
         super({
+            // We usually process instances of https://developer.mozilla.org/fr/docs/Web/API/File
+            // Therefore, it's not strictly the same as the example, with some extra fields that we don't control.
             shapeValidationStrategy: TObjectShapeValidationStrategy.NONE,
         });
         this.fileConstraints = fileConstraints;
@@ -36,6 +38,7 @@ export class TFile extends TObject {
         validation.concat(new TFileMimeType(this.fileConstraints.type)
             .assign(val.type)
             .validate());
+        // TODO : Add validation on file size
         return validation;
     }
 }

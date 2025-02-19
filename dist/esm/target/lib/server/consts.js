@@ -1,3 +1,6 @@
+/**
+ * @see TARGET_DEFAULT_SERVER_CLIENT_MANAGER_SETTINGS
+ */
 export const TARGET_DEFAULT_SERVER_MANAGER_SETTINGS = {
     server_basic_auth_entries: {},
     server_binding_host: 'localhost',

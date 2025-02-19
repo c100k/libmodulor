@@ -51,6 +51,7 @@ let AuthenticationCheckerMiddlewareBuilder = class AuthenticationCheckerMiddlewa
                 nextFn();
             }
             catch (err) {
+                // Always catch otherwise it breaks the middleware chain and hangs forever
                 nextFn(err);
             }
         };

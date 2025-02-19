@@ -7,6 +7,9 @@ export interface UCOPILayoutContext {
     availableWidthInPx: UIntQuantity;
     target: 'cli' | 'mobile' | 'web';
 }
+/**
+ * @alpha This feature is not fully ready yet.
+ */
 export type UCOPILayout<OPI extends UCOPIBase, LT extends UCOPILayoutType = UCOPILayoutType, LI extends UCOPILayoutInput = UCOPILayoutInput> = {
     get: (item: OPI, context: UCOPILayoutContext) => LI;
     type: LT;

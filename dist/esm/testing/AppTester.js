@@ -14,6 +14,8 @@ import { inject, injectable } from 'inversify';
 import { I18nEN } from '../i18n/locales/en.js';
 import { I18nFR } from '../i18n/locales/fr.js';
 import { FAKE_USER_ADMIN, UCBuilder, UCInputFieldChangeOperator, ucHTTPContract, } from '../uc/index.js';
+// We inject directly the implementation because we'll generate all the reports and not only the one that is bound to the interface.
+// We can plan a setting à la Vitest where we specify the types of reports to generate though.
 import { SimpleHTMLAppTestReportEmitter } from './impl/SimpleHTMLAppTestReportEmitter.js';
 import { optsAllSet } from './opts.js';
 import { defaultUCAuthSetters } from './uc-auth.js';
@@ -40,7 +42,12 @@ let AppTester = class AppTester {
     ucExecutor;
     configurator;
     ctx;
+    /**
+     * We use a "safe" one to avoid any "infinite loop" while trying to import/resolve a file.
+     * This can happen in case of circular dependencies for example.
+     */
     safeSrcImporter;
+    // biome-ignore lint/suspicious/noExplicitAny: can be anything
     testResults;
     testSummary;
     ucDefSourcesCheckerOutput;
@@ -134,7 +141,9 @@ let AppTester = class AppTester {
         const inputFiller = (uc) => {
             uc.fill(input);
         };
+        // biome-ignore lint/suspicious/noExplicitAny: can be anything
         const { out } = await this.execUC({
+            // TODO : Pass the appropriate one so we test the real flow and not the auth
             auth: FAKE_USER_ADMIN,
             authName: 'ADMIN',
             inputFiller,
@@ -148,6 +157,7 @@ let AppTester = class AppTester {
             ...input,
             appManifest: this.ctx.appManifest,
         });
+        // TODO : Add errors mapping to configurator so the developer can override this default behavior
         let status = 'warning';
         if (!out.err) {
             status = 'success';
@@ -169,6 +179,9 @@ let AppTester = class AppTester {
         let sideEffects = await this.configurator.sideEffects(this.ctx);
         if (flow) {
             name = `${flow.name} > ${name}`;
+            // For regular uc tests, side effects are cleared between each execution
+            // But it's not the case for a flow, thus each flow uc test shares the same side effects ref
+            // To have the side effects at each stage, we take a snapshot (to be improved as this is not performant at all)
             if (sideEffects) {
                 const snapshot = JSON.parse(JSON.stringify(Array.from(sideEffects.entries())));
                 sideEffects = new Map(snapshot);
@@ -205,6 +218,7 @@ let AppTester = class AppTester {
     async init({ appPath, configurator, serverClientSettings, srcImporter, }) {
         this.configurator = configurator;
         this.safeSrcImporter = (path) => Promise.race([
+            // We can cast because it fails or looses the race.
             awaitForSrcImport(path),
             srcImporter(path),
         ]);
@@ -222,6 +236,7 @@ let AppTester = class AppTester {
         await this.initServer();
     }
     async ucTestData(ucdRef) {
+        // Auth setters
         const defaultASs = defaultUCAuthSetters();
         let asEntries = Object.entries(defaultASs);
         const asConfig = await this.configurator.authSettersConfig();
@@ -236,6 +251,7 @@ let AppTester = class AppTester {
                 asEntries.push(...Object.entries(add));
             }
         }
+        // Input fillers
         const defaultIFs = defaultUCInputFillers();
         const ifEntries = Object.entries(defaultIFs);
         const specificIFs = await this.configurator.inputFillers();

@@ -31,6 +31,7 @@ let RequestLoggerMiddlewareBuilder = class RequestLoggerMiddlewareBuilder {
             }
             catch (err) {
                 this.logger.error(err);
+                // Continue as usual : the user shouldn't be impacted if we have issues logging the requests
                 nextFn();
             }
         };

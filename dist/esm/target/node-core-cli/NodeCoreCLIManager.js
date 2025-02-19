@@ -57,7 +57,7 @@ let NodeCoreCLIManager = class NodeCoreCLIManager {
     }
     parseArgsConfig(uc) {
         const config = {
-            allowPositionals: true,
+            allowPositionals: true, // For the command name
             strict: true,
         };
         if (uc.inputFields.length === 0) {
@@ -68,7 +68,7 @@ let NodeCoreCLIManager = class NodeCoreCLIManager {
             const { def } = f;
             let defaultValue = def.type.getDefaultValue();
             if (typeof defaultValue === 'number') {
-                defaultValue = defaultValue.toString();
+                defaultValue = defaultValue.toString(); // parseArgs does not accept numbers as default value
             }
             const [isRepeatable, _max] = ucifRepeatability(def);
             const type = def.type instanceof TBoolean ? 'boolean' : 'string';

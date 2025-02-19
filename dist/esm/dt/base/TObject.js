@@ -1,7 +1,19 @@
 import { TBase } from './TBase.js';
 export var TObjectShapeValidationStrategy;
 (function (TObjectShapeValidationStrategy) {
+    /**
+     * No shape validation is performed
+     *
+     * To be used when the object can have multiple shapes or that its shape is not important.
+     *
+     * Otherwise, you can still override {@link validate} in the `T*` class and do your own validation.
+     */
     TObjectShapeValidationStrategy["NONE"] = "NONE";
+    /**
+     * Validate against the {@link TObject.example()}
+     *
+     * It checks that the keys of the value, sorted alphabetically, are the same as the example's keys.
+     */
     TObjectShapeValidationStrategy["SAME_AS_EXAMPLE"] = "SAME_AS_EXAMPLE";
 })(TObjectShapeValidationStrategy || (TObjectShapeValidationStrategy = {}));
 export class TObject extends TBase {
@@ -19,6 +31,7 @@ export class TObject extends TBase {
         return {};
     }
     fmt(ifNullOrUndefined) {
+        // typeof this.raw is 'object', hence the check for nullity
         if (this.raw === null || typeof this.raw !== 'object') {
             return super.fmt(ifNullOrUndefined);
         }
@@ -26,6 +39,7 @@ export class TObject extends TBase {
     }
     validate() {
         const validation = super.validate();
+        // typeof this.raw is 'object', hence the check for nullity
         if (this.raw === null || typeof this.raw !== 'object') {
             validation.add({
                 constraint: 'type',

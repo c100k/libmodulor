@@ -1,5 +1,5 @@
 export const DEFAULT_APP_TESTER_OPTS = {
-    logger_level: 'error',
+    logger_level: 'error', // Having 'debug' makes the test output bloated so it's opt-in
     source: {
         imports: {
             external: {

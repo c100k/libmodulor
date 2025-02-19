@@ -36,6 +36,7 @@ let GenerateAppsTestsClientMain = class GenerateAppsTestsClientMain {
         const { apps } = await this.appSrcBrowser.exec({
             appsPath,
         });
+        // Keeping it simple without any defensive programming. Be responsible !
         const depsMappingParsed = new Map((depsMapping || []).map((dm) => dm.split(DEP_MAPPING_SEP)));
         let idx = 0;
         for await (const [appPath] of apps) {
@@ -70,7 +71,7 @@ export const GenerateAppsTestsUCD = {
                 ...AppInputFieldsDef,
                 depsMapping: {
                     cardinality: {
-                        max: 20,
+                        max: 20, // A totally arbitrary number
                         min: 0,
                     },
                     type: new TDepMapping().setExamples([
@@ -91,7 +92,7 @@ export const GenerateAppsTestsUCD = {
                     },
                     type: new THostPort()
                         .setDefaultValue(14_000)
-                        .setExamples([14_000]),
+                        .setExamples([14_000]), // "Calvados ❤️"
                 },
             },
         },

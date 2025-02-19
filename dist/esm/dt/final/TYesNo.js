@@ -15,6 +15,6 @@ export class TYesNo extends TString {
         return 'YesNo';
     }
     example() {
-        return 'Y';
+        return 'Y'; // Yes Man !
     }
 }

@@ -13,5 +13,11 @@ export interface JobManagerSettings extends Settings {
     }[];
 }
 export interface JobManager extends Clearable, Initializable {
+    /**
+     * Send a new job on the queue for processing
+     * @param queueName
+     * @param jobName
+     * @param input
+     */
     dispatch<I>(queueName: JobManagerQueueName, jobName: JobManagerJobName, input: I): Promise<void>;
 }

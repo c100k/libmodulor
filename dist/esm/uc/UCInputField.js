@@ -6,6 +6,11 @@ import { ucifcoIsForArray } from './utils/ucifcoIsForArray.js';
 export class UCInputField {
     key;
     def;
+    /**
+     * In some cases, the wording needs to be adapted in function of the context and not be statically fetched from {@link I18nManager}.
+     *
+     * For instance, when the user does X, then the description becomes Y.
+     */
     dynamicWording;
     value;
     constructor(key, def) {
@@ -29,6 +34,13 @@ export class UCInputField {
     getValue() {
         return this.value;
     }
+    /**
+     * Read the value as a primitive
+     *
+     * Unlike the standalone {@link rVal0}, it returns the default value if present.
+     *
+     * @returns
+     */
     rVal0() {
         const val = rVal0(this.value);
         if (!isBlank(val)) {
@@ -40,9 +52,19 @@ export class UCInputField {
         }
         return null;
     }
+    /**
+     * Require the value as a primitive
+     *
+     * Unlink the standalone {@link reqVal0}, it returns the default value if present.
+     *
+     * Otherwise, it throws an error.
+     *
+     * @returns
+     */
     reqVal0() {
         if (!isBlank(this.value)) {
             if (Array.isArray(this.value)) {
+                // Throwing an Error and not a IllegalArgumentError because this is usually the developer's fault.
                 throw new Error('The value is an array. Use rValArr instead.');
             }
             return this.value;
@@ -51,19 +73,31 @@ export class UCInputField {
         if (defaultValue !== undefined) {
             return defaultValue;
         }
+        // Throwing an Error and not an IllegalArgumentError because this is usually the developer's fault.
         throw new Error(`${this.key.toString()} is not set and has no default value. Do not require it.`);
     }
+    /**
+     * Require the value as an array
+     *
+     * Unlink the standalone {@link rValArr}, it returns the default value in an array if present.
+     *
+     * @returns
+     */
     rValArr() {
         if (!isBlank(this.value)) {
             if (!Array.isArray(this.value)) {
+                // Throwing an Error and not a IllegalArgumentError because this is usually the developer's fault.
                 throw new Error('The value is a primitive. Use reqVal0 instead.');
             }
             return this.value;
         }
         const defaultValue = this.def.type.getDefaultValue();
         if (defaultValue !== undefined) {
+            // We might need to allow multiple default values to handle all the cases.
             return [defaultValue];
         }
+        // Unlike in reqVal0, we return a default empty array anyways to make it usable.
+        // Otherwise, we could not get the value of an optional repeatable field (see remark above on the defaultValue).
         return [];
     }
     setValue(op, value) {
@@ -78,6 +112,7 @@ export class UCInputField {
             return;
         }
         if (!ucifcoIsForArray(op)) {
+            // Using a switch, even for just one case, to have it trigger an error if we miss to handle an enum value
             switch (op) {
                 case UCInputFieldChangeOperator.SET:
                     this.value = val;
@@ -89,6 +124,7 @@ export class UCInputField {
         }
         const current = Array.isArray(this.value) ? this.value : [];
         switch (op) {
+            // We are not really forced to use immutability here, but it's better for consistency
             case UCInputFieldChangeOperator.ADD:
                 this.value = current.concat([val]);
                 break;
@@ -110,6 +146,10 @@ export class UCInputField {
     }
     validateMandatoriness() {
         const validation = new Validation();
+        // We use `noContext: true` here to validate even the fields that should be set AUTO_PRE
+        // Even though it's an indicator that the developer made a mistake,
+        // we shouldn't send the error "X is not set and has no default value. Do not require it."
+        // to the user
         const needsValidation = ucifMustBeFilledManually(this.def, { noContext: true }) &&
             ucifIsMandatory(this.def) &&
             isBlank(this.value);
@@ -123,6 +163,8 @@ export class UCInputField {
         return validation;
     }
     validate() {
+        // Unlike UC.validate, this method returns all the errors at once.
+        // This can be discussed later to see if we want to harmonize.
         const validation = this.validateMandatoriness();
         if (this.value !== undefined && this.value !== null) {
             const [isRepeatable] = ucifRepeatability(this.def);

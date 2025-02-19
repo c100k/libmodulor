@@ -64,6 +64,7 @@ let SimpleHTTPAPICaller = class SimpleHTTPAPICaller {
         if (status === 202 || status === 204) {
             return {};
         }
+        // Using .startsWith instead of === because the value can look like this 'application/json; charset=utf-8'
         const responseContentType = headers.get('Content-Type');
         const isJSON = responseContentType?.startsWith('application/json');
         const isFormURLEncoded = responseContentType?.startsWith('application/x-www-form-urlencoded');
@@ -87,6 +88,10 @@ let SimpleHTTPAPICaller = class SimpleHTTPAPICaller {
     async computeHeaders({ additionalHeadersBuilder, authorizationHeader, basicAuth, contentType = 'application/json', req, }) {
         const headers = {};
         if (req?.envelope !== 'form-data') {
+            // The boundary needs to be set when sending data this way, so the server can understand how to read it (Source : https://stackoverflow.com/a/20321259/1259118)
+            // In RN, the content-type we set is automatically overriden by the internal fetch client (i.e. 'content-type': 'multipart/form-data; boundary=7ZsqoHiTstShSc4-Yi4U7ier3GPc_4QL5iN2eT9rnSNd0g1UoFPgt3I6.fsWlV8YpJhFkG')
+            // In CLI, if it is set, it's not overriden. So it creates problems. With 'form-data', we send 'content-type': 'multipart/form-data'` but the server expects something like 'content-type': 'multipart/form-data;boundary=--------------------------743913816161509008636675'
+            // So we don't set it at all and we're good to go.
             headers['Content-Type'] = contentType;
         }
         if (authorizationHeader) {
@@ -110,6 +115,8 @@ let SimpleHTTPAPICaller = class SimpleHTTPAPICaller {
         return headers;
     }
     async processResBad({ errBuilder, opts, }, isJSON, isXML, response) {
+        // NOTE : This method must handle all possible cases and never throw
+        // Indeed, it's supposed to handle the errors so it shouldn't throw one
         let error;
         try {
             if (isJSON) {
@@ -134,6 +141,7 @@ let SimpleHTTPAPICaller = class SimpleHTTPAPICaller {
             return null;
         }
         if (typeof error === 'string') {
+            // For example, it can be from `asText`, containing funny formatting (developers and errors you know...)
             return error.trim();
         }
         if (!error) {
@@ -144,10 +152,14 @@ let SimpleHTTPAPICaller = class SimpleHTTPAPICaller {
             if (typeof message === 'string') {
                 return message;
             }
+            // Case where `errBuilder` is of type (error: string) => string
+            // If an object is passed to it, it would return an object instead, interpreted incorrectly as [object Object] by error handlers
             return JSON.stringify(message);
         }
         catch (err) {
             this.logger.error(err);
+            // Case where `errBuilder` is of type (error: Object) => string
+            // If an object of another shape is passed to it, it would trigger some TypeError or cannot call .message of undefined
             return JSON.stringify(error);
         }
     }
@@ -163,7 +175,9 @@ let SimpleHTTPAPICaller = class SimpleHTTPAPICaller {
             });
             if (isFormURLEncoded) {
                 payload = {};
+                // TODO : Find a better way to do this (without adding any external dependency because the code must be portable)
                 new URL(`http://localhost?${asText}`).searchParams.forEach((v, k) => {
+                    // @ts-ignore
                     payload[k] = v;
                 });
             }

@@ -12,6 +12,7 @@ let RoleRegularUCPolicy = class RoleRegularUCPolicy {
     }
     async exec({ uc, }) {
         const out = defaultUCPolicyOutput();
+        // Note that this excludes admin as policies have no hierarchy.
         out.allowed = uc.auth?.role === 'regular';
         return out;
     }

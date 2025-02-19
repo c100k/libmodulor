@@ -5,5 +5,10 @@ export interface RequestHandlerInputRaw<I extends UCInput | undefined = undefine
     appManifest: AppManifest;
     envelope: HTTPDataEnvelope;
     ucd: UCDef<I, OPI0, OPI1>;
+    /**
+     * It is not injected in the handler constructor because it must be the same as the one used in ServerManager.
+     *
+     * And in some cases, this latter is specific to a context : for instance in automated tests.
+     */
     ucManager: UCManager;
 }

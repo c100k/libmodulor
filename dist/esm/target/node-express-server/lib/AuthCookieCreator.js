@@ -35,7 +35,7 @@ let AuthCookieCreator = class AuthCookieCreator {
                 httpOnly: this.s().server_cookies_http_only,
                 sameSite: this.s().server_cookies_same_site,
                 secure: this.s().server_cookies_secure,
-                signed: false,
+                signed: false, // Not signing to keep it simple and btw, the JWT is already signed
             },
             val: jwt,
         };

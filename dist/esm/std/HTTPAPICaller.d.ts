@@ -18,6 +18,9 @@ export interface HTTPAPICallerInputOpts {
     xml?: XMLManagerParseOpts;
 }
 export interface HTTPAPICallerInput<AH extends object | undefined, Req extends object, ResBad, ResGood, O> {
+    /**
+     * They are the last ones to be set so they will override any other header already set by `authorizationHeader` or `basicAuth` if any.
+     */
     additionalHeadersBuilder?: AdditionalHeadersBuilder<AH> | undefined;
     authorizationHeader?: HTTPAPICallerAuthorizationHeader | undefined;
     basicAuth?: HTTPAPICallerBasicAuth | undefined;
@@ -25,6 +28,9 @@ export interface HTTPAPICallerInput<AH extends object | undefined, Req extends o
     errBuilder: ErrBuilder<ResBad>;
     method: HTTPMethod;
     opts?: HTTPAPICallerInputOpts | undefined;
+    /**
+     * If not set, it will assume that `ResGood` and `O` are the same and thus return `ResGood` as is.
+     */
     outputBuilder?: OutputBuilder<ResGood, O> | undefined;
     req?: {
         builder: ReqBuilder<Req>;

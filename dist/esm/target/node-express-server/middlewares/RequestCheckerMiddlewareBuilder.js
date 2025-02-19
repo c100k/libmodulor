@@ -28,6 +28,7 @@ let RequestCheckerMiddlewareBuilder = class RequestCheckerMiddlewareBuilder {
                 nextFn();
             }
             catch (err) {
+                // Always catch otherwise it breaks the middleware chain and hangs forever
                 nextFn(err);
             }
         };

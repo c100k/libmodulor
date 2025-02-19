@@ -21,6 +21,13 @@ export interface UCDef<I extends UCInput | undefined = undefined, OPI0 extends U
     };
     lifecycle: {
         client?: UCClientDef<I, OPI0, OPI1>;
+        /**
+         * When bundling for clients, your bundler needs to strip the server definition to avoid bundling server side code for the client.
+         *
+         * For example with Webpack, you need to implement a custom loader.
+         *
+         * @see strip-ucd-lifecycle-server
+         */
         server?: UCServerDef<I, OPI0, OPI1> | true;
     };
     metadata: UCMetadata;

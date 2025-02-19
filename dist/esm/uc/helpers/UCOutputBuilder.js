@@ -19,13 +19,17 @@ export class UCOutputBuilder {
     }
     addAll1(items) {
         this.init1IfNecessary();
+        // biome-ignore lint/style/noNonNullAssertion: set in the call above
         this.output.parts._1.items.push(...items);
+        // biome-ignore lint/style/noNonNullAssertion: set in the call above
         this.output.parts._1.total += items.length;
         return this;
     }
     add1(item) {
         this.init1IfNecessary();
+        // biome-ignore lint/style/noNonNullAssertion: set in the call above
         this.output.parts._1.items.push(item);
+        // biome-ignore lint/style/noNonNullAssertion: set in the call above
         this.output.parts._1.total += 1;
         return this;
     }
@@ -34,6 +38,7 @@ export class UCOutputBuilder {
     }
     count1() {
         this.init1IfNecessary();
+        // biome-ignore lint/style/noNonNullAssertion: set in the call above
         return this.output.parts._1.total;
     }
     has(predicate) {

@@ -1,7 +1,7 @@
 import { TBase } from './TBase.js';
 export class TString extends TBase {
     constraints;
-    static DEFAULT_MAX_LENGTH = 999_999;
+    static DEFAULT_MAX_LENGTH = 999_999; // This is totally arbitrary and will probably be changed
     static DEFAULT_MIN_LENGTH = 0;
     constructor(constraints) {
         super();

@@ -10,6 +10,9 @@ export interface UCOutput<OPI0 extends UCOPIBase | undefined = undefined, OPI1 e
     };
 }
 export type UCOutputOrNothing<OPI0 extends UCOPIBase | undefined = undefined, OPI1 extends UCOPIBase | undefined = undefined> = UCOutput<OPI0, OPI1> | void;
+/**
+ * Definition of a use case output
+ */
 export interface UCOutputDef<OPI0 extends UCOPIBase | undefined = undefined, OPI1 extends UCOPIBase | undefined = undefined> {
     parts?: {
         _0: UCOutputPartDef<NonNullable<OPI0>>;

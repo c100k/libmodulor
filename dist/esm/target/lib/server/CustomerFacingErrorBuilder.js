@@ -21,11 +21,14 @@ let CustomerFacingErrorBuilder = class CustomerFacingErrorBuilder {
     }
     exec({ error }) {
         if (error instanceof CustomError) {
+            // It's already ready to be sent as is
             return {
                 error,
             };
         }
         this.logger.error(error);
+        // Create a specific generic error to avoid leaking potentially sensitive error
+        // We all know the infamous "Cannot connect to MySQL database"...
         return {
             error: new InternalServerError(this.environmentManager.isProd()
                 ? undefined

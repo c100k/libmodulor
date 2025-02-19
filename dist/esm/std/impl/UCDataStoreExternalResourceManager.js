@@ -11,6 +11,9 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
 import { inject, injectable } from 'inversify';
+// TODO : Wait for the DB to be ready or add a retry mechanism
+// Because when we start from a fresh install, this is executed before the docker container is ready
+// A temporary workaround is to stop and restart everything. At the 2nd startup, the db is ready, and it works
 let UCDataStoreExternalResourceManager = class UCDataStoreExternalResourceManager {
     ucDataStore;
     constructor(ucDataStore) {

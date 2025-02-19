@@ -21,6 +21,7 @@ let AppIndexChecker = class AppIndexChecker {
         this.output = { errors: [] };
     }
     async exec({ appPath }) {
+        // TODO : Consider changing this to await import like the other checkers
         const contents = await this.fsManager.cat(this.fsManager.path(appPath, APP_INDEX_FILE_NAME));
         this.makeSureExposesNecessary(contents);
         return this.output;

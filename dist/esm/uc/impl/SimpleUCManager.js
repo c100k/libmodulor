@@ -29,6 +29,7 @@ let SimpleUCManager = class SimpleUCManager {
     ucInputValidator;
     ucInitProvider;
     ucMainProvider;
+    // WARNING : This property makes this class "thread unsafe". Be careful how you inject it into your components.
     tx;
     constructor(ucClientConfirmManager, clockManager, cryptoManager, logger, ucDataStore, ucExecChecker, ucInputFilesProcessor, ucInputValidator, ucInitProvider, ucMainProvider) {
         this.ucClientConfirmManager = ucClientConfirmManager;
@@ -64,6 +65,7 @@ let SimpleUCManager = class SimpleUCManager {
         if (!client) {
             throw new Error(`The use case ${metadata.name} has no client lifecycle`);
         }
+        // Always check the right to execute, even if done when displaying the control
         const { allowed } = await this.ucExecChecker.exec({
             lifecycle: 'client',
             uc,
@@ -72,6 +74,9 @@ let SimpleUCManager = class SimpleUCManager {
             throw new ForbiddenError();
         }
         this.ucInputValidator.exec({ uc });
+        // Process the file client side only if it is not sent to the server
+        // Be careful with some edge cases where the file needs to be uploaded somewhere else.
+        // Note that we cannot check server !== true because in some cases, the server is not stripped (e.g. tests, node cli client, etc.).
         if (server === undefined) {
             await this.ucInputFilesProcessor.exec({ uc });
         }
@@ -85,6 +90,7 @@ let SimpleUCManager = class SimpleUCManager {
         if (typeof server !== 'object') {
             throw new Error(`The use case ${metadata.name} has no server lifecycle`);
         }
+        // Always check the right to execute, even if done when displaying the control
         const { allowed } = await this.ucExecChecker.exec({
             lifecycle: 'server',
             uc,

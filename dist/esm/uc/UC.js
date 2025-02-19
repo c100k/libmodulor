@@ -8,6 +8,7 @@ export class UC {
     appManifest;
     def;
     auth;
+    // biome-ignore lint/suspicious/noExplicitAny: can be anything
     inputFields;
     constructor(appManifest, def, auth) {
         this.appManifest = appManifest;
@@ -15,11 +16,15 @@ export class UC {
         this.auth = auth;
         const iFields = def.io.i?.fields;
         this.inputFields = iFields
-            ? Object.entries(iFields).map(([key, def]) => new UCInputField(key, def))
+            ? Object.entries(iFields).map(([key, def]) => new UCInputField(key, 
+            // biome-ignore lint/suspicious/noExplicitAny: can be anything
+            def))
             : [];
     }
     clear() {
         for (const f of this.inputFields) {
+            // We clear only the fields that have been filled manually
+            // For example, fields marked as `UCInputFieldFillingMode.AUTO_PRE` are not cleared so they can be reused in the use case
             if (!ucifMustBeFilledManually(f.def)) {
                 continue;
             }
@@ -27,6 +32,8 @@ export class UC {
         }
     }
     clearSensitiveInputFields() {
+        // TODO : Check how we can automate this before and .persist operation
+        // Be careful with the fields that are saved but hashed before (e.g. password).
         for (const f of this.inputFieldsSensitive()) {
             f.clear();
         }
@@ -53,6 +60,7 @@ export class UC {
         }
         return field;
     }
+    // biome-ignore lint/suspicious/noExplicitAny: can be anything
     inputFieldsForForm() {
         const ordered = this.inputFieldsOrdered().filter((f) => ucifMustBeFilledManually(f.def));
         const dependencies = this.def.io.i?.dependencies;
@@ -69,6 +77,7 @@ export class UC {
             return blankDepsValues.length === 0;
         });
     }
+    // biome-ignore lint/suspicious/noExplicitAny: can be anything
     inputFieldsOrdered() {
         const order = this.def.io.i?.order;
         if (!order) {
@@ -86,9 +95,11 @@ export class UC {
             return 0;
         });
     }
+    // biome-ignore lint/suspicious/noExplicitAny: can be anything
     inputFieldsInsensitive() {
         return this.inputFields.filter((f) => !ucifIsSensitive(f.def));
     }
+    // biome-ignore lint/suspicious/noExplicitAny: can be anything
     inputFieldsSensitive() {
         return this.inputFields.filter((f) => ucifIsSensitive(f.def));
     }
@@ -97,6 +108,7 @@ export class UC {
         if (fields.length === 0) {
             return false;
         }
+        // TODO : Avoid this workaround when we figure out how to let the user change these values in terms of UI
         const isListInput = Object.keys(ListInputDef.fields)
             .sort((a, b) => a.localeCompare(b))
             .join('') ===
@@ -126,13 +138,18 @@ export class UC {
     rValArr(key) {
         return this.inputField(key).rValArr();
     }
+    // biome-ignore lint/suspicious/noExplicitAny: can be anything
     validate() {
+        // This implementation returns an error as soon as one is met.
+        // This can be discussed later as we can also return an array of errors all at once.
+        // Unary fields
         for (const f of this.inputFields) {
             const validation = f.validate();
             if (!validation.isOK()) {
                 return [f, validation];
             }
         }
+        // Fields combinations
         const combinedValidation = this.def.io.i?.validation;
         if (!combinedValidation) {
             return null;
@@ -148,6 +165,7 @@ export class UC {
             const validation = new Validation();
             validation.add({
                 constraint: 'fieldsOr',
+                // TODO : Display the translated labels and not the keys
                 expected: or.join(', '),
             });
             return [null, validation];

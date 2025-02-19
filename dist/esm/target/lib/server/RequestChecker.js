@@ -27,10 +27,10 @@ let RequestChecker = class RequestChecker {
         };
     }
     exec({ secure, url, xForwardedProtoHeader }) {
-        const isSecure = secure;
-        const isSecureForwarded = xForwardedProtoHeader === 'https';
-        const isNotProd = !this.environmentManager.isProd();
-        const isSSLCertificateCheck = !!url.match(/^\/\.well-known\/acme-challenge\/(.*)/);
+        const isSecure = secure; // https://localhost:8443
+        const isSecureForwarded = xForwardedProtoHeader === 'https'; // https://domain.com => http://localhost:8080
+        const isNotProd = !this.environmentManager.isProd(); // http://localhost:8443
+        const isSSLCertificateCheck = !!url.match(/^\/\.well-known\/acme-challenge\/(.*)/); // http://localhost:8443/.well-known/acme-challenge/ywml7k8e8qxdjwFf1pN4hIKWJ1Jrc0CvAP3t9PSmnzw
         this.logger.trace('Request checker', {
             isNotProd,
             isSSLCertificateCheck,
@@ -39,6 +39,7 @@ let RequestChecker = class RequestChecker {
         });
         const allowed = isSecure || isSecureForwarded || isNotProd || isSSLCertificateCheck;
         if (!allowed) {
+            // Not sure it's the right HTTP status to send in these cases but not a big deal for now
             throw new ForbiddenError();
         }
     }

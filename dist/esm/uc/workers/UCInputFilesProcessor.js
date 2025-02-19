@@ -42,6 +42,9 @@ let UCInputFilesProcessor = class UCInputFilesProcessor {
             if (isRepeatable) {
                 const files = rValArr(field.getValue());
                 const fileNameRefs = await Promise.all(files.map(async (f) => this.processFile(f)));
+                // Although the field is a file, here we fill it with the refs (for persistence)
+                // TODO : Improve the mgmt of FileNameRef vs actual File at the use case level
+                // I think we need to introduce another value, something like `setValueSerialized` or similar.
                 field.setValue(UCInputFieldChangeOperator.SET, fileNameRefs);
             }
             else {
@@ -54,12 +57,15 @@ let UCInputFilesProcessor = class UCInputFilesProcessor {
         }
     }
     async processFile(file) {
-        const extension = this.fsManager.fileExtension(file.name);
+        const extension = this.fsManager.fileExtension(file.name); // => jpg
         const prefix = this.clockManager.nowToKey();
-        const fileName = `${prefix}-${this.cryptoManager.randomUUID()}.${extension}`;
-        const fileNameRef = `${this.s().uc_file_ref_prefix}${fileName}`;
+        const fileName = `${prefix}-${this.cryptoManager.randomUUID()}.${extension}`; // => 20230110143732-155eb8d3-9af5-430e-b856-248007859df1.jpg
+        const fileNameRef = `${this.s().uc_file_ref_prefix}${fileName}`; // => $ref:20230110143732-155eb8d3-9af5-430e-b856-248007859df1.jpg
+        // When calling this client side, we still have a https://developer.mozilla.org/en-US/docs/Web/API/File
+        // Consider moving this logic to UCManager.execClient ?
+        // TODO : Improve client/server input files management
         const path = file instanceof File ? file.name : file.path;
-        await this.fsManager.cp(path, this.fsManager.path(this.s().uc_files_directory_path, fileName));
+        await this.fsManager.cp(path, this.fsManager.path(this.s().uc_files_directory_path, fileName)); // => /path/to/files/20230110143732-155eb8d3-9af5-430e-b856-248007859df1.jpg
         await this.fsManager.rm(path);
         return fileNameRef;
     }

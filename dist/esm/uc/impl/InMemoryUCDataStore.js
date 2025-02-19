@@ -19,6 +19,7 @@ function predicate(key, filter) {
     return (r) => r[key] === filter;
 }
 let InMemoryUCDataStore = class InMemoryUCDataStore {
+    // biome-ignore lint/suspicious/noExplicitAny: can be anything
     entries;
     tx;
     constructor() {
@@ -46,10 +47,13 @@ let InMemoryUCDataStore = class InMemoryUCDataStore {
         };
     }
     async install() {
+        // Nothing to do
     }
     async read(opts) {
         let items = this
             .entries;
+        // Filter
+        // Of course it handles only simple cases (eq X, is null, in) with the AND operator
         if (opts?.filters) {
             const { aggregateId, appName, name, organizationId, userId } = opts.filters;
             if (aggregateId !== undefined) {
@@ -68,6 +72,8 @@ let InMemoryUCDataStore = class InMemoryUCDataStore {
                 items = items.filter(predicate('userId', userId));
             }
         }
+        // Sort
+        // => No need, we are processing them by order of insertion in the Map
         return {
             records: items,
         };
@@ -79,6 +85,7 @@ let InMemoryUCDataStore = class InMemoryUCDataStore {
         return [];
     }
     async testKey() {
+        // Nothing to do
     }
     async write(record) {
         this.writeBulk([record]);

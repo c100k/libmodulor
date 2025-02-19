@@ -20,6 +20,7 @@ let FakeJobManager = class FakeJobManager {
         this.entries.push({ input, jobName, queueName });
     }
     async init() {
+        // Nothing to do
     }
 };
 FakeJobManager = __decorate([

@@ -24,6 +24,7 @@ export class SimpleAppTesterConfigurator {
         return undefined;
     }
     async seed(_ctx) {
+        // Nothing to do
     }
     async sideEffects(_ctx) {
         return undefined;

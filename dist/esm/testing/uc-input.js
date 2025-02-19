@@ -33,11 +33,13 @@ export function onlySetProgrammaticallyWithExamples(uc) {
         fillWithExample(f);
     }
 }
+// biome-ignore lint/suspicious/noExplicitAny: can be anything
 function fillWithExample(f) {
     const { type } = f.def;
     let val = type.getExamples()?.[0] ?? type.example();
     if (type instanceof TFile) {
         const file = val;
+        // TODO : Consider building a real file with real data (e.g. image, pdf, txt, etc.)
         val = new File(['01010101010101010101010101010101'], file.path, {
             type: file.type,
         });

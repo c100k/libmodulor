@@ -36,8 +36,12 @@ let UCOutputFilesProcessor = class UCOutputFilesProcessor {
         output.filePaths = await Promise.all(fileNameRefs.map(async (fileNameRef) => {
             let filePath;
             if (typeof fileNameRef === 'string') {
-                const fileName = fileNameRef.replace(this.s().uc_file_ref_prefix, '');
-                filePath = this.fsManager.path(this.s().uc_files_directory_path, fileName);
+                // If they have been processed by UCInputFilesProcessor, the refs are not actual File.
+                // They are string like '$ref:20230110143732-155eb8d3-9af5-430e-b856-248007859df1.jpg'.
+                // Hence this workaround.
+                // TODO : Find a better way to process output files
+                const fileName = fileNameRef.replace(this.s().uc_file_ref_prefix, ''); // => 20230110143732-155eb8d3-9af5-430e-b856-248007859df1.jpg
+                filePath = this.fsManager.path(this.s().uc_files_directory_path, fileName); // => /path/to/files/20230110143732-155eb8d3-9af5-430e-b856-248007859df1.jpg
             }
             else {
                 filePath = fileNameRef.path;

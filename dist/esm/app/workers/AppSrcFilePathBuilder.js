@@ -23,16 +23,18 @@ let AppSrcFilePathBuilder = class AppSrcFilePathBuilder {
         const appPath = this.fsManager.path(appsRootPath ?? APPS_ROOT_DIR_NAME, appName);
         let importPath = '';
         if (appsRootAliasUseDefault) {
-            importPath = this.fsManager.path(APPS_ROOT_ALIAS, appName);
+            importPath = this.fsManager.path(APPS_ROOT_ALIAS, appName); // @apps/MyApp
         }
         else if (appsRootAlias) {
-            importPath = this.fsManager.path(appsRootAlias, appName);
+            importPath = this.fsManager.path(appsRootAlias, appName); // @myapps/MyApp
         }
         else {
-            importPath = this.fsManager.path(appPath);
-            importPath = `./${importPath}`;
+            importPath = this.fsManager.path(appPath); // src/apps/MyApp
+            importPath = `./${importPath}`; // ./src/apps/MyApp
         }
         const filePath = this.fsManager.path(APP_SRC_DIR_NAME, ...filePathParts);
+        // NOTE 1 : We don't check if the path exists because it wouldn't work when using an alias. So we let the caller do it. For example when using `import` it will fail by itself.
+        // NOTE 2 : Not using `path()` to join in order to avoid the initial `./` to be removed (this is the default behavior of node's join function).
         const suffix = ext ? `.${ext}` : '';
         const path = `${importPath}/${filePath}${suffix}`;
         this.logger.trace('Resolving app src', { path });

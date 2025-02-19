@@ -9,15 +9,18 @@ export class TInt extends TNumber {
         return 'Int';
     }
     assign(raw) {
+        // It's not a string at all
         if (typeof raw !== 'string') {
             super.assign(raw);
             return this;
         }
+        // It's a string, let's try to parse it
         const parsed = Number.parseInt(raw, 10);
         if (Number.isNaN(parsed)) {
             super.assign(raw);
             return this;
         }
+        // It's been parsed correctly, let's make sure it's not a float that has been "truncated" into an int
         if (parsed.toString() !== raw) {
             super.assign(raw);
             return this;

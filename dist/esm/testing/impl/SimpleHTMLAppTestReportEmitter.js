@@ -19,6 +19,7 @@ let SimpleHTMLAppTestReportEmitter = class SimpleHTMLAppTestReportEmitter {
     }
     async exec({ appPath, testResults, testSummary, }) {
         const reportPath = this.reportPath(appPath);
+        // Since we're using 'recursive: true', there will be no error if the directory already exists
         await this.fsManager.mkdir(reportPath, { recursive: true });
         const tpl = template(appPath, testResults, testSummary);
         const outPath = await this.entrypointPath(appPath);
@@ -43,6 +44,11 @@ SimpleHTMLAppTestReportEmitter = __decorate([
     __metadata("design:paramtypes", [Object])
 ], SimpleHTMLAppTestReportEmitter);
 export { SimpleHTMLAppTestReportEmitter };
+// For now, we can have it here. When it becomes harder to maintain, we can introduce some kind of template engine.
+// Be aware that this will introduce complexities on building the lib.
+// We'll need to include these templates in the build and make them accessible via package.json "exports" or any other mechanism.
+// Hence the choice to keep it simple for now.
+// Defined it as function in case we need to pass args.
 const template = (appPath, testResults, testSummary) => `<!DOCTYPE html>
 <html lang="en">
     <head>
@@ -142,9 +148,9 @@ const template = (appPath, testResults, testSummary) => `<!DOCTYPE html>
 </html>
 `;
 const STATUS_COLOR_MAPPING = {
-    danger: '#ff4136',
-    success: '#42e6a4',
-    warning: '#ffff00',
+    danger: '#ff4136', // red
+    success: '#42e6a4', // green
+    warning: '#ffff00', // yellow
 };
 function statusStyles() {
     return Object.entries(STATUS_COLOR_MAPPING)

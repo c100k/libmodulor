@@ -31,9 +31,28 @@ export interface ServerManagerSettings extends ServerManagerAuthSettings, Settin
 }
 export interface ServerManager extends Initializable {
     overrideUCManager(ucManager: UCManager): void;
+    /**
+     * Mount the use case as an endpoint
+     * @param appManifest
+     * @param ucd
+     * @param contract
+     */
     mount<I extends UCInput | undefined = undefined, OPI0 extends UCOPIBase | undefined = undefined, OPI1 extends UCOPIBase | undefined = undefined>(appManifest: AppManifest, ucd: UCDef<I, OPI0, OPI1>, contract: UCHTTPContract): Promise<void>;
+    /**
+     * Mount the static directory at `/`
+     * @param dirPath
+     */
     mountStaticDir(dirPath: DirPath): Promise<void>;
+    /**
+     * Start listening on the specific host and port
+     */
     start(): Promise<void>;
+    /**
+     * Stop listening
+     */
     stop(): Promise<void>;
+    /**
+     * Warm up with things that must be done after the routes have been defined (e.g. error middleware, etc.)
+     */
     warmUp(): Promise<void>;
 }

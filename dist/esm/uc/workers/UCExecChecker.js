@@ -54,6 +54,8 @@ let UCExecChecker = class UCExecChecker {
                 break;
             }
             case 'server':
+                // Nothing specific for the moment as everything is checked in function of authentication
+                // @see AuthenticationChecker called in the request lifecycle
                 output.allowed = typeof server === 'object';
                 break;
             default:

@@ -9,10 +9,13 @@ import { createInterface } from 'node:readline/promises';
 import { injectable } from 'inversify';
 let NodePromptManager = class NodePromptManager {
     async prompt(invite, opts) {
+        // TODO : Add keypress handling to hide when sensitive data is typed
         const readLine = createInterface({
             input: stdin,
             output: stdout,
         });
+        // To avoid "Warning: Detected unsettled top-level await at file:///[...]/dist/esm/xxx.js"
+        // when pressing Ctrl+C while being prompted
         readLine.on('SIGINT', () => {
             readLine.close();
             process.exit(0);

@@ -12,6 +12,9 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 };
 import { inject, injectable } from 'inversify';
 import { isClassDeclaration, isObjectLiteralExpression, isPropertyAssignment, } from 'typescript';
+// To avoid the following error when used in a consumer :
+// SyntaxError: Named export 'ModuleKind' not found. The requested module 'typescript' is a CommonJS module, which may not support all module.exports as named exports.
+// CommonJS modules can always be imported via the default export
 import typescript from 'typescript';
 const { ModuleKind, ModuleResolutionKind, ScriptTarget, createProgram, flattenDiagnosticMessageText, forEachChild, getPreEmitDiagnostics, isIdentifier, isImportDeclaration, isPropertySignature, isStringLiteral, isTypeReferenceNode, isVariableStatement, } = typescript;
 import { UC_MAIN_CLIENT_SUFFIX, UC_MAIN_SERVER_SUFFIX, UC_MAIN_STEP_PREFIX_REGULAR, UC_MAIN_SUFFIX, UC_POLICY_SUFFIX, } from '../../convention.js';
@@ -89,8 +92,10 @@ let TypeScriptLibUCDefASTParser = class TypeScriptLibUCDefASTParser {
             target: ScriptTarget[(compilerOptionsBase.target ??
                 target)],
         };
-        this.compilerOptions.jsx = undefined;
-        this.compilerOptions.lib = undefined;
+        // @ts-ignore
+        this.compilerOptions.jsx = undefined; // Otherwise it triggers the following error since TS 5.5 : jsx is a string value; tsconfig JSON must be parsed with parseJsonSourceFileConfigFileContent or getParsedCommandLineOfConfigFile before passing to createProgram
+        // @ts-ignore
+        this.compilerOptions.lib = undefined; // Otherwise it triggers errors saying it does not find them
     }
     getTypeFields(node) {
         const type = this.typeChecker.getTypeAtLocation(node);
@@ -114,9 +119,12 @@ let TypeScriptLibUCDefASTParser = class TypeScriptLibUCDefASTParser {
         return fields;
     }
     processConstDeclaration(node, onMainStep, onPolicy, onMetadata) {
+        // TODO : Improve this whole pattern by making it more robust
+        // I think there is a risk of it to break in some cases (e.g. if there are other properties named main, policy, etc.)
         const metadataPropertyName = 'metadata';
         const nodes = [];
         const populateNodes = (node1) => {
+            // "main: SendClientMain" => "main", ":", "SendClientMain" => 3
             if (isPropertyAssignment(node1) && node1.getChildCount() === 3) {
                 const propertyName = node1.getChildAt(0).getText();
                 if (propertyName === UC_MAIN_SUFFIX.toLocaleLowerCase() ||
@@ -137,7 +145,7 @@ let TypeScriptLibUCDefASTParser = class TypeScriptLibUCDefASTParser {
                 this.processLifecycleMain('server', node1, onMainStep);
             }
             else if (text.endsWith(UC_POLICY_SUFFIX)) {
-                const parent = node1.parent.getText();
+                const parent = node1.parent.getText(); // { main: X(Client|Server)Main, policy: XUCPolicy }
                 if (parent.includes(UC_MAIN_CLIENT_SUFFIX)) {
                     this.processLifecyclePolicy('client', node1, onPolicy);
                 }
@@ -211,7 +219,7 @@ let TypeScriptLibUCDefASTParser = class TypeScriptLibUCDefASTParser {
                     value = Boolean(value);
                 }
                 else {
-                    value = value.substring(1, v.length - 1);
+                    value = value.substring(1, v.length - 1); // To remove the single quotes
                 }
                 metadataLike[k] = value;
             }

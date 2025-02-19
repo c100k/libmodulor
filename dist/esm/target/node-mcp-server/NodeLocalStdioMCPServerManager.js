@@ -17,6 +17,16 @@ import { inject, injectable } from 'inversify';
 import { WordingManager } from '../../i18n/index.js';
 import { UCBuilder, ucMountingPoint, ucifIsMandatory, } from '../../uc/index.js';
 import { propertyType, resError, resObj } from './funcs.js';
+/**
+ * A simple MCP Server implementation
+ *
+ * Although it implements {@link ServerManager}, this implementation is not necessarily a "server".
+ * Indeed, it uses a local `Transport` so it must be considered the same as a {@link NodeCoreCLIManager}.
+ * Therefore, it calls `execClient` and not `execServer`.
+ * This way, Claude AI, or any other client is just a wrapper on top of it.
+ *
+ * @alpha This implementation still has lots of TODOs and has not been tested in real conditions. It needs to be stabilized before usage.
+ */
 let NodeLocalStdioMCPServerManager = class NodeLocalStdioMCPServerManager {
     productManifest;
     settingsManager;
@@ -55,6 +65,9 @@ let NodeLocalStdioMCPServerManager = class NodeLocalStdioMCPServerManager {
         });
         if (this.s().logger_level !== 'error') {
             const message = 'Set the logging_level to "error" as MCP does not want the server to log to stdout (see https://modelcontextprotocol.io/docs/tools/debugging#implementing-logging)';
+            // Depending on the `Logger` implementation, this.logger.error() might not write to stderr (e.g. can write to a file).
+            // That's why we explicitly write to stdout by calling console.error().
+            // biome-ignore lint/suspicious/noConsole: we want it
             console.error(new Error(message));
         }
     }
@@ -112,6 +125,7 @@ let NodeLocalStdioMCPServerManager = class NodeLocalStdioMCPServerManager {
     }
     async execRequest(request) {
         const { name, arguments: args } = request.params;
+        // TODO : Check authentication in some way (see if MCP handles it)
         const auth = null;
         try {
             const route = this.tools.get(name);

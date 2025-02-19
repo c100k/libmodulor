@@ -32,6 +32,8 @@ export function rInput(uc, opts) {
             value = [];
         }
         if (!ignoreUndefined || (ignoreUndefined && value !== undefined)) {
+            // Useful when we get the input before persisting for example.
+            // Otherwise it will persist `undefined` as a string in the database, for nothing.
             input[f.key] = value;
         }
     }

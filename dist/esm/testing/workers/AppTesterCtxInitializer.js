@@ -28,6 +28,10 @@ let AppTesterCtxInitializer = class AppTesterCtxInitializer {
         const filePaths = await this.fsManager.ls(ucdsPath);
         const ucdFilePaths = filePaths.filter(({ path, type }) => path.endsWith(UC_DEF_FILE_NAME_SUFFIX) &&
             type === FSManagerItemInfoType.FILE);
+        // Initially, this was using Promise.all.
+        // But in some cases, it hangs. I didn't investigate more, but I suspect some lock on the CPU or FileSystem.
+        // There were exactly 6 use cases.
+        // Since 'for await of' fixes it, let's just use and investigate when we have more time.
         const ucdRefs = [];
         for await (const { path } of ucdFilePaths) {
             ucdRefs.push({
@@ -36,6 +40,9 @@ let AppTesterCtxInitializer = class AppTesterCtxInitializer {
                 name: path.replace(UC_DEF_FILE_NAME_SUFFIX, ''),
             });
         }
+        // Sorting is necessary because the file system sorting is not necessarily the same as A-Z sorting.
+        // Indeed, CreatePostUCD will arrive after CreatePostCommentUCD in the file system.
+        // But in alphabetical order, CreatePost should arrive before CreatePostComment.
         ucdRefs.sort((a, b) => a.name.localeCompare(b.name));
         return {
             ctx: {

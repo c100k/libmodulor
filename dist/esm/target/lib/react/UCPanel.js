@@ -33,6 +33,9 @@ export function UCPanel({ autoExec = false, clearAfterExec = true, onDone, onErr
     };
     const onSubmit = async () => {
         setExecState('submitting');
+        // Is some targets, the confirmClient blocks the main thread (e.g. window.confirm()).
+        // This leads to the state set above not being updated.
+        // This is a "hacky" workaroud to let React re-render the control with 'submitting' state before
         await sleep(100);
         await onStartSubmitting?.();
         const confirmed = await ucManager.confirmClient(uc);
@@ -62,6 +65,7 @@ export function UCPanel({ autoExec = false, clearAfterExec = true, onDone, onErr
     };
     const disabled = ucIsDisabled(execState);
     const loading = ucIsLoading(execState);
+    // TODO : Keep these as a state to avoid recomputation
     const ctx = {
         clearAfterExec,
         disabled,

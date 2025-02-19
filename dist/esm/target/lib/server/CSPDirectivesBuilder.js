@@ -36,10 +36,23 @@ let CSPDirectivesBuilder = class CSPDirectivesBuilder {
         this.logger.info('Default CSP directives', defaultDirectives);
         const directives = { ...defaultDirectives };
         if (!this.environmentManager.isProd()) {
+            // In dev mode, we allow ourselves to remove this directive.
+            // It is necessary when testing from an external device and accessing the server via 192.168.x.x for example
+            // Otherwise the requests are upgraded and it doesn't work since there is no HTTPS in localhost
+            // Source : https://stackoverflow.com/questions/66599655/how-to-enable-and-disable-upgradeinsecurerequests-csp-directive-using-helmet-4-4
             this.logger.warn('Disabling upgrade-insecure-requests');
             directives['upgrade-insecure-requests'] = null;
+            // In dev mode, NextJS uses eval
+            // Enabling it prevents the following error from occurring in the console
+            // Uncaught EvalError: call to eval() blocked by CSP NextJS
+            // Source : https://github.com/vercel/next.js/discussions/17396
             this.logger.warn('Enabling unsafe-eval');
             directives[CSPDirectivesBuilder_1.SCRIPT_SRC]?.push("'unsafe-eval'");
+            // In dev mode, React Dev Tools use inline injection
+            // Enabling it prevents the following error from occurring in the console
+            // Content Security Policy: The page’s settings blocked the loading of a resource at inline (“script-src”).
+            // Download the React DevTools for a better development experience: https://reactjs.org/link/react-devtools
+            // Uncaught TypeError: hook.sub is not a function
             this.logger.warn('Enabling unsafe-inline');
             directives[CSPDirectivesBuilder_1.SCRIPT_SRC]?.push("'unsafe-inline'");
         }

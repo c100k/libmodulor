@@ -21,6 +21,8 @@ let NodeHTTPAPICallExecutorAgentBuilder = class NodeHTTPAPICallExecutorAgentBuil
     exec({ url, }) {
         if (url.protocol.startsWith('https')) {
             return new https.Agent({
+                // We allow self-signed certificates in non-prod environments
+                // This is useful when testing the CLI calling a the server from a docker container for example
                 rejectUnauthorized: this.environmentManager.isProd(),
             });
         }

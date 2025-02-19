@@ -17,7 +17,7 @@ let SimpleMapI18nManager = class SimpleMapI18nManager {
     static { SimpleMapI18nManager_1 = this; }
     i18n;
     logger;
-    static PLACEHOLDERS_REGEX = /{{([A-Z-a-z0-9]+)}}/g;
+    static PLACEHOLDERS_REGEX = /{{([A-Z-a-z0-9]+)}}/g; // Note the 'g' so it can be used with `matchAll`
     entries;
     constructor(i18n, logger) {
         this.i18n = i18n;
@@ -48,12 +48,14 @@ let SimpleMapI18nManager = class SimpleMapI18nManager {
         if (opts?.fallback) {
             return opts.fallback;
         }
-        return key;
+        return key; // Mimic the behavior of some common libraries like i18next
     }
     tOrNull(key, _opts) {
         return this.entries.get(key) || null;
     }
     replacePlaceholders(v, opts) {
+        // DO NOT USE THIS IN PRODUCTION
+        // The purpose of it is to have a simple and dependency-less implementation, to play with
         let res = v;
         const placeholders = res.matchAll(SimpleMapI18nManager_1.PLACEHOLDERS_REGEX);
         for (const [placeholder, key] of placeholders) {

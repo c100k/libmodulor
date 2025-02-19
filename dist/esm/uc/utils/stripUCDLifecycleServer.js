@@ -5,6 +5,19 @@ const TOKEN_IMPORT_END = ';';
 const TOKEN_LIFECYCLE_SERVER = 'server: {';
 const TOKEN_LIFECYCLE_SERVER_END = '},';
 const TOKEN_LIFECYCLE_SERVER_REPLACE = 'server: true,';
+/**
+ * Strip the server part of the UCD
+ *
+ * To be used by bundlers when building for the web for example, or any other clients (e.g. React Native).
+ *
+ * WARNING : This implementation is very naive and will have unexpected behaviors when the UCD has a specific shape.
+ * For instance, if there is another `server: {` occurence than the lifecycle.server definition, it will be wrongly replaced.
+ *
+ * TODO : Make this implementation more robust (let's try not to use an AST parser though, to keep things fast and simple).
+ *
+ * @param source
+ * @returns
+ */
 export function stripUCDLifecycleServer(source) {
     const occurrences = [
         ...source.matchAll(new RegExp(UC_MAIN_SERVER_SUFFIX, 'g')),
@@ -14,6 +27,7 @@ export function stripUCDLifecycleServer(source) {
     let occIdx = 0;
     for (const occ of occurrences) {
         if (count === 3 && occIdx === 1) {
+            // Skip the 2nd occurrence as it is part of the import of the 1st (Rrrrh very hacky...)
             occIdx += 1;
             continue;
         }
@@ -37,6 +51,9 @@ export function stripUCDLifecycleServer(source) {
         toReplace.push(toRep);
         occIdx += 1;
     }
+    // Flip the items to replace in order to remove the usage before the imports
+    // This is related to the edge case of IdleServerMain that we remove from the imports list,
+    // while for specific ServerMain, we remove the entire import instruction.
     toReplace.reverse();
     let cleaned = source;
     for (const { str } of toReplace) {

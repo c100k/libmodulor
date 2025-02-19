@@ -19,7 +19,8 @@ export interface SemanticsValue {
     color?: Color;
     variant?: SemanticsVariant;
 }
-export type SemanticsMapping = Record<string, SemanticsValue>;
+export type SemanticsMapping = Record<string, // corresponds to T.toString()
+SemanticsValue>;
 export type SemanticsPredicate<T> = (value: T) => SemanticsValue;
 export interface OptionsOpts {
     shouldTranslateLabels?: boolean;

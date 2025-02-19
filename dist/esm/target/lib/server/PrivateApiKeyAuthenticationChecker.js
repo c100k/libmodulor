@@ -31,6 +31,7 @@ let PrivateApiKeyAuthenticationChecker = class PrivateApiKeyAuthenticationChecke
         if (!exists) {
             return null;
         }
+        // TODO : Improve this by fetching data from a data store for example
         return {
             organization: {
                 id: '',

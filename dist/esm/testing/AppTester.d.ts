@@ -43,6 +43,10 @@ export declare class AppTester {
     private ucExecutor;
     private configurator;
     private ctx;
+    /**
+     * We use a "safe" one to avoid any "infinite loop" while trying to import/resolve a file.
+     * This can happen in case of circular dependencies for example.
+     */
     private safeSrcImporter;
     private testResults;
     private testSummary;

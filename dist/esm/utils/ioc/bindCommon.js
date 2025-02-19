@@ -1,3 +1,4 @@
+// NOTE : Expose this only at a higher level, otherwise, if exposed in utils/index.js, it will create circular dependencies
 import { APP_NAME_PLACEHOLDER, PRODUCT_NAME_PLACEHOLDER, } from '../../convention.js';
 import { ConsoleLogger } from '../../std/impl/ConsoleLogger.js';
 import { FetchHTTPAPICallExecutor } from '../../std/impl/FetchHTTPAPICallExecutor.js';
@@ -25,12 +26,14 @@ export function bindCommon(container, settingsFunc) {
         ...commonSettings,
         ...settingsFunc?.(commonSettings),
     };
+    // product
     if (!container.isBound('ProductManifest')) {
         container.bind('ProductManifest').toConstantValue({
             appReg: [{ name: APP_NAME_PLACEHOLDER }],
             name: PRODUCT_NAME_PLACEHOLDER,
         });
     }
+    // std
     container.bind('ClockManager').to(StdDateClockManager);
     container
         .bind('FormDataBuilder')
@@ -56,6 +59,7 @@ export function bindCommon(container, settingsFunc) {
         .bind('ServerClientManager')
         .to(SettingsServerClientManager);
     container.bind('XMLManager').to(NoopXMLManager);
+    // uc
     bindProvider(container, 'UCInit');
     bindProvider(container, 'UCMain');
     bindProvider(container, 'UCPolicy');

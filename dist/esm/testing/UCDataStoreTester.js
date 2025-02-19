@@ -18,6 +18,15 @@ import { UCExecMode, } from '../uc/index.js';
 const ERR_SHOULD_NOT_EXIST_AFTER_DESTROY = 'It should not exist after destroy';
 const ERR_SHOULD_EXIST_AFTER_INSTALL = 'It should exist after install';
 const ERR_SHOULD_RETURN_X_RECORDS = (n) => `It should return ${n} record(s)`;
+/**
+ * Test that a {@link UCDataStore} conforms to the spec
+ *
+ * By default it runs tests on the projection mechanism.
+ * Therefore, you need to create one in your implementation when creating your test suite.
+ * See `src/uc/impl/KnexUCDataStore.test.ts` for an example.
+ *
+ * Otherwise you can just `skipProjectionTesting`, although it's not recommended.
+ */
 let UCDataStoreTester = class UCDataStoreTester {
     static { UCDataStoreTester_1 = this; }
     clockManager;
@@ -60,6 +69,7 @@ let UCDataStoreTester = class UCDataStoreTester {
         await ucDataStore.clear();
         this.readRes = await ucDataStore.read();
         this.expectXRecords(0);
+        // Write a last one in case need to watch data in the DB
         await this.ucDataStore.write({
             aggregateId: this.cryptoManager.randomUUID(),
             appName: APP_NAME_PLACEHOLDER,
@@ -116,9 +126,12 @@ let UCDataStoreTester = class UCDataStoreTester {
         ];
     }
     buildFiltersTestData() {
+        // biome-ignore lint/style/noNonNullAssertion: we're in a test
         const entry = this.entries[0];
         const [aggregateId, appName, ucNames, organizationId, userId] = entry;
+        // biome-ignore lint/style/noNonNullAssertion: we're in a test
         const name = ucNames[0];
+        // TODO : Enhance these with a combination of filters
         return [
             [{ aggregateId }, 2],
             [{ aggregateId: [aggregateId] }, 2],

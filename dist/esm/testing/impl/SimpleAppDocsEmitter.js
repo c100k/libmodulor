@@ -33,6 +33,13 @@ SimpleAppDocsEmitter = __decorate([
     __metadata("design:paramtypes", [Object])
 ], SimpleAppDocsEmitter);
 export { SimpleAppDocsEmitter };
+// For now, we can have it here. When it becomes harder to maintain, we can introduce some kind of template engine.
+// Be aware that this will introduce complexities on building the lib.
+// We'll need to include these templates in the build and make them accessible via package.json "exports" or any other mechanism.
+// Hence the choice to keep it simple for now.
+// Defined it as function in case we need to pass args.
+// Using --- for the comment to make it compatible with pandoc
+// See https://stackoverflow.com/a/4829998/1259118
 const template = (cols, items) => `<!---
     All this code has been auto generated.
     DO NOT EDIT.
@@ -55,6 +62,9 @@ ${diagram(item)}`)
 |---|${cols.map((_c) => '---').join('|')}|
 ${items.map((item, idx) => ['', idx + 1, ...cols.map((c) => fmtTechSummaryField(item[c])), ''].join('|')).join('\n')}
 `;
+/*
+ * Diagram
+ */
 const CHECK_POLICY = '🔐 Check policy';
 const CHECK_POLICY_COND = 'when any validation fails';
 const CHECK_POLICY_COND_ACTION = 'show failure';
@@ -69,6 +79,8 @@ const SEND = '📤 Send';
 const SUBMIT = '↩️ Submit';
 const TRIGGER = '⤴️ Trigger';
 function diagram(item) {
+    // Debugger : https://mermaid.live/edit
+    // Messages : https://mermaid.js.org/syntax/sequenceDiagram.html#messages
     const client = 'Client';
     const server = 'Server';
     const user = 'User';
@@ -76,6 +88,8 @@ function diagram(item) {
     const { ioIFields, ioOPI0Fields, ioOPI1Fields, lifecycleClientPolicy, lifecycleClientSteps, lifecycleServerPolicy, lifecycleServerSteps, metadataSensitive, } = item;
     let req = TRIGGER;
     if (ioIFields && ioIFields.length > 0) {
+        // TODO : Include only fields to fill manually
+        // Not sure though, as for CLI for example (i.e. noContext), one needs to provide all of them
         req = `${FILL}${LB}${diagramUCFields(item.ioIFields)}`;
     }
     lines.push(`${user}->>+${client}: ${req}`);
@@ -89,6 +103,7 @@ function diagram(item) {
     if (lifecycleClientSteps) {
         lines.push(...diagramUCMainSteps(client, lifecycleClientSteps));
     }
+    // This is an approximation. Might need to improve it.
     const hasServer = item.lifecycleServerPolicy?.value;
     if (hasServer) {
         req = SEND;
@@ -142,11 +157,16 @@ function diagramUCPolicy(participant, caller, lifecyclePolicyField) {
         'end',
     ];
 }
+/*
+ * Technical Summary
+ */
 function fmtTechSummaryField(field) {
     if (!field) {
         return '';
     }
     const values = Array.isArray(field) ? field : [field];
+    // NOTE : <br> won't work for every markdown renderer.
+    // See https://stackoverflow.com/questions/11700487/how-do-i-add-a-newline-in-a-markdown-table
     return values.map(fmtTechSummaryFieldVal).join('<br>');
 }
 function fmtTechSummaryFieldVal(field) {
@@ -155,7 +175,7 @@ function fmtTechSummaryFieldVal(field) {
     if (err) {
         res += `❌ ${err}`;
     }
-    res = res.replace(/[\u00A0-\u9999<>\&]/g, (i) => `&#${i.charCodeAt(0)};`);
-    res = res.replaceAll('|', '\\|');
+    res = res.replace(/[\u00A0-\u9999<>\&]/g, (i) => `&#${i.charCodeAt(0)};`); // TS generics considered as HTML
+    res = res.replaceAll('|', '\\|'); // TS intersection vs Markdown table column
     return res;
 }

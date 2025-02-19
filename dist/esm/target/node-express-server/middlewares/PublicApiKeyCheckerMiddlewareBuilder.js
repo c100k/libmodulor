@@ -35,6 +35,7 @@ let PublicApiKeyCheckerMiddlewareBuilder = class PublicApiKeyCheckerMiddlewareBu
                 nextFn();
             }
             catch (err) {
+                // Always catch otherwise it breaks the middleware chain and hangs forever
                 nextFn(err);
             }
         };

@@ -4,10 +4,12 @@ export class TBoolean extends TBase {
         return 'Boolean';
     }
     assign(raw) {
+        // It's not a string at all
         if (typeof raw !== 'string') {
             super.assign(raw);
             return this;
         }
+        // It's a string, let's try to parse it
         if (raw === 'true') {
             super.assign(true);
             return this;

@@ -1,8 +1,18 @@
 import type { AppName } from '../app/index.js';
 import type { IconCode } from '../icon/index.js';
+/**
+ * The type of action the use case performs
+ *
+ * This impacts the HTTP verb used in the transport layer for example.
+ */
 export type UCAction = 'Create' | 'Delete' | 'List' | 'Search' | 'Update' | 'View';
 export type UCName = Capitalize<string>;
 export type FQUCNameSeparator = '_';
+/**
+ * Fully qualified use case name
+ *
+ * It's made with the {@link AppName} and the {@link UCName} linked by {@link FQUCNameSeparator}.
+ */
 export type FQUCName = `${AppName}${FQUCNameSeparator}${UCName}`;
 export interface UCMetadata {
     action: UCAction;

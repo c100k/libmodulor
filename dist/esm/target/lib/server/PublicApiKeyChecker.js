@@ -27,7 +27,7 @@ let PublicApiKeyChecker = class PublicApiKeyChecker {
     }
     async exec({ checkType = DEFAULT_UC_SEC_PAKCT, value, }) {
         this.logger.trace('Checking apiKey', { checkType, value });
-        let allowed = false;
+        let allowed = false; // By default it's not allowed
         switch (checkType) {
             case 'off':
                 allowed = true;

@@ -58,6 +58,7 @@ let KnexUCDataStore = class KnexUCDataStore {
     }
     async read(opts) {
         const query = this.client(this.s().uc_data_store_ucs_dataset_name);
+        // Filter
         if (opts?.filters) {
             const { aggregateId, appName, idWithinInput, name, organizationId, userId, } = opts.filters;
             this.filter(query, aggregateId, 'aggregateId');
@@ -67,10 +68,17 @@ let KnexUCDataStore = class KnexUCDataStore {
             this.filter(query, userId, 'userId');
             if (idWithinInput !== undefined) {
                 for (const [k, v] of Object.entries(idWithinInput)) {
+                    // Not comfortable with the key here but it seems to escape correctly :
+                    // select * from "d2efe54a-ce85-437c-958e-440f54c0743d"
+                    //   where jsonb_path_query_first("input", ?) #>> '{}' = ?
+                    //   and "name" = ?
+                    //   and "organization_id" = ?
+                    //   order by "created_at" asc
                     query.whereJsonPath('input', `$.${k}`, '=', v);
                 }
             }
         }
+        // Sort
         query.orderBy('created_at', 'asc');
         const records = (await query).map((r) => this.mapRowToRecord(r));
         return {
@@ -79,11 +87,13 @@ let KnexUCDataStore = class KnexUCDataStore {
     }
     async readProjection(name, opts) {
         const query = this.client(name);
+        // Sort
         if (opts?.orderBy) {
             for (const [k, v] of Object.entries(opts.orderBy)) {
                 query.orderBy(k, v);
             }
         }
+        // Paginate
         if (opts?.limit) {
             query.limit(opts.limit);
         }
@@ -201,9 +211,13 @@ let KnexUCDataStore = class KnexUCDataStore {
         };
     }
     parseJSONColIfNecessary(value) {
+        // In some DBs, the json type is returned as string (e.g. sqlite3)
         return typeof value === 'string' ? JSON.parse(value) : value;
     }
+    //#region migrations
     async migration001CreateMainTable() {
+        // Using hasTable and then createTable because createTableIfNotExists has been deprecated
+        // See https://github.com/knex/knex/issues/1303#issuecomment-594489136
         const exists = await this.client.schema.hasTable(this.s().uc_data_store_ucs_dataset_name);
         if (exists) {
             return;

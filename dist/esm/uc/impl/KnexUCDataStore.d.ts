@@ -5,6 +5,10 @@ import type { UCDataStore, UCDataStoreReadOpts, UCDataStoreReadProjectionOpts, U
 import type { UCData } from '../data.js';
 import type { UCInput } from '../input.js';
 import type { UCSettings } from '../settings.js';
+/**
+ * @see https://knexjs.org/guide/#configuration-options
+ * @see https://knexjs.org/guide/#pool
+ */
 export interface KnexUCDataStoreSettings extends Settings {
     knex_uc_data_store_conn_string: `postgresql://${string}`;
     knex_uc_data_store_file_path: FilePath | ':memory:';

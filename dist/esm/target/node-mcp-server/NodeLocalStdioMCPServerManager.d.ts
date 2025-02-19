@@ -7,6 +7,16 @@ import type { Configurable, LoggerSettings, SettingsManager } from '../../std/in
 import { UCBuilder, type UCDef, type UCHTTPContract, type UCInput, type UCManager, type UCOPIBase } from '../../uc/index.js';
 import type { ServerManager } from '../lib/server/ServerManager.js';
 type S = Pick<LoggerSettings, 'logger_level'>;
+/**
+ * A simple MCP Server implementation
+ *
+ * Although it implements {@link ServerManager}, this implementation is not necessarily a "server".
+ * Indeed, it uses a local `Transport` so it must be considered the same as a {@link NodeCoreCLIManager}.
+ * Therefore, it calls `execClient` and not `execServer`.
+ * This way, Claude AI, or any other client is just a wrapper on top of it.
+ *
+ * @alpha This implementation still has lots of TODOs and has not been tested in real conditions. It needs to be stabilized before usage.
+ */
 export declare class NodeLocalStdioMCPServerManager implements Configurable<S>, ServerManager {
     private productManifest;
     private settingsManager;

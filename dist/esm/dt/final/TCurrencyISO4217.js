@@ -1,5 +1,6 @@
 import { TString } from '../base/TString.js';
 export class TCurrencyISO4217 extends TString {
+    // From https://www.iban.com/currency-codes
     static OPTIONS = [
         ['Euro', 'EUR', '€'],
         ['Pound Sterling', 'GBP', '£'],

@@ -12,6 +12,18 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 };
 import { inject, injectable } from 'inversify';
 import { NotFoundError } from '../../error/index.js';
+/**
+ * Find an aggregate by id by replaying additive use cases and removal ones
+ *
+ * This works only in simple scenarios where you have the following use cases :
+ *   - `CreateX`
+ *   - `CreateX`, `DeleteX`
+ *   - `CreateX`, `[DeleteX, ArchiveX]`
+ *
+ * If there is an `UpdateX` for example, do not use this as the record won't be accurate. Replay the records yourself with {@link UCDataStore.read()}.
+ *
+ * It throws a {@link NotFoundError} if there are more than one record (in which case somethin is wrong with the data store) or none.
+ */
 let SimpleAggregateFinder = class SimpleAggregateFinder {
     ucDataStore;
     constructor(ucDataStore) {

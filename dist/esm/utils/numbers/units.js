@@ -1,3 +1,6 @@
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat/NumberFormat#options
+// https://unicode.org/reports/tr35/tr35-general.html#Unit_Elements
+// https://tc39.es/ecma402/#table-sanctioned-single-unit-identifiers
 const CORE_UNITS = [
     'acre',
     'bit',

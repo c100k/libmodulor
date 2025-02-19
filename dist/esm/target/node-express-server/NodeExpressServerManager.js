@@ -77,6 +77,8 @@ let NodeExpressServerManager = class NodeExpressServerManager {
     async init() {
         this.runtime = express();
         this.runtime.use(this.helmetMB.exec({}));
+        // TODO : Add FileStorageManager (Local, S3, FSBucket)
+        // Right now, the files are only stored locally. We need more flexibility. Maybe we can also install https://imgproxy.net.
         this.runtime.use(fileUpload({
             createParentPath: true,
             debug: this.s().logger_level === 'trace',
@@ -125,6 +127,8 @@ let NodeExpressServerManager = class NodeExpressServerManager {
         if (!this.server?.listening) {
             return;
         }
+        // As stated in the docs of `close`, only awaiting `.close` is not enough to make sure all the connections are closed.
+        // Hence the wrapping in a promise, where the callback is called when the 'close' event is emitted.
         return new Promise((resolve, reject) => {
             if (!this.server) {
                 return resolve();
@@ -138,6 +142,7 @@ let NodeExpressServerManager = class NodeExpressServerManager {
         });
     }
     async warmUp() {
+        // Always at the "almost" last position to handle all the errors (from other middlewares and request handlers)
         this.runtime.use(this.errorMB.exec({}));
     }
     async createServer() {

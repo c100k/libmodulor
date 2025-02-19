@@ -8,8 +8,19 @@ import type { UCInput } from './input.js';
 import type { UCOPIBase } from './opi.js';
 import type { UCOutputOrNothing } from './output.js';
 export interface UCManagerPersistOpts {
+    /**
+     * In case the use case relates to an existing aggregate, pass its `aggregateId` in this field.
+     * This is typically used in a `Delete` use case in order to link it to the `Create` one executed in the past.
+     */
     aggregateId?: UUID;
+    /**
+     * @defaultValue {@link UCExecMode.USER}
+     */
     executionMode?: UCExecMode;
+    /**
+     * In case the use case is performed by an anonymous user or a user outside the organization, pass the actual `organizationId` in this field.
+     * This is typically used in a use case where someone anonymous posts something for a specific organization in a multi-tenant architecture.
+     */
     organizationId?: UUID;
 }
 export interface UCManager {

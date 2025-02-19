@@ -46,6 +46,7 @@ let BasicAuthenticationChecker = class BasicAuthenticationChecker {
         if (!passwordsMatch) {
             return null;
         }
+        // TODO : Improve this by fetching data from a data store for example
         return {
             organization: {
                 id: '',

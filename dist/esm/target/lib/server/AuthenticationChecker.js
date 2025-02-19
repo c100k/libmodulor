@@ -35,7 +35,7 @@ let AuthenticationChecker = class AuthenticationChecker {
             authorizationHeader,
         });
         const output = {
-            allowed: false,
+            allowed: false, // By default it's not allowed
             auth: null,
         };
         const { lifecycle: { server }, sec, } = uc.def;
@@ -52,6 +52,7 @@ let AuthenticationChecker = class AuthenticationChecker {
             output.allowed = allowed;
         }
         else {
+            // Follows the OpenAPI spec : https://swagger.io/docs/specification/authentication
             switch (authType) {
                 case 'apiKey':
                     if (authorizationHeader &&

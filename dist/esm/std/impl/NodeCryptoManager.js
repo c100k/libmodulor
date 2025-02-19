@@ -7,10 +7,13 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 import crypto from 'node:crypto';
 import { promisify } from 'node:util';
 import { injectable } from 'inversify';
+// https://nodejs.org/api/crypto.html#cryptopbkdf2password-salt-iterations-keylen-digest-callback
 const pbkdf2 = promisify(crypto.pbkdf2);
+// https://nodejs.org/api/crypto.html#cryptoscryptpassword-salt-keylen-options-callback
 const scrypt = promisify(crypto.scrypt);
 let NodeCryptoManager = class NodeCryptoManager {
     async clear() {
+        // Nothing to do
     }
     hash(algorithm, base, binaryToTextEncoding) {
         return crypto
@@ -35,9 +38,11 @@ let NodeCryptoManager = class NodeCryptoManager {
         return Uint8Array.from(result);
     }
     async randomString(length) {
+        // Not perfect in terms of randomness (because of Math.random() but pretty fine for now)
         let res = '';
         while (res.length < length) {
             const next = Math.random().toString(36).slice(2, 3);
+            // For now, we want only chars at the beginning, so it can be used as an identifier (i.e. in a database)
             if (res.length === 0 &&
                 Number.isInteger(Number.parseInt(next, 10))) {
                 continue;
@@ -50,7 +55,7 @@ let NodeCryptoManager = class NodeCryptoManager {
         return crypto.randomUUID();
     }
     async scrypt(password, salt, keyLength) {
-        const buffer = (await scrypt(password, salt, keyLength));
+        const buffer = (await scrypt(password, salt, keyLength)); // Forced to cast because it seems to be not typed correctly
         return buffer.toString('hex');
     }
 };

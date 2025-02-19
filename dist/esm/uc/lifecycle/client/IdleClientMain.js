@@ -7,6 +7,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 import { injectable } from 'inversify';
 let IdleClientMain = class IdleClientMain {
     async exec(_props) {
+        // NOOP
     }
 };
 IdleClientMain = __decorate([
