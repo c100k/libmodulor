@@ -11,12 +11,11 @@ yarn add --dev "@types/react@^18.3.17" "@types/react-dom@^18.3.5"
 yarn add "react@^18.3.1" "react-dom@^18.3.1"
 
 mkdir -p src/products/SuperTrader/web/components
-touch src/products/SuperTrader/vite.config.web.ts
-touch src/products/SuperTrader/web/{container.ts,index.html,index.tsx}
+touch src/products/SuperTrader/web/{container.ts,index.html,index.tsx,vite.config.ts}
 touch src/products/SuperTrader/web/components/App.tsx
 ```
 
-## vite.config.web.ts
+## vite.config.ts
 
 ```typescript
 import { join } from 'node:path';
@@ -234,7 +233,7 @@ ReactDOM.createRoot(rootElt).render(
 Update `package.json` to add the `web` build to the `build` command.
 
 ```json
-"build": "tsc --project tsconfig.build.json && cp .env dist/products/SuperTrader/server/.env && vite -c src/products/SuperTrader/vite.config.web.ts build",
+"build": "tsc --project tsconfig.build.json && cp .env dist/products/SuperTrader/server/.env && vite -c src/products/SuperTrader/web/vite.config.ts build",
 ```
 
 Update `src/products/SuperTrader/server/container.ts` to mount the `public` directory.
