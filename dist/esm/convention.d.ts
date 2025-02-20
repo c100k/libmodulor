@@ -23,6 +23,7 @@ export declare const APP_TEST_REPORTS_DIR_NAME: string;
 export declare const PRODUCTS_ROOT_ALIAS: string;
 export declare const PRODUCTS_ROOT_PATH: string[];
 export declare const PRODUCT_MANIFEST_NAME: string;
+export declare const PRODUCT_MANIFEST_FILE_EXT: string;
 export declare const PRODUCT_MANIFEST_FILE_NAME: string;
 export declare const PRODUCT_NAME_PLACEHOLDER: ProductName;
 export declare const UC_DEF_SUFFIX: string;

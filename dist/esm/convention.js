@@ -16,7 +16,7 @@ export const APP_INDEX_FILE_NAME = `${APP_INDEX_NAME}.ts`;
 export const APP_INDEX_FILE_NAME_FOR_IMPORT = 'index.js'; // ESM
 export const APP_MANIFEST_NAME = 'Manifest';
 export const APP_MANIFEST_FILE_EXT = '.ts';
-export const APP_MANIFEST_FILE_NAME = `${APP_MANIFEST_NAME.toLowerCase()}.ts`;
+export const APP_MANIFEST_FILE_NAME = `${APP_MANIFEST_NAME.toLowerCase()}${APP_MANIFEST_FILE_EXT}`;
 export const APP_NAME_PLACEHOLDER = 'AppX';
 export const APP_ROOT_FROM_UCD = ['..', '..', '..']; // $root/src/ucds/XyzUCD.ts
 export const APP_SRC_DIR_NAME = SRC_DIR_NAME;
@@ -30,7 +30,8 @@ export const APP_TEST_REPORTS_DIR_NAME = 'reports';
 export const PRODUCTS_ROOT_ALIAS = '@p';
 export const PRODUCTS_ROOT_PATH = [SRC_DIR_NAME, 'products'];
 export const PRODUCT_MANIFEST_NAME = 'Manifest';
-export const PRODUCT_MANIFEST_FILE_NAME = `${PRODUCT_MANIFEST_NAME.toLowerCase()}.js`; // .js vs .ts so it can be used by bundlers like Webpack
+export const PRODUCT_MANIFEST_FILE_EXT = '.ts';
+export const PRODUCT_MANIFEST_FILE_NAME = `${PRODUCT_MANIFEST_NAME.toLowerCase()}${PRODUCT_MANIFEST_FILE_EXT}`;
 export const PRODUCT_NAME_PLACEHOLDER = 'ProductX';
 /*
  * Use Case

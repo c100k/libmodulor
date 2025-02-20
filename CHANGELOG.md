@@ -2,6 +2,10 @@
 
 ## v0.5.0 (unreleased)
 
+**Breaking**
+
+- Replace `.js` by `.ts` for `ProductManifest`
+
 **Misc**
 
 - Simplified the signature of `UCDef.ext.http.transform` removing the generic `T` return
