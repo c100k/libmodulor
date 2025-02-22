@@ -13,6 +13,7 @@ export * from './HTTPAPICallExecutor.js';
 export * from './I18nManager.js';
 export * from './JobManager.js';
 export * from './JWTManager.js';
+export * from './LLMManager.js';
 export * from './Logger.js';
 export * from './PromptManager.js';
 export * from './SettingsManager.js';

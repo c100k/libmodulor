@@ -2,15 +2,19 @@
 
 ## v0.5.0 (unreleased)
 
+**Added**
+
+- Introduce `LLMManager` with 2 implementations (`MistralAILLMManager` and `OpenAILLMManager`)
+
 **Breaking**
 
 - Replace `.js` by `.ts` for `ProductManifest`
 
 **Misc**
 
-- Simplified the signature of `UCDef.ext.http.transform` removing the generic `T` return
-- Added JSDocs and comments for a better in-place documentation (i.e. in .d.ts files)
-- Added the Tutorial code in the repo at `examples/libmodulor-tuto` and added a new "Expose a rn Target" step (https://github.com/c100k/libmodulor/pull/11)
+- Simplify the signature of `UCDef.ext.http.transform` removing the generic `T` return
+- Add JSDocs and comments for a better in-place documentation (i.e. in .d.ts files)
+- Add the Tutorial code in the repo at `examples/libmodulor-tuto` and added a new "Expose a rn Target" step (https://github.com/c100k/libmodulor/pull/11)
 
 ## v0.4.0 (2025-01-31)
 
