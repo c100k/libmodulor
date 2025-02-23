@@ -14,6 +14,7 @@ export * from './std/impl/FetchHTTPAPICallExecutor.js';
 export * from './std/impl/MistralAILLMManager.js';
 export * from './std/impl/NoopHTTPAPICallExecutorAgentBuilder.js';
 export * from './std/impl/NoopXMLManager.js';
+export * from './std/impl/OllamaLLMManager.js';
 export * from './std/impl/OpenAILLMManager.js';
 export * from './std/impl/SettingsServerClientManager.js';
 export * from './std/impl/SimpleFormDataBuilder.js';
