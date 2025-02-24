@@ -1,15 +1,15 @@
 # CHANGELOG
 
-## v0.5.0 (unreleased)
+## v0.5.0 (2025-02-24)
+
+**BREAKING**
+
+- Replace `.js` by `.ts` for `ProductManifest`
 
 **Added**
 
 - Introduce a 3<sup>rd</sup> implementation of `LLMManager` (`OllamaLLMManager`) to run models locally
 - Introduce `LLMManager` with 2 implementations (`MistralAILLMManager` and `OpenAILLMManager`)
-
-**Breaking**
-
-- Replace `.js` by `.ts` for `ProductManifest`
 
 **Misc**
 
