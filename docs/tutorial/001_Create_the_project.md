@@ -71,23 +71,23 @@ src/products/**/rn/.expo
     },
     "dependencies": {
         "inversify": "^6.2.2",
-        "libmodulor": "^0.4.0",
+        "libmodulor": "^0.5.0",
         "reflect-metadata": "^0.2.2"
     },
     "devDependencies": {
         "@biomejs/biome": "^1.9.4",
-        "@types/node": "^22.13.4",
-        "@vitest/coverage-v8": "^3.0.5",
+        "@types/node": "^22.13.5",
+        "@vitest/coverage-v8": "^3.0.6",
         "buffer": "^6.0.3",
         "cookie-parser": "^1.4.7",
         "express": "^4.21.2",
         "express-fileupload": "^1.5.1",
         "fast-check": "^3.23.2",
         "helmet": "^8.0.0",
-        "jose": "^5.9.6",
+        "jose": "^6.0.6",
         "typescript": "^5.7.3",
-        "vite": "^6.1.0",
-        "vitest": "^3.0.5"
+        "vite": "^6.1.1",
+        "vitest": "^3.0.6"
     }
 }
 ```
