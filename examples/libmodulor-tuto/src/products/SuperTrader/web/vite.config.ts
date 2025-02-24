@@ -1,5 +1,6 @@
 import { join } from 'node:path';
 
+import tailwindcss from '@tailwindcss/vite';
 import { StripUCDLifecycleServerPlugin } from 'libmodulor/vite';
 import { defineConfig } from 'vite';
 
@@ -19,6 +20,6 @@ export default defineConfig({
         emptyOutDir: true,
         outDir,
     },
-    plugins: [StripUCDLifecycleServerPlugin],
+    plugins: [StripUCDLifecycleServerPlugin, tailwindcss()],
     root,
 });

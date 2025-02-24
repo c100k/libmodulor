@@ -6,14 +6,11 @@ import {
     useUC,
     useUCOR,
 } from 'libmodulor/react';
-import {
-    UCAutoExecLoader,
-    UCExecTouchable,
-    UCForm,
-} from 'libmodulor/react-web-pure';
+import { UCAutoExecLoader, UCExecTouchable } from 'libmodulor/react-web-pure';
 import React, { useEffect, useState, type ReactElement } from 'react';
 
 import { BuyAssetUCD, Manifest } from '../../../../apps/Trading/index.js';
+import { UCForm } from './UCForm.js';
 
 export default function App(): ReactElement {
     const { container, i18nManager, wordingManager } = useDIContext();
@@ -50,7 +47,7 @@ export default function App(): ReactElement {
         wordingManager.ucof('executedDirectly');
 
     return (
-        <div>
+        <div className="flex flex-col gap-2">
             {loading && 'Loading...'}
 
             {!loading && (
@@ -72,7 +69,7 @@ export default function App(): ReactElement {
                         uc={buyAssetUC}
                     />
 
-                    <table>
+                    <table className="table">
                         <thead>
                             <tr>
                                 <th>{idLabel}</th>
