@@ -546,4 +546,4 @@ open dist/products/SuperTrader/server/uc-data-store.sqlite
 yarn lint && yarn test && git add . && git commit -m "feat: add the rn target"
 ```
 
-For now, we're done. Let's review what we've built : [Style the web Target](./013_Style_the_web_Target.md).
+Now that's done, let's [Style the web Target](./013_Style_the_web_Target.md).
