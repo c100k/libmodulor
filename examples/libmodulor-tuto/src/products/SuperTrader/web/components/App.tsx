@@ -47,16 +47,16 @@ export default function App(): ReactElement {
         wordingManager.ucof('executedDirectly');
 
     return (
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-3 p-8 w-2/3">
             {loading && 'Loading...'}
 
             {!loading && (
                 <>
-                    <h1>
+                    <h1 className="text-2xl">
                         {productManifest.name} : {slogan}
                     </h1>
 
-                    <h2>{label}</h2>
+                    <h2 className="text-xl">{label}</h2>
 
                     <UCPanel
                         clearAfterExec={false}

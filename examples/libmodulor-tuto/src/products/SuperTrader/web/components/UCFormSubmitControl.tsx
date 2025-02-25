@@ -15,11 +15,11 @@ export function UCFormSubmitControl<
 >({ execState, disabled, uc }: Props<I, OPI0, OPI1>): ReactElement {
     const { wordingManager } = useDIContext();
 
-    const loading = execState === 'submitting';
-
     return (
         <button className="btn" disabled={disabled} type="submit">
-            {loading && <span className="loading loading-spinner" />}
+            {execState === 'submitting' && (
+                <span className="loading loading-spinner" />
+            )}
             {wordingManager.ucISubmit(uc.def, execState)}
         </button>
     );
