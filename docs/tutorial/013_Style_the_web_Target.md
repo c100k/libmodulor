@@ -132,10 +132,9 @@ export function UCForm<
 ### UCFormField.tsx
 
 ```tsx
-import React, { type ReactElement } from 'react';
-
 import { type DataType, ucifId } from 'libmodulor';
 import { useDIContext } from 'libmodulor/react';
+import React, { type ReactElement } from 'react';
 import {
     type Props as FormFieldControlProps,
     UCFormFieldControl,
