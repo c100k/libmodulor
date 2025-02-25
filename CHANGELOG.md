@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## v0.6.0 (unreleased)
+
+**Misc**
+
+- Add a new "Style the web Target" tutorial step showing how to use `tailwindcss` and `daisyUI` to provide custom components
+
 ## v0.5.0 (2025-02-24)
 
 **BREAKING**
