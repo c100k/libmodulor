@@ -6,14 +6,11 @@ import {
     useUC,
     useUCOR,
 } from 'libmodulor/react';
-import {
-    UCAutoExecLoader,
-    UCExecTouchable,
-    UCForm,
-} from 'libmodulor/react-web-pure';
+import { UCAutoExecLoader, UCExecTouchable } from 'libmodulor/react-web-pure';
 import React, { useEffect, useState, type ReactElement } from 'react';
 
 import { BuyAssetUCD, Manifest } from '../../../../apps/Trading/index.js';
+import { UCForm } from './UCForm.js';
 
 export default function App(): ReactElement {
     const { container, i18nManager, wordingManager } = useDIContext();
@@ -50,16 +47,16 @@ export default function App(): ReactElement {
         wordingManager.ucof('executedDirectly');
 
     return (
-        <div>
+        <div className="flex flex-col gap-3 p-8 w-2/3">
             {loading && 'Loading...'}
 
             {!loading && (
                 <>
-                    <h1>
+                    <h1 className="text-2xl">
                         {productManifest.name} : {slogan}
                     </h1>
 
-                    <h2>{label}</h2>
+                    <h2 className="text-xl">{label}</h2>
 
                     <UCPanel
                         clearAfterExec={false}
@@ -72,7 +69,7 @@ export default function App(): ReactElement {
                         uc={buyAssetUC}
                     />
 
-                    <table>
+                    <table className="table">
                         <thead>
                             <tr>
                                 <th>{idLabel}</th>
