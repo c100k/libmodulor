@@ -4,7 +4,7 @@ export { TInt, type TIntConstraints } from './base/TInt.js';
 export { TNumber, type TNumberConstraints } from './base/TNumber.js';
 export { TObject, type TObjectConstraints, TObjectShapeValidationStrategy, } from './base/TObject.js';
 export { TString, type TStringConstraints } from './base/TString.js';
-export { TUInt, type TUIntConstraints } from './base/TUInt.js';
+export { TUInt, type TUIntConstraints, type UInt } from './base/TUInt.js';
 export { type Address, TAddress } from './final/TAddress.js';
 export { type Amount, TAmount } from './final/TAmount.js';
 export { type ApiKey, TApiKey } from './final/TApiKey.js';

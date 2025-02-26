@@ -10,6 +10,12 @@ export function UCFormFieldControl({ errMsg = null, execState, f, onChange: onCh
         const target = e.currentTarget;
         const type = target.type;
         let value = target.value;
+        if (target.localName === 'select' && !value) {
+            // Prevent the value from being '' when we set/unset the select
+            // Otherwise it sets '' as value and prevents the form for being valid
+            onChangeBase(f, UCInputFieldChangeOperator.RESET, value);
+            return;
+        }
         if (CHECKED_FIELD_TYPES.includes(type) && 'checked' in target) {
             value = target.checked;
         }
@@ -29,6 +35,15 @@ export function UCFormFieldControl({ errMsg = null, execState, f, onChange: onCh
     };
     if (attrs.internal?.multiline) {
         return React.createElement("textarea", { ...attrs.spec, onChange: onChange });
+    }
+    const { type } = f.def;
+    const options = type.getOptions();
+    if (options) {
+        // TODO : Handle type.hasStrictOptions() => display an input text alongside the select
+        // TODO : Consider using a radio and/or checkbox and/or selectable buttons when the options count < X
+        return (React.createElement("select", { ...attrs.spec, onChange: onChange },
+            React.createElement("option", null),
+            options.map((o) => (React.createElement("option", { key: o.value.toString(), value: o.value.toString() }, o.label)))));
     }
     return React.createElement("input", { ...attrs.spec, onChange: onChange });
 }

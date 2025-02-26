@@ -4,7 +4,11 @@
 
 **BREAKING**
 
-- Extract common react elements on web and rn, renaming some of the props : check the new props and the new `validateFormField` to simplify your overrides
+- Extract common react elements on web and rn, renaming some of the props : check the new props names and the new `validateFormField` to simplify your overrides
+
+**Added**
+
+- Introduce `select` to target `react-web-pure` : it now renders an HTML `select` when the UC input field `hasOptions()`
 
 **Misc**
 
