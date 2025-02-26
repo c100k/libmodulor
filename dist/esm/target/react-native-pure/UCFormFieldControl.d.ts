@@ -1,11 +1,4 @@
 import { type ReactElement } from 'react';
-import type { DataType, ErrorMessage } from '../../dt/index.js';
-import { type UCInputField } from '../../uc/index.js';
-import type { UCFormFieldControlOnChange } from '../lib/react/form.js';
-import type { UCPanelState } from '../lib/react/panel.js';
-export type Props<T extends DataType> = UCPanelState & {
-    errMsg?: ErrorMessage | null;
-    field: UCInputField<T>;
-    onChange: UCFormFieldControlOnChange<T>;
-};
-export declare function UCFormFieldControl<T extends DataType>({ errMsg, execState, field, onChange: onChangeBase, }: Props<T>): ReactElement;
+import type { DataType } from '../../dt/index.js';
+import type { UCFormFieldControlProps } from '../lib/react/form.js';
+export declare function UCFormFieldControl<T extends DataType>({ errMsg, execState, f, onChange: onChangeBase, }: UCFormFieldControlProps<T>): ReactElement;

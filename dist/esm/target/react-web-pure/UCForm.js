@@ -12,6 +12,6 @@ export function UCForm({ clearAfterExec, disabled, execState, onChange, onSubmit
     };
     return (React.createElement("form", { onSubmit: onSubmit, ref: formRef },
         uc.inputFieldsForForm().map((f) => (React.createElement("div", { key: f.key },
-            React.createElement(UCFormField, { disabled: disabled, execState: execState, field: f, onChange: onChange })))),
+            React.createElement(UCFormField, { disabled: disabled, execState: execState, f: f, onChange: onChange })))),
         React.createElement(UCFormSubmitControl, { execState: execState, disabled: disabled, uc: uc })));
 }

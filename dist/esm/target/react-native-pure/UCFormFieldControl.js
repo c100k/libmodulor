@@ -4,23 +4,23 @@ import { UCInputFieldChangeOperator, ucifRepeatability, } from '../../uc/index.j
 import { isBlank } from '../../utils/index.js';
 import { rnInputDef } from '../lib/rn/input.js';
 const MULTIPLE_VALUES_SEPARATOR = ',';
-export function UCFormFieldControl({ errMsg = null, execState, field, onChange: onChangeBase, }) {
-    const [internalValue, setInternalValue] = useState(field.getValue());
+export function UCFormFieldControl({ errMsg = null, execState, f, onChange: onChangeBase, }) {
+    const [internalValue, setInternalValue] = useState(f.getValue());
     // biome-ignore lint/correctness/useExhaustiveDependencies: false positive : It is actually necessary (only `field` does not trigger the effect)
     useEffect(() => {
-        setInternalValue(field.getValue());
-    }, [field.getValue()]);
-    const attrs = rnInputDef(field, execState, errMsg);
+        setInternalValue(f.getValue());
+    }, [f.getValue()]);
+    const attrs = rnInputDef(f, execState, errMsg);
     const onChangeText = (value) => {
-        const [isRepeatable] = ucifRepeatability(field.def);
+        const [isRepeatable] = ucifRepeatability(f.def);
         if (isRepeatable && typeof value === 'string') {
             const valueArr = value
                 .split(MULTIPLE_VALUES_SEPARATOR)
                 .map((v) => v.trim());
-            onChangeBase(field, UCInputFieldChangeOperator.SET, valueArr);
+            onChangeBase(f, UCInputFieldChangeOperator.SET, valueArr);
         }
         else {
-            onChangeBase(field, UCInputFieldChangeOperator.SET, value);
+            onChangeBase(f, UCInputFieldChangeOperator.SET, value);
         }
         setInternalValue(value);
     };

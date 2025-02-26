@@ -4,8 +4,8 @@ import { htmlInputDef } from '../lib/web/input.js';
 const CHECKED_FIELD_TYPES = ['checkbox', 'radio'];
 const FILE_FIELD_TYPES = ['file'];
 const MULTIPLE_VALUES_SEPARATOR = ',';
-export function UCFormFieldControl({ errMsg = null, execState, field, onChange: onChangeBase, }) {
-    const attrs = htmlInputDef(field, execState, errMsg);
+export function UCFormFieldControl({ errMsg = null, execState, f, onChange: onChangeBase, }) {
+    const attrs = htmlInputDef(f, execState, errMsg);
     const onChange = (e) => {
         const target = e.currentTarget;
         const type = target.type;
@@ -16,15 +16,15 @@ export function UCFormFieldControl({ errMsg = null, execState, field, onChange: 
         else if (FILE_FIELD_TYPES.includes(type) && 'files' in target) {
             value = target.files?.item(0);
         }
-        const [isRepeatable] = ucifRepeatability(field.def);
+        const [isRepeatable] = ucifRepeatability(f.def);
         if (isRepeatable && typeof value === 'string') {
             const valueArr = value
                 .split(MULTIPLE_VALUES_SEPARATOR)
                 .map((v) => v.trim());
-            onChangeBase(field, UCInputFieldChangeOperator.SET, valueArr);
+            onChangeBase(f, UCInputFieldChangeOperator.SET, valueArr);
         }
         else {
-            onChangeBase(field, UCInputFieldChangeOperator.SET, value);
+            onChangeBase(f, UCInputFieldChangeOperator.SET, value);
         }
     };
     if (attrs.internal?.multiline) {

@@ -2,6 +2,10 @@
 
 ## v0.6.0 (unreleased)
 
+**BREAKING**
+
+- Extract common react elements on web and rn, renaming some of the props : check the new props and the new `validateFormField` to simplify your overrides
+
 **Misc**
 
 - Add a new "Style the web Target" tutorial step showing how to use `tailwindcss` and `daisyUI` to provide custom components
