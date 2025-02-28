@@ -1,6 +1,6 @@
 # CHANGELOG
 
-## v0.6.0 (unreleased)
+## v0.6.0 (2025-02-28)
 
 **BREAKING**
 
@@ -14,6 +14,7 @@
 
 **Misc**
 
+- Bump `react` to `19.0.0`
 - Add a new "Style the web Target" tutorial step showing how to use `tailwindcss` and `daisyUI` to provide custom components
 
 ## v0.5.0 (2025-02-24)
