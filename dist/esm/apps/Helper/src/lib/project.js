@@ -37,7 +37,7 @@ const PACKAGE_JSON = (name) => `{
     },
     "dependencies": {
         "inversify": "^6.2.2",
-        "libmodulor": "^0.5.0",
+        "libmodulor": "latest",
         "reflect-metadata": "^0.2.2"
     },
     "devDependencies": {

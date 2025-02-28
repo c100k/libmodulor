@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## v0.6.1 (unreleased)
+
+**Fixed**
+
+- Create project with the latest version
+
 ## v0.6.0 (2025-02-28)
 
 **BREAKING**
