@@ -1,16 +1,13 @@
 # 🚀 Tutorial
 
 > [!NOTE]
-> This Tutorial is voluntarily very verbose and not scripted so you can get a full overview of how things work. `npx` magic is good. But understanding what happens behind the scenes is good as well.
+> This Tutorial is voluntarily very verbose and not scripted so you can get a full overview of how things work.
 
-First, we'll init a repository (a repository can contain multiple apps and products).
+First, we'll init the project repository using `npx` (a repository can contain multiple apps and products).
 
 Then, we'll build a small trading application. It will contain one `App` named `Trading`, which will contain one `UseCase` named `BuyAsset`. The `App` will be mounted in a `Product` called `SuperTrader` which will be exposed via a `server`, `web`, `cli`, `mcp-server` and `rn` `Targets`.
 
-> [!NOTE]
-> MCP stands for [Model Context Protocol](https://modelcontextprotocol.io) introduced recently by [@anthropics](https://github.com/anthropics).
-
-If we adapt the abstract mermaid chart shown in the introduction, concretely, it looks like this :
+When we adapt the abstract mermaid chart shown in the introduction, concretely, it looks like this :
 
 ```mermaid
 block-beta
