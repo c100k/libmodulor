@@ -69,8 +69,8 @@ export class Configurator extends SimpleAppTesterConfigurator {
 Generate the automated tests and execute them with the CLI (it does more than a simple `yarn test`).
 
 ```sh
-yarn helper GenerateAppsTests
-yarn helper TestApp --appName Trading
+yarn libmodulor GenerateAppsTests
+yarn libmodulor TestApp --appName Trading
 ```
 
 ```sh

@@ -65,9 +65,8 @@ src/products/**/rn/.expo
     "type": "module",
     "private": true,
     "scripts": {
-        "helper": "node ./node_modules/libmodulor/dist/esm/products/Helper/index.js",
         "lint": "biome check --write .",
-        "test": "tsc && vitest run"
+        "test": "tsc && vitest run --passWithNoTests"
     },
     "dependencies": {
         "inversify": "^6.2.2",

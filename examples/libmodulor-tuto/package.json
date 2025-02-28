@@ -6,13 +6,12 @@
     "private": true,
     "scripts": {
         "build": "./build.sh",
-        "helper": "node ./node_modules/libmodulor/dist/esm/products/Helper/index.js",
         "lint": "biome check --write .",
         "run:cli": "cd dist/products/SuperTrader/cli && node index.js",
         "run:rn:android": "cd dist/products/SuperTrader/rn && expo start --android",
         "run:rn:ios": "cd dist/products/SuperTrader/rn && expo start --ios",
         "run:server": "cd dist/products/SuperTrader/server && node --env-file .env index.js",
-        "test": "tsc && vitest run"
+        "test": "tsc && vitest run --passWithNoTests"
     },
     "dependencies": {
         "@modelcontextprotocol/sdk": "^1.5.0",
