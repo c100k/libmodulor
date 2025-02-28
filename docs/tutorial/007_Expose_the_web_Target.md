@@ -7,8 +7,8 @@ We'll use the pre-built [React](https://react.dev) components to build a SPA (Si
 > Of course, feel free to add CSS if you want to. The main goal here is to focus on the essence of the UI and not the UI design.
 
 ```sh
-yarn add --dev "@types/react@^18.3.17" "@types/react-dom@^18.3.5"
-yarn add "react@^18.3.1" "react-dom@^18.3.1"
+yarn add --dev "@types/react@^19.0.10" "@types/react-dom@^19.0.4"
+yarn add "react@^19.0.0" "react-dom@^19.0.0"
 
 mkdir -p src/products/SuperTrader/web/components
 touch src/products/SuperTrader/web/{container.ts,index.html,index.tsx,vite.config.ts}

@@ -14,7 +14,7 @@ You should obtain an output similar to the following :
 
 ```sh
 Need to install the following packages:
-libmodulor@0.6.1
+libmodulor@latest
 Ok to proceed? (y) y
 
 2025-02-28T15:32:09.446Z [info] Creating root dir : libmodulor-tuto

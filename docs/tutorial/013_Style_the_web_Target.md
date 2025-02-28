@@ -9,7 +9,7 @@ We'll see how we can use `libmodulor`'s primitives to render the UI we want to.
 We're going to replicate the install instructions of [tailwindcss/vite](https://tailwindcss.com/docs/installation/using-vite) and [daisyUI](https://v5.daisyui.com/docs/install).
 
 ```sh
-yarn add "tailwindcss@^4.0.8" "@tailwindcss/vite@^4.0.8" "daisyui@beta"
+yarn add "tailwindcss@^4.0.9" "@tailwindcss/vite@^4.0.9" "daisyui@beta"
 ```
 
 Update `examples/products/playground/web/vite.config.ts` to add the dedicated plugin.
