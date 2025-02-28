@@ -27,11 +27,17 @@ Applications created with `libmodulor` have **6 main properties** :
 
 ## 🚀 Getting Started
 
-To get started, we recommend reading the [📖 Introduction](./docs/Introduction.md) first. It will give you an overview of what `libmodulor` is and how it works.
+If you're discovering `libmodulor`, we recommend reading the [📖 Introduction](./docs/Introduction.md) first. It will give you an overview of what `libmodulor` is and how it works.
 
-Then, you can follow the [🚀 Tutorial](./docs/Tutorial.md) that will show you all the main notions by building something real. We'll build a small Trading app that will allow us to buy an asset from a web page, a Terminal, Claude Desktop, Android and iOS ! All within a single, simple codebase.
+If you want to learn by doing, you can follow the [🚀 Tutorial](./docs/Tutorial.md). It contains multiple steps showing you the basics of `libmodulor`. We'll build a small Trading app that will allow us to buy an asset from `curl`, a SPA, a CLI, Claude Desktop, an Android mobile app and an iOS mobile app !
 
-Finally, for more advanced usages, go to the [📜 Guides](./docs/Guides.md).
+If you're felling adventurous, create a project and start building your own application, with your own apps, use cases, products, targets :
+
+```sh
+npx libmodulor CreateProject --outPath ~/Downloads --projectName libmodulor-projx
+```
+
+Finally, for more advanced uses, check out the [📜 Guides](./docs/Guides.md).
 
 ## 👨‍💻 Contribute
 

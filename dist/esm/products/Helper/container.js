@@ -1,4 +1,5 @@
 import { Container } from 'inversify';
+import { NodeSpawnShellCommandExecutor } from '../../std/impl/NodeSpawnShellCommandExecutor.js';
 import { VitestAppTestSuiteEmitter } from '../../testing/impl/VitestAppTestSuiteEmitter.js';
 import { VitestAppTestSuiteRunner } from '../../testing/impl/VitestAppTestSuiteRunner.js';
 import { CONTAINER_OPTS } from '../../utils/index.js';
@@ -19,4 +20,7 @@ container
 container
     .bind('AppTestSuiteRunner')
     .to(VitestAppTestSuiteRunner);
+container
+    .bind('ShellCommandExecutor')
+    .to(NodeSpawnShellCommandExecutor);
 export default container;

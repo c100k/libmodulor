@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import { APPS_ROOT_DIR_NAME } from '../../convention.js';
 import { NodeCoreCLIManager } from '../../target/node-core-cli/NodeCoreCLIManager.js';
 import container from './container.js';

@@ -6,6 +6,7 @@ export { NodeFormDataBuilder } from './std/impl/NodeFormDataBuilder.js';
 export { NodeFSManager } from './std/impl/NodeFSManager.js';
 export { NodeHTTPAPICallExecutorAgentBuilder } from './std/impl/NodeHTTPAPICallExecutorAgentBuilder.js';
 export { NodePromptManager } from './std/impl/NodePromptManager.js';
+export { NodeSpawnShellCommandExecutor } from './std/impl/NodeSpawnShellCommandExecutor.js';
 export { NodeCoreCLIManager } from './target/node-core-cli/NodeCoreCLIManager.js';
 export { NodeExpressServerManager } from './target/node-express-server/NodeExpressServerManager.js';
 export { bindNodeCLI } from './utils/ioc/bindNodeCLI.js';

@@ -5,9 +5,11 @@
 **BREAKING**
 
 - Extract common react elements on web and rn, renaming some of the props : check the new props names and the new `validateFormField` to simplify your overrides
+- Remove `helper` from the exports map : it makes no sense to expose it as it is an executable (see `npx libmodulor` below)
 
 **Added**
 
+- Introduce the `npx libmodulor CreateProject` command
 - Introduce `select` to target `react-web-pure` : it now renders an HTML `select` when the UC input field `hasOptions()`
 
 **Misc**
