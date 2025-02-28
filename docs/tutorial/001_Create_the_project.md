@@ -6,164 +6,38 @@ Assuming you have the following installed (otherwise, install them or adapt the 
 - `yarn` >= 1.x
 - `wget` and `curl`
 
-If you're on macOS, for the `sed` commands, add a `''` after `-i` ([Explanation](https://stackoverflow.com/a/4247319/1259118)).
+```sh
+npx libmodulor CreateProject --projectName libmodulor-tuto
+```
+
+You should obtain an output similar to the following :
 
 ```sh
-# Create the directory
-mkdir libmodulor-tuto && cd libmodulor-tuto # Note how the repository is generic to contain multiple apps and products
+Need to install the following packages:
+libmodulor@0.6.1
+Ok to proceed? (y) y
 
-# Initialize git
-git init
-
-# Initialize config files
-touch .gitignore biome.json package.json README.md tsconfig.json vitest.config.ts
+2025-02-28T15:32:09.446Z [info] Creating root dir : libmodulor-tuto
+2025-02-28T15:32:09.447Z [info] Initializing git repository
+2025-02-28T15:32:09.495Z [info] Creating config files
+2025-02-28T15:32:09.496Z [info] Creating apps and products directories
+2025-02-28T15:32:09.496Z [info] Installing dependencies
+2025-02-28T15:32:16.339Z [info] Committing
+2025-02-28T15:32:16.483Z [info] Testing dev command : yarn lint
+2025-02-28T15:32:17.134Z [info] Testing dev command : yarn test
+2025-02-28T15:32:18.342Z [info] Done ! Project ready ! ✅ 🚀
 ```
 
-## .gitignore
+Open the generated directory with your favorite editor and start browsing the files to get an overview of the structure. Here is an explanation of what each one does :
 
-```.gitignore
-coverage
-dist
-node_modules
-src/apps/**/test/reports
-src/apps/**/test/*.test.ts
-src/products/**/rn/.expo
-.env
-```
-
-## biome.json
-
-```json
-{
-    "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
-    "files": {
-        "ignore": ["coverage", "dist", "node_modules"],
-        "ignoreUnknown": true
-    },
-    "formatter": {
-        "indentStyle": "space",
-        "indentWidth": 4
-    },
-    "javascript": {
-        "formatter": {
-            "quoteStyle": "single"
-        },
-        "parser": {
-            "unsafeParameterDecoratorsEnabled": true
-        }
-    }
-}
-```
-
-## package.json
-
-```json
-{
-    "name": "libmodulor-tuto",
-    "version": "0.1.0",
-    "author": "Chafik H'nini <chafik.hnini@gmail.com>",
-    "type": "module",
-    "private": true,
-    "scripts": {
-        "helper": "node ./node_modules/libmodulor/dist/esm/products/Helper/index.js",
-        "lint": "biome check --write .",
-        "test": "tsc && vitest run"
-    },
-    "dependencies": {
-        "inversify": "^6.2.2",
-        "libmodulor": "^0.5.0",
-        "reflect-metadata": "^0.2.2"
-    },
-    "devDependencies": {
-        "@biomejs/biome": "^1.9.4",
-        "@types/node": "^22.13.5",
-        "@vitest/coverage-v8": "^3.0.6",
-        "buffer": "^6.0.3",
-        "cookie-parser": "^1.4.7",
-        "express": "^4.21.2",
-        "express-fileupload": "^1.5.1",
-        "fast-check": "^3.23.2",
-        "helmet": "^8.0.0",
-        "jose": "^6.0.6",
-        "typescript": "^5.7.3",
-        "vite": "^6.1.1",
-        "vitest": "^3.0.6"
-    }
-}
-```
-
-## README.md
-
-```md
-# libmodulor-tuto
-
-🚀🚀🚀
-```
-
-## tsconfig.json
-
-```json
-{
-    "compilerOptions": {
-        "allowSyntheticDefaultImports": true,
-        "declaration": true,
-        "lib": ["dom", "esnext"],
-        "module": "NodeNext",
-        "moduleResolution": "NodeNext",
-        "noEmit": true,
-        "removeComments": true,
-        "skipLibCheck": true,
-        "sourceMap": true,
-        "target": "ESNext",
-
-        "strict": true,
-        "allowUnreachableCode": false,
-        "allowUnusedLabels": false,
-        "exactOptionalPropertyTypes": true,
-        "noFallthroughCasesInSwitch": true,
-        "noPropertyAccessFromIndexSignature": true,
-        "noImplicitOverride": true,
-        "noImplicitReturns": true,
-        "noUncheckedIndexedAccess": true,
-        "noUnusedLocals": true,
-        "noUnusedParameters": true,
-        "verbatimModuleSyntax": true,
-
-        "emitDecoratorMetadata": true,
-        "experimentalDecorators": true,
-
-        "jsx": "react"
-    }
-}
-```
-
-## vitest.config.ts
-
-```typescript
-import { defineConfig } from 'vitest/config';
-
-export default defineConfig({
-    test: {
-        coverage: {
-            enabled: true,
-            exclude: ['src/apps/**/test', 'src/**/*.test.ts'],
-            include: ['src'],
-            reporter: ['html', 'lcov', 'text'],
-        },
-        reporters: ['verbose'],
-    },
-});
-```
-
-## Install
-
-```sh
-yarn install
-```
-
-```sh
-yarn lint && yarn test && git add . && git commit -m "chore: init source code"
-```
+- `src/apps` : contains the `apps` of your project (empty for now)
+- `src/products` : contains the `products` of your project (empty for now)
+- `.gitignore` : includes the files/dirs patterns to exclude from version control
+- `biome.json` : config for the linter (feel free to change it if you don't like the defaults)
+- `package.json` : main config file containing info, scripts and dependencies
+- `README.md` : main documentation file (feel free to enhance it with explanations about the purpose of your application)
+- `tsconfig.json` : config file for TypeScript (pretty strict by default)
+- `vitest.config.ts` : config file for Vitest, the test runner
 
 Optionally, you can create a remote repository (e.g. on GitHub) and push it.
 
