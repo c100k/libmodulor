@@ -35,6 +35,9 @@ If you're felling adventurous, create a project and start building your own appl
 
 ```sh
 npx libmodulor CreateProject --outPath ~/Downloads --projectName libmodulor-projx
+
+# With another pkg manager (since 0.7.0)
+npx libmodulor CreateProject --outPath ~/Downloads --projectName libmodulor-projx --pkgManagerBin (npm|pnpm|bun|yarn)
 ```
 
 Finally, for more advanced uses, check out the [📜 Guides](./docs/Guides.md).

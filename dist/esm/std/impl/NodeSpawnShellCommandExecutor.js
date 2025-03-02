@@ -21,7 +21,7 @@ let NodeSpawnShellCommandExecutor = class NodeSpawnShellCommandExecutor {
             proc.stdout.on('data', (chunk) => {
                 stdout += chunk;
             });
-            proc.stdout.on('error', (err) => {
+            proc.on('error', (err) => {
                 reject(err);
             });
             proc.on('close', (code, signal) => {

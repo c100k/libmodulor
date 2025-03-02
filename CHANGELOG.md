@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## v0.7.0 (unreleased)
+
+**Added**
+
+- Make `npx libmodulor CreateProject` more generic : you can now customize the `initialCommit` (default is `chore: initial commit`), the `pkgManagerBin` (default is `yarn`, works with `npm`, `pnpm`, `bun`, etc.), the `scmBin` (default is `git`)
+
 ## v0.6.1 (2025-02-28)
 
 **Fixed**
