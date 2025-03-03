@@ -26,7 +26,7 @@ const BIOME_JSON = `{
     }
 }
 `;
-const PACKAGE_JSON = (name) => `{
+export const PACKAGE_JSON = (name) => `{
     "name": "${name}",
     "version": "0.1.0",
     "type": "module",
@@ -42,7 +42,7 @@ const PACKAGE_JSON = (name) => `{
     },
     "devDependencies": {
         "@biomejs/biome": "^1.9.4",
-        "@types/node": "^22.13.5",
+        "@types/node": "^22.13.8",
         "@vitest/coverage-v8": "^3.0.7",
         "buffer": "^6.0.3",
         "cookie-parser": "^1.4.7",
@@ -51,7 +51,7 @@ const PACKAGE_JSON = (name) => `{
         "fast-check": "^3.23.2",
         "helmet": "^8.0.0",
         "jose": "^6.0.8",
-        "typescript": "^5.7.3",
+        "typescript": "^5.8.2",
         "vite": "^6.2.0",
         "vitest": "^3.0.7"
     }
