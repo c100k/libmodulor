@@ -83,6 +83,36 @@ let UCExecutor = class UCExecutor {
         catch (err) {
             out.err = err;
         }
+        finally {
+            this.derandomizeInput(out.io.i);
+        }
+    }
+    derandomizeInput(input) {
+        for (const [k, v] of Object.entries(input)) {
+            if (Array.isArray(v)) {
+                v.forEach((vv, idx) => {
+                    if (vv instanceof File) {
+                        // @ts-ignore
+                        input[k][idx] = this.derandomizeInputFile(vv);
+                    }
+                });
+            }
+            else if (v instanceof File) {
+                // @ts-ignore
+                input[k] = this.derandomizeInputFile(v);
+            }
+        }
+    }
+    derandomizeInputFile(file) {
+        // Since TypeScript 5.8, a new `lastModified` field has appeared in `File.state: FileState {}` when snapshotting.
+        // The problem is that this value is a timestamp that changes everytime we execute the tests.
+        // Creating a `specificAssertion` just for that would be cumbersome.
+        // Hence the transform of the `File` into a deterministic `Object` for easy snapshotting.
+        return {
+            name: file.name,
+            size: file.size,
+            type: file.type,
+        };
     }
 };
 UCExecutor = UCExecutor_1 = __decorate([

@@ -6,6 +6,10 @@
 
 - Make `npx libmodulor CreateProject` more generic : you can now customize the `initialCommit` (default is `chore: initial commit`), the `pkgManagerBin` (default is `yarn`, works with `npm`, `pnpm`, `bun`, etc.), the `scmBin` (default is `git`)
 
+**Fixed**
+
+- Derandomize UC input before snapshotting in tests : after the upgrade to TS 5.8, snapshotting a UC including a File as input would break as a new `state` property has appeared with a dynamic `lastModified` property
+
 ## v0.6.1 (2025-02-28)
 
 **Fixed**

@@ -42,4 +42,6 @@ export declare class UCExecutor implements Worker<Input, Promise<Output>> {
     exec<I extends UCInput | undefined = undefined, OPI0 extends UCOPIBase | undefined = undefined, OPI1 extends UCOPIBase | undefined = undefined>({ appManifest, auth, authName, inputFiller, inputFillerName, ucd, }: Input<I, OPI0, OPI1>): Promise<Output<I, OPI0, OPI1>>;
     overrideUCManager(ucManager: UCManager): void;
     private execClient;
+    private derandomizeInput;
+    private derandomizeInputFile;
 }
