@@ -1,3 +1,8 @@
 {
-    "pages": ["create-project", "create-app", "create-use-case", "translate-app"]
+    "pages": [
+        "create-project",
+        "create-app",
+        "create-use-case",
+        "translate-app"
+    ]
 }

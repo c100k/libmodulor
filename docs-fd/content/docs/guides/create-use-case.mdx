@@ -1,3 +1,191 @@
 ---
 title: Create a use case
+description: A use case is the smallest unit. It defines the contract, mainly as an Input that goes into lifecycle methods (client and/or server) to finally give an Output. In the end, it constitutes a piece of business functionality.
 ---
+
+<Callout>
+    Starting now, you'll see `UC` or `uc` a lot.
+    It's the abbreviation of `UseCase`.
+    Acronyms are not good in codebases, except those that are commonly used ([debate](https://stackoverflow.com/questions/2236807/java-naming-convention-with-acronyms)).
+    In any case, when you write `UseCase` hundreds of times, you're happy to be able to write `UC` instead.
+    Thus, `UCD` stands for `Use Case Definition`, `UCIF` stands for `Use Case Input Field` and so on.
+</Callout>
+
+## Metadata
+
+The first thing to do to define a use case is to add its metadata in the app's `manifest` as seen in [Create an app](./create-app).
+
+```typescript title="manifest.ts"
+    ucReg: {
+        SignIn: {
+            action: 'Create',
+            beta: true, // Optional
+            icon: 'user',
+            name: 'SignIn',
+            new: true, // Optional
+            sensitive: true, // Optional
+        },
+    },
+```
+
+The metadata defines several properties that are used by the app, products and targets to instrument the use case.
+
+For instance, the `action` is used by a server target to decide which HTTP verb to use.
+
+The `icon` can also be used by a GUI to display it alongside the label in a button.
+You are free to set the icon of your choice, corresponding to the icon library you're using in your GUI target (e.g. FontAwesome).
+
+The `beta` and `new` flags can be used by a GUI target to display a badge next to the button giving access to the use case, in order to show the user that it's a new feature.
+
+The `sensitive` flag is used to ask the user to confirm when they execute a use case (e.g. a destructive use case).
+
+## UCD => Use Case Definition
+
+A use case is defined in a file named `src/apps/{AppName}/src/ucds/{UCName}UCD.ts`.
+
+It must export :
+
+- the interface corresponding to the input (if any)
+- the interface corresponding to the OPIs (if any)
+- a const named `{UCName}UCD` that satisfies the `UCDef` interface.
+
+### IO => input/output
+
+A use case can define 0 or 1 input and 0, 1 or 2 output part items (OPI). Based on this, the definition of a use case has one of the following types :
+
+```typescript
+UCDef // 0 input, 0 OPI
+UCDef<SignInInput> // 1 input, 0 OPI
+UCDef<SignInInput, SignInOPI0> // 1 input, 1 OPI
+UCDef<undefined, SignInOPI0> // 0 input, 1 OPI
+UCDef<SignInInput, SignInOPI0, SignInOPI1> // 1 input, 2 OPIs
+```
+
+#### I => input
+
+It is an interface that must extend the `UCInput` interface directly or indirectly.
+
+```typescript
+export interface SignInInput extends UCInput {
+    email: UCInputFieldValue<Email>;
+    password: UCInputFieldValue<Password>;
+}
+```
+
+It must contain only properties of type `UCInputFieldValue<DataType>`.
+You can use one of the [existing data types](../references/data-types) or [create a custom one](./create-data-type).
+
+The same fields must be declared in `UCDef.io.i.fields`.
+
+```typescript
+fields: {
+    email: {
+        type: new TEmail(),
+    },
+    password: {
+        type: new TPassword({ minLength: 30 }),
+    },
+},
+```
+
+This definition might seem redundant but it offers more expressiveness to define advanced rules for data types than the simple TypeScript type system.
+
+#### O => output
+
+It is an interface that must extend the `UCOPIBase` interface directly or indirectly.
+
+```typescript
+export interface SignInOPI0 extends UCOPIBase {
+    jwt: UCOPIValue<JWT>;
+}
+```
+
+The same fields must be declared in `UCDef.io.o.parts._0`.
+
+```typescript
+fields: {
+    jwt: {
+        type: new TJWT(),
+    },
+},
+```
+
+### Lifecycle
+
+A use case can define a `client` and/or a `server` lifecycle.
+
+#### client
+
+It is an object that satisfies the `UCClientDef<I, OPI0, OPI1>` interface.
+
+```typescript
+client: {
+    main: SignInClientMain,
+    policy: EverybodyUCPolicy,
+},
+```
+
+The `main` property references a class that implements the `UCMain<I, OPI0, OPI1>` interface.
+
+This class can be defined just above the `UCDef` like the following :
+
+```typescript
+@injectable()
+class SignInClientMain implements UCMain<SignInInput, SignInOPI0> {
+    constructor(
+        @inject('UCTransporter')
+        private ucTransporter: UCTransporter,
+    ) {}
+
+    public async exec({
+        uc,
+    }: UCMainInput<SignInInput, SignInOPI0>): Promise<
+        UCOutputOrNothing<SignInOPI0>
+    > {
+        return this.ucTransporter.send(uc);
+    }
+}
+```
+
+In this class, you can inject whatever you want and define all your client side business logic in `exec`.
+In this specific case, we are simply sending the use case to the server.
+
+The `policy` defines the permissions rules defining who can execute the use case.
+You can use one of the [existing policies](../references/policies) or [create a custom one](./create-policy).
+
+#### server
+
+It is an object that satisfies the `UCServerDef<I, OPI0, OPI1>` interface.
+
+```typescript
+server: {
+    execMode: UCExecMode.USER, // Optional
+    init: SignInServerInit, // Optional
+    main: SignInClientMain,
+    policy: EverybodyUCPolicy,
+},
+```
+
+The `main` property references a class that implements the `UCMain<I, OPI0, OPI1>` interface.
+
+This class can be defined the exact same way as the `client` above. Except that this time, it will be executed on the server.
+
+The `init` property references a class that implements the `UCInit` interface.
+It allows you to setup stuff when the use case is mounted (e.g. creating some caches or data stores when mounting the use case on a server target).
+
+The `policy` defines the permissions rules defining who can execute the use case.
+You can use one of the [existing policies](../references/policies) or [create a custom one](./create-policy).
+
+### Metadata
+
+As seen above, the metadata is declared in the app manifest.
+
+In the UCD, you simply need to reference this declaration.
+
+```typescript
+metadata: Manifest.ucReg.SignIn,
+```
+
+## Advanced
+
+The `UCDef` interface allows to define much more properties like `ext` and `sec` or `sideEffects`. These are more advanced topics and will be addressed in dedicated guides.
