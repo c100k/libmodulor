@@ -3,6 +3,10 @@
         "create-project",
         "create-app",
         "create-use-case",
+        "create-product",
+        "create-target",
+        "create-data-type",
+        "create-policy",
         "translate-app"
     ]
 }
