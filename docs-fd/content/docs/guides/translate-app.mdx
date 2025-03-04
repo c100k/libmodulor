@@ -1,62 +1,8 @@
 ---
-title: Create an app
+title: Translate an app
 ---
 
-An app is a logical group of use cases.
-
-Its logical representation is a directory named `src/apps/{AppName}` that has the following structure :
-
-```sh
-📁 src
-    📁 dt # the custom data types
-    📁 lib # the utilities (types, interfaces, classes, functions, consts...) used across multiple use cases
-    📁 ucds # the use case definitions
-    📄 i18n.ts # the localized strings
-    📄 manifest.ts # the manifest describing the name, the languages available, the use cases, etc.
-📄 index.ts # barrel file exporting only what's consumed outside the app (typically i18n.ts, manifest.ts and some use case defs)
-```
-
-# manifest
-
-It's a file named `manifest.ts` exporting a const named `Manifest` that must satisfy the `AppManifest` interface.
-
-```typescript
-import type { AppManifest } from 'libmodulor';
-
-export const Manifest = {
-    languageCodes: ['en'],
-    name: 'Trading',
-    ucReg: {},
-} satisfies AppManifest;
-```
-
-### langs
-
-List all the languages you want to support in your app. For every language listed here, `i18n` must contain the appropriate translations.
-
-### name
-
-It must be the same as the app directory name.
-
-### use case registry
-
-`ucReg` stands for "use case registry". It lists all the use cases metadata of the app.
-
-Check out the use case guide for more details.
-
-## i18n
-
-It's a file named `i18n.ts` exporting a const named `I18n` that must satisfy the `AppI18n` interface.
-
-```typescript
-import type { AppI18n } from 'libmodulor';
-
-export const I18n: AppI18n = {
-    en: {},
-};
-```
-
-It contains translations for the common things that can be translated in the app, following a strict pattern for each.
+As seen in [Create an app](./create-app), the translations present in `i18n` must follow a specific pattern.
 
 <Callout>
     You can leave translations empty and things will still work.
@@ -64,7 +10,7 @@ It contains translations for the common things that can be translated in the app
     Although it can work in some cases, it's not ideal in terms of UX.
 </Callout>
 
-### dt => data type
+## dt => data type
 
 You can translate the `options` (i.e. the possible values) of a specific data type.
 
@@ -83,9 +29,9 @@ fr: {
 }
 ```
 
-### err => errors
+## err => errors
 
-You can translate the errors thrown in your `lib` or `ucds`.
+You can translate specific errors thrown in `lib` or `ucds`.
 
 ```typescript
 en: {
@@ -96,7 +42,7 @@ fr: {
 }
 ```
 
-### uc => use case
+## uc => use case
 
 You can translate the various values associated to a use case.
 
@@ -135,7 +81,7 @@ fr: {
 },
 ```
 
-### ucif => use case input fields
+## ucif => use case input fields
 
 You can translate the various values associated to a use case input field.
 
@@ -150,7 +96,7 @@ fr: {
 },
 ```
 
-### ucof => use case output fields
+## ucof => use case output fields
 
 You can translate the various values associated to a use case output field.
 
@@ -165,9 +111,9 @@ fr: {
 },
 ```
 
-### validation
+## validation
 
-You can translate the validation messages.
+You can translate the validation messages of specific data types or custom validation rules.
 
 ```typescript
 en: {

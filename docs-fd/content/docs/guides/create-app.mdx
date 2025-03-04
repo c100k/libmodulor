@@ -1,0 +1,58 @@
+---
+title: Create an app
+---
+
+An app is a logical group of use cases.
+
+Its logical representation is a directory named `src/apps/{AppName}` that has the following structure :
+
+```sh
+📁 src
+    📁 dt # the custom data types
+    📁 lib # the utilities (types, interfaces, classes, functions, consts...) used across multiple use cases
+    📁 ucds # the use case definitions
+    📄 i18n.ts # the localized strings
+    📄 manifest.ts # the manifest describing the name, the languages available, the use cases, etc.
+📄 index.ts # barrel file exporting only what's consumed outside the app (typically i18n.ts, manifest.ts and some use case defs)
+```
+
+## manifest
+
+It's a file named `manifest.ts` exporting a const named `Manifest` that must satisfy the `AppManifest` interface.
+
+```typescript
+import type { AppManifest } from 'libmodulor';
+
+export const Manifest = {
+    languageCodes: ['en'],
+    name: 'Trading',
+    ucReg: {},
+} satisfies AppManifest;
+```
+
+The `languageCodes` property lists all the [country codes](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) that the app supports.
+Note that for any language listed here, `i18n` (see below), must contain the corresponding translation key.
+
+The `name` must be the same as the app directory name.
+
+`ucReg` stands for "use case registry". It lists all the use cases metadata of the app. Check out [Create a use case](./create-use-case) for more details.
+
+## i18n
+
+It's a file named `i18n.ts` exporting a const named `I18n` that must satisfy the `AppI18n` interface.
+
+```typescript
+import type { AppI18n } from 'libmodulor';
+
+export const I18n: AppI18n = {
+    en: {},
+};
+```
+
+It contains translations for the common things that can be translated in the app. Check out [Translate an app](./translate-app) for more details.
+
+<Callout>
+    You can leave translations empty and things will still work.
+    In this case, the library will `humanize` the fields.
+    Although it can work in some cases, it's not ideal in terms of UX.
+</Callout>
