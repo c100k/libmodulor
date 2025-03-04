@@ -83,6 +83,19 @@ fr: {
 }
 ```
 
+### err => errors
+
+You can translate the errors thrown in your `lib` or `ucds`.
+
+```typescript
+en: {
+    err_account_disabled: 'Your account has been disabled',
+},
+fr: {
+    err_account_disabled: 'Votre compte a été désactivé',
+}
+```
+
 ### uc => use case
 
 You can translate the various values associated to a use case.
@@ -150,4 +163,17 @@ fr: {
     ucof_balance_desc: "Solde du compte calculé à partir des opérations",
     ucof_balance_label: "Solde",
 },
+```
+
+### validation
+
+You can translate the validation messages.
+
+```typescript
+en: {
+    validation_format_ZipCode: 'Must be a valid zipcode with 5 digits',
+},
+fr: {
+    validation_format_ZipCode: 'Doit être un code postal valide à 5 chiffres',
+}
 ```
