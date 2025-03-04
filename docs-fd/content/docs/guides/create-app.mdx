@@ -7,13 +7,28 @@ Its logical representation is a directory named `src/apps/{AppName}` that has th
 
 ```sh
 📁 src
-    📁 dt # custom data types
-    📁 lib # types, interfaces, classes, functions, consts... used across multiple use cases
-    📁 ucds # the use case definitions
+    📁 dt
+    📁 lib
+    📁 ucds
     📄 i18n.ts
     📄 manifest.ts
+📁 test
 📄 index.ts
 ```
+
+## dt
+
+This folder contains the custom data types of the app. Check [Create a data type](./create-data-type) for more details.
+
+## lib
+
+This folder contains types, interfaces, classes, functions, consts... used across multiple use cases.
+
+These are typically related to the purpose of the app. Typically, an app that sends stuff would have a `Sender` interface with some implementations.
+
+## ucds
+
+This folder contains the use case definitions of the app. Check [Create a use case](./create-use-case) for more details.
 
 ## manifest
 
@@ -60,10 +75,13 @@ It contains translations for the common things that can be translated in the app
 
 It's a barrel file exporting only what's consumed outside the app (typically `i18n`, `manifest` and some use case defs).
 
-
 ```typescript
 // Expose only what's necessary
 
 export { I18n } from './src/i18n.js';
 export { Manifest } from './src/manifest.js';
 ```
+
+## test
+
+Check [Test an app](./test-app) for more details.
