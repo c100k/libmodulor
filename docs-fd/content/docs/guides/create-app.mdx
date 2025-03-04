@@ -7,12 +7,12 @@ Its logical representation is a directory named `src/apps/{AppName}` that has th
 
 ```sh
 📁 src
-    📁 dt # the custom data types
-    📁 lib # the utilities (types, interfaces, classes, functions, consts...) used across multiple use cases
+    📁 dt # custom data types
+    📁 lib # types, interfaces, classes, functions, consts... used across multiple use cases
     📁 ucds # the use case definitions
-    📄 i18n.ts # the localized strings
-    📄 manifest.ts # the manifest describing the name, the languages available, the use cases, etc.
-📄 index.ts # barrel file exporting only what's consumed outside the app (typically i18n.ts, manifest.ts and some use case defs)
+    📄 i18n.ts
+    📄 manifest.ts
+📄 index.ts
 ```
 
 ## manifest
@@ -55,3 +55,15 @@ It contains translations for the common things that can be translated in the app
     In this case, the library will `humanize` the fields.
     Although it can work in some cases, it's not ideal in terms of UX.
 </Callout>
+
+## index
+
+It's a barrel file exporting only what's consumed outside the app (typically `i18n`, `manifest` and some use case defs).
+
+
+```typescript
+// Expose only what's necessary
+
+export { I18n } from './src/i18n.js';
+export { Manifest } from './src/manifest.js';
+```
