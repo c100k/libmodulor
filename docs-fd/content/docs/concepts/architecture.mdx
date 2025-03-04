@@ -12,19 +12,34 @@ Semantically,
 - a `Target` is installed/deployed somewhere
 
 ```mermaid
-block-beta
-    Target1:2
-    Target2:2
-    Target3:2
-    columns 6
-    Product1:6
-    App1:3
-    App2:3
-    UseCase1
-    UseCase2
-    UseCase3
-    UseCase4
-    UseCase6
+graph TD;
+subgraph AA [Targets]
+  AA1[Target 1];
+  AA2[Target 2];
+  AA3[Target 3];
+end
+subgraph BB [Products]
+  BB1[Product 1];
+end
+subgraph CC [Apps]
+  CC1[App 1]
+  CC2[App 2]
+end
+subgraph DD1 [Use Cases]
+  DD11[UseCase 1]
+  DD12[UseCase 2]
+  DD13[UseCase 3]
+end
+subgraph DD2 [Use Cases]
+  DD21[UseCase 4]
+  DD22[UseCase 5]
+  DD23[UseCase 6]
+end
+AA --> BB;
+BB --> CC1;
+BB --> CC2;
+CC1 --> DD1;
+CC2 --> DD2;
 ```
 
 ### UseCase
