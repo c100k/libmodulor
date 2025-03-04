@@ -5,7 +5,11 @@ import type { ReactNode } from 'react';
 
 export default function Layout({ children }: { children: ReactNode }) {
     return (
-        <DocsLayout tree={source.pageTree} {...baseOptions}>
+        <DocsLayout
+            sidebar={{ defaultOpenLevel: Number.POSITIVE_INFINITY }}
+            tree={source.pageTree}
+            {...baseOptions}
+        >
             {children}
         </DocsLayout>
     );
