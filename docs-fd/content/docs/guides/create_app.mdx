@@ -1,3 +1,153 @@
 ---
 title: Create an app
 ---
+
+An app is a logical group of use cases.
+
+Its logical representation is a directory named `src/apps/{AppName}` that has the following structure :
+
+```sh
+📁 src
+    📁 dt # the custom data types
+    📁 lib # the utilities (types, interfaces, classes, functions, consts...) used across multiple use cases
+    📁 ucds # the use case definitions
+    📄 i18n.ts # the localized strings
+    📄 manifest.ts # the manifest describing the name, the languages available, the use cases, etc.
+📄 index.ts # barrel file exporting only what's consumed outside the app (typically i18n.ts, manifest.ts and some use case defs)
+```
+
+# manifest
+
+It's a file named `manifest.ts` exporting a const named `Manifest` that must satisfy the `AppManifest` interface.
+
+```typescript
+import type { AppManifest } from 'libmodulor';
+
+export const Manifest = {
+    languageCodes: ['en'],
+    name: 'Trading',
+    ucReg: {},
+} satisfies AppManifest;
+```
+
+### langs
+
+List all the languages you want to support in your app. For every language listed here, `i18n` must contain the appropriate translations.
+
+### name
+
+It must be the same as the app directory name.
+
+### use case registry
+
+`ucReg` stands for "use case registry". It lists all the use cases metadata of the app.
+
+Check out the use case guide for more details.
+
+## i18n
+
+It's a file named `i18n.ts` exporting a const named `I18n` that must satisfy the `AppI18n` interface.
+
+```typescript
+import type { AppI18n } from 'libmodulor';
+
+export const I18n: AppI18n = {
+    en: {},
+};
+```
+
+It contains translations for the common things that can be translated in the app, following a strict pattern for each.
+
+<Callout>
+    You can leave translations empty and things will still work.
+    In this case, the library will `humanize` the fields.
+    Although it can work in some cases, it's not ideal in terms of UX.
+</Callout>
+
+### dt => data type
+
+You can translate the `options` (i.e. the possible values) of a specific data type.
+
+```typescript
+en: {
+    dt_TYesNo_no_desc: 'No',
+    dt_TYesNo_no_label: 'You disagree',
+    dt_TYesNo_yes_desc: 'Yes',
+    dt_TYesNo_yes_label: 'You agree',
+},
+fr: {
+    dt_TYesNo_no_desc: 'Non',
+    dt_TYesNo_no_label: "Pas d'accord !",
+    dt_TYesNo_yes_desc: 'Oui',
+    dt_TYesNo_yes_label: "Je suis d'accord !",
+}
+```
+
+### uc => use case
+
+You can translate the various values associated to a use case.
+
+```typescript
+en: {
+    uc_DeleteAccount_client_confirm_cancel: "I'm staying",
+    uc_DeleteAccount_client_confirm_confirm: "I'm out",
+    uc_DeleteAccount_client_confirm_message: "You won't be able to recover your account",
+    uc_DeleteAccount_client_confirm_title: "Delete your account?",
+    uc_ListIssues_op_0_empty: '',
+    uc_ListIssues_op_0_label: 'Issues summary',
+    uc_ListIssues_op_1_empty: 'No issues',
+    uc_ListIssues_op_1_label: 'Issues',
+    uc_SignUp_desc: "Sign up",
+    uc_SignUp_label: "Create my account now",
+    uc_SignUp_i_submit_changing: 'Initializing',
+    uc_SignUp_i_submit_idle: 'Sign up',
+    uc_SignUp_i_submit_initializing: 'Initializing',
+    uc_SignUp_i_submit_submitting: 'Signing up',
+},
+fr: {
+    uc_DeleteAccount_client_confirm_cancel: "Je reste",
+    uc_DeleteAccount_client_confirm_confirm: "Je m'en vais",
+    uc_DeleteAccount_client_confirm_message: "Cette opération est irréversible",
+    uc_DeleteAccount_client_confirm_title: "Supprimer votre compte ?",
+    uc_ListIssues_op_0_empty: '',
+    uc_ListIssues_op_0_label: "Résumé des problèmes",
+    uc_ListIssues_op_1_empty: 'Aucun problème',
+    uc_ListIssues_op_1_label: 'Problèmes',
+    uc_SignUp_desc: "S'inscrire",
+    uc_SignUp_label: "Créer mon compte maintenant",
+    uc_SignUp_i_submit_changing: 'Initialisation',
+    uc_SignUp_i_submit_idle: "S'inscrire",
+    uc_SignUp_i_submit_initializing: 'Initialisation',
+    uc_SignUp_i_submit_submitting: 'Inscription',
+},
+```
+
+### ucif => use case input fields
+
+You can translate the various values associated to a use case input field.
+
+```typescript
+en: {
+    ucif_email_desc: "Your professional email address",
+    ucif_email_label: "Email address",
+},
+fr: {
+    ucif_email_desc: "Votre adresse email professionnelle",
+    ucif_email_label: "Adresse email",
+},
+```
+
+### ucof => use case output fields
+
+You can translate the various values associated to a use case output field.
+
+```typescript
+en: {
+    ucof_balance_desc: "Account balance computed from transactions",
+    ucof_balance_label: "Balance",
+},
+fr: {
+    ucof_balance_desc: "Solde du compte calculé à partir des opérations",
+    ucof_balance_label: "Solde",
+},
+```
