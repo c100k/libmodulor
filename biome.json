@@ -1,7 +1,13 @@
 {
     "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
     "files": {
-        "ignore": ["dist", "examples", "node_modules"],
+        "ignore": [
+            "docs-fd/.source",
+            "docs-fd/node_modules",
+            "dist",
+            "examples",
+            "node_modules"
+        ],
         "ignoreUnknown": true
     },
     "formatter": {
