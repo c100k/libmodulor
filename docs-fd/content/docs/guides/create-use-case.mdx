@@ -17,11 +17,11 @@ The first thing to do to define a use case is to add its metadata in the app's `
 
 ```typescript title="manifest.ts"
     ucReg: {
-        SignIn: {
+        BuyAsset: {
             action: 'Create',
             beta: true, // Optional
-            icon: 'user',
-            name: 'SignIn',
+            icon: 'plus',
+            name: 'BuyAsset',
             new: true, // Optional
             sensitive: true, // Optional
         },
@@ -55,10 +55,10 @@ A use case can define 0 or 1 input and 0, 1 or 2 output part items (OPI). Based 
 
 ```typescript
 UCDef // 0 input, 0 OPI
-UCDef<SignInInput> // 1 input, 0 OPI
-UCDef<SignInInput, SignInOPI0> // 1 input, 1 OPI
-UCDef<undefined, SignInOPI0> // 0 input, 1 OPI
-UCDef<SignInInput, SignInOPI0, SignInOPI1> // 1 input, 2 OPIs
+UCDef<BuyAssetInput> // 1 input, 0 OPI
+UCDef<BuyAssetInput, BuyAssetOPI0> // 1 input, 1 OPI
+UCDef<undefined, BuyAssetOPI0> // 0 input, 1 OPI
+UCDef<BuyAssetInput, BuyAssetOPI0, BuyAssetOPI1> // 1 input, 2 OPIs
 ```
 
 #### I => input
@@ -66,9 +66,10 @@ UCDef<SignInInput, SignInOPI0, SignInOPI1> // 1 input, 2 OPIs
 It is an interface that must extend the `UCInput` interface directly or indirectly.
 
 ```typescript
-export interface SignInInput extends UCInput {
-    email: UCInputFieldValue<Email>;
-    password: UCInputFieldValue<Password>;
+export interface BuyAssetInput extends UCInput {
+    isin: UCInputFieldValue<ISIN>;
+    limit: UCInputFieldValue<Amount>;
+    qty: UCInputFieldValue<UIntQuantity>;
 }
 ```
 
@@ -79,11 +80,14 @@ The same fields must be declared in `UCDef.io.i.fields`.
 
 ```typescript
 fields: {
-    email: {
-        type: new TEmail(),
+    isin: {
+        type: new TISIN(),
     },
-    password: {
-        type: new TPassword({ minLength: 30 }),
+    limit: {
+        type: new TAmount('USD'),
+    },
+    qty: {
+        type: new TUIntQuantity(),
     },
 },
 ```
@@ -95,8 +99,8 @@ This definition might seem redundant but it offers more expressiveness to define
 It is an interface that must extend the `UCOPIBase` interface directly or indirectly.
 
 ```typescript
-export interface SignInOPI0 extends UCOPIBase {
-    jwt: UCOPIValue<JWT>;
+export interface BuyAssetOPI0 extends UCOPIBase {
+    executedDirectly: UCOPIVal<boolean>;
 }
 ```
 
@@ -104,8 +108,8 @@ The same fields must be declared in `UCDef.io.o.parts._0`.
 
 ```typescript
 fields: {
-    jwt: {
-        type: new TJWT(),
+    executedDirectly: {
+        type: new TBoolean(),
     },
 },
 ```
@@ -120,7 +124,7 @@ It is an object that satisfies the `UCClientDef<I, OPI0, OPI1>` interface.
 
 ```typescript
 client: {
-    main: SignInClientMain,
+    main: BuyAssetClientMain,
     policy: EverybodyUCPolicy,
 },
 ```
@@ -131,7 +135,7 @@ This class can be defined just above the `UCDef` like the following :
 
 ```typescript
 @injectable()
-class SignInClientMain implements UCMain<SignInInput, SignInOPI0> {
+class BuyAssetClientMain implements UCMain<BuyAssetInput, BuyAssetOPI0> {
     constructor(
         @inject('UCTransporter')
         private ucTransporter: UCTransporter,
@@ -139,8 +143,8 @@ class SignInClientMain implements UCMain<SignInInput, SignInOPI0> {
 
     public async exec({
         uc,
-    }: UCMainInput<SignInInput, SignInOPI0>): Promise<
-        UCOutputOrNothing<SignInOPI0>
+    }: UCMainInput<BuyAssetInput, BuyAssetOPI0>): Promise<
+        UCOutputOrNothing<BuyAssetOPI0>
     > {
         return this.ucTransporter.send(uc);
     }
@@ -160,15 +164,47 @@ It is an object that satisfies the `UCServerDef<I, OPI0, OPI1>` interface.
 ```typescript
 server: {
     execMode: UCExecMode.USER, // Optional
-    init: SignInServerInit, // Optional
-    main: SignInClientMain,
+    init: BuyAssetServerInit, // Optional
+    main: BuyAssetServerMain,
     policy: EverybodyUCPolicy,
 },
 ```
 
 The `main` property references a class that implements the `UCMain<I, OPI0, OPI1>` interface.
 
-This class can be defined the exact same way as the `client` above. Except that this time, it will be executed on the server.
+This class must be defined in a dedicated file `src/apps/{AppName}/src/ucds/{UCName}ServerMain.ts` like the following :
+
+```typescript
+@injectable()
+export class BuyAssetServerMain implements UCMain<BuyAssetInput, BuyAssetOPI0> {
+    constructor(@inject('UCManager') private ucManager: UCManager) {}
+
+    public async exec({
+        uc,
+    }: UCMainInput<BuyAssetInput, BuyAssetOPI0>): Promise<
+        UCOutput<BuyAssetOPI0>
+    > {
+        // >=> Persist the order
+        const { aggregateId } = await this.ucManager.persist(uc);
+
+        // >=> TODO : Check the user has enough funds to place the order
+
+        // >=> TODO : Send the order to a queue for processing
+        const executedDirectly: BuyAssetOPI0['executedDirectly'] = false;
+
+        return new UCOutputBuilder<BuyAssetOPI0>()
+            .add({
+                executedDirectly,
+                id: aggregateId,
+            })
+            .get();
+    }
+}
+```
+
+<Callout>
+    Using a comment starting with `// >=> ` in `ClientMain` and `ServerMain` has a specific meaning as we'll see in [Test the app](./test-app).
+</Callout>
 
 The `init` property references a class that implements the `UCInit` interface.
 It allows you to setup stuff when the use case is mounted (e.g. creating some caches or data stores when mounting the use case on a server target).
@@ -183,7 +219,79 @@ As seen above, the metadata is declared in the app manifest.
 In the UCD, you simply need to reference this declaration.
 
 ```typescript
-metadata: Manifest.ucReg.SignIn,
+metadata: Manifest.ucReg.BuyAsset,
+```
+
+## Full definition
+
+All in all, a typical use case definition looks like this :
+
+```typescript title="BuyAssetUCD.ts"
+export interface BuyAssetInput extends UCInput {
+    isin: UCInputFieldValue<ISIN>;
+    limit: UCInputFieldValue<Amount>;
+    qty: UCInputFieldValue<UIntQuantity>;
+}
+
+export interface BuyAssetOPI0 extends AggregateOPI0 {
+    executedDirectly: boolean;
+}
+
+@injectable()
+class BuyAssetClientMain implements UCMain<BuyAssetInput, BuyAssetOPI0> {
+    constructor(
+        @inject('UCTransporter')
+        private ucTransporter: UCTransporter,
+    ) {}
+
+    public async exec({
+        uc,
+    }: UCMainInput<BuyAssetInput, BuyAssetOPI0>): Promise<
+        UCOutputOrNothing<BuyAssetOPI0>
+    > {
+        return this.ucTransporter.send(uc);
+    }
+}
+
+export const BuyAssetUCD: UCDef<BuyAssetInput, BuyAssetOPI0> = {
+    io: {
+        i: {
+            fields: {
+                isin: {
+                    type: new TISIN(),
+                },
+                limit: {
+                    type: new TAmount('USD'),
+                },
+                qty: {
+                    type: new TUIntQuantity(),
+                },
+            },
+        },
+        o: {
+            parts: {
+                _0: {
+                    fields: {
+                        executedDirectly: {
+                            type: new TBoolean(),
+                        },
+                    },
+                },
+            },
+        },
+    },
+    lifecycle: {
+        client: {
+            main: BuyAssetClientMain,
+            policy: EverybodyUCPolicy,
+        },
+        server: {
+            main: BuyAssetServerMain,
+            policy: EverybodyUCPolicy,
+        },
+    },
+    metadata: Manifest.ucReg.BuyAsset,
+};
 ```
 
 ## Advanced
