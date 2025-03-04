@@ -234,7 +234,7 @@ export interface BuyAssetInput extends UCInput {
 }
 
 export interface BuyAssetOPI0 extends AggregateOPI0 {
-    executedDirectly: boolean;
+    executedDirectly: UCOPIVal<boolean>;
 }
 
 @injectable()
