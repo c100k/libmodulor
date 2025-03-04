@@ -6,7 +6,17 @@
     "author": "Chafik H'nini <chafik.hnini@gmail.com>",
     "homepage": "https://github.com/c100k/libmodulor#readme",
     "bugs": "https://github.com/c100k/libmodulor/issues",
-    "keywords": ["library", "typescript", "business application", "use case", "app", "product", "target", "auto-test", "auto-documentation"],
+    "keywords": [
+        "library",
+        "typescript",
+        "business application",
+        "use case",
+        "app",
+        "product",
+        "target",
+        "auto-test",
+        "auto-documentation"
+    ],
     "type": "module",
     "module": "./dist/esm/index.js",
     "exports": {
@@ -54,6 +64,13 @@
         }
     },
     "bin": "./dist/esm/products/Helper/index.js",
+    "scripts": {
+        "lint": "biome check --write .",
+        "lint:ci": "biome check"
+    },
+    "devDependencies": {
+        "@biomejs/biome": "^1.9.4"
+    },
     "peerDependencies": {
         "@hono/node-server": "^1.13.8",
         "@modelcontextprotocol/sdk": "^1.6.1",

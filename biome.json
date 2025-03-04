@@ -1,0 +1,19 @@
+{
+    "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
+    "files": {
+        "ignore": ["dist", "examples", "node_modules"],
+        "ignoreUnknown": true
+    },
+    "formatter": {
+        "indentStyle": "space",
+        "indentWidth": 4
+    },
+    "javascript": {
+        "formatter": {
+            "quoteStyle": "single"
+        },
+        "parser": {
+            "unsafeParameterDecoratorsEnabled": true
+        }
+    }
+}
