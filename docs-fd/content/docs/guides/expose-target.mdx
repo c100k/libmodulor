@@ -1,0 +1,235 @@
+---
+title: Expose a target
+description: A target exposes a product on a specific platform, runtime, environment.
+---
+
+Its logical representation is a directory named `src/products/{ProductName}/{targetname}` that has the following structure :
+
+```sh
+📄 container.ts
+📄 index.ts(x)
+📄 settings.ts
+```
+
+## container
+
+`libmodulor` relies on `inversify` to handle dependency injection.
+
+Each target provides a `container` binding everything necessary for the apps to work.
+
+A very basic `container` that works on all platforms looks like this.
+
+```typescript title="container.ts"
+const container = new Container(CONTAINER_OPTS);
+
+bindCommon(container, settings);
+bindProduct(container, Manifest, I18n);
+
+export default container;
+```
+
+Based on the targets, additional bindings need to be performed in order to make things work.
+
+<Callout>
+    The order in which you define the bindings is very important.
+</Callout>
+
+### bindNodeCLI
+
+[bindNodeCLI](https://github.com/c100k/libmodulor/blob/master/dist/esm/utils/ioc/bindNodeCLI.js)
+binds all the standard interfaces used internally by `libmodulor` to Node.js implementations.
+To be used in any target running on Node.js exposing a `cli`.
+
+```typescript title="container.ts"
+bindCommon(container, settings);
+bindNodeCLI(container); // [!code ++]
+```
+
+### bindNodeCore
+
+[bindNodeCore](https://github.com/c100k/libmodulor/blob/master/dist/esm/utils/ioc/bindNodeCore.js)
+binds all the standard interfaces used internally by `libmodulor` to Node.js implementations.
+To be used in any target running on Node.js (e.g. `server`, `cli`, `mcp-server`, etc.).
+
+```typescript title="container.ts"
+bindCommon(container, settings);
+bindNodeCore(container); // [!code ++]
+```
+
+### bindRN
+
+[bindRN](https://github.com/c100k/libmodulor/blob/master/dist/esm/utils/ioc/bindRN.js)
+binds all the standard interfaces used internally by `libmodulor` to React Native implementations.
+To be used in any target running on React Native.
+
+```typescript title="container.ts"
+bindCommon(container, settings);
+bindRN(container); // [!code ++]
+```
+
+### bindServer
+
+[bindServer](https://github.com/c100k/libmodulor/blob/master/dist/esm/utils/ioc/bindServer.js)
+binds all the standard interfaces used internally by `libmodulor` `NodeExpressServerManager` to basic implementations.
+
+```typescript title="container.ts"
+bindCommon(container, settings);
+bindServer(container); // [!code ++]
+```
+
+### bindWeb
+
+[bindWeb](https://github.com/c100k/libmodulor/blob/master/dist/esm/utils/ioc/bindWeb.js)
+binds all the standard interfaces used internally by `libmodulor` Web implementations.
+
+```typescript title="container.ts"
+bindCommon(container, settings);
+bindWeb(container); // [!code ++]
+```
+
+### custom
+
+If you're writing a complete product with `libmodulor`, there are great chances you need to bind your own implementations.
+
+As an example, let's say you are writing a product that allow people to call a LLM.
+
+Typically, in your app you would have a `LLMManager` interface.
+
+Internally, you would have multiple implementations : `OpenAILLMManager`, `MistralAILLMManager`, etc.
+
+In the `container` you would declare it this way.
+
+```typescript title="container.ts"
+container.bind<LLMManager>('LLMManager').to(MistralAILLMManager);
+```
+
+You can also override the bindings done previously by using `rebind`.
+
+```typescript title="container.ts"
+container.rebind<SettingsManager>('SettingsManager').to(MyOwnVerySpecificSettingsManager);
+```
+
+## index
+
+It represents the enrypoint of the target. This file is very specific to what the target is.
+
+Here are some examples.
+
+```typescript title="server/index.ts"
+import container from './container.js';
+
+await container.get<I18nManager>('I18nManager').init();
+await container.resolve(ServerBooter).exec();
+```
+
+```tsx title="web-react/index.tsx"
+import App from './components/App.js';
+import container from './container.js';
+
+ReactDOM.createRoot(rootElt).render(
+    <StrictMode>
+        <DIContextProvider container={container}>
+            <App />
+        </DIContextProvider>
+    </StrictMode>,
+);
+```
+
+```typescript title="cli/index.ts"
+import container from './container.js';
+
+await container.get<I18nManager>('I18nManager').init();
+await container.resolve(NodeCoreCLIManager).exec();
+```
+
+```typescript title="mcp-server/index.ts"
+import container from './container.js';
+
+await container.get<I18nManager>('I18nManager').init();
+await container.resolve(MCPServerBooter).exec({});
+```
+
+```tsx title="rn/index.tsx"
+import App from './components/App.js';
+import container from './container.js';
+
+function Index(): ReactElement {
+    return (
+        <SafeAreaView>
+            <DIContextProvider container={container}>
+                <App />
+            </DIContextProvider>
+        </SafeAreaView>
+    );
+}
+
+registerRootComponent(Index);
+```
+
+How to "invoke" this entrypoint depends on a lot of parameters we don't cover here.
+As a reminder, `libmodulor` does not make any assumptions on the technical side.
+Therefore, you can start your `server` with `node`, `deno` or `bun`, etc.
+You can bundle your `web` with `webpack` or `vite`, etc.
+You can start your `rn` app with `react-native-cli`, `expo`, `re.pack`, etc.
+
+### settings
+
+In `libmodulor` settings are modular.
+Anything that needs settings, provides an interface that extends `Settings`.
+Here is an example.
+
+```typescript title="OpenAILLMManager.ts"
+export interface OpenAILLMManagerSettings extends Settings {
+    oai_api_key: ApiKey;
+}
+
+type S = OpenAILLMManagerSettings;
+```
+
+A product needs to compose all the settings required by all the elements it embeds.
+Typically, a product setting looks like this.
+
+```typescript title="server/settings.ts"
+export type S = LoggerLevel & OpenAILLMManagerSettings & ServerManagerSettings; // & ...
+
+export const settings: SettingsFunc<S> = (_common) => ({
+    ...TARGET_DEFAULT_SERVER_MANAGER_SETTINGS,
+    logger_level: 'debug',
+    oai_api_key: 'MyAPIKey',
+});
+```
+
+Hardcoding and committing to SCM regular settings like `logger_level` is fine.
+But it's not for sensitive settings like `oai_api_key`.
+Instead, this value needs to come from the environment.
+
+To handle this case, override the `SettingsManager` binding.
+
+```typescript title="container.ts"
+container.rebind<SettingsManager>('SettingsManager').to(EnvSettingsManager);
+```
+
+Change the value of the `oai_api_key` setting.
+
+```typescript title="server/settings.ts"
+    oai_api_key: 'MyAPIKey', // [!code --]
+    oai_api_key: SettingsManagerMandatoryPlaceholder, // [!code ++]
+```
+
+Introduce a `.env` file and add it to `.gitignore`.
+
+```properties title="server/.env"
+app_oai_api_key=MySuperSecretAPIKey
+```
+
+Finally, when you start your server, provide this env file.
+
+```sh
+node --env-file .env index.ts
+```
+
+This is just an example.
+As an alternative, you can also provide an implementation named `VaultSettingsManager` that implements `SettingsManager`.
+This implementation fetches the secrets from [Vault by Hashicorp](https://www.vaultproject.io) instead.
+
+Again, `libmodulor` provides basics, but you can extend it however your want.
