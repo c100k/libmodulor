@@ -44,12 +44,12 @@ export const Manifest = {
 } satisfies AppManifest;
 ```
 
-The `languageCodes` property lists all the [country codes](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) that the app supports.
-Note that for any language listed here, `i18n` (see below), must contain the corresponding translation key.
+`languageCodes` lists all the [country codes](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) that the app supports.
+For any language listed here, `i18n` (see below), must contain the corresponding entry.
 
-The `name` must be the same as the app directory name.
+`name` must be the same as the app directory name.
 
-`ucReg` stands for "use case registry". It lists all the use cases metadata of the app. Check out [Create a use case](./create-use-case) for more details.
+`ucReg` stands for "use case registry". It lists all the use cases of the app. Check out [Create a use case](./create-use-case) for more details.
 
 ## i18n
 
