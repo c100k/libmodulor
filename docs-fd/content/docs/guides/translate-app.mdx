@@ -1,0 +1,125 @@
+---
+title: Translate an app
+---
+
+As seen in [Create an app](./create-app), the translations present in `i18n` must follow a specific pattern.
+
+<Callout>
+    You can leave translations empty and things will still work.
+    In this case, the library will `humanize` the fields.
+    Although it can work in some cases, it's not ideal in terms of UX.
+</Callout>
+
+## dt => data type
+
+You can translate the `options` (i.e. the possible values) of a specific data type.
+
+```typescript
+en: {
+    dt_TYesNo_no_desc: 'No',
+    dt_TYesNo_no_label: 'You disagree',
+    dt_TYesNo_yes_desc: 'Yes',
+    dt_TYesNo_yes_label: 'You agree',
+},
+fr: {
+    dt_TYesNo_no_desc: 'Non',
+    dt_TYesNo_no_label: "Pas d'accord !",
+    dt_TYesNo_yes_desc: 'Oui',
+    dt_TYesNo_yes_label: "Je suis d'accord !",
+}
+```
+
+## err => errors
+
+You can translate specific errors thrown in `lib` or `ucds`.
+
+```typescript
+en: {
+    err_account_disabled: 'Your account has been disabled',
+},
+fr: {
+    err_account_disabled: 'Votre compte a été désactivé',
+}
+```
+
+## uc => use case
+
+You can translate the various values associated to a use case.
+
+```typescript
+en: {
+    uc_DeleteAccount_client_confirm_cancel: "I'm staying",
+    uc_DeleteAccount_client_confirm_confirm: "I'm out",
+    uc_DeleteAccount_client_confirm_message: "You won't be able to recover your account",
+    uc_DeleteAccount_client_confirm_title: "Delete your account?",
+    uc_ListIssues_op_0_empty: '',
+    uc_ListIssues_op_0_label: 'Issues summary',
+    uc_ListIssues_op_1_empty: 'No issues',
+    uc_ListIssues_op_1_label: 'Issues',
+    uc_SignUp_desc: "Sign up",
+    uc_SignUp_label: "Create my account now",
+    uc_SignUp_i_submit_changing: 'Initializing',
+    uc_SignUp_i_submit_idle: 'Sign up',
+    uc_SignUp_i_submit_initializing: 'Initializing',
+    uc_SignUp_i_submit_submitting: 'Signing up',
+},
+fr: {
+    uc_DeleteAccount_client_confirm_cancel: "Je reste",
+    uc_DeleteAccount_client_confirm_confirm: "Je m'en vais",
+    uc_DeleteAccount_client_confirm_message: "Cette opération est irréversible",
+    uc_DeleteAccount_client_confirm_title: "Supprimer votre compte ?",
+    uc_ListIssues_op_0_empty: '',
+    uc_ListIssues_op_0_label: "Résumé des problèmes",
+    uc_ListIssues_op_1_empty: 'Aucun problème',
+    uc_ListIssues_op_1_label: 'Problèmes',
+    uc_SignUp_desc: "S'inscrire",
+    uc_SignUp_label: "Créer mon compte maintenant",
+    uc_SignUp_i_submit_changing: 'Initialisation',
+    uc_SignUp_i_submit_idle: "S'inscrire",
+    uc_SignUp_i_submit_initializing: 'Initialisation',
+    uc_SignUp_i_submit_submitting: 'Inscription',
+},
+```
+
+## ucif => use case input fields
+
+You can translate the various values associated to a use case input field.
+
+```typescript
+en: {
+    ucif_email_desc: "Your professional email address",
+    ucif_email_label: "Email address",
+},
+fr: {
+    ucif_email_desc: "Votre adresse email professionnelle",
+    ucif_email_label: "Adresse email",
+},
+```
+
+## ucof => use case output fields
+
+You can translate the various values associated to a use case output field.
+
+```typescript
+en: {
+    ucof_balance_desc: "Account balance computed from transactions",
+    ucof_balance_label: "Balance",
+},
+fr: {
+    ucof_balance_desc: "Solde du compte calculé à partir des opérations",
+    ucof_balance_label: "Solde",
+},
+```
+
+## validation
+
+You can translate the validation messages of specific data types or custom validation rules.
+
+```typescript
+en: {
+    validation_format_ZipCode: 'Must be a valid zipcode with 5 digits',
+},
+fr: {
+    validation_format_ZipCode: 'Doit être un code postal valide à 5 chiffres',
+}
+```
