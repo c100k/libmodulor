@@ -1,3 +1,44 @@
 ---
 title: Create a data type
+description: Use cases define input/output using specific data types.
 ---
+
+A data type is a class that represents a specific format with specific constraints.
+
+As an example, defining an [ISIN](https://www.isin.org) as a `string` is too approximative.
+Indeed, it has a specific length, format, etc.
+
+Thus the need to introduce specific data types in some apps.
+
+```typescript title="TISIN.ts"
+export type ISIN = Capitalize<string>;
+
+export class TISIN extends TString<ISIN, 'ISIN'> {
+    public static readonly FORMAT: RegExp = /^[A-Z]{2}[A-Z0-9]{9}[0-9]$/;
+
+    constructor(constraints?: TStringConstraints) {
+        super({
+            ...constraints,
+            format: { f: 'ISIN', regexp: TISIN.FORMAT },
+        });
+    }
+
+    public override tName(): TName {
+        return 'ISIN';
+    }
+
+    public override example(): ISIN {
+        return 'US02079K3059';
+    }
+}
+```
+
+It defines two things that need to be exported :
+
+- A type (e.g. `ISIN` that specifies the data type with a TypeScript type)
+- A class (e.g. `TISIN` that specifies how the data type behaves)
+
+`libmodulor` provides [a set of "primitive"](https://github.com/c100k/libmodulor/tree/master/dist/esm/dt/base) data types that you can extend.
+
+Note in the example above how we've defined a `format` for the ISIN, based on the spec.
+This provides the `validation_format_ISIN` translation key that you can use in [Translate an app](./translate-app).
