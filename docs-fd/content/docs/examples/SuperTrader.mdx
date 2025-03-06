@@ -3,7 +3,15 @@ title: SuperTrader
 description: A simple app to trade crypto, shares and other assets
 ---
 
-SuperTrader is a product featuring the `Trading` app with the `BuyAssetUCD` use case, exposed on `server`, `web`, `cli`, `mcp-server` and `rn` targets.
+SuperTrader is a product featuring the `Trading` app with the `BuyAssetUCD` use case, exposed on the following targets :
+
+<Cards>
+    <Card description="Buy assets via API calls" href="#server" title="server"  />
+    <Card description="Buy assets via a web UI" href="#web" title="web" />
+    <Card description="Buy assets via a CLI" href="#cli" title="cli" />
+    <Card description="Buy assets via an AI assistant" href="#mcp-server" title="mcp-server" />
+    <Card description="Buy assets via an Android & iOS app" href="#rn" title="rn" />
+</Cards>
 
 ## UseCase
 
@@ -123,9 +131,9 @@ yarn run:rn:ios
 
 ## Inspect UCDataStore
 
-If you have executed the use case via the targets defined above, the SQLite database has been filled.
+The `server` target rebinds the `UCDataStore` from in memory (default) to `KnexUCDataStore` configured for SQLite.
 
-Check its content with your favorite editor.
+Therefore, if you have executed the use case via the targets above, you can see the data in the DB file.
 
 ```sh
 open dist/products/SuperTrader/server/uc-data-store.sqlite
