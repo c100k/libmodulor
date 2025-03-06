@@ -80,34 +80,43 @@ It offers methods that can be overriden to achieve this goal.
 
 ### Auth setters
 
-TODO
+By default, each use case is tested for multiple auth settings (anonymous, authenticated, etc.).
+You can override this behavior by providing your own.
 
 ### Implementations
 
-TODO
+By default, the IoC `container` used, binds basic implementations. You can bind additional interfaces or rebind some of them.
 
 ### Clearing
 
+In case your use cases create some side effects that can impact others, you can clear the execution.
+
 ### Flows
 
-TODO
+Use cases are automatically tested in isolation. You can create flows to test a list of use cases one after the other to simulate a real user behavior.
+
+For instance, for an `Auth` app, you can test the following flow : `SignUp` > `SignIn` > `SignOut`.
 
 ### Input fillers
 
-TODO
+When testing, the use cases are filled data computed from the data types. You can add more inputs by overriding this.
 
 ### Options
 
-TODO
+Override the default options used by the test runner.
 
 ### Seed
 
-TODO
+Fill your data stores with basic data in case your use cases need them (e.g. some enum data in some data store).
 
 ### Side effects
 
-TODO
+For example, your use cases can send emails. These are considered side effects you can control here.
 
 ### Specific assertions
 
-TODO
+By default, the tests are asserted via snapshots. But sometimes, use cases return different data at each execution by nature (e.g. a timestamp).
+
+Although we recommended making the tests deterministic by using `Fake*` implementations, sometimes it's not possible or not acceptable.
+
+In this case, you can override the snapshot assertion by a specific one using the `hash` of the test execution to identify it.
