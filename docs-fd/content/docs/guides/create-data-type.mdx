@@ -17,7 +17,7 @@ Indeed, it has a specific length, format, etc.
 
 Thus the need to introduce specific data types in some apps.
 
-```typescript title="TISIN.ts"
+```typescript title="src/dt/TISIN.ts"
 export type ISIN = Capitalize<string>;
 
 export class TISIN extends TString<ISIN, 'ISIN'> {

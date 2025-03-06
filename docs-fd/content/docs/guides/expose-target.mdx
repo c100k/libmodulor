@@ -205,7 +205,7 @@ Instead, this value needs to come from the environment.
 
 To handle this case, override the `SettingsManager` binding.
 
-```typescript title="container.ts"
+```typescript title="server/container.ts"
 container.rebind<SettingsManager>('SettingsManager').to(EnvSettingsManager);
 ```
 

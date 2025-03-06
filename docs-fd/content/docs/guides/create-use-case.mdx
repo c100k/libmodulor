@@ -15,7 +15,7 @@ description: A use case is the smallest unit. It defines the contract, mainly as
 
 The first thing to do to define a use case is to add its metadata in the app's `manifest` as seen in [Create an app](./create-app).
 
-```typescript title="manifest.ts"
+```typescript title="src/manifest.ts"
     ucReg: {
         BuyAsset: {
             action: 'Create',
@@ -65,7 +65,7 @@ UCDef<BuyAssetInput, BuyAssetOPI0, BuyAssetOPI1> // 1 input, 2 OPIs
 
 It is an interface that must extend the `UCInput` interface directly or indirectly.
 
-```typescript
+```typescript title="src/BuyAssetUCD.ts"
 export interface BuyAssetInput extends UCInput {
     isin: UCInputFieldValue<ISIN>;
     limit: UCInputFieldValue<Amount>;
@@ -78,7 +78,7 @@ You can use one of the [existing data types](../references/data-types) or [creat
 
 The same fields must be declared in `UCDef.io.i.fields`.
 
-```typescript
+```typescript title="src/BuyAssetUCD.ts"
 fields: {
     isin: {
         type: new TISIN(),
@@ -98,7 +98,7 @@ This definition might seem redundant but it offers more expressiveness to define
 
 It is an interface that must extend the `UCOPIBase` interface directly or indirectly.
 
-```typescript
+```typescript title="src/BuyAssetUCD.ts"
 export interface BuyAssetOPI0 extends UCOPIBase {
     executedDirectly: UCOPIVal<boolean>;
 }
@@ -106,7 +106,7 @@ export interface BuyAssetOPI0 extends UCOPIBase {
 
 The same fields must be declared in `UCDef.io.o.parts._0`.
 
-```typescript
+```typescript title="src/BuyAssetUCD.ts"
 fields: {
     executedDirectly: {
         type: new TBoolean(),
@@ -122,7 +122,7 @@ A use case can define a `client` and/or a `server` lifecycle.
 
 It is an object that satisfies the `UCClientDef<I, OPI0, OPI1>` interface.
 
-```typescript
+```typescript title="src/BuyAssetUCD.ts"
 client: {
     main: BuyAssetClientMain,
     policy: EverybodyUCPolicy,
@@ -133,7 +133,7 @@ The `main` property references a class that implements the `UCMain<I, OPI0, OPI1
 
 This class can be defined just above the `UCDef` like the following :
 
-```typescript
+```typescript title="src/BuyAssetUCD.ts"
 @injectable()
 class BuyAssetClientMain implements UCMain<BuyAssetInput, BuyAssetOPI0> {
     constructor(
@@ -161,7 +161,7 @@ You can use one of the [existing policies](../references/policies) or [create a 
 
 It is an object that satisfies the `UCServerDef<I, OPI0, OPI1>` interface.
 
-```typescript
+```typescript title="src/BuyAssetUCD.ts"
 server: {
     execMode: UCExecMode.USER, // Optional
     init: BuyAssetServerInit, // Optional
@@ -174,7 +174,7 @@ The `main` property references a class that implements the `UCMain<I, OPI0, OPI1
 
 This class must be defined in a dedicated file `src/apps/{AppName}/src/ucds/{UCName}ServerMain.ts` like the following :
 
-```typescript
+```typescript title="src/BuyAssetServerMain.ts"
 @injectable()
 export class BuyAssetServerMain implements UCMain<BuyAssetInput, BuyAssetOPI0> {
     constructor(@inject('UCManager') private ucManager: UCManager) {}
@@ -218,7 +218,7 @@ As seen above, the metadata is declared in the app manifest.
 
 In the UCD, you simply need to reference this declaration.
 
-```typescript
+```typescript title="src/BuyAssetUCD.ts"
 metadata: Manifest.ucReg.BuyAsset,
 ```
 

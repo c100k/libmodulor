@@ -9,7 +9,7 @@ description: libmodulor provides a full mechanism to automatically test the use 
 
 By default, no tests are executed for an app. First, create a file named `src/apps/{AppName}/test/Configurator.ts`.
 
-```typescript
+```typescript title="test/Configurator.ts"
 @injectable()
 export class Configurator extends SimpleAppTesterConfigurator {}
 ```

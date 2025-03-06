@@ -14,7 +14,7 @@ As seen in [Create an app](./create-app), the translations present in `i18n` mus
 
 You can translate the `options` (i.e. the possible values) of a specific data type.
 
-```typescript
+```typescript title="src/i18n.ts"
 en: {
     dt_TYesNo_no_desc: 'No',
     dt_TYesNo_no_label: 'You disagree',
@@ -33,7 +33,7 @@ fr: {
 
 You can translate specific errors thrown in `lib` or `ucds`.
 
-```typescript
+```typescript title="src/i18n.ts"
 en: {
     err_account_disabled: 'Your account has been disabled',
 },
@@ -46,7 +46,7 @@ fr: {
 
 You can translate the various values associated to a use case.
 
-```typescript
+```typescript title="src/i18n.ts"
 en: {
     uc_DeleteAccount_client_confirm_cancel: "I'm staying",
     uc_DeleteAccount_client_confirm_confirm: "I'm out",
@@ -85,7 +85,7 @@ fr: {
 
 You can translate the various values associated to a use case input field.
 
-```typescript
+```typescript title="src/i18n.ts"
 en: {
     ucif_email_desc: "Your professional email address",
     ucif_email_label: "Email address",
@@ -100,7 +100,7 @@ fr: {
 
 You can translate the various values associated to a use case output field.
 
-```typescript
+```typescript title="src/i18n.ts"
 en: {
     ucof_balance_desc: "Account balance computed from transactions",
     ucof_balance_label: "Balance",
@@ -115,7 +115,7 @@ fr: {
 
 You can translate the validation messages of specific data types or custom validation rules.
 
-```typescript
+```typescript title="src/i18n.ts"
 en: {
     validation_format_ZipCode: 'Must be a valid zipcode with 5 digits',
 },

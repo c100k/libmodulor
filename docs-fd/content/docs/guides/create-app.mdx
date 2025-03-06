@@ -9,6 +9,7 @@ Its logical representation is a directory named `src/apps/{AppName}` that has th
 📁 src
     📁 dt
     📁 lib
+    📁 policies
     📁 ucds
     📄 i18n.ts
     📄 manifest.ts
@@ -26,6 +27,10 @@ This folder contains types, interfaces, classes, functions, consts... used acros
 
 These are typically related to the purpose of the app. Typically, an app that sends stuff would have a `Sender` interface with some implementations.
 
+## policies
+
+This folder contains the custom policies of the app. Check [Create a policy](./create-policy) for more details.
+
 ## ucds
 
 This folder contains the use case definitions of the app. Check [Create a use case](./create-use-case) for more details.
@@ -34,7 +39,7 @@ This folder contains the use case definitions of the app. Check [Create a use ca
 
 It's a file named `manifest.ts` exporting a const named `Manifest` that must satisfy the `AppManifest` interface.
 
-```typescript
+```typescript title="src/manifest.ts"
 import type { AppManifest } from 'libmodulor';
 
 export const Manifest = {
@@ -55,7 +60,7 @@ For any language listed here, `i18n` (see below), must contain the corresponding
 
 It's a file named `i18n.ts` exporting a const named `I18n` that must satisfy the `AppI18n` interface.
 
-```typescript
+```typescript title="src/i18n.ts"
 import type { AppI18n } from 'libmodulor';
 
 export const I18n: AppI18n = {
@@ -75,7 +80,7 @@ It contains translations for the common things that can be translated in the app
 
 It's a barrel file exporting only what's consumed outside the app (typically `i18n`, `manifest` and some use case defs).
 
-```typescript
+```typescript title="index.ts"
 // Expose only what's necessary
 
 export { I18n } from './src/i18n.js';

@@ -25,7 +25,7 @@ Check [Expose a target](./expose-target) for more details.
 
 It's a file named `manifest.ts` exporting a const named `Manifest` that must satisfy the `ProductManifest` interface.
 
-```typescript
+```typescript title="manifest.ts"
 export const Manifest: ProductManifest = {
     appReg: [{ name: 'Trading' }],
     name: 'SuperTrader',
@@ -45,7 +45,7 @@ It's a file named `i18n.ts` exporting a const named `I18n` that must satisfy the
 
 Unlike the app `i18n`, this one gives you more freedom to define translation keys.
 
-```typescript
+```typescript title="i18n.ts"
 import { I18nEN } from 'libmodulor/locales/en';
 
 import { I18n as TradingI18n } from '../../apps/Trading/index.js';
