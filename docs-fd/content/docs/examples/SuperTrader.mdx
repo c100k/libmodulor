@@ -1,0 +1,126 @@
+---
+title: SuperTrader
+description: A simple app to trade crypto, shares and other assets
+---
+
+SuperTrader is a product featuring the `Trading` app with the `BuyAssetUCD` use case, exposed on `server`, `web`, `cli`, `mcp-server` and `rn` targets.
+
+## Get & Build
+
+```sh
+git clone git@github.com:c100k/libmodulor.git
+cd libmodulor/examples/libmodulor-tuto
+yarn install && touch .env && ./build.sh
+```
+
+## Targets
+
+### server
+
+The `server` target uses the built-in `node-express-server` target, is transpiled with `tsc` and executed with `node`. It uses SQLite as `UCDataStore`.
+
+```sh
+yarn run:server
+```
+
+Test in your Terminal Emulator with `curl`.
+
+```sh
+curl -X POST -H "Content-Type: application/json" http://localhost:7443/api/v1/Trading_BuyAsset
+# ❌ {"message":"Invalid credentials"}
+curl -X POST -H "Content-Type: application/json" -H "X-API-Key: PublicApiKeyToBeChangedWhenDeploying" http://localhost:7443/api/v1/Trading_BuyAsset
+# ❌ {"message":"ISIN must be filled"}
+curl -X POST -H "Content-Type: application/json" -H "X-API-Key: PublicApiKeyToBeChangedWhenDeploying" -d '{"isin":"US02079K3059","limit":123.5,"qty":150}' http://localhost:7443/api/v1/Trading_BuyAsset
+# ✅ {"parts":{"_0":{"items":[{"executedDirectly":false,"id":"95dddca5-5e9d-48ac-a90c-71a58d4e8554"}],"total":1}}}
+```
+
+<Callout>
+    Keep your server running to test the "client" targets defined below.
+</Callout>
+
+### web
+
+The `web` target uses the built-in `react-web-pure` target, is bundled with `vite` and uses custom components made with `tailwindcss@v4` & `daisyUI@v5`.
+
+It is served as a SPA by the server defined above.
+
+Test in your browser at http://localhost:7443.
+
+![Web UI](./supertrader-target-web-tailwindcss-daisyui.png)
+
+### cli
+
+The `cli` target uses the built-in `node-core-cli` target, is transpiled with `tsc` and executed with `node`.
+
+Test in your Terminal Emulator.
+
+```sh
+yarn run:cli Trading_BuyAsset
+# ❌ ISIN must be filled
+yarn run:cli Trading_BuyAsset --isin US02079K3059 --limit 123.5 --qty 150
+# ✅ {"parts":{"_0":{"items":[{"executedDirectly":false,"id":"da3dc295-6d7c-41b1-a00a-62683f3e6ab9"}],"total":1}}}
+```
+
+### mcp-server
+
+The `mcp-server` target uses the built-in `node-mcp-server` target, is transpiled with `tsc` and exposes an `index.js` file to be used by the MCP client.
+
+Test in [Claude Desktop](https://claude.ai/download).
+
+Register the MCP server by copy/pasting the following config, adapting the absolute path with `pwd`.
+
+```sh
+nano ~/Library/Application\ Support/Claude/claude_desktop_config.json
+```
+
+```json
+{
+    "mcpServers": {
+        "libmodulor-supertrader": {
+            "command": "node",
+            "args": [
+                "/ABSOLUTE_PATH_TO_THE_CWD/dist/products/SuperTrader/mcp-server/index.js"
+            ]
+        }
+    }
+}
+```
+
+Launch Claude Desktop.
+
+At the bottom right of the prompt you should see a little hammer 🔨 indicating `1 MCP Tool available`.
+
+Click on it. You should see the `Trading_BuyAsset` use case registered.
+
+Write a prompt to buy an asset.
+
+```txt
+Dear Claude. Please buy 150 shares of Google.
+```
+
+![Claude Desktop](./supertrader-target-mcp-server-claude.png)
+
+### rn
+
+The `rn` target uses the built-in `react-native-pure` target, is bundled with `expo` so it can run on `android` and `ios`.
+
+Make sure your [environment is setup](https://reactnative.dev/docs/environment-setup) to be able to use the Android Emulator and iOS Simulator (macOS only).
+
+```sh
+yarn run:rn:android
+yarn run:rn:ios
+```
+
+![Android & iOS](./supertrader-target-rn-android-ios.png)
+
+## Inspect UCDataStore
+
+If you have executed the use case via the targets defined above, the SQLite database has been filled.
+
+Check its content with your favorite editor.
+
+```sh
+open dist/products/SuperTrader/server/uc-data-store.sqlite
+```
+
+![SQLite UCDataStore](./supertrader-uc-data-store-sqlite.png)
