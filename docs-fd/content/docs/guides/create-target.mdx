@@ -3,17 +3,13 @@ title: Create a target
 description: A target defines how a product is "exposed" to the end user. It's a combination of platform and runtime.
 ---
 
-`libmodulor` includes the following targets :
+## Intro
 
-- [node-core-cli](https://github.com/c100k/libmodulor/tree/master/dist/esm/target/node-core-cli/NodeCoreCLIManager.js) : a simple CLI implementation based on [Node.js' parseArgs](https://nodejs.org/api/util.html#utilparseargsconfig)
-- [node-express-server](https://github.com/c100k/libmodulor/tree/master/dist/esm/target/node-express-server/NodeExpressServerManager.js) : a server implementation based on [Node.js](https://nodejs.org) and [Express](https://expressjs.com)
-- [node-mcp-server](https://github.com/c100k/libmodulor/tree/master/dist/esm/target/node-mcp-server/NodeLocalStdioMCPServerManager.js) : a simple MCP server implementation based on [MCP Standard Input/Output (stdio) transport](https://modelcontextprotocol.io/docs/concepts/transports#standard-input-output-stdio)
-- [react-native-pure](https://github.com/c100k/libmodulor/tree/master/dist/esm/target/react-native-pure/UCForm.js) : a simple GUI implementation based on [React Native](https://reactnative.dev)
-- [react-web-pure](https://github.com/c100k/libmodulor/tree/master/dist/esm/target/react-web-pure/UCForm.js) : a simple GUI implementation based on [React](https://react.dev)
+`libmodulor` provides [targets](../references/targets) that are commonly used.
 
----
+But depending on your needs, you might want to create your own targets as there is a high probability that the provided ones do not fit your criteria, especially the [GUI](https://en.wikipedia.org/wiki/Graphical_user_interface) ones since they are very basic.
 
-Depending on your needs, you might want to create your own targets for your products. Indeed, there is a high probability that the included ones do not fit your criteria, especially the GUI ones (`react-native-pure`, `react-web-pure`).
+Yet, they are good examples to take inspiration from in order to understand how apps, use cases and products are instrumented.
 
 ## CLI
 
@@ -27,8 +23,7 @@ node index.js --help
 node index.js --version
 ```
 
-To create a CLI target, you need to implement the following interface : [CLIManager](https://github.com/c100k/libmodulor/tree/master/dist/esm/target/lib/cli/CLIManager.d.ts).
-
+To create a CLI target, you need to implement the `CLIManager` interface.
 See [node-core-cli](https://github.com/c100k/libmodulor/tree/master/dist/esm/target/node-core-cli/NodeCoreCLIManager.js) as an example.
 
 Important aspects to take into account (non-exhaustive list) :
@@ -59,8 +54,7 @@ curl \
     http://localhost:7443/api/v1/SignIn
 ```
 
-To create a server target, you need to implement the following interface : [ServerManager](https://github.com/c100k/libmodulor/tree/master/dist/esm/target/lib/server/ServerManager.d.ts).
-
+To create a server target, you need to implement the `ServerManager` interface.
 See [node-express-server](https://github.com/c100k/libmodulor/tree/master/dist/esm/target/node-express-server/NodeExpressServerManager.js) as an example.
 
 Important aspects to take into account (non-exhaustive list) :
@@ -75,14 +69,13 @@ Important aspects to take into account (non-exhaustive list) :
 - cookies must be implemented to handle authentication
 
 <Callout>
-    This is the implementation actually used when auto testing an `App`.
+    This is the implementation used in the apps automated tests. Check [Test an app](./test-app) for more details.
 </Callout>
 
 ## GUI
 
 A GUI target exposes a product as a user interface.
-
-See [generic React components](https://github.com/c100k/libmodulor/tree/master/dist/esm/target/lib/react) with [react-native-pure](https://github.com/c100k/libmodulor/tree/master/dist/esm/target/react-native-pure/UCForm.js) and [react-web-pure](https://github.com/c100k/libmodulor/tree/master/dist/esm/target/react-web-pure/UCForm.js) as an example.
+See [react-native-pure](https://github.com/c100k/libmodulor/tree/master/dist/esm/target/react-native-pure) and [react-web-pure](https://github.com/c100k/libmodulor/tree/master/dist/esm/target/react-web-pure) as examples.
 
 Typically, it provides "components" to :
 
@@ -97,6 +90,13 @@ Important aspects to take into account (non-exhaustive list) :
 - the "interact" component must display a control (e.g. a button) when the use case does not need input filling
 - the button submitting a use case must handle the different statuses (`idle`, `changing`, `submitting`, etc.)
 - the wording must rely on `WordingManager`
+
+## MCP Server
+
+A MCP server target exposes a product as a MCP server.
+See [node-mcp-server](https://github.com/c100k/libmodulor/tree/master/dist/esm/target/node-mcp-server) as an example.
+
+Like a regular server, it exposes the use cases as MCP tools.
 
 ## Others
 
