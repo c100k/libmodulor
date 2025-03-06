@@ -1,19 +1,17 @@
 ---
 title: Create a use case
-description: A use case is the smallest unit. It defines the contract, mainly as an Input that goes into lifecycle methods (client and/or server) to finally give an Output. In the end, it constitutes a piece of business functionality.
+description: A use case is a piece of business functionality. It takes an input, processes it through lifecycle methods (client and/or server), and gives an output.
 ---
 
 <Callout>
-    Starting now, you'll see `UC` or `uc` a lot.
-    It's the abbreviation of `UseCase`.
-    Acronyms are not good in codebases, except those that are commonly used ([debate](https://stackoverflow.com/questions/2236807/java-naming-convention-with-acronyms)).
-    In any case, when you write `UseCase` hundreds of times, you're happy to be able to write `UC` instead.
+    In this documentation and in the code, use case is often refered to as `UC` or `uc`.
+    Since it's a notion widely used in `libmodulor`, the abbreviation makes sense to make things more concise.
     Thus, `UCD` stands for `Use Case Definition`, `UCIF` stands for `Use Case Input Field` and so on.
 </Callout>
 
 ## Metadata
 
-The first thing to do to define a use case is to add its metadata in the app's `manifest` as seen in [Create an app](./create-app).
+A use case is declared by defining its metadata in the app's `manifest` as seen in [Create an app](./create-app).
 
 ```typescript title="src/manifest.ts"
     ucReg: {
@@ -30,14 +28,14 @@ The first thing to do to define a use case is to add its metadata in the app's `
 
 The metadata defines several properties that are used by the app, products and targets to instrument the use case.
 
-For instance, the `action` is used by a server target to decide which HTTP verb to use.
+The `action` can be used by a server target to decide which HTTP verb to use.
 
-The `icon` can also be used by a GUI to display it alongside the label in a button.
+The `icon` can be used by a GUI to display it alongside the label in a button.
 You are free to set the icon of your choice, corresponding to the icon library you're using in your GUI target (e.g. FontAwesome).
 
 The `beta` and `new` flags can be used by a GUI target to display a badge next to the button giving access to the use case, in order to show the user that it's a new feature.
 
-The `sensitive` flag is used to ask the user to confirm when they execute a use case (e.g. a destructive use case).
+The `sensitive` flag can be used to ask the user to confirm when they execute a use case (e.g. a destructive use case).
 
 ## UCD => Use Case Definition
 
@@ -65,7 +63,7 @@ UCDef<BuyAssetInput, BuyAssetOPI0, BuyAssetOPI1> // 1 input, 2 OPIs
 
 It is an interface that must extend the `UCInput` interface directly or indirectly.
 
-```typescript title="src/BuyAssetUCD.ts"
+```typescript title="src/ucds/BuyAssetUCD.ts"
 export interface BuyAssetInput extends UCInput {
     isin: UCInputFieldValue<ISIN>;
     limit: UCInputFieldValue<Amount>;
@@ -74,11 +72,11 @@ export interface BuyAssetInput extends UCInput {
 ```
 
 It must contain only properties of type `UCInputFieldValue<DataType>`.
-You can use one of the [existing data types](../references/data-types) or [create a custom one](./create-data-type).
+You can use one of the [existing data types](../references/data-types) or [create a data type](./create-data-type).
 
 The same fields must be declared in `UCDef.io.i.fields`.
 
-```typescript title="src/BuyAssetUCD.ts"
+```typescript title="src/ucds/BuyAssetUCD.ts"
 fields: {
     isin: {
         type: new TISIN(),
@@ -98,7 +96,7 @@ This definition might seem redundant but it offers more expressiveness to define
 
 It is an interface that must extend the `UCOPIBase` interface directly or indirectly.
 
-```typescript title="src/BuyAssetUCD.ts"
+```typescript title="src/ucds/BuyAssetUCD.ts"
 export interface BuyAssetOPI0 extends UCOPIBase {
     executedDirectly: UCOPIVal<boolean>;
 }
@@ -106,7 +104,7 @@ export interface BuyAssetOPI0 extends UCOPIBase {
 
 The same fields must be declared in `UCDef.io.o.parts._0`.
 
-```typescript title="src/BuyAssetUCD.ts"
+```typescript title="src/ucds/BuyAssetUCD.ts"
 fields: {
     executedDirectly: {
         type: new TBoolean(),
@@ -122,7 +120,7 @@ A use case can define a `client` and/or a `server` lifecycle.
 
 It is an object that satisfies the `UCClientDef<I, OPI0, OPI1>` interface.
 
-```typescript title="src/BuyAssetUCD.ts"
+```typescript title="src/ucds/BuyAssetUCD.ts"
 client: {
     main: BuyAssetClientMain,
     policy: EverybodyUCPolicy,
@@ -133,7 +131,7 @@ The `main` property references a class that implements the `UCMain<I, OPI0, OPI1
 
 This class can be defined just above the `UCDef` like the following :
 
-```typescript title="src/BuyAssetUCD.ts"
+```typescript title="src/ucds/BuyAssetUCD.ts"
 @injectable()
 class BuyAssetClientMain implements UCMain<BuyAssetInput, BuyAssetOPI0> {
     constructor(
@@ -154,14 +152,14 @@ class BuyAssetClientMain implements UCMain<BuyAssetInput, BuyAssetOPI0> {
 In this class, you can inject whatever you want and define all your client side business logic in `exec`.
 In this specific case, we are simply sending the use case to the server.
 
-The `policy` defines the permissions rules defining who can execute the use case.
-You can use one of the [existing policies](../references/policies) or [create a custom one](./create-policy).
+The `policy` defines whether the current user can see and/or execute the use case.
+You can use one of the [existing policies](../references/policies) or [create a policy](./create-policy).
 
 #### server
 
 It is an object that satisfies the `UCServerDef<I, OPI0, OPI1>` interface.
 
-```typescript title="src/BuyAssetUCD.ts"
+```typescript title="src/ucds/BuyAssetUCD.ts"
 server: {
     execMode: UCExecMode.USER, // Optional
     init: BuyAssetServerInit, // Optional
@@ -174,7 +172,7 @@ The `main` property references a class that implements the `UCMain<I, OPI0, OPI1
 
 This class must be defined in a dedicated file `src/apps/{AppName}/src/ucds/{UCName}ServerMain.ts` like the following :
 
-```typescript title="src/BuyAssetServerMain.ts"
+```typescript title="src/ucds/BuyAssetServerMain.ts"
 @injectable()
 export class BuyAssetServerMain implements UCMain<BuyAssetInput, BuyAssetOPI0> {
     constructor(@inject('UCManager') private ucManager: UCManager) {}
@@ -209,16 +207,15 @@ export class BuyAssetServerMain implements UCMain<BuyAssetInput, BuyAssetOPI0> {
 The `init` property references a class that implements the `UCInit` interface.
 It allows you to setup stuff when the use case is mounted (e.g. creating some caches or data stores when mounting the use case on a server target).
 
-The `policy` defines the permissions rules defining who can execute the use case.
-You can use one of the [existing policies](../references/policies) or [create a custom one](./create-policy).
+The `policy` defines whether the current user can execute the use case.
+You can use one of the [existing policies](../references/policies) or [create a policy](./create-policy).
 
 ### Metadata
 
 As seen above, the metadata is declared in the app manifest.
-
 In the UCD, you simply need to reference this declaration.
 
-```typescript title="src/BuyAssetUCD.ts"
+```typescript title="src/ucds/BuyAssetUCD.ts"
 metadata: Manifest.ucReg.BuyAsset,
 ```
 
@@ -226,7 +223,7 @@ metadata: Manifest.ucReg.BuyAsset,
 
 All in all, a typical use case definition looks like this :
 
-```typescript title="BuyAssetUCD.ts"
+```typescript title="src/ucds/BuyAssetUCD.ts"
 export interface BuyAssetInput extends UCInput {
     isin: UCInputFieldValue<ISIN>;
     limit: UCInputFieldValue<Amount>;

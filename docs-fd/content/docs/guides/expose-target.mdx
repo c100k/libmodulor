@@ -30,20 +30,9 @@ export default container;
 
 Based on the targets, additional bindings need to be performed in order to make things work.
 
-<Callout>
-    The order in which you define the bindings is very important.
+<Callout type="warn">
+    The order in which bindings are defined is very important.
 </Callout>
-
-### bindNodeCLI
-
-[bindNodeCLI](https://github.com/c100k/libmodulor/blob/master/dist/esm/utils/ioc/bindNodeCLI.js)
-binds all the standard interfaces used internally by `libmodulor` to Node.js implementations.
-To be used in any target running on Node.js exposing a `cli`.
-
-```typescript title="container.ts"
-bindCommon(container, settings);
-bindNodeCLI(container); // [!code ++]
-```
 
 ### bindNodeCore
 
@@ -54,6 +43,17 @@ To be used in any target running on Node.js (e.g. `server`, `cli`, `mcp-server`,
 ```typescript title="container.ts"
 bindCommon(container, settings);
 bindNodeCore(container); // [!code ++]
+```
+
+### bindNodeCLI
+
+[bindNodeCLI](https://github.com/c100k/libmodulor/blob/master/dist/esm/utils/ioc/bindNodeCLI.js)
+binds all the standard interfaces used internally by `libmodulor` to Node.js CLI implementations.
+To be used in any target running on Node.js exposing a `cli`.
+
+```typescript title="container.ts"
+bindCommon(container, settings);
+bindNodeCLI(container); // [!code ++]
 ```
 
 ### bindRN
@@ -80,22 +80,19 @@ bindServer(container); // [!code ++]
 ### bindWeb
 
 [bindWeb](https://github.com/c100k/libmodulor/blob/master/dist/esm/utils/ioc/bindWeb.js)
-binds all the standard interfaces used internally by `libmodulor` Web implementations.
+binds all the standard interfaces used internally by `libmodulor` to web implementations.
 
 ```typescript title="container.ts"
 bindCommon(container, settings);
 bindWeb(container); // [!code ++]
 ```
 
-### custom
+### Custom bindings
 
 If you're writing a complete product with `libmodulor`, there are great chances you need to bind your own implementations.
 
-As an example, let's say you are writing a product that allow people to call a LLM.
-
-Typically, in your app you would have a `LLMManager` interface.
-
-Internally, you would have multiple implementations : `OpenAILLMManager`, `MistralAILLMManager`, etc.
+As an example, let's say you are writing a product that allow people to call an LLM.
+Typically, there would be an `LLMManager` interface in the `lib` folder, with multiple implementations : `OpenAILLMManager`, `MistralAILLMManager`, etc.
 
 In the `container` you would declare it this way.
 
@@ -119,7 +116,7 @@ Here are some examples.
 import container from './container.js';
 
 await container.get<I18nManager>('I18nManager').init();
-await container.resolve(ServerBooter).exec();
+await container.resolve(ServerBooter).exec({});
 ```
 
 ```tsx title="web-react/index.tsx"
@@ -139,7 +136,7 @@ ReactDOM.createRoot(rootElt).render(
 import container from './container.js';
 
 await container.get<I18nManager>('I18nManager').init();
-await container.resolve(NodeCoreCLIManager).exec();
+await container.resolve(NodeCoreCLIManager).exec({});
 ```
 
 ```typescript title="mcp-server/index.ts"
@@ -172,11 +169,10 @@ Therefore, you can start your `server` with `node`, `deno` or `bun`, etc.
 You can bundle your `web` with `webpack` or `vite`, etc.
 You can start your `rn` app with `react-native-cli`, `expo`, `re.pack`, etc.
 
-### settings
+## settings
 
 In `libmodulor` settings are modular.
-Anything that needs settings, provides an interface that extends `Settings`.
-Here is an example.
+Anything that needs settings, provides an interface that extends the `Settings` interface.
 
 ```typescript title="OpenAILLMManager.ts"
 export interface OpenAILLMManagerSettings extends Settings {
@@ -187,7 +183,7 @@ type S = OpenAILLMManagerSettings;
 ```
 
 A product needs to compose all the settings required by all the elements it embeds.
-Typically, a product setting looks like this.
+Typically, a product settings looks like this.
 
 ```typescript title="server/settings.ts"
 export type S = LoggerLevel & OpenAILLMManagerSettings & ServerManagerSettings; // & ...
@@ -229,7 +225,7 @@ node --env-file .env index.ts
 ```
 
 This is just an example.
-As an alternative, you can also provide an implementation named `VaultSettingsManager` that implements `SettingsManager`.
-This implementation fetches the secrets from [Vault by Hashicorp](https://www.vaultproject.io) instead.
+As an alternative, you could provide an implementation named `VaultSettingsManager` that implements the `SettingsManager` interface.
+This implementation would fetch the secrets from [Vault by Hashicorp](https://www.vaultproject.io) instead of environment variables.
 
-Again, `libmodulor` provides basics, but you can extend it however your want.
+Again, `libmodulor` provides basics, but you can extend it the way you want.

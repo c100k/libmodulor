@@ -85,21 +85,29 @@ You can override this behavior by providing your own.
 
 ### Implementations
 
-By default, the IoC `container` used, binds basic implementations. You can bind additional interfaces or rebind some of them.
+Some apps need specific bindings. This is the case when they have interfaces/implementations defined in the `lib` folder, that are used by use cases.
+
+You can bind those implementations and also rebind some default bindings.
 
 ### Clearing
 
-In case your use cases create some side effects that can impact others, you can clear the execution.
+Some use cases create side effects that can impact others.
+
+You can define the logic to clear these side effects between each test execution.
 
 ### Flows
 
-Use cases are automatically tested in isolation. You can create flows to test a list of use cases one after the other to simulate a real user behavior.
+Use cases are automatically tested in isolation. But very often we want to test them in a real life scenario.
+
+You can create flows to test a list of use cases one after the other to simulate a real user behavior.
 
 For instance, for an `Auth` app, you can test the following flow : `SignUp` > `SignIn` > `SignOut`.
 
 ### Input fillers
 
-When testing, the use cases are filled data computed from the data types. You can add more inputs by overriding this.
+Use cases are tested with data from their data types examples and bad data.
+
+You can define other inputs for specific use cases to see how they behave.
 
 ### Options
 
@@ -107,15 +115,19 @@ Override the default options used by the test runner.
 
 ### Seed
 
-Fill your data stores with basic data in case your use cases need them (e.g. some enum data in some data store).
+Some apps need data that has been pre-populated in some data store.
+
+You can `seed` these data stores.
 
 ### Side effects
 
-For example, your use cases can send emails. These are considered side effects you can control here.
+Some use cases perform side effects that we want to monitor. For instance, some of them can send emails.
+
+You can register these side effects and they will be asserted and displayed in reports.
 
 ### Specific assertions
 
-By default, the tests are asserted via snapshots. But sometimes, use cases return different data at each execution by nature (e.g. a timestamp).
+By default, the tests are asserted via snapshots. But sometimes, use cases return different data at each execution (e.g. the "current" timestamp).
 
 Although we recommended making the tests deterministic by using `Fake*` implementations, sometimes it's not possible or not acceptable.
 

@@ -32,8 +32,8 @@ export const Manifest: ProductManifest = {
 };
 ```
 
-`appReg` stands of "app registry". It lists all the apps the product uses.
-It provides an optional `ucds.exclude` property in order to exclude some use cases for being mounted.
+`appReg` stands for "app registry". It lists all the apps the product uses.
+It provides an optional `ucds.exclude` property in order to prevent some use cases from being mounted.
 This is particularly useful when you have a generic app (e.g. `Auth`) providing a large range of use cases,
 but some products don't need all of them.
 

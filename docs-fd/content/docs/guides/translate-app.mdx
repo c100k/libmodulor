@@ -1,18 +1,13 @@
 ---
 title: Translate an app
+description: Apps can be translated in multiple languages.
 ---
 
-As seen in [Create an app](./create-app), the translations present in `i18n` must follow a specific pattern.
-
-<Callout>
-    You can leave translations empty and things will still work.
-    In this case, the library will `humanize` the fields.
-    Although it can work in some cases, it's not ideal in terms of UX.
-</Callout>
+The translation keys must follow a specific pattern. Each type of translation has their own pattern.
 
 ## dt => data type
 
-You can translate the `options` (i.e. the possible values) of a specific data type.
+Translate the `options` (i.e. the possible values) of a specific data type.
 
 ```typescript title="src/i18n.ts"
 en: {
@@ -31,7 +26,7 @@ fr: {
 
 ## err => errors
 
-You can translate specific errors thrown in `lib` or `ucds`.
+Translate specific errors thrown in the app specific code present in lib, ucds, policies, etc.
 
 ```typescript title="src/i18n.ts"
 en: {
@@ -44,7 +39,7 @@ fr: {
 
 ## uc => use case
 
-You can translate the various values associated to a use case.
+Translate the various values associated to a use case.
 
 ```typescript title="src/i18n.ts"
 en: {
@@ -83,7 +78,7 @@ fr: {
 
 ## ucif => use case input fields
 
-You can translate the various values associated to a use case input field.
+Translate the various values associated to a use case input field.
 
 ```typescript title="src/i18n.ts"
 en: {
@@ -98,7 +93,7 @@ fr: {
 
 ## ucof => use case output fields
 
-You can translate the various values associated to a use case output field.
+Translate the various values associated to a use case output field.
 
 ```typescript title="src/i18n.ts"
 en: {
@@ -113,7 +108,7 @@ fr: {
 
 ## validation
 
-You can translate the validation messages of specific data types or custom validation rules.
+Translate the validation messages of specific data types or custom validation rules.
 
 ```typescript title="src/i18n.ts"
 en: {

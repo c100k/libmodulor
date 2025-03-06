@@ -17,25 +17,27 @@ Its logical representation is a directory named `src/apps/{AppName}` that has th
 📄 index.ts
 ```
 
-## dt
+## src => Source
+
+### dt => data types
 
 This folder contains the custom data types of the app. Check [Create a data type](./create-data-type) for more details.
 
-## lib
+### lib
 
 This folder contains types, interfaces, classes, functions, consts... used across multiple use cases.
 
 These are typically related to the purpose of the app. Typically, an app that sends stuff would have a `Sender` interface with some implementations.
 
-## policies
+### policies
 
 This folder contains the custom policies of the app. Check [Create a policy](./create-policy) for more details.
 
-## ucds
+### ucds => use case definitions
 
 This folder contains the use case definitions of the app. Check [Create a use case](./create-use-case) for more details.
 
-## manifest
+### manifest
 
 It's a file named `manifest.ts` exporting a const named `Manifest` that must satisfy the `AppManifest` interface.
 
@@ -56,7 +58,7 @@ For any language listed here, `i18n` (see below), must contain the corresponding
 
 `ucReg` stands for "use case registry". It lists all the use cases of the app. Check out [Create a use case](./create-use-case) for more details.
 
-## i18n
+### i18n
 
 It's a file named `i18n.ts` exporting a const named `I18n` that must satisfy the `AppI18n` interface.
 
@@ -76,6 +78,10 @@ It contains translations for the common things that can be translated in the app
     Although it can work in some cases, it's not ideal in terms of UX.
 </Callout>
 
+## test
+
+Check [Test an app](./test-app) for more details.
+
 ## index
 
 It's a barrel file exporting only what's consumed outside the app (typically `i18n`, `manifest` and some use case defs).
@@ -86,7 +92,3 @@ It's a barrel file exporting only what's consumed outside the app (typically `i1
 export { I18n } from './src/i18n.js';
 export { Manifest } from './src/manifest.js';
 ```
-
-## test
-
-Check [Test an app](./test-app) for more details.
