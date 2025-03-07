@@ -5,42 +5,17 @@
 
 An opinionated TypeScript library to create business oriented applications.
 
-Applications created with `libmodulor` have **6 main properties** :
-
-- Strictly typed with explicit business data types
-- Fully typed e2e without code generation
-- Auto documented
-- Auto tested
-- Multi platforms/runtimes
-- Runnable anywhere
-
 > [!WARNING]
 > The project is still in active development. Although already used in pilot projects, it's not suitable for all production scenarios yet.
 > Being developed by only one person, it may keep going for years or stop at any time.
 > In the meantime, it's still a "research project" that needs improvement. Thus, it will be subject to BREAKING CHANGES as long as the version is not `1.0.0`.
-> All that said, the end goal is really to have a **production-grade library** to help everyone build **quality projects faster**. If you want to help in any way or have questions, feel free to contact me (cf. `author` in `package.json`).
-
-> [!NOTE]
-> At the beginning, the whole documentation will be on GitHub, starting from this file, to make it easier to have the big picture, maintain and <kbd>cmd</kbd> + <kbd>F</kbd>. At some point, I'll consider having a beautiful documentation website like all the cool kids.
-
----
+> All that said, the end goal is really to have a **production-grade library** to help everyone build **quality projects faster**.
 
 ## 🚀 Getting Started
 
-If you're discovering `libmodulor`, we recommend reading the [📖 Introduction](./docs/Introduction.md) first. It will give you an overview of what `libmodulor` is and how it works.
+If you're discovering `libmodulor`, we recommend reading the [📖 Documentation](https://libmodulor.c100k.eu/docs) first. You'll find everything you need to get started : Concepts, Examples and Guides.
 
-If you want to learn by doing, you can follow the [🚀 Tutorial](./docs/Tutorial.md). It contains multiple steps showing you the basics of `libmodulor`. We'll build a small Trading app that will allow us to buy an asset from `curl`, a SPA, a CLI, Claude Desktop, an Android mobile app and an iOS mobile app !
-
-If you're felling adventurous, create a project and start building your own application, with your own apps, use cases, products, targets :
-
-```sh
-npx libmodulor CreateProject --outPath ~/Downloads --projectName libmodulor-projx
-
-# With another pkg manager (since 0.7.0)
-npx libmodulor CreateProject --outPath ~/Downloads --projectName libmodulor-projx --pkgManagerBin (npm|pnpm|bun|yarn)
-```
-
-Finally, for more advanced uses, check out the [📜 Guides](./docs/Guides.md).
+When you're ready, [🚀 Create a project](https://libmodulor.c100k.eu/docs/guides/create-project) and build the awesome idea you have in mind.
 
 ## 👨‍💻 Contribute
 
