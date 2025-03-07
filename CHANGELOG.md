@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## v0.8.0 (unreleased)
+
+**Misc**
+
+- Move `examples/libmodulor-tuto` to `examples/supertrader`
+- Introduce new `examples/basic`
+
 ## v0.7.0 (2025-03-07)
 
 **Added**

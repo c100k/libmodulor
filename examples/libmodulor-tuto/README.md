@@ -1,3 +1,0 @@
-# libmodulor-tuto
-
-🚀🚀🚀
