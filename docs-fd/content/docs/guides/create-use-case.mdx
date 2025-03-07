@@ -1,0 +1,296 @@
+---
+title: Create a use case
+description: A use case is a piece of business functionality. It takes an input, processes it through lifecycle methods (client and/or server), and gives an output.
+---
+
+<Callout>
+    In this documentation and in the code, use case is often refered to as `UC` or `uc`.
+    Since it's a notion widely used in `libmodulor`, the abbreviation makes sense to make things more concise.
+    Thus, `UCD` stands for `Use Case Definition`, `UCIF` stands for `Use Case Input Field` and so on.
+</Callout>
+
+## Metadata
+
+A use case is declared by defining its metadata in the app's `manifest` as seen in [Create an app](./create-app).
+
+```typescript title="src/manifest.ts"
+    ucReg: {
+        BuyAsset: {
+            action: 'Create',
+            beta: true, // Optional
+            icon: 'plus',
+            name: 'BuyAsset',
+            new: true, // Optional
+            sensitive: true, // Optional
+        },
+    },
+```
+
+The metadata defines several properties that are used by the app, products and targets to instrument the use case.
+
+The `action` can be used by a server target to decide which HTTP verb to use.
+
+The `icon` can be used by a GUI to display it alongside the label in a button.
+You are free to set the icon of your choice, corresponding to the icon library you're using in your GUI target (e.g. FontAwesome).
+
+The `beta` and `new` flags can be used by a GUI target to display a badge next to the button giving access to the use case, in order to show the user that it's a new feature.
+
+The `sensitive` flag can be used to ask the user to confirm when they execute a use case (e.g. a destructive use case).
+
+## UCD => Use Case Definition
+
+A use case is defined in a file named `src/apps/{AppName}/src/ucds/{UCName}UCD.ts`.
+
+It must export :
+
+- the interface corresponding to the input (if any)
+- the interface corresponding to the OPIs (if any)
+- a const named `{UCName}UCD` that satisfies the `UCDef` interface.
+
+### IO => input/output
+
+A use case can define 0 or 1 input and 0, 1 or 2 output part items (OPI). Based on this, the definition of a use case has one of the following types :
+
+```typescript
+UCDef // 0 input, 0 OPI
+UCDef<BuyAssetInput> // 1 input, 0 OPI
+UCDef<BuyAssetInput, BuyAssetOPI0> // 1 input, 1 OPI
+UCDef<undefined, BuyAssetOPI0> // 0 input, 1 OPI
+UCDef<BuyAssetInput, BuyAssetOPI0, BuyAssetOPI1> // 1 input, 2 OPIs
+```
+
+#### I => input
+
+It is an interface that must extend the `UCInput` interface directly or indirectly.
+
+```typescript title="src/ucds/BuyAssetUCD.ts"
+export interface BuyAssetInput extends UCInput {
+    isin: UCInputFieldValue<ISIN>;
+    limit: UCInputFieldValue<Amount>;
+    qty: UCInputFieldValue<UIntQuantity>;
+}
+```
+
+It must contain only properties of type `UCInputFieldValue<DataType>`.
+You can use one of the [existing data types](../references/data-types) or [create a data type](./create-data-type).
+
+The same fields must be declared in `UCDef.io.i.fields`.
+
+```typescript title="src/ucds/BuyAssetUCD.ts"
+fields: {
+    isin: {
+        type: new TISIN(),
+    },
+    limit: {
+        type: new TAmount('USD'),
+    },
+    qty: {
+        type: new TUIntQuantity(),
+    },
+},
+```
+
+This definition might seem redundant but it offers more expressiveness to define advanced rules for data types than the simple TypeScript type system.
+
+#### O => output
+
+It is an interface that must extend the `UCOPIBase` interface directly or indirectly.
+
+```typescript title="src/ucds/BuyAssetUCD.ts"
+export interface BuyAssetOPI0 extends UCOPIBase {
+    executedDirectly: UCOPIVal<boolean>;
+}
+```
+
+The same fields must be declared in `UCDef.io.o.parts._0`.
+
+```typescript title="src/ucds/BuyAssetUCD.ts"
+fields: {
+    executedDirectly: {
+        type: new TBoolean(),
+    },
+},
+```
+
+### Lifecycle
+
+A use case can define a `client` and/or a `server` lifecycle.
+
+#### client
+
+It is an object that satisfies the `UCClientDef<I, OPI0, OPI1>` interface.
+
+```typescript title="src/ucds/BuyAssetUCD.ts"
+client: {
+    main: BuyAssetClientMain,
+    policy: EverybodyUCPolicy,
+},
+```
+
+The `main` property references a class that implements the `UCMain<I, OPI0, OPI1>` interface.
+
+This class can be defined just above the `UCDef` like the following :
+
+```typescript title="src/ucds/BuyAssetUCD.ts"
+@injectable()
+class BuyAssetClientMain implements UCMain<BuyAssetInput, BuyAssetOPI0> {
+    constructor(
+        @inject('UCTransporter')
+        private ucTransporter: UCTransporter,
+    ) {}
+
+    public async exec({
+        uc,
+    }: UCMainInput<BuyAssetInput, BuyAssetOPI0>): Promise<
+        UCOutputOrNothing<BuyAssetOPI0>
+    > {
+        return this.ucTransporter.send(uc);
+    }
+}
+```
+
+In this class, you can inject whatever you want and define all your client side business logic in `exec`.
+In this specific case, we are simply sending the use case to the server.
+
+The `policy` defines whether the current user can see and/or execute the use case.
+You can use one of the [existing policies](../references/policies) or [create a policy](./create-policy).
+
+#### server
+
+It is an object that satisfies the `UCServerDef<I, OPI0, OPI1>` interface.
+
+```typescript title="src/ucds/BuyAssetUCD.ts"
+server: {
+    execMode: UCExecMode.USER, // Optional
+    init: BuyAssetServerInit, // Optional
+    main: BuyAssetServerMain,
+    policy: EverybodyUCPolicy,
+},
+```
+
+The `main` property references a class that implements the `UCMain<I, OPI0, OPI1>` interface.
+
+This class must be defined in a dedicated file `src/apps/{AppName}/src/ucds/{UCName}ServerMain.ts` like the following :
+
+```typescript title="src/ucds/BuyAssetServerMain.ts"
+@injectable()
+export class BuyAssetServerMain implements UCMain<BuyAssetInput, BuyAssetOPI0> {
+    constructor(@inject('UCManager') private ucManager: UCManager) {}
+
+    public async exec({
+        uc,
+    }: UCMainInput<BuyAssetInput, BuyAssetOPI0>): Promise<
+        UCOutput<BuyAssetOPI0>
+    > {
+        // >=> Persist the order
+        const { aggregateId } = await this.ucManager.persist(uc);
+
+        // >=> TODO : Check the user has enough funds to place the order
+
+        // >=> TODO : Send the order to a queue for processing
+        const executedDirectly: BuyAssetOPI0['executedDirectly'] = false;
+
+        return new UCOutputBuilder<BuyAssetOPI0>()
+            .add({
+                executedDirectly,
+                id: aggregateId,
+            })
+            .get();
+    }
+}
+```
+
+<Callout>
+    Using a comment starting with `// >=> ` in `ClientMain` and `ServerMain` has a specific meaning as we'll see in [Test the app](./test-app).
+</Callout>
+
+The `init` property references a class that implements the `UCInit` interface.
+It allows you to setup stuff when the use case is mounted (e.g. creating some caches or data stores when mounting the use case on a server target).
+
+The `policy` defines whether the current user can execute the use case.
+You can use one of the [existing policies](../references/policies) or [create a policy](./create-policy).
+
+### Metadata
+
+As seen above, the metadata is declared in the app manifest.
+In the UCD, you simply need to reference this declaration.
+
+```typescript title="src/ucds/BuyAssetUCD.ts"
+metadata: Manifest.ucReg.BuyAsset,
+```
+
+## Full definition
+
+All in all, a typical use case definition looks like this :
+
+```typescript title="src/ucds/BuyAssetUCD.ts"
+export interface BuyAssetInput extends UCInput {
+    isin: UCInputFieldValue<ISIN>;
+    limit: UCInputFieldValue<Amount>;
+    qty: UCInputFieldValue<UIntQuantity>;
+}
+
+export interface BuyAssetOPI0 extends AggregateOPI0 {
+    executedDirectly: UCOPIVal<boolean>;
+}
+
+@injectable()
+class BuyAssetClientMain implements UCMain<BuyAssetInput, BuyAssetOPI0> {
+    constructor(
+        @inject('UCTransporter')
+        private ucTransporter: UCTransporter,
+    ) {}
+
+    public async exec({
+        uc,
+    }: UCMainInput<BuyAssetInput, BuyAssetOPI0>): Promise<
+        UCOutputOrNothing<BuyAssetOPI0>
+    > {
+        return this.ucTransporter.send(uc);
+    }
+}
+
+export const BuyAssetUCD: UCDef<BuyAssetInput, BuyAssetOPI0> = {
+    io: {
+        i: {
+            fields: {
+                isin: {
+                    type: new TISIN(),
+                },
+                limit: {
+                    type: new TAmount('USD'),
+                },
+                qty: {
+                    type: new TUIntQuantity(),
+                },
+            },
+        },
+        o: {
+            parts: {
+                _0: {
+                    fields: {
+                        executedDirectly: {
+                            type: new TBoolean(),
+                        },
+                    },
+                },
+            },
+        },
+    },
+    lifecycle: {
+        client: {
+            main: BuyAssetClientMain,
+            policy: EverybodyUCPolicy,
+        },
+        server: {
+            main: BuyAssetServerMain,
+            policy: EverybodyUCPolicy,
+        },
+    },
+    metadata: Manifest.ucReg.BuyAsset,
+};
+```
+
+## Advanced
+
+The `UCDef` interface allows to define much more properties like `ext` and `sec` or `sideEffects`. These are more advanced topics and will be addressed in dedicated guides.

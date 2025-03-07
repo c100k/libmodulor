@@ -6,7 +6,6 @@
     "private": true,
     "scripts": {
         "build": "./build.sh",
-        "helper": "node ./node_modules/libmodulor/dist/esm/products/Helper/index.js",
         "lint": "biome check --write .",
         "run:cli": "cd dist/products/SuperTrader/cli && node index.js",
         "run:rn:android": "cd dist/products/SuperTrader/rn && expo start --android",

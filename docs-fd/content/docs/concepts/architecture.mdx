@@ -1,0 +1,84 @@
+---
+title: Architecture
+description: libmodulor follows a 4-layer architecture with UseCase, App, Product, and Target. It structures business logic efficiently, keeping apps modular and scalable.
+---
+
+`libmodulor` defines a **4-layer architecture** composed of : `UseCase`, `App`, `Product`, `Target`.
+
+Semantically,
+
+- a `UseCase` is part of an `App`
+- an `App` is mounted in a `Product`
+- a `Product` is exposed via a `Target`
+- a `Target` is installed/deployed somewhere
+
+```mermaid
+graph TD;
+subgraph AA [Targets]
+  AA1[Target 1];
+  AA2[Target 2];
+  AA3[Target 3];
+end
+subgraph BB [Products]
+  BB1[Product 1];
+end
+subgraph CC [Apps]
+  CC1[App 1]
+  CC2[App 2]
+end
+subgraph DD1 [Use Cases]
+  DD11[UseCase 1]
+  DD12[UseCase 2]
+  DD13[UseCase 3]
+end
+subgraph DD2 [Use Cases]
+  DD21[UseCase 4]
+  DD22[UseCase 5]
+  DD23[UseCase 6]
+end
+AA --> BB;
+BB --> CC1;
+BB --> CC2;
+CC1 --> DD1;
+CC2 --> DD2;
+```
+
+### UseCase
+
+A use case is a piece of business functionality. It takes an input, processes it through lifecycle methods (`client` and/or `server`), and gives an output.
+
+Inspired by [UML's Use case diagram](https://en.wikipedia.org/wiki/Use_case_diagram) and [Event-driven architecture](https://en.wikipedia.org/wiki/Event-driven_architecture), schematically, it could be defined as follows :
+
+```math
+O = clientMain(serverMain(I))
+```
+
+_Examples : `SignIn`, `CreatePost`, `TransferAccount`, `InviteContacts`_...
+
+Note how it always starts with a verb.
+
+Concretely, it's a file named `*UCD.ts` containing the definition of the use case (io, lifecycle, policies, etc.).
+
+### App
+
+An app is a logical group of use cases. It's like a "module" (_whatever that means_), inspired by [Domain-driven design (DDD)](https://en.wikipedia.org/wiki/Domain-driven_design) bounded contexts.
+
+_Examples : `Auth`, `Accounting`, `CMS`..._
+
+Concretely, it's a folder containing metadata files (`i18n.ts`, `manifest.ts`...) and a `ucds` folder which contains the use case definitions.
+
+### Product
+
+A product is a logical group of apps that are assembled together. It's simply what end users know and use.
+
+_Examples : `GitHub`, `Facebook`, `LinkedIn`, `Airbnb`..._
+
+Concretely, it's a folder containing  `i18n.ts`, `manifest.(js|ts)` and the elements corresponding to the desired targets. For example, it will contain the screens of a mobile app or the pages of a website.
+
+### Target
+
+A target defines how a product is "exposed" to the end user. It's a combination of platform and runtime.
+
+_Examples : `web-react`, `web-angular`, `server-node`, `cli-node`, `cli-stricli`..._
+
+Note that it's the only place where the "infrastructure" choices are applied. Targets can be generic and reusable across products.

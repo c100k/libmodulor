@@ -1,0 +1,53 @@
+---
+title: Dependency Injection (DI)
+description: libmodulor uses Dependency Injection to stay platform-agnostic. Apps run anywhere by injecting interfaces, avoiding platform-specific dependencies.
+---
+
+`libmodulor` relies heavily on [Dependency Injection](https://en.wikipedia.org/wiki/Dependency_injection) because of its **platform-agnostic** nature :
+
+> Apps must be runnable anywhere
+
+Therefore, most primitives are based on `injectable` classes that `inject` their dependencies.
+
+Anywhere you see `injectable` in the upcoming guides (`UCMain`, `UCPolicy`, etc.), you are required to respect the following rule :
+
+> Injectables must inject only interfaces and/or classes that are platform-agnostic.
+
+For instance, you should never have `node:*`, `react-native-*` or similar imports in an app as this would break this rule.
+For the same reason, even though they are called "Web Standards", you should never use them directly neither, as they are not available on all runtimes.
+
+Instead, you should describe the behavior in an interface and create concrete implementations.
+Interfaces are injected in your use cases and concrete implementations are bound in the DI container at the target level.
+
+As an example, calling a file system is inherently platform specific.
+The following interface defines the contract.
+It can be safely `injected` in any `injectable`.
+
+```typescript
+interface FileManager {
+    readFile(): Promise<string>;
+}
+
+// Usage
+@inject('FileManager') private fileManager: FileManager;
+```
+
+On the other side, these implementations are platform-agnostic by nature. 
+
+```typescript
+class NodeFileManager implements FileManager {
+    // Uses https://nodejs.org/api/fs.html
+}
+class ReactNativeFileManager implements FileManager {
+    // Uses https://www.npmjs.com/package/@dr.pogodin/react-native-fs
+}
+class BunFileManager implements FileManager {
+    // Uses https://bun.sh/docs/api/file-io
+}
+class WebFileManager implements FileManager {
+    // Uses nothing OR you can implement a virtual FS for web based environments
+}
+
+// Usage
+container.bind<FileManager>('FileManager').to(NodeFileManager);
+```

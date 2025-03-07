@@ -1,0 +1,14 @@
+{
+    "pages": [
+        "create-project",
+        "create-app",
+        "create-use-case",
+        "create-product",
+        "expose-target",
+        "create-target",
+        "create-data-type",
+        "create-policy",
+        "test-app",
+        "translate-app"
+    ]
+}

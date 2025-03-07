@@ -1,0 +1,58 @@
+---
+title: Create a project
+description: libmodulor can be used in a brownfield project but we recommend starting a greenfield project to enjoy the full expressiveness and convention system.
+---
+
+## With npx
+
+```sh
+npx libmodulor CreateProject --projectName my-super-project
+```
+
+By default, it will create a folder named `my-super-project` in the current working directory and install the dependencies using `yarn`.
+
+If you want to change the defaults (initial commit, pkg manager, etc.), run the `--help` command.
+
+```sh
+npx libmodulor --help | grep CreateProject -C 10
+```
+
+Execution should take a few seconds and give the following output.
+
+```sh
+Need to install the following packages:
+libmodulor@latest
+Ok to proceed? (y) y
+
+2025-02-28T15:32:09.446Z [info] Creating root dir : my-super-project
+2025-02-28T15:32:09.447Z [info] Initializing git repository
+2025-02-28T15:32:09.495Z [info] Creating config files
+2025-02-28T15:32:09.496Z [info] Creating apps and products directories
+2025-02-28T15:32:09.496Z [info] Installing dependencies
+2025-02-28T15:32:16.339Z [info] Committing
+2025-02-28T15:32:16.483Z [info] Testing dev command : yarn lint
+2025-02-28T15:32:17.134Z [info] Testing dev command : yarn test
+2025-02-28T15:32:18.342Z [info] Done ! Project ready ! ✅ 🚀
+```
+
+The generated directory has the following structure :
+
+```sh
+📁 src
+    📁 apps # the apps of the project (empty for now)
+    📁 products # the products of the project (empty for now)
+📄 .gitignore # includes the files/dirs patterns to exclude from version control
+📄 biome.json # config for the linter (feel free to change it if you don't like the defaults and run yarn lint again)
+📄 package.json # main config file containing info, scripts and dependencies
+📄 README.md # main documentation file (feel free to enhance it with explanations about the purpose of your project)
+📄 tsconfig.json # config file for TypeScript (pretty strict by default)
+📄 vitest.config.ts # config file for Vitest, the test runner
+```
+
+Optionally, you can create a remote repository (e.g. on GitHub) and push it.
+
+## Manually
+
+If you don't like the magic behind `npx`, or if you want to add `libmodulor` to an existing project, you can install it manually.
+
+Check the required dependencies in [package.json](https://github.com/c100k/libmodulor/blob/master/dist/esm/apps/Helper/src/lib/project.js#L29).
