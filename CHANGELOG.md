@@ -1,6 +1,6 @@
 # CHANGELOG
 
-## v0.7.0 (unreleased)
+## v0.7.0 (2025-03-07)
 
 **Added**
 
@@ -9,6 +9,10 @@
 **Fixed**
 
 - Derandomize UC input before snapshotting in tests : after the upgrade to TS 5.8, snapshotting a UC including a File as input would break as a new `state` property has appeared with a dynamic `lastModified` property
+
+**Misc**
+
+- Move the documentation with concepts, examples, guides and references to https://libmodulor.c100k.eu
 
 ## v0.6.1 (2025-02-28)
 
