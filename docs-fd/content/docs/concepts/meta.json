@@ -1,3 +1,3 @@
 {
-    "pages": ["philosophy", "architecture"]
+    "pages": ["philosophy", "architecture", "dependency-injection"]
 }
