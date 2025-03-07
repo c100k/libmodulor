@@ -17,6 +17,11 @@
     "devDependencies": {
         "@biomejs/biome": "^1.9.4",
         "@types/node": "^22.13.8",
+        "cookie-parser": "^1.4.7",
+        "express": "^4.21.2",
+        "express-fileupload": "^1.5.1",
+        "helmet": "^8.0.0",
+        "jose": "^6.0.8",
         "typescript": "^5.8.2"
     }
 }
