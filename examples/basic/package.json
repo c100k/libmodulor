@@ -1,0 +1,22 @@
+{
+    "name": "libmodulor-examples-basic",
+    "version": "0.1.0",
+    "author": "Chafik H'nini <chafik.hnini@gmail.com>",
+    "type": "module",
+    "private": true,
+    "scripts": {
+        "build": "./build.sh",
+        "lint": "biome check --write .",
+        "run:script": "(cd dist && node index.js)"
+    },
+    "dependencies": {
+        "inversify": "^6.2.2",
+        "libmodulor": "^0.7.0",
+        "reflect-metadata": "^0.2.2"
+    },
+    "devDependencies": {
+        "@biomejs/biome": "^1.9.4",
+        "@types/node": "^22.13.8",
+        "typescript": "^5.8.2"
+    }
+}
