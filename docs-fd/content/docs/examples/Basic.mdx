@@ -1,0 +1,68 @@
+---
+title: Basic
+description: An example showcasing the mechanisms of libmodulor in one single executable file.
+---
+
+This is the perfect example to have an overview of the most important primitives of `libmodulor`.
+
+## Get & Build
+
+<Callout>
+    Take the time to open the code in your favorite editor and browse it.
+</Callout>
+
+```sh
+git clone git@github.com:c100k/libmodulor.git
+cd libmodulor/examples/basic
+yarn install && yarn build
+```
+
+## Script
+
+Execute the script in your Terminal Emulator.
+
+```sh
+yarn run:script
+```
+
+You get a full output of what's going on step by step.
+
+```txt
+Declaring the App
+Declaring the UseCase
+Declaring the Product
+Declaring the Target
+Initializing i18n
+Initializing the UseCase
+Submitting the use case empty
+❌ Oops : Your email address must be filled
+Filling all the fields correctly except the email (invalid)
+❌ Oops : Your email address must be a valid email address
+Filling a valid email
+✅ Use case executed successfully
+💾 Persisted record in InMemoryUCDataStore
+{
+  aggregateId: '336fe1ee-e259-48f9-8fa4-2d3d9257947d',
+  appName: 'Event',
+  createdAt: 2025-03-07T14:25:04.756Z,
+  data: null,
+  executionMode: 'user',
+  id: '6296be1d-806c-4c26-b244-2d696c5b3ba5',
+  input: {
+    email: 'dexter@caramail.com',
+    firstname: 'Dexter',
+    lastname: 'Morgan'
+  },
+  name: 'Register',
+  organizationId: null,
+  userId: null
+}
+📓 Summary with fields from I18n/WordingManager
+Your registration #                : 336fe1ee-e259-48f9-8fa4-2d3d9257947d
+Your email address                 : dexter@caramail.com
+Your wonderful firstname           : Dexter
+Your awesome lastname              : Morgan
+✨  Done in 0.26s.
+```
+
+Play with the example, add features, break it 🙂.
