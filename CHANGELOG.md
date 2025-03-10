@@ -5,7 +5,7 @@
 **Misc**
 
 - Move `examples/libmodulor-tuto` to `examples/supertrader`
-- Introduce new `examples/basic`
+- Introduce new "Basic" example showing all the primitives in action in one single `.ts` file
 
 ## v0.7.0 (2025-03-07)
 
