@@ -7,7 +7,8 @@
     "scripts": {
         "build": "./build.sh",
         "lint": "biome check --write .",
-        "run:script": "(cd dist && node index.js)"
+        "run:bun": "bun index.ts",
+        "run:node": "(cd dist && node index.js)"
     },
     "dependencies": {
         "inversify": "^6.2.2",

@@ -5,7 +5,7 @@ description: An example showcasing the mechanisms of libmodulor in one single ex
 
 This is the perfect example to have an overview of the most important primitives of `libmodulor`.
 
-## Get & Build
+## Get
 
 <Callout>
     Take the time to open the code in your favorite editor and browse it.
@@ -14,16 +14,25 @@ This is the perfect example to have an overview of the most important primitives
 ```sh
 git clone git@github.com:c100k/libmodulor.git
 cd libmodulor/examples/basic
-yarn install && yarn build
+yarn install
 ```
 
-## Script
+## Run
 
 Execute the script in your Terminal Emulator.
 
 ```sh
-yarn run:script
+# with node
+yarn build && yarn run:node
+
+# with bun
+yarn run:bun
 ```
+
+<Callout>
+    Note how it works with both Node and Bun without having to override any implementations in the container.
+    This is due to the high modularity of `libmodulor` and the great work the `bun` team is doing to support the Node.js API.
+</Callout>
 
 You get a full output of what's going on step by step.
 
