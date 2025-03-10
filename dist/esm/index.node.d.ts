@@ -8,7 +8,6 @@ export { NodeHTTPAPICallExecutorAgentBuilder } from './std/impl/NodeHTTPAPICallE
 export { NodePromptManager } from './std/impl/NodePromptManager.js';
 export { NodeSpawnShellCommandExecutor } from './std/impl/NodeSpawnShellCommandExecutor.js';
 export { NodeCoreCLIManager } from './target/node-core-cli/NodeCoreCLIManager.js';
-export { NodeExpressServerManager } from './target/node-express-server/NodeExpressServerManager.js';
 export { bindNodeCLI } from './utils/ioc/bindNodeCLI.js';
 export { bindNodeCore } from './utils/ioc/bindNodeCore.js';
 export { bindServer } from './utils/ioc/bindServer.js';

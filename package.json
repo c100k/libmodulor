@@ -29,6 +29,9 @@
         "./locales/fr": {
             "import": "./dist/esm/i18n/locales/fr.js"
         },
+        "./node-express": {
+            "import": "./dist/esm/index.node-express.js"
+        },
         "./node-mcp": {
             "import": "./dist/esm/index.node-mcp.js"
         },
@@ -103,6 +106,18 @@
             "optional": true
         },
         "@stricli/core": {
+            "optional": true
+        },
+        "cookie-parser": {
+            "optional": true
+        },
+        "express": {
+            "optional": true
+        },
+        "express-fileupload": {
+            "optional": true
+        },
+        "helmet": {
             "optional": true
         },
         "hono": {

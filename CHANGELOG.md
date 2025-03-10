@@ -2,6 +2,10 @@
 
 ## v0.8.0 (unreleased)
 
+**BREAKING**
+
+- Move `NodeExpressServerManager` to a dedicated export (`libmodulor/node` => `libmodulor/node-express`). The following dependencies (`cookie-parser`, `express`, `express-fileupload` and `helmet`) are now optional. You can remove them if you're using `libmodulor/node` elements in non server targets like `cli`
+
 **Misc**
 
 - Move `examples/libmodulor-tuto` to `examples/supertrader`
