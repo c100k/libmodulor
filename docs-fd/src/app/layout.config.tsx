@@ -27,11 +27,19 @@ export const baseOptions: BaseLayoutProps = {
     },
     links: [
         {
+            active: 'nested-url',
             text: 'Docs',
             url: '/docs',
-            active: 'nested-url',
         },
         {
+            external: true,
+            on: 'menu',
+            text: 'llms.txt',
+            url: '/llms.txt',
+        },
+        {
+            external: true,
+            on: 'menu',
             text: 'GitHub',
             url: 'https://github.com/c100k/libmodulor',
         },

@@ -8,8 +8,9 @@
 
 **Misc**
 
-- Move `examples/libmodulor-tuto` to `examples/supertrader`
 - Introduce new "Basic" example showing all the primitives in action in one single `.ts` file
+- Move `examples/libmodulor-tuto` to `examples/supertrader`
+- Add `llms.txt` to docs at https://libmodulor.c100k.eu/llms.txt
 
 ## v0.7.0 (2025-03-07)
 
