@@ -11,6 +11,7 @@
 - Introduce new "Basic" example showing all the primitives in action in one single `.ts` file
 - Move `examples/libmodulor-tuto` to `examples/supertrader`
 - Add `llms.txt` to docs at https://libmodulor.c100k.eu/llms.txt
+- Do not enforce `dt` and `policies` folders in app src : place everything that **is not** `*UCD` and `*ServerMain` into `lib` the way you prefer
 
 ## v0.7.0 (2025-03-07)
 

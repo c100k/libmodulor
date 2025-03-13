@@ -7,9 +7,7 @@ Its logical representation is a directory named `src/apps/{AppName}` that has th
 
 ```sh
 📁 src
-    📁 dt
     📁 lib
-    📁 policies
     📁 ucds
     📄 i18n.ts
     📄 manifest.ts
@@ -19,19 +17,11 @@ Its logical representation is a directory named `src/apps/{AppName}` that has th
 
 ## src => Source
 
-### dt => data types
-
-This folder contains the custom data types of the app. Check [Create a data type](./create-data-type) for more details.
-
 ### lib
 
-This folder contains types, interfaces, classes, functions, consts... used across multiple use cases.
+This folder contains [data types](./create-data-type), [policies](./create-policy), types, interfaces, classes, functions, consts... that are used across one or multiple use cases.
 
-These are typically related to the purpose of the app. Typically, an app that sends stuff would have a `Sender` interface with some implementations.
-
-### policies
-
-This folder contains the custom policies of the app. Check [Create a policy](./create-policy) for more details.
+You are free to organize this folder the way you want.
 
 ### ucds => use case definitions
 

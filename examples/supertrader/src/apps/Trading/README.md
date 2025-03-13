@@ -35,4 +35,4 @@ sequenceDiagram
 
 |#|filePath|constName|metadataName|metadataAction|metadataBeta|metadataIcon|metadataNew|metadataSensitive|externalImports|internalImports|ioI|ioIFields|ioOPI0|ioOPI0Fields|ioOPI1|ioOPI1Fields|lifecycleClientPolicy|lifecycleServerPolicy|
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-|1|/src/ucds/BuyAssetUCD.ts|BuyAssetUCD|BuyAsset|Create||plus|||inversify<br>libmodulor|../manifest.js<br>../dt/TISIN.js<br>./BuyAssetServerMain.js|BuyAssetInput|isin: UCInputFieldValue&#60;ISIN&#62;<br>limit: UCInputFieldValue&#60;Amount&#62;<br>qty: UCInputFieldValue&#60;UIntQuantity&#62;|BuyAssetOPI0|executedDirectly: boolean<br>id: UUID|||Everybody|Everybody|
+|1|/src/ucds/BuyAssetUCD.ts|BuyAssetUCD|BuyAsset|Create||plus|||inversify<br>libmodulor|../manifest.js<br>../lib/TISIN.js<br>./BuyAssetServerMain.js|BuyAssetInput|isin: UCInputFieldValue&#60;ISIN&#62;<br>limit: UCInputFieldValue&#60;Amount&#62;<br>qty: UCInputFieldValue&#60;UIntQuantity&#62;|BuyAssetOPI0|executedDirectly: boolean<br>id: UUID|||Everybody|Everybody|
