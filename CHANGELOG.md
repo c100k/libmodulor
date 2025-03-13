@@ -5,13 +5,14 @@
 **BREAKING**
 
 - Move `NodeExpressServerManager` to a dedicated export (`libmodulor/node` => `libmodulor/node-express`). The following dependencies (`cookie-parser`, `express`, `express-fileupload` and `helmet`) are now optional. You can remove them if you're using `libmodulor/node` elements in non server targets like `cli`
+- Do not enforce `dt` and `policies` folders in app src : place everything that **is not** `*UCD` and `*ServerMain` into `lib` the way you prefer
+- Check app src folder contents : it must contain only the elements allowed by the spec (Re-generate your tests `yarn libmodulor GenerateAppsTests` to enforce the new rule)
 
 **Misc**
 
 - Introduce new "Basic" example showing all the primitives in action in one single `.ts` file
 - Move `examples/libmodulor-tuto` to `examples/supertrader`
 - Add `llms.txt` to docs at https://libmodulor.c100k.eu/llms.txt
-- Do not enforce `dt` and `policies` folders in app src : place everything that **is not** `*UCD` and `*ServerMain` into `lib` the way you prefer
 
 ## v0.7.0 (2025-03-07)
 

@@ -12,6 +12,7 @@ import type { AppDocsEmitter } from './workers/AppDocsEmitter.js';
 import type { AppTestSuiteTestResult } from './workers/AppTestSuiteEmitter.js';
 import { AppTesterCtxInitializer } from './workers/AppTesterCtxInitializer.js';
 import { UCExecutor, type UCExecutorExecOutput, type Input as UCExecutorInput } from './workers/UCExecutor.js';
+import { AppFolderChecker } from './workers/checkers/AppFolderChecker.js';
 import { AppI18nChecker } from './workers/checkers/AppI18nChecker.js';
 import { AppIndexChecker } from './workers/checkers/AppIndexChecker.js';
 import { AppManifestChecker } from './workers/checkers/AppManifestChecker.js';
@@ -31,6 +32,7 @@ export interface AppTesterUCTestData<I extends UCInput | undefined = undefined, 
 }
 export declare class AppTester {
     private appDocsEmitter;
+    private appFolderChecker;
     private appI18nChecker;
     private appIndexChecker;
     private appManifestChecker;
@@ -51,7 +53,8 @@ export declare class AppTester {
     private testResults;
     private testSummary;
     private ucDefSourcesCheckerOutput;
-    constructor(appDocsEmitter: AppDocsEmitter, appI18nChecker: AppI18nChecker, appIndexChecker: AppIndexChecker, appManifestChecker: AppManifestChecker, appTesterCtxInitializer: AppTesterCtxInitializer, serverManager: ServerManager, simpleHTMLAppTestReportEmitter: SimpleHTMLAppTestReportEmitter, ucBuilder: UCBuilder, ucDefChecker: UCDefChecker, ucDefSourcesChecker: UCDefSourcesChecker, ucExecutor: UCExecutor);
+    constructor(appDocsEmitter: AppDocsEmitter, appFolderChecker: AppFolderChecker, appI18nChecker: AppI18nChecker, appIndexChecker: AppIndexChecker, appManifestChecker: AppManifestChecker, appTesterCtxInitializer: AppTesterCtxInitializer, serverManager: ServerManager, simpleHTMLAppTestReportEmitter: SimpleHTMLAppTestReportEmitter, ucBuilder: UCBuilder, ucDefChecker: UCDefChecker, ucDefSourcesChecker: UCDefSourcesChecker, ucExecutor: UCExecutor);
+    checkAppFolder(): Promise<void>;
     checkAppI18n(): Promise<void>;
     checkAppIndex(): Promise<void>;
     checkAppManifest(): Promise<void>;

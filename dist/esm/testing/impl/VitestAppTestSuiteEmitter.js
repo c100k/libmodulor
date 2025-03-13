@@ -92,6 +92,10 @@ test('Sources should be valid', async () => {
     await runner.checkUCDSources();
 });
 
+test('Folder should be valid', async () => {
+    await runner.checkAppFolder();
+});
+
 test('${APP_MANIFEST_NAME} should be valid', async () => {
     await runner.checkAppManifest();
 });

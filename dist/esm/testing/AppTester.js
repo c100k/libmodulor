@@ -23,6 +23,7 @@ import { allWithExamples, defaultUCInputFillers, } from './uc-input.js';
 import { awaitForSrcImport } from './utils.js';
 import { AppTesterCtxInitializer } from './workers/AppTesterCtxInitializer.js';
 import { UCExecutor, } from './workers/UCExecutor.js';
+import { AppFolderChecker } from './workers/checkers/AppFolderChecker.js';
 import { AppI18nChecker } from './workers/checkers/AppI18nChecker.js';
 import { AppIndexChecker } from './workers/checkers/AppIndexChecker.js';
 import { AppManifestChecker } from './workers/checkers/AppManifestChecker.js';
@@ -30,6 +31,7 @@ import { UCDefChecker } from './workers/checkers/UCDefChecker.js';
 import { UCDefSourcesChecker, } from './workers/checkers/UCDefSourcesChecker.js';
 let AppTester = class AppTester {
     appDocsEmitter;
+    appFolderChecker;
     appI18nChecker;
     appIndexChecker;
     appManifestChecker;
@@ -51,8 +53,9 @@ let AppTester = class AppTester {
     testResults;
     testSummary;
     ucDefSourcesCheckerOutput;
-    constructor(appDocsEmitter, appI18nChecker, appIndexChecker, appManifestChecker, appTesterCtxInitializer, serverManager, simpleHTMLAppTestReportEmitter, ucBuilder, ucDefChecker, ucDefSourcesChecker, ucExecutor) {
+    constructor(appDocsEmitter, appFolderChecker, appI18nChecker, appIndexChecker, appManifestChecker, appTesterCtxInitializer, serverManager, simpleHTMLAppTestReportEmitter, ucBuilder, ucDefChecker, ucDefSourcesChecker, ucExecutor) {
         this.appDocsEmitter = appDocsEmitter;
+        this.appFolderChecker = appFolderChecker;
         this.appI18nChecker = appI18nChecker;
         this.appIndexChecker = appIndexChecker;
         this.appManifestChecker = appManifestChecker;
@@ -71,6 +74,14 @@ let AppTester = class AppTester {
                 warning: 0,
             },
         };
+    }
+    async checkAppFolder() {
+        const { errors } = await this.appFolderChecker.exec({
+            appPath: this.ctx.appPath,
+        });
+        if (errors.length > 0) {
+            throw new Error(errors[0]);
+        }
     }
     async checkAppI18n() {
         const { errors } = await this.appI18nChecker.exec({
@@ -337,17 +348,19 @@ let AppTester = class AppTester {
 AppTester = __decorate([
     injectable(),
     __param(0, inject('AppDocsEmitter')),
-    __param(1, inject(AppI18nChecker)),
-    __param(2, inject(AppIndexChecker)),
-    __param(3, inject(AppManifestChecker)),
-    __param(4, inject(AppTesterCtxInitializer)),
-    __param(5, inject('ServerManager')),
-    __param(6, inject(SimpleHTMLAppTestReportEmitter)),
-    __param(7, inject(UCBuilder)),
-    __param(8, inject(UCDefChecker)),
-    __param(9, inject(UCDefSourcesChecker)),
-    __param(10, inject(UCExecutor)),
-    __metadata("design:paramtypes", [Object, AppI18nChecker,
+    __param(1, inject(AppFolderChecker)),
+    __param(2, inject(AppI18nChecker)),
+    __param(3, inject(AppIndexChecker)),
+    __param(4, inject(AppManifestChecker)),
+    __param(5, inject(AppTesterCtxInitializer)),
+    __param(6, inject('ServerManager')),
+    __param(7, inject(SimpleHTMLAppTestReportEmitter)),
+    __param(8, inject(UCBuilder)),
+    __param(9, inject(UCDefChecker)),
+    __param(10, inject(UCDefSourcesChecker)),
+    __param(11, inject(UCExecutor)),
+    __metadata("design:paramtypes", [Object, AppFolderChecker,
+        AppI18nChecker,
         AppIndexChecker,
         AppManifestChecker,
         AppTesterCtxInitializer, Object, SimpleHTMLAppTestReportEmitter,
