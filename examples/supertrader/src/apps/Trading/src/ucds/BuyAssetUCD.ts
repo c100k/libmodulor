@@ -18,7 +18,7 @@ import {
 
 import { Manifest } from '../manifest.js';
 
-import { type ISIN, TISIN } from '../dt/TISIN.js';
+import { type ISIN, TISIN } from '../lib/TISIN.js';
 import { BuyAssetServerMain } from './BuyAssetServerMain.js';
 
 export interface BuyAssetInput extends UCInput {

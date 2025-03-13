@@ -15,7 +15,7 @@ But some apps need specific data types.
 As an example, defining an [ISIN](https://www.isin.org) as a `string` is too approximative.
 Indeed, it has a specific length, format, etc.
 
-```typescript title="src/dt/TISIN.ts"
+```typescript title="src/lib/TISIN.ts"
 export type ISIN = Capitalize<string>;
 
 export class TISIN extends TString<ISIN, 'ISIN'> {

@@ -14,7 +14,7 @@ But some apps need specific policies.
 
 As an example, you can define a policy to allow some use cases only to "Pro" users.
 
-```typescript title="src/policies/ProUCPolicy.ts"
+```typescript title="src/lib/ProUCPolicy.ts"
 @injectable()
 export class ProUCPolicy<
     I extends UCInput | undefined = undefined,
