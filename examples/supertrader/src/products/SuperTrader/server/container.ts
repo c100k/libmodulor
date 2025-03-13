@@ -11,10 +11,10 @@ import {
     bindProduct,
 } from 'libmodulor';
 import {
-    NodeExpressServerManager,
     bindNodeCore,
     bindServer,
 } from 'libmodulor/node';
+import { NodeExpressServerManager } from 'libmodulor/node-express';
 import {
     KnexUCDataStore,
     type KnexUCDataStoreSettings,
