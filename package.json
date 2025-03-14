@@ -108,6 +108,9 @@
         "@stricli/core": {
             "optional": true
         },
+        "buffer": {
+            "optional": true
+        },
         "cookie-parser": {
             "optional": true
         },
@@ -115,6 +118,9 @@
             "optional": true
         },
         "express-fileupload": {
+            "optional": true
+        },
+        "fast-check": {
             "optional": true
         },
         "helmet": {
@@ -145,6 +151,9 @@
             "optional": true
         },
         "vite": {
+            "optional": true
+        },
+        "vitest": {
             "optional": true
         }
     },

@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## v0.9.0 (unreleased)
+
+**Misc**
+
+- Make `buffer`, `fast-check` and `vitest` deps optional : basic uses of `libmodulor` do not require them (see https://libmodulor.c100k.eu/docs/examples/Basic as en example)
+
 ## v0.8.0 (2025-03-13)
 
 **BREAKING**
