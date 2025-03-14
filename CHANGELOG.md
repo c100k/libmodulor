@@ -2,9 +2,13 @@
 
 ## v0.9.0 (unreleased)
 
+**BREAKING**
+
+- Move `bindServer` to `libmodulor/node-express`. The following dependencies (`jose`) are now optional. You can remove them if you're using `libmodulor/node` elements in non server targets like `cli`
+
 **Misc**
 
-- Make `buffer`, `fast-check` and `vitest` deps optional : basic uses of `libmodulor` do not require them (see https://libmodulor.c100k.eu/docs/examples/Basic as en example)
+- Make `buffer`, `fast-check` and `vitest` deps optional : basic uses of `libmodulor` do not require them (see https://libmodulor.c100k.eu/docs/examples/Basic as en example). You can remove them if you're not using the automated tests
 
 ## v0.8.0 (2025-03-13)
 

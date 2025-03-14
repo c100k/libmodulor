@@ -10,4 +10,3 @@ export { NodeSpawnShellCommandExecutor } from './std/impl/NodeSpawnShellCommandE
 export { NodeCoreCLIManager } from './target/node-core-cli/NodeCoreCLIManager.js';
 export { bindNodeCLI } from './utils/ioc/bindNodeCLI.js';
 export { bindNodeCore } from './utils/ioc/bindNodeCore.js';
-export { bindServer } from './utils/ioc/bindServer.js';
