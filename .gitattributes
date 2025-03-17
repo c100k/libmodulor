@@ -1,3 +1,4 @@
 *.cjs linguist-documentation
+*.mjs linguist-documentation
 *.css linguist-documentation
 *.mdx linguist-documentation
