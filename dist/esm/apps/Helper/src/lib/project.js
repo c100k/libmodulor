@@ -48,11 +48,11 @@ export const PACKAGE_JSON = (name) => `{
         "cookie-parser": "^1.4.7",
         "express": "^4.21.2",
         "express-fileupload": "^1.5.1",
-        "fast-check": "^3.23.2",
+        "fast-check": "^4.0.0",
         "helmet": "^8.0.0",
-        "jose": "^6.0.8",
+        "jose": "^6.0.10",
         "typescript": "^5.8.2",
-        "vite": "^6.2.1",
+        "vite": "^6.2.2",
         "vitest": "^3.0.8"
     }
 }

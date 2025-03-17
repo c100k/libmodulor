@@ -219,7 +219,7 @@ describe.runIf(ucdRefs.length > 0)('Use Cases', () => {
             for (const k of Object.keys(inputFields)) {
                 inputLike[k] = anything();
             }
-            const cmdArbs = record(inputLike, { withDeletedKeys: true }).map(
+            const cmdArbs = record(inputLike, { requiredKeys: [] }).map(
                 (r) => new MyCommand(r),
             );
 

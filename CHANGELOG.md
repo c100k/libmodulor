@@ -5,10 +5,11 @@
 **BREAKING**
 
 - Move `bindServer` to `libmodulor/node-express`. The following dependencies (`jose`) are now optional. You can remove them if you're using `libmodulor/node` elements in non server targets like `cli`
+- Upgrade to `fast-check` [v4](https://fast-check.dev/docs/migration-guide/from-3.x-to-4.x) : Re-generate your tests with `yarn libmodulor GenerateAppsTests` to get the changes adapted to this version
 
 **Misc**
 
-- Make `buffer`, `fast-check` and `vitest` deps optional : basic uses of `libmodulor` do not require them (see https://libmodulor.c100k.eu/docs/examples/Basic as en example). You can remove them if you're not using the automated tests
+- Make `buffer`, `fast-check` and `vitest` deps optional : basic uses of `libmodulor` do not require them (see https://libmodulor.c100k.eu/docs/examples/Basic as an example). You can remove them if you're not using the automated tests
 
 ## v0.8.0 (2025-03-13)
 
@@ -16,7 +17,7 @@
 
 - Move `NodeExpressServerManager` to a dedicated export (`libmodulor/node` => `libmodulor/node-express`). The following dependencies (`cookie-parser`, `express`, `express-fileupload` and `helmet`) are now optional. You can remove them if you're using `libmodulor/node` elements in non server targets like `cli`
 - Do not enforce `dt` and `policies` folders in app src : place everything that **is not** `*UCD` and `*ServerMain` into `lib` the way you prefer
-- Check app src folder contents : it must contain only the elements allowed by the spec (Re-generate your tests `yarn libmodulor GenerateAppsTests` to enforce the new rule)
+- Check app src folder contents : it must contain only the elements allowed by the spec (Re-generate your tests with `yarn libmodulor GenerateAppsTests` to enforce the new rule)
 
 **Misc**
 
