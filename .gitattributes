@@ -1,3 +1,3 @@
-*.(c|m)?js linguist-documentation
+*.cjs linguist-documentation
 *.css linguist-documentation
 *.mdx linguist-documentation
