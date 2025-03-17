@@ -1,3 +1,3 @@
-docs-fd/*.css linguist-documentation
-docs-fd/*.(c|m)?js linguist-documentation
+*.(c|m)?js linguist-documentation
+*.css linguist-documentation
 *.mdx linguist-documentation
