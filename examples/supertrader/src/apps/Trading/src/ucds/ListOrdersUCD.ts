@@ -1,46 +1,25 @@
 import {
-    type Amount,
     EverybodyUCPolicy,
     type ListInput,
     ListInputDef,
     SendClientMain,
-    TAmount,
-    TUIntQuantity,
     type UCDef,
-    type UCOPIBase,
-    type UIntQuantity,
 } from 'libmodulor';
 
-import { type ISIN, TISIN } from '../lib/TISIN.js';
+import { type Order, OrderOPIDef } from '../lib/order.js';
 import { Manifest } from '../manifest.js';
 import { ListOrdersServerMain } from './ListOrdersServerMain.js';
 
 export interface ListOrdersInput extends ListInput {}
 
-export interface ListOrdersOPI0 extends UCOPIBase {
-    isin: ISIN;
-    limit: Amount;
-    qty: UIntQuantity;
-}
+export type ListOrdersOPI0 = Order;
 
 export const ListOrdersUCD: UCDef<ListOrdersInput, ListOrdersOPI0> = {
     io: {
         i: ListInputDef,
         o: {
             parts: {
-                _0: {
-                    fields: {
-                        isin: {
-                            type: new TISIN(),
-                        },
-                        limit: {
-                            type: new TAmount('EUR'),
-                        },
-                        qty: {
-                            type: new TUIntQuantity(),
-                        },
-                    },
-                },
+                _0: OrderOPIDef,
             },
         },
     },

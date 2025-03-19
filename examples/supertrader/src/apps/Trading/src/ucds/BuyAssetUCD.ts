@@ -1,10 +1,8 @@
 import {
-    type AggregateOPI0,
     type Amount,
     EverybodyUCPolicy,
     SendClientMain,
     TAmount,
-    TBoolean,
     TUIntQuantity,
     type UCDef,
     type UCInput,
@@ -15,6 +13,7 @@ import {
 import { Manifest } from '../manifest.js';
 
 import { type ISIN, TISIN } from '../lib/TISIN.js';
+import { type Order, OrderOPIDef } from '../lib/order.js';
 import { BuyAssetServerMain } from './BuyAssetServerMain.js';
 
 export interface BuyAssetInput extends UCInput {
@@ -23,9 +22,7 @@ export interface BuyAssetInput extends UCInput {
     qty: UCInputFieldValue<UIntQuantity>;
 }
 
-export interface BuyAssetOPI0 extends AggregateOPI0 {
-    executedDirectly: boolean;
-}
+export type BuyAssetOPI0 = Order;
 
 export const BuyAssetUCD: UCDef<BuyAssetInput, BuyAssetOPI0> = {
     io: {
@@ -44,13 +41,7 @@ export const BuyAssetUCD: UCDef<BuyAssetInput, BuyAssetOPI0> = {
         },
         o: {
             parts: {
-                _0: {
-                    fields: {
-                        executedDirectly: {
-                            type: new TBoolean(),
-                        },
-                    },
-                },
+                _0: OrderOPIDef,
             },
         },
     },
