@@ -1,18 +1,14 @@
-import { inject, injectable } from 'inversify';
 import {
     type AggregateOPI0,
     type Amount,
     EverybodyUCPolicy,
+    SendClientMain,
     TAmount,
     TBoolean,
     TUIntQuantity,
     type UCDef,
     type UCInput,
     type UCInputFieldValue,
-    type UCMain,
-    type UCMainInput,
-    type UCOutputOrNothing,
-    type UCTransporter,
     type UIntQuantity,
 } from 'libmodulor';
 
@@ -29,22 +25,6 @@ export interface BuyAssetInput extends UCInput {
 
 export interface BuyAssetOPI0 extends AggregateOPI0 {
     executedDirectly: boolean;
-}
-
-@injectable()
-class BuyAssetClientMain implements UCMain<BuyAssetInput, BuyAssetOPI0> {
-    constructor(
-        @inject('UCTransporter')
-        private ucTransporter: UCTransporter,
-    ) {}
-
-    public async exec({
-        uc,
-    }: UCMainInput<BuyAssetInput, BuyAssetOPI0>): Promise<
-        UCOutputOrNothing<BuyAssetOPI0>
-    > {
-        return this.ucTransporter.send(uc);
-    }
 }
 
 export const BuyAssetUCD: UCDef<BuyAssetInput, BuyAssetOPI0> = {
@@ -76,7 +56,7 @@ export const BuyAssetUCD: UCDef<BuyAssetInput, BuyAssetOPI0> = {
     },
     lifecycle: {
         client: {
-            main: BuyAssetClientMain,
+            main: SendClientMain,
             policy: EverybodyUCPolicy,
         },
         server: {
