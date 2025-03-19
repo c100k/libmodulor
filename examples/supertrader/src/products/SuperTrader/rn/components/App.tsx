@@ -14,7 +14,11 @@ import {
 import React, { useEffect, useState, type ReactElement } from 'react';
 import { Text, View } from 'react-native';
 
-import { BuyAssetUCD, Manifest } from '../../../../apps/Trading/index.js';
+import {
+    BuyAssetUCD,
+    ListOrdersUCD,
+    Manifest,
+} from '../../../../apps/Trading/index.js';
 
 export default function App(): ReactElement {
     const { container, i18nManager, wordingManager } = useDIContext();
@@ -24,8 +28,9 @@ export default function App(): ReactElement {
     );
 
     const [buyAssetUC] = useUC(Manifest, BuyAssetUCD, null);
-    const [buyAssetPart0, _buyAssetPart1, { append0 }] = useUCOR(
-        new UCOutputReader(BuyAssetUCD, undefined),
+    const [listOrdersUC] = useUC(Manifest, ListOrdersUCD, null);
+    const [listOrdersPart0, _listOrdersPart1, { append0 }] = useUCOR(
+        new UCOutputReader(ListOrdersUCD, undefined),
     );
 
     const [loading, setLoading] = useState(true);
@@ -44,8 +49,9 @@ export default function App(): ReactElement {
     const { slogan } = wordingManager.p();
     const { label } = wordingManager.uc(buyAssetUC.def);
     const { label: idLabel } = wordingManager.ucof('id');
-    const { label: executedDirectlyLabel } =
-        wordingManager.ucof('executedDirectly');
+    const { label: isinLabel } = wordingManager.ucof('isin');
+    const { label: limitLabel } = wordingManager.ucof('limit');
+    const { label: qtyLabel } = wordingManager.ucof('qty');
 
     return (
         <View style={{ gap: 16, padding: 16 }}>
@@ -70,30 +76,41 @@ export default function App(): ReactElement {
                         uc={buyAssetUC}
                     />
 
+                    <UCPanel
+                        autoExec={true}
+                        onDone={async (ucor) => append0(ucor)}
+                        renderAutoExecLoader={UCAutoExecLoader}
+                        renderExecTouchable={UCExecTouchable}
+                        renderForm={UCForm}
+                        uc={listOrdersUC}
+                    />
+
                     <View>
                         <View>
                             <View style={{ flexDirection: 'row', gap: 16 }}>
                                 <Text>{idLabel}</Text>
-                                <Text>{executedDirectlyLabel}</Text>
+                                <Text>{isinLabel}</Text>
+                                <Text>{limitLabel}</Text>
+                                <Text>{qtyLabel}</Text>
                             </View>
                         </View>
                         <View>
-                            {buyAssetPart0?.items.map((i) => (
+                            {listOrdersPart0?.items.map((i) => (
                                 <View
                                     key={i.id}
                                     style={{ flexDirection: 'row', gap: 16 }}
                                 >
                                     <Text>{i.id}</Text>
-                                    <Text>
-                                        {i.executedDirectly ? '✅' : '❌'}
-                                    </Text>
+                                    <Text>{i.isin}</Text>
+                                    <Text>{i.limit}</Text>
+                                    <Text>{i.qty}</Text>
                                 </View>
                             ))}
                         </View>
                         <View>
                             <View style={{ flexDirection: 'row', gap: 16 }}>
                                 <Text>{i18nManager.t('total')}</Text>
-                                <Text>{buyAssetPart0?.pagination.total}</Text>
+                                <Text>{listOrdersPart0?.pagination.total}</Text>
                             </View>
                         </View>
                     </View>
