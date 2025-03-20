@@ -10,7 +10,7 @@
 **Misc**
 
 - Make `buffer`, `fast-check` and `vitest` deps optional : basic uses of `libmodulor` do not require them (see https://libmodulor.c100k.eu/docs/examples/Basic as an example). You can remove them if you're not using the automated tests
-- Add `ListOrdersUCD` to `examples/supertrader`
+- Add `ListOrdersUCD` an `CancelOrderUCD` to `examples/supertrader` to showcase data fetching, aggregate building, sensitive use cases, etc.
 
 ## v0.8.0 (2025-03-13)
 
