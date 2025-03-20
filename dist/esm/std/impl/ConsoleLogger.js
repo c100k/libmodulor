@@ -56,8 +56,9 @@ let ConsoleLogger = class ConsoleLogger {
         if (!this.shouldLog('trace')) {
             return;
         }
+        // Using "debug" instead of "trace" because trace expands the stacktrace and pollutes the logs
         // biome-ignore lint/suspicious/noConsole: we want it
-        console.trace(`${this.t()} [trace] ${message}`, ...meta);
+        console.debug(`${this.t()} [trace] ${message}`, ...meta);
     }
     warn(message, ...meta) {
         if (!this.shouldLog('warn')) {

@@ -12,6 +12,7 @@
 - Make `buffer`, `fast-check` and `vitest` deps optional : basic uses of `libmodulor` do not require them (see https://libmodulor.c100k.eu/docs/examples/Basic as an example). You can remove them if you're not using the automated tests
 - Add `ListOrdersUCD` an `CancelOrderUCD` to `examples/supertrader` to showcase data fetching, aggregate building, sensitive use cases, test flows, etc.
 - Remove linter config from examples (linting from repo root folder)
+- Use `debug` instead of `trace` in `ConsoleLogger`
 
 ## v0.8.0 (2025-03-13)
 
