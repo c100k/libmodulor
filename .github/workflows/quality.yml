@@ -44,6 +44,7 @@ jobs:
         run: |
           cd examples/supertrader
           yarn install && touch .env && yarn build
+          yarn test
           yarn run:server &
           curl -X POST -H "Content-Type: application/json" http://localhost:7443/api/v1/Trading_BuyAsset
           yarn run:cli Trading_BuyAsset
