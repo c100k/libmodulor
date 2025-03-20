@@ -7,8 +7,9 @@ export const I18n: AppI18n = {
         uc_BuyAsset_i_submit_submitting: 'Sending',
         ucif_isin_label: 'ISIN',
         ucif_qty_label: 'Quantity',
-        ucof_executedDirectly_label: '🚀 Executed directly',
         ucof_id_label: 'Identifier',
+        ucof_isin_label: 'ISIN',
+        ucof_qty_label: 'Quantity',
         validation_format_ISIN:
             'Must be 2 uppercase letters, followed by 9 alphanumeric characters and 1 digit',
     },

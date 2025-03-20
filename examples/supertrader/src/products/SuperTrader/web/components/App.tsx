@@ -106,6 +106,8 @@ export default function App(): ReactElement {
                         <tfoot>
                             <tr>
                                 <th>{i18nManager.t('total')}</th>
+                                <th />
+                                <th />
                                 <th>{listOrdersPart0?.pagination.total}</th>
                             </tr>
                         </tfoot>
