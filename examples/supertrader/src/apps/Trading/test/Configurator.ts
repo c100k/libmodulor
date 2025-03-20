@@ -5,11 +5,8 @@ import {
     type CryptoManager,
     bindCommon,
 } from 'libmodulor';
-import {
-    NodeDeterministicCryptoManager,
-    bindNodeCore,
-    bindServer,
-} from 'libmodulor/node';
+import { NodeDeterministicCryptoManager, bindNodeCore } from 'libmodulor/node';
+import { bindServer } from 'libmodulor/node-express';
 import { SimpleAppTesterConfigurator } from 'libmodulor/node-test';
 
 import { flow1 } from './flows/flow1.js';

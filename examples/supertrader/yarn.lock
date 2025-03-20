@@ -1664,10 +1664,10 @@
     "@jridgewell/resolve-uri" "^3.1.0"
     "@jridgewell/sourcemap-codec" "^1.4.14"
 
-"@modelcontextprotocol/sdk@^1.6.1":
-  version "1.6.1"
-  resolved "https://registry.yarnpkg.com/@modelcontextprotocol/sdk/-/sdk-1.6.1.tgz#49a2fc8fb2470ba9a0513eb13b63ff4d4e21a600"
-  integrity sha512-oxzMzYCkZHMntzuyerehK3fV6A2Kwh5BD6CGEJSVDU2QNEhfLOptf2X7esQgaHZXHZY0oHmMsOtIDLP71UJXgA==
+"@modelcontextprotocol/sdk@^1.7.0":
+  version "1.7.0"
+  resolved "https://registry.yarnpkg.com/@modelcontextprotocol/sdk/-/sdk-1.7.0.tgz#77da3978e2ecedba6d306c0f2178a7d5189c9224"
+  integrity sha512-IYPe/FLpvF3IZrd/f5p5ffmWhMc3aEMuM2wGJASDqC2Ge7qatVCdbfPx3n/5xFeb19xN0j/911M2AaFuircsWA==
   dependencies:
     content-type "^1.0.5"
     cors "^2.8.5"
@@ -4089,12 +4089,12 @@ express@^5.0.1:
     utils-merge "1.0.1"
     vary "~1.1.2"
 
-fast-check@^3.23.2:
-  version "3.23.2"
-  resolved "https://registry.yarnpkg.com/fast-check/-/fast-check-3.23.2.tgz#0129f1eb7e4f500f58e8290edc83c670e4a574a2"
-  integrity sha512-h5+1OzzfCC3Ef7VbtKdcv7zsstUQwUDlYpUTvjeUsJAssPgLn7QzbboPtL5ro04Mq0rPOsMzl7q5hIbRs2wD1A==
+fast-check@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/fast-check/-/fast-check-4.0.0.tgz#a5aff60fb20728458c91d1ff98ca1b65d991abc5"
+  integrity sha512-aXLyLemZ7qhLNn2oq+YpjT2Xed21+i29WGAYuyrGbU4r8oinB3i4XR4e62O3NY6qmm5qHEDoc/7d+gMsri3AfA==
   dependencies:
-    pure-rand "^6.1.0"
+    pure-rand "^7.0.0"
 
 fast-glob@^3.2.5, fast-glob@^3.2.9, fast-glob@^3.3.2:
   version "3.3.3"
@@ -4993,10 +4993,10 @@ join-component@^1.1.0:
   resolved "https://registry.yarnpkg.com/join-component/-/join-component-1.1.0.tgz#b8417b750661a392bee2c2537c68b2a9d4977cd5"
   integrity sha512-bF7vcQxbODoGK1imE2P9GS9aw4zD0Sd+Hni68IMZLj7zRnquH7dXUmMw9hDI5S/Jzt7q+IyTXN0rSg2GI0IKhQ==
 
-jose@^6.0.8:
-  version "6.0.8"
-  resolved "https://registry.yarnpkg.com/jose/-/jose-6.0.8.tgz#210f1692e34be4958fe174a9bc2d3c87e93fde30"
-  integrity sha512-EyUPtOKyTYq+iMOszO42eobQllaIjJnwkZ2U93aJzNyPibCy7CEvT9UQnaCVB51IAd49gbNdCew1c0LcLTCB2g==
+jose@^6.0.10:
+  version "6.0.10"
+  resolved "https://registry.yarnpkg.com/jose/-/jose-6.0.10.tgz#52d96e1a671b4c02e13b71e0d35abea2e774712b"
+  integrity sha512-skIAxZqcMkOrSwjJvplIPYrlXGpxTPnro2/QWTDCxAdWQrSTV5/KqspMWmi5WAx5+ULswASJiZ0a+1B/Lxt9cw==
 
 "js-tokens@^3.0.0 || ^4.0.0", js-tokens@^4.0.0:
   version "4.0.0"
@@ -5148,10 +5148,10 @@ leven@^3.1.0:
   resolved "https://registry.yarnpkg.com/leven/-/leven-3.1.0.tgz#77891de834064cccba82ae7842bb6b14a13ed7f2"
   integrity sha512-qsda+H8jTaUaN/x5vzW2rzc+8Rw4TAQ/4KjB46IwK5VH+IlVeeeje/EoZRpiXvIqjFgK84QffqPztGI3VBLG1A==
 
-libmodulor@^0.8.0:
-  version "0.8.0"
-  resolved "https://registry.yarnpkg.com/libmodulor/-/libmodulor-0.8.0.tgz#8b4ed7dac7cadd249b5164e0393be3b0edc897d1"
-  integrity sha512-3NbHzj7EB1VBn0HHpQrRBYKIs0pk9uAmJg+nFRrG+bVwSbwHrxl6jChF/M+/mkVf/WtJlIridT4KQ8gjgwgyQg==
+libmodulor@^0.9.0:
+  version "0.9.0"
+  resolved "https://registry.yarnpkg.com/libmodulor/-/libmodulor-0.9.0.tgz#3f544ee5cb21c12e977f82a1f17cbf94636ff067"
+  integrity sha512-r6mvcOhvudVpY9F+KAG1wkd6ld4Rc/e32CYlXWla1TonNl5hZlBVD8MY4mYBnI1N60ed30ez0HLM3FXju2aOyg==
 
 lighthouse-logger@^1.0.0:
   version "1.4.2"
@@ -6436,10 +6436,10 @@ punycode@^2.1.1:
   resolved "https://registry.yarnpkg.com/punycode/-/punycode-2.3.1.tgz#027422e2faec0b25e1549c3e1bd8309b9133b6e5"
   integrity sha512-vYt7UD1U9Wg6138shLtLOvdAu+8DsC/ilFtEVHcH+wydcSpNE20AfSOduf6MkRFahL5FY7X1oU7nKVZFtfq8Fg==
 
-pure-rand@^6.1.0:
-  version "6.1.0"
-  resolved "https://registry.yarnpkg.com/pure-rand/-/pure-rand-6.1.0.tgz#d173cf23258231976ccbdb05247c9787957604f2"
-  integrity sha512-bVWawvoZoBYpp6yIoQtQXHZjmz35RSVHnUOTefl8Vcjr8snTPY1wnpSPMWekcFwbxI6gtmT7rSYPFvz71ldiOA==
+pure-rand@^7.0.0:
+  version "7.0.1"
+  resolved "https://registry.yarnpkg.com/pure-rand/-/pure-rand-7.0.1.tgz#6f53a5a9e3e4a47445822af96821ca509ed37566"
+  integrity sha512-oTUZM/NAZS8p7ANR3SHh30kXB+zK2r2BPcEn/awJIbOvq82WoMN4p62AWWp3Hhw50G0xMsw1mhIBLqHw64EcNQ==
 
 qrcode-terminal@0.11.0:
   version "0.11.0"
@@ -7799,10 +7799,10 @@ vite-node@3.0.8:
   optionalDependencies:
     fsevents "~2.3.3"
 
-vite@^6.2.1:
-  version "6.2.1"
-  resolved "https://registry.yarnpkg.com/vite/-/vite-6.2.1.tgz#ae865d4bb93a11844be1bc647c8b2dd1856ea180"
-  integrity sha512-n2GnqDb6XPhlt9B8olZPrgMD/es/Nd1RdChF6CBD/fHW6pUyUTt2sQW2fPRX5GiD9XEa6+8A6A4f2vT6pSsE7Q==
+vite@^6.2.2:
+  version "6.2.2"
+  resolved "https://registry.yarnpkg.com/vite/-/vite-6.2.2.tgz#8098b12a6bfd95abe39399aa7d5faa56545d7a1a"
+  integrity sha512-yW7PeMM+LkDzc7CgJuRLMW2Jz0FxMOsVJ8Lv3gpgW9WLcb9cTW+121UEr1hvmfR7w3SegR5ItvYyzVz1vxNJgQ==
   dependencies:
     esbuild "^0.25.0"
     postcss "^8.5.3"

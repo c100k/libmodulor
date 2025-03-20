@@ -7,7 +7,7 @@ import {
     bindCommon,
     bindProduct,
 } from 'libmodulor';
-import { bindNodeCore, bindServer } from 'libmodulor/node';
+import { bindNodeCore } from 'libmodulor/node';
 import { NodeLocalStdioMCPServerManager } from 'libmodulor/node-mcp';
 
 import { I18n } from '../i18n.js';
@@ -22,7 +22,6 @@ bindCommon<S>(container, () => ({
     logger_level: 'error',
 }));
 bindNodeCore(container);
-bindServer(container);
 bindProduct(container, Manifest, I18n);
 
 container

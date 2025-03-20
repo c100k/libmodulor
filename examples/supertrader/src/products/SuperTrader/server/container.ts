@@ -10,8 +10,8 @@ import {
     bindCommon,
     bindProduct,
 } from 'libmodulor';
-import { bindNodeCore, bindServer } from 'libmodulor/node';
-import { NodeExpressServerManager } from 'libmodulor/node-express';
+import { bindNodeCore } from 'libmodulor/node';
+import { NodeExpressServerManager, bindServer } from 'libmodulor/node-express';
 import {
     KnexUCDataStore,
     type KnexUCDataStoreSettings,

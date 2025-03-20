@@ -35,15 +35,15 @@ inversify@^6.2.2:
     "@inversifyjs/common" "1.4.0"
     "@inversifyjs/core" "1.3.5"
 
-jose@^6.0.8:
+jose@^6.0.10:
   version "6.0.10"
   resolved "https://registry.yarnpkg.com/jose/-/jose-6.0.10.tgz#52d96e1a671b4c02e13b71e0d35abea2e774712b"
   integrity sha512-skIAxZqcMkOrSwjJvplIPYrlXGpxTPnro2/QWTDCxAdWQrSTV5/KqspMWmi5WAx5+ULswASJiZ0a+1B/Lxt9cw==
 
-libmodulor@^0.8.0:
-  version "0.8.0"
-  resolved "https://registry.yarnpkg.com/libmodulor/-/libmodulor-0.8.0.tgz#8b4ed7dac7cadd249b5164e0393be3b0edc897d1"
-  integrity sha512-3NbHzj7EB1VBn0HHpQrRBYKIs0pk9uAmJg+nFRrG+bVwSbwHrxl6jChF/M+/mkVf/WtJlIridT4KQ8gjgwgyQg==
+libmodulor@^0.9.0:
+  version "0.9.0"
+  resolved "https://registry.yarnpkg.com/libmodulor/-/libmodulor-0.9.0.tgz#3f544ee5cb21c12e977f82a1f17cbf94636ff067"
+  integrity sha512-r6mvcOhvudVpY9F+KAG1wkd6ld4Rc/e32CYlXWla1TonNl5hZlBVD8MY4mYBnI1N60ed30ez0HLM3FXju2aOyg==
 
 reflect-metadata@^0.2.2:
   version "0.2.2"
