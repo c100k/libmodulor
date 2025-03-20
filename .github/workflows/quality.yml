@@ -33,3 +33,17 @@ jobs:
       - name: Lint
         run: |
           yarn lint:ci
+
+      - name: Build & Run examples/basic
+        run: |
+          cd examples/basic
+          yarn install && yarn build
+          yarn run:node
+
+      - name: Build & Run examples/supertrader
+        run: |
+          cd examples/supertrader
+          yarn install && touch .env && yarn build
+          yarn run:server &
+          curl -X POST -H "Content-Type: application/json" http://localhost:7443/api/v1/Trading_BuyAsset
+          yarn run:cli Trading_BuyAsset
