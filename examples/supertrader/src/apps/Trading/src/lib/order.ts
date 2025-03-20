@@ -8,11 +8,13 @@ import {
 } from 'libmodulor';
 
 import { type ISIN, TISIN } from './TISIN.js';
+import { type OrderStatus, TOrderStatus } from './TOrderStatus.js';
 
 export interface Order extends UCOPIBase {
     isin: ISIN;
     limit: Amount;
     qty: UIntQuantity;
+    status: OrderStatus;
 }
 
 export const OrderOPIDef: UCOutputPartDef<Order> = {
@@ -25,6 +27,9 @@ export const OrderOPIDef: UCOutputPartDef<Order> = {
         },
         qty: {
             type: new TUIntQuantity(),
+        },
+        status: {
+            type: new TOrderStatus(),
         },
     },
 };

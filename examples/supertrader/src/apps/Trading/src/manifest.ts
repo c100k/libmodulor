@@ -9,6 +9,12 @@ export const Manifest = {
             icon: 'plus',
             name: 'BuyAsset',
         },
+        CancelOrder: {
+            action: 'Delete',
+            icon: 'circle-xmark',
+            name: 'CancelOrder',
+            sensitive: true,
+        },
         ListOrders: {
             action: 'List',
             icon: 'list',

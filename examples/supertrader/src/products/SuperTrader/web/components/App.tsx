@@ -1,4 +1,9 @@
-import { type Logger, type ProductManifest, UCOutputReader } from 'libmodulor';
+import {
+    type Logger,
+    type ProductManifest,
+    UC,
+    UCOutputReader,
+} from 'libmodulor';
 import {
     UCPanel,
     type UCPanelOnError,
@@ -6,14 +11,17 @@ import {
     useUC,
     useUCOR,
 } from 'libmodulor/react';
-import { UCAutoExecLoader, UCExecTouchable } from 'libmodulor/react-web-pure';
+import { UCAutoExecLoader } from 'libmodulor/react-web-pure';
 import React, { useEffect, useState, type ReactElement } from 'react';
 
 import {
     BuyAssetUCD,
+    CancelOrderUCD,
     ListOrdersUCD,
     Manifest,
 } from '../../../../apps/Trading/index.js';
+import OrderStatusBadge from './OrderStatusBadge.js';
+import { UCExecTouchable } from './UCExecTouchable.js';
 import { UCForm } from './UCForm.js';
 
 export default function App(): ReactElement {
@@ -25,7 +33,7 @@ export default function App(): ReactElement {
 
     const [buyAssetUC] = useUC(Manifest, BuyAssetUCD, null);
     const [listOrdersUC] = useUC(Manifest, ListOrdersUCD, null);
-    const [listOrdersPart0, _listOrdersPart1, { append0 }] = useUCOR(
+    const [listOrdersPart0, _listOrdersPart1, { append0, update0 }] = useUCOR(
         new UCOutputReader(ListOrdersUCD, undefined),
     );
 
@@ -51,6 +59,7 @@ export default function App(): ReactElement {
     const { label: isinLabel } = wordingManager.ucof('isin');
     const { label: limitLabel } = wordingManager.ucof('limit');
     const { label: qtyLabel } = wordingManager.ucof('qty');
+    const { label: statusLabel } = wordingManager.ucof('status');
 
     return (
         <div className="flex flex-col gap-3 p-8 w-2/3">
@@ -87,25 +96,54 @@ export default function App(): ReactElement {
                     <table className="table">
                         <thead>
                             <tr>
+                                <th>#</th>
                                 <th>{idLabel}</th>
                                 <th>{isinLabel}</th>
                                 <th>{limitLabel}</th>
                                 <th>{qtyLabel}</th>
+                                <th>{statusLabel}</th>
+                                <th />
                             </tr>
                         </thead>
                         <tbody>
-                            {listOrdersPart0?.items.map((i) => (
+                            {listOrdersPart0?.items.map((i, idx) => (
                                 <tr key={i.id}>
+                                    <td>{idx + 1}</td>
                                     <td>{i.id}</td>
                                     <td>{i.isin}</td>
                                     <td>{i.limit}</td>
                                     <td>{i.qty}</td>
+                                    <td>
+                                        <OrderStatusBadge value={i.status} />
+                                    </td>
+                                    <td>
+                                        <UCPanel
+                                            onDone={async (ucor) =>
+                                                update0(ucor)
+                                            }
+                                            onError={onError}
+                                            renderAutoExecLoader={
+                                                UCAutoExecLoader
+                                            }
+                                            renderExecTouchable={
+                                                UCExecTouchable
+                                            }
+                                            renderForm={UCForm}
+                                            uc={new UC(
+                                                Manifest,
+                                                CancelOrderUCD,
+                                                null,
+                                            ).fill({ id: i.id })}
+                                        />
+                                    </td>
                                 </tr>
                             ))}
                         </tbody>
                         <tfoot>
                             <tr>
+                                <th />
                                 <th>{i18nManager.t('total')}</th>
+                                <th />
                                 <th />
                                 <th />
                                 <th>{listOrdersPart0?.pagination.total}</th>

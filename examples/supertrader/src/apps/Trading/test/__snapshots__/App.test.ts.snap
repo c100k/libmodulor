@@ -36,6 +36,7 @@ exports[`Use Cases > 'BuyAsset' > should execute with auth 'ADMIN' and input 'AL
                 "isin": "US02079K3059",
                 "limit": 999.99,
                 "qty": 10,
+                "status": "pending",
               },
             ],
             "total": 1,
@@ -84,6 +85,7 @@ exports[`Use Cases > 'BuyAsset' > should execute with auth 'ADMIN' and input 'ON
                 "isin": "US02079K3059",
                 "limit": 999.99,
                 "qty": 10,
+                "status": "pending",
               },
             ],
             "total": 1,
@@ -156,6 +158,7 @@ exports[`Use Cases > 'BuyAsset' > should execute with auth 'ANONYMOUS' and input
                 "isin": "US02079K3059",
                 "limit": 999.99,
                 "qty": 10,
+                "status": "pending",
               },
             ],
             "total": 1,
@@ -194,6 +197,7 @@ exports[`Use Cases > 'BuyAsset' > should execute with auth 'ANONYMOUS' and input
                 "isin": "US02079K3059",
                 "limit": 999.99,
                 "qty": 10,
+                "status": "pending",
               },
             ],
             "total": 1,
@@ -266,6 +270,7 @@ exports[`Use Cases > 'BuyAsset' > should execute with auth 'REGULAR' and input '
                 "isin": "US02079K3059",
                 "limit": 999.99,
                 "qty": 10,
+                "status": "pending",
               },
             ],
             "total": 1,
@@ -314,6 +319,7 @@ exports[`Use Cases > 'BuyAsset' > should execute with auth 'REGULAR' and input '
                 "isin": "US02079K3059",
                 "limit": 999.99,
                 "qty": 10,
+                "status": "pending",
               },
             ],
             "total": 1,
@@ -352,6 +358,264 @@ exports[`Use Cases > 'BuyAsset' > should execute with auth 'REGULAR' and input '
         "isin": undefined,
         "limit": undefined,
         "qty": undefined,
+      },
+      "o": null,
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Use Cases > 'CancelOrder' > should execute with auth 'ADMIN' and input 'ALL_WITH_EXAMPLES' > hash = e6080f5fa9361719c8cac8b39029d49f1ed267e8e4890c29c1f3bfd71d24630a 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "admin",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "ADMIN",
+      "inputFiller": [Function],
+      "inputFillerName": "ALL_WITH_EXAMPLES",
+    },
+    "err": [IllegalArgumentError: Not found],
+    "hash": "e6080f5fa9361719c8cac8b39029d49f1ed267e8e4890c29c1f3bfd71d24630a",
+    "io": {
+      "i": {
+        "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+      },
+      "o": null,
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Use Cases > 'CancelOrder' > should execute with auth 'ADMIN' and input 'ONLY_MANDATORY_WITH_EXAMPLES' > hash = edd2c62f1bcf301f535f9537bfc059a889f07f9a38837f61b6f276375707f729 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "admin",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "ADMIN",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_MANDATORY_WITH_EXAMPLES",
+    },
+    "err": [IllegalArgumentError: Not found],
+    "hash": "edd2c62f1bcf301f535f9537bfc059a889f07f9a38837f61b6f276375707f729",
+    "io": {
+      "i": {
+        "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+      },
+      "o": null,
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Use Cases > 'CancelOrder' > should execute with auth 'ADMIN' and input 'ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPL…' > hash = 29c5864283bf8f4633435538848915ea7ed907404c452fd3c12d5f917251921f 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "admin",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "ADMIN",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPLES",
+    },
+    "err": [IllegalArgumentError: Not found],
+    "hash": "29c5864283bf8f4633435538848915ea7ed907404c452fd3c12d5f917251921f",
+    "io": {
+      "i": {
+        "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+      },
+      "o": null,
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Use Cases > 'CancelOrder' > should execute with auth 'ANONYMOUS' and input 'ALL_WITH_EXAMPLES' > hash = d80d322c9733342b0a3f7ed4991b7ef363c899904efab1a0850f0151fbb82ad7 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": null,
+      "authName": "ANONYMOUS",
+      "inputFiller": [Function],
+      "inputFillerName": "ALL_WITH_EXAMPLES",
+    },
+    "err": [IllegalArgumentError: Not found],
+    "hash": "d80d322c9733342b0a3f7ed4991b7ef363c899904efab1a0850f0151fbb82ad7",
+    "io": {
+      "i": {
+        "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+      },
+      "o": null,
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Use Cases > 'CancelOrder' > should execute with auth 'ANONYMOUS' and input 'ONLY_MANDATORY_WITH_EXAMPLES' > hash = ada4bd9c38b5446e1380bbf8c2f61f344e3c6c26cf3be9fc9c216a57df1d2243 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": null,
+      "authName": "ANONYMOUS",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_MANDATORY_WITH_EXAMPLES",
+    },
+    "err": [IllegalArgumentError: Not found],
+    "hash": "ada4bd9c38b5446e1380bbf8c2f61f344e3c6c26cf3be9fc9c216a57df1d2243",
+    "io": {
+      "i": {
+        "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+      },
+      "o": null,
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Use Cases > 'CancelOrder' > should execute with auth 'ANONYMOUS' and input 'ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPL…' > hash = f1ce550c727350b18204d9cec7b0b0a20f368f391a626fbc2f090f480f79b3b2 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": null,
+      "authName": "ANONYMOUS",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPLES",
+    },
+    "err": [IllegalArgumentError: Not found],
+    "hash": "f1ce550c727350b18204d9cec7b0b0a20f368f391a626fbc2f090f480f79b3b2",
+    "io": {
+      "i": {
+        "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+      },
+      "o": null,
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Use Cases > 'CancelOrder' > should execute with auth 'REGULAR' and input 'ALL_WITH_EXAMPLES' > hash = a92e8c81bbc93b85569ff4168bc45d9e5e82929e89c13ebfe27401f1ecbfc5c5 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "regular",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "REGULAR",
+      "inputFiller": [Function],
+      "inputFillerName": "ALL_WITH_EXAMPLES",
+    },
+    "err": [IllegalArgumentError: Not found],
+    "hash": "a92e8c81bbc93b85569ff4168bc45d9e5e82929e89c13ebfe27401f1ecbfc5c5",
+    "io": {
+      "i": {
+        "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+      },
+      "o": null,
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Use Cases > 'CancelOrder' > should execute with auth 'REGULAR' and input 'ONLY_MANDATORY_WITH_EXAMPLES' > hash = a2b4d17375aeb2e4c3d16171814e541d80968a364be1fbc461dc2685aeb765bb 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "regular",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "REGULAR",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_MANDATORY_WITH_EXAMPLES",
+    },
+    "err": [IllegalArgumentError: Not found],
+    "hash": "a2b4d17375aeb2e4c3d16171814e541d80968a364be1fbc461dc2685aeb765bb",
+    "io": {
+      "i": {
+        "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+      },
+      "o": null,
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Use Cases > 'CancelOrder' > should execute with auth 'REGULAR' and input 'ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPL…' > hash = 8ea60e27fbf532e1467925bfca670ba427136842647492c97cdc5b1c3e0a99c1 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "regular",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "REGULAR",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPLES",
+    },
+    "err": [IllegalArgumentError: Not found],
+    "hash": "8ea60e27fbf532e1467925bfca670ba427136842647492c97cdc5b1c3e0a99c1",
+    "io": {
+      "i": {
+        "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
       },
       "o": null,
     },

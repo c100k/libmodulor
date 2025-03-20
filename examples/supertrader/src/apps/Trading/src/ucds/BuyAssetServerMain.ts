@@ -38,6 +38,7 @@ export class BuyAssetServerMain implements UCMain<BuyAssetInput, BuyAssetOPI0> {
                 id: aggregateId,
                 limit,
                 qty,
+                status: 'pending',
             })
             .get();
     }
