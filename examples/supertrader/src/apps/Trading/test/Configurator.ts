@@ -11,6 +11,7 @@ import {
     bindServer,
 } from 'libmodulor/node';
 import { SimpleAppTesterConfigurator } from 'libmodulor/node-test';
+
 import { flow1 } from './flows/flow1.js';
 
 @injectable()
