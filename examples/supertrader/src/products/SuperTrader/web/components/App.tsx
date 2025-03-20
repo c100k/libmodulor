@@ -11,7 +11,7 @@ import {
     useUC,
     useUCOR,
 } from 'libmodulor/react';
-import { UCAutoExecLoader, UCExecTouchable } from 'libmodulor/react-web-pure';
+import { UCAutoExecLoader } from 'libmodulor/react-web-pure';
 import React, { useEffect, useState, type ReactElement } from 'react';
 
 import {
@@ -20,6 +20,8 @@ import {
     ListOrdersUCD,
     Manifest,
 } from '../../../../apps/Trading/index.js';
+import OrderStatusBadge from './OrderStatusBadge.js';
+import { UCExecTouchable } from './UCExecTouchable.js';
 import { UCForm } from './UCForm.js';
 
 export default function App(): ReactElement {
@@ -94,6 +96,7 @@ export default function App(): ReactElement {
                     <table className="table">
                         <thead>
                             <tr>
+                                <th>#</th>
                                 <th>{idLabel}</th>
                                 <th>{isinLabel}</th>
                                 <th>{limitLabel}</th>
@@ -103,13 +106,16 @@ export default function App(): ReactElement {
                             </tr>
                         </thead>
                         <tbody>
-                            {listOrdersPart0?.items.map((i) => (
+                            {listOrdersPart0?.items.map((i, idx) => (
                                 <tr key={i.id}>
+                                    <td>{idx + 1}</td>
                                     <td>{i.id}</td>
                                     <td>{i.isin}</td>
                                     <td>{i.limit}</td>
                                     <td>{i.qty}</td>
-                                    <td>{i.status}</td>
+                                    <td>
+                                        <OrderStatusBadge value={i.status} />
+                                    </td>
                                     <td>
                                         <UCPanel
                                             onDone={async (ucor) =>
@@ -135,7 +141,9 @@ export default function App(): ReactElement {
                         </tbody>
                         <tfoot>
                             <tr>
+                                <th />
                                 <th>{i18nManager.t('total')}</th>
+                                <th />
                                 <th />
                                 <th />
                                 <th>{listOrdersPart0?.pagination.total}</th>
