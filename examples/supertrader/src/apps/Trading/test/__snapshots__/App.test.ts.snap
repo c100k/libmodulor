@@ -32,8 +32,10 @@ exports[`Use Cases > 'BuyAsset' > should execute with auth 'ADMIN' and input 'AL
           "_0": {
             "items": [
               {
-                "executedDirectly": false,
                 "id": "356a192b-7913-404c-9457-4d18c28d46e6",
+                "isin": "US02079K3059",
+                "limit": 999.99,
+                "qty": 10,
               },
             ],
             "total": 1,
@@ -78,8 +80,10 @@ exports[`Use Cases > 'BuyAsset' > should execute with auth 'ADMIN' and input 'ON
           "_0": {
             "items": [
               {
-                "executedDirectly": false,
                 "id": "356a192b-7913-404c-9457-4d18c28d46e6",
+                "isin": "US02079K3059",
+                "limit": 999.99,
+                "qty": 10,
               },
             ],
             "total": 1,
@@ -148,8 +152,10 @@ exports[`Use Cases > 'BuyAsset' > should execute with auth 'ANONYMOUS' and input
           "_0": {
             "items": [
               {
-                "executedDirectly": false,
                 "id": "356a192b-7913-404c-9457-4d18c28d46e6",
+                "isin": "US02079K3059",
+                "limit": 999.99,
+                "qty": 10,
               },
             ],
             "total": 1,
@@ -184,8 +190,10 @@ exports[`Use Cases > 'BuyAsset' > should execute with auth 'ANONYMOUS' and input
           "_0": {
             "items": [
               {
-                "executedDirectly": false,
                 "id": "356a192b-7913-404c-9457-4d18c28d46e6",
+                "isin": "US02079K3059",
+                "limit": 999.99,
+                "qty": 10,
               },
             ],
             "total": 1,
@@ -254,8 +262,10 @@ exports[`Use Cases > 'BuyAsset' > should execute with auth 'REGULAR' and input '
           "_0": {
             "items": [
               {
-                "executedDirectly": false,
                 "id": "356a192b-7913-404c-9457-4d18c28d46e6",
+                "isin": "US02079K3059",
+                "limit": 999.99,
+                "qty": 10,
               },
             ],
             "total": 1,
@@ -300,8 +310,10 @@ exports[`Use Cases > 'BuyAsset' > should execute with auth 'REGULAR' and input '
           "_0": {
             "items": [
               {
-                "executedDirectly": false,
                 "id": "356a192b-7913-404c-9457-4d18c28d46e6",
+                "isin": "US02079K3059",
+                "limit": 999.99,
+                "qty": 10,
               },
             ],
             "total": 1,
@@ -342,6 +354,354 @@ exports[`Use Cases > 'BuyAsset' > should execute with auth 'REGULAR' and input '
         "qty": undefined,
       },
       "o": null,
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Use Cases > 'ListOrders' > should execute with auth 'ADMIN' and input 'ALL_WITH_EXAMPLES' > hash = af764f22392bfdaf545ed9f5ee5c740417a555f10f34d564a522685ea56de723 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "admin",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "ADMIN",
+      "inputFiller": [Function],
+      "inputFillerName": "ALL_WITH_EXAMPLES",
+    },
+    "err": null,
+    "hash": "af764f22392bfdaf545ed9f5ee5c740417a555f10f34d564a522685ea56de723",
+    "io": {
+      "i": {
+        "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        "limit": 10,
+        "offset": 0,
+        "q": "Nike Streakfly",
+      },
+      "o": {
+        "parts": {
+          "_0": {
+            "items": [],
+            "total": 0,
+          },
+        },
+      },
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Use Cases > 'ListOrders' > should execute with auth 'ADMIN' and input 'ONLY_MANDATORY_WITH_EXAMPLES' > hash = efb3bf2b1a104d556e295d30733a4abb236b7dd5d54efc4dc67678c032446019 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "admin",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "ADMIN",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_MANDATORY_WITH_EXAMPLES",
+    },
+    "err": null,
+    "hash": "efb3bf2b1a104d556e295d30733a4abb236b7dd5d54efc4dc67678c032446019",
+    "io": {
+      "i": {
+        "id": undefined,
+        "limit": undefined,
+        "offset": undefined,
+        "q": undefined,
+      },
+      "o": {
+        "parts": {
+          "_0": {
+            "items": [],
+            "total": 0,
+          },
+        },
+      },
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Use Cases > 'ListOrders' > should execute with auth 'ADMIN' and input 'ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPL…' > hash = 2ba4765a0b04e0c3df2f0e68e510eb8cc72af093c06938ecc70f19303a7476ba 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "admin",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "ADMIN",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPLES",
+    },
+    "err": null,
+    "hash": "2ba4765a0b04e0c3df2f0e68e510eb8cc72af093c06938ecc70f19303a7476ba",
+    "io": {
+      "i": {
+        "id": undefined,
+        "limit": undefined,
+        "offset": undefined,
+        "q": undefined,
+      },
+      "o": {
+        "parts": {
+          "_0": {
+            "items": [],
+            "total": 0,
+          },
+        },
+      },
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Use Cases > 'ListOrders' > should execute with auth 'ANONYMOUS' and input 'ALL_WITH_EXAMPLES' > hash = f6f72579c8185eef64d91a365f3a46dec8f6d69eb7f89050c0fc3f0c6cc9527e 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": null,
+      "authName": "ANONYMOUS",
+      "inputFiller": [Function],
+      "inputFillerName": "ALL_WITH_EXAMPLES",
+    },
+    "err": null,
+    "hash": "f6f72579c8185eef64d91a365f3a46dec8f6d69eb7f89050c0fc3f0c6cc9527e",
+    "io": {
+      "i": {
+        "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        "limit": 10,
+        "offset": 0,
+        "q": "Nike Streakfly",
+      },
+      "o": {
+        "parts": {
+          "_0": {
+            "items": [],
+            "total": 0,
+          },
+        },
+      },
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Use Cases > 'ListOrders' > should execute with auth 'ANONYMOUS' and input 'ONLY_MANDATORY_WITH_EXAMPLES' > hash = 20d37f75d0b33945544a2a50a7ec706c059cbb728cb6d48363083ea741f6545b 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": null,
+      "authName": "ANONYMOUS",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_MANDATORY_WITH_EXAMPLES",
+    },
+    "err": null,
+    "hash": "20d37f75d0b33945544a2a50a7ec706c059cbb728cb6d48363083ea741f6545b",
+    "io": {
+      "i": {
+        "id": undefined,
+        "limit": undefined,
+        "offset": undefined,
+        "q": undefined,
+      },
+      "o": {
+        "parts": {
+          "_0": {
+            "items": [],
+            "total": 0,
+          },
+        },
+      },
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Use Cases > 'ListOrders' > should execute with auth 'ANONYMOUS' and input 'ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPL…' > hash = 6ff38b14bcb7c43b5942bb841c9da2e8351d8b3f5ab89f5f6095569488c14859 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": null,
+      "authName": "ANONYMOUS",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPLES",
+    },
+    "err": null,
+    "hash": "6ff38b14bcb7c43b5942bb841c9da2e8351d8b3f5ab89f5f6095569488c14859",
+    "io": {
+      "i": {
+        "id": undefined,
+        "limit": undefined,
+        "offset": undefined,
+        "q": undefined,
+      },
+      "o": {
+        "parts": {
+          "_0": {
+            "items": [],
+            "total": 0,
+          },
+        },
+      },
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Use Cases > 'ListOrders' > should execute with auth 'REGULAR' and input 'ALL_WITH_EXAMPLES' > hash = e345185d908cc4aa2f9992e359b57d01044af5a8bc67d2e1deef9ad949638cee 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "regular",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "REGULAR",
+      "inputFiller": [Function],
+      "inputFillerName": "ALL_WITH_EXAMPLES",
+    },
+    "err": null,
+    "hash": "e345185d908cc4aa2f9992e359b57d01044af5a8bc67d2e1deef9ad949638cee",
+    "io": {
+      "i": {
+        "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        "limit": 10,
+        "offset": 0,
+        "q": "Nike Streakfly",
+      },
+      "o": {
+        "parts": {
+          "_0": {
+            "items": [],
+            "total": 0,
+          },
+        },
+      },
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Use Cases > 'ListOrders' > should execute with auth 'REGULAR' and input 'ONLY_MANDATORY_WITH_EXAMPLES' > hash = b7172d07cd5c3f5c60ec135e13232b836738ac7c0c53ec6a946539135bd12b2d 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "regular",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "REGULAR",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_MANDATORY_WITH_EXAMPLES",
+    },
+    "err": null,
+    "hash": "b7172d07cd5c3f5c60ec135e13232b836738ac7c0c53ec6a946539135bd12b2d",
+    "io": {
+      "i": {
+        "id": undefined,
+        "limit": undefined,
+        "offset": undefined,
+        "q": undefined,
+      },
+      "o": {
+        "parts": {
+          "_0": {
+            "items": [],
+            "total": 0,
+          },
+        },
+      },
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Use Cases > 'ListOrders' > should execute with auth 'REGULAR' and input 'ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPL…' > hash = b25833f275de3eb74bb6cf79cbee6386505b46245c61ccbbc50f7ba0b5397bc3 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "regular",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "REGULAR",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPLES",
+    },
+    "err": null,
+    "hash": "b25833f275de3eb74bb6cf79cbee6386505b46245c61ccbbc50f7ba0b5397bc3",
+    "io": {
+      "i": {
+        "id": undefined,
+        "limit": undefined,
+        "offset": undefined,
+        "q": undefined,
+      },
+      "o": {
+        "parts": {
+          "_0": {
+            "items": [],
+            "total": 0,
+          },
+        },
+      },
     },
   },
   "sideEffects": undefined,

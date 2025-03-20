@@ -9,7 +9,11 @@ import {
 import { UCAutoExecLoader, UCExecTouchable } from 'libmodulor/react-web-pure';
 import React, { useEffect, useState, type ReactElement } from 'react';
 
-import { BuyAssetUCD, Manifest } from '../../../../apps/Trading/index.js';
+import {
+    BuyAssetUCD,
+    ListOrdersUCD,
+    Manifest,
+} from '../../../../apps/Trading/index.js';
 import { UCForm } from './UCForm.js';
 
 export default function App(): ReactElement {
@@ -20,8 +24,9 @@ export default function App(): ReactElement {
     );
 
     const [buyAssetUC] = useUC(Manifest, BuyAssetUCD, null);
-    const [buyAssetPart0, _buyAssetPart1, { append0 }] = useUCOR(
-        new UCOutputReader(BuyAssetUCD, undefined),
+    const [listOrdersUC] = useUC(Manifest, ListOrdersUCD, null);
+    const [listOrdersPart0, _listOrdersPart1, { append0 }] = useUCOR(
+        new UCOutputReader(ListOrdersUCD, undefined),
     );
 
     const [loading, setLoading] = useState(true);
@@ -43,8 +48,9 @@ export default function App(): ReactElement {
     const { slogan } = wordingManager.p();
     const { label } = wordingManager.uc(buyAssetUC.def);
     const { label: idLabel } = wordingManager.ucof('id');
-    const { label: executedDirectlyLabel } =
-        wordingManager.ucof('executedDirectly');
+    const { label: isinLabel } = wordingManager.ucof('isin');
+    const { label: limitLabel } = wordingManager.ucof('limit');
+    const { label: qtyLabel } = wordingManager.ucof('qty');
 
     return (
         <div className="flex flex-col gap-3 p-8 w-2/3">
@@ -69,25 +75,40 @@ export default function App(): ReactElement {
                         uc={buyAssetUC}
                     />
 
+                    <UCPanel
+                        autoExec={true}
+                        onDone={async (ucor) => append0(ucor)}
+                        renderAutoExecLoader={UCAutoExecLoader}
+                        renderExecTouchable={UCExecTouchable}
+                        renderForm={UCForm}
+                        uc={listOrdersUC}
+                    />
+
                     <table className="table">
                         <thead>
                             <tr>
                                 <th>{idLabel}</th>
-                                <th>{executedDirectlyLabel}</th>
+                                <th>{isinLabel}</th>
+                                <th>{limitLabel}</th>
+                                <th>{qtyLabel}</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {buyAssetPart0?.items.map((i) => (
+                            {listOrdersPart0?.items.map((i) => (
                                 <tr key={i.id}>
                                     <td>{i.id}</td>
-                                    <td>{i.executedDirectly ? '✅' : '❌'}</td>
+                                    <td>{i.isin}</td>
+                                    <td>{i.limit}</td>
+                                    <td>{i.qty}</td>
                                 </tr>
                             ))}
                         </tbody>
                         <tfoot>
                             <tr>
                                 <th>{i18nManager.t('total')}</th>
-                                <th>{buyAssetPart0?.pagination.total}</th>
+                                <th />
+                                <th />
+                                <th>{listOrdersPart0?.pagination.total}</th>
                             </tr>
                         </tfoot>
                     </table>

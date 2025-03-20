@@ -9,5 +9,10 @@ export const Manifest = {
             icon: 'plus',
             name: 'BuyAsset',
         },
+        ListOrders: {
+            action: 'List',
+            icon: 'list',
+            name: 'ListOrders',
+        },
     },
 } satisfies AppManifest;
