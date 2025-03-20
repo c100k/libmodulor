@@ -6,7 +6,6 @@
     "private": true,
     "scripts": {
         "build": "./build.sh",
-        "lint": "biome check --write .",
         "run:bun": "bun src/index.ts",
         "run:node": "(cd dist && node index.js)"
     },
@@ -16,7 +15,6 @@
         "reflect-metadata": "^0.2.2"
     },
     "devDependencies": {
-        "@biomejs/biome": "^1.9.4",
         "@types/node": "^22.13.10",
         "jose": "^6.0.8",
         "typescript": "^5.8.2"

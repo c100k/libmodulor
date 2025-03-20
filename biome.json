@@ -2,11 +2,11 @@
     "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
     "files": {
         "ignore": [
+            "coverage",
             "dist",
             "docs-fd/.next",
             "docs-fd/.source",
             "docs-fd/node_modules",
-            "examples",
             "node_modules"
         ],
         "ignoreUnknown": true
