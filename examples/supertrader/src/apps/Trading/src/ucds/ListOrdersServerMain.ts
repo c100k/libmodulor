@@ -11,9 +11,10 @@ import {
 
 import { Manifest } from '../manifest.js';
 import type { BuyAssetInput } from './BuyAssetUCD.js';
+import type { CancelOrderInput } from './CancelOrderUCD.js';
 import type { ListOrdersInput, ListOrdersOPI0 } from './ListOrdersUCD.js';
 
-const { BuyAsset } = Manifest.ucReg;
+const { BuyAsset, CancelOrder } = Manifest.ucReg;
 
 @injectable()
 export class ListOrdersServerMain
@@ -26,9 +27,11 @@ export class ListOrdersServerMain
     ): Promise<UCOutput<ListOrdersOPI0>> {
         // TODO : Handle pagination (limit, offset, ...) from input
 
-        const { records } = await this.ucDataStore.read<BuyAssetInput>({
+        const { records } = await this.ucDataStore.read<
+            BuyAssetInput | CancelOrderInput
+        >({
             filters: {
-                name: [BuyAsset.name],
+                name: [BuyAsset.name, CancelOrder.name],
             },
         });
 
@@ -37,19 +40,17 @@ export class ListOrdersServerMain
         for (const r of records) {
             if (recIs<BuyAssetInput>(r, BuyAsset.name)) {
                 ob.add({
+                    id: r.aggregateId,
                     isin: reqVal0(r.input?.isin),
                     limit: reqVal0(r.input?.limit),
                     qty: reqVal0(r.input?.qty),
-                    id: r.aggregateId,
+                    status: 'pending',
+                });
+            } else if (recIs<CancelOrderInput>(r, CancelOrder.name)) {
+                ob.update(r.aggregateId, (item) => {
+                    item.status = 'cancelled';
                 });
             }
-
-            // TODO : Handle the other use cases (e.g. CancelOrder would remove it or flag it as cancelled)
-            // For example, CancelOrder would :
-            //   - Set cancelled: boolean to true (false by default)
-            //   - Set status: 'cancelled' | 'pending' to 'cancelled' ('pending' by default)
-            //   - Remove it from the list
-            //   - etc.
         }
 
         return ob.get();

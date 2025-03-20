@@ -1,4 +1,9 @@
-import { type Logger, type ProductManifest, UCOutputReader } from 'libmodulor';
+import {
+    type Logger,
+    type ProductManifest,
+    UC,
+    UCOutputReader,
+} from 'libmodulor';
 import {
     UCPanel,
     type UCPanelOnError,
@@ -16,6 +21,7 @@ import { Text, View } from 'react-native';
 
 import {
     BuyAssetUCD,
+    CancelOrderUCD,
     ListOrdersUCD,
     Manifest,
 } from '../../../../apps/Trading/index.js';
@@ -29,7 +35,7 @@ export default function App(): ReactElement {
 
     const [buyAssetUC] = useUC(Manifest, BuyAssetUCD, null);
     const [listOrdersUC] = useUC(Manifest, ListOrdersUCD, null);
-    const [listOrdersPart0, _listOrdersPart1, { append0 }] = useUCOR(
+    const [listOrdersPart0, _listOrdersPart1, { append0, update0 }] = useUCOR(
         new UCOutputReader(ListOrdersUCD, undefined),
     );
 
@@ -52,6 +58,7 @@ export default function App(): ReactElement {
     const { label: isinLabel } = wordingManager.ucof('isin');
     const { label: limitLabel } = wordingManager.ucof('limit');
     const { label: qtyLabel } = wordingManager.ucof('qty');
+    const { label: statusLabel } = wordingManager.ucof('status');
 
     return (
         <View style={{ gap: 16, padding: 16 }}>
@@ -92,6 +99,8 @@ export default function App(): ReactElement {
                                 <Text>{isinLabel}</Text>
                                 <Text>{limitLabel}</Text>
                                 <Text>{qtyLabel}</Text>
+                                <Text>{statusLabel}</Text>
+                                <Text />
                             </View>
                         </View>
                         <View>
@@ -104,6 +113,19 @@ export default function App(): ReactElement {
                                     <Text>{i.isin}</Text>
                                     <Text>{i.limit}</Text>
                                     <Text>{i.qty}</Text>
+                                    <Text>{i.status}</Text>
+                                    <UCPanel
+                                        onDone={async (ucor) => update0(ucor)}
+                                        onError={onError}
+                                        renderAutoExecLoader={UCAutoExecLoader}
+                                        renderExecTouchable={UCExecTouchable}
+                                        renderForm={UCForm}
+                                        uc={new UC(
+                                            Manifest,
+                                            CancelOrderUCD,
+                                            null,
+                                        ).fill({ id: i.id })}
+                                    />
                                 </View>
                             ))}
                         </View>
