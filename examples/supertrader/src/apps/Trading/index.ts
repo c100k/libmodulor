@@ -1,6 +1,6 @@
 // Expose only what's necessary
 
-export type { OrderStatus } from './src/lib/TOrderStatus.js';
+export { type OrderStatus, TOrderStatus } from './src/lib/TOrderStatus.js';
 
 export { BuyAssetUCD } from './src/ucds/BuyAssetUCD.js';
 export { CancelOrderUCD } from './src/ucds/CancelOrderUCD.js';
