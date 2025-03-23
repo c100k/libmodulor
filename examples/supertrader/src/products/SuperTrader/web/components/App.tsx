@@ -55,11 +55,6 @@ export default function App(): ReactElement {
 
     const { slogan } = wordingManager.p();
     const { label } = wordingManager.uc(buyAssetUC.def);
-    const { label: idLabel } = wordingManager.ucof('id');
-    const { label: isinLabel } = wordingManager.ucof('isin');
-    const { label: limitLabel } = wordingManager.ucof('limit');
-    const { label: qtyLabel } = wordingManager.ucof('qty');
-    const { label: statusLabel } = wordingManager.ucof('status');
 
     return (
         <div className="flex flex-col gap-3 p-8 w-2/3">
@@ -97,11 +92,11 @@ export default function App(): ReactElement {
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>{idLabel}</th>
-                                <th>{isinLabel}</th>
-                                <th>{limitLabel}</th>
-                                <th>{qtyLabel}</th>
-                                <th>{statusLabel}</th>
+                                {listOrdersPart0?.fields.map((f) => (
+                                    <th key={f.key}>
+                                        {wordingManager.ucof(f.key).label}
+                                    </th>
+                                ))}
                                 <th />
                             </tr>
                         </thead>
@@ -109,13 +104,17 @@ export default function App(): ReactElement {
                             {listOrdersPart0?.items.map((i, idx) => (
                                 <tr key={i.id}>
                                     <td>{idx + 1}</td>
-                                    <td>{i.id}</td>
-                                    <td>{i.isin}</td>
-                                    <td>{i.limit}</td>
-                                    <td>{i.qty}</td>
-                                    <td>
-                                        <OrderStatusBadge value={i.status} />
-                                    </td>
+                                    {listOrdersPart0.fields.map((f) => (
+                                        <td key={f.key}>
+                                            {f.key === 'status' ? (
+                                                <OrderStatusBadge
+                                                    value={i.status}
+                                                />
+                                            ) : (
+                                                <span>{i[f.key]}</span>
+                                            )}
+                                        </td>
+                                    ))}
                                     <td>
                                         <UCPanel
                                             onDone={async (ucor) =>
