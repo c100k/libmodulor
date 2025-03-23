@@ -1,9 +1,4 @@
-import {
-    type Logger,
-    type ProductManifest,
-    UC,
-    UCOutputReader,
-} from 'libmodulor';
+import { type Logger, type ProductManifest, UCOutputReader } from 'libmodulor';
 import {
     UCPanel,
     type UCPanelOnError,
@@ -21,10 +16,10 @@ import { Text, View } from 'react-native';
 
 import {
     BuyAssetUCD,
-    CancelOrderUCD,
     ListOrdersUCD,
     Manifest,
 } from '../../../../apps/Trading/index.js';
+import OrdersTable from './OrdersTable.js';
 
 export default function App(): ReactElement {
     const { container, i18nManager, wordingManager } = useDIContext();
@@ -53,12 +48,8 @@ export default function App(): ReactElement {
     const onError: UCPanelOnError = async (err) => alert(err.message);
 
     const { slogan } = wordingManager.p();
-    const { label } = wordingManager.uc(buyAssetUC.def);
-    const { label: idLabel } = wordingManager.ucof('id');
-    const { label: isinLabel } = wordingManager.ucof('isin');
-    const { label: limitLabel } = wordingManager.ucof('limit');
-    const { label: qtyLabel } = wordingManager.ucof('qty');
-    const { label: statusLabel } = wordingManager.ucof('status');
+    const { label: buyAssetLabel } = wordingManager.uc(buyAssetUC.def);
+    const { label: listOrdersLabel } = wordingManager.uc(listOrdersUC.def);
 
     return (
         <View style={{ gap: 16, padding: 16 }}>
@@ -70,7 +61,7 @@ export default function App(): ReactElement {
                         {productManifest.name} : {slogan}
                     </Text>
 
-                    <Text style={{ fontSize: 16 }}>{label}</Text>
+                    <Text style={{ fontSize: 16 }}>{buyAssetLabel}</Text>
 
                     <UCPanel
                         clearAfterExec={false}
@@ -83,6 +74,8 @@ export default function App(): ReactElement {
                         uc={buyAssetUC}
                     />
 
+                    <Text style={{ fontSize: 16 }}>{listOrdersLabel}</Text>
+
                     <UCPanel
                         autoExec={true}
                         onDone={async (ucor) => append0(ucor)}
@@ -92,50 +85,11 @@ export default function App(): ReactElement {
                         uc={listOrdersUC}
                     />
 
-                    <View>
-                        <View>
-                            <View style={{ flexDirection: 'row', gap: 16 }}>
-                                <Text>{idLabel}</Text>
-                                <Text>{isinLabel}</Text>
-                                <Text>{limitLabel}</Text>
-                                <Text>{qtyLabel}</Text>
-                                <Text>{statusLabel}</Text>
-                                <Text />
-                            </View>
-                        </View>
-                        <View>
-                            {listOrdersPart0?.items.map((i) => (
-                                <View
-                                    key={i.id}
-                                    style={{ flexDirection: 'row', gap: 16 }}
-                                >
-                                    <Text>{i.id}</Text>
-                                    <Text>{i.isin}</Text>
-                                    <Text>{i.limit}</Text>
-                                    <Text>{i.qty}</Text>
-                                    <Text>{i.status}</Text>
-                                    <UCPanel
-                                        onDone={async (ucor) => update0(ucor)}
-                                        onError={onError}
-                                        renderAutoExecLoader={UCAutoExecLoader}
-                                        renderExecTouchable={UCExecTouchable}
-                                        renderForm={UCForm}
-                                        uc={new UC(
-                                            Manifest,
-                                            CancelOrderUCD,
-                                            null,
-                                        ).fill({ id: i.id })}
-                                    />
-                                </View>
-                            ))}
-                        </View>
-                        <View>
-                            <View style={{ flexDirection: 'row', gap: 16 }}>
-                                <Text>{i18nManager.t('total')}</Text>
-                                <Text>{listOrdersPart0?.pagination.total}</Text>
-                            </View>
-                        </View>
-                    </View>
+                    <OrdersTable
+                        listOrdersPart0={listOrdersPart0}
+                        onError={onError}
+                        update0={update0}
+                    />
                 </>
             )}
         </View>

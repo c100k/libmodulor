@@ -9,6 +9,7 @@ export const I18n: AppI18n = {
         uc_CancelOrder_label: 'Cancel',
         uc_CancelOrder_i_submit_idle: 'Cancel',
         uc_CancelOrder_i_submit_submitting: 'Cancelling',
+        uc_ListOrders_label: 'Orders placed',
         ucif_isin_label: 'ISIN',
         ucif_qty_label: 'Quantity',
         ucof_id_label: 'Identifier',

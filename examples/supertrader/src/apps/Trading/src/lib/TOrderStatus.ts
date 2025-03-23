@@ -9,6 +9,11 @@ export class TOrderStatus extends TString<OrderStatus, 'OrderStatus'> {
         super({
             format: { f: 'OrderStatus', regexp: TOrderStatus.FORMAT },
         });
+
+        this.setSemanticsMapping({
+            cancelled: { variant: 'warning' },
+            pending: { variant: 'info' },
+        });
     }
 
     public override example(): OrderStatus {

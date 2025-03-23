@@ -1,9 +1,4 @@
-import {
-    type Logger,
-    type ProductManifest,
-    UC,
-    UCOutputReader,
-} from 'libmodulor';
+import { type Logger, type ProductManifest, UCOutputReader } from 'libmodulor';
 import {
     UCPanel,
     type UCPanelOnError,
@@ -16,11 +11,10 @@ import React, { useEffect, useState, type ReactElement } from 'react';
 
 import {
     BuyAssetUCD,
-    CancelOrderUCD,
     ListOrdersUCD,
     Manifest,
 } from '../../../../apps/Trading/index.js';
-import OrderStatusBadge from './OrderStatusBadge.js';
+import OrdersTable from './OrdersTable.js';
 import { UCExecTouchable } from './UCExecTouchable.js';
 import { UCForm } from './UCForm.js';
 
@@ -54,12 +48,8 @@ export default function App(): ReactElement {
     const onError: UCPanelOnError = async (err) => alert(err.message);
 
     const { slogan } = wordingManager.p();
-    const { label } = wordingManager.uc(buyAssetUC.def);
-    const { label: idLabel } = wordingManager.ucof('id');
-    const { label: isinLabel } = wordingManager.ucof('isin');
-    const { label: limitLabel } = wordingManager.ucof('limit');
-    const { label: qtyLabel } = wordingManager.ucof('qty');
-    const { label: statusLabel } = wordingManager.ucof('status');
+    const { label: buyAssetLabel } = wordingManager.uc(buyAssetUC.def);
+    const { label: listOrdersLabel } = wordingManager.uc(listOrdersUC.def);
 
     return (
         <div className="flex flex-col gap-3 p-8 w-2/3">
@@ -71,7 +61,7 @@ export default function App(): ReactElement {
                         {productManifest.name} : {slogan}
                     </h1>
 
-                    <h2 className="text-xl">{label}</h2>
+                    <h2 className="text-xl">{buyAssetLabel}</h2>
 
                     <UCPanel
                         clearAfterExec={false}
@@ -84,6 +74,8 @@ export default function App(): ReactElement {
                         uc={buyAssetUC}
                     />
 
+                    <h2 className="text-xl">{listOrdersLabel}</h2>
+
                     <UCPanel
                         autoExec={true}
                         onDone={async (ucor) => append0(ucor)}
@@ -93,63 +85,11 @@ export default function App(): ReactElement {
                         uc={listOrdersUC}
                     />
 
-                    <table className="table">
-                        <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>{idLabel}</th>
-                                <th>{isinLabel}</th>
-                                <th>{limitLabel}</th>
-                                <th>{qtyLabel}</th>
-                                <th>{statusLabel}</th>
-                                <th />
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {listOrdersPart0?.items.map((i, idx) => (
-                                <tr key={i.id}>
-                                    <td>{idx + 1}</td>
-                                    <td>{i.id}</td>
-                                    <td>{i.isin}</td>
-                                    <td>{i.limit}</td>
-                                    <td>{i.qty}</td>
-                                    <td>
-                                        <OrderStatusBadge value={i.status} />
-                                    </td>
-                                    <td>
-                                        <UCPanel
-                                            onDone={async (ucor) =>
-                                                update0(ucor)
-                                            }
-                                            onError={onError}
-                                            renderAutoExecLoader={
-                                                UCAutoExecLoader
-                                            }
-                                            renderExecTouchable={
-                                                UCExecTouchable
-                                            }
-                                            renderForm={UCForm}
-                                            uc={new UC(
-                                                Manifest,
-                                                CancelOrderUCD,
-                                                null,
-                                            ).fill({ id: i.id })}
-                                        />
-                                    </td>
-                                </tr>
-                            ))}
-                        </tbody>
-                        <tfoot>
-                            <tr>
-                                <th />
-                                <th>{i18nManager.t('total')}</th>
-                                <th />
-                                <th />
-                                <th />
-                                <th>{listOrdersPart0?.pagination.total}</th>
-                            </tr>
-                        </tfoot>
-                    </table>
+                    <OrdersTable
+                        listOrdersPart0={listOrdersPart0}
+                        onError={onError}
+                        update0={update0}
+                    />
                 </>
             )}
         </div>
