@@ -25,6 +25,7 @@ import {
     ListOrdersUCD,
     Manifest,
 } from '../../../../apps/Trading/index.js';
+import UCValue from './UCValue.js';
 
 export default function App(): ReactElement {
     const { container, i18nManager, wordingManager } = useDIContext();
@@ -54,11 +55,6 @@ export default function App(): ReactElement {
 
     const { slogan } = wordingManager.p();
     const { label } = wordingManager.uc(buyAssetUC.def);
-    const { label: idLabel } = wordingManager.ucof('id');
-    const { label: isinLabel } = wordingManager.ucof('isin');
-    const { label: limitLabel } = wordingManager.ucof('limit');
-    const { label: qtyLabel } = wordingManager.ucof('qty');
-    const { label: statusLabel } = wordingManager.ucof('status');
 
     return (
         <View style={{ gap: 16, padding: 16 }}>
@@ -95,25 +91,30 @@ export default function App(): ReactElement {
                     <View>
                         <View>
                             <View style={{ flexDirection: 'row', gap: 16 }}>
-                                <Text>{idLabel}</Text>
-                                <Text>{isinLabel}</Text>
-                                <Text>{limitLabel}</Text>
-                                <Text>{qtyLabel}</Text>
-                                <Text>{statusLabel}</Text>
+                                <Text>#</Text>
+                                {listOrdersPart0?.fields.map((f) => (
+                                    <Text key={f.key}>
+                                        {wordingManager.ucof(f.key).label}
+                                    </Text>
+                                ))}
                                 <Text />
                             </View>
                         </View>
                         <View>
-                            {listOrdersPart0?.items.map((i) => (
+                            {listOrdersPart0?.items.map((i, idx) => (
                                 <View
                                     key={i.id}
                                     style={{ flexDirection: 'row', gap: 16 }}
                                 >
-                                    <Text>{i.id}</Text>
-                                    <Text>{i.isin}</Text>
-                                    <Text>{i.limit}</Text>
-                                    <Text>{i.qty}</Text>
-                                    <Text>{i.status}</Text>
+                                    <Text>{idx + 1}</Text>
+                                    {listOrdersPart0.fields.map((f) => (
+                                        <Text key={f.key}>
+                                            <UCValue
+                                                field={f}
+                                                value={i[f.key]}
+                                            />
+                                        </Text>
+                                    ))}
                                     <UCPanel
                                         onDone={async (ucor) => update0(ucor)}
                                         onError={onError}
