@@ -20,9 +20,9 @@ import {
     ListOrdersUCD,
     Manifest,
 } from '../../../../apps/Trading/index.js';
-import OrderStatusBadge from './OrderStatusBadge.js';
 import { UCExecTouchable } from './UCExecTouchable.js';
 import { UCForm } from './UCForm.js';
+import UCValue from './UCValue.js';
 
 export default function App(): ReactElement {
     const { container, i18nManager, wordingManager } = useDIContext();
@@ -106,13 +106,10 @@ export default function App(): ReactElement {
                                     <td>{idx + 1}</td>
                                     {listOrdersPart0.fields.map((f) => (
                                         <td key={f.key}>
-                                            {f.key === 'status' ? (
-                                                <OrderStatusBadge
-                                                    value={i.status}
-                                                />
-                                            ) : (
-                                                <span>{i[f.key]}</span>
-                                            )}
+                                            <UCValue
+                                                field={f}
+                                                value={i[f.key]}
+                                            />
                                         </td>
                                     ))}
                                     <td>

@@ -22,13 +22,14 @@ export default function Badge<T extends DataType>({
     type,
     value,
 }: Props<T>): ReactElement | null {
-    const semantics = type.assign(value).getSemanticsMapping()?.[value];
-    if (!semantics?.variant) {
-        return null;
-    }
+    const semantics = type.getSemanticsMapping()?.[value];
 
-    const className =
-        SEMANTICS_VARIANT_BADGE_CLASSES_MAPPING[semantics.variant];
+    let className = '';
+    if (!semantics?.variant) {
+        className = 'badge-neutral';
+    } else {
+        className = SEMANTICS_VARIANT_BADGE_CLASSES_MAPPING[semantics.variant];
+    }
 
     return <div className={`badge ${className}`}>{value}</div>;
 }

@@ -1,5 +1,6 @@
 // Expose only what's necessary
 
+export { TISIN } from './src/lib/TISIN.js';
 export { type OrderStatus, TOrderStatus } from './src/lib/TOrderStatus.js';
 
 export { BuyAssetUCD } from './src/ucds/BuyAssetUCD.js';
