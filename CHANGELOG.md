@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## v0.10.0 (unreleased)
+
+**Misc**
+
+- Update `examples/supertrader` to showcase type semantics and displaying UC output fields according to the definition
+
 ## v0.9.0 (2025-03-20)
 
 **BREAKING**
@@ -10,7 +16,7 @@
 **Misc**
 
 - Make `buffer`, `fast-check` and `vitest` deps optional : basic uses of `libmodulor` do not require them (see https://libmodulor.c100k.eu/docs/examples/Basic as an example). You can remove them if you're not using the automated tests
-- Add `ListOrdersUCD` an `CancelOrderUCD` to `examples/supertrader` to showcase data fetching, aggregate building, sensitive use cases, test flows, etc.
+- Add `ListOrdersUCD` and `CancelOrderUCD` to `examples/supertrader` to showcase data fetching, aggregate building, sensitive use cases, test flows, etc.
 - Remove linter config from examples (linting from repo root folder)
 - Use `debug` instead of `trace` in `ConsoleLogger`
 
