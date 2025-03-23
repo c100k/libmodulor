@@ -23,7 +23,7 @@ export const OrderOPIDef: UCOutputPartDef<Order> = {
             type: new TISIN(),
         },
         limit: {
-            type: new TAmount('EUR'),
+            type: new TAmount('USD'),
         },
         qty: {
             type: new TUIntQuantity(),
