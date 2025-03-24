@@ -5,6 +5,7 @@
 **Misc**
 
 - Update `examples/supertrader` to showcase type semantics and displaying UC output fields according to the definition
+- In `target/react`, make `useUCOR` return a `Part0` always set : you can remove all the now obsolete patterns like `if (listItemsPart0)`, `listItemsPart0 &&`, `listItemsPart0?.`, `listItemsPart0!.` in your React components relying on `useUCOR`. Also expose the function signatures used by `useUC` and `useUCOR` to make them easily passable as children props
 
 ## v0.9.0 (2025-03-20)
 
