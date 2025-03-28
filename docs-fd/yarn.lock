@@ -956,10 +956,10 @@
     postcss "^8.4.41"
     tailwindcss "4.0.9"
 
-"@theguild/remark-mermaid@^0.2.0":
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/@theguild/remark-mermaid/-/remark-mermaid-0.2.0.tgz#46de4d78e9696cc7a1a04bad1ffed9c4a2052c3e"
-  integrity sha512-o8n57TJy0OI4PCrNw8z6S+vpHtrwoQZzTA5Y3fL0U1NDRIoMg/78duWgEBFsCZcWM1G6zjE91yg1aKCsDwgE2Q==
+"@theguild/remark-mermaid@^0.3.0":
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/@theguild/remark-mermaid/-/remark-mermaid-0.3.0.tgz#f7927b9e12f3f0c609e295f4492154d81efaa74c"
+  integrity sha512-Fy1J4FSj8totuHsHFpaeWyWRaRSIvpzGTRoEfnNJc1JmLV9uV70sYE3zcT+Jj5Yw20Xq4iCsiT+3Ho49BBZcBQ==
   dependencies:
     mermaid "^11.0.0"
     unist-util-visit "^5.0.0"
