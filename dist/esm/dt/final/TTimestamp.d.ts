@@ -4,4 +4,5 @@ export type Timestamp = UInt;
 export declare class TTimestamp extends TUInt {
     tName(): TName;
     example(): Timestamp;
+    fmt(ifNullOrUndefined?: string | undefined): string;
 }

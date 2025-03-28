@@ -7,4 +7,7 @@ export class TEmbeddedObject extends TObject {
         super(constraints);
         this.constraints = constraints;
     }
+    tName() {
+        return 'EmbeddedObject';
+    }
 }

@@ -15,7 +15,7 @@
 | `12` | `DirPath` | `text` | `text` | `/Users/dexter/Desktop` | `/Users/dexter/Desktop` |
 | `13` | `DomainName` | `url` | `url` | `myservice.toto.com` | `myservice.toto.com` |
 | `14` | `Email` | `email` | `email` | `dexter@caramail.com` | `dexter@caramail.com` |
-| `15` | `Object` | `text` | `text` | `{}` | `{}` |
+| `15` | `EmbeddedObject` | `text` | `text` | `{}` | `{}` |
 | `16` | `Emoji` | `text` | `text` | `🚀` | `🚀` |
 | `17` | `EncryptionKey` | `password` | `text` | `39b65c8b58140bed54c8b9a170f378644f128744a9711ef268ce561a360eb2eee6dbd2fd1ce7a743167e0cff5d7ca13cbdd2bded2b72c58d30caed990c3e04b6` | `39b65c8b58140bed54c8b9a170f378644f128744a9711ef268ce561a360eb2eee6dbd2fd1ce7a743167e0cff5d7ca13cbdd2bded2b72c58d30caed990c3e04b6` |
 | `18` | `ErrorMessage` | `text` | `text` | `You are not allowed to access this resource` | `You are not allowed to access this resource` |
@@ -58,7 +58,7 @@
 | `55` | `ShellCommand` | `text` | `text` | `sudo systemctl restart nginx` | `sudo systemctl restart nginx` |
 | `56` | `Slug` | `text` | `text` | `title-of-seo-friendly-article` | `title-of-seo-friendly-article` |
 | `57` | `Time` | `time` | `numeric` | `10:00` | `10:00` |
-| `58` | `Timestamp` | `number` | `numeric` | `1628359209` | `1,628,359,209` |
+| `58` | `Timestamp` | `number` | `numeric` | `1628359209` | `1628359209` |
 | `59` | `UIntDuration` | `number` | `numeric` | `3600` | `3,600` |
 | `60` | `UIntQuantity` | `number` | `numeric` | `10` | `10` |
 | `61` | `URL` | `url` | `url` | `https://myservice.toto.com` | `https://myservice.toto.com` |

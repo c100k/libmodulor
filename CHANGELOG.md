@@ -9,6 +9,7 @@
 - Introduce `UCOutputFieldValueFragment` in `target/react` and `UCOutputFieldValue` in `target/react-(native|web)-pure` to display uc values using the `fmt()` method of each data type. `TBoolean.fmt()` has been adapted to display `✔️` when `true`, instead of `true|false` which are not very user friendly in a UI
 - List base and final data types directly in the documentation => https://libmodulor.c100k.eu/docs/references/data-types
 - Introduce `Year` data type
+- Adjust `fmt` of `THostPort` and `TTimestamp` (they shouldn't be formatted as numbers) and `tName` of `TEmbeddedObject`
 
 ## v0.9.0 (2025-03-20)
 

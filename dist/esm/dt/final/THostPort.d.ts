@@ -5,4 +5,5 @@ export declare class THostPort extends TUInt<HostPort> {
     constructor(constraints?: TUIntConstraints);
     tName(): TName;
     example(): HostPort;
+    fmt(ifNullOrUndefined?: string | undefined): string;
 }
