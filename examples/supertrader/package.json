@@ -13,7 +13,7 @@
         "test": "tsc && vitest run --passWithNoTests"
     },
     "dependencies": {
-        "@modelcontextprotocol/sdk": "^1.7.0",
+        "@modelcontextprotocol/sdk": "^1.8.0",
         "@tailwindcss/vite": "^4.0.11",
         "daisyui": "^5.0.0",
         "expo": "^52.0.37",
