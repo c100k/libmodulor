@@ -1,31 +1,26 @@
-import { UC } from 'libmodulor';
+import { UC, type UCOutputReaderPart } from 'libmodulor';
 import {
     UCPanel,
     type UCPanelOnError,
+    type UpdateFunc,
     useDIContext,
-    type useUCOR,
 } from 'libmodulor/react';
 import { UCAutoExecLoader } from 'libmodulor/react-web-pure';
 import React, { type ReactElement } from 'react';
 
 import {
     CancelOrderUCD,
-    type ListOrdersInput,
     type ListOrdersOPI0,
     Manifest,
 } from '../../../../apps/Trading/index.js';
 import { UCExecTouchable } from './UCExecTouchable.js';
 import { UCForm } from './UCForm.js';
-import UCValue from './UCValue.js';
+import UCValue from './UCOutputFieldValue.js';
 
 interface Props {
-    listOrdersPart0: ReturnType<
-        typeof useUCOR<ListOrdersInput, ListOrdersOPI0>
-    >['0'];
+    listOrdersPart0: UCOutputReaderPart<ListOrdersOPI0>;
     onError: UCPanelOnError;
-    update0: ReturnType<
-        typeof useUCOR<ListOrdersInput, ListOrdersOPI0>
-    >['2']['update0'];
+    update0: UpdateFunc<ListOrdersOPI0>;
 }
 
 export default function OrdersTable({
@@ -35,22 +30,28 @@ export default function OrdersTable({
 }: Props): ReactElement {
     const { i18nManager, wordingManager } = useDIContext();
 
+    const {
+        fields,
+        items,
+        pagination: { total },
+    } = listOrdersPart0;
+
     return (
         <table className="table">
             <thead>
                 <tr>
                     <th>#</th>
-                    {listOrdersPart0?.fields.map((f) => (
+                    {fields.map((f) => (
                         <th key={f.key}>{wordingManager.ucof(f.key).label}</th>
                     ))}
                     <th />
                 </tr>
             </thead>
             <tbody>
-                {listOrdersPart0?.items.map((i, idx) => (
+                {items.map((i, idx) => (
                     <tr key={i.id}>
                         <td>{idx + 1}</td>
-                        {listOrdersPart0.fields.map((f) => (
+                        {fields.map((f) => (
                             <td key={f.key}>
                                 <UCValue field={f} value={i[f.key]} />
                             </td>
@@ -77,7 +78,7 @@ export default function OrdersTable({
                     <th />
                     <th />
                     <th />
-                    <th>{listOrdersPart0?.pagination.total}</th>
+                    <th>{total}</th>
                 </tr>
             </tfoot>
         </table>

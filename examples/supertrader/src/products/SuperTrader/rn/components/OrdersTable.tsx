@@ -1,34 +1,29 @@
-import { UC } from 'libmodulor';
+import { UC, type UCOutputReaderPart } from 'libmodulor';
 import {
     UCPanel,
     type UCPanelOnError,
+    type UpdateFunc,
     useDIContext,
-    type useUCOR,
 } from 'libmodulor/react';
 import {
     UCAutoExecLoader,
     UCExecTouchable,
     UCForm,
+    UCOutputFieldValue,
 } from 'libmodulor/react-native-pure';
 import React, { type ReactElement } from 'react';
 import { Text, View } from 'react-native';
 
 import {
     CancelOrderUCD,
-    type ListOrdersInput,
     type ListOrdersOPI0,
     Manifest,
 } from '../../../../apps/Trading/index.js';
-import UCValue from './UCValue.js';
 
 interface Props {
-    listOrdersPart0: ReturnType<
-        typeof useUCOR<ListOrdersInput, ListOrdersOPI0>
-    >['0'];
+    listOrdersPart0: UCOutputReaderPart<ListOrdersOPI0>;
     onError: UCPanelOnError;
-    update0: ReturnType<
-        typeof useUCOR<ListOrdersInput, ListOrdersOPI0>
-    >['2']['update0'];
+    update0: UpdateFunc<ListOrdersOPI0>;
 }
 
 export default function OrdersTable({
@@ -38,12 +33,18 @@ export default function OrdersTable({
 }: Props): ReactElement {
     const { i18nManager, wordingManager } = useDIContext();
 
+    const {
+        fields,
+        items,
+        pagination: { total },
+    } = listOrdersPart0;
+
     return (
         <View>
             <View>
                 <View style={{ flexDirection: 'row', gap: 16 }}>
                     <Text>#</Text>
-                    {listOrdersPart0?.fields.map((f) => (
+                    {fields.map((f) => (
                         <Text key={f.key}>
                             {wordingManager.ucof(f.key).label}
                         </Text>
@@ -52,12 +53,15 @@ export default function OrdersTable({
                 </View>
             </View>
             <View>
-                {listOrdersPart0?.items.map((i, idx) => (
+                {items.map((i, idx) => (
                     <View key={i.id} style={{ flexDirection: 'row', gap: 16 }}>
                         <Text>{idx + 1}</Text>
-                        {listOrdersPart0.fields.map((f) => (
+                        {fields.map((f) => (
                             <Text key={f.key}>
-                                <UCValue field={f} value={i[f.key]} />
+                                <UCOutputFieldValue
+                                    field={f}
+                                    value={i[f.key]}
+                                />
                             </Text>
                         ))}
                         <UCPanel
@@ -76,7 +80,7 @@ export default function OrdersTable({
             <View>
                 <View style={{ flexDirection: 'row', gap: 16 }}>
                     <Text>{i18nManager.t('total')}</Text>
-                    <Text>{listOrdersPart0?.pagination.total}</Text>
+                    <Text>{total}</Text>
                 </View>
             </View>
         </View>

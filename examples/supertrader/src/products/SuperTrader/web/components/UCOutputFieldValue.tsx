@@ -1,18 +1,15 @@
-import type { DataType, UCOPIBase, UCOutputField } from 'libmodulor';
+import type { DataType, UCOPIBase } from 'libmodulor';
+import type { UCOutputFieldValueFragmentProps } from 'libmodulor/react';
+import { UCOutputFieldValue as UCOutputFieldValueBase } from 'libmodulor/react-web-pure';
 import React, { type ReactElement } from 'react';
 
 import { TISIN, TOrderStatus } from '../../../../apps/Trading/index.js';
 import Badge from './Badge.js';
 
-interface Props<OPI extends UCOPIBase, T extends DataType> {
-    field: UCOutputField<OPI, T>;
-    value: T;
-}
-
-export default function UCValue<OPI extends UCOPIBase, T extends DataType>({
-    field,
-    value,
-}: Props<OPI, T>): ReactElement {
+export default function UCOutputFieldValue<
+    OPI extends UCOPIBase,
+    T extends DataType,
+>({ field, value }: UCOutputFieldValueFragmentProps<OPI, T>): ReactElement {
     const {
         def: { type },
     } = field;
@@ -26,5 +23,5 @@ export default function UCValue<OPI extends UCOPIBase, T extends DataType>({
         return <Badge type={type} value={type.fmt()} />;
     }
 
-    return <span>{type.fmt()}</span>;
+    return <UCOutputFieldValueBase field={field} value={value} />;
 }
