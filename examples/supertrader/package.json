@@ -16,7 +16,7 @@
         "@modelcontextprotocol/sdk": "^1.7.0",
         "@tailwindcss/vite": "^4.0.11",
         "daisyui": "^5.0.0",
-        "expo": "^52.0.37",
+        "expo": "^52.0.41",
         "inversify": "^6.2.2",
         "knex": "^3.1.0",
         "libmodulor": "^0.10.0",
