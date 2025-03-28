@@ -5,6 +5,7 @@ export declare class TBoolean extends TBase<boolean> {
     tName(): TName;
     assign(raw: unknown): this;
     example(): boolean;
+    fmt(ifNullOrUndefined?: string | undefined): string;
     htmlInputType(): HTMLInputType;
     validate(): Validation;
 }

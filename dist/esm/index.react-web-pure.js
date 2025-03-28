@@ -8,3 +8,4 @@ export { UCFormFieldDesc } from './target/react-web-pure/UCFormFieldDesc.js';
 export { UCFormFieldErr } from './target/react-web-pure/UCFormFieldErr.js';
 export { UCFormFieldLabel } from './target/react-web-pure/UCFormFieldLabel.js';
 export { UCFormSubmitControl } from './target/react-web-pure/UCFormSubmitControl.js';
+export { UCOutputFieldValue } from './target/react-web-pure/UCOutputFieldValue.js';

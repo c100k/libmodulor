@@ -8,3 +8,4 @@ export { UCFormFieldDesc } from './target/react-native-pure/UCFormFieldDesc.js';
 export { UCFormFieldErr } from './target/react-native-pure/UCFormFieldErr.js';
 export { UCFormFieldLabel } from './target/react-native-pure/UCFormFieldLabel.js';
 export { UCFormSubmitControl } from './target/react-native-pure/UCFormSubmitControl.js';
+export { UCOutputFieldValue } from './target/react-native-pure/UCOutputFieldValue.js';
