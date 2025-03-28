@@ -8,6 +8,7 @@
 - In `target/react`, make `useUCOR` return a `Part0` always set : you can remove all the now obsolete patterns like `if (listItemsPart0)`, `listItemsPart0 &&`, `listItemsPart0?.`, `listItemsPart0!.` in your React components relying on `useUCOR`. Also expose the function signatures used by `useUC` and `useUCOR` to make them easily passable as children props
 - Introduce `UCOutputFieldValueFragment` in `target/react` and `UCOutputFieldValue` in `target/react-(native|web)-pure` to display uc values using the `fmt()` method of each data type. `TBoolean.fmt()` has been adapted to display `✔️` when `true`, instead of `true|false` which are not very user friendly in a UI
 - List base and final data types directly in the documentation => https://libmodulor.c100k.eu/docs/references/data-types
+- Introduce `Year` data type
 
 ## v0.9.0 (2025-03-20)
 

@@ -65,4 +65,5 @@
 | `62` | `URLPath` | `text` | `text` | `/posts/1` | `/posts/1` |
 | `63` | `UUID` | `text` | `text` | `dd9670e7-1dd5-4155-85c2-335714799ff7` | `dd9670e7-1dd5-4155-85c2-335714799ff7` |
 | `64` | `Username` | `text` | `text` | `dmorgan` | `dmorgan` |
-| `65` | `YesNo` | `text` | `text` | `Y` | `Y` |
+| `65` | `Year` | `number` | `numeric` | `2025` | `2025` |
+| `66` | `YesNo` | `text` | `text` | `Y` | `Y` |

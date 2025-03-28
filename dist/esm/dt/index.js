@@ -70,6 +70,7 @@ export { TUsername } from './final/TUsername.js';
 export { TURL } from './final/TURL.js';
 export { TURLPath } from './final/TURLPath.js';
 export { TUUID } from './final/TUUID.js';
+export { TYear } from './final/TYear.js';
 export { TYesNo } from './final/TYesNo.js';
 export { DataTypes } from './DataTypes.js';
 export { Validation, } from './Validation.js';

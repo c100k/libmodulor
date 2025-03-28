@@ -70,6 +70,7 @@ export { type Username, TUsername } from './final/TUsername.js';
 export { type URL, TURL } from './final/TURL.js';
 export { type URLPath, TURLPath } from './final/TURLPath.js';
 export { type UUID, TUUID } from './final/TUUID.js';
+export { type Year, TYear } from './final/TYear.js';
 export { type YesNo, TYesNo } from './final/TYesNo.js';
 export type { RNInputMode } from './targets/rn.js';
 export type { HTMLInputType } from './targets/web.js';

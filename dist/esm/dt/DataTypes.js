@@ -64,5 +64,6 @@ export const DataTypes = [
     'URLPath',
     'UUID',
     'Username',
+    'Year',
     'YesNo',
 ];
