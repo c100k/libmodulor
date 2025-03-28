@@ -3,7 +3,19 @@ title: Data Types
 description: libmodulor provides data types that are commonly used in apps.
 ---
 
-<Cards>
-    <Card href="https://github.com/c100k/libmodulor/tree/master/dist/esm/dt/base" title="Base data types" />
-    <Card href="https://github.com/c100k/libmodulor/tree/master/dist/esm/dt/final" title="Final data types" />
-</Cards>
+## Base
+
+[Base data types](https://github.com/c100k/libmodulor/tree/master/dist/esm/dt/base) are "generic".
+Except in some cases, we don't recommend using them directly in use cases as they lack semantic meaning.
+Instead, you should extend them to create "final" data types.
+
+<include>../../../src/blocks/data-types-base.md</include>
+
+## Final
+
+[Final data types](https://github.com/c100k/libmodulor/tree/master/dist/esm/dt/final) represent real life notions.
+They extend directly or indirectly base data types.
+
+This list is naturally not exhaustive and data types are regularly created to fit new use cases.
+
+<include>../../../src/blocks/data-types-final.md</include>
