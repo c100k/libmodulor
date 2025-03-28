@@ -13,16 +13,19 @@ export const revalidate = false;
 export async function GET() {
     const files = await fg(['./content/docs/**/*.mdx']);
 
-    const scan = files.map(async (file) => {
-        const fileContent = await readFile(file);
-        const { content, data } = matter(fileContent.toString());
+    // Temporarily exclude data-types as <include> is not handled correctly
+    const scan = files
+        .filter((f) => !f.endsWith('references/data-types.mdx'))
+        .map(async (file) => {
+            const fileContent = await readFile(file);
+            const { content, data } = matter(fileContent.toString());
 
-        const processed = await processContent(content);
-        return `file: ${file}
+            const processed = await processContent(content);
+            return `file: ${file}
 meta: ${JSON.stringify(data, null, 2)}
         
 ${processed}`;
-    });
+        });
 
     const scanned = await Promise.all(scan);
 
