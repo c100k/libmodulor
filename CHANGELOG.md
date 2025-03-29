@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## v0.11.0 (unreleased)
+
+**Misc**
+
+- Analyze the web bundle of `examples/supertrader` (`(cd examples/supertrader && yarn build:analyze:web)`)
+
 ## v0.10.0 (2025-03-28)
 
 **Added**

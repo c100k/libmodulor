@@ -6,6 +6,7 @@
     "private": true,
     "scripts": {
         "build": "./build.sh",
+        "build:analyze:web": "vite-bundle-visualizer -c ./src/products/SuperTrader/web/vite.config.ts",
         "run:cli": "cd dist/products/SuperTrader/cli && node index.js",
         "run:rn:android": "cd dist/products/SuperTrader/rn && expo start --android",
         "run:rn:ios": "cd dist/products/SuperTrader/rn && expo start --ios",
@@ -44,6 +45,7 @@
         "jose": "^6.0.10",
         "typescript": "^5.8.2",
         "vite": "^6.2.3",
+        "vite-bundle-visualizer": "^1.2.1",
         "vitest": "^3.0.9"
     }
 }
