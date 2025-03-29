@@ -5,6 +5,7 @@
 **Misc**
 
 - Analyze the web bundle of `examples/supertrader` (`(cd examples/supertrader && yarn build:analyze:web)`)
+- Include data-types tables in `llms.txt`
 
 ## v0.10.0 (2025-03-28)
 
