@@ -42,6 +42,9 @@ let ContainerPrinter = class ContainerPrinter {
         for (const e of sorted) {
             this.logger.debug(e);
         }
+        return {
+            bindingLines: sorted,
+        };
     }
     symToString(sym) {
         return typeof sym === 'string' ? sym : (sym.name ?? 'UnnamedClass');
