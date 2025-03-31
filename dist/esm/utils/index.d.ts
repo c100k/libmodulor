@@ -6,7 +6,6 @@ export { HTTPRequestBuilder } from './http/HTTPRequestBuilder.js';
 export type { HTTPDataEnvelope, HTTPReqData } from './http/types.js';
 export { bindProvider } from './ioc/bindProvider.js';
 export { CONTAINER_OPTS } from './ioc/container.js';
-export { ContainerPrinter } from './ioc/ContainerPrinter.js';
 export type { Class } from './ioc/types.js';
 export { fmt as fmtNumber } from './numbers/fmt.js';
 export { type CoreUnit, type SquareUnit, type SquareableUnit, type Unit, baseFromSquareUnit, isSquareUnit, } from './numbers/units.js';
