@@ -39,6 +39,9 @@ export class TObject extends TBase {
     }
     validate() {
         const validation = super.validate();
+        if (!validation.isOK()) {
+            return validation;
+        }
         // typeof this.raw is 'object', hence the check for nullity
         if (this.raw === null || typeof this.raw !== 'object') {
             validation.add({

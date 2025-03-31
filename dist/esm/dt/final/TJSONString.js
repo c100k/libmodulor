@@ -11,6 +11,9 @@ export class TJSONString extends TString {
     }
     validate() {
         const validation = super.validate();
+        if (!validation.isOK()) {
+            return validation;
+        }
         try {
             JSON.parse(this.raw);
         }

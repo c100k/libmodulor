@@ -27,6 +27,9 @@ export class TString extends TBase {
     }
     validate() {
         const validation = super.validate();
+        if (!validation.isOK()) {
+            return validation;
+        }
         if (typeof this.raw !== 'string') {
             validation.add({
                 constraint: 'type',

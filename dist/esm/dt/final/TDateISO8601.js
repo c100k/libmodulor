@@ -17,6 +17,9 @@ export class TDateISO8601 extends TString {
     }
     validate() {
         const validation = super.validate();
+        if (!validation.isOK()) {
+            return validation;
+        }
         const parsed = Date.parse(this.raw);
         if (Number.isNaN(parsed)) {
             validation.add({

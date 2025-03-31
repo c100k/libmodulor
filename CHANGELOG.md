@@ -6,6 +6,10 @@
 
 - Remove `ContainerPrinter` : It was using internals of inversify v6. These internals are not present anymore in v7 and the maintainers were not convinced about adding something to list the bindings of a container. In prevision of the upgrade to v7, unfortunately, we remove it to keep things simple
 
+**Fixed**
+
+- Return early when parent data type validation is not ok
+
 **Misc**
 
 - Analyze the web bundle of `examples/supertrader` (`(cd examples/supertrader && yarn build:analyze:web)`)

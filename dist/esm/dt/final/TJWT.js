@@ -14,6 +14,9 @@ export class TJWT extends TString {
     }
     validate() {
         const validation = super.validate();
+        if (!validation.isOK()) {
+            return validation;
+        }
         try {
             const parts = this.raw.split('.');
             if (parts.length !== 3) {

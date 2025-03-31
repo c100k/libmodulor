@@ -45,6 +45,9 @@ export class TInt extends TNumber {
     }
     validate() {
         const validation = super.validate();
+        if (!validation.isOK()) {
+            return validation;
+        }
         if (typeof this.raw === 'number' && this.raw.toString().includes('.')) {
             validation.add({
                 constraint: 'type',

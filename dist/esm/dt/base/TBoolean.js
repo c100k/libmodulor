@@ -35,6 +35,9 @@ export class TBoolean extends TBase {
     }
     validate() {
         const validation = super.validate();
+        if (!validation.isOK()) {
+            return validation;
+        }
         if (typeof this.raw !== 'boolean') {
             validation.add({
                 constraint: 'type',

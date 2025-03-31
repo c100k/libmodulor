@@ -60,6 +60,9 @@ export class TNumber extends TBase {
     }
     validate() {
         const validation = super.validate();
+        if (!validation.isOK()) {
+            return validation;
+        }
         if (typeof this.raw !== 'number' || Number.isNaN(this.raw)) {
             validation.add({
                 constraint: 'type',
