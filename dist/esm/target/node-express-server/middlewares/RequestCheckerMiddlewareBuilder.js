@@ -19,18 +19,12 @@ let RequestCheckerMiddlewareBuilder = class RequestCheckerMiddlewareBuilder {
     }
     exec(_input) {
         return (req, _res, nextFn) => {
-            try {
-                this.requestChecker.exec({
-                    secure: req.secure,
-                    url: req.url,
-                    xForwardedProtoHeader: req.get('X-Forwarded-Proto'),
-                });
-                nextFn();
-            }
-            catch (err) {
-                // Always catch otherwise it breaks the middleware chain and hangs forever
-                nextFn(err);
-            }
+            this.requestChecker.exec({
+                secure: req.secure,
+                url: req.url,
+                xForwardedProtoHeader: req.get('X-Forwarded-Proto'),
+            });
+            nextFn();
         };
     }
 };

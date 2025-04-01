@@ -29,56 +29,50 @@ let RequestHandlerMiddlewareBuilder = class RequestHandlerMiddlewareBuilder {
         };
     }
     exec({ appManifest, envelope, ucd, ucManager, }) {
-        return async (req, res, nextFn) => {
-            try {
-                const uc = this.ucBuilder.exec({
-                    appManifest,
-                    auth: null,
-                    def: ucd,
-                });
-                if (isReqAuthenticated(req)) {
-                    uc.auth = req.auth;
+        return async (req, res) => {
+            const uc = this.ucBuilder.exec({
+                appManifest,
+                auth: null,
+                def: ucd,
+            });
+            if (isReqAuthenticated(req)) {
+                uc.auth = req.auth;
+            }
+            this.fillUCFromReq(req, envelope, uc);
+            const output = await ucManager.execServer(uc);
+            const { ext, io } = ucd;
+            const sideEffects = io.o?.sideEffects;
+            if (sideEffects) {
+                const ucor = new UCOutputReader(uc.def, output ?? undefined);
+                let item;
+                if (ucor.canItem00()) {
+                    item = ucor.item00().item;
                 }
-                this.fillUCFromReq(req, envelope, uc);
-                const output = await ucManager.execServer(uc);
-                const { ext, io } = ucd;
-                const sideEffects = io.o?.sideEffects;
-                if (sideEffects) {
-                    const ucor = new UCOutputReader(uc.def, output ?? undefined);
-                    let item;
-                    if (ucor.canItem00()) {
-                        item = ucor.item00().item;
-                    }
-                    // Be careful with this, as some are incompatible.
-                    // For instance, if there is a REDIRECT and then a CLEAR_AUTH, the latter won't be executed as we return after the redirect.
-                    for (const se of sideEffects) {
-                        const { type } = se;
-                        switch (type) {
-                            case UCOutputSideEffectType.CLEAR_AUTH:
-                                await this.handleClearAuth(res);
-                                break;
-                            case UCOutputSideEffectType.REDIRECT:
-                                await this.handleRedirect(res, item);
-                                return;
-                            case UCOutputSideEffectType.SET_AUTH:
-                                await this.handleSetAuth(res, item);
-                                break;
-                            default:
-                                ((_) => { })(type);
-                        }
+                // Be careful with this, as some are incompatible.
+                // For instance, if there is a REDIRECT and then a CLEAR_AUTH, the latter won't be executed as we return after the redirect.
+                for (const se of sideEffects) {
+                    const { type } = se;
+                    switch (type) {
+                        case UCOutputSideEffectType.CLEAR_AUTH:
+                            await this.handleClearAuth(res);
+                            break;
+                        case UCOutputSideEffectType.REDIRECT:
+                            await this.handleRedirect(res, item);
+                            return;
+                        case UCOutputSideEffectType.SET_AUTH:
+                            await this.handleSetAuth(res, item);
+                            break;
+                        default:
+                            ((_) => { })(type);
                     }
                 }
-                if (!output) {
-                    res.status(204).send();
-                    return;
-                }
-                const transform = ext?.http?.transform;
-                res.send(output && transform ? transform(output) : output);
             }
-            catch (err) {
-                // Always catch otherwise it breaks the middleware chain and hangs forever
-                nextFn(err);
+            if (!output) {
+                res.status(204).send();
+                return;
             }
+            const transform = ext?.http?.transform;
+            res.send(output && transform ? transform(output) : output);
         };
     }
     fillUCFromReq(req, envelope, uc) {

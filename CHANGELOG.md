@@ -5,6 +5,7 @@
 **BREAKING**
 
 - Remove `ContainerPrinter` : It was using internals of inversify v6. These internals are not present anymore in v7 and the maintainers were not convinced about adding something to list the bindings of a container. In prevision of the upgrade to v7, unfortunately, we remove it to keep things simple
+- Upgrade to express 5 : Unless you extended `NodeExpressServerManager` and did some special stuff, this should be transparent to you. Except bumping the version to `5.1.0`, there should be nothing to do. Otherwise, check the excellent [migration guide](https://expressjs.com/en/guide/migrating-5.html)
 
 **Fixed**
 

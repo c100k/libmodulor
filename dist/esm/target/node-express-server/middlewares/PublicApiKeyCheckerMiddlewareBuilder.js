@@ -26,18 +26,12 @@ let PublicApiKeyCheckerMiddlewareBuilder = class PublicApiKeyCheckerMiddlewareBu
     }
     exec({ checkType }) {
         return async (req, _res, nextFn) => {
-            try {
-                const value = req.header(this.s().server_public_api_key_header_name);
-                await this.publicApiKeyChecker.exec({
-                    checkType,
-                    value,
-                });
-                nextFn();
-            }
-            catch (err) {
-                // Always catch otherwise it breaks the middleware chain and hangs forever
-                nextFn(err);
-            }
+            const value = req.header(this.s().server_public_api_key_header_name);
+            await this.publicApiKeyChecker.exec({
+                checkType,
+                value,
+            });
+            nextFn();
         };
     }
 };

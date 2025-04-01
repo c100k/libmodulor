@@ -39,21 +39,15 @@ let AuthenticationCheckerMiddlewareBuilder = class AuthenticationCheckerMiddlewa
                 auth: null,
                 def: ucd,
             });
-            try {
-                const { auth } = await this.authenticationChecker.exec({
-                    authCookie,
-                    authorizationHeader,
-                    uc,
-                });
-                if (auth) {
-                    req.auth = auth;
-                }
-                nextFn();
+            const { auth } = await this.authenticationChecker.exec({
+                authCookie,
+                authorizationHeader,
+                uc,
+            });
+            if (auth) {
+                req.auth = auth;
             }
-            catch (err) {
-                // Always catch otherwise it breaks the middleware chain and hangs forever
-                nextFn(err);
-            }
+            nextFn();
         };
     }
 };
