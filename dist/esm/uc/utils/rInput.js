@@ -1,5 +1,5 @@
 import { TBoolean } from '../../dt/index.js';
-import { ucifIsMandatory, ucifRepeatability } from '../input-field.js';
+import { UCInputFieldChangeOperator, ucifIsMandatory, ucifRepeatability, } from '../input-field.js';
 const DEFAULT_OPTS = {
     forceArrayAsEmpty: false,
     forceBooleanAsFalse: true,
@@ -24,12 +24,14 @@ export function rInput(uc, opts) {
             ucifIsMandatory(f.def) &&
             (value === null || value === undefined)) {
             value = false;
+            f.setValue(UCInputFieldChangeOperator.SET, value);
         }
         const [isRepeatable] = ucifRepeatability(f.def);
         if (forceArrayAsEmpty &&
             isRepeatable &&
             (value === null || value === undefined)) {
             value = [];
+            f.setValue(UCInputFieldChangeOperator.SET, value);
         }
         if (!ignoreUndefined || (ignoreUndefined && value !== undefined)) {
             // Useful when we get the input before persisting for example.

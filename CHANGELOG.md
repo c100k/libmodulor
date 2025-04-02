@@ -15,6 +15,7 @@
 
 - Analyze the web bundle of `examples/supertrader` (`(cd examples/supertrader && yarn build:analyze:web)`)
 - Include data-types tables in `llms.txt`
+- Update UC input field when forcing the value in `rInput` (e.g. boolean set to false or array set to empty)
 
 ## v0.10.0 (2025-03-28)
 
