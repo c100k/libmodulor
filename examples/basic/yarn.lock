@@ -40,10 +40,10 @@ jose@^6.0.10:
   resolved "https://registry.yarnpkg.com/jose/-/jose-6.0.10.tgz#52d96e1a671b4c02e13b71e0d35abea2e774712b"
   integrity sha512-skIAxZqcMkOrSwjJvplIPYrlXGpxTPnro2/QWTDCxAdWQrSTV5/KqspMWmi5WAx5+ULswASJiZ0a+1B/Lxt9cw==
 
-libmodulor@^0.11.0:
-  version "0.11.0"
-  resolved "https://registry.yarnpkg.com/libmodulor/-/libmodulor-0.11.0.tgz#0d622b79c6350f2471580344b431cb0a1394443c"
-  integrity sha512-f2t/FxalL9c1neCW4IUkE9oU0m5ETWAUlsmD/Ila6lVC5OYw84C2AMWsdhat4hoXpWZ3gHlVQ5MfhqZdvTx+lQ==
+libmodulor@^0.11.1:
+  version "0.11.1"
+  resolved "https://registry.yarnpkg.com/libmodulor/-/libmodulor-0.11.1.tgz#9827fd84fda037a0c4154c3347ec4dedf21236e6"
+  integrity sha512-pFoqFpjPbgTjrYid1BNosngnSbFKZHxjbputCVE+Hh5WZyRQr7xDt/H8rwR5635RStvqsqKI0+irucygfHjkDA==
 
 reflect-metadata@^0.2.2:
   version "0.2.2"

@@ -20,7 +20,7 @@
         "expo": "^52.0.42",
         "inversify": "^6.2.2",
         "knex": "^3.1.0",
-        "libmodulor": "^0.11.0",
+        "libmodulor": "^0.11.1",
         "react": "^19.1.0",
         "react-dom": "^19.1.0",
         "react-native": "^0.78.1",
