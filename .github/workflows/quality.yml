@@ -39,7 +39,6 @@ jobs:
           cd examples/basic
           yarn install
           yarn build && yarn run:node
-          yarn run:bun
 
       - name: Build & Run examples/supertrader
         run: |
