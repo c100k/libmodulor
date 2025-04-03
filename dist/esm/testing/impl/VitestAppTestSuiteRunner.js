@@ -26,7 +26,7 @@ let VitestAppTestSuiteRunner = class VitestAppTestSuiteRunner {
         const args = [
             'run',
             '--dir',
-            './examples/apps/Spotify',
+            appPath,
         ];
         if (!skipCoverage) {
             args.push('--coverage.enabled', '--coverage.exclude', testPath, '--coverage.include', appPath, '--coverage.reportsDirectory', this.coverageReportPath(appPath));

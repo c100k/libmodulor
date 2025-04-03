@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## v0.11.1 (unreleased)
+
+**Fixed**
+
+- Ajust `appPath` in `yarn libmodulor TestApp` command
+
 ## v0.11.0 (2025-04-03)
 
 **BREAKING**
