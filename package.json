@@ -1,6 +1,6 @@
 {
     "name": "libmodulor",
-    "description": "An opinionated TypeScript library to create business oriented applications",
+    "description": "A TypeScript library to create business oriented applications",
     "version": "0.10.0",
     "license": "LGPL-3.0",
     "author": "Chafik H'nini <chafik.hnini@gmail.com>",

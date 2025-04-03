@@ -3,7 +3,7 @@
 [![npm version](https://img.shields.io/npm/v/libmodulor.svg?style=for-the-badge&color=blue)](https://www.npmjs.com/package/libmodulor)
 [![license](https://img.shields.io/badge/license-LGPL-green.svg?style=for-the-badge)](https://github.com/c100k/libmodulor/blob/master/LICENSE)
 
-An opinionated TypeScript library to create business oriented applications.
+A TypeScript library to create business oriented applications.
 
 > [!WARNING]
 > The project is still in active development. Although already used in pilot projects, it's not suitable for all production scenarios yet.
