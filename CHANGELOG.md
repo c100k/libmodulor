@@ -10,6 +10,7 @@
 **Fixed**
 
 - Return early when parent data type validation is not ok
+- Adjust the `npx libmodulor CreateProject` command
 
 **Misc**
 

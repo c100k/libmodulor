@@ -11,29 +11,36 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
 import { inject, injectable } from 'inversify';
-import { createVitest } from 'vitest/node';
 import { APP_TEST_DIR_NAME, APP_TEST_REPORTS_DIR_NAME, } from '../../convention.js';
 let VitestAppTestSuiteRunner = class VitestAppTestSuiteRunner {
     fsManager;
-    constructor(fsManager) {
+    logger;
+    shellCommandExecutor;
+    constructor(fsManager, logger, shellCommandExecutor) {
         this.fsManager = fsManager;
+        this.logger = logger;
+        this.shellCommandExecutor = shellCommandExecutor;
     }
     async exec({ appPath, skipCoverage, updateSnapshots, }) {
         const testPath = this.fsManager.path(appPath, APP_TEST_DIR_NAME);
-        const excludePath = this.fsManager.path(testPath);
-        const runner = await createVitest('test', {
-            coverage: {
-                enabled: !skipCoverage,
-                exclude: [excludePath],
-                include: [appPath],
-                reportsDirectory: this.coverageReportPath(appPath),
-                reportOnFailure: false,
+        const args = [
+            'run',
+            '--dir',
+            './examples/apps/Spotify',
+        ];
+        if (!skipCoverage) {
+            args.push('--coverage.enabled', '--coverage.exclude', testPath, '--coverage.include', appPath, '--coverage.reportsDirectory', this.coverageReportPath(appPath));
+        }
+        if (updateSnapshots) {
+            args.push('--update');
+        }
+        const output = await this.shellCommandExecutor.exec({
+            bin: './node_modules/.bin/vitest',
+            opts: {
+                args,
             },
-            dir: appPath,
-            update: updateSnapshots,
-            watch: false,
         });
-        await runner.start();
+        this.logger.info(output);
     }
     async coverageReportEntrypointPath(appPath) {
         return this.fsManager.path(this.coverageReportPath(appPath), 'index.html');
@@ -46,6 +53,8 @@ let VitestAppTestSuiteRunner = class VitestAppTestSuiteRunner {
 VitestAppTestSuiteRunner = __decorate([
     injectable(),
     __param(0, inject('FSManager')),
-    __metadata("design:paramtypes", [Object])
+    __param(1, inject('Logger')),
+    __param(2, inject('ShellCommandExecutor')),
+    __metadata("design:paramtypes", [Object, Object, Object])
 ], VitestAppTestSuiteRunner);
 export { VitestAppTestSuiteRunner };
