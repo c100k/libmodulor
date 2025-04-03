@@ -11,8 +11,10 @@ import React, { type ReactElement } from 'react';
 import {
     CancelOrderUCD,
     type ListOrdersOPI0,
+    ListOrdersUCD,
     Manifest,
 } from '../../../../apps/Trading/index.js';
+import { Hero } from './Hero.js';
 import { UCExecTouchable } from './UCExecTouchable.js';
 import { UCForm } from './UCForm.js';
 import UCValue from './UCOutputFieldValue.js';
@@ -36,6 +38,11 @@ export default function OrdersTable({
         pagination: { total },
     } = listOrdersPart0;
 
+    const { empty } = wordingManager.ucop(ListOrdersUCD, 0);
+    if (total === 0 && empty) {
+        return <Hero message={empty} />;
+    }
+
     return (
         <table className="table">
             <thead>
@@ -44,7 +51,7 @@ export default function OrdersTable({
                     {fields.map((f) => (
                         <th key={f.key}>{wordingManager.ucof(f.key).label}</th>
                     ))}
-                    <th />
+                    <th className="min-w-48" />
                 </tr>
             </thead>
             <tbody>

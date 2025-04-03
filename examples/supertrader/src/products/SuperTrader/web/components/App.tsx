@@ -6,7 +6,6 @@ import {
     useUC,
     useUCOR,
 } from 'libmodulor/react';
-import { UCAutoExecLoader } from 'libmodulor/react-web-pure';
 import React, { useEffect, useState, type ReactElement } from 'react';
 
 import {
@@ -15,6 +14,7 @@ import {
     Manifest,
 } from '../../../../apps/Trading/index.js';
 import OrdersTable from './OrdersTable.js';
+import { UCAutoExecLoader } from './UCAutoExecLoader.js';
 import { UCExecTouchable } from './UCExecTouchable.js';
 import { UCForm } from './UCForm.js';
 
@@ -53,7 +53,7 @@ export default function App(): ReactElement {
 
     return (
         <div className="flex flex-col gap-3 p-8 w-2/3">
-            {loading && 'Loading...'}
+            {loading && <span className="loading loading-ring loading-xl" />}
 
             {!loading && (
                 <>

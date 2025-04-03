@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## v0.12.0 (unreleased)
+
+**Misc**
+
+- Showcase empty state and usage of more daisyUI components (e.g. loaders) in `examples/supertrader`
+
 ## v0.11.1 (2025-04-03)
 
 **Fixed**
