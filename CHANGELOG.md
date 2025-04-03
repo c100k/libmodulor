@@ -1,6 +1,6 @@
 # CHANGELOG
 
-## v0.11.0 (unreleased)
+## v0.11.0 (2025-04-03)
 
 **BREAKING**
 
