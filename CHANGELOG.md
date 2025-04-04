@@ -6,6 +6,10 @@
 
 - Upgrade to inversify 7 : In addition to bumping the dependency, checkout the [migration guide](https://inversify.io/docs/guides/migrating-from-v6) and this [discussion](https://github.com/inversify/InversifyJS/discussions/1765)
 
+**Fixed**
+
+- Handle body with only one file in `target/node-express-server`
+
 **Misc**
 
 - Showcase empty state and usage of more daisyUI components (e.g. loaders) in `examples/supertrader`

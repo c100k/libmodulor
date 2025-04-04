@@ -78,7 +78,8 @@ let RequestHandlerMiddlewareBuilder = class RequestHandlerMiddlewareBuilder {
     fillUCFromReq(req, envelope, uc) {
         switch (envelope) {
             case 'form-data': {
-                const input = req.body;
+                // Since express v5, if the request contains only a file, the `req.body` returns `undefined`
+                const input = req.body ?? {};
                 // files is present when using express-fileupload
                 if ('files' in req && req.files) {
                     for (const [field, value] of Object.entries(req.files)) {
