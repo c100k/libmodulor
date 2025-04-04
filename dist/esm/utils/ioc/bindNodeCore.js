@@ -12,6 +12,6 @@ export function bindNodeCore(container) {
         .to(NodeEnvironmentManager);
     container.bind('FSManager').to(NodeFSManager);
     container
-        .rebind('FormDataBuilder')
+        .rebindSync('FormDataBuilder')
         .to(NodeFormDataBuilder);
 }

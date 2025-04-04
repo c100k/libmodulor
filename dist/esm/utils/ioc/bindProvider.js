@@ -3,7 +3,7 @@ export function bindProvider(container, identifier) {
         .bind(`Provider<${identifier}>`)
         .toProvider((context) => {
         return async (clazz) => {
-            return context.container.resolve(clazz);
+            return context.get(clazz);
         };
     });
 }

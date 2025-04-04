@@ -5,6 +5,6 @@ export function bindNodeCLI(container) {
     container.bind('PromptManager').to(NodePromptManager);
     // uc
     container
-        .rebind('UCClientConfirmManager')
+        .rebindSync('UCClientConfirmManager')
         .to(PromptUCClientConfirmManager);
 }

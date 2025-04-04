@@ -8,7 +8,7 @@ await i18nManager.init();
 // Before screaming, yes, this is not using any powerful CLI library.
 // The goal is to reduce the usage of dependencies as much as possible.
 // As long as the built-in Node.js API allows to build it without too many workarounds, let's keep it this way.
-await container.resolve(NodeCoreCLIManager).handleCommand({
+await container.get(NodeCoreCLIManager).handleCommand({
     appsRootPath: container
         .get('FSManager')
         .path('..', '..', APPS_ROOT_DIR_NAME),

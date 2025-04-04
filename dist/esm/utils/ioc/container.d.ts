@@ -1,2 +1,2 @@
-import type { interfaces } from 'inversify';
-export declare const CONTAINER_OPTS: interfaces.ContainerOptions;
+import type { ContainerOptions } from 'inversify';
+export declare const CONTAINER_OPTS: ContainerOptions;

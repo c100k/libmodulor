@@ -1,4 +1,4 @@
-import { type interfaces } from 'inversify';
+import { type Provider } from 'inversify';
 import type { ProductManifest } from '../../product/index.js';
 import type { Configurable, SettingsManager, Worker } from '../../std/index.js';
 import type { UC } from '../UC.js';
@@ -17,7 +17,7 @@ export declare class UCExecChecker implements Configurable<S>, Worker<Input, Pro
     private productManifest;
     private settingsManager;
     private ucPolicyProvider;
-    constructor(productManifest: ProductManifest, settingsManager: SettingsManager<S>, ucPolicyProvider: interfaces.Provider<UCPolicy>);
+    constructor(productManifest: ProductManifest, settingsManager: SettingsManager<S>, ucPolicyProvider: Provider<UCPolicy>);
     s(): S;
     exec<I extends UCInput | undefined = undefined, OPI0 extends UCOPIBase | undefined = undefined, OPI1 extends UCOPIBase | undefined = undefined>({ lifecycle, uc }: Input<I, OPI0, OPI1>): Promise<Output>;
 }

@@ -41,7 +41,7 @@ export async function newNodeAppTester(serverPortRangeStart, idx, args) {
     container
         .bind('UCDefASTParser')
         .to(TypeScriptLibUCDefASTParser);
-    const tester = container.resolve(AppTester);
+    const tester = container.get(AppTester);
     const jwtManager = container.get('JWTManager');
     const apiKey = settings.server_private_api_key_entries[0];
     const [basicAuth] = Object.entries(settings.server_basic_auth_entries);

@@ -9,6 +9,6 @@ export function bindWeb(container) {
     container.bind('FSManager').to(WebFSManager);
     // uc
     container
-        .rebind('UCClientConfirmManager')
+        .rebindSync('UCClientConfirmManager')
         .to(WebUCClientConfirmManager);
 }

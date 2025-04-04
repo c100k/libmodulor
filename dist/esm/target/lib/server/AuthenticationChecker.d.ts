@@ -1,4 +1,4 @@
-import { type interfaces } from 'inversify';
+import { type Provider } from 'inversify';
 import type { AppManifest } from '../../../app/index.js';
 import type { Logger, Worker } from '../../../std/index.js';
 import { type UC, type UCAuth, type UCDef, type UCInput, type UCOPIBase, type UCPolicy } from '../../../uc/index.js';
@@ -24,7 +24,7 @@ export declare class AuthenticationChecker implements Worker<Input, Promise<Outp
     private privateApiKeyAuthenticationChecker;
     private logger;
     private ucPolicyProvider;
-    constructor(basicAuthenticationChecker: BasicAuthenticationChecker, jwtAuthenticationChecker: JWTAuthenticationChecker, privateApiKeyAuthenticationChecker: PrivateApiKeyAuthenticationChecker, logger: Logger, ucPolicyProvider: interfaces.Provider<UCPolicy>);
+    constructor(basicAuthenticationChecker: BasicAuthenticationChecker, jwtAuthenticationChecker: JWTAuthenticationChecker, privateApiKeyAuthenticationChecker: PrivateApiKeyAuthenticationChecker, logger: Logger, ucPolicyProvider: Provider<UCPolicy>);
     exec<I extends UCInput | undefined = undefined, OPI0 extends UCOPIBase | undefined = undefined, OPI1 extends UCOPIBase | undefined = undefined>({ authCookie, authorizationHeader, uc, }: Input<I, OPI0, OPI1>): Promise<Output>;
 }
 export {};

@@ -1,2 +1,2 @@
-import type { interfaces } from 'inversify';
-export type Class<T> = interfaces.Newable<T>;
+import type { Newable } from 'inversify';
+export type Class<T> = Newable<T>;

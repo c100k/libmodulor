@@ -10,7 +10,7 @@ export function useDIContext() {
 }
 export function DIContextProvider({ children, container, }) {
     const [i18nManager] = useState(container.get('I18nManager'));
-    const [wordingManager] = useState(container.resolve(WordingManager));
+    const [wordingManager] = useState(container.get(WordingManager));
     return (React.createElement(DIContext.Provider, { value: {
             container,
             i18nManager,

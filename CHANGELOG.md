@@ -2,6 +2,10 @@
 
 ## v0.12.0 (unreleased)
 
+**BREAKING**
+
+- Upgrade to inversify 7 : In addition to bumping the dependency, checkout the [migration guide](https://inversify.io/docs/guides/migrating-from-v6) and this [discussion](https://github.com/inversify/InversifyJS/discussions/1765)
+
 **Misc**
 
 - Showcase empty state and usage of more daisyUI components (e.g. loaders) in `examples/supertrader`

@@ -307,13 +307,13 @@ let AppTester = class AppTester {
                 ...appI18n[l],
             };
         }
-        container.rebind('I18n').toConstantValue(productI18n);
+        (await container.rebind('I18n')).toConstantValue(productI18n);
     }
     async bindServerClientSettings(serverClientSettings) {
         const { container } = this.ctx;
         const opts = optsAllSet(this.ctx.opts);
         const existingSettings = container.get('Settings');
-        container.rebind('Settings').toConstantValue({
+        (await container.rebind('Settings')).toConstantValue({
             ...existingSettings,
             ...serverClientSettings,
             logger_level: opts.logger_level,

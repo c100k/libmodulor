@@ -4,7 +4,7 @@ import { useDIContext } from './DIContextProvider.js';
 export function UCContainer({ children, uc, }) {
     const { container } = useDIContext();
     const [isAllowed, setIsAllowed] = useState(undefined);
-    const [ucExecChecker] = useState(container.resolve(UCExecChecker));
+    const [ucExecChecker] = useState(container.get(UCExecChecker));
     useEffect(() => {
         (async () => {
             const { allowed } = await ucExecChecker.exec({
