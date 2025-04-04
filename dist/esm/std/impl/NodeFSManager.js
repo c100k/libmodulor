@@ -72,7 +72,7 @@ let NodeFSManager = class NodeFSManager {
         });
         return items.map((item) => ({
             path: opts?.withFullPath
-                ? this.path(item.path, item.name)
+                ? this.path(item.parentPath, item.name)
                 : item.name,
             type: this.determineType(item),
         }));
