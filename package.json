@@ -91,12 +91,12 @@
         "pg": "^8.14.1",
         "react": "^19.1.0",
         "react-dom": "^19.1.0",
-        "react-native": "^0.78.1",
+        "react-native": "^0.78.2",
         "reflect-metadata": "^0.2.2",
         "sqlite3": "^5.1.7",
         "typescript": "^5.8.2",
-        "vite": "^6.2.3",
-        "vitest": "^3.0.9"
+        "vite": "^6.2.5",
+        "vitest": "^3.1.1"
     },
     "peerDependenciesMeta": {
         "@hono/node-server": {
