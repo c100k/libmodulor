@@ -9,6 +9,8 @@ import React, { type PropsWithChildren, type ReactElement } from 'react';
 import ClientLayout from '../components/ClientLayout.js';
 import container from '../container-server.js';
 
+import './styles.css';
+
 const i18nManager = container.get<I18nManager>('I18nManager');
 const logger = container.get<Logger>('Logger');
 
