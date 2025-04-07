@@ -5,7 +5,7 @@ import {
     type UCManager,
     type UCOutput,
 } from 'libmodulor';
-import { NextResponse } from 'next/server.js';
+import { type NextRequest, NextResponse } from 'next/server.js';
 
 import {
     type ListOrdersOPI0,
@@ -16,7 +16,7 @@ import container from '../../../../container-server.js';
 import { CustomerFacingErrorBuilder } from '../../../../lib-server/CustomerFacingErrorBuilder.js';
 
 export async function GET(
-    _request: Request,
+    _req: NextRequest,
 ): Promise<NextResponse<UCOutput<ListOrdersOPI0> | ServerError>> {
     try {
         const ucManager = container.get<UCManager>('UCManager');
