@@ -8,11 +8,6 @@ import {
     useUC,
     useUCOR,
 } from 'libmodulor/react';
-import {
-    UCAutoExecLoader,
-    UCExecTouchable,
-    UCForm,
-} from 'libmodulor/react-web-pure';
 import React, { useEffect, useState, type ReactElement } from 'react';
 
 import {
@@ -20,6 +15,10 @@ import {
     ListOrdersUCD,
     Manifest,
 } from '../../../../../apps/Trading/index.js';
+import OrdersTable from './OrdersTable.js';
+import { UCAutoExecLoader } from './UCAutoExecLoader.js';
+import { UCExecTouchable } from './UCExecTouchable.js';
+import { UCForm } from './UCForm.js';
 
 export default function App(): ReactElement {
     const { container, i18nManager, wordingManager } = useDIContext();
@@ -30,7 +29,7 @@ export default function App(): ReactElement {
 
     const [buyAssetUC] = useUC(Manifest, BuyAssetUCD, null);
     const [listOrdersUC] = useUC(Manifest, ListOrdersUCD, null);
-    const [listOrdersPart0, _listOrdersPart1, { append0 }] = useUCOR(
+    const [listOrdersPart0, _listOrdersPart1, { append0, update0 }] = useUCOR(
         new UCOutputReader(ListOrdersUCD, undefined),
     );
 
@@ -88,12 +87,11 @@ export default function App(): ReactElement {
                         uc={listOrdersUC}
                     />
 
-                    {/*<OrdersTable
+                    <OrdersTable
                         listOrdersPart0={listOrdersPart0}
                         onError={onError}
                         update0={update0}
-                    />*/}
-                    <pre>{JSON.stringify(listOrdersPart0.items, null, 2)}</pre>
+                    />
                 </>
             )}
         </div>
