@@ -11,6 +11,7 @@ import { type NextRequest, NextResponse } from 'next/server.js';
 
 import container from '../container-server.js';
 import { CustomerFacingErrorBuilder } from './CustomerFacingErrorBuilder.js';
+import { init } from './init.js';
 
 export async function execReq<
     I extends UCInput | undefined = undefined,
@@ -22,6 +23,8 @@ export async function execReq<
     ucd: UCDef<I, OPI0, OPI1>,
 ): Promise<NextResponse> {
     try {
+        await init();
+
         const ucManager = container.get<UCManager>('UCManager');
         const ucBuilder = container.get(UCBuilder);
 
@@ -49,9 +52,8 @@ export async function execReq<
             error: err as Error,
         });
 
-        return NextResponse.json<ServerError>(
-            { message: error.message },
-            { status: error.httpStatus },
-        );
+        return NextResponse.json<ServerError>(error.toObj(), {
+            status: error.httpStatus,
+        });
     }
 }
