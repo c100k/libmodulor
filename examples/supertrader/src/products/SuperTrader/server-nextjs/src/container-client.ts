@@ -2,6 +2,7 @@ import { Container } from 'inversify';
 import {
     CONTAINER_OPTS,
     type ServerClientManagerSettings,
+    TARGET_DEFAULT_SERVER_CLIENT_MANAGER_SETTINGS,
     bindCommon,
     bindProduct,
 } from 'libmodulor';
@@ -14,7 +15,10 @@ type S = ServerClientManagerSettings;
 
 const container = new Container(CONTAINER_OPTS);
 
-bindCommon<S>(container);
+bindCommon<S>(container, () => ({
+    ...TARGET_DEFAULT_SERVER_CLIENT_MANAGER_SETTINGS,
+    server_public_url: 'http://localhost:3000',
+}));
 bindWeb(container);
 bindProduct(container, Manifest, I18n);
 
