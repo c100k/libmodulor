@@ -11,6 +11,7 @@
         "run:rn:android": "cd dist/products/SuperTrader/rn && expo start --android",
         "run:rn:ios": "cd dist/products/SuperTrader/rn && expo start --ios",
         "run:server": "cd dist/products/SuperTrader/server && node --env-file .env index.js",
+        "run:server:nextjs": "cd src/products/SuperTrader/server-nextjs && next dev",
         "test": "tsc && vitest run --passWithNoTests"
     },
     "dependencies": {
@@ -21,6 +22,7 @@
         "inversify": "^7.5.0",
         "knex": "^3.1.0",
         "libmodulor": "^0.12.0",
+        "next": "^15.3.0",
         "react": "^19.1.0",
         "react-dom": "^19.1.0",
         "react-native": "^0.78.2",
