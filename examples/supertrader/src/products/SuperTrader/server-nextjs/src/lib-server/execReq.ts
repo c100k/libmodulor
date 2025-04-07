@@ -31,9 +31,11 @@ export async function execReq<
             def: ucd,
         });
 
-        if (uc.needsInputFilling()) {
+        try {
             const input = await req.json();
             uc.fill(input);
+        } catch (err) {
+            // Ignore
         }
 
         const output = await ucManager.execServer(uc);
