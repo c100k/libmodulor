@@ -3,7 +3,7 @@
 export { TISIN } from './src/lib/TISIN.js';
 export { type OrderStatus, TOrderStatus } from './src/lib/TOrderStatus.js';
 
-export { type BuyAssetOPI0, BuyAssetUCD } from './src/ucds/BuyAssetUCD.js';
+export { BuyAssetUCD } from './src/ucds/BuyAssetUCD.js';
 export { CancelOrderUCD } from './src/ucds/CancelOrderUCD.js';
 export {
     type ListOrdersInput,
