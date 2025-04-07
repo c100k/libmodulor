@@ -5,7 +5,7 @@ import {
     type UCManager,
     type UCOutput,
 } from 'libmodulor';
-import { NextResponse } from 'next/server.js';
+import { type NextRequest, NextResponse } from 'next/server.js';
 
 import {
     type BuyAssetOPI0,
@@ -16,17 +16,21 @@ import container from '../../../../container-server.js';
 import { CustomerFacingErrorBuilder } from '../../../../lib-server/CustomerFacingErrorBuilder.js';
 
 export async function POST(
-    _request: Request,
+    req: NextRequest,
 ): Promise<NextResponse<UCOutput<BuyAssetOPI0> | ServerError>> {
     try {
         const ucManager = container.get<UCManager>('UCManager');
         const ucBuilder = container.get(UCBuilder);
 
-        const uc = ucBuilder.exec({
-            appManifest: Manifest,
-            auth: null,
-            def: BuyAssetUCD,
-        });
+        const input = await req.json();
+        const uc = ucBuilder
+            .exec({
+                appManifest: Manifest,
+                auth: null,
+                def: BuyAssetUCD,
+            })
+            .fill(input);
+
         const output = await ucManager.execServer(uc);
         if (!output) {
             throw new NotFoundError();

@@ -93,7 +93,7 @@ export default function App(): ReactElement {
                         onError={onError}
                         update0={update0}
                     />*/}
-                    <pre>{JSON.stringify(listOrdersPart0)}</pre>
+                    <pre>{JSON.stringify(listOrdersPart0.items, null, 2)}</pre>
                 </>
             )}
         </div>
