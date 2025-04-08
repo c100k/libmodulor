@@ -29,10 +29,11 @@ let CustomerFacingErrorBuilder = class CustomerFacingErrorBuilder {
         this.logger.error(error);
         // Create a specific generic error to avoid leaking potentially sensitive error
         // We all know the infamous "Cannot connect to MySQL database"...
+        const message = this.environmentManager.isProd()
+            ? undefined
+            : `[DEV-mode] ${error.message}`;
         return {
-            error: new InternalServerError(this.environmentManager.isProd()
-                ? undefined
-                : error.message),
+            error: new InternalServerError(message),
         };
     }
 };
