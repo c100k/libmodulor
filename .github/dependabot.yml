@@ -4,9 +4,6 @@ updates:
     directory: "/"
     schedule:
       interval: "weekly"
-    ignore:
-      - dependency-name: "inversify"
-        versions: ["7.x"]
     groups:
       dev:
         dependency-type: "development"
@@ -25,9 +22,6 @@ updates:
     directory: "/examples/basic"
     schedule:
       interval: "weekly"
-    ignore:
-      - dependency-name: "inversify"
-        versions: ["7.x"]
     groups:
       dev:
         dependency-type: "development"
@@ -37,9 +31,6 @@ updates:
     directory: "/examples/supertrader"
     schedule:
       interval: "weekly"
-    ignore:
-      - dependency-name: "inversify"
-        versions: ["7.x"]
     groups:
       dev:
         dependency-type: "development"
