@@ -15,8 +15,8 @@
         "reflect-metadata": "^0.2.2"
     },
     "devDependencies": {
-        "@types/node": "^22.13.11",
+        "@types/node": "^22.14.0",
         "jose": "^6.0.10",
-        "typescript": "^5.8.2"
+        "typescript": "^5.8.3"
     }
 }
