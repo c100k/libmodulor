@@ -1,4 +1,4 @@
 @import "tailwindcss";
 @plugin "daisyui";
 
-@source '../_lib/react/web/*.tsx';
+@source '../../../_lib/react/web/*.tsx';

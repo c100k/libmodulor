@@ -2,7 +2,7 @@ import { DIContextProvider } from 'libmodulor/react';
 import React, { StrictMode } from 'react';
 import ReactDOM from 'react-dom/client';
 
-import App from './components/App.js';
+import App from '../_lib/react/web/App.js';
 import container from './container.js';
 
 const rootElt = document.getElementById('root');

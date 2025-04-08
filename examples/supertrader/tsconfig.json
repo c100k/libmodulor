@@ -10,7 +10,6 @@
         "skipLibCheck": true,
         "sourceMap": true,
         "target": "ESNext",
-
         "strict": true,
         "allowUnreachableCode": false,
         "allowUnusedLabels": false,
@@ -23,10 +22,19 @@
         "noUnusedLocals": true,
         "noUnusedParameters": true,
         "verbatimModuleSyntax": true,
-
         "emitDecoratorMetadata": true,
         "experimentalDecorators": true,
-
-        "jsx": "react"
-    }
+        "jsx": "preserve",
+        "allowJs": true,
+        "incremental": true,
+        "esModuleInterop": true,
+        "resolveJsonModule": true,
+        "plugins": [
+            {
+                "name": "next"
+            }
+        ]
+    },
+    "include": ["next-env.d.ts", ".next/types/**/*.ts", "**/*.ts", "**/*.tsx"],
+    "exclude": ["node_modules"]
 }

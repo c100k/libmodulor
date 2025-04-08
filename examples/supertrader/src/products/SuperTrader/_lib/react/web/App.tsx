@@ -1,3 +1,5 @@
+'use client';
+
 import { type Logger, type ProductManifest, UCOutputReader } from 'libmodulor';
 import {
     UCPanel,
@@ -12,7 +14,7 @@ import {
     BuyAssetUCD,
     ListOrdersUCD,
     Manifest,
-} from '../../../../apps/Trading/index.js';
+} from '../../../../../apps/Trading/index.js';
 import OrdersTable from './OrdersTable.js';
 import { UCAutoExecLoader } from './UCAutoExecLoader.js';
 import { UCExecTouchable } from './UCExecTouchable.js';

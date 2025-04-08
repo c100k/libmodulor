@@ -13,7 +13,7 @@ import {
     type ListOrdersOPI0,
     ListOrdersUCD,
     Manifest,
-} from '../../../../apps/Trading/index.js';
+} from '../../../../../apps/Trading/index.js';
 import { Hero } from './Hero.js';
 import { UCExecTouchable } from './UCExecTouchable.js';
 import { UCForm } from './UCForm.js';

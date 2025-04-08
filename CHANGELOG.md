@@ -15,6 +15,7 @@
 - Showcase empty state and usage of more daisyUI components (e.g. loaders) in `examples/supertrader`
 - Replace `path` by `parentPath` in `NodeFSManager`
 - Prefix internal server error in dev mode
+- Expose `examples/supertrader` on `server-nextjs` target (https://nextjs.org)
 
 ## v0.11.1 (2025-04-03)
 
