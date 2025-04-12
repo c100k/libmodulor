@@ -14,6 +14,6 @@ export declare class NodeFSManager implements FSManager {
     path(...parts: Pathname[]): Pathname;
     pickFiles(source: FSManagerFilePickerSource, opts?: FSManagerFilePickerOpts): Promise<File[]>;
     rm(path: Pathname): Promise<void>;
-    touch<T extends string>(path: FilePath, content: T): Promise<void>;
+    touch<T extends ArrayBuffer | string>(path: FilePath, content: T): Promise<void>;
     private determineType;
 }

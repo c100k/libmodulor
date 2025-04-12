@@ -14,5 +14,5 @@ export declare class WebFSManager implements FSManager {
     path(..._parts: Pathname[]): Pathname;
     pickFiles(_source: FSManagerFilePickerSource, _opts?: FSManagerFilePickerOpts): Promise<File[]>;
     rm(_path: Pathname): Promise<void>;
-    touch<T extends string>(_path: FilePath, _content: T): Promise<void>;
+    touch<T extends ArrayBuffer | string>(_path: FilePath, _content: T): Promise<void>;
 }

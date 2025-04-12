@@ -118,7 +118,7 @@ let NodeFSManager = class NodeFSManager {
         await rm(path, { recursive: true });
     }
     async touch(path, content) {
-        await writeFile(path, content);
+        await writeFile(path, content instanceof ArrayBuffer ? Buffer.from(content) : content);
     }
     determineType(stats) {
         if (stats.isDirectory()) {

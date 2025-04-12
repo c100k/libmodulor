@@ -1,8 +1,8 @@
-import type { DirPath, File, FileExtension, FileName, FilePath, FreeTextLong } from '../../dt/index.js';
+import type { DirPath, File, FileExtension, FileName, FilePath } from '../../dt/index.js';
 import { type FSManager, type FSManagerCatOpts, type FSManagerChmodMode, type FSManagerItemInfo, type FSManagerLsItem, type FSManagerLsOpts, type Pathname } from '../FSManager.js';
 export declare class FakeFSManager implements FSManager {
     entries: Map<FilePath, {
-        content: FreeTextLong;
+        content: ArrayBuffer | string;
         mode: FSManagerChmodMode;
     }>;
     constructor();
@@ -19,5 +19,5 @@ export declare class FakeFSManager implements FSManager {
     path(...parts: Pathname[]): Pathname;
     pickFiles(): Promise<File[]>;
     rm(path: Pathname): Promise<void>;
-    touch<T extends string>(path: FilePath, content: T): Promise<void>;
+    touch<T extends ArrayBuffer | string>(path: FilePath, content: T): Promise<void>;
 }
