@@ -7,6 +7,10 @@
 - Upgrade to inversify 7 : In addition to bumping the dependency, checkout the [migration guide](https://inversify.io/docs/guides/migrating-from-v6) and this [discussion](https://github.com/inversify/InversifyJS/discussions/1765)
 - In `FSManager`, touch file from string and array buffer : if you have a custom implementation, handle the new generic
 
+**Added**
+
+- Introduce `ServerRequestHandler` : used in `NodeExpressServerManager` and all the upcoming server targets, it contains everything needed to execute a use case on a server
+
 **Fixed**
 
 - Handle body with only one file in `target/node-express-server`

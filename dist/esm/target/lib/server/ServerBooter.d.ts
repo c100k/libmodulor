@@ -5,7 +5,9 @@ import { type UCManager } from '../../../uc/index.js';
 import { ServerInstaller } from './ServerInstaller.js';
 import type { ServerManager, ServerManagerSettings } from './ServerManager.js';
 type S = Pick<ServerManagerSettings, 'server_static_dir_path' | 'server_tmp_path'>;
-type Input = Pick<AppUCsLoaderInput, 'appsRootPath' | 'srcImporter'>;
+type Input = Pick<AppUCsLoaderInput, 'appsRootPath' | 'srcImporter'> & {
+    autoMountUCs?: boolean;
+};
 export declare class ServerBooter implements Configurable<S>, Worker<Input, Promise<void>> {
     private emailManager;
     private fsManager;
@@ -19,6 +21,6 @@ export declare class ServerBooter implements Configurable<S>, Worker<Input, Prom
     private ucManager;
     constructor(emailManager: EmailManager, fsManager: FSManager, i18nManager: I18nManager, jobManager: JobManager, logger: Logger, productUCsLoader: ProductUCsLoader, serverManager: ServerManager, serverInstaller: ServerInstaller, settingsManager: SettingsManager<S>, ucManager: UCManager);
     s(): S;
-    exec({ appsRootPath, srcImporter }: Input): Promise<void>;
+    exec({ appsRootPath, autoMountUCs, srcImporter, }: Input): Promise<void>;
 }
 export {};

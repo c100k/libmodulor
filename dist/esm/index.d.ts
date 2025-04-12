@@ -32,6 +32,7 @@ export * from './target/lib/server/EntrypointsBuilder.js';
 export * from './target/lib/server/JWTAuthenticationChecker.js';
 export * from './target/lib/server/ServerBooter.js';
 export * from './target/lib/server/ServerManager.js';
+export * from './target/lib/server/ServerRequestHandler.js';
 export * from './testing/index.js';
 export * from './uc/impl/HTTPUCTransporter.js';
 export * from './uc/impl/InMemoryUCDataStore.js';

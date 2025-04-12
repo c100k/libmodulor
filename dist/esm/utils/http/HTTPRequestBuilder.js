@@ -11,9 +11,9 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
 import { inject, injectable } from 'inversify';
-import { toFormData } from './toFormData.js';
-import { toJSON } from './toJSON.js';
-import { toQueryParams } from './toQueryParams.js';
+import { toFormData } from './form-data.js';
+import { toJSON } from './json.js';
+import { toQueryParams } from './query-params.js';
 let HTTPRequestBuilder = class HTTPRequestBuilder {
     formDataBuilder;
     constructor(formDataBuilder) {

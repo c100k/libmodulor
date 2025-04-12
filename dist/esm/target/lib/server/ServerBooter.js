@@ -43,7 +43,7 @@ let ServerBooter = class ServerBooter {
             server_tmp_path: this.settingsManager.get()('server_tmp_path'),
         };
     }
-    async exec({ appsRootPath, srcImporter }) {
+    async exec({ appsRootPath, autoMountUCs = true, srcImporter, }) {
         this.logger.info('Initializing i18n manager');
         await this.i18nManager.init();
         this.logger.info('Installing');
@@ -55,29 +55,31 @@ let ServerBooter = class ServerBooter {
         this.logger.info('Starting');
         try {
             await this.serverManager.init();
-            const ucs = await this.productUCsLoader.exec({
-                appsRootPath,
-                srcImporter,
-            });
-            for await (const uc of ucs) {
-                const { lifecycle: { server }, sec, } = uc.def;
-                const contract = ucHTTPContract(uc);
-                const { mountingPoint } = contract;
-                if (typeof server !== 'object' ||
-                    server.execMode === UCExecMode.AUTO) {
-                    this.logger.debug(`Not mounting ${mountingPoint}`, {
-                        reason: typeof server !== 'object'
-                            ? 'no ucd.lifecycle.server'
-                            : 'execMode is AUTO',
-                    });
-                    continue;
-                }
-                this.logger.info(`Mounting ${mountingPoint}`, {
-                    contract,
-                    sec,
+            if (autoMountUCs) {
+                const ucs = await this.productUCsLoader.exec({
+                    appsRootPath,
+                    srcImporter,
                 });
-                await this.ucManager.initServer(uc);
-                await this.serverManager.mount(uc.appManifest, uc.def, contract);
+                for await (const uc of ucs) {
+                    const { lifecycle: { server }, sec, } = uc.def;
+                    const contract = ucHTTPContract(uc);
+                    const { mountingPoint } = contract;
+                    if (typeof server !== 'object' ||
+                        server.execMode === UCExecMode.AUTO) {
+                        this.logger.debug(`Not mounting ${mountingPoint}`, {
+                            reason: typeof server !== 'object'
+                                ? 'no ucd.lifecycle.server'
+                                : 'execMode is AUTO',
+                        });
+                        continue;
+                    }
+                    this.logger.info(`Mounting ${mountingPoint}`, {
+                        contract,
+                        sec,
+                    });
+                    await this.ucManager.initServer(uc);
+                    await this.serverManager.mount(uc.appManifest, uc.def, contract);
+                }
             }
             const staticDirPath = this.s().server_static_dir_path;
             if (staticDirPath) {

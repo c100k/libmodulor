@@ -16,42 +16,29 @@ import cookieParser from 'cookie-parser';
 import express, {} from 'express';
 import fileUpload from 'express-fileupload';
 import { inject, injectable } from 'inversify';
+import { stop } from '../lib/server-node/stop.js';
 import { EntrypointsBuilder } from '../lib/server/EntrypointsBuilder.js';
-import { AuthenticationCheckerMiddlewareBuilder } from './middlewares/AuthenticationCheckerMiddlewareBuilder.js';
-import { ErrorMiddlewareBuilder } from './middlewares/ErrorMiddlewareBuilder.js';
+import { ServerRequestHandler, } from '../lib/server/ServerRequestHandler.js';
+import { ServerSSLCertLoader } from '../lib/server/ServerSSLCertLoader.js';
 import { HelmetMiddlewareBuilder } from './middlewares/HelmetMiddlewareBuilder.js';
-import { PublicApiKeyCheckerMiddlewareBuilder } from './middlewares/PublicApiKeyCheckerMiddlewareBuilder.js';
-import { RequestCheckerMiddlewareBuilder } from './middlewares/RequestCheckerMiddlewareBuilder.js';
-import { RequestHandlerMiddlewareBuilder } from './middlewares/RequestHandlerMiddlewareBuilder.js';
-import { RequestLoggerMiddlewareBuilder } from './middlewares/RequestLoggerMiddlewareBuilder.js';
 let NodeExpressServerManager = class NodeExpressServerManager {
-    authenticationCheckerMB;
     entrypointsBuilder;
     environmentManager;
-    errorMB;
-    fsManager;
     helmetMB;
     logger;
-    publicApiKeyCheckerMB;
-    requestCheckerMB;
-    requestHandlerMB;
-    requestLoggerMB;
+    serverRequestHandler;
+    serverSSLCertLoader;
     settingsManager;
     ucManager;
     runtime;
     server;
-    constructor(authenticationCheckerMB, entrypointsBuilder, environmentManager, errorMB, fsManager, helmetMB, logger, publicApiKeyCheckerMB, requestCheckerMB, requestHandlerMB, requestLoggerMB, settingsManager, ucManager) {
-        this.authenticationCheckerMB = authenticationCheckerMB;
+    constructor(entrypointsBuilder, environmentManager, helmetMB, logger, serverRequestHandler, serverSSLCertLoader, settingsManager, ucManager) {
         this.entrypointsBuilder = entrypointsBuilder;
         this.environmentManager = environmentManager;
-        this.errorMB = errorMB;
-        this.fsManager = fsManager;
         this.helmetMB = helmetMB;
         this.logger = logger;
-        this.publicApiKeyCheckerMB = publicApiKeyCheckerMB;
-        this.requestCheckerMB = requestCheckerMB;
-        this.requestHandlerMB = requestHandlerMB;
-        this.requestLoggerMB = requestLoggerMB;
+        this.serverRequestHandler = serverRequestHandler;
+        this.serverSSLCertLoader = serverSSLCertLoader;
         this.settingsManager = settingsManager;
         this.ucManager = ucManager;
     }
@@ -60,8 +47,6 @@ let NodeExpressServerManager = class NodeExpressServerManager {
             logger_level: this.settingsManager.get()('logger_level'),
             server_binding_host: this.settingsManager.get()('server_binding_host'),
             server_binding_port: this.settingsManager.get()('server_binding_port'),
-            server_ssl_fullchain_path: this.settingsManager.get()('server_ssl_fullchain_path'),
-            server_ssl_key_path: this.settingsManager.get()('server_ssl_key_path'),
             server_tmp_path: this.settingsManager.get()('server_tmp_path'),
         };
     }
@@ -88,29 +73,29 @@ let NodeExpressServerManager = class NodeExpressServerManager {
         this.runtime.use(express.json());
         this.runtime.use(express.urlencoded({ extended: true }));
         this.runtime.use(cookieParser());
-        this.runtime.use(this.requestLoggerMB.exec({}));
-        this.runtime.use(this.requestCheckerMB.exec({}));
         await this.createServer();
     }
     async mount(appManifest, ucd, contract) {
-        const { sec } = ucd;
         const { envelope, method, path, pathAliases } = contract;
         const httpMethod = method.toLowerCase();
-        const handlers = [
-            this.publicApiKeyCheckerMB.exec({
-                checkType: sec?.publicApiKeyCheckType,
-            }),
-            this.authenticationCheckerMB.exec({ appManifest, ucd }),
-            this.requestHandlerMB.exec({
+        const handler = async (req, res) => {
+            const { body, status } = await this.serverRequestHandler.exec({
                 appManifest,
                 envelope,
+                req: this.toReq(req),
+                res: this.toRes(res),
                 ucd,
                 ucManager: this.ucManager,
-            }),
-        ];
-        this.runtime[httpMethod](path, handlers);
+            });
+            if (!body) {
+                res.status(status).send();
+                return;
+            }
+            res.status(status).send(body);
+        };
+        this.runtime[httpMethod](path, handler);
         for (const pathAlias of pathAliases) {
-            this.runtime[httpMethod](pathAlias, handlers);
+            this.runtime[httpMethod](pathAlias, handler);
         }
     }
     async mountStaticDir(dirPath) {
@@ -124,26 +109,10 @@ let NodeExpressServerManager = class NodeExpressServerManager {
         });
     }
     async stop() {
-        if (!this.server?.listening) {
-            return;
-        }
-        // As stated in the docs of `close`, only awaiting `.close` is not enough to make sure all the connections are closed.
-        // Hence the wrapping in a promise, where the callback is called when the 'close' event is emitted.
-        return new Promise((resolve, reject) => {
-            if (!this.server) {
-                return resolve();
-            }
-            this.server.close((err) => {
-                if (err) {
-                    return reject(err);
-                }
-                resolve();
-            });
-        });
+        await stop(this.server);
     }
     async warmUp() {
-        // Always at the "almost" last position to handle all the errors (from other middlewares and request handlers)
-        this.runtime.use(this.errorMB.exec({}));
+        // Nothing to do
     }
     async createServer() {
         const port = this.s().server_binding_port;
@@ -153,37 +122,81 @@ let NodeExpressServerManager = class NodeExpressServerManager {
             return;
         }
         this.logger.info('Creating HTTPS server', { port });
-        const fullchainPath = this.s().server_ssl_fullchain_path;
-        const keyPath = this.s().server_ssl_key_path;
-        if (!fullchainPath || !keyPath) {
-            throw new Error('You must provide server_ssl_fullchain_path and server_ssl_key_path to start on secure port 443');
-        }
-        const credentials = {
-            cert: await this.fsManager.cat(fullchainPath),
-            key: await this.fsManager.cat(keyPath),
-        };
+        const credentials = await this.serverSSLCertLoader.exec(undefined);
         this.server = https.createServer(credentials, this.runtime);
+    }
+    toFile(f) {
+        return {
+            name: f.name,
+            path: f.tempFilePath,
+            type: f.mimetype,
+        };
+    }
+    toReq(req) {
+        return {
+            bodyFromFormData: async () => {
+                // Since express v5, if the request contains only a file, the `req.body` returns `undefined`
+                const input = req.body ?? {};
+                // files is present when using express-fileupload
+                if ('files' in req && req.files) {
+                    for (const [field, value] of Object.entries(req.files)) {
+                        input[field] = Array.isArray(value)
+                            ? value.map(this.toFile)
+                            : this.toFile(value);
+                    }
+                }
+                for (const [k, v] of Object.entries(input)) {
+                    const isMultiple = k.endsWith('[]'); // e.g. 'tags[]': 'Electronic'
+                    const key = isMultiple ? k.replaceAll('[]', '') : k;
+                    if (isMultiple) {
+                        input[key] = Array.isArray(v) ? v : [v];
+                    }
+                    else {
+                        input[key] = v;
+                    }
+                }
+                return input;
+            },
+            bodyFromJSON: async () => req.body,
+            bodyFromQueryParams: async () => req.query,
+            bodyRaw: req.body,
+            cookie: (name) => req.cookies[name],
+            header: async (name) => {
+                const h = req.headers[name.toLowerCase()];
+                if (Array.isArray(h)) {
+                    this.logger.warn(`Multiple headers found for ${name}. Returning the first one.`);
+                    return h[0];
+                }
+                return h;
+            },
+            method: req.method,
+            secure: req.secure,
+            url: req.url,
+        };
+    }
+    toRes(res) {
+        return {
+            clearCookie: async (name) => {
+                res.clearCookie(name);
+            },
+            redirect: async (location) => res.redirect(location),
+            setCookie: async ({ name, opts, val }) => {
+                res.cookie(name, val, opts);
+            },
+        };
     }
 };
 NodeExpressServerManager = __decorate([
     injectable(),
-    __param(0, inject(AuthenticationCheckerMiddlewareBuilder)),
-    __param(1, inject(EntrypointsBuilder)),
-    __param(2, inject('EnvironmentManager')),
-    __param(3, inject(ErrorMiddlewareBuilder)),
-    __param(4, inject('FSManager')),
-    __param(5, inject(HelmetMiddlewareBuilder)),
-    __param(6, inject('Logger')),
-    __param(7, inject(PublicApiKeyCheckerMiddlewareBuilder)),
-    __param(8, inject(RequestCheckerMiddlewareBuilder)),
-    __param(9, inject(RequestHandlerMiddlewareBuilder)),
-    __param(10, inject(RequestLoggerMiddlewareBuilder)),
-    __param(11, inject('SettingsManager')),
-    __param(12, inject('UCManager')),
-    __metadata("design:paramtypes", [AuthenticationCheckerMiddlewareBuilder,
-        EntrypointsBuilder, Object, ErrorMiddlewareBuilder, Object, HelmetMiddlewareBuilder, Object, PublicApiKeyCheckerMiddlewareBuilder,
-        RequestCheckerMiddlewareBuilder,
-        RequestHandlerMiddlewareBuilder,
-        RequestLoggerMiddlewareBuilder, Object, Object])
+    __param(0, inject(EntrypointsBuilder)),
+    __param(1, inject('EnvironmentManager')),
+    __param(2, inject(HelmetMiddlewareBuilder)),
+    __param(3, inject('Logger')),
+    __param(4, inject(ServerRequestHandler)),
+    __param(5, inject(ServerSSLCertLoader)),
+    __param(6, inject('SettingsManager')),
+    __param(7, inject('UCManager')),
+    __metadata("design:paramtypes", [EntrypointsBuilder, Object, HelmetMiddlewareBuilder, Object, ServerRequestHandler,
+        ServerSSLCertLoader, Object, Object])
 ], NodeExpressServerManager);
 export { NodeExpressServerManager };

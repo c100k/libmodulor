@@ -1,5 +1,8 @@
 export { sleep } from './async/sleep.js';
+export { fromFormData, toFormData } from './http/form-data.js';
 export { HTTPRequestBuilder } from './http/HTTPRequestBuilder.js';
+export { toJSON } from './http/json.js';
+export { fromQueryParams, toQueryParams } from './http/query-params.js';
 export { bindProvider } from './ioc/bindProvider.js';
 export { CONTAINER_OPTS } from './ioc/container.js';
 export { fmt as fmtNumber } from './numbers/fmt.js';

@@ -7,7 +7,7 @@ const ACTION_HTTP_METHOD_MAPPING = {
     Update: 'PUT',
     View: 'GET',
 };
-const METHODS_WITH_NO_BODY = ['GET'];
+const METHODS_WITH_NO_BODY = ['GET', 'HEAD'];
 export function ucHTTPContract(uc, pathPrefix = '/api/v1') {
     const { ext, metadata } = uc.def;
     const { action } = metadata;
