@@ -40,6 +40,7 @@ let ServerBooter = class ServerBooter {
     s() {
         return {
             server_static_dir_path: this.settingsManager.get()('server_static_dir_path'),
+            server_tmp_path: this.settingsManager.get()('server_tmp_path'),
         };
     }
     async exec({ appsRootPath, srcImporter }) {
@@ -85,6 +86,10 @@ let ServerBooter = class ServerBooter {
                 }
                 this.logger.info('Mounting static dir', { staticDirPath });
                 await this.serverManager.mountStaticDir(staticDirPath);
+            }
+            const tmpDirPath = this.s().server_tmp_path;
+            if (!(await this.fsManager.exists(tmpDirPath))) {
+                await this.fsManager.mkdir(tmpDirPath);
             }
             await this.serverManager.warmUp();
             await this.serverManager.start();

@@ -4,7 +4,7 @@ import type { Configurable, EmailManager, FSManager, I18nManager, JobManager, Lo
 import { type UCManager } from '../../../uc/index.js';
 import { ServerInstaller } from './ServerInstaller.js';
 import type { ServerManager, ServerManagerSettings } from './ServerManager.js';
-type S = Pick<ServerManagerSettings, 'server_static_dir_path'>;
+type S = Pick<ServerManagerSettings, 'server_static_dir_path' | 'server_tmp_path'>;
 type Input = Pick<AppUCsLoaderInput, 'appsRootPath' | 'srcImporter'>;
 export declare class ServerBooter implements Configurable<S>, Worker<Input, Promise<void>> {
     private emailManager;

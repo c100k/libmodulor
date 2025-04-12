@@ -17,6 +17,7 @@
 - Replace `path` by `parentPath` in `NodeFSManager`
 - Prefix internal server error in dev mode
 - Write uc input file instead of cp when in memory
+- Create server tmp dir at startup if not present
 
 ## v0.11.1 (2025-04-03)
 
