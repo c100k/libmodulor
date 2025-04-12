@@ -16,6 +16,7 @@
 - Showcase empty state and usage of more daisyUI components (e.g. loaders) in `examples/supertrader`
 - Replace `path` by `parentPath` in `NodeFSManager`
 - Prefix internal server error in dev mode
+- Write uc input file instead of cp when in memory
 
 ## v0.11.1 (2025-04-03)
 

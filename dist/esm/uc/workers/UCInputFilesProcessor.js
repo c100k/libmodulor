@@ -61,12 +61,15 @@ let UCInputFilesProcessor = class UCInputFilesProcessor {
         const prefix = this.clockManager.nowToKey();
         const fileName = `${prefix}-${this.cryptoManager.randomUUID()}.${extension}`; // => 20230110143732-155eb8d3-9af5-430e-b856-248007859df1.jpg
         const fileNameRef = `${this.s().uc_file_ref_prefix}${fileName}`; // => $ref:20230110143732-155eb8d3-9af5-430e-b856-248007859df1.jpg
-        // When calling this client side, we still have a https://developer.mozilla.org/en-US/docs/Web/API/File
-        // Consider moving this logic to UCManager.execClient ?
-        // TODO : Improve client/server input files management
-        const path = file instanceof File ? file.name : file.path;
-        await this.fsManager.cp(path, this.fsManager.path(this.s().uc_files_directory_path, fileName)); // => /path/to/files/20230110143732-155eb8d3-9af5-430e-b856-248007859df1.jpg
-        await this.fsManager.rm(path);
+        const destPath = this.fsManager.path(this.s().uc_files_directory_path, fileName); // => /path/to/files/20230110143732-155eb8d3-9af5-430e-b856-248007859df1.jpg
+        if (file instanceof File) {
+            await this.fsManager.touch(destPath, await file.arrayBuffer());
+        }
+        else {
+            const { path } = file;
+            await this.fsManager.cp(path, destPath);
+            await this.fsManager.rm(path);
+        }
         return fileNameRef;
     }
 };
