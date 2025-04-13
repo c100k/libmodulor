@@ -10,8 +10,8 @@ import {
     bindCommon,
     bindProduct,
 } from 'libmodulor';
+import { NextJSServerManager, bindServer } from 'libmodulor/nextjs';
 import { bindNodeCore } from 'libmodulor/node';
-import { NodeExpressServerManager, bindServer } from 'libmodulor/node-express';
 import {
     KnexUCDataStore,
     type KnexUCDataStoreSettings,
@@ -31,15 +31,14 @@ bindCommon<S>(container, () => ({
     knex_uc_data_store_pool_max: 5,
     knex_uc_data_store_pool_min: 0,
     knex_uc_data_store_type: 'sqlite3',
-    server_static_dir_path: 'public',
 }));
 bindNodeCore(container);
 bindServer(container);
 bindProduct(container, Manifest, I18n);
 
-container.rebind<SettingsManager>('SettingsManager').to(EnvSettingsManager);
-container.rebind<UCDataStore>('UCDataStore').to(KnexUCDataStore);
+container.rebindSync<SettingsManager>('SettingsManager').to(EnvSettingsManager);
+container.rebindSync<UCDataStore>('UCDataStore').to(KnexUCDataStore);
 
-container.bind<ServerManager>('ServerManager').to(NodeExpressServerManager);
+container.bind<ServerManager>('ServerManager').to(NextJSServerManager);
 
 export default container;

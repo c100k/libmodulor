@@ -7,7 +7,7 @@ import {
 } from '../../../../../../../../apps/Trading/index.js';
 import container from '../../../../container-server.js';
 
-export async function POST(req: NextRequest): Promise<NextResponse> {
+export async function DELETE(req: NextRequest): Promise<NextResponse> {
     return (
         await container.get(NextJSAPIRouteHandler).exec({
             appManifest: Manifest,

@@ -10,7 +10,7 @@
 **Added**
 
 - Introduce `ServerRequestHandler` : Used in `NodeExpressServerManager` and all the upcoming server targets, it contains everything needed to execute a use case on a server. You can use it to implement your own server (e.g. `Fastify` and so on)
-- Introduce `NextJSServerManager` and `NextJSAPIRouteHandler` : Used to execute use cases within a [Next.js route handler](https://nextjs.org/docs/app/building-your-application/routing/route-handlers). See it in action in `examples/supertrader`
+- Introduce `NextJSServerManager` and `NextJSAPIRouteHandler` : Used to execute use cases within a [Next.js route handler](https://nextjs.org/docs/app/building-your-application/routing/route-handlers)
 
 **Fixed**
 
