@@ -91,7 +91,7 @@ export class RNFSManager implements FSManager {
         throw new Error('Method not implemented.');
     }
 
-    public async touch<T extends string>(
+    public async touch<T extends ArrayBuffer | string>(
         _path: FilePath,
         _content: T,
     ): Promise<void> {

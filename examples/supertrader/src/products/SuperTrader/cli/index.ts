@@ -9,7 +9,7 @@ import container from './container.js';
 
 await container.get<I18nManager>('I18nManager').init();
 
-await container.resolve(NodeCoreCLIManager).handleCommand({
+await container.get(NodeCoreCLIManager).handleCommand({
     appsRootPath: container
         .get<FSManager>('FSManager')
         .path('..', '..', '..', APPS_ROOT_DIR_NAME),

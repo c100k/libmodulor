@@ -37,8 +37,8 @@ bindNodeCore(container);
 bindServer(container);
 bindProduct(container, Manifest, I18n);
 
-container.rebind<SettingsManager>('SettingsManager').to(EnvSettingsManager);
-container.rebind<UCDataStore>('UCDataStore').to(KnexUCDataStore);
+container.rebindSync<SettingsManager>('SettingsManager').to(EnvSettingsManager);
+container.rebindSync<UCDataStore>('UCDataStore').to(KnexUCDataStore);
 
 container.bind<ServerManager>('ServerManager').to(NodeExpressServerManager);
 

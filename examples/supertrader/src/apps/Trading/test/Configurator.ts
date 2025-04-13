@@ -24,9 +24,9 @@ export class Configurator extends SimpleAppTesterConfigurator {
         bindNodeCore(container);
         bindServer(container);
 
-        container
-            .rebind<CryptoManager>('CryptoManager')
-            .to(NodeDeterministicCryptoManager);
+        (await container.rebind<CryptoManager>('CryptoManager')).to(
+            NodeDeterministicCryptoManager,
+        );
     }
 
     public override async flows(): Promise<AppTesterFlow[]> {

@@ -141,7 +141,7 @@ await i18nManager.init();
 
 const ucDataStore = container.get<UCDataStore>('UCDataStore');
 const ucManager = container.get<UCManager>('UCManager');
-const wordingManager = container.resolve(WordingManager);
+const wordingManager = container.get(WordingManager);
 
 console.log('Initializing the UseCase');
 const auth: UCAuth | null = null;
