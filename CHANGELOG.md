@@ -5,12 +5,12 @@
 **BREAKING**
 
 - Upgrade to inversify 7 : In addition to bumping the dependency, checkout the [migration guide](https://inversify.io/docs/guides/migrating-from-v6) and this [discussion](https://github.com/inversify/InversifyJS/discussions/1765)
-- In `FSManager`, touch file from string and array buffer : if you have a custom implementation, handle the new generic
+- In `FSManager`, add ability to `touch` file from `ArrayBuffer` : If you have a custom implementation, handle the new generic and handle both type of content
 
 **Added**
 
-- Introduce `ServerRequestHandler` : used in `NodeExpressServerManager` and all the upcoming server targets, it contains everything needed to execute a use case on a server
-- Introduce `NextJSServerManager` and `NextJSAPIRouteHandler` : used to execute use cases within a [Next.js route handler](https://nextjs.org/docs/app/building-your-application/routing/route-handlers)
+- Introduce `ServerRequestHandler` : Used in `NodeExpressServerManager` and all the upcoming server targets, it contains everything needed to execute a use case on a server. You can use it to implement your own server (e.g. `Fastify` and so on)
+- Introduce `NextJSServerManager` and `NextJSAPIRouteHandler` : Used to execute use cases within a [Next.js route handler](https://nextjs.org/docs/app/building-your-application/routing/route-handlers)
 
 **Fixed**
 
