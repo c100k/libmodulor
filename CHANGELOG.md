@@ -10,6 +10,7 @@
 **Added**
 
 - Introduce `ServerRequestHandler` : used in `NodeExpressServerManager` and all the upcoming server targets, it contains everything needed to execute a use case on a server
+- Introduce `NextJSServerManager` and `NextJSAPIRouteHandler` : used to execute use cases within a [Next.js route handler](https://nextjs.org/docs/app/building-your-application/routing/route-handlers)
 
 **Fixed**
 
