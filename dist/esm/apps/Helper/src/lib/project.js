@@ -42,17 +42,17 @@ export const PACKAGE_JSON = (name) => `{
     },
     "devDependencies": {
         "@biomejs/biome": "^1.9.4",
-        "@types/node": "^22.14.0",
+        "@types/node": "^22.14.1",
         "@vitest/coverage-v8": "^3.1.1",
         "buffer": "^6.0.3",
         "cookie-parser": "^1.4.7",
         "express": "^5.1.0",
         "express-fileupload": "^1.5.1",
-        "fast-check": "^4.1.0",
+        "fast-check": "^4.1.1",
         "helmet": "^8.1.0",
         "jose": "^6.0.10",
         "typescript": "^5.8.3",
-        "vite": "^6.2.5",
+        "vite": "^6.2.6",
         "vitest": "^3.1.1"
     }
 }
