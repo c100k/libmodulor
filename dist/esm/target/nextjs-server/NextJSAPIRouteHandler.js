@@ -48,7 +48,7 @@ let NextJSAPIRouteHandler = class NextJSAPIRouteHandler {
     }
     toReq(req) {
         return {
-            bodyFromFormData: async () => fromFormData(await req.formData()),
+            bodyFromFormData: async () => fromFormData((await req.formData())),
             bodyFromJSON: () => req.json(),
             bodyFromQueryParams: async () => fromQueryParams(req.nextUrl),
             bodyRaw: req.body,
