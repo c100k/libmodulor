@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## v0.13.0 (unreleased)
+
+**Misc**
+
+- Upgrade `examples/supertrader` to rn `react-native@0.79.x` and `expo@53.x`
+
 ## v0.12.0 (2025-04-13)
 
 **BREAKING**

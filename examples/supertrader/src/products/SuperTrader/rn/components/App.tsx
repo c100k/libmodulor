@@ -12,7 +12,7 @@ import {
     UCForm,
 } from 'libmodulor/react-native-pure';
 import React, { useEffect, useState, type ReactElement } from 'react';
-import { Text, View } from 'react-native';
+import { ScrollView, Text } from 'react-native';
 
 import {
     BuyAssetUCD,
@@ -52,7 +52,7 @@ export default function App(): ReactElement {
     const { label: listOrdersLabel } = wordingManager.uc(listOrdersUC.def);
 
     return (
-        <View style={{ gap: 16, padding: 16 }}>
+        <ScrollView contentContainerStyle={{ gap: 16, padding: 16 }}>
             {loading && <Text>Loading...</Text>}
 
             {!loading && (
@@ -92,6 +92,6 @@ export default function App(): ReactElement {
                     />
                 </>
             )}
-        </View>
+        </ScrollView>
     );
 }

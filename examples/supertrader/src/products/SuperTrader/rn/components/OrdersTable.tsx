@@ -17,8 +17,10 @@ import { Text, View } from 'react-native';
 import {
     CancelOrderUCD,
     type ListOrdersOPI0,
+    ListOrdersUCD,
     Manifest,
 } from '../../../../apps/Trading/index.js';
+import { Hero } from './Hero.js';
 
 interface Props {
     listOrdersPart0: UCOutputReaderPart<ListOrdersOPI0>;
@@ -39,30 +41,29 @@ export default function OrdersTable({
         pagination: { total },
     } = listOrdersPart0;
 
+    const { empty } = wordingManager.ucop(ListOrdersUCD, 0);
+    if (total === 0 && empty) {
+        return <Hero message={empty} />;
+    }
+
     return (
         <View>
-            <View>
-                <View style={{ flexDirection: 'row', gap: 16 }}>
-                    <Text>#</Text>
-                    {fields.map((f) => (
-                        <Text key={f.key}>
-                            {wordingManager.ucof(f.key).label}
-                        </Text>
-                    ))}
-                    <Text />
-                </View>
-            </View>
-            <View>
+            <View style={{ gap: 8 }}>
                 {items.map((i, idx) => (
-                    <View key={i.id} style={{ flexDirection: 'row', gap: 16 }}>
+                    <View key={i.id} style={{ gap: 4 }}>
                         <Text>{idx + 1}</Text>
                         {fields.map((f) => (
-                            <Text key={f.key}>
-                                <UCOutputFieldValue
-                                    field={f}
-                                    value={i[f.key]}
-                                />
-                            </Text>
+                            <View key={f.key}>
+                                <Text style={{ fontWeight: 'bold' }}>
+                                    {wordingManager.ucof(f.key).label}
+                                </Text>
+                                <Text>
+                                    <UCOutputFieldValue
+                                        field={f}
+                                        value={i[f.key]}
+                                    />
+                                </Text>
+                            </View>
                         ))}
                         <UCPanel
                             onDone={async (ucor) => update0(ucor)}

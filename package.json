@@ -95,7 +95,7 @@
         "pg": "^8.14.1",
         "react": "^19.1.0",
         "react-dom": "^19.1.0",
-        "react-native": "^0.78.2",
+        "react-native": "^0.79.0",
         "reflect-metadata": "^0.2.2",
         "sqlite3": "^5.1.7",
         "typescript": "^5.8.3",
