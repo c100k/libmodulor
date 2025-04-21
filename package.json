@@ -79,7 +79,7 @@
     },
     "peerDependencies": {
         "@hono/node-server": "^1.14.1",
-        "@modelcontextprotocol/sdk": "^1.9.0",
+        "@modelcontextprotocol/sdk": "^1.10.1",
         "@stricli/core": "^1.1.2",
         "buffer": "^6.0.3",
         "cookie-parser": "^1.4.7",
@@ -87,11 +87,11 @@
         "express-fileupload": "^1.5.1",
         "fast-check": "^4.1.1",
         "helmet": "^8.1.0",
-        "hono": "^4.7.6",
-        "inversify": "^7.5.0",
+        "hono": "^4.7.7",
+        "inversify": "^7.5.1",
         "jose": "^6.0.10",
         "knex": "^3.1.0",
-        "next": "^15.3.0",
+        "next": "^15.3.1",
         "pg": "^8.14.1",
         "react": "^19.1.0",
         "react-dom": "^19.1.0",
@@ -99,7 +99,7 @@
         "reflect-metadata": "^0.2.2",
         "sqlite3": "^5.1.7",
         "typescript": "^5.8.3",
-        "vite": "^6.2.6",
+        "vite": "^6.3.2",
         "vitest": "^3.1.1"
     },
     "peerDependenciesMeta": {
