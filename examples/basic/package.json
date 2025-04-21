@@ -10,7 +10,7 @@
         "run:node": "(cd dist && node index.js)"
     },
     "dependencies": {
-        "inversify": "^7.5.0",
+        "inversify": "^7.5.1",
         "libmodulor": "^0.12.0",
         "reflect-metadata": "^0.2.2"
     },
