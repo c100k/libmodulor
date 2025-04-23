@@ -35,6 +35,9 @@
         "./node-express": {
             "import": "./dist/esm/index.node-express.js"
         },
+        "./node-hono": {
+            "import": "./dist/esm/index.node-hono.js"
+        },
         "./node-mcp": {
             "import": "./dist/esm/index.node-mcp.js"
         },

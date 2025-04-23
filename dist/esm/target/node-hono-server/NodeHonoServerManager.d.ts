@@ -1,0 +1,35 @@
+import { Hono } from 'hono';
+import type { AppManifest } from '../../app/index.js';
+import type { DirPath } from '../../dt/index.js';
+import type { Configurable, EnvironmentManager, Logger, SettingsManager } from '../../std/index.js';
+import type { UCDef, UCHTTPContract, UCInput, UCManager, UCOPIBase } from '../../uc/index.js';
+import { EntrypointsBuilder } from '../lib/server/EntrypointsBuilder.js';
+import type { ServerManager, ServerManagerSettings } from '../lib/server/ServerManager.js';
+import { ServerRequestHandler } from '../lib/server/ServerRequestHandler.js';
+import { ServerSSLCertLoader } from '../lib/server/ServerSSLCertLoader.js';
+type S = Pick<ServerManagerSettings, 'server_binding_host' | 'server_binding_port'>;
+export declare class NodeHonoServerManager implements Configurable<S>, ServerManager {
+    private entrypointsBuilder;
+    protected environmentManager: EnvironmentManager;
+    private logger;
+    private serverRequestHandler;
+    private serverSSLCertLoader;
+    private settingsManager;
+    private ucManager;
+    protected runtime: Hono;
+    private server;
+    constructor(entrypointsBuilder: EntrypointsBuilder, environmentManager: EnvironmentManager, logger: Logger, serverRequestHandler: ServerRequestHandler, serverSSLCertLoader: ServerSSLCertLoader, settingsManager: SettingsManager<S>, ucManager: UCManager);
+    s(): S;
+    getRuntime(): Hono;
+    overrideUCManager(ucManager: UCManager): void;
+    init(): Promise<void>;
+    mount<I extends UCInput | undefined = undefined, OPI0 extends UCOPIBase | undefined = undefined, OPI1 extends UCOPIBase | undefined = undefined>(appManifest: AppManifest, ucd: UCDef<I, OPI0, OPI1>, contract: UCHTTPContract): Promise<void>;
+    mountStaticDir(dirPath: DirPath): Promise<void>;
+    start(): Promise<void>;
+    stop(): Promise<void>;
+    warmUp(): Promise<void>;
+    private createServer;
+    private toReq;
+    private toRes;
+}
+export {};

@@ -2,6 +2,10 @@
 
 ## v0.13.0 (unreleased)
 
+**Added**
+
+- Introduce `target/node-hono-server` allowing you to expose a server using [Hono](https://hono.dev) in addition to the existing implementations based on [express](https://expressjs.com) and [next.js](https://nextjs.org)
+
 **Misc**
 
 - Upgrade `examples/supertrader` to rn `react-native@0.79.x` and `expo@53.x`
