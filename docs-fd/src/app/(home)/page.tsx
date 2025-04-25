@@ -6,7 +6,7 @@ export default function HomePage() {
             <div>
                 <h1 className="mb-4 text-4xl font-bold">libmodulor</h1>
                 <h2 className="text-2xl">
-                    A TypeScript library to create business oriented
+                    A TypeScript library to create platform-agnostic
                     applications
                 </h2>
             </div>
