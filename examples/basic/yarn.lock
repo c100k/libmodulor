@@ -58,10 +58,10 @@ jose@^6.0.10:
   resolved "https://registry.yarnpkg.com/jose/-/jose-6.0.10.tgz#52d96e1a671b4c02e13b71e0d35abea2e774712b"
   integrity sha512-skIAxZqcMkOrSwjJvplIPYrlXGpxTPnro2/QWTDCxAdWQrSTV5/KqspMWmi5WAx5+ULswASJiZ0a+1B/Lxt9cw==
 
-libmodulor@^0.12.0:
-  version "0.12.0"
-  resolved "https://registry.yarnpkg.com/libmodulor/-/libmodulor-0.12.0.tgz#c445433bfd676fa2d402529aa9f9d17d36dbe39a"
-  integrity sha512-fz/8BXh/9prb8q2TOS1imw2jFKFUOwxovudM091l0/8+10YmWKzOOLI/U4WTeh8BLKgOK2u9FjCeofM64bUfSQ==
+libmodulor@^0.13.0:
+  version "0.13.0"
+  resolved "https://registry.yarnpkg.com/libmodulor/-/libmodulor-0.13.0.tgz#e426d76b593f4a0ac0a4e48231ef2b1d7c6136d6"
+  integrity sha512-rKK7FnPftS+hVkRRfSqnDnsE6M/+PFJKerSo9mH7Zm/S82ZTBoDokyZY55XpcBz7e8QU65nPzTpCzoegPVMHQQ==
 
 reflect-metadata@^0.2.2:
   version "0.2.2"

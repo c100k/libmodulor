@@ -2,7 +2,8 @@
 yarn tsc --project tsconfig.build.json
 
 # server specific
-cp .env dist/products/SuperTrader/server/.env
+cp .env dist/products/SuperTrader/server-node-express/.env
+cp .env dist/products/SuperTrader/server-node-hono/.env
 
 # web specific
 yarn vite -c src/products/SuperTrader/web/vite.config.ts build

@@ -1264,6 +1264,11 @@
   resolved "https://registry.yarnpkg.com/@gar/promisify/-/promisify-1.1.3.tgz#555193ab2e3bb3b6adc3d551c9c030d9e860daf6"
   integrity sha512-k2Ty1JcVojjJFwrg/ThKi2ujJ7XNLYaFGNB/bWT9wGR+oSMJHMa5w+CUq6p/pVrKeNNgA7pCqEcjSnHVoqJQFw==
 
+"@hono/node-server@^1.14.1":
+  version "1.14.1"
+  resolved "https://registry.yarnpkg.com/@hono/node-server/-/node-server-1.14.1.tgz#a1e21c29b0becde0359371fadf7391746fead4c9"
+  integrity sha512-vmbuM+HPinjWzPe7FFPWMMQMsbKE9gDPhaH0FFdqbGpkT5lp++tcWDTxwBl5EgS5y6JVgIaCdjeHRfQ4XRBRjQ==
+
 "@img/sharp-darwin-arm64@0.34.1":
   version "0.34.1"
   resolved "https://registry.yarnpkg.com/@img/sharp-darwin-arm64/-/sharp-darwin-arm64-0.34.1.tgz#e79a4756bea9a06a7aadb4391ee53cb154a4968c"
@@ -3874,6 +3879,11 @@ hermes-parser@0.25.1:
   dependencies:
     hermes-estree "0.25.1"
 
+hono@^4.7.7:
+  version "4.7.7"
+  resolved "https://registry.yarnpkg.com/hono/-/hono-4.7.7.tgz#ad01a92a2a1b03c608ef42153c85c99c05c03bfe"
+  integrity sha512-2PCpQRbN87Crty8/L/7akZN3UyZIAopSoRxCwRbJgUuV1+MHNFHzYFxZTg4v/03cXUm+jce/qa2VSBZpKBm3Qw==
+
 hosted-git-info@^7.0.0:
   version "7.0.2"
   resolved "https://registry.yarnpkg.com/hosted-git-info/-/hosted-git-info-7.0.2.tgz#9b751acac097757667f30114607ef7b661ff4f17"
@@ -4342,10 +4352,10 @@ leven@^3.1.0:
   resolved "https://registry.yarnpkg.com/leven/-/leven-3.1.0.tgz#77891de834064cccba82ae7842bb6b14a13ed7f2"
   integrity sha512-qsda+H8jTaUaN/x5vzW2rzc+8Rw4TAQ/4KjB46IwK5VH+IlVeeeje/EoZRpiXvIqjFgK84QffqPztGI3VBLG1A==
 
-libmodulor@^0.12.0:
-  version "0.12.0"
-  resolved "https://registry.yarnpkg.com/libmodulor/-/libmodulor-0.12.0.tgz#c445433bfd676fa2d402529aa9f9d17d36dbe39a"
-  integrity sha512-fz/8BXh/9prb8q2TOS1imw2jFKFUOwxovudM091l0/8+10YmWKzOOLI/U4WTeh8BLKgOK2u9FjCeofM64bUfSQ==
+libmodulor@^0.13.0:
+  version "0.13.0"
+  resolved "https://registry.yarnpkg.com/libmodulor/-/libmodulor-0.13.0.tgz#e426d76b593f4a0ac0a4e48231ef2b1d7c6136d6"
+  integrity sha512-rKK7FnPftS+hVkRRfSqnDnsE6M/+PFJKerSo9mH7Zm/S82ZTBoDokyZY55XpcBz7e8QU65nPzTpCzoegPVMHQQ==
 
 lighthouse-logger@^1.0.0:
   version "1.4.2"

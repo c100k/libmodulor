@@ -6,12 +6,13 @@ description: An example showcasing a simple app to trade crypto, shares and othe
 SuperTrader is a product featuring the `Trading` app with `BuyAssetUCD`, `CancelOrderUCD` and `ListOrdersUCD`, exposed on the following targets :
 
 <Cards>
-    <Card description="REST API" href="#server" title="server"  />
-    <Card description="Web UI" href="#web" title="web" />
-    <Card description="Fullstack Next.js server" href="#server-nextjs" title="server-nextjs"  />
-    <Card description="Command Line Interface" href="#cli" title="cli" />
-    <Card description="AI Assistant" href="#mcp-server" title="mcp-server" />
-    <Card description="Android & iOS app" href="#rn" title="rn" />
+    <Card description="Server running with Node.js and Express" href="#server-node-express" title="server-node-express"  />
+    <Card description="SPA running with React" href="#web" title="web" />
+    <Card description="Command Line Interface running with Node.js" href="#cli" title="cli" />
+    <Card description="Local Stdio MCP Server running with Node.js" href="#mcp-server" title="mcp-server" />
+    <Card description="Android & iOS mobile app" href="#rn" title="rn" />
+    <Card description="Server running with Node.js and Hono" href="#server-node-hono" title="server-node-hono"  />
+    <Card description="Server running with Next.js" href="#server-nextjs" title="server-nextjs"  />
 </Cards>
 
 ## UseCases
@@ -44,12 +45,12 @@ yarn install && touch .env && yarn build
 
 ## Targets
 
-### server
+### server-node-express
 
-The `server` target uses the built-in `node-express-server` target, is transpiled with `tsc` and executed with `node`. It uses SQLite as `UCDataStore`.
+The `server-node-express` target uses the built-in `node-express-server` target, is transpiled with `tsc` and executed with `node`. It uses SQLite as `UCDataStore`.
 
 ```sh
-yarn run:server
+yarn run:server-node-express
 ```
 
 Test in your Terminal Emulator with `curl`.
@@ -87,16 +88,6 @@ It is served as a SPA by the server defined above.
 Test in your browser at http://localhost:7443.
 
 ![Web UI](./assets/supertrader-target-web-tailwindcss-daisyui.png)
-
-### server-nextjs
-
-The `server-nextjs` target uses the built-in `server-nextjs` target and the same components as the `web` target defined above.
-
-```sh
-yarn run:server-nextjs
-```
-
-Test in your browser at http://localhost:3000.
 
 ### cli
 
@@ -176,14 +167,36 @@ yarn run:rn:ios
 
 ![Android & iOS](./assets/supertrader-target-rn-android-ios.png)
 
+### server-node-hono
+
+The `server-node-hono` is the same as `server-node-express` defined above, except that it's using `hono` instead of `express`.
+
+```sh
+yarn run:server-node-hono
+```
+
+You can go back to all the client targets and run them. It will work the exact same way.
+
+### server-nextjs
+
+The `server-nextjs` target uses the built-in `server-nextjs` target and the same components as the `web` target defined above.
+
+```sh
+yarn run:server-nextjs
+```
+
+Test in your browser at http://localhost:3000.
+
 ## Inspect UCDataStore
 
-The `server` target rebinds the `UCDataStore` from in memory (default) to `KnexUCDataStore` configured for SQLite.
+The `server-*` targets rebinds the `UCDataStore` from in memory (default) to `KnexUCDataStore` configured for SQLite.
 
 Therefore, if you have executed the use case via the targets above, you can see the data in the DB file.
 
 ```sh
-open dist/products/SuperTrader/server/uc-data-store.sqlite
+open dist/products/SuperTrader/server-node-express/uc-data-store.sqlite
+open dist/products/SuperTrader/server-node-hono/uc-data-store.sqlite
+open dist/products/SuperTrader/server-node-nextjs/uc-data-store.sqlite
 ```
 
 ![SQLite UCDataStore](./assets/supertrader-uc-data-store-sqlite.png)

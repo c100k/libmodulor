@@ -13,7 +13,7 @@ export default function Layout({ children }: { children: ReactNode }) {
         <html lang="en" className={inter.className} suppressHydrationWarning>
             <body className="flex flex-col min-h-screen">
                 <Banner variant="rainbow">
-                    Welcome to the new libmodulor documentation !
+                    libmodulor v0.13.0 is out 🚀 !
                 </Banner>
                 <RootProvider>{children}</RootProvider>
             </body>
