@@ -36,7 +36,7 @@
     "devDependencies": {
         "@babel/plugin-transform-class-static-block": "^7.26.0",
         "@tailwindcss/postcss": "^4.1.4",
-        "@types/node": "^22.14.1",
+        "@types/node": "^22.15.3",
         "@types/react": "^19.1.2",
         "@types/react-dom": "^19.1.2",
         "@vitest/coverage-v8": "^3.1.2",
@@ -50,7 +50,7 @@
         "helmet": "^8.1.0",
         "jose": "^6.0.10",
         "typescript": "^5.8.3",
-        "vite": "^6.3.2",
+        "vite": "^6.3.3",
         "vite-bundle-visualizer": "^1.2.1",
         "vitest": "^3.1.2"
     }
