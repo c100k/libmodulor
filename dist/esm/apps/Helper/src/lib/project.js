@@ -42,8 +42,8 @@ export const PACKAGE_JSON = (name) => `{
     },
     "devDependencies": {
         "@biomejs/biome": "^1.9.4",
-        "@types/node": "^22.14.1",
-        "@vitest/coverage-v8": "^3.1.1",
+        "@types/node": "^22.15.2",
+        "@vitest/coverage-v8": "^3.1.2",
         "buffer": "^6.0.3",
         "cookie-parser": "^1.4.7",
         "express": "^5.1.0",
@@ -52,8 +52,8 @@ export const PACKAGE_JSON = (name) => `{
         "helmet": "^8.1.0",
         "jose": "^6.0.10",
         "typescript": "^5.8.3",
-        "vite": "^6.3.2",
-        "vitest": "^3.1.1"
+        "vite": "^6.3.3",
+        "vitest": "^3.1.2"
     }
 }
 `;
