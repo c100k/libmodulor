@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## v0.14.0 (unreleased)
+
+**Fixed**
+
+- Disable TypeScript [incremental](https://www.typescriptlang.org/tsconfig/#incremental) when analyzing app sources in automated test
+
 ## v0.13.0 (2025-04-25)
 
 **Added**
