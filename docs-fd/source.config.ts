@@ -8,6 +8,7 @@ export const docs = defineDocs({
 });
 
 export default defineConfig({
+    lastModifiedTime: 'git',
     mdxOptions: {
         remarkPlugins: [remarkMermaid, remarkMath],
         // Place it at first so that it won't be changed by syntax highlighter
