@@ -1,6 +1,6 @@
 # CHANGELOG
 
-## v0.14.0 (unreleased)
+## v0.13.1 (2025-05-02)
 
 **Fixed**
 
