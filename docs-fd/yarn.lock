@@ -878,71 +878,71 @@
   resolved "https://registry.yarnpkg.com/@radix-ui/rect/-/rect-1.1.1.tgz#78244efe12930c56fd255d7923865857c41ac8cb"
   integrity sha512-HPwpGIzkl28mWyZqG52jiqDJ12waP11Pa1lGoiyUkIEuMLBP0oeK/C89esbXrxsky5we7dfd8U58nm0SgAWpVw==
 
-"@shikijs/core@3.4.0":
-  version "3.4.0"
-  resolved "https://registry.yarnpkg.com/@shikijs/core/-/core-3.4.0.tgz#e64058b4707b842933a36b2d53bf7f52ee00ce68"
-  integrity sha512-0YOzTSRDn/IAfQWtK791gs1u8v87HNGToU6IwcA3K7nPoVOrS2Dh6X6A6YfXgPTSkTwR5y6myk0MnI0htjnwrA==
+"@shikijs/core@3.4.2":
+  version "3.4.2"
+  resolved "https://registry.yarnpkg.com/@shikijs/core/-/core-3.4.2.tgz#da400c642d05b8af17120e99ecbfc38f6406ac43"
+  integrity sha512-AG8vnSi1W2pbgR2B911EfGqtLE9c4hQBYkv/x7Z+Kt0VxhgQKcW7UNDVYsu9YxwV6u+OJrvdJrMq6DNWoBjihQ==
   dependencies:
-    "@shikijs/types" "3.4.0"
+    "@shikijs/types" "3.4.2"
     "@shikijs/vscode-textmate" "^10.0.2"
     "@types/hast" "^3.0.4"
     hast-util-to-html "^9.0.5"
 
-"@shikijs/engine-javascript@3.4.0":
-  version "3.4.0"
-  resolved "https://registry.yarnpkg.com/@shikijs/engine-javascript/-/engine-javascript-3.4.0.tgz#bdf99adaaef6fbf421af30690e841f84f4f7d8b5"
-  integrity sha512-1ywDoe+z/TPQKj9Jw0eU61B003J9DqUFRfH+DVSzdwPUFhR7yOmfyLzUrFz0yw8JxFg/NgzXoQyyykXgO21n5Q==
+"@shikijs/engine-javascript@3.4.2":
+  version "3.4.2"
+  resolved "https://registry.yarnpkg.com/@shikijs/engine-javascript/-/engine-javascript-3.4.2.tgz#14688441e058fa9d6b98e9f48c607344b7d2ae2f"
+  integrity sha512-1/adJbSMBOkpScCE/SB6XkjJU17ANln3Wky7lOmrnpl+zBdQ1qXUJg2GXTYVHRq+2j3hd1DesmElTXYDgtfSOQ==
   dependencies:
-    "@shikijs/types" "3.4.0"
+    "@shikijs/types" "3.4.2"
     "@shikijs/vscode-textmate" "^10.0.2"
     oniguruma-to-es "^4.3.3"
 
-"@shikijs/engine-oniguruma@3.4.0":
-  version "3.4.0"
-  resolved "https://registry.yarnpkg.com/@shikijs/engine-oniguruma/-/engine-oniguruma-3.4.0.tgz#86e9ff95ed16e69177f19b5f2e1cb8481b623a68"
-  integrity sha512-zwcWlZ4OQuJ/+1t32ClTtyTU1AiDkK1lhtviRWoq/hFqPjCNyLj22bIg9rB7BfoZKOEOfrsGz7No33BPCf+WlQ==
+"@shikijs/engine-oniguruma@3.4.2":
+  version "3.4.2"
+  resolved "https://registry.yarnpkg.com/@shikijs/engine-oniguruma/-/engine-oniguruma-3.4.2.tgz#e8187f86b1f58b9bc2544994de2cc769ba44d1f8"
+  integrity sha512-zcZKMnNndgRa3ORja6Iemsr3DrLtkX3cAF7lTJkdMB6v9alhlBsX9uNiCpqofNrXOvpA3h6lHcLJxgCIhVOU5Q==
   dependencies:
-    "@shikijs/types" "3.4.0"
+    "@shikijs/types" "3.4.2"
     "@shikijs/vscode-textmate" "^10.0.2"
 
-"@shikijs/langs@3.4.0":
-  version "3.4.0"
-  resolved "https://registry.yarnpkg.com/@shikijs/langs/-/langs-3.4.0.tgz#4a4b330cfd43af1a7c04cc668793e87ad40ad28f"
-  integrity sha512-bQkR+8LllaM2duU9BBRQU0GqFTx7TuF5kKlw/7uiGKoK140n1xlLAwCgXwSxAjJ7Htk9tXTFwnnsJTCU5nDPXQ==
+"@shikijs/langs@3.4.2":
+  version "3.4.2"
+  resolved "https://registry.yarnpkg.com/@shikijs/langs/-/langs-3.4.2.tgz#1d37272dac923c08789e1c8249f73384ae5ef59a"
+  integrity sha512-H6azIAM+OXD98yztIfs/KH5H4PU39t+SREhmM8LaNXyUrqj2mx+zVkr8MWYqjceSjDw9I1jawm1WdFqU806rMA==
   dependencies:
-    "@shikijs/types" "3.4.0"
+    "@shikijs/types" "3.4.2"
 
-"@shikijs/rehype@^3.4.0":
-  version "3.4.0"
-  resolved "https://registry.yarnpkg.com/@shikijs/rehype/-/rehype-3.4.0.tgz#72e2d8cdf7936771c4b7f80545d0891bfa247032"
-  integrity sha512-wm7RTSmrcmjZg+F9JRrsH0Brwi36joUMXkUWIDmBGW+XExNEi8Xjmmp2NOBXa3DujZtnL6Dbcg7V6gtZabGoXw==
+"@shikijs/rehype@^3.4.2":
+  version "3.4.2"
+  resolved "https://registry.yarnpkg.com/@shikijs/rehype/-/rehype-3.4.2.tgz#c62e0824c294a79ee92e6785531a9633b1a0b7bc"
+  integrity sha512-atbsrT3UKs25OdKVbNoHyKO9ZP7KEBPlo1oanPGMkvUL0fLictpxMPz6vPE2YTeHhpwz7EMrA4K4FHRY8XAReg==
   dependencies:
-    "@shikijs/types" "3.4.0"
+    "@shikijs/types" "3.4.2"
     "@types/hast" "^3.0.4"
     hast-util-to-string "^3.0.1"
-    shiki "3.4.0"
+    shiki "3.4.2"
     unified "^11.0.5"
     unist-util-visit "^5.0.0"
 
-"@shikijs/themes@3.4.0":
-  version "3.4.0"
-  resolved "https://registry.yarnpkg.com/@shikijs/themes/-/themes-3.4.0.tgz#59582f19c04b79fa3fa7a9cc2630624c0368f115"
-  integrity sha512-YPP4PKNFcFGLxItpbU0ZW1Osyuk8AyZ24YEFaq04CFsuCbcqydMvMUTi40V2dkc0qs1U2uZFrnU6s5zI6IH+uA==
+"@shikijs/themes@3.4.2":
+  version "3.4.2"
+  resolved "https://registry.yarnpkg.com/@shikijs/themes/-/themes-3.4.2.tgz#05ef9d924c73ba841e2209e918642aa385b91da7"
+  integrity sha512-qAEuAQh+brd8Jyej2UDDf+b4V2g1Rm8aBIdvt32XhDPrHvDkEnpb7Kzc9hSuHUxz0Iuflmq7elaDuQAP9bHIhg==
   dependencies:
-    "@shikijs/types" "3.4.0"
+    "@shikijs/types" "3.4.2"
 
-"@shikijs/transformers@^3.4.0":
-  version "3.4.0"
-  resolved "https://registry.yarnpkg.com/@shikijs/transformers/-/transformers-3.4.0.tgz#cde48ce17cc9dab9b43a8c60c1d919c9a0304f31"
-  integrity sha512-GrGaOj1/I6h75IU0VvjdWDpqGCynx0bqHzd1rErBTGxrcmusYIBhrV7aEySWyJ6HHb9figeXfcNxUFS1HKUfBw==
+"@shikijs/transformers@^3.4.2":
+  version "3.4.2"
+  resolved "https://registry.yarnpkg.com/@shikijs/transformers/-/transformers-3.4.2.tgz#bc76faa5ca8a8b896faca0e91f8d7421eb310a9f"
+  integrity sha512-I5baLVi/ynLEOZoWSAMlACHNnG+yw5HDmse0oe+GW6U1u+ULdEB3UHiVWaHoJSSONV7tlcVxuaMy74sREDkSvg==
   dependencies:
-    "@shikijs/core" "3.4.0"
-    "@shikijs/types" "3.4.0"
+    "@shikijs/core" "3.4.2"
+    "@shikijs/types" "3.4.2"
 
-"@shikijs/types@3.4.0":
-  version "3.4.0"
-  resolved "https://registry.yarnpkg.com/@shikijs/types/-/types-3.4.0.tgz#f7b5cdde2db5dd5c79b8dc785b11322e5dd5fe59"
-  integrity sha512-EUT/0lGiE//7j5N/yTMNMT3eCWNcHJLrRKxT0NDXWIfdfSmFJKfPX7nMmRBrQnWboAzIsUziCThrYMMhjbMS1A==
+"@shikijs/types@3.4.2":
+  version "3.4.2"
+  resolved "https://registry.yarnpkg.com/@shikijs/types/-/types-3.4.2.tgz#b5cd9d366a2cef075b1fa4dfe740adc0116a79c9"
+  integrity sha512-zHC1l7L+eQlDXLnxvM9R91Efh2V4+rN3oMVS2swCBssbj2U/FBwybD1eeLaq8yl/iwT+zih8iUbTBCgGZOYlVg==
   dependencies:
     "@shikijs/vscode-textmate" "^10.0.2"
     "@types/hast" "^3.0.4"
@@ -2103,10 +2103,10 @@ estree-util-to-js@^2.0.0:
     astring "^1.8.0"
     source-map "^0.7.0"
 
-estree-util-value-to-estree@^3.3.3:
-  version "3.3.3"
-  resolved "https://registry.yarnpkg.com/estree-util-value-to-estree/-/estree-util-value-to-estree-3.3.3.tgz#800b03a551b466dd77ed2c574b042a9992546cf2"
-  integrity sha512-Db+m1WSD4+mUO7UgMeKkAwdbfNWwIxLt48XF2oFU9emPfXkIu+k5/nlOj313v7wqtAPo0f9REhUvznFrPkG8CQ==
+estree-util-value-to-estree@^3.4.0:
+  version "3.4.0"
+  resolved "https://registry.yarnpkg.com/estree-util-value-to-estree/-/estree-util-value-to-estree-3.4.0.tgz#827122e40c3a756d3c4cf5d5d296fa06026a1a4f"
+  integrity sha512-Zlp+gxis+gCfK12d3Srl2PdX2ybsEA8ZYy6vQGVQTNNYLEGRQQ56XB64bjemN8kxIKXP1nC9ip4Z+ILy9LGzvQ==
   dependencies:
     "@types/estree" "^1.0.0"
 
@@ -2167,15 +2167,15 @@ fill-range@^7.1.1:
   dependencies:
     to-regex-range "^5.0.1"
 
-fumadocs-core@15.3.1:
-  version "15.3.1"
-  resolved "https://registry.yarnpkg.com/fumadocs-core/-/fumadocs-core-15.3.1.tgz#9705dedc41e86a1ac21182cdcea33cf2c24f0f34"
-  integrity sha512-xMRne357+0PbgKQFkfKMUVX1qq4daiqWlYbBEAh1ZMjcnRaYrKZ07HA8l893s8fwqFYdwvKv8kyPhz/Rk8Agpw==
+fumadocs-core@15.3.3:
+  version "15.3.3"
+  resolved "https://registry.yarnpkg.com/fumadocs-core/-/fumadocs-core-15.3.3.tgz#0770002805e20f397e6eafe9e6709282607c1c23"
+  integrity sha512-3i547DisQ/k4v5UYECgTIi14be2TGrnomwT6AKOis+Nj0A8sUdaMEU6KgYT9GAOUeeC6A733pSm6Bi8aY91/IQ==
   dependencies:
     "@formatjs/intl-localematcher" "^0.6.1"
     "@orama/orama" "^3.1.6"
-    "@shikijs/rehype" "^3.4.0"
-    "@shikijs/transformers" "^3.4.0"
+    "@shikijs/rehype" "^3.4.2"
+    "@shikijs/transformers" "^3.4.2"
     github-slugger "^2.0.0"
     hast-util-to-estree "^3.1.3"
     hast-util-to-jsx-runtime "^2.3.6"
@@ -2185,20 +2185,20 @@ fumadocs-core@15.3.1:
     remark "^15.0.0"
     remark-gfm "^4.0.1"
     scroll-into-view-if-needed "^3.1.0"
-    shiki "^3.4.0"
+    shiki "^3.4.2"
     unist-util-visit "^5.0.0"
 
-fumadocs-mdx@11.6.3:
-  version "11.6.3"
-  resolved "https://registry.yarnpkg.com/fumadocs-mdx/-/fumadocs-mdx-11.6.3.tgz#69ee1540a821063208a9fb64f82ac3cbc9aead2d"
-  integrity sha512-R7ca68TDnPwJGx3YhCzIrcZfqo8Buq9k3piZMFV8ydO6gNJijdJ9iyddHi/D3DABfmMrgEL551EFxRsaDUU27A==
+fumadocs-mdx@11.6.4:
+  version "11.6.4"
+  resolved "https://registry.yarnpkg.com/fumadocs-mdx/-/fumadocs-mdx-11.6.4.tgz#847c1422c06902256e9f3eef9b34313708374790"
+  integrity sha512-pGczNrR+w31JJ8/L9TfFFoe0dGNV43suz2YXyz1iD1yQ2j2VldLqYZ12UyRi7IsqTiVBFUSkRks1iYBRvNr/4w==
   dependencies:
     "@mdx-js/mdx" "^3.1.0"
     "@standard-schema/spec" "^1.0.0"
     chokidar "^4.0.3"
     cross-spawn "^7.0.6"
     esbuild "^0.25.4"
-    estree-util-value-to-estree "^3.3.3"
+    estree-util-value-to-estree "^3.4.0"
     fast-glob "^3.3.3"
     gray-matter "^4.0.3"
     js-yaml "^4.1.0"
@@ -2207,10 +2207,10 @@ fumadocs-mdx@11.6.3:
     unist-util-visit "^5.0.0"
     zod "^3.24.4"
 
-fumadocs-ui@15.3.1:
-  version "15.3.1"
-  resolved "https://registry.yarnpkg.com/fumadocs-ui/-/fumadocs-ui-15.3.1.tgz#becfcfcce752b0e53831889c426d0cf107b8be84"
-  integrity sha512-0IE7gUHguM0o+Au/QZdxCGRt7s4KbXYFl6rO2U+nfmw43+NH3i9Cw+v/XIuL1qjolFK2uorlKFYxuRVH2ZOuoQ==
+fumadocs-ui@15.3.3:
+  version "15.3.3"
+  resolved "https://registry.yarnpkg.com/fumadocs-ui/-/fumadocs-ui-15.3.3.tgz#cd1002ba16e08ed6922236799022d431d80bfabd"
+  integrity sha512-/jYy4xjK4kMjpcm2ANG3qPGid/wFQdSyCYBXA0OariZEGh1yoDVcwDHYDXOXsiEkVtrRZWI4zjVcIF23r5/SxA==
   dependencies:
     "@radix-ui/react-accordion" "^1.2.10"
     "@radix-ui/react-collapsible" "^1.1.10"
@@ -2223,13 +2223,13 @@ fumadocs-ui@15.3.1:
     "@radix-ui/react-slot" "^1.2.2"
     "@radix-ui/react-tabs" "^1.1.11"
     class-variance-authority "^0.7.1"
-    fumadocs-core "15.3.1"
+    fumadocs-core "15.3.3"
     lodash.merge "^4.6.2"
     next-themes "^0.4.6"
     postcss-selector-parser "^7.1.0"
     react-medium-image-zoom "^5.2.14"
     react-remove-scroll "^2.6.3"
-    tailwind-merge "^3.2.0"
+    tailwind-merge "^3.3.0"
 
 get-nonce@^1.0.0:
   version "1.0.1"
@@ -3838,17 +3838,17 @@ shebang-regex@^3.0.0:
   resolved "https://registry.yarnpkg.com/shebang-regex/-/shebang-regex-3.0.0.tgz#ae16f1644d873ecad843b0307b143362d4c42172"
   integrity sha512-7++dFhtcx3353uBaq8DDR4NuxBetBzC7ZQOhmTQInHEd6bSrXdiEyzCvG07Z44UYdLShWUyXt5M/yhz8ekcb1A==
 
-shiki@3.4.0, shiki@^3.4.0:
-  version "3.4.0"
-  resolved "https://registry.yarnpkg.com/shiki/-/shiki-3.4.0.tgz#0c21ed2607af6028eb1f90cc71b2c597e7930630"
-  integrity sha512-Ni80XHcqhOEXv5mmDAvf5p6PAJqbUc/RzFeaOqk+zP5DLvTPS3j0ckvA+MI87qoxTQ5RGJDVTbdl/ENLSyyAnQ==
+shiki@3.4.2, shiki@^3.4.2:
+  version "3.4.2"
+  resolved "https://registry.yarnpkg.com/shiki/-/shiki-3.4.2.tgz#da773af493461a5b1806878fb47af828bee0b265"
+  integrity sha512-wuxzZzQG8kvZndD7nustrNFIKYJ1jJoWIPaBpVe2+KHSvtzMi4SBjOxrigs8qeqce/l3U0cwiC+VAkLKSunHQQ==
   dependencies:
-    "@shikijs/core" "3.4.0"
-    "@shikijs/engine-javascript" "3.4.0"
-    "@shikijs/engine-oniguruma" "3.4.0"
-    "@shikijs/langs" "3.4.0"
-    "@shikijs/themes" "3.4.0"
-    "@shikijs/types" "3.4.0"
+    "@shikijs/core" "3.4.2"
+    "@shikijs/engine-javascript" "3.4.2"
+    "@shikijs/engine-oniguruma" "3.4.2"
+    "@shikijs/langs" "3.4.2"
+    "@shikijs/themes" "3.4.2"
+    "@shikijs/types" "3.4.2"
     "@shikijs/vscode-textmate" "^10.0.2"
     "@types/hast" "^3.0.4"
 
@@ -3923,10 +3923,10 @@ stylis@^4.3.1:
   resolved "https://registry.yarnpkg.com/stylis/-/stylis-4.3.6.tgz#7c7b97191cb4f195f03ecab7d52f7902ed378320"
   integrity sha512-yQ3rwFWRfwNUY7H5vpU0wfdkNSnvnJinhF9830Swlaxl03zsOjCfmX0ugac+3LtK0lYSgwL/KXc8oYL3mG4YFQ==
 
-tailwind-merge@^3.2.0:
-  version "3.2.0"
-  resolved "https://registry.yarnpkg.com/tailwind-merge/-/tailwind-merge-3.2.0.tgz#bedcf6a67a8c982da5913afcba9c854f35abb857"
-  integrity sha512-FQT/OVqCD+7edmmJpsgCsY820RTD5AkBryuG5IUqR5YQZSdj5xlH5nLgH7YPths7WsLPSpSBNneJdM8aS8aeFA==
+tailwind-merge@^3.3.0:
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/tailwind-merge/-/tailwind-merge-3.3.0.tgz#d9bb4f298801ef6232ced4f97e830fc79bc3d3e7"
+  integrity sha512-fyW/pEfcQSiigd5SNn0nApUOxx0zB/dm6UDU/rEwc2c3sX2smWUNbapHv+QRqLGVp9GWX3THIa7MUGPo+YkDzQ==
 
 tailwindcss@4.1.6, tailwindcss@^4.0.9:
   version "4.1.6"
