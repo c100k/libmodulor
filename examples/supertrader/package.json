@@ -16,12 +16,12 @@
         "test": "tsc && vitest run --passWithNoTests"
     },
     "dependencies": {
-        "@hono/node-server": "^1.14.1",
-        "@modelcontextprotocol/sdk": "^1.11.2",
-        "@tailwindcss/vite": "^4.1.6",
+        "@hono/node-server": "^1.14.2",
+        "@modelcontextprotocol/sdk": "^1.11.4",
+        "@tailwindcss/vite": "^4.1.7",
         "daisyui": "^5.0.35",
         "expo": "^53.0.9",
-        "hono": "^4.7.9",
+        "hono": "^4.7.10",
         "inversify": "^7.5.1",
         "knex": "^3.1.0",
         "libmodulor": "^0.13.1",
