@@ -1,0 +1,18 @@
+---
+title: Embeded
+description: Use cases embeded directly in the docs
+---
+
+The [Basic](./Basic) and [SuperTrader](./SuperTrader) examples show how to integrate `libmodulor` in dedicated projects.
+But it can also be used anywhere. As an example, you can find below multiple use cases that are embeded directly on this page (Next.js + React), using the exact same mechanisms.
+
+import UCLayout from '@/components/UCLayout';
+import UCPanelCard from '@/components/UCPanelCard';
+
+<UCLayout>
+    <UCPanelCard appName="Toolbox" ucName="GenerateMiscData" />
+</UCLayout>
+
+<UCLayout>
+    <UCPanelCard appName="Toolbox" ucName="ExportAsana" />
+</UCLayout>
