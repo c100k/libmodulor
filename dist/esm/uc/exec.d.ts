@@ -15,6 +15,14 @@ export declare enum UCExecMode {
     USER = "user"
 }
 /**
+ * Result of execution of a use case
+ *
+ * - `aborted`      : The user aborted the exec (e.g. by not confirming)
+ * - `failed`       : The exec failed
+ * - `succeeded`    : The exec succeeded
+ */
+export type UCExecRes = 'aborted' | 'failed' | 'succeeded';
+/**
  * State of execution of a use case
  *
  * - `changing`     : An action triggered a change, fields should be disabled
@@ -44,3 +52,10 @@ export declare function ucIsDisabled(execState: UCExecState): boolean;
  * @returns
  */
 export declare function ucIsLoading(execState: UCExecState): boolean;
+/**
+ * Check whether the execution corresponds to an "error" result
+ *
+ * @param execRes
+ * @returns
+ */
+export declare function ucIsOnErr(execRes: UCExecRes | null): boolean;

@@ -38,3 +38,12 @@ export function ucIsDisabled(execState) {
 export function ucIsLoading(execState) {
     return execState === 'submitting';
 }
+/**
+ * Check whether the execution corresponds to an "error" result
+ *
+ * @param execRes
+ * @returns
+ */
+export function ucIsOnErr(execRes) {
+    return execRes === 'failed';
+}
