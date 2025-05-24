@@ -18,7 +18,7 @@ export function UCExecTouchable<
 
     return (
         <button
-            className="px-6 py-1 bg-blue-600 text-white rounded shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
+            className="px-6 py-1 bg-gray-900 text-white rounded shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
             disabled={disabled}
             onClick={onSubmit}
             type="button"
