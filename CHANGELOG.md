@@ -1,6 +1,6 @@
 # CHANGELOG
 
-## v0.14.0 (unreleased)
+## v0.14.0 (2025-05-24)
 
 - Introduce `useAction` for react targets : it's a use case agnostic way of invoking an action
 
