@@ -4482,10 +4482,10 @@ leven@^3.1.0:
   resolved "https://registry.yarnpkg.com/leven/-/leven-3.1.0.tgz#77891de834064cccba82ae7842bb6b14a13ed7f2"
   integrity sha512-qsda+H8jTaUaN/x5vzW2rzc+8Rw4TAQ/4KjB46IwK5VH+IlVeeeje/EoZRpiXvIqjFgK84QffqPztGI3VBLG1A==
 
-libmodulor@^0.13.1:
-  version "0.13.1"
-  resolved "https://registry.yarnpkg.com/libmodulor/-/libmodulor-0.13.1.tgz#34683c0b041b0a36a4291a13db959aeeeabdf5d6"
-  integrity sha512-fpmUim30MZVO3vZE4sAdZ+SdhDavaJcBV1+YtFzBHYyIFfiPR/2J+my9/XUI9iDY7jCyHECNOGlvwmzk3/OHcg==
+libmodulor@^0.14.0:
+  version "0.14.0"
+  resolved "https://registry.yarnpkg.com/libmodulor/-/libmodulor-0.14.0.tgz#090cf7b21b647cc47501eb186d011819d4e6d300"
+  integrity sha512-X4gadGlRs2PGXk/0nVdnZvVY2ZrCAQoky6qr2MpYHR5W5cjF/05jhktlzwizX/TzqztUaJSWmBaEK0NWCoBX7A==
 
 lighthouse-logger@^1.0.0:
   version "1.4.2"
