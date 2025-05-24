@@ -1,23 +1,24 @@
 'use client';
 
 import { DynamicCodeBlock } from 'fumadocs-ui/components/dynamic-codeblock';
-import type {
-    AppManifest,
-    AppName,
-    ErrorMessage,
-    UCDef,
-    UCName,
-    UCOutputReader,
+import {
+    type AppManifest,
+    type AppName,
+    type ErrorMessage,
+    type UCDef,
+    type UCName,
+    type UCOutputReader,
+    UC_DEF_FILE_NAME_SUFFIX,
 } from 'libmodulor';
 import { UCPanel, useDIContext, useUC } from 'libmodulor/react';
-import React, { useEffect, useState, type ReactElement } from 'react';
+import React, { Suspense, useEffect, useState, type ReactElement } from 'react';
 
 import { Manifest as ToolboxManifest } from './apps/Toolbox/manifest';
 import { ExportAsanaUCD } from './apps/Toolbox/ucds/ExportAsanaUCD';
 import { GenerateMiscDataUCD } from './apps/Toolbox/ucds/GenerateMiscDataUCD';
-import { UCAutoExecLoader } from './atoms/UCAutoExecLoader';
-import { UCExecTouchable } from './atoms/UCExecTouchable';
-import { UCForm } from './atoms/UCForm';
+import { UCAutoExecLoader } from './ui/UCAutoExecLoader';
+import { UCExecTouchable } from './ui/UCExecTouchable';
+import { UCForm } from './ui/UCForm';
 
 interface Props {
     appName: AppName;
@@ -52,12 +53,14 @@ export default function UCPanelCard({
     const { i18nManager, wordingManager } = useDIContext();
 
     const [errMsg, setErrMsg] = useState<ErrorMessage | null>(null);
+    const [initializing, setInitializing] = useState(true);
     const [uc] = useUC(appManifest, ucd, null);
     const [ucor, setUCOR] = useState<UCOutputReader | null>(null);
 
     useEffect(() => {
         (async () => {
             await i18nManager.init();
+            setInitializing(false);
         })();
     }, [i18nManager]);
 
@@ -67,19 +70,31 @@ export default function UCPanelCard({
         ? JSON.stringify(ucor.output(), null, 2)
         : '{ "//": "Execute the use case on the left to see the output here" }';
 
+    if (initializing) {
+        return null;
+    }
+
     return (
         <div>
-            <h2>{label}</h2>
+            <div className="flex items-center justify-between">
+                <h2>{label}</h2>
+                <a
+                    href={`https://github.com/c100k/libmodulor/blob/master/docs-fd/src/components/apps/${appName}/ucds/${ucName}${UC_DEF_FILE_NAME_SUFFIX}`}
+                    rel="noopener noreferrer"
+                    target="_blank"
+                >
+                    View the code
+                </a>
+            </div>
 
             {desc && <p>{desc}</p>}
 
-            {errMsg && <p className="bg-red-700 rounded p-2">{errMsg}</p>}
-
             <div className="flex gap-3 justify-between">
-                <div className="min-w-1/3">
+                <div className="bg-gray-950 border min-w-2/5 p-3 rounded">
                     <UCPanel
                         clearAfterExec={false}
                         onDone={async (ucor) => setUCOR(ucor)}
+                        onStartSubmitting={async () => setErrMsg(null)}
                         onError={async (err) =>
                             setErrMsg((err as Error).message)
                         }
@@ -89,7 +104,11 @@ export default function UCPanelCard({
                         uc={uc}
                     />
                 </div>
-                <div className="min-w-2/3">
+                <div className="flex flex-col gap-3 min-w-3/5">
+                    {errMsg && (
+                        <div className="bg-red-700 rounded p-2">{errMsg}</div>
+                    )}
+
                     <DynamicCodeBlock code={code} lang="json" />
                 </div>
             </div>

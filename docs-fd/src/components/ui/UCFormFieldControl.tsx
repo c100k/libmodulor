@@ -44,7 +44,7 @@ export function UCFormFieldControl<T extends DataType>({
     return (
         <input
             {...attrs.spec}
-            className="w-full max-w-md px-4 py-2 border border-gray-300 rounded-2xl shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
+            className="w-full max-w-md px-4 py-2 border border-gray-700 rounded-2xl shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
             onChange={(e) =>
                 onChange(
                     field,
