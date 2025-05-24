@@ -5,7 +5,7 @@ import React, { type ReactElement } from 'react';
 import {
     type Props as FormFieldControlProps,
     UCFormFieldControl,
-} from './UCFormFieldControl.js';
+} from './UCFormFieldControl';
 
 export function UCFormField<T extends DataType>({
     disabled,
@@ -18,14 +18,19 @@ export function UCFormField<T extends DataType>({
     const { label } = wordingManager.ucif(field);
 
     return (
-        <label className="floating-label" htmlFor={ucifId(field.key)}>
-            <span>{label}</span>
+        <div>
+            <label
+                className="block text-sm font-medium text-gray-700 mb-1"
+                htmlFor={ucifId(field.key)}
+            >
+                {label}
+            </label>
             <UCFormFieldControl
                 disabled={disabled}
                 execState={execState}
                 field={field}
                 onChange={onChange}
             />
-        </label>
+        </div>
     );
 }
