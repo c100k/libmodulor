@@ -10,9 +10,10 @@ import type {
     UCOutputReader,
 } from 'libmodulor';
 import { UCPanel, useDIContext, useUC } from 'libmodulor/react';
-import React, { Suspense, useEffect, useState, type ReactElement } from 'react';
+import React, { useEffect, useState, type ReactElement } from 'react';
 
 import { Manifest as ToolboxManifest } from './apps/Toolbox/manifest';
+import { ExportAsanaUCD } from './apps/Toolbox/ucds/ExportAsanaUCD';
 import { GenerateMiscDataUCD } from './apps/Toolbox/ucds/GenerateMiscDataUCD';
 import { UCAutoExecLoader } from './atoms/UCAutoExecLoader';
 import { UCExecTouchable } from './atoms/UCExecTouchable';
@@ -28,7 +29,12 @@ const APPS_MAPPING: Map<AppName, AppManifest> = new Map([
 ]);
 
 // biome-ignore lint/suspicious/noExplicitAny: can be anything
-const UCDS_MAPPING: Map<UCName, UCDef<any, any, any>> = new Map([
+const UCDS_MAPPING: Map<UCName, UCDef<any, any, any>> = new Map<
+    UCName,
+    // biome-ignore lint/suspicious/noExplicitAny: can be anything
+    UCDef<any, any, any>
+>([
+    [ExportAsanaUCD.metadata.name, ExportAsanaUCD],
     [GenerateMiscDataUCD.metadata.name, GenerateMiscDataUCD],
 ]);
 
@@ -62,12 +68,12 @@ export default function UCPanelCard({
         : '{ "//": "Execute the use case on the left to see the output here" }';
 
     return (
-        <Suspense>
+        <div>
             <h2>{label}</h2>
 
             {desc && <p>{desc}</p>}
 
-            {errMsg && <p>{errMsg}</p>}
+            {errMsg && <p className="bg-red-700 rounded p-2">{errMsg}</p>}
 
             <div className="flex gap-3 justify-between">
                 <div className="min-w-1/3">
@@ -87,6 +93,6 @@ export default function UCPanelCard({
                     <DynamicCodeBlock code={code} lang="json" />
                 </div>
             </div>
-        </Suspense>
+        </div>
     );
 }
