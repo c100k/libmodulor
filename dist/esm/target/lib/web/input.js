@@ -1,4 +1,4 @@
-import { TNumber, TString, } from '../../../dt/index.js';
+import { TBoolean, TNumber, TString, } from '../../../dt/index.js';
 import { ucIsDisabled, ucifHint, ucifId, ucifIsMandatory, } from '../../../uc/index.js';
 export function htmlInputDef(field, execState, errMsg, className) {
     const def = {
@@ -31,6 +31,12 @@ export function htmlInputDef(field, execState, errMsg, className) {
         def.spec.max = fType.max();
         def.spec.min = fType.min();
         def.spec.step = fType.getStep();
+    }
+    else if (fType instanceof TBoolean) {
+        def.internal.checked = fType.getInitialValue() === true;
+    }
+    if (!(fType instanceof TBoolean)) {
+        def.internal.value = fType.getInitialValue()?.toString() || '';
     }
     def.spec.placeholder = ucifHint(fDef);
     def.spec.required = ucifIsMandatory(fDef);

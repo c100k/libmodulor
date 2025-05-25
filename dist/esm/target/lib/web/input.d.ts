@@ -8,9 +8,17 @@ export interface HTMLInputDef {
      */
     internal?: {
         /**
-         * When a fiels is `multiline`, you should probably render a `<textarea />` in place of an `<input />`.
+         * When checked is set, you should probably set `checked` or `defaultChecked` in uncontrolled components (react).
+         */
+        checked?: boolean | undefined;
+        /**
+         * When a field is `multiline`, you should probably render a `<textarea />` instead of an `<input />`.
          */
         multiline?: boolean | undefined;
+        /**
+         * When value is set, you should probably set `value` or `defaultValue` in uncontrolled components (react).
+         */
+        value?: string | undefined;
     };
     /**
      * Fields that are part of the W3C spec

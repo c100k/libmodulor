@@ -33,17 +33,19 @@ export function UCFormFieldControl({ className, errMsg = null, execState, f, onC
             onChangeBase(f, UCInputFieldChangeOperator.SET, value);
         }
     };
+    const defaultChecked = attrs.internal?.checked;
+    const defaultValue = attrs.internal?.value;
     if (attrs.internal?.multiline) {
-        return React.createElement("textarea", { ...attrs.spec, onChange: onChange });
+        return (React.createElement("textarea", { ...attrs.spec, defaultValue: defaultValue, onChange: onChange }));
     }
     const { type } = f.def;
     const options = type.getOptions();
     if (options) {
         // TODO : Handle type.hasStrictOptions() => display an input text alongside the select
         // TODO : Consider using a radio and/or checkbox and/or selectable buttons when the options count < X
-        return (React.createElement("select", { ...attrs.spec, onChange: onChange },
+        return (React.createElement("select", { ...attrs.spec, defaultValue: defaultValue, onChange: onChange },
             React.createElement("option", null),
             options.map((o) => (React.createElement("option", { key: o.value.toString(), value: o.value.toString() }, o.label)))));
     }
-    return React.createElement("input", { ...attrs.spec, onChange: onChange });
+    return (React.createElement("input", { ...attrs.spec, defaultChecked: defaultChecked, defaultValue: defaultValue, onChange: onChange }));
 }

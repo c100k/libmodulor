@@ -25,10 +25,13 @@ export class TBoolean extends TBase {
         return true;
     }
     fmt(ifNullOrUndefined) {
-        if (typeof this.raw !== 'boolean' || this.raw !== true) {
+        if (typeof this.raw !== 'boolean') {
             return super.fmt(ifNullOrUndefined);
         }
-        return '✔️';
+        if (this.raw === true) {
+            return 'Y';
+        }
+        return 'N';
     }
     htmlInputType() {
         return 'checkbox';
