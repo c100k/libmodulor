@@ -1,7 +1,13 @@
 'use client';
 
 import { Container } from 'inversify';
-import { CONTAINER_OPTS, bindCommon, bindProduct } from 'libmodulor';
+import {
+    CONTAINER_OPTS,
+    type LLMManager,
+    MistralAILLMManager,
+    bindCommon,
+    bindProduct,
+} from 'libmodulor';
 import { DIContextProvider } from 'libmodulor/react';
 import { bindWeb } from 'libmodulor/web';
 import React, { type PropsWithChildren, type ReactElement } from 'react';
@@ -13,6 +19,8 @@ const container = new Container(CONTAINER_OPTS);
 bindCommon(container);
 bindProduct(container, Manifest, I18n);
 bindWeb(container);
+
+container.bind<LLMManager>('LLMManager').to(MistralAILLMManager);
 
 export default function UCLayout({
     children,
