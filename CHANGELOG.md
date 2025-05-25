@@ -3,6 +3,7 @@
 ## v0.15.0 (unreleased)
 
 - In `LLMManager`, allow to pass the `apiKey` directly in the request. It precedes the settings value defined at the implementation level
+- Add optional `className` to stylable react target components
 
 ## v0.14.0 (2025-05-24)
 

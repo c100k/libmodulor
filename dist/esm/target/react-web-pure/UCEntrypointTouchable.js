@@ -1,4 +1,4 @@
 import React, {} from 'react';
-export function UCEntrypointTouchable({ path, wording }) {
-    return (React.createElement("a", { href: path, title: wording.desc ?? undefined }, wording.label));
+export function UCEntrypointTouchable({ className, path, wording, }) {
+    return (React.createElement("a", { className: className, href: path, title: wording.desc ?? undefined }, wording.label));
 }

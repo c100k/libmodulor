@@ -1,6 +1,6 @@
 import React, {} from 'react';
 import { UCOutputFieldValueFragment, } from '../lib/react/UCOutputFieldValueFragment.js';
-export function UCOutputFieldValue(props) {
-    return (React.createElement("span", null,
-        React.createElement(UCOutputFieldValueFragment, { ...props })));
+export function UCOutputFieldValue({ className, ...propsWithoutClassName }) {
+    return (React.createElement("span", { className: className },
+        React.createElement(UCOutputFieldValueFragment, { ...propsWithoutClassName })));
 }

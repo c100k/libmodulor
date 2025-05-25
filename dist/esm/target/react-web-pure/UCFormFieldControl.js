@@ -4,8 +4,8 @@ import { htmlInputDef } from '../lib/web/input.js';
 const CHECKED_FIELD_TYPES = ['checkbox', 'radio'];
 const FILE_FIELD_TYPES = ['file'];
 const MULTIPLE_VALUES_SEPARATOR = ',';
-export function UCFormFieldControl({ errMsg = null, execState, f, onChange: onChangeBase, }) {
-    const attrs = htmlInputDef(f, execState, errMsg);
+export function UCFormFieldControl({ className, errMsg = null, execState, f, onChange: onChangeBase, }) {
+    const attrs = htmlInputDef(f, execState, errMsg, className);
     const onChange = (e) => {
         const target = e.currentTarget;
         const type = target.type;

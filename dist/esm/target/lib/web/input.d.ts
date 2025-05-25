@@ -28,6 +28,7 @@ export interface HTMLInputDef {
     spec?: {
         'aria-errormessage'?: string | undefined;
         'aria-invalid'?: boolean | undefined;
+        className?: string | undefined;
         disabled?: boolean | undefined;
         id?: string | undefined;
         max?: number | undefined;
@@ -42,4 +43,4 @@ export interface HTMLInputDef {
         type?: HTMLInputType | undefined;
     };
 }
-export declare function htmlInputDef<T extends DataType>(field: UCInputField<T>, execState: UCExecState, errMsg: ErrorMessage | null): HTMLInputDef;
+export declare function htmlInputDef<T extends DataType>(field: UCInputField<T>, execState: UCExecState, errMsg: ErrorMessage | null, className: string | undefined): HTMLInputDef;

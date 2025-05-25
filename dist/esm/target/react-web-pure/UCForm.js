@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import { UCFormField } from './UCFormField.js';
 import { UCFormSubmitControl } from './UCFormSubmitControl.js';
-export function UCForm({ clearAfterExec, disabled, execState, onChange, onSubmit: onSubmitBase, uc, }) {
+export function UCForm({ className, clearAfterExec, disabled, execState, onChange, onSubmit: onSubmitBase, uc, }) {
     const formRef = useRef(null);
     const onSubmit = async (e) => {
         e.preventDefault();
@@ -10,8 +10,7 @@ export function UCForm({ clearAfterExec, disabled, execState, onChange, onSubmit
             formRef.current?.reset();
         }
     };
-    return (React.createElement("form", { onSubmit: onSubmit, ref: formRef },
-        uc.inputFieldsForForm().map((f) => (React.createElement("div", { key: f.key },
-            React.createElement(UCFormField, { disabled: disabled, execState: execState, f: f, onChange: onChange })))),
+    return (React.createElement("form", { className: className, onSubmit: onSubmit, ref: formRef },
+        uc.inputFieldsForForm().map((f) => (React.createElement(UCFormField, { key: f.key, disabled: disabled, execState: execState, f: f, onChange: onChange }))),
         React.createElement(UCFormSubmitControl, { execState: execState, disabled: disabled, uc: uc })));
 }

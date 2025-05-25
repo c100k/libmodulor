@@ -1,4 +1,4 @@
 import React, {} from 'react';
-export function UCFormFieldErr({ errMsg }) {
-    return React.createElement("div", null, errMsg);
+export function UCFormFieldErr({ className, errMsg, }) {
+    return React.createElement("div", { className: className }, errMsg);
 }
