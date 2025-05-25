@@ -1,6 +1,6 @@
 import type { ApiKey } from '../../dt/index.js';
 import type { HTTPAPICaller } from '../HTTPAPICaller.js';
-import type { LLMManager, LLMManagerSendReq, LLMManagerSendRes } from '../LLMManager.js';
+import type { LLMManager, LLMManagerSendOpts, LLMManagerSendReq, LLMManagerSendRes } from '../LLMManager.js';
 import type { Configurable, Settings, SettingsManager } from '../SettingsManager.js';
 export interface OpenAILLMManagerSettings extends Settings {
     oai_api_key: ApiKey;
@@ -12,6 +12,6 @@ export declare class OpenAILLMManager implements Configurable<S>, LLMManager {
     private static BASE_URL;
     constructor(httpAPICaller: HTTPAPICaller, settingsManager: SettingsManager<S>);
     s(): OpenAILLMManagerSettings;
-    send(req: LLMManagerSendReq): Promise<LLMManagerSendRes>;
+    send(req: LLMManagerSendReq, opts?: LLMManagerSendOpts): Promise<LLMManagerSendRes>;
 }
 export {};

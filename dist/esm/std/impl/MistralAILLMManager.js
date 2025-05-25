@@ -26,10 +26,10 @@ let MistralAILLMManager = class MistralAILLMManager {
             mai_api_key: this.settingsManager.get()('mai_api_key'),
         };
     }
-    async send(req) {
+    async send(req, opts) {
         return await this.httpAPICaller.exec({
             authorizationHeader: {
-                value: req.auth?.apiKey ?? this.s().mai_api_key,
+                value: opts?.auth?.apiKey ?? this.s().mai_api_key,
                 prefix: 'Bearer',
             },
             errBuilder: async (error) => {
