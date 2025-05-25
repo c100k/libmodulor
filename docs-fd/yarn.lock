@@ -2626,10 +2626,9 @@ layout-base@^2.0.0:
   resolved "https://registry.yarnpkg.com/layout-base/-/layout-base-2.0.1.tgz#d0337913586c90f9c2c075292069f5c2da5dd285"
   integrity sha512-dp3s92+uNI1hWIpPGH3jK2kxE2lMjdXdr+DH8ynZHpd6PUlH6x6cbuXnoMmiNumznqaNO31xu9e79F0uuZ0JFg==
 
-libmodulor@^0.14.0:
+libmodulor@c100k/libmodulor#fa86d25:
   version "0.14.0"
-  resolved "https://registry.yarnpkg.com/libmodulor/-/libmodulor-0.14.0.tgz#090cf7b21b647cc47501eb186d011819d4e6d300"
-  integrity sha512-X4gadGlRs2PGXk/0nVdnZvVY2ZrCAQoky6qr2MpYHR5W5cjF/05jhktlzwizX/TzqztUaJSWmBaEK0NWCoBX7A==
+  resolved "https://codeload.github.com/c100k/libmodulor/tar.gz/fa86d252dfcb868f0bade4476d2debaada45fa29"
 
 lightningcss-darwin-arm64@1.30.1:
   version "1.30.1"

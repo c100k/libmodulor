@@ -43,23 +43,31 @@ class PromptLLMClientMain implements UCMain<PromptLLMInput, PromptLLMOPI0> {
     }: UCMainInput<PromptLLMInput, PromptLLMOPI0>): Promise<
         UCOutput<PromptLLMOPI0>
     > {
+        const apiKey = uc.reqVal0<ApiKey>('apiKey');
         const modelName = uc.reqVal0<Slug>('modelName');
         const prompt = uc.reqVal0<FreeTextLong>('prompt');
 
-        const { choices } = await this.llmManager.send({
-            messages: [
-                {
-                    content:
-                        'Answer only quick questions about Sports in general. Discard any other request.',
-                    role: 'system',
+        const { choices } = await this.llmManager.send(
+            {
+                messages: [
+                    {
+                        content:
+                            'Answer only quick questions about Sports in general. Discard any other request.',
+                        role: 'system',
+                    },
+                    {
+                        content: prompt,
+                        role: 'user',
+                    },
+                ],
+                model: modelName,
+            },
+            {
+                auth: {
+                    apiKey,
                 },
-                {
-                    content: prompt,
-                    role: 'user',
-                },
-            ],
-            model: modelName,
-        });
+            },
+        );
         const res = choices.map((c) => c.message.content).join('\n');
 
         const id = this.cryptoManager.randomUUID();
@@ -93,9 +101,13 @@ export const PromptLLMUCD: UCDef<PromptLLMInput, PromptLLMOPI0> = {
                     ),
                 },
                 prompt: {
-                    type: new TFreeTextLong().setExamples([
-                        'Who won the FIFA World Cup in 1998 and 2018 ?',
-                    ]),
+                    type: new TFreeTextLong()
+                        .setExamples([
+                            'Who won the FIFA World Cup in 1998 and 2018 ?',
+                        ])
+                        .setInitialValue(
+                            'Who won the FIFA World Cup in 1998 and 2018 ?',
+                        ),
                 },
             },
         },
