@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v0.15.0 (unreleased)
+
+- In `LLMManager`, allow to pass the `apiKey` directly in the request. It precedes the settings value defined at the implementation level
+
 ## v0.14.0 (2025-05-24)
 
 - Introduce `useAction` for react targets : it's a use case agnostic way of invoking an action

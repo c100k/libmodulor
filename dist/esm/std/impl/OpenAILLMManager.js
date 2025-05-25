@@ -29,7 +29,7 @@ let OpenAILLMManager = class OpenAILLMManager {
     async send(req) {
         return await this.httpAPICaller.exec({
             authorizationHeader: {
-                value: this.s().oai_api_key,
+                value: req.auth?.apiKey ?? this.s().oai_api_key,
                 prefix: 'Bearer',
             },
             errBuilder: async (error) => error.error.message,

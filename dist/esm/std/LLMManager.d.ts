@@ -1,7 +1,13 @@
-import type { FreeTextLong } from '../dt/index.js';
+import type { ApiKey, FreeTextLong } from '../dt/index.js';
 export type LLMManagerModel = string;
 export type LLMManagerTemperature = number;
 export interface LLMManagerSendReq {
+    /**
+     * By default, each implementation reads the auth from the settings. If provided here, it takes precedence over the settings value.
+     */
+    auth?: {
+        apiKey?: ApiKey;
+    };
     messages: {
         content: FreeTextLong;
         /**
