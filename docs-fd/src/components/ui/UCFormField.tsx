@@ -14,7 +14,7 @@ export function UCFormField<T extends DataType>({
     const { label } = wordingManager.ucif(f);
 
     return (
-        <div>
+        <div className="flex flex-col gap-1">
             <label
                 className="block text-sm font-medium text-gray-700 mb-1"
                 htmlFor={ucifId(f.key)}

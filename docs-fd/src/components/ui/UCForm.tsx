@@ -30,7 +30,7 @@ export function UCForm<
     };
 
     return (
-        <form className="flex flex-col gap-4" onSubmit={onSubmit} ref={formRef}>
+        <form className="flex flex-col gap-5" onSubmit={onSubmit} ref={formRef}>
             {uc.inputFieldsForForm().map((f) => (
                 <UCFormField
                     key={f.key}
