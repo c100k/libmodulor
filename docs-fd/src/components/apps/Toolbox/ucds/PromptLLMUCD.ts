@@ -1,3 +1,4 @@
+import { inject, injectable } from 'inversify';
 import {
     type ApiKey,
     type CryptoManager,
@@ -18,7 +19,6 @@ import {
     UCOutputBuilder,
 } from 'libmodulor';
 
-import { inject, injectable } from 'inversify';
 import { Manifest } from '../manifest';
 
 export interface PromptLLMInput extends UCInput {
