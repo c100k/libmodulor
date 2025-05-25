@@ -1,9 +1,9 @@
 import type { UCInput, UCOPIBase } from 'libmodulor';
 import type { UCFormProps } from 'libmodulor/react';
+import { UCFormSubmitControl } from 'libmodulor/react-web-pure';
 import React, { type ReactElement, type FormEventHandler, useRef } from 'react';
 
 import { UCFormField } from './UCFormField';
-import { UCFormSubmitControl } from './UCFormSubmitControl';
 
 export function UCForm<
     I extends UCInput | undefined = undefined,
@@ -30,19 +30,19 @@ export function UCForm<
     };
 
     return (
-        <form className="flex flex-col gap-4" onSubmit={onSubmit} ref={formRef}>
+        <form className="flex flex-col gap-5" onSubmit={onSubmit} ref={formRef}>
             {uc.inputFieldsForForm().map((f) => (
-                <div key={f.key}>
-                    <UCFormField
-                        disabled={disabled}
-                        execState={execState}
-                        field={f}
-                        onChange={onChange}
-                    />
-                </div>
+                <UCFormField
+                    key={f.key}
+                    disabled={disabled}
+                    execState={execState}
+                    f={f}
+                    onChange={onChange}
+                />
             ))}
 
             <UCFormSubmitControl
+                className="px-6 py-1 bg-gray-900 text-white rounded shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
                 execState={execState}
                 disabled={disabled}
                 uc={uc}

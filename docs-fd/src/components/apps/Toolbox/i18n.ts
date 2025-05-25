@@ -11,6 +11,10 @@ export const I18n: AppI18n = {
         uc_GenerateMiscData_i_submit_submitting: 'Generating',
         uc_GenerateMiscData_op_0_label: 'Misc',
         uc_GenerateMiscData_op_1_label: 'UUIDs',
+        uc_PromptLLM_desc:
+            'Ask something about sports to an LLM (Mistral) and get a response back (BYOT (Bring You Own Token))',
+        uc_PromptLLM_i_submit_idle: 'Send',
+        uc_PromptLLM_i_submit_submitting: 'Sending',
         ucif_uuidCount_label: 'UUID count',
     },
 };

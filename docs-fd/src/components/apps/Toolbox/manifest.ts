@@ -14,5 +14,10 @@ export const Manifest = {
             icon: 'gear',
             name: 'GenerateMiscData',
         },
+        PromptLLM: {
+            action: 'Create',
+            icon: 'gear',
+            name: 'PromptLLM',
+        },
     },
 } satisfies AppManifest;
