@@ -32,14 +32,13 @@ export function UCForm<
     return (
         <form className="flex gap-2" onSubmit={onSubmit} ref={formRef}>
             {uc.inputFieldsForForm().map((f) => (
-                <div key={f.key}>
-                    <UCFormField
-                        disabled={disabled}
-                        execState={execState}
-                        field={f}
-                        onChange={onChange}
-                    />
-                </div>
+                <UCFormField
+                    disabled={disabled}
+                    execState={execState}
+                    key={f.key}
+                    f={f}
+                    onChange={onChange}
+                />
             ))}
 
             <UCFormSubmitControl

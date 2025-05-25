@@ -1,29 +1,26 @@
 import { type DataType, ucifId } from 'libmodulor';
-import { useDIContext } from 'libmodulor/react';
+import { type UCFormFieldProps, useDIContext } from 'libmodulor/react';
 import React, { type ReactElement } from 'react';
 
-import {
-    type Props as FormFieldControlProps,
-    UCFormFieldControl,
-} from './UCFormFieldControl.js';
+import { UCFormFieldControl } from './UCFormFieldControl.js';
 
 export function UCFormField<T extends DataType>({
     disabled,
     execState,
-    field,
+    f,
     onChange,
-}: FormFieldControlProps<T>): ReactElement {
+}: UCFormFieldProps<T>): ReactElement {
     const { wordingManager } = useDIContext();
 
-    const { label } = wordingManager.ucif(field);
+    const { label } = wordingManager.ucif(f);
 
     return (
-        <label className="floating-label" htmlFor={ucifId(field.key)}>
+        <label className="floating-label" htmlFor={ucifId(f.key)}>
             <span>{label}</span>
             <UCFormFieldControl
                 disabled={disabled}
                 execState={execState}
-                field={field}
+                f={f}
                 onChange={onChange}
             />
         </label>
