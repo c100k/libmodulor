@@ -97,6 +97,9 @@ importers:
       '@types/node':
         specifier: ^22.16.5
         version: 22.16.5
+      '@typescript/native-preview':
+        specifier: 7.0.0-dev.20250527.1
+        version: 7.0.0-dev.20250527.1
       jose:
         specifier: ^6.0.12
         version: 6.0.12

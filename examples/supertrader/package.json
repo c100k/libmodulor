@@ -16,7 +16,7 @@
         "run:server-nextjs": "cd dist/products/SuperTrader/server-nextjs && next dev",
         "run:server-node-express": "cd dist/products/SuperTrader/server-node-express && node --env-file .env index.js",
         "run:server-node-hono": "cd dist/products/SuperTrader/server-node-hono && node --env-file .env index.js",
-        "test": "tsc && vitest run --passWithNoTests"
+        "test": "tsgo && vitest run --passWithNoTests"
     },
     "dependencies": {
         "@hono/node-server": "^1.17.1",

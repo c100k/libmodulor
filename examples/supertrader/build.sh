@@ -4,8 +4,11 @@ buildDir=dist
 srcDir=src
 productPath=products/SuperTrader
 
-echo "Building all"
-pnpm tsc --project tsconfig.build.json
+# Clean
+# rm -rf dist
+
+# Build all
+pnpm tsgo --project tsconfig.build.json
 
 # Target specifics
 
