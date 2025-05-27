@@ -27,7 +27,7 @@ const container = new Container(CONTAINER_OPTS);
 bindCommon<S>(container, () => ({
     ...TARGET_DEFAULT_SERVER_MANAGER_SETTINGS,
     knex_uc_data_store_conn_string: 'postgresql://toto',
-    knex_uc_data_store_file_path: 'uc-data-store.sqlite',
+    knex_uc_data_store_file_path: '../../../../uc-data-store.sqlite',
     knex_uc_data_store_pool_max: 5,
     knex_uc_data_store_pool_min: 0,
     knex_uc_data_store_type: 'sqlite3',
