@@ -9,7 +9,7 @@ description: libmodulor can be used in a brownfield project but we recommend sta
 npx libmodulor CreateProject --projectName my-super-project
 ```
 
-By default, it will create a folder named `my-super-project` in the current working directory and install the dependencies using `yarn`.
+By default, it will create a folder named `my-super-project` in the current working directory and install the dependencies using `pnpm`.
 
 If you want to change the defaults (initial commit, pkg manager, etc.), run the `--help` command.
 
@@ -30,8 +30,8 @@ Ok to proceed? (y) y
 2025-02-28T15:32:09.496Z [info] Creating apps and products directories
 2025-02-28T15:32:09.496Z [info] Installing dependencies
 2025-02-28T15:32:16.339Z [info] Committing
-2025-02-28T15:32:16.483Z [info] Testing dev command : yarn lint
-2025-02-28T15:32:17.134Z [info] Testing dev command : yarn test
+2025-02-28T15:32:16.483Z [info] Testing dev command : pnpm run lint
+2025-02-28T15:32:17.134Z [info] Testing dev command : pnpm run test
 2025-02-28T15:32:18.342Z [info] Done ! Project ready ! ✅ 🚀
 ```
 
@@ -42,7 +42,7 @@ The generated directory has the following structure :
     📁 apps # the apps of the project (empty for now)
     📁 products # the products of the project (empty for now)
 📄 .gitignore # includes the files/dirs patterns to exclude from version control
-📄 biome.json # config for the linter (feel free to change it if you don't like the defaults and run yarn lint again)
+📄 biome.json # config for the linter (feel free to change it if you don't like the defaults and run pnpm lint again)
 📄 package.json # main config file containing info, scripts and dependencies
 📄 README.md # main documentation file (feel free to enhance it with explanations about the purpose of your project)
 📄 tsconfig.json # config file for TypeScript (pretty strict by default)

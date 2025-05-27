@@ -1,4 +1,4 @@
-yarn tsc \
+pnpm tsc \
     --emitDecoratorMetadata \
     --experimentalDecorators \
     --module nodenext \

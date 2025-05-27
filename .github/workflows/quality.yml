@@ -9,43 +9,36 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
       - uses: actions/setup-node@v4
         with:
           node-version: 23
-
-      # https://github.com/actions/cache/blob/main/examples.md#node---yarn
-      - name: Get yarn cache directory path
-        id: yarn-cache-dir-path
-        run: echo "dir=$(yarn cache dir)" >> $GITHUB_OUTPUT
-
-      - uses: actions/cache@v4
-        id: yarn-cache
-        with:
-          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-
+          cache: 'pnpm'
 
       - name: Install dependencies
         run: |
-          yarn install
+          pnpm install
 
       - name: Lint
         run: |
-          yarn lint:ci
+          pnpm lint:ci
 
       - name: Build & Run examples/basic
         run: |
           cd examples/basic
-          yarn install
-          yarn build && yarn run:node
+          pnpm install
+          pnpm build && pnpm run:node
 
       - name: Build & Run examples/supertrader
         run: |
           cd examples/supertrader
-          yarn install && touch .env && yarn build
-          yarn test
-          nohup yarn run:server-node-express &
+          pnpm install && touch .env && pnpm build
+          pnpm test
+          nohup pnpm run:server-node-express &
           sleep 3
           curl -X POST -H "Content-Type: application/json" http://localhost:7443/api/v1/Trading_BuyAsset
-          yarn run:cli Trading_BuyAsset
+          pnpm run:cli Trading_BuyAsset
