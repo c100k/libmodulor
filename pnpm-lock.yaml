@@ -180,8 +180,11 @@ importers:
         version: 0.2.2
     devDependencies:
       '@types/node':
-        specifier: ^22.15.29
-        version: 22.15.29
+        specifier: ^22.15.21
+        version: 22.15.21
+      '@typescript/native-preview':
+        specifier: 7.0.0-dev.20250527.1
+        version: 7.0.0-dev.20250527.1
       jose:
         specifier: ^6.0.11
         version: 6.0.11

@@ -4,7 +4,7 @@ productPath=products/SuperTrader
 # rm -rf dist
 
 # Build all
-pnpm tsc --project tsconfig.build.json
+pnpm tsgo --project tsconfig.build.json
 
 # Target specifics
 
