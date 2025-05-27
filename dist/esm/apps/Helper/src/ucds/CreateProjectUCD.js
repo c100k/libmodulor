@@ -156,7 +156,7 @@ export const CreateProjectUCD = {
                         min: 0,
                     },
                     type: new TFileName()
-                        .setDefaultValue('yarn')
+                        .setDefaultValue('pnpm')
                         .setExamples(['bun', 'npm', 'pnpm', 'yarn']),
                 },
                 projectName: {

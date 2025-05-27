@@ -1,6 +1,14 @@
 # CHANGELOG
 
+## v0.16.0 (unreleased)
+
+**BREAKING**
+
+- Make `pnpm` (in replacement of `yarn`) the default package manager in `npx libmodulor CreateProject`
+
 ## v0.15.0 (2025-05-25)
+
+**Added**
 
 - In `LLMManager`, allow to pass the `apiKey` directly in the request. It precedes the settings value defined at the implementation level
 - In `target/react`, add optional `className` to stylable components
