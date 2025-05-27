@@ -4,7 +4,7 @@ export default defineConfig({
     test: {
         coverage: {
             enabled: true,
-            exclude: ['src/apps/**/test', 'src/**/*.test.ts'],
+            exclude: ['src/apps/**/test', 'src/**/*.test.ts', 'src/**/.next'],
             include: ['src'],
             reporter: ['html', 'lcov', 'text'],
         },
