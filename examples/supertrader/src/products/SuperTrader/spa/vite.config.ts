@@ -7,7 +7,7 @@ import { type PluginOption, defineConfig } from 'vite';
 
 const projectRoot = process.cwd();
 const targetsPath = join('src', 'products', 'SuperTrader');
-const root = join(targetsPath, 'web');
+const root = join(targetsPath, 'spa');
 
 const serverTargetsName = ['server-node-express', 'server-node-hono'] as const;
 const distTargetsPath = join(projectRoot, 'dist', 'products', 'SuperTrader');

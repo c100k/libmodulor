@@ -1,4 +1,4 @@
 @import "tailwindcss";
 @plugin "daisyui";
 
-@source '../../../web/components/*.tsx';
+@source '../../../spa/components/*.tsx';

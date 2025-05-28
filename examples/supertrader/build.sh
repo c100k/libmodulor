@@ -5,8 +5,8 @@ pnpm tsc --project tsconfig.build.json
 cp .env dist/products/SuperTrader/server-node-express/.env
 cp .env dist/products/SuperTrader/server-node-hono/.env
 
-# web specific
-pnpm vite -c src/products/SuperTrader/web/vite.config.ts build
+# spa specific
+pnpm vite -c src/products/SuperTrader/spa/vite.config.ts build
 
 # rn specific
 rm -Rf dist/products/SuperTrader/rn # let metro/babel transpiles the code

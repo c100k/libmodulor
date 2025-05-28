@@ -7,7 +7,7 @@ SuperTrader is a product featuring the `Trading` app with `BuyAssetUCD`, `Cancel
 
 <Cards>
     <Card description="Server running with Node.js and Express" href="#server-node-express" title="server-node-express"  />
-    <Card description="SPA running with React" href="#web" title="web" />
+    <Card description="SPA running with React" href="#spa" title="spa" />
     <Card description="Command Line Interface running with Node.js" href="#cli" title="cli" />
     <Card description="Local Stdio MCP Server running with Node.js" href="#mcp-server" title="mcp-server" />
     <Card description="Android & iOS mobile app" href="#rn" title="rn" />
@@ -79,15 +79,15 @@ curl -H "Content-Type: application/json" -H "X-API-Key: PublicApiKeyToBeChangedW
     Keep your server running to test the "client" targets defined below.
 </Callout>
 
-### web
+### spa
 
-The `web` target uses the built-in `react-web-pure` target, is bundled with `vite` and uses custom components made with `tailwindcss@v4` & `daisyUI@v5`.
+The `spa` (Single Page Application) target uses the built-in `react-web-pure` target, is bundled with `vite` and uses custom components made with `tailwindcss@v4` & `daisyUI@v5`.
 
-It is served as a SPA by the server defined above.
+It is served by the server defined above for convenience, but it could be served by anything (e.g. an S3 bucket).
 
 Test in your browser at http://localhost:7443.
 
-![Web UI](./assets/supertrader-target-web-tailwindcss-daisyui.png)
+![Web UI](./assets/supertrader-target-spa-tailwindcss-daisyui.png)
 
 ### cli
 
@@ -179,7 +179,7 @@ You can go back to all the client targets and run them. It will work the exact s
 
 ### server-nextjs
 
-The `server-nextjs` target uses the built-in `server-nextjs` target and the same components as the `web` target defined above.
+The `server-nextjs` target uses the built-in `server-nextjs` target and the same components as the `spa` target defined above.
 
 ```sh
 pnpm run:server-nextjs
