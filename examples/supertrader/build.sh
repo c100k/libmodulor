@@ -9,6 +9,6 @@ cp .env dist/products/SuperTrader/server-node-hono/.env
 pnpm vite -c src/products/SuperTrader/spa/vite.config.ts build
 
 # rn specific
-rm -Rf dist/products/SuperTrader/rn # let metro/babel transpiles the code
+rm -Rf dist/products/SuperTrader/rn # let metro/babel transpile the code
 cp -R src/products/SuperTrader/rn dist/products/SuperTrader/
 echo '{"name":"rn","type":"module"}' > dist/products/SuperTrader/rn/package.json

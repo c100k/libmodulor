@@ -27,6 +27,9 @@ config.resolver = {
     unstable_enablePackageExports: true,
 };
 
-config.watchFolders = [join(__dirname, '..', '..', '..', '..')];
+config.watchFolders = [
+    join(__dirname, '..', '..', '..', '..'),
+    join(__dirname, '..', '..', '..', '..', '..', '..', 'node_modules'),
+];
 
 module.exports = config;
