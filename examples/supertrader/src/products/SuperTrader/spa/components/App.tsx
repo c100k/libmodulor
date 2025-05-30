@@ -9,14 +9,16 @@ import {
 import React, { useEffect, useState, type ReactElement } from 'react';
 
 import {
+    UCAutoExecLoader,
+    UCExecTouchable,
+    UCForm,
+} from 'libmodulor/react-web-pure';
+import {
     BuyAssetUCD,
     ListOrdersUCD,
     Manifest,
 } from '../../../../apps/Trading/index.js';
 import OrdersTable from './OrdersTable.js';
-import { UCAutoExecLoader } from './UCAutoExecLoader.js';
-import { UCExecTouchable } from './UCExecTouchable.js';
-import { UCForm } from './UCForm.js';
 
 export default function App(): ReactElement {
     const { container, i18nManager, wordingManager } = useDIContext();
@@ -52,7 +54,7 @@ export default function App(): ReactElement {
     const { label: listOrdersLabel } = wordingManager.uc(listOrdersUC.def);
 
     return (
-        <div className="flex flex-col gap-3 p-8 w-2/3">
+        <div className="flex flex-col gap-3 p-8">
             {loading && <span className="loading loading-ring loading-xl" />}
 
             {!loading && (

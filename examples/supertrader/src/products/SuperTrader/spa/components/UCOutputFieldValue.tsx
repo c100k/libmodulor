@@ -9,10 +9,10 @@ import Badge from './Badge.js';
 export default function UCOutputFieldValue<
     OPI extends UCOPIBase,
     T extends DataType,
->({ field, value }: UCOutputFieldValueFragmentProps<OPI, T>): ReactElement {
+>({ f, value }: UCOutputFieldValueFragmentProps<OPI, T>): ReactElement {
     const {
         def: { type },
-    } = field;
+    } = f;
     type.assign(value);
 
     if (type instanceof TISIN && typeof value === 'string') {
@@ -23,5 +23,5 @@ export default function UCOutputFieldValue<
         return <Badge type={type} value={type.fmt()} />;
     }
 
-    return <UCOutputFieldValueBase field={field} value={value} />;
+    return <UCOutputFieldValueBase f={f} value={value} />;
 }
