@@ -1,5 +1,5 @@
 # build all targets
-pnpm tsc --project tsconfig.build.json
+pnpm tsgo --project tsconfig.build.json
 
 # server specific
 cp .env dist/products/SuperTrader/server-node-express/.env
