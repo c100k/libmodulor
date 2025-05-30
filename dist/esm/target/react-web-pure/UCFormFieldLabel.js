@@ -1,8 +1,13 @@
 import React, {} from 'react';
-import { ucifId } from '../../uc/index.js';
+import { ucifId, ucifIsMandatory } from '../../uc/index.js';
 import { useDIContext } from '../lib/react/DIContextProvider.js';
-export function UCFormFieldLabel({ className, f, }) {
+import { useStyleContext } from '../lib/react/StyleContextProvider.js';
+export function UCFormFieldLabel({ f, }) {
     const { wordingManager } = useDIContext();
+    const { formFieldLabel } = useStyleContext();
     const { label } = wordingManager.ucif(f);
-    return (React.createElement("label", { className: className, htmlFor: ucifId(f.key) }, label));
+    const mandatory = ucifIsMandatory(f.def);
+    return (React.createElement("label", { className: formFieldLabel?.className, htmlFor: ucifId(f.key), style: formFieldLabel?.style },
+        label,
+        mandatory && ' *'));
 }

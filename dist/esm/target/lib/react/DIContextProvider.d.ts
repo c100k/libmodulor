@@ -9,8 +9,6 @@ export interface DIContextT {
 }
 export declare const DIContext: React.Context<DIContextT | null>;
 export declare function useDIContext(): DIContextT;
-interface Props {
-    container: Container;
-}
+type Props = Pick<DIContextT, 'container'>;
 export declare function DIContextProvider({ children, container, }: PropsWithChildren<Props>): ReactElement;
 export {};

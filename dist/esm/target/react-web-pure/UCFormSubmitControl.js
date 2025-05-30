@@ -1,6 +1,8 @@
 import React, {} from 'react';
 import { useDIContext } from '../lib/react/DIContextProvider.js';
-export function UCFormSubmitControl({ className, execState, disabled, uc, }) {
+import { useStyleContext } from '../lib/react/StyleContextProvider.js';
+export function UCFormSubmitControl({ execState, disabled, uc, }) {
     const { wordingManager } = useDIContext();
-    return (React.createElement("input", { className: className, disabled: disabled, type: "submit", value: wordingManager.ucISubmit(uc.def, execState) }));
+    const { formSubmitControl } = useStyleContext();
+    return (React.createElement("input", { className: formSubmitControl?.className, disabled: disabled, style: formSubmitControl?.style, type: "submit", value: wordingManager.ucISubmit(uc.def, execState) }));
 }

@@ -1,4 +1,6 @@
 import React, {} from 'react';
-export function UCFormFieldErr({ className, errMsg, }) {
-    return React.createElement("div", { className: className }, errMsg);
+import { useStyleContext } from '../lib/react/StyleContextProvider.js';
+export function UCFormFieldErr({ errMsg }) {
+    const { formFieldErr } = useStyleContext();
+    return (React.createElement("div", { className: formFieldErr?.className, style: formFieldErr?.style }, errMsg));
 }

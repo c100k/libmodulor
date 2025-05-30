@@ -1,4 +1,5 @@
-export { DIContext, useDIContext, DIContextProvider, } from './target/lib/react/DIContextProvider.js';
+export { DIContext, DIContextProvider, useDIContext, } from './target/lib/react/DIContextProvider.js';
+export { StyleContext, StyleContextProvider, useStyleContext, } from './target/lib/react/StyleContextProvider.js';
 export { UCContainer } from './target/lib/react/UCContainer.js';
 export { UCEntrypoint } from './target/lib/react/UCEntrypoint.js';
 export { UCOutputFieldValueFragment, } from './target/lib/react/UCOutputFieldValueFragment.js';

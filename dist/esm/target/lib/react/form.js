@@ -1,3 +1,4 @@
+import { isBlank } from '../../../utils/index.js';
 export const UC_FORM_FIELD_ELEMENTS = [
     'control',
     'desc',
@@ -5,6 +6,9 @@ export const UC_FORM_FIELD_ELEMENTS = [
     'label',
 ];
 export function validateFormField(i18nManager, f, v) {
+    if (isBlank(v)) {
+        return null;
+    }
     const vArr = Array.isArray(v) ? v : [v];
     for (const vv of vArr) {
         const validation = f.def.type.assign(vv).validate();

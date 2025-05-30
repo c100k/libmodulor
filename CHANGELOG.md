@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## v0.17.0 (unreleased)
+
+**BREAKING**
+
+- Make `target/react-native-pure` and `target/react-web-pure` components stylable
+
 ## v0.16.0 (2025-05-27)
 
 **BREAKING**

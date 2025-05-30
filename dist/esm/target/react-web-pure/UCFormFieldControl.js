@@ -1,11 +1,15 @@
 import React, {} from 'react';
+import { TBoolean } from '../../dt/index.js';
 import { UCInputFieldChangeOperator, ucifRepeatability, } from '../../uc/index.js';
+import { styleDef, useStyleContext, } from '../lib/react/StyleContextProvider.js';
 import { htmlInputDef } from '../lib/web/input.js';
 const CHECKED_FIELD_TYPES = ['checkbox', 'radio'];
 const FILE_FIELD_TYPES = ['file'];
 const MULTIPLE_VALUES_SEPARATOR = ',';
-export function UCFormFieldControl({ className, errMsg = null, execState, f, onChange: onChangeBase, }) {
-    const attrs = htmlInputDef(f, execState, errMsg, className);
+// TODO : Split this into smaller components
+export function UCFormFieldControl({ errMsg = null, execState, f, onChange: onChangeBase, }) {
+    const { formFieldControl } = useStyleContext();
+    const attrs = htmlInputDef(f, execState, errMsg);
     const onChange = (e) => {
         const target = e.currentTarget;
         const type = target.type;
@@ -36,16 +40,23 @@ export function UCFormFieldControl({ className, errMsg = null, execState, f, onC
     const defaultChecked = attrs.internal?.checked;
     const defaultValue = attrs.internal?.value;
     if (attrs.internal?.multiline) {
-        return (React.createElement("textarea", { ...attrs.spec, defaultValue: defaultValue, onChange: onChange }));
+        const { className, style } = styleDef(formFieldControl, 'textarea', 'default');
+        return (React.createElement("textarea", { ...attrs.spec, className: className, defaultValue: defaultValue, onChange: onChange, style: style }));
     }
     const { type } = f.def;
+    if (type instanceof TBoolean) {
+        const { className, style } = styleDef(formFieldControl, 'checkbox');
+        return (React.createElement("input", { ...attrs.spec, className: className, defaultChecked: defaultChecked, defaultValue: defaultValue, onChange: onChange, style: style }));
+    }
     const options = type.getOptions();
     if (options) {
         // TODO : Handle type.hasStrictOptions() => display an input text alongside the select
         // TODO : Consider using a radio and/or checkbox and/or selectable buttons when the options count < X
-        return (React.createElement("select", { ...attrs.spec, defaultValue: defaultValue, onChange: onChange },
+        const { className, style } = styleDef(formFieldControl, 'select', 'default');
+        return (React.createElement("select", { ...attrs.spec, className: className, defaultValue: defaultValue, onChange: onChange, style: style },
             React.createElement("option", null),
             options.map((o) => (React.createElement("option", { key: o.value.toString(), value: o.value.toString() }, o.label)))));
     }
-    return (React.createElement("input", { ...attrs.spec, defaultChecked: defaultChecked, defaultValue: defaultValue, onChange: onChange }));
+    const { className, style } = styleDef(formFieldControl, 'input', 'default');
+    return (React.createElement("input", { ...attrs.spec, className: className, defaultChecked: defaultChecked, defaultValue: defaultValue, onChange: onChange, style: style }));
 }

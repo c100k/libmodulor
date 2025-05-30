@@ -1,4 +1,5 @@
-export { DIContext, useDIContext, DIContextProvider, type DIContextT, } from './target/lib/react/DIContextProvider.js';
+export { DIContext, DIContextProvider, type DIContextT, useDIContext, } from './target/lib/react/DIContextProvider.js';
+export { StyleContext, StyleContextProvider, type StyleContextT, useStyleContext, } from './target/lib/react/StyleContextProvider.js';
 export type { UCFormFieldControlOnChange, UCFormFieldControlProps, UCFormFieldDescProps, UCFormFieldElement, UCFormFieldErrProps, UCFormFieldLabelProps, UCFormFieldProps, UCFormProps, UCFormSubmitControlProps, UC_FORM_FIELD_ELEMENTS, RenderUCForm, validateFormField, } from './target/lib/react/form.js';
 export type { UCPanelCtx, UCPanelOnDone, UCPanelOnError, UCPanelOnInit, UCPanelOnStartSubmitting, UCPanelOnSubmit, UCPanelState, } from './target/lib/react/panel.js';
 export type { UCEntrypointTouchableProps, RenderUCEntrypointTouchable, RenderUCExecTouchable, UCExecTouchableProps, } from './target/lib/react/touchable.js';

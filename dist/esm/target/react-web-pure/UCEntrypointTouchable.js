@@ -1,4 +1,6 @@
 import React, {} from 'react';
-export function UCEntrypointTouchable({ className, path, wording, }) {
-    return (React.createElement("a", { className: className, href: path, title: wording.desc ?? undefined }, wording.label));
+import { useStyleContext } from '../lib/react/StyleContextProvider.js';
+export function UCEntrypointTouchable({ path, wording }) {
+    const { entrypointTouchable } = useStyleContext();
+    return (React.createElement("a", { className: entrypointTouchable?.className, href: path, style: entrypointTouchable?.style, title: wording.desc ?? undefined }, wording.label));
 }
