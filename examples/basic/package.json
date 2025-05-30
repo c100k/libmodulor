@@ -11,7 +11,7 @@
     },
     "dependencies": {
         "inversify": "^7.5.1",
-        "libmodulor": "^0.16.0",
+        "libmodulor": "c100k/libmodulor#01f90de",
         "reflect-metadata": "^0.2.2"
     },
     "devDependencies": {

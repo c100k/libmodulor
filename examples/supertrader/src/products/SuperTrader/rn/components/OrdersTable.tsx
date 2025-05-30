@@ -59,7 +59,7 @@ export default function OrdersTable({
                                 </Text>
                                 <Text>
                                     <UCOutputFieldValue
-                                        field={f}
+                                        f={f}
                                         value={i[f.key]}
                                     />
                                 </Text>
