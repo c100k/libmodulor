@@ -12,13 +12,14 @@ import {
     UCForm,
 } from 'libmodulor/react-native-pure';
 import React, { useEffect, useState, type ReactElement } from 'react';
-import { ScrollView, Text } from 'react-native';
+import { ScrollView, StyleSheet } from 'react-native';
 
 import {
     BuyAssetUCD,
     ListOrdersUCD,
     Manifest,
 } from '../../../../apps/Trading/index.js';
+import AppLoader from './AppLoader.js';
 import H1 from './H1.js';
 import H2 from './H2.js';
 import OrdersTable from './OrdersTable.js';
@@ -54,8 +55,8 @@ export default function App(): ReactElement {
     const { label: listOrdersLabel } = wordingManager.uc(listOrdersUC.def);
 
     return (
-        <ScrollView contentContainerStyle={{ gap: 16, padding: 16 }}>
-            {loading && <Text>Loading...</Text>}
+        <ScrollView contentContainerStyle={styles.container}>
+            {loading && <AppLoader />}
 
             {!loading && (
                 <>
@@ -97,3 +98,10 @@ export default function App(): ReactElement {
         </ScrollView>
     );
 }
+
+const styles = StyleSheet.create({
+    container: {
+        gap: 16,
+        padding: 16,
+    },
+});
