@@ -19,6 +19,8 @@ import {
     ListOrdersUCD,
     Manifest,
 } from '../../../../apps/Trading/index.js';
+import H1 from './H1.js';
+import H2 from './H2.js';
 import OrdersTable from './OrdersTable.js';
 
 export default function App(): ReactElement {
@@ -57,11 +59,11 @@ export default function App(): ReactElement {
 
             {!loading && (
                 <>
-                    <Text style={{ fontSize: 24 }}>
+                    <H1>
                         {productManifest.name} : {slogan}
-                    </Text>
+                    </H1>
 
-                    <Text style={{ fontSize: 16 }}>{buyAssetLabel}</Text>
+                    <H2>{buyAssetLabel}</H2>
 
                     <UCPanel
                         clearAfterExec={false}
@@ -74,7 +76,7 @@ export default function App(): ReactElement {
                         uc={buyAssetUC}
                     />
 
-                    <Text style={{ fontSize: 16 }}>{listOrdersLabel}</Text>
+                    <H2>{listOrdersLabel}</H2>
 
                     <UCPanel
                         autoExec={true}
