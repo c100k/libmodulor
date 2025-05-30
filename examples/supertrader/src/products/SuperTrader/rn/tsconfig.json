@@ -5,6 +5,8 @@
         "experimentalDecorators": true,
         "module": "NodeNext",
         "moduleResolution": "NodeNext",
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
         "strict": true
     }
 }
