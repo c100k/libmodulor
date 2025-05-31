@@ -22,7 +22,7 @@ export interface StyleContextT {
     formSubmitControl?: StyleDef | undefined;
     outputFieldValue?: StyleDef | undefined;
 }
-export declare const StyleContext: React.Context<StyleContextT | null>;
+export declare const StyleContext: React.Context<StyleContextT>;
 export declare function useStyleContext(): StyleContextT;
 type Props = StyleContextT;
 export declare function StyleContextProvider({ children, ...rest }: PropsWithChildren<Props>): ReactElement;

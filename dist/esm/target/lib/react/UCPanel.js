@@ -47,16 +47,14 @@ export function UCPanel({ autoExec = false, clearAfterExec = true, onDone, onErr
     const needsInputFilling = uc.needsInputFilling();
     return (React.createElement(UCContainer, { uc: uc },
         autoExec && loading && renderAutoExecLoader(),
-        !autoExec && (React.createElement(React.Fragment, null,
-            !needsInputFilling &&
-                renderExecTouchable({
-                    ...ctx,
-                    onSubmit: exec,
-                }),
-            needsInputFilling &&
-                renderForm({
-                    ...ctx,
-                    onChange,
-                    onSubmit: exec,
-                })))));
+        !autoExec && needsInputFilling
+            ? renderForm({
+                ...ctx,
+                onChange,
+                onSubmit: exec,
+            })
+            : renderExecTouchable({
+                ...ctx,
+                onSubmit: exec,
+            })));
 }

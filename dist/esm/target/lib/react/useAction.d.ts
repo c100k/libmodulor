@@ -1,5 +1,5 @@
 import type { ErrorMessage, UIntDuration } from '../../../dt/index.js';
-import type { UCExecRes, UCExecState } from '../../../uc/exec.js';
+import type { UCExecRes, UCExecState } from '../../../uc/index.js';
 export type UseActionAction = () => Promise<void>;
 export type UseActionConfirm = () => Promise<boolean>;
 export type UseActionExec = () => Promise<UCExecRes>;

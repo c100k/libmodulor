@@ -4,15 +4,20 @@ export function useAction({ action, autoExec = false, confirm, onError, onInit, 
     const [errMsg, setErrMsg] = useState(null);
     const [execRes, setExecRes] = useState(null);
     const [execState, setExecState] = useState(onInit ? 'initializing' : 'idle');
+    // biome-ignore lint/correctness/useExhaustiveDependencies : must run only once
     useEffect(() => {
-        if (execState !== 'initializing') {
-            return;
-        }
         (async () => {
-            await onInit?.();
-            setExecState('idle');
+            if (execState === 'initializing') {
+                await onInit?.();
+            }
+            if (autoExec) {
+                await exec();
+            }
+            else {
+                setExecState('idle');
+            }
         })();
-    }, [execState, onInit]);
+    }, []);
     const exec = async () => {
         setErrMsg(null);
         setExecRes(null);
@@ -46,12 +51,5 @@ export function useAction({ action, autoExec = false, confirm, onError, onInit, 
             setExecState('idle');
         }
     };
-    // biome-ignore lint/correctness/useExhaustiveDependencies(exec): it complains if I add it AND if I don't add it !
-    useEffect(() => {
-        if (!autoExec) {
-            return;
-        }
-        exec();
-    }, [autoExec]);
     return { errMsg, exec, execRes, execState };
 }

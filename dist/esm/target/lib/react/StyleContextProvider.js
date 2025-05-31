@@ -1,11 +1,7 @@
 import React, { createContext, useContext, } from 'react';
-export const StyleContext = createContext(null);
+export const StyleContext = createContext({});
 export function useStyleContext() {
-    const c = useContext(StyleContext);
-    if (!c) {
-        return {};
-    }
-    return c;
+    return useContext(StyleContext);
 }
 export function StyleContextProvider({ children, ...rest }) {
     return (React.createElement(StyleContext.Provider, { value: rest }, children));
