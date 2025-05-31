@@ -22,7 +22,7 @@ import {
 import AppLoader from './AppLoader.js';
 import H1 from './H1.js';
 import H2 from './H2.js';
-import OrdersTable from './OrdersTable.js';
+import OrdersList from './OrdersList.js';
 
 export default function App(): ReactElement {
     const { container, i18nManager, wordingManager } = useDIContext();
@@ -88,7 +88,7 @@ export default function App(): ReactElement {
                         uc={listOrdersUC}
                     />
 
-                    <OrdersTable
+                    <OrdersList
                         listOrdersPart0={listOrdersPart0}
                         onError={onError}
                         update0={update0}

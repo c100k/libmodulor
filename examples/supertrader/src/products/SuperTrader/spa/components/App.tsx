@@ -18,6 +18,7 @@ import {
     ListOrdersUCD,
     Manifest,
 } from '../../../../apps/Trading/index.js';
+import AppLoader from './AppLoader.js';
 import OrdersTable from './OrdersTable.js';
 
 export default function App(): ReactElement {
@@ -55,7 +56,7 @@ export default function App(): ReactElement {
 
     return (
         <div className="flex flex-col gap-3 p-8">
-            {loading && <span className="loading loading-ring loading-xl" />}
+            {loading && <AppLoader />}
 
             {!loading && (
                 <>

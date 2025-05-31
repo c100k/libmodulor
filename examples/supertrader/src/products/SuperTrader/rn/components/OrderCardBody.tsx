@@ -1,10 +1,10 @@
 import type { UCOutputReaderPart } from 'libmodulor';
 import { useDIContext } from 'libmodulor/react';
-import { UCOutputFieldValue } from 'libmodulor/react-native-pure';
 import React, { type ReactElement } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
 import type { ListOrdersOPI0 } from '../../../../apps/Trading/index.js';
+import UCOutputFieldValue from './UCOutputFieldValue.js';
 
 interface Props {
     fields: UCOutputReaderPart<ListOrdersOPI0>['fields'];
