@@ -21,7 +21,7 @@ interface Props {
     update0: UpdateFunc<ListOrdersOPI0>;
 }
 
-export default function OrdersTable({
+export default function OrdersList({
     listOrdersPart0,
     onError,
     update0,

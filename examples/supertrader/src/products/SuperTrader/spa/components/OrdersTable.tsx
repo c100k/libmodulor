@@ -19,7 +19,7 @@ import {
     Manifest,
 } from '../../../../apps/Trading/index.js';
 import { Hero } from './Hero.js';
-import UCValue from './UCOutputFieldValue.js';
+import UCOutputFieldValue from './UCOutputFieldValue.js';
 
 interface Props {
     listOrdersPart0: UCOutputReaderPart<ListOrdersOPI0>;
@@ -62,7 +62,7 @@ export default function OrdersTable({
                         <td>{idx + 1}</td>
                         {fields.map((f) => (
                             <td key={f.key}>
-                                <UCValue f={f} value={i[f.key]} />
+                                <UCOutputFieldValue f={f} value={i[f.key]} />
                             </td>
                         ))}
                         <td>
