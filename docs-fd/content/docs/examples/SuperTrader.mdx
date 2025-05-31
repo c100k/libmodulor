@@ -160,8 +160,27 @@ The `rn` target uses the built-in `react-native-pure` target, is bundled with `e
 
 Make sure your [environment is setup](https://reactnative.dev/docs/environment-setup) to be able to use the Android Emulator and iOS Simulator (macOS only).
 
+#### android
+
+To call the server running on your machine, the Android emulator uses the special IP address `10.0.2.2`. Therefore, you need to restart you server to listen on `0.0.0.0`.
+
+```sh
+app_server_binding_host=0.0.0.0 pnpm run:server-node-express
+```
+
+Start the application on the android emulator.
+
 ```sh
 pnpm run:rn:android
+```
+
+#### ios
+
+Nothing specific on ios, it just works, even if the server listens on `localhost`.
+
+Start the application on the ios simulator.
+
+```sh
 pnpm run:rn:ios
 ```
 
@@ -189,7 +208,8 @@ pnpm run:server-nextjs
 
 Test in your browser at http://localhost:3000.
 
-You can go back to all the client targets and run them. It will work the exact same way.
+You can go back to all the client targets and run them. It will work the exact same way...
+except for one detail : adapt the port in the settings of each target (in `container.ts`) to use `3000` instead of the default `7443`.
 
 ## Inspect UCDataStore
 

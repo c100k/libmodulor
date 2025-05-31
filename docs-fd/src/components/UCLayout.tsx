@@ -8,12 +8,13 @@ import {
     bindCommon,
     bindProduct,
 } from 'libmodulor';
-import { DIContextProvider } from 'libmodulor/react';
+import { DIContextProvider, StyleContextProvider } from 'libmodulor/react';
 import { bindWeb } from 'libmodulor/web';
 import React, { type PropsWithChildren, type ReactElement } from 'react';
 
 import { I18n } from './products/Main/i18n';
 import { Manifest } from './products/Main/manifest';
+import { style } from './style';
 
 const container = new Container(CONTAINER_OPTS);
 bindCommon(container);
@@ -26,6 +27,8 @@ export default function UCLayout({
     children,
 }: PropsWithChildren): ReactElement | null {
     return (
-        <DIContextProvider container={container}>{children}</DIContextProvider>
+        <DIContextProvider container={container}>
+            <StyleContextProvider {...style}>{children}</StyleContextProvider>
+        </DIContextProvider>
     );
 }
