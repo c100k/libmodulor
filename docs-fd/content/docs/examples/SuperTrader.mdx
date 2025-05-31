@@ -175,6 +175,8 @@ The `server-node-hono` is the same as `server-node-express` defined above, excep
 pnpm run:server-node-hono
 ```
 
+Test in your browser at http://localhost:7443.
+
 You can go back to all the client targets and run them. It will work the exact same way.
 
 ### server-nextjs
@@ -187,9 +189,11 @@ pnpm run:server-nextjs
 
 Test in your browser at http://localhost:3000.
 
+You can go back to all the client targets and run them. It will work the exact same way.
+
 ## Inspect UCDataStore
 
-The `server-*` targets rebinds the `UCDataStore` from in memory (default) to `KnexUCDataStore` configured for SQLite.
+The `server-*` targets rebind the `UCDataStore` from `InMemoryUCDataStore` (default) to `KnexUCDataStore` configured for `SQLite`.
 
 Therefore, if you have executed the use case via the targets above, you can see the data in the DB file.
 
