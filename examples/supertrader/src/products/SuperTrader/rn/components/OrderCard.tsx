@@ -35,7 +35,9 @@ export default function OrderCard({
     onError,
     update0,
 }: Props): ReactElement {
-    const [deleteUC] = useUC(Manifest, CancelOrderUCD, null);
+    const [deleteUC] = useUC(Manifest, CancelOrderUCD, null, {
+        fillWith: { id: item.id },
+    });
 
     return (
         <View key={item.id} style={styles.container}>
