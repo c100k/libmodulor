@@ -1,7 +1,9 @@
 import { Container } from 'inversify';
 import {
     CONTAINER_OPTS,
+    EnvSettingsManager,
     type ServerClientManagerSettings,
+    type SettingsManager,
     TARGET_DEFAULT_SERVER_CLIENT_MANAGER_SETTINGS,
     bindCommon,
     bindProduct,
@@ -19,5 +21,9 @@ bindCommon<ServerClientManagerSettings>(container, () => ({
 bindNodeCore(container);
 bindNodeCLI(container);
 bindProduct(container, Manifest, I18n);
+
+(await container.rebind<SettingsManager>('SettingsManager')).to(
+    EnvSettingsManager,
+);
 
 export default container;
