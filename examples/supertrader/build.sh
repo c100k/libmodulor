@@ -1,14 +1,33 @@
-# build all targets
+productPath=products/SuperTrader
+
+# Clean
+# rm -rf dist
+
+# Build all
 pnpm tsc --project tsconfig.build.json
 
-# server specific
-cp .env dist/products/SuperTrader/server-node-express/.env
-cp .env dist/products/SuperTrader/server-node-hono/.env
+# Target specifics
 
-# spa specific
-pnpm vite -c src/products/SuperTrader/spa/vite.config.ts build
+# cli
+# noop
 
-# rn specific
-rm -Rf dist/products/SuperTrader/rn # let metro/babel transpile the code
-cp -R src/products/SuperTrader/rn dist/products/SuperTrader/
-echo '{"name":"rn","type":"module"}' > dist/products/SuperTrader/rn/package.json
+# mcp-server
+# noop
+
+# rn
+rm -Rf dist/$productPath/rn # let metro/babel transpile the code
+cp -R src/$productPath/rn dist/$productPath/
+echo '{"name":"rn","type":"module"}' > dist/$productPath/rn/package.json # required by expo
+
+# server-nextjs
+rm -Rf dist/$productPath/server-nextjs # let next.js transpile the code
+cp -R src/$productPath/server-nextjs dist/$productPath/
+
+# server-node-express
+cp .env dist/$productPath/server-node-express/.env
+
+# server-node-hono
+cp .env dist/$productPath/server-node-hono/.env
+
+# spa
+pnpm vite -c src/$productPath/spa/vite.config.ts build
