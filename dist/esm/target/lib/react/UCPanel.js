@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ucIsDisabled, ucIsLoading, } from '../../../uc/index.js';
+import { ucIsDisabled, } from '../../../uc/index.js';
 import { sleep } from '../../../utils/index.js';
 import { useDIContext } from './DIContextProvider.js';
 import { UCContainer } from './UCContainer.js';
@@ -35,18 +35,15 @@ export function UCPanel({ autoExec = false, clearAfterExec = true, onDone, onErr
         }
         uc.clear();
     };
-    const disabled = ucIsDisabled(execState);
-    const loading = ucIsLoading(execState);
-    // TODO : Keep these as a state to avoid recomputation
+    const needsInputFilling = uc.needsInputFilling();
     const ctx = {
         clearAfterExec,
-        disabled,
+        disabled: ucIsDisabled(execState),
         execState,
         uc,
     };
-    const needsInputFilling = uc.needsInputFilling();
     return (React.createElement(UCContainer, { uc: uc },
-        autoExec && loading && renderAutoExecLoader(),
+        autoExec && ctx.disabled && renderAutoExecLoader(),
         !autoExec && (React.createElement(React.Fragment, null,
             needsInputFilling &&
                 renderForm({
