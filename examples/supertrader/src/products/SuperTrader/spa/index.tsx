@@ -1,9 +1,10 @@
-import { DIContextProvider } from 'libmodulor/react';
+import { DIContextProvider, StyleContextProvider } from 'libmodulor/react';
 import React, { StrictMode } from 'react';
 import ReactDOM from 'react-dom/client';
 
 import App from './components/App.js';
 import container from './container.js';
+import { style } from './style.js';
 
 const rootElt = document.getElementById('root');
 if (!rootElt) {
@@ -13,7 +14,9 @@ if (!rootElt) {
 ReactDOM.createRoot(rootElt).render(
     <StrictMode>
         <DIContextProvider container={container}>
-            <App />
+            <StyleContextProvider {...style}>
+                <App />
+            </StyleContextProvider>
         </DIContextProvider>
     </StrictMode>,
 );

@@ -1,6 +1,6 @@
 import type { DataType, UCOPIBase } from 'libmodulor';
 import type { UCOutputFieldValueFragmentProps } from 'libmodulor/react';
-import { UCOutputFieldValue as UCOutputFieldValueBase } from 'libmodulor/react-web-pure';
+import { UCOutputFieldValue as UCOutputFieldValueBase } from 'libmodulor/react-native-pure';
 import React, { type ReactElement } from 'react';
 
 import { TISIN, TOrderStatus } from '../../../../apps/Trading/index.js';

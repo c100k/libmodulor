@@ -21,7 +21,7 @@ const SEMANTICS_VARIANT_BADGE_CLASSES_MAPPING: Record<SemanticsVariant, Slug> =
 export default function Badge<T extends DataType>({
     type,
     value,
-}: Props<T>): ReactElement | null {
+}: Props<T>): ReactElement {
     const semantics = type.getSemanticsMapping()?.[value];
 
     let className = '';
