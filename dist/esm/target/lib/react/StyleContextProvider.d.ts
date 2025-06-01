@@ -1,5 +1,6 @@
 import React, { type PropsWithChildren, type ReactElement } from 'react';
-import type { Color } from '../../../dt/index.js';
+import type { Color, DataType } from '../../../dt/index.js';
+import type { UCFormFieldControlProps } from './form.js';
 export interface StyleDef {
     className?: string | undefined;
     style?: Record<string, unknown> | undefined;
@@ -21,6 +22,7 @@ export interface StyleContextT {
     formFieldLabel?: StyleDef | undefined;
     formSubmitControl?: StyleDef | undefined;
     outputFieldValue?: StyleDef | undefined;
+    renderFormFieldControl?: <T extends DataType>(props: UCFormFieldControlProps<T>) => ReactElement | null;
 }
 export declare const StyleContext: React.Context<StyleContextT>;
 export declare function useStyleContext(): StyleContextT;

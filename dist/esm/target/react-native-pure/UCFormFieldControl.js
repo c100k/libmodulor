@@ -7,8 +7,18 @@ import { styleDef, useStyleContext, } from '../lib/react/StyleContextProvider.js
 import { rnInputDef } from '../lib/rn/input.js';
 const MULTIPLE_VALUES_SEPARATOR = ',';
 // TODO : Split this into smaller components
-export function UCFormFieldControl({ errMsg = null, execState, f, onChange: onChangeBase, }) {
-    const { colors, formFieldControl } = useStyleContext();
+export function UCFormFieldControl({ disabled, errMsg = null, execState, f, onChange: onChangeBase, }) {
+    const { colors, formFieldControl, renderFormFieldControl } = useStyleContext();
+    const component = renderFormFieldControl?.({
+        disabled,
+        errMsg,
+        execState,
+        f,
+        onChange: onChangeBase,
+    });
+    if (component) {
+        return component;
+    }
     const [internalValue, setInternalValue] = useState(f.getValue());
     // biome-ignore lint/correctness/useExhaustiveDependencies: false positive : It is actually necessary (only `f` does not trigger the effect)
     useEffect(() => {
@@ -40,7 +50,7 @@ export function UCFormFieldControl({ errMsg = null, execState, f, onChange: onCh
         onChangeBase(f, UCInputFieldChangeOperator.SET, value);
         setInternalValue(value);
     };
-    const attrs = rnInputDef(f, execState, errMsg);
+    const attrs = rnInputDef(f, disabled, errMsg);
     const { type } = f.def;
     const options = type.getOptions();
     if (options) {

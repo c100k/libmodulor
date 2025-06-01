@@ -1,6 +1,6 @@
 import { TString, } from '../../../dt/index.js';
-import { ucIsDisabled, ucifHint, ucifId, } from '../../../uc/index.js';
-export function rnInputDef(field, execState, _errMsg) {
+import { ucifHint, ucifId } from '../../../uc/index.js';
+export function rnInputDef(field, disabled, _errMsg) {
     const def = {
         internal: undefined,
         spec: {},
@@ -11,7 +11,7 @@ export function rnInputDef(field, execState, _errMsg) {
     }
     const { key, def: fDef } = field;
     const { type: fType } = fDef;
-    def.spec.editable = !ucIsDisabled(execState);
+    def.spec.editable = !disabled;
     def.spec.id = ucifId(key);
     // Testing the types by usage probability to make the if/else evaluation stop ideally earlier
     if (fType instanceof TString) {

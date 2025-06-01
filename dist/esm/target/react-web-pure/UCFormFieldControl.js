@@ -7,9 +7,19 @@ const CHECKED_FIELD_TYPES = ['checkbox', 'radio'];
 const FILE_FIELD_TYPES = ['file'];
 const MULTIPLE_VALUES_SEPARATOR = ',';
 // TODO : Split this into smaller components
-export function UCFormFieldControl({ errMsg = null, execState, f, onChange: onChangeBase, }) {
-    const { formFieldControl } = useStyleContext();
-    const attrs = htmlInputDef(f, execState, errMsg);
+export function UCFormFieldControl({ disabled, errMsg = null, execState, f, onChange: onChangeBase, }) {
+    const { formFieldControl, renderFormFieldControl } = useStyleContext();
+    const component = renderFormFieldControl?.({
+        disabled,
+        errMsg,
+        execState,
+        f,
+        onChange: onChangeBase,
+    });
+    if (component) {
+        return component;
+    }
+    const attrs = htmlInputDef(f, disabled, errMsg);
     const onChange = (e) => {
         const target = e.currentTarget;
         const type = target.type;

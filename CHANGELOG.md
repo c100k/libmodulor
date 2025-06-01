@@ -4,7 +4,7 @@
 
 **BREAKING**
 
-- Make `target/react-native-pure` and `target/react-web-pure` components stylable
+- Make `target/react-native-pure` and `target/react-web-pure` components stylable : by using the new `<StyleContextProvider style={...style} />` you can customize how the elements render inside `<UCPanel />`. You can even use `renderFormFieldControl` to customize the form controls rendered according to the field (e.g. name, type, etc.)
 
 ## v0.16.0 (2025-05-27)
 

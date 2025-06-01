@@ -1,6 +1,6 @@
 import { TBoolean, TNumber, TString, } from '../../../dt/index.js';
-import { ucIsDisabled, ucifHint, ucifId, ucifIsMandatory, } from '../../../uc/index.js';
-export function htmlInputDef(field, execState, errMsg) {
+import { ucifHint, ucifId, ucifIsMandatory, } from '../../../uc/index.js';
+export function htmlInputDef(field, disabled, errMsg) {
     const def = {
         internal: {},
         spec: {},
@@ -11,7 +11,7 @@ export function htmlInputDef(field, execState, errMsg) {
     }
     const { key, def: fDef } = field;
     const { type: fType } = fDef;
-    def.spec.disabled = ucIsDisabled(execState);
+    def.spec.disabled = disabled;
     def.spec.id = ucifId(key);
     def.spec.name = key;
     // Testing the types by usage probability to make the if/else evaluation stop ideally earlier

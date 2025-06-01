@@ -1,5 +1,5 @@
 import { type DataType, type ErrorMessage, type HTMLInputType } from '../../../dt/index.js';
-import { type UCExecState, type UCInputField } from '../../../uc/index.js';
+import { type UCInputField } from '../../../uc/index.js';
 export interface HTMLInputDef {
     /**
      * Internal types that are not part of the W3C spec
@@ -50,4 +50,4 @@ export interface HTMLInputDef {
         type?: HTMLInputType | undefined;
     };
 }
-export declare function htmlInputDef<T extends DataType>(field: UCInputField<T>, execState: UCExecState, errMsg: ErrorMessage | null): HTMLInputDef;
+export declare function htmlInputDef<T extends DataType>(field: UCInputField<T>, disabled: boolean, errMsg: ErrorMessage | null): HTMLInputDef;
