@@ -12,8 +12,8 @@ importers:
         specifier: ^1.14.2
         version: 1.14.3(hono@4.7.10)
       '@modelcontextprotocol/sdk':
-        specifier: ^1.12.0
-        version: 1.12.0
+        specifier: ^1.12.1
+        version: 1.12.1
       '@stricli/core':
         specifier: ^1.1.2
         version: 1.1.2
@@ -39,8 +39,8 @@ importers:
         specifier: ^4.7.10
         version: 4.7.10
       inversify:
-        specifier: ^7.5.1
-        version: 7.5.1(reflect-metadata@0.2.2)
+        specifier: ^7.5.2
+        version: 7.5.2(reflect-metadata@0.2.2)
       jose:
         specifier: ^6.0.11
         version: 6.0.11
@@ -104,7 +104,7 @@ importers:
         version: 0.16.22
       libmodulor:
         specifier: ^0.17.0
-        version: 0.17.0(@hono/node-server@1.14.3(hono@4.7.10))(@modelcontextprotocol/sdk@1.12.0)(@stricli/core@1.1.2)(buffer@6.0.3)(cookie-parser@1.4.7)(express-fileupload@1.5.1)(express@5.1.0)(fast-check@4.1.1)(helmet@8.1.0)(hono@4.7.10)(inversify@7.5.1(reflect-metadata@0.2.2))(jose@6.0.11)(knex@3.1.0(pg@8.16.0)(sqlite3@5.1.7))(next@15.3.2(@babel/core@7.27.3)(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(pg@8.16.0)(react-dom@19.1.0(react@19.1.0))(react-native@0.79.2(@babel/core@7.27.3)(@types/react@19.1.6)(react@19.1.0))(react@19.1.0)(reflect-metadata@0.2.2)(sqlite3@5.1.7)(typescript@5.8.3)(vite@6.3.5(@types/node@22.15.21)(jiti@2.4.2)(lightningcss@1.30.1)(terser@5.40.0))(vitest@3.1.4(@types/debug@4.1.12)(@types/node@22.15.21)(jiti@2.4.2)(lightningcss@1.30.1)(terser@5.40.0))
+        version: 0.17.0(@hono/node-server@1.14.3(hono@4.7.10))(@modelcontextprotocol/sdk@1.12.1)(@stricli/core@1.1.2)(buffer@6.0.3)(cookie-parser@1.4.7)(express-fileupload@1.5.1)(express@5.1.0)(fast-check@4.1.1)(helmet@8.1.0)(hono@4.7.10)(inversify@7.5.1(reflect-metadata@0.2.2))(jose@6.0.11)(knex@3.1.0(pg@8.16.0)(sqlite3@5.1.7))(next@15.3.2(@babel/core@7.27.3)(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(pg@8.16.0)(react-dom@19.1.0(react@19.1.0))(react-native@0.79.2(@babel/core@7.27.3)(@types/react@19.1.6)(react@19.1.0))(react@19.1.0)(reflect-metadata@0.2.2)(sqlite3@5.1.7)(typescript@5.8.3)(vite@6.3.5(@types/node@22.15.21)(jiti@2.4.2)(lightningcss@1.30.1)(terser@5.40.0))(vitest@3.1.4(@types/debug@4.1.12)(@types/node@22.15.21)(jiti@2.4.2)(lightningcss@1.30.1)(terser@5.40.0))
       next:
         specifier: 15.3.2
         version: 15.3.2(@babel/core@7.27.3)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
@@ -174,7 +174,7 @@ importers:
         version: 7.5.1(reflect-metadata@0.2.2)
       libmodulor:
         specifier: ^0.17.0
-        version: 0.17.0(@hono/node-server@1.14.3(hono@4.7.10))(@modelcontextprotocol/sdk@1.12.0)(@stricli/core@1.1.2)(buffer@6.0.3)(cookie-parser@1.4.7)(express-fileupload@1.5.1)(express@5.1.0)(fast-check@4.1.1)(helmet@8.1.0)(hono@4.7.10)(inversify@7.5.1(reflect-metadata@0.2.2))(jose@6.0.11)(knex@3.1.0(pg@8.16.0)(sqlite3@5.1.7))(next@15.3.2(@babel/core@7.27.3)(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(pg@8.16.0)(react-dom@19.1.0(react@19.1.0))(react-native@0.79.2(@babel/core@7.27.3)(@types/react@19.1.6)(react@19.1.0))(react@19.1.0)(reflect-metadata@0.2.2)(sqlite3@5.1.7)(typescript@5.8.3)(vite@6.3.5(@types/node@22.15.21)(jiti@2.4.2)(lightningcss@1.30.1)(terser@5.40.0))(vitest@3.1.4(@types/debug@4.1.12)(@types/node@22.15.21)(jiti@2.4.2)(lightningcss@1.30.1)(terser@5.40.0))
+        version: 0.17.0(@hono/node-server@1.14.3(hono@4.7.10))(@modelcontextprotocol/sdk@1.12.1)(@stricli/core@1.1.2)(buffer@6.0.3)(cookie-parser@1.4.7)(express-fileupload@1.5.1)(express@5.1.0)(fast-check@4.1.1)(helmet@8.1.0)(hono@4.7.10)(inversify@7.5.1(reflect-metadata@0.2.2))(jose@6.0.11)(knex@3.1.0(pg@8.16.0)(sqlite3@5.1.7))(next@15.3.2(@babel/core@7.27.3)(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(pg@8.16.0)(react-dom@19.1.0(react@19.1.0))(react-native@0.79.2(@babel/core@7.27.3)(@types/react@19.1.6)(react@19.1.0))(react@19.1.0)(reflect-metadata@0.2.2)(sqlite3@5.1.7)(typescript@5.8.3)(vite@6.3.5(@types/node@22.15.21)(jiti@2.4.2)(lightningcss@1.30.1)(terser@5.40.0))(vitest@3.1.4(@types/debug@4.1.12)(@types/node@22.15.21)(jiti@2.4.2)(lightningcss@1.30.1)(terser@5.40.0))
       reflect-metadata:
         specifier: ^0.2.2
         version: 0.2.2
@@ -1267,6 +1267,11 @@ packages:
   '@inversifyjs/common@1.5.0':
     resolution: {integrity: sha512-Qj5BELk11AfI2rgZEAaLPmOftmQRLLmoCXgAjmaF0IngQN5vHomVT5ML7DZ3+CA5fgGcEVMcGbUDAun+Rz+oNg==}
 
+  '@inversifyjs/container@1.10.1':
+    resolution: {integrity: sha512-wrgiCn4R50IJQO0QBqrobdyLpzYngQCHyTAnlvgzQIfxnKrAKGGEUdDQ2bLbZXq3313GVz/Jb5C4RuW7M55cvQ==}
+    peerDependencies:
+      reflect-metadata: ~0.2.2
+
   '@inversifyjs/container@1.9.1':
     resolution: {integrity: sha512-8EhjFoAx1LoD7TpCuP9ptitwc+7kVXEpZB0IeoEsCQb9sWaNYYaBi+7Lommu3/1nYxdMbX2t7AJhQnryT1EEsg==}
     peerDependencies:
@@ -1274,6 +1279,12 @@ packages:
 
   '@inversifyjs/core@5.2.0':
     resolution: {integrity: sha512-MMaHGGRjQWT9uAof63sbZyEhRl4XptEAE17DJwrgUcN9LsdIEvecKP3r53pE9VF88PFR41knUKKzagUBvWLHmw==}
+
+  '@inversifyjs/core@5.3.1':
+    resolution: {integrity: sha512-cWVuKb6bsULng+1RlDx/Tuq8/u5wkpHx5sSjeLsHTbNrIhd8V0FLjhET00aSzovxJLMz1dkCIMhF8HUrnboAOQ==}
+
+  '@inversifyjs/plugin@0.2.0':
+    resolution: {integrity: sha512-R/JAdkTSD819pV1zi0HP54mWHyX+H2m8SxldXRgPQarS3ySV4KPyRdosWcfB8Se0JJZWZLHYiUNiS6JvMWSPjw==}
 
   '@inversifyjs/prototype-utils@0.1.0':
     resolution: {integrity: sha512-lNz1yyajMRDXBHLvJsYYX81FcmeD15e5Qz1zAZ/3zeYTl+u7ZF/GxNRKJzNOloeMPMtuR8BnvzHA1SZxjR+J9w==}
@@ -1356,6 +1367,10 @@ packages:
 
   '@modelcontextprotocol/sdk@1.12.0':
     resolution: {integrity: sha512-m//7RlINx1F3sz3KqwY1WWzVgTcYX52HYk4bJ1hkBXV3zccAEth+jRvG8DBRrdaQuRsPAJOx2MH3zaHNCKL7Zg==}
+    engines: {node: '>=18'}
+
+  '@modelcontextprotocol/sdk@1.12.1':
+    resolution: {integrity: sha512-KG1CZhZfWg+u8pxeM/mByJDScJSrjjxLc8fwQqbsS8xCjBmQfMNEBTotYdNanKekepnfRI85GtgQlctLFpcYPw==}
     engines: {node: '>=18'}
 
   '@next/env@15.3.2':
@@ -3777,6 +3792,11 @@ packages:
 
   inversify@7.5.1:
     resolution: {integrity: sha512-oWWFDU2BXiuqZynGcLDDD4tqiWAeaEUCALlCj0vk/QwHGgZY/tzDFPuTmWMY3jwRmDIHxVDkcj9SL3MFTlCEDw==}
+    peerDependencies:
+      reflect-metadata: ~0.2.2
+
+  inversify@7.5.2:
+    resolution: {integrity: sha512-RpI97sBhBntaUzN2gLRbAyhXmEbBpTNKZKlJJ6qPW3xB4D6AwBt9SP85ehE+glgqBoan24Eu2SzTGbSpgkxuLw==}
     peerDependencies:
       reflect-metadata: ~0.2.2
 
@@ -7264,6 +7284,14 @@ snapshots:
 
   '@inversifyjs/common@1.5.0': {}
 
+  '@inversifyjs/container@1.10.1(reflect-metadata@0.2.2)':
+    dependencies:
+      '@inversifyjs/common': 1.5.0
+      '@inversifyjs/core': 5.3.1(reflect-metadata@0.2.2)
+      '@inversifyjs/plugin': 0.2.0
+      '@inversifyjs/reflect-metadata-utils': 1.1.0(reflect-metadata@0.2.2)
+      reflect-metadata: 0.2.2
+
   '@inversifyjs/container@1.9.1(reflect-metadata@0.2.2)':
     dependencies:
       '@inversifyjs/common': 1.5.0
@@ -7278,6 +7306,16 @@ snapshots:
       '@inversifyjs/reflect-metadata-utils': 1.1.0(reflect-metadata@0.2.2)
     transitivePeerDependencies:
       - reflect-metadata
+
+  '@inversifyjs/core@5.3.1(reflect-metadata@0.2.2)':
+    dependencies:
+      '@inversifyjs/common': 1.5.0
+      '@inversifyjs/prototype-utils': 0.1.0
+      '@inversifyjs/reflect-metadata-utils': 1.1.0(reflect-metadata@0.2.2)
+    transitivePeerDependencies:
+      - reflect-metadata
+
+  '@inversifyjs/plugin@0.2.0': {}
 
   '@inversifyjs/prototype-utils@0.1.0':
     dependencies:
@@ -7422,6 +7460,22 @@ snapshots:
       langium: 3.3.1
 
   '@modelcontextprotocol/sdk@1.12.0':
+    dependencies:
+      ajv: 6.12.6
+      content-type: 1.0.5
+      cors: 2.8.5
+      cross-spawn: 7.0.6
+      eventsource: 3.0.7
+      express: 5.1.0
+      express-rate-limit: 7.5.0(express@5.1.0)
+      pkce-challenge: 5.0.0
+      raw-body: 3.0.0
+      zod: 3.25.30
+      zod-to-json-schema: 3.24.5(zod@3.25.30)
+    transitivePeerDependencies:
+      - supports-color
+
+  '@modelcontextprotocol/sdk@1.12.1':
     dependencies:
       ajv: 6.12.6
       content-type: 1.0.5
@@ -10152,6 +10206,13 @@ snapshots:
       '@inversifyjs/core': 5.2.0(reflect-metadata@0.2.2)
       reflect-metadata: 0.2.2
 
+  inversify@7.5.2(reflect-metadata@0.2.2):
+    dependencies:
+      '@inversifyjs/common': 1.5.0
+      '@inversifyjs/container': 1.10.1(reflect-metadata@0.2.2)
+      '@inversifyjs/core': 5.3.1(reflect-metadata@0.2.2)
+      reflect-metadata: 0.2.2
+
   ip-address@9.0.5:
     dependencies:
       jsbn: 1.1.0
@@ -10408,6 +10469,33 @@ snapshots:
     optionalDependencies:
       '@hono/node-server': 1.14.3(hono@4.7.10)
       '@modelcontextprotocol/sdk': 1.12.0
+      '@stricli/core': 1.1.2
+      buffer: 6.0.3
+      cookie-parser: 1.4.7
+      express: 5.1.0
+      express-fileupload: 1.5.1
+      fast-check: 4.1.1
+      helmet: 8.1.0
+      hono: 4.7.10
+      jose: 6.0.11
+      knex: 3.1.0(pg@8.16.0)(sqlite3@5.1.7)
+      next: 15.3.2(@babel/core@7.27.3)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+      pg: 8.16.0
+      react: 19.1.0
+      react-dom: 19.1.0(react@19.1.0)
+      react-native: 0.79.2(@babel/core@7.27.3)(@types/react@19.1.6)(react@19.1.0)
+      sqlite3: 5.1.7
+      vite: 6.3.5(@types/node@22.15.21)(jiti@2.4.2)(lightningcss@1.30.1)(terser@5.40.0)
+      vitest: 3.1.4(@types/debug@4.1.12)(@types/node@22.15.21)(jiti@2.4.2)(lightningcss@1.30.1)(terser@5.40.0)
+
+  libmodulor@0.17.0(@hono/node-server@1.14.3(hono@4.7.10))(@modelcontextprotocol/sdk@1.12.1)(@stricli/core@1.1.2)(buffer@6.0.3)(cookie-parser@1.4.7)(express-fileupload@1.5.1)(express@5.1.0)(fast-check@4.1.1)(helmet@8.1.0)(hono@4.7.10)(inversify@7.5.1(reflect-metadata@0.2.2))(jose@6.0.11)(knex@3.1.0(pg@8.16.0)(sqlite3@5.1.7))(next@15.3.2(@babel/core@7.27.3)(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(pg@8.16.0)(react-dom@19.1.0(react@19.1.0))(react-native@0.79.2(@babel/core@7.27.3)(@types/react@19.1.6)(react@19.1.0))(react@19.1.0)(reflect-metadata@0.2.2)(sqlite3@5.1.7)(typescript@5.8.3)(vite@6.3.5(@types/node@22.15.21)(jiti@2.4.2)(lightningcss@1.30.1)(terser@5.40.0))(vitest@3.1.4(@types/debug@4.1.12)(@types/node@22.15.21)(jiti@2.4.2)(lightningcss@1.30.1)(terser@5.40.0)):
+    dependencies:
+      inversify: 7.5.1(reflect-metadata@0.2.2)
+      reflect-metadata: 0.2.2
+      typescript: 5.8.3
+    optionalDependencies:
+      '@hono/node-server': 1.14.3(hono@4.7.10)
+      '@modelcontextprotocol/sdk': 1.12.1
       '@stricli/core': 1.1.2
       buffer: 6.0.3
       cookie-parser: 1.4.7
