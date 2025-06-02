@@ -17,21 +17,21 @@
     },
     "dependencies": {
         "@hono/node-server": "^1.14.3",
-        "@modelcontextprotocol/sdk": "^1.12.0",
-        "@tailwindcss/vite": "^4.1.7",
-        "daisyui": "^5.0.37",
+        "@modelcontextprotocol/sdk": "^1.12.1",
+        "@tailwindcss/vite": "^4.1.8",
+        "daisyui": "^5.0.43",
         "expo": "^53.0.9",
-        "hono": "^4.7.10",
-        "inversify": "^7.5.1",
+        "hono": "^4.7.11",
+        "inversify": "^7.5.2",
         "knex": "^3.1.0",
         "libmodulor": "^0.17.0",
-        "next": "^15.3.2",
+        "next": "^15.3.3",
         "react": "^19.1.0",
         "react-dom": "^19.1.0",
         "react-native": "^0.79.2",
         "reflect-metadata": "^0.2.2",
         "sqlite3": "^5.1.7",
-        "tailwindcss": "^4.0.12"
+        "tailwindcss": "^4.1.8"
     },
     "devDependencies": {
         "@babel/plugin-transform-class-static-block": "^7.27.1",
