@@ -32,7 +32,7 @@ export const BuyAssetUCD: UCDef<BuyAssetInput, BuyAssetOPI0> = {
                     type: new TISIN(),
                 },
                 limit: {
-                    type: new TAmount('USD'),
+                    type: new TAmount('USD', { min: 0 }),
                 },
                 qty: {
                     type: new TUIntQuantity(),
