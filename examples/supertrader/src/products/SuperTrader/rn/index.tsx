@@ -1,16 +1,19 @@
 import { registerRootComponent } from 'expo';
-import { DIContextProvider } from 'libmodulor/react';
+import { DIContextProvider, StyleContextProvider } from 'libmodulor/react';
 import React, { type ReactElement } from 'react';
 import { SafeAreaView } from 'react-native';
 
 import App from './components/App.js';
 import container from './container.js';
+import { style } from './style.js';
 
 function Index(): ReactElement {
     return (
         <SafeAreaView>
             <DIContextProvider container={container}>
-                <App />
+                <StyleContextProvider {...style}>
+                    <App />
+                </StyleContextProvider>
             </DIContextProvider>
         </SafeAreaView>
     );

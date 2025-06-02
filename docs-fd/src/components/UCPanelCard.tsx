@@ -11,15 +11,17 @@ import {
     UC_DEF_FILE_NAME_SUFFIX,
 } from 'libmodulor';
 import { UCPanel, useDIContext, useUC } from 'libmodulor/react';
+import {
+    UCAutoExecLoader,
+    UCExecTouchable,
+    UCForm,
+} from 'libmodulor/react-web-pure';
 import React, { useEffect, useState, type ReactElement } from 'react';
 
 import { Manifest as ToolboxManifest } from './apps/Toolbox/manifest';
 import { ExportAsanaUCD } from './apps/Toolbox/ucds/ExportAsanaUCD';
 import { GenerateMiscDataUCD } from './apps/Toolbox/ucds/GenerateMiscDataUCD';
 import { PromptLLMUCD } from './apps/Toolbox/ucds/PromptLLMUCD';
-import { UCAutoExecLoader } from './ui/UCAutoExecLoader';
-import { UCExecTouchable } from './ui/UCExecTouchable';
-import { UCForm } from './ui/UCForm';
 
 interface Props {
     appName: AppName;

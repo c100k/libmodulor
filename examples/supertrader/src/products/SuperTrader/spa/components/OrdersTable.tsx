@@ -5,7 +5,11 @@ import {
     type UpdateFunc,
     useDIContext,
 } from 'libmodulor/react';
-import { UCAutoExecLoader } from 'libmodulor/react-web-pure';
+import {
+    UCAutoExecLoader,
+    UCExecTouchable,
+    UCForm,
+} from 'libmodulor/react-web-pure';
 import React, { type ReactElement } from 'react';
 
 import {
@@ -15,9 +19,7 @@ import {
     Manifest,
 } from '../../../../apps/Trading/index.js';
 import { Hero } from './Hero.js';
-import { UCExecTouchable } from './UCExecTouchable.js';
-import { UCForm } from './UCForm.js';
-import UCValue from './UCOutputFieldValue.js';
+import UCOutputFieldValue from './UCOutputFieldValue.js';
 
 interface Props {
     listOrdersPart0: UCOutputReaderPart<ListOrdersOPI0>;
@@ -60,7 +62,7 @@ export default function OrdersTable({
                         <td>{idx + 1}</td>
                         {fields.map((f) => (
                             <td key={f.key}>
-                                <UCValue field={f} value={i[f.key]} />
+                                <UCOutputFieldValue f={f} value={i[f.key]} />
                             </td>
                         ))}
                         <td>
