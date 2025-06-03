@@ -1,4 +1,4 @@
-import React, {} from 'react';
+import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 import { View } from 'react-native';
 import { useStyleContext } from '../lib/react/StyleContextProvider.js';
 import { UCFormField } from './UCFormField.js';
@@ -8,7 +8,5 @@ export function UCForm({ disabled, execState, onChange, onSubmit, uc, }) {
     const onPress = async () => {
         await onSubmit();
     };
-    return (React.createElement(View, { style: form?.style },
-        uc.inputFieldsForForm().map((f) => (React.createElement(UCFormField, { disabled: disabled, execState: execState, f: f, key: f.key, onChange: onChange }))),
-        React.createElement(UCFormSubmitControl, { execState: execState, disabled: disabled, onPress: onPress, uc: uc })));
+    return (_jsxs(View, { style: form?.style, children: [uc.inputFieldsForForm().map((f) => (_jsx(UCFormField, { disabled: disabled, execState: execState, f: f, onChange: onChange }, f.key))), _jsx(UCFormSubmitControl, { execState: execState, disabled: disabled, onPress: onPress, uc: uc })] }));
 }

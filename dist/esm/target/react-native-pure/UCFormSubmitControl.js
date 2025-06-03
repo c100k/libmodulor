@@ -1,10 +1,9 @@
-import React, {} from 'react';
+import { jsx as _jsx } from "react/jsx-runtime";
 import { Pressable, Text } from 'react-native';
 import { useDIContext } from '../lib/react/DIContextProvider.js';
 import { useStyleContext } from '../lib/react/StyleContextProvider.js';
 export function UCFormSubmitControl({ execState, disabled, onPress, uc, }) {
     const { wordingManager } = useDIContext();
     const { formSubmitControl } = useStyleContext();
-    return (React.createElement(Pressable, { disabled: disabled, onPress: onPress },
-        React.createElement(Text, { style: formSubmitControl?.style }, wordingManager.ucISubmit(uc.def, execState))));
+    return (_jsx(Pressable, { disabled: disabled, onPress: onPress, children: _jsx(Text, { style: formSubmitControl?.style, children: wordingManager.ucISubmit(uc.def, execState) }) }));
 }

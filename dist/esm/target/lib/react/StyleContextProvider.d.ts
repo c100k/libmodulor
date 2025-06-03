@@ -1,4 +1,4 @@
-import React, { type PropsWithChildren, type ReactElement } from 'react';
+import { type PropsWithChildren, type ReactElement } from 'react';
 import type { Color, DataType } from '../../../dt/index.js';
 import type { UCFormFieldControlProps } from './form.js';
 export interface StyleDef {
@@ -24,7 +24,7 @@ export interface StyleContextT {
     outputFieldValue?: StyleDef | undefined;
     renderFormFieldControl?: <T extends DataType>(props: UCFormFieldControlProps<T>) => ReactElement | null;
 }
-export declare const StyleContext: React.Context<StyleContextT>;
+export declare const StyleContext: import("react").Context<StyleContextT>;
 export declare function useStyleContext(): StyleContextT;
 type Props = StyleContextT;
 export declare function StyleContextProvider({ children, ...rest }: PropsWithChildren<Props>): ReactElement;

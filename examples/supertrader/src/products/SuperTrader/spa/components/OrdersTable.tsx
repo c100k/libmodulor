@@ -10,7 +10,7 @@ import {
     UCExecTouchable,
     UCForm,
 } from 'libmodulor/react-web-pure';
-import React, { type ReactElement } from 'react';
+import type { ReactElement } from 'react';
 
 import {
     CancelOrderUCD,

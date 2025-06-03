@@ -11,7 +11,7 @@ import {
     UCExecTouchable,
     UCForm,
 } from 'libmodulor/react-native-pure';
-import React, { useEffect, useState, type ReactElement } from 'react';
+import { type ReactElement, useEffect, useState } from 'react';
 import { ScrollView, StyleSheet } from 'react-native';
 
 import {

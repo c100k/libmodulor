@@ -10,7 +10,7 @@ import {
 } from 'libmodulor';
 import { DIContextProvider, StyleContextProvider } from 'libmodulor/react';
 import { bindWeb } from 'libmodulor/web';
-import React, { type PropsWithChildren, type ReactElement } from 'react';
+import type { PropsWithChildren, ReactElement } from 'react';
 
 import { I18n } from './products/Main/i18n';
 import { Manifest } from './products/Main/manifest';

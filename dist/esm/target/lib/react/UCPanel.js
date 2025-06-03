@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import { Fragment as _Fragment, jsxs as _jsxs } from "react/jsx-runtime";
+import { useState } from 'react';
 import { ucIsDisabled, } from '../../../uc/index.js';
 import { sleep } from '../../../utils/index.js';
 import { useDIContext } from './DIContextProvider.js';
@@ -42,18 +43,14 @@ export function UCPanel({ autoExec = false, clearAfterExec = true, onDone, onErr
         execState,
         uc,
     };
-    return (React.createElement(UCContainer, { uc: uc },
-        autoExec && ctx.disabled && renderAutoExecLoader(),
-        !autoExec && (React.createElement(React.Fragment, null,
-            needsInputFilling &&
-                renderForm({
-                    ...ctx,
-                    onChange,
-                    onSubmit: exec,
-                }),
-            !needsInputFilling &&
-                renderExecTouchable({
-                    ...ctx,
-                    onSubmit: exec,
-                })))));
+    return (_jsxs(UCContainer, { uc: uc, children: [autoExec && ctx.disabled && renderAutoExecLoader(), !autoExec && (_jsxs(_Fragment, { children: [needsInputFilling &&
+                        renderForm({
+                            ...ctx,
+                            onChange,
+                            onSubmit: exec,
+                        }), !needsInputFilling &&
+                        renderExecTouchable({
+                            ...ctx,
+                            onSubmit: exec,
+                        })] }))] }));
 }

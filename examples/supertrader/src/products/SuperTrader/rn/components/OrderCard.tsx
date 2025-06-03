@@ -10,7 +10,7 @@ import {
     UCExecTouchable,
     UCForm,
 } from 'libmodulor/react-native-pure';
-import React, { type ReactElement } from 'react';
+import type { ReactElement } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
 import {

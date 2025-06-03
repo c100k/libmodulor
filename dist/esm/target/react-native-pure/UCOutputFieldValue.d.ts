@@ -1,4 +1,4 @@
-import { type ReactElement } from 'react';
+import type { ReactElement } from 'react';
 import type { DataType } from '../../dt/index.js';
 import type { UCOPIBase } from '../../uc/index.js';
 import { type Props } from '../lib/react/UCOutputFieldValueFragment.js';

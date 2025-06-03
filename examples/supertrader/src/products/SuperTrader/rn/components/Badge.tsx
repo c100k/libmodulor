@@ -1,5 +1,5 @@
 import type { Color, DataType, SemanticsVariant, TBase } from 'libmodulor';
-import React, { type ReactElement } from 'react';
+import type { ReactElement } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
 interface Props<T extends DataType> {

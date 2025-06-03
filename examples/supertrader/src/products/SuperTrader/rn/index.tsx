@@ -1,6 +1,6 @@
 import { registerRootComponent } from 'expo';
 import { DIContextProvider, StyleContextProvider } from 'libmodulor/react';
-import React, { type ReactElement } from 'react';
+import type { ReactElement } from 'react';
 import { SafeAreaView } from 'react-native';
 
 import App from './components/App.js';

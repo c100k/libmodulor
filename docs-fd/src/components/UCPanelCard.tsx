@@ -16,7 +16,7 @@ import {
     UCExecTouchable,
     UCForm,
 } from 'libmodulor/react-web-pure';
-import React, { useEffect, useState, type ReactElement } from 'react';
+import { type ReactElement, useEffect, useState } from 'react';
 
 import { Manifest as ToolboxManifest } from './apps/Toolbox/manifest';
 import { ExportAsanaUCD } from './apps/Toolbox/ucds/ExportAsanaUCD';

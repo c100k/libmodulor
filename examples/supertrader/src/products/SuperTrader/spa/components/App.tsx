@@ -6,7 +6,7 @@ import {
     useUC,
     useUCOR,
 } from 'libmodulor/react';
-import React, { useEffect, useState, type ReactElement } from 'react';
+import { type ReactElement, useEffect, useState } from 'react';
 
 import {
     UCAutoExecLoader,

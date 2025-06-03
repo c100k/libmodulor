@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import { jsx as _jsx } from "react/jsx-runtime";
+import { useEffect, useState } from 'react';
 import { FlatList, Pressable, StyleSheet, Switch, Text, TextInput, } from 'react-native';
 import { TBoolean } from '../../dt/index.js';
 import { UCInputFieldChangeOperator, ucifRepeatability, } from '../../uc/index.js';
@@ -56,20 +57,19 @@ export function UCFormFieldControl({ disabled, errMsg = null, execState, f, onCh
     if (options) {
         // TODO : Handle type.hasStrictOptions() => display an input text alongside the options
         // TODO : Consider using a picker when the options count > X
-        return (React.createElement(FlatList, { data: options, horizontal: true, keyExtractor: (item) => item.value.toString(), renderItem: ({ item }) => (React.createElement(Pressable, { disabled: !attrs.spec?.editable, onPress: () => onSelect(item.value), style: [
+        return (_jsx(FlatList, { data: options, horizontal: true, keyExtractor: (item) => item.value.toString(), renderItem: ({ item }) => (_jsx(Pressable, { disabled: !attrs.spec?.editable, onPress: () => onSelect(item.value), style: [
                     styles.selectOption,
                     {
                         borderColor: item.value === internalValue
                             ? colors?.primary
                             : 'transparent',
                     },
-                ] },
-                React.createElement(Text, null, item.label))), showsHorizontalScrollIndicator: false, style: styles.select }));
+                ], children: _jsx(Text, { children: item.label }) })), showsHorizontalScrollIndicator: false, style: styles.select }));
     }
     // TODO : Implement picker for TFile (requires a dependency...)
     if (type instanceof TBoolean) {
         const { style } = styleDef(formFieldControl, 'Switch');
-        return (React.createElement(Switch, { disabled: !attrs.spec?.editable, trackColor: { true: colors?.primary }, onValueChange: onValueChange, style: style, value: internalValue }));
+        return (_jsx(Switch, { disabled: !attrs.spec?.editable, trackColor: { true: colors?.primary }, onValueChange: onValueChange, style: style, value: internalValue }));
     }
     let valueAsString = '';
     if (!isBlank(internalValue)) {
@@ -81,7 +81,7 @@ export function UCFormFieldControl({ disabled, errMsg = null, execState, f, onCh
         }
     }
     const { style } = styleDef(formFieldControl, 'TextInput', 'default');
-    return (React.createElement(TextInput, { ...attrs.spec, onChangeText: onChangeText, style: style, value: valueAsString }));
+    return (_jsx(TextInput, { ...attrs.spec, onChangeText: onChangeText, style: style, value: valueAsString }));
 }
 const styles = StyleSheet.create({
     select: {

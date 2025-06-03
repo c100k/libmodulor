@@ -1,4 +1,5 @@
-import React, { useRef } from 'react';
+import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+import { useRef } from 'react';
 import { useStyleContext } from '../lib/react/StyleContextProvider.js';
 import { UCFormField } from './UCFormField.js';
 import { UCFormSubmitControl } from './UCFormSubmitControl.js';
@@ -12,7 +13,5 @@ export function UCForm({ clearAfterExec, disabled, execState, onChange, onSubmit
             formRef.current?.reset();
         }
     };
-    return (React.createElement("form", { className: form?.className, onSubmit: onSubmit, ref: formRef, style: form?.style },
-        uc.inputFieldsForForm().map((f) => (React.createElement(UCFormField, { key: f.key, disabled: disabled, execState: execState, f: f, onChange: onChange }))),
-        React.createElement(UCFormSubmitControl, { execState: execState, disabled: disabled, uc: uc })));
+    return (_jsxs("form", { className: form?.className, onSubmit: onSubmit, ref: formRef, style: form?.style, children: [uc.inputFieldsForForm().map((f) => (_jsx(UCFormField, { disabled: disabled, execState: execState, f: f, onChange: onChange }, f.key))), _jsx(UCFormSubmitControl, { execState: execState, disabled: disabled, uc: uc })] }));
 }

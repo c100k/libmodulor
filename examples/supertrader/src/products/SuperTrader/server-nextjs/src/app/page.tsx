@@ -1,6 +1,6 @@
 'use client';
 
-import React, { type ReactElement } from 'react';
+import type { ReactElement } from 'react';
 
 import App from '../../../spa/components/App.js';
 

@@ -4,7 +4,7 @@ import {
     type UpdateFunc,
     useDIContext,
 } from 'libmodulor/react';
-import React, { type ReactElement } from 'react';
+import type { ReactElement } from 'react';
 import { StyleSheet, View } from 'react-native';
 
 import {

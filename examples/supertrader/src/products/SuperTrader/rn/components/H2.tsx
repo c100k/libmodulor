@@ -1,4 +1,4 @@
-import React, { type PropsWithChildren, type ReactElement } from 'react';
+import type { PropsWithChildren, ReactElement } from 'react';
 import { StyleSheet, Text } from 'react-native';
 
 export default function H2({ children }: PropsWithChildren): ReactElement {
