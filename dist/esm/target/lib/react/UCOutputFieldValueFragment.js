@@ -1,6 +1,6 @@
-import React, {} from 'react';
+import { Fragment as _Fragment, jsx as _jsx } from "react/jsx-runtime";
 export function UCOutputFieldValueFragment({ f, value }) {
     const { def: { type }, } = f;
     type.assign(value);
-    return React.createElement(React.Fragment, null, type.fmt());
+    return _jsx(_Fragment, { children: type.fmt() });
 }

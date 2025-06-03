@@ -1,10 +1,11 @@
-import React, { createContext, useContext, } from 'react';
+import { jsx as _jsx } from "react/jsx-runtime";
+import { createContext, useContext, } from 'react';
 export const StyleContext = createContext({});
 export function useStyleContext() {
     return useContext(StyleContext);
 }
 export function StyleContextProvider({ children, ...rest }) {
-    return (React.createElement(StyleContext.Provider, { value: rest }, children));
+    return (_jsx(StyleContext.Provider, { value: rest, children: children }));
 }
 export function styleDef(def, k1, fallback) {
     const main = def?.[k1];

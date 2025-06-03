@@ -1,4 +1,4 @@
-import React, {} from 'react';
+import { jsx as _jsx } from "react/jsx-runtime";
 import { useDIContext } from '../lib/react/DIContextProvider.js';
 import { useStyleContext } from '../lib/react/StyleContextProvider.js';
 export function UCFormFieldDesc({ f, }) {
@@ -8,5 +8,5 @@ export function UCFormFieldDesc({ f, }) {
     if (!desc) {
         return null;
     }
-    return (React.createElement("div", { className: formFieldDesc?.className, style: formFieldDesc?.style }, desc));
+    return (_jsx("div", { className: formFieldDesc?.className, style: formFieldDesc?.style, children: desc }));
 }

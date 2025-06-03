@@ -1,4 +1,5 @@
-import React, { useEffect, useState, } from 'react';
+import { Fragment as _Fragment, jsx as _jsx } from "react/jsx-runtime";
+import { useEffect, useState, } from 'react';
 import { UCExecChecker, } from '../../../uc/index.js';
 import { useDIContext } from './DIContextProvider.js';
 export function UCContainer({ children, uc, }) {
@@ -16,10 +17,10 @@ export function UCContainer({ children, uc, }) {
     }, [uc, ucExecChecker]);
     if (isAllowed === undefined) {
         // TODO : Add some loader while we check if can do
-        return React.createElement(React.Fragment, null);
+        return _jsx(_Fragment, {});
     }
     if (isAllowed === false) {
         return null;
     }
-    return React.createElement(React.Fragment, null, children);
+    return _jsx(_Fragment, { children: children });
 }

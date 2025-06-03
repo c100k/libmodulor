@@ -1,4 +1,4 @@
-import { type ReactElement } from 'react';
+import type { ReactElement } from 'react';
 import type { UCInput, UCOPIBase } from '../../../uc/index.js';
 import type { UCEntrypointCtx } from './entrypoint.js';
 import type { RenderUCEntrypointTouchable } from './touchable.js';

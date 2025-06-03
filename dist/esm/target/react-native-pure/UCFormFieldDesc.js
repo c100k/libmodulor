@@ -1,4 +1,4 @@
-import React, {} from 'react';
+import { jsx as _jsx } from "react/jsx-runtime";
 import { Text } from 'react-native';
 import { useDIContext } from '../lib/react/DIContextProvider.js';
 import { useStyleContext } from '../lib/react/StyleContextProvider.js';
@@ -9,5 +9,5 @@ export function UCFormFieldDesc({ f, }) {
     if (!desc) {
         return null;
     }
-    return React.createElement(Text, { style: formFieldDesc?.style }, desc);
+    return _jsx(Text, { style: formFieldDesc?.style, children: desc });
 }

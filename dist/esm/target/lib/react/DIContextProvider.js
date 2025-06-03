@@ -1,4 +1,5 @@
-import React, { createContext, useContext, useState, } from 'react';
+import { jsx as _jsx } from "react/jsx-runtime";
+import { createContext, useContext, useState, } from 'react';
 import { WordingManager } from '../../../i18n/index.js';
 export const DIContext = createContext(null);
 export function useDIContext() {
@@ -11,9 +12,9 @@ export function useDIContext() {
 export function DIContextProvider({ children, container, }) {
     const [i18nManager] = useState(container.get('I18nManager'));
     const [wordingManager] = useState(container.get(WordingManager));
-    return (React.createElement(DIContext.Provider, { value: {
+    return (_jsx(DIContext.Provider, { value: {
             container,
             i18nManager,
             wordingManager,
-        } }, children));
+        }, children: children }));
 }

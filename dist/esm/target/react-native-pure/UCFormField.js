@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+import { useState } from 'react';
 import { View } from 'react-native';
 import { useDIContext } from '../lib/react/DIContextProvider.js';
 import { useStyleContext } from '../lib/react/StyleContextProvider.js';
@@ -16,9 +17,5 @@ export function UCFormField({ disabled, execState, f, onChange: onChangeBase, on
         onChangeBase(f, op, v);
     };
     const elements = only ?? UC_FORM_FIELD_ELEMENTS;
-    return (React.createElement(View, { style: formField?.style },
-        elements.includes('label') && React.createElement(UCFormFieldLabel, { f: f }),
-        elements.includes('control') && (React.createElement(UCFormFieldControl, { disabled: disabled, execState: execState, f: f, onChange: onChange })),
-        elements.includes('err') && errMsg && (React.createElement(UCFormFieldErr, { errMsg: errMsg })),
-        elements.includes('desc') && React.createElement(UCFormFieldDesc, { f: f })));
+    return (_jsxs(View, { style: formField?.style, children: [elements.includes('label') && _jsx(UCFormFieldLabel, { f: f }), elements.includes('control') && (_jsx(UCFormFieldControl, { disabled: disabled, execState: execState, f: f, onChange: onChange })), elements.includes('err') && errMsg && (_jsx(UCFormFieldErr, { errMsg: errMsg })), elements.includes('desc') && _jsx(UCFormFieldDesc, { f: f })] }));
 }

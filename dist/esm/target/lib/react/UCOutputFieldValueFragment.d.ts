@@ -1,4 +1,4 @@
-import { type ReactElement } from 'react';
+import type { ReactElement } from 'react';
 import type { DataType } from '../../../dt/index.js';
 import type { UCOPIBase, UCOutputField } from '../../../uc/index.js';
 export interface Props<OPI extends UCOPIBase, T extends DataType> {

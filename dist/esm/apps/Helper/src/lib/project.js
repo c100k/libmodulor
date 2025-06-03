@@ -90,7 +90,7 @@ const TSCONFIG_JSON = `{
         "emitDecoratorMetadata": true,
         "experimentalDecorators": true,
 
-        "jsx": "react"
+        "jsx": "react-jsx"
     }
 }
 `;

@@ -1,4 +1,4 @@
-import React, {} from 'react';
+import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 import { TBoolean } from '../../dt/index.js';
 import { UCInputFieldChangeOperator, ucifRepeatability, } from '../../uc/index.js';
 import { styleDef, useStyleContext, } from '../lib/react/StyleContextProvider.js';
@@ -51,22 +51,20 @@ export function UCFormFieldControl({ disabled, errMsg = null, execState, f, onCh
     const defaultValue = attrs.internal?.value;
     if (attrs.internal?.multiline) {
         const { className, style } = styleDef(formFieldControl, 'textarea', 'default');
-        return (React.createElement("textarea", { ...attrs.spec, className: className, defaultValue: defaultValue, onChange: onChange, style: style }));
+        return (_jsx("textarea", { ...attrs.spec, className: className, defaultValue: defaultValue, onChange: onChange, style: style }));
     }
     const { type } = f.def;
     if (type instanceof TBoolean) {
         const { className, style } = styleDef(formFieldControl, 'checkbox');
-        return (React.createElement("input", { ...attrs.spec, className: className, defaultChecked: defaultChecked, defaultValue: defaultValue, onChange: onChange, style: style }));
+        return (_jsx("input", { ...attrs.spec, className: className, defaultChecked: defaultChecked, defaultValue: defaultValue, onChange: onChange, style: style }));
     }
     const options = type.getOptions();
     if (options) {
         // TODO : Handle type.hasStrictOptions() => display an input text alongside the select
         // TODO : Consider using a radio and/or checkbox and/or selectable buttons when the options count < X
         const { className, style } = styleDef(formFieldControl, 'select', 'default');
-        return (React.createElement("select", { ...attrs.spec, className: className, defaultValue: defaultValue, onChange: onChange, style: style },
-            React.createElement("option", null),
-            options.map((o) => (React.createElement("option", { key: o.value.toString(), value: o.value.toString() }, o.label)))));
+        return (_jsxs("select", { ...attrs.spec, className: className, defaultValue: defaultValue, onChange: onChange, style: style, children: [_jsx("option", {}), options.map((o) => (_jsx("option", { value: o.value.toString(), children: o.label }, o.value.toString())))] }));
     }
     const { className, style } = styleDef(formFieldControl, 'input', 'default');
-    return (React.createElement("input", { ...attrs.spec, className: className, defaultChecked: defaultChecked, defaultValue: defaultValue, onChange: onChange, style: style }));
+    return (_jsx("input", { ...attrs.spec, className: className, defaultChecked: defaultChecked, defaultValue: defaultValue, onChange: onChange, style: style }));
 }
