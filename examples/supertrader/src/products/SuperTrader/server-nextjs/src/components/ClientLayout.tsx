@@ -1,7 +1,7 @@
 'use client';
 
 import { DIContextProvider, StyleContextProvider } from 'libmodulor/react';
-import React, { type PropsWithChildren, type ReactElement } from 'react';
+import type { PropsWithChildren, ReactElement } from 'react';
 
 import { style } from '../../../spa/style.js';
 import container from '../container-client.js';

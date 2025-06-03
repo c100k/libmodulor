@@ -1,4 +1,4 @@
-import React, { type PropsWithChildren, type ReactElement } from 'react';
+import type { PropsWithChildren, ReactElement } from 'react';
 
 import ClientLayout from '../components/ClientLayout.js';
 

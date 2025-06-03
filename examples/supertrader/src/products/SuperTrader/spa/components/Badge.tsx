@@ -1,5 +1,5 @@
 import type { DataType, SemanticsVariant, Slug, TBase } from 'libmodulor';
-import React, { type ReactElement } from 'react';
+import type { ReactElement } from 'react';
 
 interface Props<T extends DataType> {
     type: TBase<T>;
