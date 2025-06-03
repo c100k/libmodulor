@@ -1,9 +1,10 @@
-onlyBuiltDependencies:
-  - '@biomejs/biome'
-  - esbuild
-  - sharp
-  - sqlite3
 packages:
   - docs-fd
   - examples/basic
   - examples/supertrader
+onlyBuiltDependencies:
+  - '@biomejs/biome'
+  - '@tailwindcss/oxide'
+  - esbuild
+  - sharp
+  - sqlite3
