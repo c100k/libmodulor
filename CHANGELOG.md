@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v0.18.0 (unreleased)
+
+- Switch to `react-jsx` (instead of `react`) : the targets relying on React now use `react/jsx-runtime` instead of the legacy `React.createElement`
+
 ## v0.17.0 (2025-06-02)
 
 **BREAKING**
