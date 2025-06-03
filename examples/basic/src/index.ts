@@ -219,8 +219,12 @@ for (const line of summary) {
     console.log(line);
 }
 
-function printErr(err: Error): void {
-    console.log(`❌ Oops : ${err.message}`);
+function printErr(err: unknown): void {
+    if (err instanceof Error) {
+        console.log(`❌ Oops : ${err.message}`);
+        return;
+    }
+    console.log('❌ Oops : unknown error');
 }
 
 process.exit(0);
