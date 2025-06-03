@@ -81,7 +81,7 @@
         "@biomejs/biome": "^1.9.4"
     },
     "peerDependencies": {
-        "@hono/node-server": "^1.14.2",
+        "@hono/node-server": "^1.14.3",
         "@modelcontextprotocol/sdk": "^1.12.1",
         "@stricli/core": "^1.1.2",
         "buffer": "^6.0.3",
@@ -90,11 +90,11 @@
         "express-fileupload": "^1.5.1",
         "fast-check": "^4.1.1",
         "helmet": "^8.1.0",
-        "hono": "^4.7.10",
+        "hono": "^4.7.11",
         "inversify": "^7.5.2",
         "jose": "^6.0.11",
         "knex": "^3.1.0",
-        "next": "^15.3.2",
+        "next": "^15.3.3",
         "pg": "^8.16.0",
         "react": "^19.1.0",
         "react-dom": "^19.1.0",
@@ -103,7 +103,7 @@
         "sqlite3": "^5.1.7",
         "typescript": "^5.8.3",
         "vite": "^6.3.5",
-        "vitest": "^3.1.4"
+        "vitest": "^3.2.0"
     },
     "peerDependenciesMeta": {
         "@hono/node-server": {
