@@ -10,10 +10,9 @@ import {
     type UIntQuantity,
 } from 'libmodulor';
 
-import { Manifest } from '../manifest.js';
-
-import { type ISIN, TISIN } from '../lib/TISIN.js';
 import { type Order, OrderOPIDef } from '../lib/order.js';
+import { type ISIN, TISIN } from '../lib/TISIN.js';
+import { Manifest } from '../manifest.js';
 import { BuyAssetServerMain } from './BuyAssetServerMain.js';
 
 export interface BuyAssetInput extends UCInput {

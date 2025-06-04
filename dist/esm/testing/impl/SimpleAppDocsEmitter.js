@@ -175,7 +175,7 @@ function fmtTechSummaryFieldVal(field) {
     if (err) {
         res += `❌ ${err}`;
     }
-    res = res.replace(/[\u00A0-\u9999<>\&]/g, (i) => `&#${i.charCodeAt(0)};`); // TS generics considered as HTML
+    res = res.replace(/[\u00A0-\u9999<>&]/g, (i) => `&#${i.charCodeAt(0)};`); // TS generics considered as HTML
     res = res.replaceAll('|', '\\|'); // TS intersection vs Markdown table column
     return res;
 }

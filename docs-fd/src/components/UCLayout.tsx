@@ -2,11 +2,11 @@
 
 import { Container } from 'inversify';
 import {
+    bindCommon,
+    bindProduct,
     CONTAINER_OPTS,
     type LLMManager,
     MistralAILLMManager,
-    bindCommon,
-    bindProduct,
 } from 'libmodulor';
 import { DIContextProvider, StyleContextProvider } from 'libmodulor/react';
 import { bindWeb } from 'libmodulor/web';

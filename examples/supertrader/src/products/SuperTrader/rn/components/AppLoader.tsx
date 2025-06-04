@@ -11,7 +11,7 @@ export default function AppLoader(): ReactElement {
 
 const styles = StyleSheet.create({
     container: {
-        justifyContent: 'center',
         height: 200,
+        justifyContent: 'center',
     },
 });

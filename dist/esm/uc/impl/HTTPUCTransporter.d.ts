@@ -1,10 +1,10 @@
 import type { Configurable, HTTPAPICaller, SettingsManager } from '../../std/index.js';
 import type { ServerClientManager, ServerClientManagerSettings } from '../../target/lib/client/ServerClientManager.js';
-import type { UC } from '../UC.js';
 import type { UCInput } from '../input.js';
 import type { UCOPIBase } from '../opi.js';
 import type { UCOutputOrNothing } from '../output.js';
 import type { UCTransporter } from '../transporter.js';
+import type { UC } from '../UC.js';
 type S = Pick<ServerClientManagerSettings, 'server_cookies_name_auth' | 'server_public_api_key_header_name'>;
 export declare class HTTPUCTransporter implements Configurable<S>, UCTransporter {
     private httpAPICaller;

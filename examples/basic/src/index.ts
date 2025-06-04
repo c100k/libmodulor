@@ -4,9 +4,14 @@ import {
     AggregateOutputDef,
     type AppI18n,
     type AppManifest,
+    bindCommon,
+    bindProduct,
     CONTAINER_OPTS,
     type Email,
+    type ErrorMessage,
     EverybodyUCPolicy,
+    fmtBold,
+    fmtPadEndFor,
     type I18nManager,
     type PersonFirstname,
     type PersonLastname,
@@ -29,15 +34,11 @@ import {
     type UCOutputOrNothing,
     type UCOutputReader,
     WordingManager,
-    bindCommon,
-    bindProduct,
-    fmtBold,
-    fmtPadEndFor,
 } from 'libmodulor';
 import { I18nEN } from 'libmodulor/locales/en';
 import { bindNodeCore } from 'libmodulor/node';
 
-console.log('Declaring the App');
+print('Declaring the App');
 const appManifest: AppManifest = {
     languageCodes: ['en'],
     name: 'Event',
@@ -58,7 +59,7 @@ const appI18n: AppI18n = {
     },
 };
 
-console.log('Declaring the UseCase');
+print('Declaring the UseCase');
 interface RegisterInput extends UCInput {
     email: UCInputFieldValue<Email>;
     firstname: UCInputFieldValue<PersonFirstname>;
@@ -116,7 +117,7 @@ const RegisterUCD: UCDef<RegisterInput, RegisterOPI0> = {
     },
 };
 
-console.log('Declaring the Product');
+print('Declaring the Product');
 const productManifest: ProductManifest = {
     appReg: [{ name: 'Event' }],
     name: 'Eventer',
@@ -128,14 +129,14 @@ const productI18n: ProductI18n = {
     },
 };
 
-console.log('Declaring the Target');
+print('Declaring the Target');
 const container = new Container(CONTAINER_OPTS);
 
 bindCommon(container);
 bindNodeCore(container);
 bindProduct(container, productManifest, productI18n);
 
-console.log('Initializing i18n');
+print('Initializing i18n');
 const i18nManager = container.get<I18nManager>('I18nManager');
 await i18nManager.init();
 
@@ -143,19 +144,19 @@ const ucDataStore = container.get<UCDataStore>('UCDataStore');
 const ucManager = container.get<UCManager>('UCManager');
 const wordingManager = container.get(WordingManager);
 
-console.log('Initializing the UseCase');
+print('Initializing the UseCase');
 const auth: UCAuth | null = null;
 const registerUC = new UC(appManifest, RegisterUCD, auth);
-let ucor: UCOutputReader<RegisterInput, RegisterOPI0> | undefined = undefined;
+let ucor: UCOutputReader<RegisterInput, RegisterOPI0> | undefined;
 
 try {
-    console.log('Submitting the use case empty');
+    print('Submitting the use case empty');
     ucor = await ucManager.execClient(registerUC);
 } catch (err) {
     printErr(err);
 }
 
-console.log('Filling all the fields correctly except the email (invalid)');
+print('Filling all the fields correctly except the email (invalid)');
 registerUC.fill({
     email: 'xxx',
     firstname: new TPersonFirstname().example(),
@@ -168,7 +169,7 @@ try {
     printErr(err);
 }
 
-console.log('Filling a valid email');
+print('Filling a valid email');
 registerUC
     .inputField('email')
     .setValue(UCInputFieldChangeOperator.SET, new TEmail().example());
@@ -180,12 +181,12 @@ try {
     process.exit(1);
 }
 
-console.log('✅ Use case executed successfully');
+print('✅ Use case executed successfully');
 
-console.log('💾 Persisted record in InMemoryUCDataStore');
+print('💾 Persisted record in InMemoryUCDataStore');
 const { records } = await ucDataStore.read();
 for (const record of records) {
-    console.log(record);
+    print(record);
 }
 
 const email = registerUC.reqVal0('email');
@@ -208,7 +209,7 @@ const padEnd = fmtPadEndFor([
     idLabel,
 ]);
 
-console.log(fmtBold('📓 Summary with fields from I18n/WordingManager'));
+print(fmtBold('📓 Summary with fields from I18n/WordingManager'));
 const summary = [
     `${idLabel.padEnd(padEnd)} : ${id}`,
     `${emailLabel.padEnd(padEnd)} : ${email}`,
@@ -216,15 +217,23 @@ const summary = [
     `${lastnameLabel.padEnd(padEnd)} : ${lastname}`,
 ];
 for (const line of summary) {
-    console.log(line);
+    print(line);
+}
+
+function print(message?: unknown, ...optionalParams: unknown[]): void {
+    // biome-ignore lint/suspicious/noConsole: we want it
+    console.log(message, ...optionalParams);
 }
 
 function printErr(err: unknown): void {
+    let message: ErrorMessage;
     if (err instanceof Error) {
-        console.log(`❌ Oops : ${err.message}`);
-        return;
+        message = err.message;
+    } else {
+        message = 'unknown error';
     }
-    console.log('❌ Oops : unknown error');
+    // biome-ignore lint/suspicious/noConsole: we want it
+    console.log(`❌ Oops : ${message}`);
 }
 
 process.exit(0);

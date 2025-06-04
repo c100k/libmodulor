@@ -22,13 +22,13 @@ import { defaultUCAuthSetters } from './uc-auth.js';
 import { allWithExamples, defaultUCInputFillers, } from './uc-input.js';
 import { awaitForSrcImport } from './utils.js';
 import { AppTesterCtxInitializer } from './workers/AppTesterCtxInitializer.js';
-import { UCExecutor, } from './workers/UCExecutor.js';
 import { AppFolderChecker } from './workers/checkers/AppFolderChecker.js';
 import { AppI18nChecker } from './workers/checkers/AppI18nChecker.js';
 import { AppIndexChecker } from './workers/checkers/AppIndexChecker.js';
 import { AppManifestChecker } from './workers/checkers/AppManifestChecker.js';
 import { UCDefChecker } from './workers/checkers/UCDefChecker.js';
 import { UCDefSourcesChecker, } from './workers/checkers/UCDefSourcesChecker.js';
+import { UCExecutor, } from './workers/UCExecutor.js';
 let AppTester = class AppTester {
     appDocsEmitter;
     appFolderChecker;
@@ -85,8 +85,8 @@ let AppTester = class AppTester {
     }
     async checkAppI18n() {
         const { errors } = await this.appI18nChecker.exec({
-            appManifest: this.ctx.appManifest,
             appI18n: this.ctx.appI18n,
+            appManifest: this.ctx.appManifest,
         });
         if (errors.length > 0) {
             throw new Error(errors[0]);

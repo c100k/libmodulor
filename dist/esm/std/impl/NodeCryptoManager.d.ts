@@ -1,6 +1,6 @@
 import type { Password, UIntQuantity, UUID } from '../../dt/index.js';
 import type { BufferManagerBase64String } from '../BufferManager.js';
-import type { CryptoManager, CryptoManagerBinaryToTextEncoding, CryptoManagerHMACKey, CryptoManagerHMACKeyEncoding, CryptoManagerHash, CryptoManagerHashAlgorithm, CryptoManagerRandomString, CryptoManagerSalt, CryptoManagerSaltedScrypt } from '../CryptoManager.js';
+import type { CryptoManager, CryptoManagerBinaryToTextEncoding, CryptoManagerHash, CryptoManagerHashAlgorithm, CryptoManagerHMACKey, CryptoManagerHMACKeyEncoding, CryptoManagerRandomString, CryptoManagerSalt, CryptoManagerSaltedScrypt } from '../CryptoManager.js';
 export declare class NodeCryptoManager implements CryptoManager {
     clear(): Promise<void>;
     hash(algorithm: CryptoManagerHashAlgorithm, base: string, binaryToTextEncoding: CryptoManagerBinaryToTextEncoding): CryptoManagerHash;

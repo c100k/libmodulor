@@ -1,6 +1,6 @@
 import type { Unit } from '../../utils/index.js';
-import type { Validation } from '../Validation.js';
 import type { RNInputMode } from '../targets/rn.js';
+import type { Validation } from '../Validation.js';
 import type { TName } from './TBase.js';
 import { TNumber, type TNumberConstraints } from './TNumber.js';
 export type Int = number;

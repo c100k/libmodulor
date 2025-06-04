@@ -1,4 +1,5 @@
 export * from './app/index.js';
+export * from './convention.js';
 export * from './dt/index.js';
 export * from './error/index.js';
 export * from './i18n/index.js';
@@ -40,7 +41,6 @@ export * from './uc/impl/PromptUCClientConfirmManager.js';
 export * from './uc/impl/SimpleUCManager.js';
 export * from './uc/impl/StaticUCClientConfirmManager.js';
 export * from './uc/index.js';
+export * from './utils/index.js';
 export * from './utils/ioc/bindCommon.js';
 export * from './utils/ioc/bindProduct.js';
-export * from './utils/index.js';
-export * from './convention.js';

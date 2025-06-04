@@ -1,8 +1,8 @@
 import { NodeBufferManager } from '../../std/impl/NodeBufferManager.js';
 import { NodeCryptoManager } from '../../std/impl/NodeCryptoManager.js';
 import { NodeEnvironmentManager } from '../../std/impl/NodeEnvironmentManager.js';
-import { NodeFSManager } from '../../std/impl/NodeFSManager.js';
 import { NodeFormDataBuilder } from '../../std/impl/NodeFormDataBuilder.js';
+import { NodeFSManager } from '../../std/impl/NodeFSManager.js';
 export function bindNodeCore(container) {
     // std
     container.bind('BufferManager').to(NodeBufferManager);

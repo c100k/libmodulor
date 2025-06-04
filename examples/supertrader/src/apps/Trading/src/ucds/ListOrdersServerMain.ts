@@ -1,12 +1,12 @@
 import { inject, injectable } from 'inversify';
 import {
+    recIs,
+    reqVal0,
     type UCDataStore,
     type UCMain,
     type UCMainInput,
     type UCOutput,
     UCOutputBuilder,
-    recIs,
-    reqVal0,
 } from 'libmodulor';
 
 import { Manifest } from '../manifest.js';

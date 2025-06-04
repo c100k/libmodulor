@@ -12,7 +12,7 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 };
 var UCExecutor_1;
 import { inject, injectable } from 'inversify';
-import { UCBuilder, rInput, } from '../../uc/index.js';
+import { rInput, UCBuilder, } from '../../uc/index.js';
 const ERR_CLIENT_EXPECTED_OUTPUT = (name) => `${name} client is expected to return an output but returned nothing`;
 const ERR_CLIENT_UNEXPECTED_OUTPUT = (name) => `${name} client is expected to return nothing but returned an output`;
 let UCExecutor = class UCExecutor {

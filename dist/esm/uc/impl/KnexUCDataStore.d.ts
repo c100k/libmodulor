@@ -1,8 +1,8 @@
 import { type Knex } from 'knex';
 import type { FilePath, UIntQuantity } from '../../dt/index.js';
 import type { Configurable, Settings, SettingsManager } from '../../std/index.js';
-import type { UCDataStore, UCDataStoreReadOpts, UCDataStoreReadProjectionOpts, UCDataStoreReadResponse, UCDataStoreRecord, UCDataStoreTx, UCDataStoreWriteOpts, UCDataStoreWriteProjectionOpts, UCDataStoreWriteProjectionSpecificBinding } from '../data-store.js';
 import type { UCData } from '../data.js';
+import type { UCDataStore, UCDataStoreReadOpts, UCDataStoreReadProjectionOpts, UCDataStoreReadResponse, UCDataStoreRecord, UCDataStoreTx, UCDataStoreWriteOpts, UCDataStoreWriteProjectionOpts, UCDataStoreWriteProjectionSpecificBinding } from '../data-store.js';
 import type { UCInput } from '../input.js';
 import type { UCSettings } from '../settings.js';
 /**

@@ -1,6 +1,10 @@
 import { injectable } from 'inversify';
 import type {
     DirPath,
+    File,
+    FileExtension,
+    FileName,
+    FilePath,
     FSManager,
     FSManagerCatOpts,
     FSManagerChmodMode,
@@ -10,10 +14,6 @@ import type {
     FSManagerLsItem,
     FSManagerLsOpts,
     FSManagerMkdirOpts,
-    File,
-    FileExtension,
-    FileName,
-    FilePath,
     Pathname,
 } from 'libmodulor';
 

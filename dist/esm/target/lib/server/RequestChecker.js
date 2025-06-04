@@ -33,9 +33,9 @@ let RequestChecker = class RequestChecker {
         const isSSLCertificateCheck = !!url.match(/^\/\.well-known\/acme-challenge\/(.*)/); // http://localhost:8443/.well-known/acme-challenge/ywml7k8e8qxdjwFf1pN4hIKWJ1Jrc0CvAP3t9PSmnzw
         this.logger.trace('Request checker', {
             isNotProd,
-            isSSLCertificateCheck,
             isSecure,
             isSecureForwarded,
+            isSSLCertificateCheck,
         });
         const allowed = isSecure || isSecureForwarded || isNotProd || isSSLCertificateCheck;
         if (!allowed) {

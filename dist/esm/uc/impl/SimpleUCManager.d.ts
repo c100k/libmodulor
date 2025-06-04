@@ -1,9 +1,8 @@
 import { type Provider } from 'inversify';
 import type { ClockManager, CryptoManager, Logger } from '../../std/index.js';
-import type { UC } from '../UC.js';
 import type { UCClientConfirmManager } from '../client.js';
-import type { UCDataStore, UCDataStoreRecord } from '../data-store.js';
 import type { UCData } from '../data.js';
+import type { UCDataStore, UCDataStoreRecord } from '../data-store.js';
 import { UCOutputReader } from '../helpers/UCOutputReader.js';
 import type { UCInit } from '../init.js';
 import type { UCInput } from '../input.js';
@@ -11,6 +10,7 @@ import type { UCMain } from '../main.js';
 import type { UCManager, UCManagerPersistOpts } from '../manager.js';
 import type { UCOPIBase } from '../opi.js';
 import type { UCOutputOrNothing } from '../output.js';
+import type { UC } from '../UC.js';
 import { UCExecChecker } from '../workers/UCExecChecker.js';
 import { UCInputFilesProcessor } from '../workers/UCInputFilesProcessor.js';
 import { UCInputValidator } from '../workers/UCInputValidator.js';

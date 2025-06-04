@@ -1,7 +1,7 @@
-import type { Validation } from '../Validation.js';
 import type { TName } from '../base/TBase.js';
 import { TObject } from '../base/TObject.js';
 import type { HTMLInputType } from '../targets/web.js';
+import type { Validation } from '../Validation.js';
 import { type FileMimeType, type TFileMimeTypeConstraints } from './TFileMimeType.js';
 import { type FileName } from './TFileName.js';
 import { type FilePath } from './TFilePath.js';

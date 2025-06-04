@@ -6,8 +6,8 @@ export const DEFAULT_UC_AUTH_SETTERS = [
 ];
 export function defaultUCAuthSetters() {
     return {
-        ANONYMOUS: null,
         ADMIN: FAKE_USER_ADMIN,
+        ANONYMOUS: null,
         REGULAR: FAKE_USER_REGULAR,
     };
 }

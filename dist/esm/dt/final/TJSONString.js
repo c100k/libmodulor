@@ -17,7 +17,7 @@ export class TJSONString extends TString {
         try {
             JSON.parse(this.raw);
         }
-        catch (err) {
+        catch (_err) {
             validation.add({
                 constraint: 'format',
                 expected: 'JSON',

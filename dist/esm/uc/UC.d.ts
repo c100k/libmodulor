@@ -1,11 +1,11 @@
 import type { AppManifest } from '../app/index.js';
 import { type DataType, Validation } from '../dt/index.js';
-import { UCInputField } from './UCInputField.js';
 import type { UCAuth } from './auth.js';
 import type { UCDef, UCFieldKey } from './def.js';
 import type { UCInput } from './input.js';
 import type { UCOPIBase } from './opi.js';
-import type { rVal0, rValArr, reqVal0 } from './utils/rVal.js';
+import { UCInputField } from './UCInputField.js';
+import type { reqVal0, rVal0, rValArr } from './utils/rVal.js';
 export type ArgsTuple<I extends UCInput | undefined = undefined, OPI0 extends UCOPIBase | undefined = undefined, OPI1 extends UCOPIBase | undefined = undefined> = ConstructorParameters<typeof UC<I, OPI0, OPI1>>;
 export type ArgsRecord<I extends UCInput | undefined = undefined, OPI0 extends UCOPIBase | undefined = undefined, OPI1 extends UCOPIBase | undefined = undefined> = {
     appManifest: ArgsTuple<I, OPI0, OPI1>[0];

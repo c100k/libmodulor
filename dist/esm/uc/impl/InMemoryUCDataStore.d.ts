@@ -1,5 +1,5 @@
-import type { UCDataStore, UCDataStoreReadOpts, UCDataStoreReadResponse, UCDataStoreRecord, UCDataStoreTx, UCDataStoreWriteProjectionSpecificBinding } from '../data-store.js';
 import type { UCData } from '../data.js';
+import type { UCDataStore, UCDataStoreReadOpts, UCDataStoreReadResponse, UCDataStoreRecord, UCDataStoreTx, UCDataStoreWriteProjectionSpecificBinding } from '../data-store.js';
 import type { UCInput } from '../input.js';
 type TxState = 'committed' | 'pending' | 'rollbacked';
 export declare class InMemoryUCDataStore implements UCDataStore {

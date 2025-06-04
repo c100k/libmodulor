@@ -1,6 +1,6 @@
 import type { FSManager, Logger, Worker } from '../../../std/index.js';
-import { type OutputItem, type UCDefASTParser } from '../../UCDefASTParser.js';
 import type { AppTesterCtx } from '../../ctx.js';
+import { type OutputItem, type UCDefASTParser } from '../../UCDefASTParser.js';
 export interface Input {
     ctx: AppTesterCtx;
 }

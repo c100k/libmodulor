@@ -1,8 +1,8 @@
 import type { HTTPContentType, HTTPMethod, URLPath } from '../../dt/index.js';
 import type { HTTPDataEnvelope } from '../../utils/index.js';
-import type { UC } from '../UC.js';
 import type { UCInput } from '../input.js';
 import type { UCOPIBase } from '../opi.js';
+import type { UC } from '../UC.js';
 import { type UCMountingPoint } from './ucMountingPoint.js';
 export interface UCHTTPContract {
     contentType: HTTPContentType;

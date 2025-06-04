@@ -12,8 +12,8 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 };
 import { inject, injectable } from 'inversify';
 import { APP_SRC_DIR_NAME, APP_SRC_UCDS_DIR_NAME, UC_DEF_FILE_NAME_SUFFIX, UC_DEF_SUFFIX, UC_INPUT_FIELD_PATTERN, UC_INPUT_SUFFIX, UC_OPI_SUFFIX, UC_POLICY_SUFFIX_FULL, } from '../../../convention.js';
-import { initOutputItem, } from '../../UCDefASTParser.js';
 import { optsAllSet } from '../../opts.js';
+import { initOutputItem, } from '../../UCDefASTParser.js';
 const ERR_UCD_CONST_NAME = (name) => `The UCD const name '${name}' must follow the convention`;
 const ERR_UCD_FILE_SUFFIX = (fileName) => `The file '${fileName}' must end with ${UC_DEF_FILE_NAME_SUFFIX}`;
 const ERR_UCD_IMPORTS_EXTERNAL_ALLOWED = (aliasPrefix, allowed, text) => `External imports must be an alias '${aliasPrefix}*' or be one of ${allowed} (Got ${text})`;
@@ -39,7 +39,7 @@ let UCDefSourcesChecker = class UCDefSourcesChecker {
     async exec({ ctx }) {
         const { appPath, opts } = ctx;
         // TODO : Consider removing this and using profiling when needed
-        const startTime = new Date().getTime();
+        const startTime = Date.now();
         this.logger.debug('UCDefSourceChecker starting', {
             appPath,
             startTime,
@@ -52,7 +52,7 @@ let UCDefSourcesChecker = class UCDefSourcesChecker {
         await this.ucDefASTParser.transpile();
         this.logger.debug('UCDefSourceChecker processing files');
         this.output.items = await this.processFiles(appPath, ucdsPaths);
-        const duration = new Date().getTime() - startTime;
+        const duration = Date.now() - startTime;
         this.logger.debug('UCDefSourceChecker done', {
             appPath,
             duration: `${duration} ms`,

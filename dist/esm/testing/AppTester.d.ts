@@ -9,15 +9,15 @@ import type { AppTesterFlow, AppTesterFlowExecOutput } from './flow.js';
 import { SimpleHTMLAppTestReportEmitter } from './impl/SimpleHTMLAppTestReportEmitter.js';
 import { type UCInputFiller } from './uc-input.js';
 import type { AppDocsEmitter } from './workers/AppDocsEmitter.js';
-import type { AppTestSuiteTestResult } from './workers/AppTestSuiteEmitter.js';
 import { AppTesterCtxInitializer } from './workers/AppTesterCtxInitializer.js';
-import { UCExecutor, type UCExecutorExecOutput, type Input as UCExecutorInput } from './workers/UCExecutor.js';
+import type { AppTestSuiteTestResult } from './workers/AppTestSuiteEmitter.js';
 import { AppFolderChecker } from './workers/checkers/AppFolderChecker.js';
 import { AppI18nChecker } from './workers/checkers/AppI18nChecker.js';
 import { AppIndexChecker } from './workers/checkers/AppIndexChecker.js';
 import { AppManifestChecker } from './workers/checkers/AppManifestChecker.js';
 import { UCDefChecker } from './workers/checkers/UCDefChecker.js';
 import { UCDefSourcesChecker } from './workers/checkers/UCDefSourcesChecker.js';
+import { UCExecutor, type UCExecutorExecOutput, type Input as UCExecutorInput } from './workers/UCExecutor.js';
 export interface AppTesterInitArgs {
     appPath: FilePath;
     configurator: AppTesterConfigurator;

@@ -4,6 +4,7 @@ import {
     type CryptoManager,
     EverybodyUCPolicy,
     type FreeTextShort,
+    range,
     TFreeTextShort,
     TUIntQuantity,
     TUUID,
@@ -17,7 +18,6 @@ import {
     UCOutputBuilder,
     type UIntQuantity,
     type UUID,
-    range,
 } from 'libmodulor';
 
 import { Manifest } from '../manifest';

@@ -1,5 +1,4 @@
 {
-    "extends": "expo/tsconfig.base",
     "compilerOptions": {
         "emitDecoratorMetadata": true,
         "experimentalDecorators": true,
@@ -8,5 +7,6 @@
         "noUnusedLocals": true,
         "noUnusedParameters": true,
         "strict": true
-    }
+    },
+    "extends": "expo/tsconfig.base"
 }

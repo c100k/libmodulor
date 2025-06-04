@@ -119,7 +119,7 @@ let ServerRequestHandler = class ServerRequestHandler {
                 try {
                     uc.fill((await req.bodyFromJSON()));
                 }
-                catch (err) {
+                catch (_err) {
                     // Ignore any JSON.parse error as everything is validated afterwards
                 }
                 break;
@@ -165,14 +165,14 @@ let ServerRequestHandler = class ServerRequestHandler {
     async applyRedirectSideEffect(res, item) {
         if (!item ||
             !('redirect' in item) ||
-            typeof item['redirect'] !== 'string') {
+            typeof item.redirect !== 'string') {
             return;
         }
         const { redirect } = item;
         res.redirect(redirect);
     }
     async applySetAuthSideEffect(res, item) {
-        if (!item || !('jwt' in item) || typeof item['jwt'] !== 'string') {
+        if (!item || !('jwt' in item) || typeof item.jwt !== 'string') {
             return;
         }
         const { jwt } = item;

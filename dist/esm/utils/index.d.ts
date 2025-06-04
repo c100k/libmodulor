@@ -11,7 +11,7 @@ export { bindProvider } from './ioc/bindProvider.js';
 export { CONTAINER_OPTS } from './ioc/container.js';
 export type { Class } from './ioc/types.js';
 export { fmt as fmtNumber } from './numbers/fmt.js';
-export { type CoreUnit, type SquareUnit, type SquareableUnit, type Unit, baseFromSquareUnit, isSquareUnit, } from './numbers/units.js';
+export { baseFromSquareUnit, type CoreUnit, isSquareUnit, type SquareableUnit, type SquareUnit, type Unit, } from './numbers/units.js';
 export { capitalize, isCapitalized } from './strings/capitalize.js';
 export { humanize } from './strings/humanize.js';
 export { truncate } from './strings/truncate.js';

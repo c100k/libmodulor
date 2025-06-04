@@ -11,7 +11,7 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
 import { inject, injectable } from 'inversify';
-import { SignJWT, decodeJwt, decodeProtectedHeader, importPKCS8, importSPKI, jwtVerify, } from 'jose';
+import { decodeJwt, decodeProtectedHeader, importPKCS8, importSPKI, jwtVerify, SignJWT, } from 'jose';
 import { JWSSignatureVerificationFailed } from 'jose/errors';
 import { UnauthorizedError } from '../../error/index.js';
 import { assertIsDefined } from '../../utils/index.js';

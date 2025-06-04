@@ -36,12 +36,12 @@ let OllamaLLMManager = class OllamaLLMManager {
                 choices: [{ message: { content: res.response } }],
             }),
             req: {
-                envelope: 'json',
                 builder: async () => ({
                     model: req.model,
                     prompt: firstMessage.content,
                     stream: false,
                 }),
+                envelope: 'json',
             },
             urlBuilder: async () => `${this.s().oll_base_url}/api/generate`,
         });

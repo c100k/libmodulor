@@ -6,13 +6,13 @@ import {
     useUC,
     useUCOR,
 } from 'libmodulor/react';
-import { type ReactElement, useEffect, useState } from 'react';
-
 import {
     UCAutoExecLoader,
     UCExecTouchable,
     UCForm,
 } from 'libmodulor/react-web-pure';
+import { type ReactElement, useEffect, useState } from 'react';
+
 import {
     BuyAssetUCD,
     ListOrdersUCD,

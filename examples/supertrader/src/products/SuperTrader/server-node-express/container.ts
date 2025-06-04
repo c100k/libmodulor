@@ -1,5 +1,7 @@
 import { Container } from 'inversify';
 import {
+    bindCommon,
+    bindProduct,
     CONTAINER_OPTS,
     EnvSettingsManager,
     type ServerManager,
@@ -7,11 +9,9 @@ import {
     type SettingsManager,
     TARGET_DEFAULT_SERVER_MANAGER_SETTINGS,
     type UCDataStore,
-    bindCommon,
-    bindProduct,
 } from 'libmodulor';
 import { bindNodeCore } from 'libmodulor/node';
-import { NodeExpressServerManager, bindServer } from 'libmodulor/node-express';
+import { bindServer, NodeExpressServerManager } from 'libmodulor/node-express';
 import {
     KnexUCDataStore,
     type KnexUCDataStoreSettings,

@@ -1,4 +1,4 @@
-import { ucMountingPoint, ucifIsMandatory } from '../../uc/index.js';
+import { ucifIsMandatory, ucMountingPoint } from '../../uc/index.js';
 import { fmtBold, fmtCommand, fmtPadEndFor, fmtSection, } from '../../utils/index.js';
 import { print } from '../lib/cli/renderer.js';
 const FLAG_PREFIX = '--';

@@ -1,10 +1,10 @@
 import { Container } from 'inversify';
 import {
+    bindCommon,
+    bindProduct,
     CONTAINER_OPTS,
     type ServerClientManagerSettings,
     TARGET_DEFAULT_SERVER_CLIENT_MANAGER_SETTINGS,
-    bindCommon,
-    bindProduct,
 } from 'libmodulor';
 import { bindWeb } from 'libmodulor/web';
 

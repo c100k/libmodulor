@@ -1,6 +1,6 @@
-import type { UC } from '../UC.js';
 import type { UCInput } from '../input.js';
 import type { UCOPIBase } from '../opi.js';
+import type { UC } from '../UC.js';
 interface Opts {
     /**
      * @defaultValue false

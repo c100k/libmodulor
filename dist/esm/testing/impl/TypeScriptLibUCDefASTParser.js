@@ -11,11 +11,10 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
 import { inject, injectable } from 'inversify';
-import { isClassDeclaration, isObjectLiteralExpression, isPropertyAssignment, } from 'typescript';
+import typescript, { isClassDeclaration, isObjectLiteralExpression, isPropertyAssignment, } from 'typescript';
 // To avoid the following error when used in a consumer :
 // SyntaxError: Named export 'ModuleKind' not found. The requested module 'typescript' is a CommonJS module, which may not support all module.exports as named exports.
 // CommonJS modules can always be imported via the default export
-import typescript from 'typescript';
 const { ModuleKind, ModuleResolutionKind, ScriptTarget, createProgram, flattenDiagnosticMessageText, forEachChild, getPreEmitDiagnostics, isIdentifier, isImportDeclaration, isPropertySignature, isStringLiteral, isTypeReferenceNode, isVariableStatement, } = typescript;
 import { UC_MAIN_CLIENT_SUFFIX, UC_MAIN_SERVER_SUFFIX, UC_MAIN_STEP_PREFIX_REGULAR, UC_MAIN_SUFFIX, UC_POLICY_SUFFIX, } from '../../convention.js';
 const ERR_TS_CONFIG_INVALID = (configFileName) => `The root ${configFileName} could not be opened or parsed`;
@@ -74,7 +73,7 @@ let TypeScriptLibUCDefASTParser = class TypeScriptLibUCDefASTParser {
         try {
             tsConfig = JSON.parse(await this.fsManager.cat(tsConfigPath));
         }
-        catch (err) {
+        catch (_err) {
             throw new Error(ERR_TS_CONFIG_INVALID(configFileName));
         }
         const compilerOptionsBase = tsConfig.compilerOptions;

@@ -12,7 +12,7 @@ export default function HomePage() {
             </div>
 
             <p className="text-fd-muted-foreground">
-                <Link href="/docs" className="text-2xl font-semibold underline">
+                <Link className="text-2xl font-semibold underline" href="/docs">
                     read the docs
                 </Link>
             </p>

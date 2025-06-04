@@ -11,7 +11,7 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
 import { inject, injectable } from 'inversify';
-import { APPS_ROOT_ALIAS, APPS_ROOT_DIR_NAME, APP_SRC_DIR_NAME, } from '../../convention.js';
+import { APP_SRC_DIR_NAME, APPS_ROOT_ALIAS, APPS_ROOT_DIR_NAME, } from '../../convention.js';
 let AppSrcFilePathBuilder = class AppSrcFilePathBuilder {
     fsManager;
     logger;

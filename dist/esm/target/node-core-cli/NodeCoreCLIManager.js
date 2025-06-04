@@ -15,7 +15,7 @@ import { inject, injectable } from 'inversify';
 import { TBoolean } from '../../dt/index.js';
 import { WordingManager } from '../../i18n/index.js';
 import { ProductUCsLoader } from '../../product/index.js';
-import { ucMountingPoint, ucifRepeatability, } from '../../uc/index.js';
+import { ucifRepeatability, ucMountingPoint, } from '../../uc/index.js';
 import { CommandExecutor } from '../lib/cli/CommandExecutor.js';
 import { print } from '../lib/cli/renderer.js';
 import { showHelp } from './commands.js';

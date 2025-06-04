@@ -1,16 +1,38 @@
 {
     "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
+    "assist": {
+        "actions": {
+            "source": {
+                "organizeImports": {
+                    "level": "on",
+                    "options": {
+                        "groups": [
+                            [":NODE:"],
+                            ":BLANK_LINE:",
+                            [":PACKAGE:"],
+                            ":BLANK_LINE:",
+                            [":PATH:"]
+                        ]
+                    }
+                },
+                "useSortedAttributes": "on",
+                "useSortedKeys": "on"
+            }
+        }
+    },
     "files": {
-        "ignore": [
-            ".next",
-            "coverage",
-            "dist",
-            "docs-fd/.next",
-            "docs-fd/.source",
-            "docs-fd/node_modules",
-            "node_modules"
-        ],
-        "ignoreUnknown": true
+        "ignoreUnknown": true,
+        "includes": [
+            "**",
+            "!**/.next",
+            "!**/coverage",
+            "!**/dist",
+            "!**/docs-fd/.next",
+            "!**/docs-fd/.source",
+            "!**/docs-fd/node_modules",
+            "!**/node_modules",
+            "!**/package.json"
+        ]
     },
     "formatter": {
         "indentStyle": "space",
@@ -22,6 +44,25 @@
         },
         "parser": {
             "unsafeParameterDecoratorsEnabled": true
+        }
+    },
+    "linter": {
+        "rules": {
+            "style": {
+                "noInferrableTypes": "error",
+                "noParameterAssign": "error",
+                "noUnusedTemplateLiteral": "error",
+                "noUselessElse": "error",
+                "useAsConstAssertion": "error",
+                "useDefaultParameterLast": "error",
+                "useEnumInitializers": "error",
+                "useNumberNamespace": "error",
+                "useSelfClosingElements": "error",
+                "useSingleVarDeclarator": "error"
+            },
+            "suspicious": {
+                "noConsole": "error"
+            }
         }
     }
 }

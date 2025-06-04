@@ -1,9 +1,9 @@
 import type { IconCode } from '../../icon/index.js';
 import type { DataType } from '../DataType.js';
-import { Validation } from '../Validation.js';
 import type { Color } from '../final/TColor.js';
 import type { RNInputMode } from '../targets/rn.js';
 import type { HTMLInputType } from '../targets/web.js';
+import { Validation } from '../Validation.js';
 type AutoCapitalizeBehavior = 'characters' | 'sentences' | 'words';
 export type OptionLabel = string;
 type Option<T> = {
