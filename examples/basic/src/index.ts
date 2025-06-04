@@ -220,9 +220,9 @@ for (const line of summary) {
     print(line);
 }
 
-function print(message?: string, ...optionalParams: unknown[]): void {
+function print(message?: unknown, ...optionalParams: unknown[]): void {
     // biome-ignore lint/suspicious/noConsole: we want it
-    console.log(message, optionalParams);
+    console.log(message, ...optionalParams);
 }
 
 function printErr(err: unknown): void {
