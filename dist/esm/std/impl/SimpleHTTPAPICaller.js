@@ -96,12 +96,14 @@ let SimpleHTTPAPICaller = class SimpleHTTPAPICaller {
         }
         if (authorizationHeader) {
             const { prefix, value } = authorizationHeader;
+            // biome-ignore lint/complexity/useLiteralKeys: typescript disagrees
             headers['Authorization'] = [prefix, value].join(' ').trim();
         }
         if (basicAuth) {
             const { password, username } = basicAuth;
             const prefix = 'Basic';
             const value = this.bufferManager.encodeBase64([username, password].join(':'));
+            // biome-ignore lint/complexity/useLiteralKeys: typescript disagrees
             headers['Authorization'] = [prefix, value].join(' ').trim();
         }
         if (additionalHeadersBuilder) {

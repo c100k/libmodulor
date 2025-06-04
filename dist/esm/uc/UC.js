@@ -126,7 +126,7 @@ export class UC {
     }
     operatesOnAggregate() {
         const fields = this.inputFields;
-        const aggregateIdField = fields.find((f) => f.key === Object.keys(AggregateInputDef['fields'])[0]);
+        const aggregateIdField = fields.find((f) => f.key === Object.keys(AggregateInputDef.fields)[0]);
         return !!aggregateIdField && ucifIsMandatory(aggregateIdField.def);
     }
     rVal0(key) {

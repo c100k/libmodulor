@@ -81,6 +81,7 @@ let HTTPUCTransporter = class HTTPUCTransporter {
                         auth,
                     });
                     if (jwt) {
+                        // biome-ignore lint/complexity/useLiteralKeys: typescript disagrees
                         additionalHeaders['Cookie'] =
                             `${this.s().server_cookies_name_auth}=${jwt}`;
                     }
