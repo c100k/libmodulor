@@ -1,7 +1,7 @@
 import type { UUID } from '../../dt/index.js';
 import type { Worker } from '../../std/index.js';
-import type { UCDataStore, UCDataStoreRecord } from '../data-store.js';
 import type { UCData } from '../data.js';
+import type { UCDataStore, UCDataStoreRecord } from '../data-store.js';
 import type { UCInput } from '../input.js';
 import type { UCMetadata } from '../metadata.js';
 interface Input {

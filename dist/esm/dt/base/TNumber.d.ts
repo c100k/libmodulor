@@ -1,8 +1,8 @@
 import { type Unit } from '../../utils/index.js';
-import type { Validation } from '../Validation.js';
 import type { UIntQuantity } from '../final/TUIntQuantity.js';
 import type { RNInputMode } from '../targets/rn.js';
 import type { HTMLInputType } from '../targets/web.js';
+import type { Validation } from '../Validation.js';
 import { TBase, type TName } from './TBase.js';
 export interface TNumberConstraints<T extends number> {
     max?: T;

@@ -24,13 +24,13 @@ export function propertyType(def) {
 }
 export function resError(err) {
     return {
-        isError: true,
         content: [
             {
                 text: err.message,
                 type: 'text',
             },
         ],
+        isError: true,
     };
 }
 export function resObj(obj) {

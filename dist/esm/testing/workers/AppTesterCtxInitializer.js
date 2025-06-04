@@ -36,8 +36,8 @@ let AppTesterCtxInitializer = class AppTesterCtxInitializer {
         for await (const { path } of ucdFilePaths) {
             ucdRefs.push({
                 fileName: path,
-                source: await srcImporter(this.fsManager.path(ucdsPath, path)),
                 name: path.replace(UC_DEF_FILE_NAME_SUFFIX, ''),
+                source: await srcImporter(this.fsManager.path(ucdsPath, path)),
             });
         }
         // Sorting is necessary because the file system sorting is not necessarily the same as A-Z sorting.

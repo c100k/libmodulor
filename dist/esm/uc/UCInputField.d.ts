@@ -1,7 +1,7 @@
 import { type DataType, Validation } from '../dt/index.js';
 import type { UCFieldKey, UCWording } from './def.js';
 import { UCInputFieldChangeOperator, type UCInputFieldDef, type UCInputFieldValue } from './input-field.js';
-import { rVal0, rValArr, type reqVal0 } from './utils/rVal.js';
+import { type reqVal0, rVal0, rValArr } from './utils/rVal.js';
 export declare class UCInputField<T extends DataType> {
     key: UCFieldKey;
     def: UCInputFieldDef<T>;

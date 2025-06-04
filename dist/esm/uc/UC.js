@@ -1,9 +1,9 @@
 import { TFile, Validation } from '../dt/index.js';
 import { isBlank } from '../utils/index.js';
-import { UCInputField } from './UCInputField.js';
 import { UCInputFieldChangeOperator, ucifIsMandatory, ucifIsSensitive, ucifMustBeFilledManually, } from './input-field.js';
 import { AggregateInputDef } from './io/input/AggregateInput.js';
 import { ListInputDef } from './io/input/ListInput.js';
+import { UCInputField } from './UCInputField.js';
 export class UC {
     appManifest;
     def;

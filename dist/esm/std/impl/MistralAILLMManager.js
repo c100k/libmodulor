@@ -29,8 +29,8 @@ let MistralAILLMManager = class MistralAILLMManager {
     async send(req, opts) {
         return await this.httpAPICaller.exec({
             authorizationHeader: {
-                value: opts?.auth?.apiKey ?? this.s().mai_api_key,
                 prefix: 'Bearer',
+                value: opts?.auth?.apiKey ?? this.s().mai_api_key,
             },
             errBuilder: async (error) => {
                 if ('message' in error) {
@@ -40,8 +40,8 @@ let MistralAILLMManager = class MistralAILLMManager {
             },
             method: 'POST',
             req: {
-                envelope: 'json',
                 builder: async () => req,
+                envelope: 'json',
             },
             urlBuilder: async () => `${MistralAILLMManager_1.BASE_URL}/chat/completions`,
         });

@@ -5,7 +5,7 @@ export function fmt(value, unit, decimalsCount) {
             maximumFractionDigits: decimalsCount,
         }).format(value);
     }
-    let formatterUnit = undefined;
+    let formatterUnit;
     let unitSuffix = '';
     if (isSquareUnit(unit)) {
         formatterUnit = baseFromSquareUnit(unit);

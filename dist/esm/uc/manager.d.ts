@@ -1,12 +1,12 @@
 import type { UUID } from '../dt/index.js';
-import type { UC } from './UC.js';
-import type { UCDataStoreRecord } from './data-store.js';
 import type { UCData } from './data.js';
+import type { UCDataStoreRecord } from './data-store.js';
 import type { UCExecMode } from './exec.js';
 import type { UCOutputReader } from './helpers/UCOutputReader.js';
 import type { UCInput } from './input.js';
 import type { UCOPIBase } from './opi.js';
 import type { UCOutputOrNothing } from './output.js';
+import type { UC } from './UC.js';
 export interface UCManagerPersistOpts {
     /**
      * In case the use case relates to an existing aggregate, pass its `aggregateId` in this field.

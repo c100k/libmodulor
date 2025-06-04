@@ -29,14 +29,14 @@ let OpenAILLMManager = class OpenAILLMManager {
     async send(req, opts) {
         return await this.httpAPICaller.exec({
             authorizationHeader: {
-                value: opts?.auth?.apiKey ?? this.s().oai_api_key,
                 prefix: 'Bearer',
+                value: opts?.auth?.apiKey ?? this.s().oai_api_key,
             },
             errBuilder: async (error) => error.error.message,
             method: 'POST',
             req: {
-                envelope: 'json',
                 builder: async () => req,
+                envelope: 'json',
             },
             urlBuilder: async () => `${OpenAILLMManager_1.BASE_URL}/chat/completions`,
         });

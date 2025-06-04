@@ -34,8 +34,8 @@ let HTTPUCTransporter = class HTTPUCTransporter {
         const baseURL = await this.serverClientManager.baseURL({ auth });
         const { contentType, envelope, method, path } = ucHTTPContract(uc);
         const additionalHeaders = {};
-        let authorizationHeader = undefined;
-        let basicAuth = undefined;
+        let authorizationHeader;
+        let basicAuth;
         const authType = sec?.authType ?? DEFAULT_UC_SEC_AT;
         const publicApiKeyCheckType = sec?.publicApiKeyCheckType ?? DEFAULT_UC_SEC_PAKCT;
         switch (publicApiKeyCheckType) {

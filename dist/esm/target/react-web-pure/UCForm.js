@@ -13,5 +13,5 @@ export function UCForm({ clearAfterExec, disabled, execState, onChange, onSubmit
             formRef.current?.reset();
         }
     };
-    return (_jsxs("form", { className: form?.className, onSubmit: onSubmit, ref: formRef, style: form?.style, children: [uc.inputFieldsForForm().map((f) => (_jsx(UCFormField, { disabled: disabled, execState: execState, f: f, onChange: onChange }, f.key))), _jsx(UCFormSubmitControl, { execState: execState, disabled: disabled, uc: uc })] }));
+    return (_jsxs("form", { className: form?.className, onSubmit: onSubmit, ref: formRef, style: form?.style, children: [uc.inputFieldsForForm().map((f) => (_jsx(UCFormField, { disabled: disabled, execState: execState, f: f, onChange: onChange }, f.key))), _jsx(UCFormSubmitControl, { disabled: disabled, execState: execState, uc: uc })] }));
 }

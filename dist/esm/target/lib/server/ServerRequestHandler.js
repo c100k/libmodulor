@@ -119,7 +119,7 @@ let ServerRequestHandler = class ServerRequestHandler {
                 try {
                     uc.fill((await req.bodyFromJSON()));
                 }
-                catch (err) {
+                catch (_err) {
                     // Ignore any JSON.parse error as everything is validated afterwards
                 }
                 break;

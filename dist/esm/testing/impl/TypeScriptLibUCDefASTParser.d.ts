@@ -1,7 +1,7 @@
 import type { FilePath } from '../../dt/index.js';
 import type { FSManager, Logger } from '../../std/index.js';
-import type { OnImport, OnInputType, OnMainStep, OnMetadata, OnOPIType, OnPolicy, OnVariable, UCDefASTParser } from '../UCDefASTParser.js';
 import type { AppTesterOptsAllSet } from '../opts.js';
+import type { OnImport, OnInputType, OnMainStep, OnMetadata, OnOPIType, OnPolicy, OnVariable, UCDefASTParser } from '../UCDefASTParser.js';
 export declare class TypeScriptLibUCDefASTParser implements UCDefASTParser {
     private fsManager;
     private logger;

@@ -52,7 +52,7 @@ let CreateProjectClientMain = class CreateProjectClientMain {
                 opts: { args: ['--version'] },
             });
         }
-        catch (err) {
+        catch (_err) {
             throw new IllegalArgumentError(`'${bin}' seems missing. Is it installed on your machine ?`);
         }
     }

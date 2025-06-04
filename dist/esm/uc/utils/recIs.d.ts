@@ -1,5 +1,5 @@
-import type { UCDataStoreRecord } from '../data-store.js';
 import type { UCData } from '../data.js';
+import type { UCDataStoreRecord } from '../data-store.js';
 import type { UCInput } from '../input.js';
 import type { UCName } from '../metadata.js';
 /**

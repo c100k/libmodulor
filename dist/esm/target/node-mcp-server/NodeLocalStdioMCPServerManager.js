@@ -15,7 +15,7 @@ import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js'
 import { CallToolRequestSchema, ListToolsRequestSchema, } from '@modelcontextprotocol/sdk/types.js';
 import { inject, injectable } from 'inversify';
 import { WordingManager } from '../../i18n/index.js';
-import { UCBuilder, ucMountingPoint, ucifIsMandatory, } from '../../uc/index.js';
+import { UCBuilder, ucifIsMandatory, ucMountingPoint, } from '../../uc/index.js';
 import { propertyType, resError, resObj } from './funcs.js';
 /**
  * A simple MCP Server implementation
@@ -82,7 +82,7 @@ let NodeLocalStdioMCPServerManager = class NodeLocalStdioMCPServerManager {
         }
         const inputSchema = this.buildInputSchema(uc);
         const mountingPoint = uc.def.ext?.cmd?.mountAt ?? ucMountingPoint(uc);
-        const tool = { name: mountingPoint, inputSchema };
+        const tool = { inputSchema, name: mountingPoint };
         this.tools.set(mountingPoint, { appName: appManifest.name, tool, ucd });
     }
     async mountStaticDir(_dirPath) {

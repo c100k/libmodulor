@@ -1,12 +1,12 @@
 import { type Provider } from 'inversify';
 import type { ProductManifest } from '../../product/index.js';
 import type { Configurable, SettingsManager, Worker } from '../../std/index.js';
-import type { UC } from '../UC.js';
 import type { UCDefLifecycle } from '../def.js';
 import type { UCInput } from '../input.js';
 import type { UCOPIBase } from '../opi.js';
 import type { UCPolicy, UCPolicyOutput } from '../policy.js';
 import type { UCSettings } from '../settings.js';
+import type { UC } from '../UC.js';
 interface Input<I extends UCInput | undefined = undefined, OPI0 extends UCOPIBase | undefined = undefined, OPI1 extends UCOPIBase | undefined = undefined> {
     lifecycle: UCDefLifecycle;
     uc: UC<I, OPI0, OPI1>;

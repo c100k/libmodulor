@@ -10,6 +10,11 @@ const MULTIPLE_VALUES_SEPARATOR = ',';
 // TODO : Split this into smaller components
 export function UCFormFieldControl({ disabled, errMsg = null, execState, f, onChange: onChangeBase, }) {
     const { colors, formFieldControl, renderFormFieldControl } = useStyleContext();
+    const [internalValue, setInternalValue] = useState(f.getValue());
+    // biome-ignore lint/correctness/useExhaustiveDependencies: false positive : It is actually necessary (only `f` does not trigger the effect)
+    useEffect(() => {
+        setInternalValue(f.getValue());
+    }, [f.getValue()]);
     const component = renderFormFieldControl?.({
         disabled,
         errMsg,
@@ -20,11 +25,6 @@ export function UCFormFieldControl({ disabled, errMsg = null, execState, f, onCh
     if (component) {
         return component;
     }
-    const [internalValue, setInternalValue] = useState(f.getValue());
-    // biome-ignore lint/correctness/useExhaustiveDependencies: false positive : It is actually necessary (only `f` does not trigger the effect)
-    useEffect(() => {
-        setInternalValue(f.getValue());
-    }, [f.getValue()]);
     const onChangeText = (value) => {
         const [isRepeatable] = ucifRepeatability(f.def);
         if (isRepeatable && typeof value === 'string') {
@@ -69,7 +69,7 @@ export function UCFormFieldControl({ disabled, errMsg = null, execState, f, onCh
     // TODO : Implement picker for TFile (requires a dependency...)
     if (type instanceof TBoolean) {
         const { style } = styleDef(formFieldControl, 'Switch');
-        return (_jsx(Switch, { disabled: !attrs.spec?.editable, trackColor: { true: colors?.primary }, onValueChange: onValueChange, style: style, value: internalValue }));
+        return (_jsx(Switch, { disabled: !attrs.spec?.editable, onValueChange: onValueChange, style: style, trackColor: { true: colors?.primary }, value: internalValue }));
     }
     let valueAsString = '';
     if (!isBlank(internalValue)) {
@@ -88,7 +88,7 @@ const styles = StyleSheet.create({
         flexGrow: 0, // Prevent the list from extending full height
     },
     selectOption: {
-        padding: 2,
         borderWidth: 1,
+        padding: 2,
     },
 });

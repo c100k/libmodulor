@@ -41,7 +41,7 @@ export class TJWT extends TString {
             }
             // signature is ignored for now
         }
-        catch (err) {
+        catch (_err) {
             validation.add({
                 constraint: 'format',
                 expected: 'JWT',

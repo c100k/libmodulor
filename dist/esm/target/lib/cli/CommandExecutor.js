@@ -57,7 +57,7 @@ let CommandExecutor = class CommandExecutor {
     async version() {
         let i = 0;
         let currentPath = CommandExecutor_1.VERSION_FETCH_START_PATH;
-        let file = undefined;
+        let file;
         while (i < CommandExecutor_1.VERSION_FETCH_MAX_TRIES && !file) {
             const items = await this.fsManager.ls(currentPath, {
                 withFullPath: true,
@@ -75,7 +75,7 @@ let CommandExecutor = class CommandExecutor {
             const { version } = JSON.parse(contents);
             return version;
         }
-        catch (err) {
+        catch (_err) {
             return CommandExecutor_1.DEFAULT_VERSION;
         }
     }
