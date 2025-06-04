@@ -31,7 +31,7 @@
             "!**/docs-fd/.source",
             "!**/docs-fd/node_modules",
             "!**/node_modules",
-            "!package.json"
+            "!**/package.json"
         ]
     },
     "formatter": {
@@ -48,9 +48,6 @@
     },
     "linter": {
         "rules": {
-            "complexity": {
-                "useLiteralKeys": "off"
-            },
             "style": {
                 "noInferrableTypes": "error",
                 "noParameterAssign": "error",

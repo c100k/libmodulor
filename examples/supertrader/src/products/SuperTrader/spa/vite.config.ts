@@ -3,7 +3,7 @@ import { join } from 'node:path';
 
 import tailwindcss from '@tailwindcss/vite';
 import { StripUCDLifecycleServerPlugin } from 'libmodulor/vite';
-import { type PluginOption, defineConfig } from 'vite';
+import { defineConfig, type PluginOption } from 'vite';
 
 const projectRoot = process.cwd();
 const targetsPath = join('src', 'products', 'SuperTrader');
@@ -18,13 +18,13 @@ const [outDir, ...otherOutDirs] =
     outDirs as unknown as typeof serverTargetsName;
 
 const CopyBuildToOtherServersPlugin: PluginOption = {
-    name: 'copy-build-to-other-servers',
     closeBundle: async () => {
         for await (const path of otherOutDirs) {
             await mkdir(path, { recursive: true });
             await cp(outDir, path, { recursive: true });
         }
     },
+    name: 'copy-build-to-other-servers',
 };
 
 export default defineConfig({

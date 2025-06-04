@@ -5,10 +5,10 @@ import {
     type AppManifest,
     type AppName,
     type ErrorMessage,
+    UC_DEF_FILE_NAME_SUFFIX,
     type UCDef,
     type UCName,
     type UCOutputReader,
-    UC_DEF_FILE_NAME_SUFFIX,
 } from 'libmodulor';
 import { UCPanel, useDIContext, useUC } from 'libmodulor/react';
 import {
@@ -50,15 +50,12 @@ export default function UCPanelCard({
     const appManifest = APPS_MAPPING.get(appName);
     const ucd = UCDS_MAPPING.get(ucName);
 
-    if (!appManifest || !ucd) {
-        return null;
-    }
-
     const { i18nManager, wordingManager } = useDIContext();
 
     const [errMsg, setErrMsg] = useState<ErrorMessage | null>(null);
     const [initializing, setInitializing] = useState(true);
-    const [uc] = useUC(appManifest, ucd, null);
+    // biome-ignore lint/style/noNonNullAssertion: to avoid conditional hooks error (not ideal but not a big deal)
+    const [uc] = useUC(appManifest!, ucd!, null);
     const [ucor, setUCOR] = useState<UCOutputReader | null>(null);
 
     useEffect(() => {
@@ -67,6 +64,10 @@ export default function UCPanelCard({
             setInitializing(false);
         })();
     }, [i18nManager]);
+
+    if (!appManifest || !ucd) {
+        return null;
+    }
 
     const { desc, label } = wordingManager.uc(ucd);
 
@@ -98,10 +99,10 @@ export default function UCPanelCard({
                     <UCPanel
                         clearAfterExec={false}
                         onDone={async (ucor) => setUCOR(ucor)}
-                        onStartSubmitting={async () => setErrMsg(null)}
                         onError={async (err) =>
                             setErrMsg((err as Error).message)
                         }
+                        onStartSubmitting={async () => setErrMsg(null)}
                         renderAutoExecLoader={UCAutoExecLoader}
                         renderExecTouchable={UCExecTouchable}
                         renderForm={UCForm}

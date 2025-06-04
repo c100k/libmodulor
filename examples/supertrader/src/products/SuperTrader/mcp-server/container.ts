@@ -1,11 +1,11 @@
 import { Container } from 'inversify';
 import {
+    bindCommon,
+    bindProduct,
     CONTAINER_OPTS,
     type ServerClientManagerSettings,
     type ServerManager,
     TARGET_DEFAULT_SERVER_CLIENT_MANAGER_SETTINGS,
-    bindCommon,
-    bindProduct,
 } from 'libmodulor';
 import { bindNodeCore } from 'libmodulor/node';
 import { NodeLocalStdioMCPServerManager } from 'libmodulor/node-mcp';

@@ -28,10 +28,10 @@ const styles = StyleSheet.create({
         gap: 5,
     },
     formFieldControl: {
-        borderWidth: 1,
         borderColor: GREY_100,
-        width: 230,
+        borderWidth: 1,
         padding: 2,
+        width: 230,
     },
     formFieldDesc: {
         color: GREY_500,
@@ -77,11 +77,11 @@ export const style: StyleContextT = {
             style: styles.formFieldControl,
         },
     },
-    formFieldErr: {
-        style: styles.formFieldErr,
-    },
     formFieldDesc: {
         style: styles.formFieldDesc,
+    },
+    formFieldErr: {
+        style: styles.formFieldErr,
     },
     formFieldLabel: {
         style: styles.formFieldLabel,

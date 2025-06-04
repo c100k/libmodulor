@@ -1,12 +1,12 @@
 import { Container } from 'inversify';
 import {
+    bindCommon,
+    bindProduct,
     CONTAINER_OPTS,
     EnvSettingsManager,
     type ServerClientManagerSettings,
     type SettingsManager,
     TARGET_DEFAULT_SERVER_CLIENT_MANAGER_SETTINGS,
-    bindCommon,
-    bindProduct,
 } from 'libmodulor';
 import { bindNodeCLI, bindNodeCore } from 'libmodulor/node';
 

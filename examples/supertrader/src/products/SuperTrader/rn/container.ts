@@ -1,12 +1,12 @@
 import { Container } from 'inversify';
 import {
+    bindCommon,
+    bindProduct,
     CONTAINER_OPTS,
     type CryptoManager,
     type FSManager,
     type ServerClientManagerSettings,
     TARGET_DEFAULT_SERVER_CLIENT_MANAGER_SETTINGS,
-    bindCommon,
-    bindProduct,
 } from 'libmodulor';
 import { bindRN } from 'libmodulor/rn';
 import { Platform } from 'react-native';

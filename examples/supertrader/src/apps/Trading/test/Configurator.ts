@@ -2,10 +2,10 @@ import { injectable } from 'inversify';
 import {
     type AppTesterCtx,
     type AppTesterFlow,
-    type CryptoManager,
     bindCommon,
+    type CryptoManager,
 } from 'libmodulor';
-import { NodeDeterministicCryptoManager, bindNodeCore } from 'libmodulor/node';
+import { bindNodeCore, NodeDeterministicCryptoManager } from 'libmodulor/node';
 import { bindServer } from 'libmodulor/node-express';
 import { SimpleAppTesterConfigurator } from 'libmodulor/node-test';
 

@@ -34,8 +34,8 @@ export class BuyAssetServerMain implements UCMain<BuyAssetInput, BuyAssetOPI0> {
 
         return new UCOutputBuilder<BuyAssetOPI0>()
             .add({
-                isin,
                 id: aggregateId,
+                isin,
                 limit,
                 qty,
                 status: 'pending',

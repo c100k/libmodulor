@@ -2,9 +2,9 @@ import { inject, injectable } from 'inversify';
 import {
     type ErrorMessage,
     EverybodyUCPolicy,
-    type FSManager,
     type FreeTextLong,
     type FreeTextShort,
+    type FSManager,
     type HTTPAPICaller,
     type JWT,
     type Logger,

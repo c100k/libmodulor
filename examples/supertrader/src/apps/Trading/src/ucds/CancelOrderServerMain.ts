@@ -3,6 +3,8 @@ import {
     type I18nManager,
     IllegalArgumentError,
     NotFoundError,
+    recIs,
+    reqVal0,
     type UCDataStore,
     type UCMain,
     type UCMainInput,
@@ -10,8 +12,6 @@ import {
     type UCOutput,
     UCOutputBuilder,
     type UUID,
-    recIs,
-    reqVal0,
 } from 'libmodulor';
 
 import type { Order } from '../lib/order.js';

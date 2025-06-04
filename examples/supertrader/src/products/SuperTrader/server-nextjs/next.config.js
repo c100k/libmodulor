@@ -1,5 +1,3 @@
-import { join } from 'node:path';
-
 /**
  * @type {import('next').NextConfig}
  */
