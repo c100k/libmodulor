@@ -6,6 +6,7 @@
 
 - Switch to `react-jsx` (instead of `react`) : the targets relying on React now use `react/jsx-runtime` instead of the legacy `React.createElement`
 - Upgrade to `biome` `2.0.0`
+- Reduce usage of `useLiteralKeys`
 
 ## v0.17.0 (2025-06-02)
 

@@ -6,6 +6,12 @@ type ErrBuilder<ResBad> = (response: ResBad) => Promise<ErrorMessage>;
 type OutputBuilder<ResGood, O> = (response: ResGood) => Promise<O>;
 type ReqBuilder<Req extends object> = () => Promise<Req>;
 type URLBuilder = () => Promise<URL>;
+export interface HTTPAPICallerHeaders {
+    [key: string]: string | undefined;
+    Authorization?: HTTPAPICallerAuthorizationHeader['value'];
+    'Content-Type'?: HTTPContentType;
+    Cookie?: string;
+}
 export interface HTTPAPICallerAuthorizationHeader {
     prefix?: 'AWS4-HMAC-SHA256' | 'Basic' | 'Bearer' | 'JWT' | 'OAuth';
     value: ApiKey | JWT | Password;

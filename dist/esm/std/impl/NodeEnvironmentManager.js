@@ -17,8 +17,7 @@ let NodeEnvironmentManager = class NodeEnvironmentManager {
         return homedir();
     }
     isProd() {
-        // biome-ignore lint/complexity/useLiteralKeys: typescript disagrees
-        return process.env['NODE_ENV'] === 'production';
+        return process.env.NODE_ENV === 'production';
     }
     type() {
         return type().toLowerCase();
