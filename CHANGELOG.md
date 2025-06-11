@@ -1,6 +1,6 @@
 # CHANGELOG
 
-## v0.18.0 (unreleased)
+## v0.18.0 (2025-06-11)
 
 **Misc**
 
