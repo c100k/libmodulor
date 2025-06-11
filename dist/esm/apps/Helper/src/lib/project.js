@@ -8,9 +8,35 @@ src/products/**/rn/.expo
 `;
 const BIOME_JSON = `{
     "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
+    "assist": {
+        "actions": {
+            "source": {
+                "organizeImports": {
+                    "level": "on",
+                    "options": {
+                        "groups": [
+                            [":NODE:"],
+                            ":BLANK_LINE:",
+                            [":PACKAGE:"],
+                            ":BLANK_LINE:",
+                            [":PATH:"]
+                        ]
+                    }
+                },
+                "useSortedAttributes": "on",
+                "useSortedKeys": "on"
+            }
+        }
+    },
     "files": {
-        "ignore": ["coverage", "dist", "node_modules"],
-        "ignoreUnknown": true
+        "ignoreUnknown": true,
+        "includes": [
+            "**",
+            "!**/coverage",
+            "!**/dist",
+            "!**/node_modules",
+            "!**/package.json"
+        ]
     },
     "formatter": {
         "indentStyle": "space",
@@ -22,6 +48,25 @@ const BIOME_JSON = `{
         },
         "parser": {
             "unsafeParameterDecoratorsEnabled": true
+        }
+    },
+    "linter": {
+        "rules": {
+            "style": {
+                "noInferrableTypes": "error",
+                "noParameterAssign": "error",
+                "noUnusedTemplateLiteral": "error",
+                "noUselessElse": "error",
+                "useAsConstAssertion": "error",
+                "useDefaultParameterLast": "error",
+                "useEnumInitializers": "error",
+                "useNumberNamespace": "error",
+                "useSelfClosingElements": "error",
+                "useSingleVarDeclarator": "error"
+            },
+            "suspicious": {
+                "noConsole": "error"
+            }
         }
     }
 }
