@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## v0.18.1 (unreleased)
+
+**Misc**
+
+- Adjust `CreateProject` biome config
+
 ## v0.18.0 (2025-06-11)
 
 **Misc**
