@@ -20,7 +20,7 @@ import type {
 @injectable()
 export class CloudflareWorkerFSManager implements FSManager {
     public async canHandleFiles(): Promise<boolean> {
-        throw new Error('Method not implemented.');
+        return false;
     }
 
     public async cat<T extends string>(
