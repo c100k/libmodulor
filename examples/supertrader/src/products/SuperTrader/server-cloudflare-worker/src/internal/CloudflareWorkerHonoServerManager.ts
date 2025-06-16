@@ -10,6 +10,7 @@ import {
     type DirPath,
     fromFormData,
     type HTTPMethod,
+    type I18nManager,
     type ServerManager,
     ServerRequestHandler,
     type ServerRequestHandlerReq,
@@ -27,6 +28,7 @@ export class CloudflareWorkerHonoServerManager implements ServerManager {
     protected runtime!: Hono;
 
     constructor(
+        @inject('I18nManager') private i18nManager: I18nManager,
         @inject(ServerRequestHandler)
         private serverRequestHandler: ServerRequestHandler,
         @inject('UCManager') private ucManager: UCManager,
@@ -93,6 +95,9 @@ export class CloudflareWorkerHonoServerManager implements ServerManager {
         const handler: Handler = async (
             c,
         ): Promise<HandlerResponse<object>> => {
+            // Unlike servers having a "setup" phase where we can initialize things, we need to initialize in request handlers
+            await this.i18nManager.init();
+
             const { body, status } = await this.serverRequestHandler.exec<
                 I,
                 OPI0,
