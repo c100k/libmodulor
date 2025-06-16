@@ -7,6 +7,7 @@
     "scripts": {
         "build": "./build.sh",
         "build:analyze:web": "vite-bundle-visualizer -c ./src/products/SuperTrader/web/vite.config.ts",
+        "deploy:server-cloudflare-worker": "cd dist/products/SuperTrader/server-cloudflare-worker && wrangler deploy",
         "run:cli": "cd dist/products/SuperTrader/cli && node index.js",
         "run:rn:android": "cd dist/products/SuperTrader/rn && expo start --android",
         "run:rn:ios": "cd dist/products/SuperTrader/rn && expo start --ios",
