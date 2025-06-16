@@ -61,8 +61,5 @@ for (const [appManifest, ucds] of apps.entries()) {
         serverManager.mountSync(uc.appManifest, uc.def, contract);
     }
 }
-// eslint-disable-next-line no-console
-// biome-ignore lint/suspicious/noConsole: we want it
-console.log(serverManager.getRuntime());
 
 export default serverManager.getRuntime();
