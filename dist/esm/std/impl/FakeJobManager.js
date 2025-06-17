@@ -22,6 +22,9 @@ let FakeJobManager = class FakeJobManager {
     async init() {
         // Nothing to do
     }
+    initSync() {
+        // Nothing to do
+    }
 };
 FakeJobManager = __decorate([
     injectable(),

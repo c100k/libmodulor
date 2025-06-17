@@ -31,6 +31,7 @@ export declare class NodeLocalStdioMCPServerManager implements Configurable<S>, 
     s(): S;
     overrideUCManager(ucManager: UCManager): void;
     init(): Promise<void>;
+    initSync(): void;
     mount<I extends UCInput | undefined = undefined, OPI0 extends UCOPIBase | undefined = undefined, OPI1 extends UCOPIBase | undefined = undefined>(appManifest: AppManifest, ucd: UCDef<I, OPI0, OPI1>, _contract: UCHTTPContract): Promise<void>;
     mountStaticDir(_dirPath: DirPath): Promise<void>;
     start(): Promise<void>;
@@ -38,5 +39,6 @@ export declare class NodeLocalStdioMCPServerManager implements Configurable<S>, 
     warmUp(): Promise<void>;
     private buildInputSchema;
     private execRequest;
+    private initCommon;
 }
 export {};

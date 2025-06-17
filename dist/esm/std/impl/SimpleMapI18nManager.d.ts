@@ -9,8 +9,10 @@ export declare class SimpleMapI18nManager implements I18nManager {
     constructor(i18n: I18n, logger: Logger);
     add<K extends I18nTranslationKey>(key: K, value: string): Promise<void>;
     init(): Promise<void>;
+    initSync(): void;
     l(): I18nLanguageCode;
     t<K extends I18nTranslationKey>(key: K, opts?: I18nManagerTOpts): string;
+    private initCommon;
     tOrNull<K extends I18nTranslationKey>(key: K, _opts?: I18nManagerTOpts): string | null;
     private replacePlaceholders;
 }

@@ -12,6 +12,9 @@ let NextJSServerManager = class NextJSServerManager {
     async init() {
         // Nothing to do
     }
+    initSync() {
+        // Nothing to do
+    }
     async mount(_appManifest, _ucd, _contract) {
         // Nothing to do
     }

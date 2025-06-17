@@ -28,14 +28,10 @@ let SimpleMapI18nManager = class SimpleMapI18nManager {
         this.entries.set(key, value);
     }
     async init() {
-        const translations = this.i18n[this.l()];
-        this.logger.trace('Initializing I18nManager', { translations });
-        if (!translations) {
-            return;
-        }
-        for (const [k, v] of Object.entries(translations)) {
-            this.entries.set(k, v);
-        }
+        this.initCommon();
+    }
+    initSync() {
+        this.initCommon();
     }
     l() {
         return I18N_DEFAULT_LANG;
@@ -49,6 +45,16 @@ let SimpleMapI18nManager = class SimpleMapI18nManager {
             return opts.fallback;
         }
         return key; // Mimic the behavior of some common libraries like i18next
+    }
+    initCommon() {
+        const translations = this.i18n[this.l()];
+        this.logger.trace('Initializing I18nManager', { translations });
+        if (!translations) {
+            return;
+        }
+        for (const [k, v] of Object.entries(translations)) {
+            this.entries.set(k, v);
+        }
     }
     tOrNull(key, _opts) {
         return this.entries.get(key) || null;

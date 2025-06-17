@@ -14,6 +14,7 @@ import http from 'node:http';
 import https from 'node:https';
 import express, {} from 'express';
 import { inject, injectable } from 'inversify';
+import { NotCallableError } from '../../error/index.js';
 import { EntrypointsBuilder } from '../lib/server/EntrypointsBuilder.js';
 import { ServerRequestHandler } from '../lib/server/ServerRequestHandler.js';
 import { ServerSSLCertLoader } from '../lib/server/ServerSSLCertLoader.js';
@@ -61,6 +62,9 @@ let NodeExpressServerManager = class NodeExpressServerManager {
     async init() {
         this.runtime = init(this.helmetMB, this.s().logger_level, this.s().server_tmp_path);
         await this.createServer();
+    }
+    initSync() {
+        throw new NotCallableError('initSync', 'init', 'async-only');
     }
     async mount(appManifest, ucd, contract) {
         const handler = buildHandler(appManifest, ucd, contract, this.serverRequestHandler, this.ucManager);

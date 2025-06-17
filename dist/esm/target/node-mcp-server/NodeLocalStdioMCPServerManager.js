@@ -55,21 +55,10 @@ let NodeLocalStdioMCPServerManager = class NodeLocalStdioMCPServerManager {
         this.ucManager = ucManager;
     }
     async init() {
-        this.runtime = new Server({
-            name: this.productManifest.name,
-            version: '0.1.0',
-        }, {
-            capabilities: {
-                tools: {},
-            },
-        });
-        if (this.s().logger_level !== 'error') {
-            const message = 'Set the logging_level to "error" as MCP does not want the server to log to stdout (see https://modelcontextprotocol.io/docs/tools/debugging#implementing-logging)';
-            // Depending on the `Logger` implementation, this.logger.error() might not write to stderr (e.g. can write to a file).
-            // That's why we explicitly write to stdout by calling console.error().
-            // biome-ignore lint/suspicious/noConsole: we want it
-            console.error(new Error(message));
-        }
+        this.initCommon();
+    }
+    initSync() {
+        this.initCommon();
     }
     async mount(appManifest, ucd, _contract) {
         const uc = this.ucBuilder.exec({
@@ -154,6 +143,23 @@ let NodeLocalStdioMCPServerManager = class NodeLocalStdioMCPServerManager {
         }
         catch (err) {
             return resError(err);
+        }
+    }
+    initCommon() {
+        this.runtime = new Server({
+            name: this.productManifest.name,
+            version: '0.1.0',
+        }, {
+            capabilities: {
+                tools: {},
+            },
+        });
+        if (this.s().logger_level !== 'error') {
+            const message = 'Set the logging_level to "error" as MCP does not want the server to log to stdout (see https://modelcontextprotocol.io/docs/tools/debugging#implementing-logging)';
+            // Depending on the `Logger` implementation, this.logger.error() might not write to stderr (e.g. can write to a file).
+            // That's why we explicitly write to stdout by calling console.error().
+            // biome-ignore lint/suspicious/noConsole: we want it
+            console.error(new Error(message));
         }
     }
 };

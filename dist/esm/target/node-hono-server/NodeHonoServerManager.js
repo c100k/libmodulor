@@ -15,6 +15,7 @@ import https from 'node:https';
 import { createAdaptorServer } from '@hono/node-server';
 import { serveStatic } from '@hono/node-server/serve-static';
 import { inject, injectable } from 'inversify';
+import { NotCallableError } from '../../error/index.js';
 import { EntrypointsBuilder } from '../lib/server/EntrypointsBuilder.js';
 import { ServerRequestHandler } from '../lib/server/ServerRequestHandler.js';
 import { ServerSSLCertLoader } from '../lib/server/ServerSSLCertLoader.js';
@@ -57,6 +58,9 @@ let NodeHonoServerManager = class NodeHonoServerManager {
     async init() {
         this.runtime = init();
         await this.createServer();
+    }
+    initSync() {
+        throw new NotCallableError('initSync', 'init', 'async-only');
     }
     async mount(appManifest, ucd, contract) {
         const handler = buildHandler(appManifest, ucd, contract, this.serverRequestHandler, this.ucManager);

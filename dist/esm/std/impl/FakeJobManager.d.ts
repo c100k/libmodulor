@@ -9,4 +9,5 @@ export declare class FakeJobManager implements JobManager {
     clear(): Promise<void>;
     dispatch<I>(queueName: JobManagerQueueName, jobName: JobManagerJobName, input: I): Promise<void>;
     init(): Promise<void>;
+    initSync(): void;
 }

@@ -26,6 +26,7 @@ export declare class NodeExpressServerManager implements Configurable<S>, Server
     getRuntime(): Express;
     overrideUCManager(ucManager: UCManager): void;
     init(): Promise<void>;
+    initSync(): void;
     mount<I extends UCInput | undefined = undefined, OPI0 extends UCOPIBase | undefined = undefined, OPI1 extends UCOPIBase | undefined = undefined>(appManifest: AppManifest, ucd: UCDef<I, OPI0, OPI1>, contract: UCHTTPContract): Promise<void>;
     mountStaticDir(dirPath: DirPath): Promise<void>;
     start(): Promise<void>;
