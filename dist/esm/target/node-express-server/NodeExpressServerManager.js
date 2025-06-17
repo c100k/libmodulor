@@ -12,15 +12,14 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 };
 import http from 'node:http';
 import https from 'node:https';
-import cookieParser from 'cookie-parser';
 import express, {} from 'express';
-import fileUpload from 'express-fileupload';
 import { inject, injectable } from 'inversify';
 import { EntrypointsBuilder } from '../lib/server/EntrypointsBuilder.js';
-import { ServerRequestHandler, } from '../lib/server/ServerRequestHandler.js';
+import { ServerRequestHandler } from '../lib/server/ServerRequestHandler.js';
 import { ServerSSLCertLoader } from '../lib/server/ServerSSLCertLoader.js';
-import { stop } from '../lib/server-node/stop.js';
-import { HelmetMiddlewareBuilder } from './middlewares/HelmetMiddlewareBuilder.js';
+import { buildHandler, init, mountHandler, } from '../lib/server-express/funcs.js';
+import { HelmetMiddlewareBuilder } from '../lib/server-express/HelmetMiddlewareBuilder.js';
+import { listen, stop } from '../lib/server-node/funcs.js';
 let NodeExpressServerManager = class NodeExpressServerManager {
     entrypointsBuilder;
     environmentManager;
@@ -60,53 +59,18 @@ let NodeExpressServerManager = class NodeExpressServerManager {
         this.ucManager = ucManager;
     }
     async init() {
-        this.runtime = express();
-        this.runtime.use(this.helmetMB.exec({}));
-        // TODO : Add FileStorageManager (Local, S3, FSBucket)
-        // Right now, the files are only stored locally. We need more flexibility. Maybe we can also install https://imgproxy.net.
-        this.runtime.use(fileUpload({
-            createParentPath: true,
-            debug: this.s().logger_level === 'trace',
-            tempFileDir: this.s().server_tmp_path,
-            useTempFiles: true,
-        }));
-        this.runtime.use(express.json());
-        this.runtime.use(express.urlencoded({ extended: true }));
-        this.runtime.use(cookieParser());
+        this.runtime = init(this.helmetMB, this.s().logger_level, this.s().server_tmp_path);
         await this.createServer();
     }
     async mount(appManifest, ucd, contract) {
-        const { envelope, method, path, pathAliases } = contract;
-        const httpMethod = method.toLowerCase();
-        const handler = async (req, res) => {
-            const { body, status } = await this.serverRequestHandler.exec({
-                appManifest,
-                envelope,
-                req: this.toReq(req),
-                res: this.toRes(res),
-                ucd,
-                ucManager: this.ucManager,
-            });
-            if (!body) {
-                res.status(status).send();
-                return;
-            }
-            res.status(status).send(body);
-        };
-        this.runtime[httpMethod](path, handler);
-        for (const pathAlias of pathAliases) {
-            this.runtime[httpMethod](pathAlias, handler);
-        }
+        const handler = buildHandler(appManifest, ucd, contract, this.serverRequestHandler, this.ucManager);
+        mountHandler(contract, this.runtime, handler);
     }
     async mountStaticDir(dirPath) {
         this.runtime.use(express.static(dirPath));
     }
     async start() {
-        const host = this.s().server_binding_host;
-        const port = this.s().server_binding_port;
-        this.server.listen(port, host, () => {
-            this.logger.info(`Listening on ${this.entrypointsBuilder.exec().http}`);
-        });
+        listen(this.server, this.entrypointsBuilder, this.logger, this.settingsManager);
     }
     async stop() {
         await stop(this.server);
@@ -124,66 +88,6 @@ let NodeExpressServerManager = class NodeExpressServerManager {
         this.logger.info('Creating HTTPS server', { port });
         const credentials = await this.serverSSLCertLoader.exec(undefined);
         this.server = https.createServer(credentials, this.runtime);
-    }
-    toFile(f) {
-        return {
-            name: f.name,
-            path: f.tempFilePath,
-            type: f.mimetype,
-        };
-    }
-    toReq(req) {
-        return {
-            bodyFromFormData: async () => {
-                // Since express v5, if the request contains only a file, the `req.body` returns `undefined`
-                const input = req.body ?? {};
-                // files is present when using express-fileupload
-                if ('files' in req && req.files) {
-                    for (const [field, value] of Object.entries(req.files)) {
-                        input[field] = Array.isArray(value)
-                            ? value.map(this.toFile)
-                            : this.toFile(value);
-                    }
-                }
-                for (const [k, v] of Object.entries(input)) {
-                    const isMultiple = k.endsWith('[]'); // e.g. 'tags[]': 'Electronic'
-                    const key = isMultiple ? k.replaceAll('[]', '') : k;
-                    if (isMultiple) {
-                        input[key] = Array.isArray(v) ? v : [v];
-                    }
-                    else {
-                        input[key] = v;
-                    }
-                }
-                return input;
-            },
-            bodyFromJSON: async () => req.body,
-            bodyFromQueryParams: async () => req.query,
-            bodyRaw: req.body,
-            cookie: (name) => req.cookies[name],
-            header: async (name) => {
-                const h = req.headers[name.toLowerCase()];
-                if (Array.isArray(h)) {
-                    this.logger.warn(`Multiple headers found for ${name}. Returning the first one.`);
-                    return h[0];
-                }
-                return h;
-            },
-            method: req.method,
-            secure: req.secure,
-            url: req.url,
-        };
-    }
-    toRes(res) {
-        return {
-            clearCookie: async (name) => {
-                res.clearCookie(name);
-            },
-            redirect: async (location) => res.redirect(location),
-            setCookie: async ({ name, opts, val }) => {
-                res.cookie(name, val, opts);
-            },
-        };
     }
 };
 NodeExpressServerManager = __decorate([

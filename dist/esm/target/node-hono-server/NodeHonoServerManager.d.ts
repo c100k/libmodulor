@@ -1,13 +1,14 @@
-import { Hono } from 'hono';
+import type { Hono } from 'hono';
 import type { AppManifest } from '../../app/index.js';
 import type { DirPath } from '../../dt/index.js';
 import type { Configurable, EnvironmentManager, Logger, SettingsManager } from '../../std/index.js';
 import type { UCDef, UCHTTPContract, UCInput, UCManager, UCOPIBase } from '../../uc/index.js';
 import { EntrypointsBuilder } from '../lib/server/EntrypointsBuilder.js';
-import type { ServerManager, ServerManagerSettings } from '../lib/server/ServerManager.js';
+import type { ServerManager } from '../lib/server/ServerManager.js';
 import { ServerRequestHandler } from '../lib/server/ServerRequestHandler.js';
 import { ServerSSLCertLoader } from '../lib/server/ServerSSLCertLoader.js';
-type S = Pick<ServerManagerSettings, 'server_binding_host' | 'server_binding_port'>;
+import type { ListenSettings } from '../lib/server-node/types.js';
+type S = ListenSettings;
 export declare class NodeHonoServerManager implements Configurable<S>, ServerManager {
     private entrypointsBuilder;
     protected environmentManager: EnvironmentManager;
@@ -29,7 +30,5 @@ export declare class NodeHonoServerManager implements Configurable<S>, ServerMan
     stop(): Promise<void>;
     warmUp(): Promise<void>;
     private createServer;
-    private toReq;
-    private toRes;
 }
 export {};

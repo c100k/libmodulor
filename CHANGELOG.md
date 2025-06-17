@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## v0.19.0 (unreleased)
+
+**Misc**
+
+- Extract server targets functions for better reusability
+
 ## v0.18.1 (2025-06-11)
 
 **Misc**

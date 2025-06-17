@@ -12,18 +12,14 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 };
 import http from 'node:http';
 import https from 'node:https';
-import { createAdaptorServer, } from '@hono/node-server';
+import { createAdaptorServer } from '@hono/node-server';
 import { serveStatic } from '@hono/node-server/serve-static';
-import { Hono } from 'hono';
-import { deleteCookie, getCookie, setCookie } from 'hono/cookie';
-import { logger } from 'hono/logger';
-import { secureHeaders } from 'hono/secure-headers';
 import { inject, injectable } from 'inversify';
-import { fromFormData } from '../../utils/index.js';
 import { EntrypointsBuilder } from '../lib/server/EntrypointsBuilder.js';
-import { ServerRequestHandler, } from '../lib/server/ServerRequestHandler.js';
+import { ServerRequestHandler } from '../lib/server/ServerRequestHandler.js';
 import { ServerSSLCertLoader } from '../lib/server/ServerSSLCertLoader.js';
-import { stop } from '../lib/server-node/stop.js';
+import { buildHandler, init, mountHandler } from '../lib/server-hono/funcs.js';
+import { listen, stop } from '../lib/server-node/funcs.js';
 let NodeHonoServerManager = class NodeHonoServerManager {
     entrypointsBuilder;
     environmentManager;
@@ -59,50 +55,18 @@ let NodeHonoServerManager = class NodeHonoServerManager {
         this.ucManager = ucManager;
     }
     async init() {
-        this.runtime = new Hono();
-        this.runtime.use(secureHeaders());
-        this.runtime.use(logger());
-        this.runtime.notFound((c) => {
-            return c.json({}, 404);
-        });
+        this.runtime = init();
         await this.createServer();
     }
     async mount(appManifest, ucd, contract) {
-        const { envelope, method, path, pathAliases } = contract;
-        const httpMethod = method.toLowerCase();
-        if (httpMethod === 'connect' ||
-            httpMethod === 'head' ||
-            httpMethod === 'trace') {
-            throw new Error(`Unsupported HTTP method : ${httpMethod}`);
-        }
-        const handler = async (c) => {
-            const { body, status } = await this.serverRequestHandler.exec({
-                appManifest,
-                envelope,
-                req: this.toReq(c),
-                res: this.toRes(c),
-                ucd,
-                ucManager: this.ucManager,
-            });
-            if (!body) {
-                return c.newResponse(null, status);
-            }
-            return c.json(body, status);
-        };
-        this.runtime[httpMethod](path, handler);
-        for (const pathAlias of pathAliases) {
-            this.runtime[httpMethod](pathAlias, handler);
-        }
+        const handler = buildHandler(appManifest, ucd, contract, this.serverRequestHandler, this.ucManager);
+        mountHandler(contract, this.runtime, handler);
     }
     async mountStaticDir(dirPath) {
         this.runtime.use(serveStatic({ root: dirPath }));
     }
     async start() {
-        const host = this.s().server_binding_host;
-        const port = this.s().server_binding_port;
-        this.server.listen(port, host, () => {
-            this.logger.info(`Listening on ${this.entrypointsBuilder.exec().http}`);
-        });
+        listen(this.server, this.entrypointsBuilder, this.logger, this.settingsManager);
     }
     async stop() {
         await stop(this.server);
@@ -128,30 +92,6 @@ let NodeHonoServerManager = class NodeHonoServerManager {
         opts.createServer = https.createServer;
         opts.serverOptions = await this.serverSSLCertLoader.exec(undefined);
         this.server = createAdaptorServer(opts);
-    }
-    toReq(c) {
-        return {
-            bodyFromFormData: async () => fromFormData(await c.req.formData()),
-            bodyFromJSON: () => c.req.json(),
-            bodyFromQueryParams: async () => c.req.queries(),
-            bodyRaw: c.req.raw,
-            cookie: async (name) => getCookie(c, name),
-            header: async (name) => c.req.header(name),
-            method: c.req.method,
-            secure: c.req.url.startsWith('https://'),
-            url: c.req.url,
-        };
-    }
-    toRes(c) {
-        return {
-            clearCookie: async (name) => {
-                deleteCookie(c, name);
-            },
-            redirect: async (location) => {
-                c.redirect(location);
-            },
-            setCookie: async ({ name, opts, val }) => setCookie(c, name, val, opts),
-        };
     }
 };
 NodeHonoServerManager = __decorate([

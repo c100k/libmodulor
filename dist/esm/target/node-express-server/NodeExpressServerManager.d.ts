@@ -7,8 +7,9 @@ import { EntrypointsBuilder } from '../lib/server/EntrypointsBuilder.js';
 import type { ServerManager, ServerManagerSettings } from '../lib/server/ServerManager.js';
 import { ServerRequestHandler } from '../lib/server/ServerRequestHandler.js';
 import { ServerSSLCertLoader } from '../lib/server/ServerSSLCertLoader.js';
-import { HelmetMiddlewareBuilder } from './middlewares/HelmetMiddlewareBuilder.js';
-type S = Pick<LoggerSettings, 'logger_level'> & Pick<ServerManagerSettings, 'server_binding_host' | 'server_binding_port' | 'server_tmp_path'>;
+import { HelmetMiddlewareBuilder } from '../lib/server-express/HelmetMiddlewareBuilder.js';
+import type { ListenSettings } from '../lib/server-node/types.js';
+type S = ListenSettings & Pick<LoggerSettings, 'logger_level'> & Pick<ServerManagerSettings, 'server_tmp_path'>;
 export declare class NodeExpressServerManager implements Configurable<S>, ServerManager {
     private entrypointsBuilder;
     protected environmentManager: EnvironmentManager;
@@ -31,8 +32,5 @@ export declare class NodeExpressServerManager implements Configurable<S>, Server
     stop(): Promise<void>;
     warmUp(): Promise<void>;
     private createServer;
-    private toFile;
-    private toReq;
-    private toRes;
 }
 export {};

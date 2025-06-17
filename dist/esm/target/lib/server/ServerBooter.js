@@ -12,7 +12,8 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 };
 import { inject, injectable } from 'inversify';
 import { ProductUCsLoader } from '../../../product/index.js';
-import { UCExecMode, ucHTTPContract, } from '../../../uc/index.js';
+import { ucHTTPContract } from '../../../uc/index.js';
+import { shouldMountUC } from './funcs.js';
 import { ServerInstaller } from './ServerInstaller.js';
 let ServerBooter = class ServerBooter {
     emailManager;
@@ -61,15 +62,13 @@ let ServerBooter = class ServerBooter {
                     srcImporter,
                 });
                 for await (const uc of ucs) {
-                    const { lifecycle: { server }, sec, } = uc.def;
+                    const { sec } = uc.def;
                     const contract = ucHTTPContract(uc);
                     const { mountingPoint } = contract;
-                    if (typeof server !== 'object' ||
-                        server.execMode === UCExecMode.AUTO) {
+                    const shouldNotMountReason = shouldMountUC(uc.def);
+                    if (shouldNotMountReason) {
                         this.logger.debug(`Not mounting ${mountingPoint}`, {
-                            reason: typeof server !== 'object'
-                                ? 'no ucd.lifecycle.server'
-                                : 'execMode is AUTO',
+                            reason: shouldNotMountReason,
                         });
                         continue;
                     }
