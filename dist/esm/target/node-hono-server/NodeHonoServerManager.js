@@ -63,8 +63,10 @@ let NodeHonoServerManager = class NodeHonoServerManager {
         throw new NotCallableError('initSync', 'init', 'async-only');
     }
     async mount(appManifest, ucd, contract) {
-        const handler = buildHandler(appManifest, ucd, contract, this.serverRequestHandler, this.ucManager);
-        mountHandler(contract, this.runtime, handler);
+        this.mountCommon(appManifest, ucd, contract);
+    }
+    mountSync(appManifest, ucd, contract) {
+        this.mountCommon(appManifest, ucd, contract);
     }
     async mountStaticDir(dirPath) {
         this.runtime.use(serveStatic({ root: dirPath }));
@@ -96,6 +98,9 @@ let NodeHonoServerManager = class NodeHonoServerManager {
         opts.createServer = https.createServer;
         opts.serverOptions = await this.serverSSLCertLoader.exec(undefined);
         this.server = createAdaptorServer(opts);
+    }
+    mountCommon(appManifest, ucd, contract) {
+        mountHandler(contract, this.runtime, buildHandler(appManifest, ucd, contract, this.serverRequestHandler, this.ucManager));
     }
 };
 NodeHonoServerManager = __decorate([

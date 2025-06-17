@@ -28,10 +28,12 @@ export declare class NodeExpressServerManager implements Configurable<S>, Server
     init(): Promise<void>;
     initSync(): void;
     mount<I extends UCInput | undefined = undefined, OPI0 extends UCOPIBase | undefined = undefined, OPI1 extends UCOPIBase | undefined = undefined>(appManifest: AppManifest, ucd: UCDef<I, OPI0, OPI1>, contract: UCHTTPContract): Promise<void>;
+    mountSync<I extends UCInput | undefined = undefined, OPI0 extends UCOPIBase | undefined = undefined, OPI1 extends UCOPIBase | undefined = undefined>(appManifest: AppManifest, ucd: UCDef<I, OPI0, OPI1>, contract: UCHTTPContract): void;
     mountStaticDir(dirPath: DirPath): Promise<void>;
     start(): Promise<void>;
     stop(): Promise<void>;
     warmUp(): Promise<void>;
     private createServer;
+    private mountCommon;
 }
 export {};

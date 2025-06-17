@@ -32,7 +32,8 @@ export declare class NodeLocalStdioMCPServerManager implements Configurable<S>, 
     overrideUCManager(ucManager: UCManager): void;
     init(): Promise<void>;
     initSync(): void;
-    mount<I extends UCInput | undefined = undefined, OPI0 extends UCOPIBase | undefined = undefined, OPI1 extends UCOPIBase | undefined = undefined>(appManifest: AppManifest, ucd: UCDef<I, OPI0, OPI1>, _contract: UCHTTPContract): Promise<void>;
+    mount<I extends UCInput | undefined = undefined, OPI0 extends UCOPIBase | undefined = undefined, OPI1 extends UCOPIBase | undefined = undefined>(appManifest: AppManifest, ucd: UCDef<I, OPI0, OPI1>, contract: UCHTTPContract): Promise<void>;
+    mountSync<I extends UCInput | undefined = undefined, OPI0 extends UCOPIBase | undefined = undefined, OPI1 extends UCOPIBase | undefined = undefined>(appManifest: AppManifest, ucd: UCDef<I, OPI0, OPI1>, contract: UCHTTPContract): void;
     mountStaticDir(_dirPath: DirPath): Promise<void>;
     start(): Promise<void>;
     stop(): Promise<void>;
@@ -40,5 +41,6 @@ export declare class NodeLocalStdioMCPServerManager implements Configurable<S>, 
     private buildInputSchema;
     private execRequest;
     private initCommon;
+    mountCommon<I extends UCInput | undefined = undefined, OPI0 extends UCOPIBase | undefined = undefined, OPI1 extends UCOPIBase | undefined = undefined>(appManifest: AppManifest, ucd: UCDef<I, OPI0, OPI1>, _contract: UCHTTPContract): void;
 }
 export {};

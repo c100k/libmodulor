@@ -39,6 +39,13 @@ export interface ServerManager extends Initializable {
      */
     mount<I extends UCInput | undefined = undefined, OPI0 extends UCOPIBase | undefined = undefined, OPI1 extends UCOPIBase | undefined = undefined>(appManifest: AppManifest, ucd: UCDef<I, OPI0, OPI1>, contract: UCHTTPContract): Promise<void>;
     /**
+     * Mount the use case as an endpoint
+     * @param appManifest
+     * @param ucd
+     * @param contract
+     */
+    mountSync<I extends UCInput | undefined = undefined, OPI0 extends UCOPIBase | undefined = undefined, OPI1 extends UCOPIBase | undefined = undefined>(appManifest: AppManifest, ucd: UCDef<I, OPI0, OPI1>, contract: UCHTTPContract): void;
+    /**
      * Mount the static directory at `/`
      * @param dirPath
      */

@@ -60,19 +60,11 @@ let NodeLocalStdioMCPServerManager = class NodeLocalStdioMCPServerManager {
     initSync() {
         this.initCommon();
     }
-    async mount(appManifest, ucd, _contract) {
-        const uc = this.ucBuilder.exec({
-            appManifest,
-            auth: null,
-            def: ucd,
-        });
-        if (!this.appManifests.has(appManifest.name)) {
-            this.appManifests.set(appManifest.name, appManifest);
-        }
-        const inputSchema = this.buildInputSchema(uc);
-        const mountingPoint = uc.def.ext?.cmd?.mountAt ?? ucMountingPoint(uc);
-        const tool = { inputSchema, name: mountingPoint };
-        this.tools.set(mountingPoint, { appName: appManifest.name, tool, ucd });
+    async mount(appManifest, ucd, contract) {
+        this.mountCommon(appManifest, ucd, contract);
+    }
+    mountSync(appManifest, ucd, contract) {
+        this.mountCommon(appManifest, ucd, contract);
     }
     async mountStaticDir(_dirPath) {
         throw new Error('Method not implemented.');
@@ -161,6 +153,20 @@ let NodeLocalStdioMCPServerManager = class NodeLocalStdioMCPServerManager {
             // biome-ignore lint/suspicious/noConsole: we want it
             console.error(new Error(message));
         }
+    }
+    mountCommon(appManifest, ucd, _contract) {
+        const uc = this.ucBuilder.exec({
+            appManifest,
+            auth: null,
+            def: ucd,
+        });
+        if (!this.appManifests.has(appManifest.name)) {
+            this.appManifests.set(appManifest.name, appManifest);
+        }
+        const inputSchema = this.buildInputSchema(uc);
+        const mountingPoint = uc.def.ext?.cmd?.mountAt ?? ucMountingPoint(uc);
+        const tool = { inputSchema, name: mountingPoint };
+        this.tools.set(mountingPoint, { appName: appManifest.name, tool, ucd });
     }
 };
 NodeLocalStdioMCPServerManager = __decorate([

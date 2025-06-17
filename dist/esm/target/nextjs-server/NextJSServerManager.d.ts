@@ -7,6 +7,7 @@ export declare class NextJSServerManager implements ServerManager {
     init(): Promise<void>;
     initSync(): void;
     mount<I extends UCInput | undefined = undefined, OPI0 extends UCOPIBase | undefined = undefined, OPI1 extends UCOPIBase | undefined = undefined>(_appManifest: AppManifest, _ucd: UCDef<I, OPI0, OPI1>, _contract: UCHTTPContract): Promise<void>;
+    mountSync<I extends UCInput | undefined = undefined, OPI0 extends UCOPIBase | undefined = undefined, OPI1 extends UCOPIBase | undefined = undefined>(_appManifest: AppManifest, _ucd: UCDef<I, OPI0, OPI1>, _contract: UCHTTPContract): void;
     mountStaticDir(_dirPath: DirPath): Promise<void>;
     start(): Promise<void>;
     stop(): Promise<void>;

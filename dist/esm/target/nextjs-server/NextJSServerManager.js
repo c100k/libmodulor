@@ -18,6 +18,9 @@ let NextJSServerManager = class NextJSServerManager {
     async mount(_appManifest, _ucd, _contract) {
         // Nothing to do
     }
+    mountSync(_appManifest, _ucd, _contract) {
+        // Nothing to do
+    }
     async mountStaticDir(_dirPath) {
         // Nothing to do
     }

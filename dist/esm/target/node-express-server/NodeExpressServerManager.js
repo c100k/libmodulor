@@ -67,8 +67,10 @@ let NodeExpressServerManager = class NodeExpressServerManager {
         throw new NotCallableError('initSync', 'init', 'async-only');
     }
     async mount(appManifest, ucd, contract) {
-        const handler = buildHandler(appManifest, ucd, contract, this.serverRequestHandler, this.ucManager);
-        mountHandler(contract, this.runtime, handler);
+        this.mountCommon(appManifest, ucd, contract);
+    }
+    mountSync(appManifest, ucd, contract) {
+        this.mountCommon(appManifest, ucd, contract);
     }
     async mountStaticDir(dirPath) {
         this.runtime.use(express.static(dirPath));
@@ -92,6 +94,9 @@ let NodeExpressServerManager = class NodeExpressServerManager {
         this.logger.info('Creating HTTPS server', { port });
         const credentials = await this.serverSSLCertLoader.exec(undefined);
         this.server = https.createServer(credentials, this.runtime);
+    }
+    mountCommon(appManifest, ucd, contract) {
+        mountHandler(contract, this.runtime, buildHandler(appManifest, ucd, contract, this.serverRequestHandler, this.ucManager));
     }
 };
 NodeExpressServerManager = __decorate([
