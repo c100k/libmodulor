@@ -13,6 +13,7 @@ SuperTrader is a product featuring the `Trading` app with `BuyAssetUCD`, `Cancel
     <Card description="Android & iOS mobile app" href="#rn" title="rn" />
     <Card description="Server running with Node.js and Hono" href="#server-node-hono" title="server-node-hono"  />
     <Card description="Server running with Next.js" href="#server-nextjs" title="server-nextjs"  />
+    <Card description="Server running as a Cloudflare Worker" href="#server-cloudflare-worker" title="server-cloudflare-worker" />
 </Cards>
 
 ## UseCases
@@ -210,6 +211,62 @@ Test in your browser at http://localhost:3000.
 
 You can go back to all the client targets and run them. It will work the exact same way...
 except for one detail : adapt the port in the settings of each target (in `container.ts`) to use `3000` instead of the default `7443`.
+
+### server-cloudflare-worker
+
+The `server-cloudflare-worker` target uses the built-in `cloudflare-worker-hono` target, and is managed via `wrangler`. It uses Cloudflare D1 as `UCDataStore`.
+
+<Callout>
+    You need a Cloudflare account to test this implementation, even locally, as you need to create a D1 database and adapt the bindings.
+    Please note that this might occur charges on your account.
+</Callout>
+
+Initialize the D1 database.
+
+```sh
+pnpm wrangler d1 create libmodulor-examples-supertrader-uc-data-store
+pnpm wrangler d1 execute libmodulor-examples-supertrader-uc-data-store --local --file=./src/products/SuperTrader/server-cloudflare-worker/migrations/001_init.sql
+pnpm wrangler d1 execute libmodulor-examples-supertrader-uc-data-store --remote --file=./migrations/001_init.sql
+pnpm wrangler d1 list
+```
+
+Add the binding in `wrangler.jsonc`, by adapting the `database_id`.
+
+```json
+"d1_databases": [
+    {
+        "binding": "UCDataStore",
+        "database_id": "45e8b62b-efa1-468e-a468-6469134df380",
+        "database_name": "libmodulor-examples-supertrader-uc-data-store"
+    }
+],
+```
+
+```sh
+pnpm run:server-cloudflare-worker
+```
+
+Test in your Terminal Emulator with `curl`.
+
+```sh
+# BuyAsset
+curl -X POST -H "Content-Type: application/json" http://localhost:8787/api/v1/Trading_BuyAsset
+# ❌ {"message":"Invalid credentials"}
+curl -X POST -H "Content-Type: application/json" -H "X-API-Key: PublicApiKeyToBeChangedWhenDeploying" http://localhost:8787/api/v1/Trading_BuyAsset
+# ❌ {"message":"ISIN must be filled"}
+curl -X POST -H "Content-Type: application/json" -H "X-API-Key: PublicApiKeyToBeChangedWhenDeploying" -d '{"isin":"US02079K3059","limit":123.5,"qty":150}' http://localhost:8787/api/v1/Trading_BuyAsset
+# ✅ {"parts":{"_0":{"items":[{"isin":"US02079K3059","id":"882f384b-fa46-424b-8b82-e0781ab1fbec","limit":123.5,"qty":150,"status":"pending"}],"total":1}}}
+
+# CancelOrder
+curl -X DELETE -H "Content-Type: application/json" -H "X-API-Key: PublicApiKeyToBeChangedWhenDeploying" -d '{"id":"882f384b-fa46-424b-8b82-e0781ab1fbec"}' http://localhost:8787/api/v1/Trading_CancelOrder
+# ✅ {"parts":{"_0":{"items":[{"id":"a2285506-1afd-4649-98a6-e4443d1c6ce7","isin":"US02079K3059","limit":123.5,"qty":150,"status":"cancelled"}],"total":1}}}
+curl -X DELETE -H "Content-Type: application/json" -H "X-API-Key: PublicApiKeyToBeChangedWhenDeploying" -d '{"id":"882f384b-fa46-424b-8b82-e0781ab1fbec"}' http://llocalhost:8787/api/v1/Trading_CancelOrder
+# ❌ {"message":"Cannot cancel an order that is not pending"}
+
+# ListOrders
+curl -H "Content-Type: application/json" -H "X-API-Key: PublicApiKeyToBeChangedWhenDeploying" http://localhost:8787/api/v1/Trading_ListOrders
+# ✅ {"parts":{"_0":{"items":[{"id":"a2285506-1afd-4649-98a6-e4443d1c6ce7","isin":"US02079K3059","limit":123.5,"qty":150,"status":"cancelled"}],"total":1}}}
+```
 
 ## Inspect UCDataStore
 

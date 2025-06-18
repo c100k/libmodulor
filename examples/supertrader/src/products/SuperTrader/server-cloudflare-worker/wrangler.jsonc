@@ -1,0 +1,11 @@
+{
+    "$schema": "../../../../node_modules/wrangler/config-schema.json",
+    "compatibility_date": "2025-06-12",
+    "compatibility_flags": ["nodejs_compat"],
+    "d1_databases": [],
+    "main": "src/index.ts",
+    "name": "libmodulor-examples-supertrader",
+    "observability": {
+        "enabled": true
+    }
+}
