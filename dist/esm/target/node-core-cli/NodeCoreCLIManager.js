@@ -21,14 +21,17 @@ import { print } from '../lib/cli/renderer.js';
 import { showHelp } from './commands.js';
 let NodeCoreCLIManager = class NodeCoreCLIManager {
     commandExecutor;
+    i18nManager;
     productUCsLoader;
     wordingManager;
-    constructor(commandExecutor, productUCsLoader, wordingManager) {
+    constructor(commandExecutor, i18nManager, productUCsLoader, wordingManager) {
         this.commandExecutor = commandExecutor;
+        this.i18nManager = i18nManager;
         this.productUCsLoader = productUCsLoader;
         this.wordingManager = wordingManager;
     }
     async handleCommand({ appsRootPath, srcImporter, }) {
+        await this.i18nManager.init();
         const command = process.argv[2] ?? '';
         const ucs = await this.productUCsLoader.exec({
             appsRootPath,
@@ -84,10 +87,10 @@ let NodeCoreCLIManager = class NodeCoreCLIManager {
 NodeCoreCLIManager = __decorate([
     injectable(),
     __param(0, inject(CommandExecutor)),
-    __param(1, inject(ProductUCsLoader)),
-    __param(2, inject(WordingManager)),
-    __metadata("design:paramtypes", [CommandExecutor,
-        ProductUCsLoader,
+    __param(1, inject('I18nManager')),
+    __param(2, inject(ProductUCsLoader)),
+    __param(3, inject(WordingManager)),
+    __metadata("design:paramtypes", [CommandExecutor, Object, ProductUCsLoader,
         WordingManager])
 ], NodeCoreCLIManager);
 export { NodeCoreCLIManager };

@@ -12,6 +12,7 @@
 - Introduce `target/edge-worker-hono-server` to be able to deploy easily on Cloudflare Workers
 - Introduce `NotAvailableError` for better semantics and more meaningful error messages
 - Introduce `NotImplementedError` for better semantics and more meaningful error messages
+- Init `i18nManager` in `MCPServerBooter` and `NodeCoreCLIManager` : you can remove any initialization made before executing those
 
 **Misc**
 

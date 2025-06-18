@@ -14,11 +14,13 @@ import { inject, injectable } from 'inversify';
 import { ProductUCsLoader } from '../../../product/index.js';
 import { ucHTTPContract } from '../../../uc/index.js';
 let MCPServerBooter = class MCPServerBooter {
+    i18nManager;
     logger;
     productUCsLoader;
     serverManager;
     ucManager;
-    constructor(logger, productUCsLoader, serverManager, ucManager) {
+    constructor(i18nManager, logger, productUCsLoader, serverManager, ucManager) {
+        this.i18nManager = i18nManager;
         this.logger = logger;
         this.productUCsLoader = productUCsLoader;
         this.serverManager = serverManager;
@@ -26,6 +28,7 @@ let MCPServerBooter = class MCPServerBooter {
     }
     async exec({ appsRootPath, srcImporter }) {
         try {
+            await this.i18nManager.init();
             await this.serverManager.init();
             const ucs = await this.productUCsLoader.exec({
                 appsRootPath,
@@ -47,10 +50,11 @@ let MCPServerBooter = class MCPServerBooter {
 };
 MCPServerBooter = __decorate([
     injectable(),
-    __param(0, inject('Logger')),
-    __param(1, inject(ProductUCsLoader)),
-    __param(2, inject('ServerManager')),
-    __param(3, inject('UCManager')),
-    __metadata("design:paramtypes", [Object, ProductUCsLoader, Object, Object])
+    __param(0, inject('I18nManager')),
+    __param(1, inject('Logger')),
+    __param(2, inject(ProductUCsLoader)),
+    __param(3, inject('ServerManager')),
+    __param(4, inject('UCManager')),
+    __metadata("design:paramtypes", [Object, Object, ProductUCsLoader, Object, Object])
 ], MCPServerBooter);
 export { MCPServerBooter };
