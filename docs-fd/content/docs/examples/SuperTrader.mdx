@@ -225,12 +225,10 @@ Initialize the D1 database.
 
 ```sh
 pnpm wrangler d1 create libmodulor-examples-supertrader-uc-data-store
-pnpm wrangler d1 execute libmodulor-examples-supertrader-uc-data-store --local --file=./src/products/SuperTrader/server-cloudflare-worker/migrations/001_init.sql
-pnpm wrangler d1 execute libmodulor-examples-supertrader-uc-data-store --remote --file=./migrations/001_init.sql
 pnpm wrangler d1 list
 ```
 
-Add the binding in `wrangler.jsonc`, by adapting the `database_id`.
+Add the binding in `dist/products/SuperTrader/server-cloudflare-worker/wrangler.jsonc`, by adapting the `database_id`.
 
 ```json
 "d1_databases": [
@@ -241,6 +239,15 @@ Add the binding in `wrangler.jsonc`, by adapting the `database_id`.
     }
 ],
 ```
+
+Apply the migrations on the database (`local` and `remote`).
+
+```sh
+pnpm wrangler d1 execute libmodulor-examples-supertrader-uc-data-store --cwd ./dist/products/SuperTrader/server-cloudflare-worker --local --file=./migrations/001_init.sql
+pnpm wrangler d1 execute libmodulor-examples-supertrader-uc-data-store --cwd ./dist/products/SuperTrader/server-cloudflare-worker --remote --file=./migrations/001_init.sql
+```
+
+Start the server locally.
 
 ```sh
 pnpm run:server-cloudflare-worker
@@ -267,6 +274,16 @@ curl -X DELETE -H "Content-Type: application/json" -H "X-API-Key: PublicApiKeyTo
 curl -H "Content-Type: application/json" -H "X-API-Key: PublicApiKeyToBeChangedWhenDeploying" http://localhost:8787/api/v1/Trading_ListOrders
 # ✅ {"parts":{"_0":{"items":[{"id":"a2285506-1afd-4649-98a6-e4443d1c6ce7","isin":"US02079K3059","limit":123.5,"qty":150,"status":"cancelled"}],"total":1}}}
 ```
+
+You can even deploy it on your account.
+
+```sh
+pnpm deploy:server-cloudflare-worker
+```
+
+Once done, perform the same `curl` commands with the remote URL. It should work like a charm.
+
+You can inspect the data in the Cloudflare D1 dashboard.
 
 ## Inspect UCDataStore
 
