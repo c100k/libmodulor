@@ -283,11 +283,13 @@ pnpm deploy:server-cloudflare-worker
 
 Once done, perform the same `curl` commands with the remote URL. It should work like a charm.
 
-You can inspect the data in the Cloudflare D1 dashboard.
+![Cloudflare Worker Dashboard](./assets/supertrader-target-cloudflare-worker-server-dashboard.png)
+
+You can also inspect the requests in the Cloudflare Workers dashboard and the data in the Cloudflare D1 dashboard.
 
 ## Inspect UCDataStore
 
-The `server-*` targets rebind the `UCDataStore` from `InMemoryUCDataStore` (default) to `KnexUCDataStore` configured for `SQLite`.
+The `server-node-express`, `server-node-hono` and `server-nextjs` targets rebind the `UCDataStore` from `InMemoryUCDataStore` (default) to `KnexUCDataStore` configured for `SQLite`.
 
 Therefore, if you have executed the use case via the targets above, you can see the data in the DB file.
 
