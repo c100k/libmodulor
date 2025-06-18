@@ -15,7 +15,7 @@
         "fumadocs-ui": "15.4.1",
         "inversify": "^7.5.2",
         "katex": "^0.16.22",
-        "libmodulor": "^0.18.1",
+        "libmodulor": "github:c100k/libmodulor#847e4c6",
         "next": "15.3.3",
         "react": "^19.1.0",
         "react-dom": "^19.1.0",
