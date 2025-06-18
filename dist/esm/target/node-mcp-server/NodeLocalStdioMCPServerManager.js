@@ -14,6 +14,7 @@ import { Server } from '@modelcontextprotocol/sdk/server/index.js';
 import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';
 import { CallToolRequestSchema, ListToolsRequestSchema, } from '@modelcontextprotocol/sdk/types.js';
 import { inject, injectable } from 'inversify';
+import { NotAvailableError } from '../../error/index.js';
 import { WordingManager } from '../../i18n/index.js';
 import { UCBuilder, ucifIsMandatory, ucMountingPoint, } from '../../uc/index.js';
 import { propertyType, resError, resObj } from './funcs.js';
@@ -67,7 +68,7 @@ let NodeLocalStdioMCPServerManager = class NodeLocalStdioMCPServerManager {
         this.mountCommon(appManifest, ucd, contract);
     }
     async mountStaticDir(_dirPath) {
-        throw new Error('Method not implemented.');
+        throw new NotAvailableError('mountStaticDir');
     }
     async start() {
         this.transport = new StdioServerTransport();

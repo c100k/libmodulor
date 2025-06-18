@@ -11,6 +11,7 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
 import { inject, injectable } from 'inversify';
+import { NotAvailableError, NotImplementedError } from '../../error/index.js';
 export const ROW_COLS = [
     'aggregateId',
     'appName',
@@ -41,19 +42,19 @@ let CloudflareD1UCDataStore = class CloudflareD1UCDataStore {
         };
     }
     async clear() {
-        throw new Error('Method not implemented.');
+        throw new NotImplementedError('clear');
     }
     async destroy() {
-        throw new Error('Method not implemented.');
+        throw new NotImplementedError('destroy');
     }
     async exists() {
-        throw new Error('Method not implemented.');
+        throw new NotImplementedError('exists');
     }
     async initTx() {
-        throw new Error('Method not implemented.');
+        throw new NotImplementedError('initTx');
     }
     async install() {
-        throw new Error('Method not implemented.');
+        throw new NotImplementedError('install');
         // Since workers do not accept top-level await, we cannot invoke this method when initiating it.
         // Plus, calling it in every request handler would be overkill and would add too much overhead.
         // In the meantime, process as follows :
@@ -130,13 +131,13 @@ CREATE INDEX IF NOT EXISTS use_cases_user_id_index ON use_cases (userId);
         };
     }
     async readProjection(_name, _opts) {
-        throw new Error('Method not implemented.');
+        throw new NotImplementedError('readProjection');
     }
     supportedSpecificBindings() {
-        throw new Error('Method not implemented.');
+        throw new NotImplementedError('supportedSpecificBindings');
     }
     async testKey(_encryptionKey) {
-        throw new Error('Method not implemented.');
+        throw new NotAvailableError('testKey');
     }
     async write(record, _opts) {
         this.assertClient();
@@ -162,10 +163,10 @@ CREATE INDEX IF NOT EXISTS use_cases_user_id_index ON use_cases (userId);
             .run();
     }
     async writeBulk(_records, _opts) {
-        throw new Error('Method not implemented.');
+        throw new NotImplementedError('writeBulk');
     }
     async writeProjection(_name, _data, _opts) {
-        throw new Error('Method not implemented.');
+        throw new NotImplementedError('writeProjection');
     }
     setClient(client) {
         this.client = client;

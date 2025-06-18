@@ -8,7 +8,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 import { injectable } from 'inversify';
-const ERR = 'Method not implemented.';
+import { NotImplementedError } from '../../error/index.js';
 function predicate(key, filter) {
     if (filter === null) {
         return (r) => r[key] === null;
@@ -94,7 +94,7 @@ let InMemoryUCDataStore = class InMemoryUCDataStore {
         this.entries.push(...records);
     }
     async writeProjection() {
-        throw new Error(ERR);
+        throw new NotImplementedError('writeProjection');
     }
 };
 InMemoryUCDataStore = __decorate([

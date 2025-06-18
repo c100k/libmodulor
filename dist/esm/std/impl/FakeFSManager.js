@@ -8,6 +8,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 import { injectable } from 'inversify';
+import { NotImplementedError } from '../../error/index.js';
 import { FSManagerItemInfoType, } from '../FSManager.js';
 let FakeFSManager = class FakeFSManager {
     entries;
@@ -88,7 +89,7 @@ let FakeFSManager = class FakeFSManager {
         return resolvedArgs.join('/');
     }
     async pickFiles() {
-        throw new Error('Method not implemented.');
+        throw new NotImplementedError('pickFiles');
     }
     async rm(path) {
         this.entries.delete(path);

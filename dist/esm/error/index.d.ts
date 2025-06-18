@@ -5,5 +5,6 @@ export { IllegalArgumentError } from './IllegalArgumentError.js';
 export { InternalServerError } from './InternalServerError.js';
 export { NotAvailableError } from './internal/NotAvailableError.js';
 export { NotCallableError, type NotCallableErrorReason, } from './internal/NotCallableError.js';
+export { NotImplementedError } from './internal/NotImplementedError.js';
 export { NotFoundError } from './NotFoundError.js';
 export { UnauthorizedError } from './UnauthorizedError.js';

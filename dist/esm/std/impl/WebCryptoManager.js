@@ -5,7 +5,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 import { injectable } from 'inversify';
-import { NotAvailableError } from '../../error/index.js';
+import { NotAvailableError, NotImplementedError } from '../../error/index.js';
 const DIGEST_MAPPING = new Map([
     ['sha512', 'SHA-512'],
 ]);
@@ -14,13 +14,13 @@ let WebCryptoManager = class WebCryptoManager {
         // Nothing to do
     }
     hash(_algorithm, _base) {
-        throw new Error('Method not implemented.');
+        throw new NotImplementedError('hash');
     }
     hmacToBase64(_algorithm, _base, _key, _keyEncoding) {
-        throw new Error('Method not implemented.');
+        throw new NotImplementedError('hmacToBase64');
     }
     hmacToHex(_algorithm, _base, _key, _keyEncoding) {
-        throw new Error('Method not implemented.');
+        throw new NotImplementedError('hmacToHex');
     }
     async pbkdf2(password, salt, iterationsCount, keyLength, digest) {
         const hash = DIGEST_MAPPING.get(digest);
