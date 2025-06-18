@@ -1,18 +1,19 @@
 import { injectable } from 'inversify';
-import type {
-    BufferManagerBase64String,
-    CryptoManager,
-    CryptoManagerBinaryToTextEncoding,
-    CryptoManagerHash,
-    CryptoManagerHashAlgorithm,
-    CryptoManagerHMACKey,
-    CryptoManagerHMACKeyEncoding,
-    CryptoManagerRandomString,
-    CryptoManagerSalt,
-    CryptoManagerSaltedScrypt,
-    Password,
-    UIntQuantity,
-    UUID,
+import {
+    type BufferManagerBase64String,
+    type CryptoManager,
+    type CryptoManagerBinaryToTextEncoding,
+    type CryptoManagerHash,
+    type CryptoManagerHashAlgorithm,
+    type CryptoManagerHMACKey,
+    type CryptoManagerHMACKeyEncoding,
+    type CryptoManagerRandomString,
+    type CryptoManagerSalt,
+    type CryptoManagerSaltedScrypt,
+    NotImplementedError,
+    type Password,
+    type UIntQuantity,
+    type UUID,
 } from 'libmodulor';
 
 // TODO : Implement RNCryptoManager
@@ -20,7 +21,7 @@ import type {
 @injectable()
 export class RNCryptoManager implements CryptoManager {
     public async clear(): Promise<void> {
-        throw new Error('Method not implemented.');
+        throw new NotImplementedError<this>('clear');
     }
 
     public hash(
@@ -28,7 +29,7 @@ export class RNCryptoManager implements CryptoManager {
         _base: string,
         _binaryToTextEncoding: CryptoManagerBinaryToTextEncoding,
     ): CryptoManagerHash {
-        throw new Error('Method not implemented.');
+        throw new NotImplementedError<this>('hash');
     }
 
     public hmacToBase64(
@@ -37,7 +38,7 @@ export class RNCryptoManager implements CryptoManager {
         _key: CryptoManagerHMACKey,
         _keyEncoding: CryptoManagerHMACKeyEncoding,
     ): BufferManagerBase64String {
-        throw new Error('Method not implemented.');
+        throw new NotImplementedError<this>('hmacToBase64');
     }
 
     public hmacToHex(
@@ -46,7 +47,7 @@ export class RNCryptoManager implements CryptoManager {
         _key: CryptoManagerHash,
         _keyEncoding: CryptoManagerHMACKeyEncoding,
     ): CryptoManagerHash {
-        throw new Error('Method not implemented.');
+        throw new NotImplementedError<this>('hmacToHex');
     }
 
     public async pbkdf2(
@@ -56,17 +57,17 @@ export class RNCryptoManager implements CryptoManager {
         _keyLength: UIntQuantity,
         _digest: CryptoManagerHashAlgorithm,
     ): Promise<Uint8Array> {
-        throw new Error('Method not implemented.');
+        throw new NotImplementedError<this>('pbkdf2');
     }
 
     public async randomString(
         _length: UIntQuantity,
     ): Promise<CryptoManagerRandomString> {
-        throw new Error('Method not implemented.');
+        throw new NotImplementedError<this>('randomString');
     }
 
     public randomUUID(): UUID {
-        throw new Error('Method not implemented.');
+        throw new NotImplementedError<this>('randomUUID');
     }
 
     public async scrypt(
@@ -74,6 +75,6 @@ export class RNCryptoManager implements CryptoManager {
         _salt: CryptoManagerSalt,
         _keyLength: UIntQuantity,
     ): Promise<CryptoManagerSaltedScrypt> {
-        throw new Error('Method not implemented.');
+        throw new NotImplementedError<this>('scrypt');
     }
 }
