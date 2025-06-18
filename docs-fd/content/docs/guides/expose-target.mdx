@@ -115,7 +115,6 @@ Here are some examples.
 ```typescript title="server/index.ts"
 import container from './container.js';
 
-await container.get<I18nManager>('I18nManager').init();
 await container.resolve(ServerBooter).exec({});
 ```
 
@@ -135,14 +134,12 @@ ReactDOM.createRoot(rootElt).render(
 ```typescript title="cli/index.ts"
 import container from './container.js';
 
-await container.get<I18nManager>('I18nManager').init();
 await container.resolve(NodeCoreCLIManager).exec({});
 ```
 
 ```typescript title="mcp-server/index.ts"
 import container from './container.js';
 
-await container.get<I18nManager>('I18nManager').init();
 await container.resolve(MCPServerBooter).exec({});
 ```
 
