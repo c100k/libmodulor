@@ -5,48 +5,49 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 import { injectable } from 'inversify';
+import { NotAvailableError } from '../../error/index.js';
 let WebFSManager = class WebFSManager {
     async canHandleFiles() {
         return false;
     }
     async cat(_path, _opts) {
-        throw new Error('Not available on this platform');
+        throw new NotAvailableError('cat');
     }
     async chmod(_path, _mode) {
-        throw new Error('Not available on this platform');
+        throw new NotAvailableError('chmod');
     }
     async cp(_src, _dest) {
-        throw new Error('Not available on this platform');
+        throw new NotAvailableError('cp');
     }
     async echoIn(_src, _content) {
-        throw new Error('Not available on this platform');
+        throw new NotAvailableError('echoIn');
     }
     async exists(_path) {
-        throw new Error('Not available on this platform');
+        throw new NotAvailableError('exists');
     }
     fileExtension(_fileName) {
-        throw new Error('Not available on this platform');
+        throw new NotAvailableError('fileExtension');
     }
     async info(_path) {
-        throw new Error('Not available on this platform');
+        throw new NotAvailableError('info');
     }
     async ls(_path, _opts) {
-        throw new Error('Not available on this platform');
+        throw new NotAvailableError('ls');
     }
     async mkdir(_path, _opts) {
-        throw new Error('Not available on this platform');
+        throw new NotAvailableError('mkdir');
     }
     path(..._parts) {
-        throw new Error('Not available on this platform');
+        throw new NotAvailableError('path');
     }
     async pickFiles(_source, _opts) {
-        throw new Error('Not available on this platform');
+        throw new NotAvailableError('pickFiles');
     }
     async rm(_path) {
-        throw new Error('Not available on this platform');
+        throw new NotAvailableError('rm');
     }
     async touch(_path, _content) {
-        throw new Error('Not available on this platform');
+        throw new NotAvailableError('touch');
     }
 };
 WebFSManager = __decorate([

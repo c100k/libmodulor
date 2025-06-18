@@ -5,6 +5,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 import { injectable } from 'inversify';
+import { NotAvailableError } from '../../error/index.js';
 const DIGEST_MAPPING = new Map([
     ['sha512', 'SHA-512'],
 ]);
@@ -60,7 +61,7 @@ let WebCryptoManager = class WebCryptoManager {
         return crypto.randomUUID();
     }
     async scrypt() {
-        throw new Error('Not available on this platform');
+        throw new NotAvailableError('scrypt');
     }
 };
 WebCryptoManager = __decorate([

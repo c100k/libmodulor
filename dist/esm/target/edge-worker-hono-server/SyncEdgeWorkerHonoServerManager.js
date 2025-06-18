@@ -11,7 +11,7 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
 import { inject, injectable } from 'inversify';
-import { NotCallableError } from '../../error/index.js';
+import { NotAvailableError, NotCallableError } from '../../error/index.js';
 import { ServerRequestHandler } from '../lib/server/ServerRequestHandler.js';
 import { buildHandler, init, mountHandler } from '../lib/server-hono/funcs.js';
 let SyncEdgeWorkerHonoServerManager = class SyncEdgeWorkerHonoServerManager {
@@ -50,16 +50,16 @@ let SyncEdgeWorkerHonoServerManager = class SyncEdgeWorkerHonoServerManager {
         mountHandler(contract, this.runtime, buildHandler(appManifest, ucd, contract, this.serverRequestHandler, this.ucManager, (c) => this.beforeExec(c)));
     }
     async mountStaticDir(_dirPath) {
-        throw new Error('Not available on this platform');
+        throw new NotAvailableError('mountStaticDir');
     }
     async start() {
-        throw new Error('Not available on this platform');
+        throw new NotAvailableError('start');
     }
     async stop() {
-        throw new Error('Not available on this platform');
+        throw new NotAvailableError('stop');
     }
     async warmUp() {
-        throw new Error('Not available on this platform');
+        throw new NotAvailableError('warmUp');
     }
     async beforeExec(c) {
         const { env } = c;

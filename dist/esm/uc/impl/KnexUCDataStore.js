@@ -12,6 +12,7 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 };
 import { inject, injectable } from 'inversify';
 import knex, {} from 'knex';
+import { NotAvailableError } from '../../error/index.js';
 const FILTERS_MAPPING = new Map([
     ['aggregateId', 'aggregate_id'],
     ['appName', 'app_name'],
@@ -113,7 +114,7 @@ let KnexUCDataStore = class KnexUCDataStore {
         }
     }
     async testKey(_encryptionKey) {
-        throw new Error('Not available for this implementation.');
+        throw new NotAvailableError('testKey');
     }
     async write(record, opts) {
         await this.writeBulk([record], opts);

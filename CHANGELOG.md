@@ -9,7 +9,8 @@
 
 **Added**
 
-- Introduce `target/edge-worker-hono-server` to be able to deploy easily on Cloudflare Workers.
+- Introduce `target/edge-worker-hono-server` to be able to deploy easily on Cloudflare Workers
+- Introduce `NotAvailableError` for better semantics and more meaningful error messages
 
 **Misc**
 

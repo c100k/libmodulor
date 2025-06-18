@@ -27,12 +27,12 @@ let SyncEdgeWorkerInitializer = class SyncEdgeWorkerInitializer {
     exec({ autoMountUCs = true, ucs }) {
         this.logger.info('Initializing i18n manager');
         this.i18nManager.initSync();
-        // Not available in Sync yet
+        // Not available as a sync method yet
         // this.logger.info('Installing');
         // await this.serverInstaller.exec();
         this.logger.info('Initializing job manager');
         this.jobManager.initSync();
-        // Not available in Sync yet
+        // Not available as a sync method yet
         // this.logger.info('Verifying email manager');
         // await this.emailManager.verify();
         this.logger.info('Initializing server manager');
@@ -44,7 +44,7 @@ let SyncEdgeWorkerInitializer = class SyncEdgeWorkerInitializer {
         }
     }
     mountUC(uc) {
-        const { sec } = uc.def;
+        const { lifecycle, sec } = uc.def;
         const contract = ucHTTPContract(uc);
         const { mountingPoint } = contract;
         const shouldNotMountReason = shouldMountUC(uc.def);
@@ -58,8 +58,10 @@ let SyncEdgeWorkerInitializer = class SyncEdgeWorkerInitializer {
             contract,
             sec,
         });
-        // Not available in Sync yet
-        // await this.ucManager.initServer(uc);
+        if (typeof lifecycle.server === 'object' && lifecycle.server?.init) {
+            throw new Error('lifecycle.server.init is not available in SyncEdgeWorkerInitializer yet');
+            // await this.ucManager.initServer(uc);
+        }
         this.serverManager.mountSync(uc.appManifest, uc.def, contract);
     }
 };
