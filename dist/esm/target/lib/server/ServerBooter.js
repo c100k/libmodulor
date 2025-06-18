@@ -12,7 +12,7 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 };
 import { inject, injectable } from 'inversify';
 import { ProductUCsLoader } from '../../../product/index.js';
-import { ucHTTPContract } from '../../../uc/index.js';
+import { ucHTTPContract, } from '../../../uc/index.js';
 import { shouldMountUC } from './funcs.js';
 import { ServerInstaller } from './ServerInstaller.js';
 let ServerBooter = class ServerBooter {
@@ -53,51 +53,49 @@ let ServerBooter = class ServerBooter {
         await this.jobManager.init();
         this.logger.info('Verifying email manager');
         await this.emailManager.verify();
-        this.logger.info('Starting');
-        try {
-            await this.serverManager.init();
-            if (autoMountUCs) {
-                const ucs = await this.productUCsLoader.exec({
-                    appsRootPath,
-                    srcImporter,
-                });
-                for await (const uc of ucs) {
-                    const { sec } = uc.def;
-                    const contract = ucHTTPContract(uc);
-                    const { mountingPoint } = contract;
-                    const shouldNotMountReason = shouldMountUC(uc.def);
-                    if (shouldNotMountReason) {
-                        this.logger.debug(`Not mounting ${mountingPoint}`, {
-                            reason: shouldNotMountReason,
-                        });
-                        continue;
-                    }
-                    this.logger.info(`Mounting ${mountingPoint}`, {
-                        contract,
-                        sec,
-                    });
-                    await this.ucManager.initServer(uc);
-                    await this.serverManager.mount(uc.appManifest, uc.def, contract);
-                }
+        this.logger.info('Initializing server manager');
+        await this.serverManager.init();
+        if (autoMountUCs) {
+            const ucs = await this.productUCsLoader.exec({
+                appsRootPath,
+                srcImporter,
+            });
+            for await (const uc of ucs) {
+                await this.mountUC(uc);
             }
-            const staticDirPath = this.s().server_static_dir_path;
-            if (staticDirPath) {
-                if (!(await this.fsManager.exists(staticDirPath))) {
-                    throw new Error(`Static dir '${staticDirPath}' does not exist`);
-                }
-                this.logger.info('Mounting static dir', { staticDirPath });
-                await this.serverManager.mountStaticDir(staticDirPath);
-            }
-            const tmpDirPath = this.s().server_tmp_path;
-            if (!(await this.fsManager.exists(tmpDirPath))) {
-                await this.fsManager.mkdir(tmpDirPath);
-            }
-            await this.serverManager.warmUp();
-            await this.serverManager.start();
         }
-        catch (err) {
-            this.logger.error(err);
+        const staticDirPath = this.s().server_static_dir_path;
+        if (staticDirPath) {
+            if (!(await this.fsManager.exists(staticDirPath))) {
+                throw new Error(`Static dir '${staticDirPath}' does not exist`);
+            }
+            this.logger.info('Mounting static dir', { staticDirPath });
+            await this.serverManager.mountStaticDir(staticDirPath);
         }
+        const tmpDirPath = this.s().server_tmp_path;
+        if (!(await this.fsManager.exists(tmpDirPath))) {
+            await this.fsManager.mkdir(tmpDirPath);
+        }
+        await this.serverManager.warmUp();
+        await this.serverManager.start();
+    }
+    async mountUC(uc) {
+        const { sec } = uc.def;
+        const contract = ucHTTPContract(uc);
+        const { mountingPoint } = contract;
+        const shouldNotMountReason = shouldMountUC(uc.def);
+        if (shouldNotMountReason) {
+            this.logger.debug(`Not mounting ${mountingPoint}`, {
+                reason: shouldNotMountReason,
+            });
+            return;
+        }
+        this.logger.info(`Mounting ${mountingPoint}`, {
+            contract,
+            sec,
+        });
+        await this.ucManager.initServer(uc);
+        await this.serverManager.mount(uc.appManifest, uc.def, contract);
     }
 };
 ServerBooter = __decorate([

@@ -2,10 +2,12 @@ import { Hono } from 'hono';
 import { deleteCookie, getCookie, setCookie } from 'hono/cookie';
 import { logger } from 'hono/logger';
 import { secureHeaders } from 'hono/secure-headers';
+import { NotFoundError } from '../../../error/index.js';
 import { fromFormData } from '../../../utils/index.js';
-export function buildHandler(appManifest, ucd, contract, serverRequestHandler, ucManager) {
+export function buildHandler(appManifest, ucd, contract, serverRequestHandler, ucManager, beforeExec) {
     const { envelope } = contract;
     const handler = async (c) => {
+        await beforeExec?.(c);
         const { body, status } = await serverRequestHandler.exec({
             appManifest,
             envelope,
@@ -26,7 +28,8 @@ export function init() {
     app.use(secureHeaders());
     app.use(logger());
     app.notFound((c) => {
-        return c.json({}, 404);
+        const err = new NotFoundError();
+        return c.json(err.toObj(), err.httpStatus);
     });
     return app;
 }

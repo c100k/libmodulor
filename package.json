@@ -23,6 +23,9 @@
         ".": {
             "import": "./dist/esm/index.js"
         },
+        "./cloudflare-worker-hono": {
+            "import": "./dist/esm/index.cloudflare-worker-hono.js"
+        },
         "./locales/en": {
             "import": "./dist/esm/i18n/locales/en.js"
         },

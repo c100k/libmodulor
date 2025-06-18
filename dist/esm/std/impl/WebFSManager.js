@@ -7,7 +7,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 import { injectable } from 'inversify';
 let WebFSManager = class WebFSManager {
     async canHandleFiles() {
-        return true;
+        return false;
     }
     async cat(_path, _opts) {
         throw new Error('Not available on this platform');

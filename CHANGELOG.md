@@ -7,6 +7,10 @@
 - Introduce `Initializable.initSync()` : useful for contexts where async is not available (e.g. Cloudflare workers initialization) => To address, simply add the method in the concerned implementations. You can leave it empty, re-use the same logic as your existing `init()` if its core is not async, or copy it and adapt it to make it sync. If you want to forbid its usage, use `throw new NotCallableError<this>('initSync', 'init', 'async-only');`
 - Introduce `ServerManager.mountSync()` : useful for contexts where async is not available (e.g. Cloudflare workers initialization) => To address, simply add the method in the concerned implementations. You can leave it empty, re-use the same logic as your existing `mount()` if its core is not async, or copy it and adapt it to make it sync. If you want to forbid its usage, use `throw new NotCallableError<this>('mountSync', 'mount', 'async-only');`
 
+**Added**
+
+- Introduce `target/edge-worker-hono-server` to be able to deploy easily on Cloudflare Workers.
+
 **Misc**
 
 - Extract server targets functions for better reusability

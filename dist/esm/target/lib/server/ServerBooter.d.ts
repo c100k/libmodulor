@@ -22,5 +22,6 @@ export declare class ServerBooter implements Configurable<S>, Worker<Input, Prom
     constructor(emailManager: EmailManager, fsManager: FSManager, i18nManager: I18nManager, jobManager: JobManager, logger: Logger, productUCsLoader: ProductUCsLoader, serverManager: ServerManager, serverInstaller: ServerInstaller, settingsManager: SettingsManager<S>, ucManager: UCManager);
     s(): S;
     exec({ appsRootPath, autoMountUCs, srcImporter, }: Input): Promise<void>;
+    private mountUC;
 }
 export {};
