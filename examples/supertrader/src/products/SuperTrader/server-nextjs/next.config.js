@@ -17,10 +17,6 @@ export default {
      */
     serverExternalPackages: ['knex'],
 
-    typescript: {
-        tsconfigPath: '../../../../tsconfig.json',
-    },
-
     webpack: (config) => {
         config.resolve.extensionAlias = {
             '.js': (config.resolve.extensionAlias ?? []).concat([

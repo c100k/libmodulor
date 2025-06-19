@@ -1,5 +1,5 @@
 @import "tailwindcss";
 @plugin "daisyui";
 
-@source '../../../spa/components/*.jsx';
-@source '../../../spa/style.jsx';
+@source '../../../spa/components/*.js';
+@source '../../../spa/style.js';

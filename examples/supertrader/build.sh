@@ -33,6 +33,8 @@ targetName=server-nextjs
 echo "Adapting $targetName"
 rm -Rf $buildDir/$productPath/$targetName # let next.js handle it
 cp -R $srcDir/$productPath/$targetName $buildDir/$productPath/
+cp .env $buildDir/$productPath/$targetName/
+echo '{"name":"server-nextjs","type":"module"}' > $buildDir/$productPath/$targetName/package.json # required by next to start in the appropriate folder
 
 # server-node-express
 targetName=server-node-express
