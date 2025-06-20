@@ -20,7 +20,7 @@ let UCDataStoreExternalResourceManager = class UCDataStoreExternalResourceManage
         this.ucDataStore = ucDataStore;
     }
     async create() {
-        return this.ucDataStore.install();
+        return this.ucDataStore.init();
     }
     async delete() {
         return this.ucDataStore.destroy();

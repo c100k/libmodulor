@@ -26,10 +26,11 @@ export declare class KnexUCDataStore implements Configurable<S>, UCDataStore {
     clear(): Promise<void>;
     destroy(): Promise<void>;
     exists(): Promise<boolean>;
-    initTx(): Promise<UCDataStoreTx['ref']>;
-    install(): Promise<void>;
+    init(): Promise<void>;
+    initSync(): void;
     read<I extends UCInput | undefined = undefined, D extends UCData | null = null>(opts?: UCDataStoreReadOpts<I, D>): Promise<UCDataStoreReadResponse<I, D>>;
     readProjection<T extends object>(name: string, opts?: UCDataStoreReadProjectionOpts<T>): Promise<T[]>;
+    startTx(): Promise<UCDataStoreTx['ref']>;
     supportedSpecificBindings(): UCDataStoreWriteProjectionSpecificBinding[];
     testKey(_encryptionKey: Uint8Array): Promise<void>;
     write<I extends UCInput | undefined = undefined, D extends UCData | null = null>(record: UCDataStoreRecord<I, D>, opts?: UCDataStoreWriteOpts): Promise<void>;

@@ -34,19 +34,10 @@ let InMemoryUCDataStore = class InMemoryUCDataStore {
     async exists() {
         return this.entries.length > 0;
     }
-    async initTx() {
-        this.tx = 'pending';
-        return {
-            commit: async () => {
-                this.tx = 'committed';
-            },
-            rollback: async () => {
-                this.tx = 'rollbacked';
-                this.entries = [];
-            },
-        };
+    async init() {
+        // Nothing to do
     }
-    async install() {
+    initSync() {
         // Nothing to do
     }
     async read(opts) {
@@ -80,6 +71,18 @@ let InMemoryUCDataStore = class InMemoryUCDataStore {
     }
     async readProjection() {
         return [];
+    }
+    async startTx() {
+        this.tx = 'pending';
+        return {
+            commit: async () => {
+                this.tx = 'committed';
+            },
+            rollback: async () => {
+                this.tx = 'rollbacked';
+                this.entries = [];
+            },
+        };
     }
     supportedSpecificBindings() {
         return [];

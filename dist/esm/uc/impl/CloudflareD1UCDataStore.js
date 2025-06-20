@@ -50,11 +50,8 @@ let CloudflareD1UCDataStore = class CloudflareD1UCDataStore {
     async exists() {
         throw new NotImplementedError('exists');
     }
-    async initTx() {
-        throw new NotImplementedError('initTx');
-    }
-    async install() {
-        throw new NotImplementedError('install');
+    async init() {
+        throw new NotAvailableError('initSync');
         // Since workers do not accept top-level await, we cannot invoke this method when initiating it.
         // Plus, calling it in every request handler would be overkill and would add too much overhead.
         // In the meantime, process as follows :
@@ -89,6 +86,9 @@ CREATE INDEX IF NOT EXISTS uc_executions_user_id_index ON uc_executions (userId)
             pnpm wrangler d1 execute my-app-uc-data-store --cwd path_to_target --remote --file=./migrations/001_init.sql
             pnpm wrangler d1 list
         */
+    }
+    initSync() {
+        throw new NotAvailableError('initSync');
     }
     async read(opts) {
         this.assertClient();
@@ -132,6 +132,9 @@ CREATE INDEX IF NOT EXISTS uc_executions_user_id_index ON uc_executions (userId)
     }
     async readProjection(_name, _opts) {
         throw new NotImplementedError('readProjection');
+    }
+    async startTx() {
+        throw new NotImplementedError('startTx');
     }
     supportedSpecificBindings() {
         throw new NotImplementedError('supportedSpecificBindings');

@@ -116,9 +116,9 @@ let SimpleUCManager = class SimpleUCManager {
         const init = (await this.ucInitProvider(server.init));
         await init.exec();
     }
-    async initTx() {
+    async startTx() {
         this.tx = {
-            ref: await this.ucDataStore.initTx(),
+            ref: await this.ucDataStore.startTx(),
         };
     }
     async persist(uc, data, opts) {

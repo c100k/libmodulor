@@ -16,7 +16,7 @@ import { APP_NAME_PLACEHOLDER } from '../convention.js';
 import { TAmount, TCompanyName, } from '../dt/index.js';
 import { UCExecMode, } from '../uc/index.js';
 const ERR_SHOULD_NOT_EXIST_AFTER_DESTROY = 'It should not exist after destroy';
-const ERR_SHOULD_EXIST_AFTER_INSTALL = 'It should exist after install';
+const ERR_SHOULD_EXIST_AFTER_INIT = 'It should exist after init';
 const ERR_SHOULD_RETURN_X_RECORDS = (n) => `It should return ${n} record(s)`;
 /**
  * Test that a {@link UCDataStore} conforms to the spec
@@ -52,10 +52,10 @@ let UCDataStoreTester = class UCDataStoreTester {
         if (this.exists) {
             throw new Error(ERR_SHOULD_NOT_EXIST_AFTER_DESTROY);
         }
-        await ucDataStore.install();
+        await ucDataStore.init();
         this.exists = await ucDataStore.exists();
         if (!this.exists) {
-            throw new Error(ERR_SHOULD_EXIST_AFTER_INSTALL);
+            throw new Error(ERR_SHOULD_EXIST_AFTER_INIT);
         }
         this.readRes = await ucDataStore.read();
         this.expectXRecords(0);

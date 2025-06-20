@@ -1,6 +1,6 @@
 import type { AppName } from '../app/index.js';
 import type { UIntQuantity, UUID } from '../dt/index.js';
-import type { Clearable, StringKeys } from '../utils/index.js';
+import type { Clearable, Initializable, StringKeys } from '../utils/index.js';
 import type { UCData } from './data.js';
 import type { UCExecMode } from './exec.js';
 import type { UCInput } from './input.js';
@@ -55,13 +55,12 @@ export interface UCDataStoreRecord<I extends UCInput | undefined = undefined, D 
     organizationId: UUID | null;
     userId: UUID | null;
 }
-export interface UCDataStore extends Clearable {
+export interface UCDataStore extends Clearable, Initializable {
     destroy(): Promise<void>;
     exists(): Promise<boolean>;
-    initTx(): Promise<UCDataStoreTx['ref']>;
-    install(): Promise<void>;
     read<I extends UCInput | undefined = undefined, D extends UCData | null = null>(opts?: UCDataStoreReadOpts<I, D>): Promise<UCDataStoreReadResponse<I, D>>;
     readProjection<T extends object>(name: string, opts?: UCDataStoreReadProjectionOpts<T>): Promise<T[]>;
+    startTx(): Promise<UCDataStoreTx['ref']>;
     supportedSpecificBindings(): UCDataStoreWriteProjectionSpecificBinding[];
     testKey(encryptionKey: Uint8Array): Promise<void>;
     write<I extends UCInput | undefined = undefined, D extends UCData | null = null>(record: UCDataStoreRecord<I, D>, opts?: UCDataStoreWriteOpts): Promise<void>;

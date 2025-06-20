@@ -7,6 +7,7 @@
 - Introduce `Initializable.initSync()` : useful for contexts where async is not available (e.g. Cloudflare workers initialization) => To address, simply add the method in the concerned implementations. You can leave it empty, re-use the same logic as your existing `init()` if its core is not async, or copy it and adapt it to make it sync. If you want to forbid its usage, use `throw new NotCallableError<this>('initSync', 'init', 'async-only');`
 - Introduce `ServerManager.mountSync()` : useful for contexts where async is not available (e.g. Cloudflare workers initialization) => To address, simply add the method in the concerned implementations. You can leave it empty, re-use the same logic as your existing `mount()` if its core is not async, or copy it and adapt it to make it sync. If you want to forbid its usage, use `throw new NotCallableError<this>('mountSync', 'mount', 'async-only');`
 - Change `uc_data_store_ucs_dataset_name` default value from `use-cases` to `uc_executions` : if you relied on the default value and want to keep it, explicitly set `uc_data_store_ucs_dataset_name` in your settings. If you want the new name, rename your existing collection to the new name
+- Make `UCDataStore` compliant with `Initializable` : rename `install` to `init`, add `initSync` and rename `initTx` to `startTx`
 
 **Added**
 

@@ -12,7 +12,7 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 };
 import { inject, injectable } from 'inversify';
 import knex, {} from 'knex';
-import { NotAvailableError } from '../../error/index.js';
+import { NotAvailableError, NotCallableError } from '../../error/index.js';
 const FILTERS_MAPPING = new Map([
     ['aggregateId', 'aggregate_id'],
     ['appName', 'app_name'],
@@ -51,11 +51,11 @@ let KnexUCDataStore = class KnexUCDataStore {
     async exists() {
         return this.client.schema.hasTable(this.s().uc_data_store_ucs_dataset_name);
     }
-    async initTx() {
-        return this.client.transaction();
-    }
-    async install() {
+    async init() {
         await this.migration001CreateMainTable();
+    }
+    initSync() {
+        throw new NotCallableError('initSync', 'init', 'async-only');
     }
     async read(opts) {
         const query = this.client(this.s().uc_data_store_ucs_dataset_name);
@@ -100,6 +100,9 @@ let KnexUCDataStore = class KnexUCDataStore {
         }
         const records = await query;
         return records;
+    }
+    async startTx() {
+        return this.client.transaction();
     }
     supportedSpecificBindings() {
         const type = this.s().knex_uc_data_store_type;

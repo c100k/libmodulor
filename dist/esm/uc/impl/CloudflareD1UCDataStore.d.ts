@@ -17,10 +17,11 @@ export declare class CloudflareD1UCDataStore implements Configurable<S>, UCDataS
     clear(): Promise<void>;
     destroy(): Promise<void>;
     exists(): Promise<boolean>;
-    initTx(): Promise<UCDataStoreTx['ref']>;
-    install(): Promise<void>;
+    init(): Promise<void>;
+    initSync(): void;
     read<I extends UCInput | undefined = undefined, D extends UCData | null = null>(opts?: UCDataStoreReadOpts<I, D>): Promise<UCDataStoreReadResponse<I, D>>;
     readProjection<T extends object>(_name: string, _opts?: UCDataStoreReadProjectionOpts<T>): Promise<T[]>;
+    startTx(): Promise<UCDataStoreTx['ref']>;
     supportedSpecificBindings(): UCDataStoreWriteProjectionSpecificBinding[];
     testKey(_encryptionKey: Uint8Array): Promise<void>;
     write<I extends UCInput | undefined = undefined, D extends UCData | null = null>(record: UCDataStoreRecord<I, D>, _opts?: UCDataStoreWriteOpts): Promise<void>;
