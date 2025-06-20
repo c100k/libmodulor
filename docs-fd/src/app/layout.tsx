@@ -14,7 +14,7 @@ export default function Layout({ children }: { children: ReactNode }) {
         <html className={inter.className} lang="en" suppressHydrationWarning>
             <body className="flex flex-col min-h-screen">
                 <Banner variant="rainbow">
-                    libmodulor v0.18.1 is out 🚀 =&gt; Check it out on GitHub or
+                    libmodulor v0.19.0 is out 🚀 =&gt; Check it out on GitHub or
                     npm !
                 </Banner>
                 <RootProvider>{children}</RootProvider>
