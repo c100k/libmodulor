@@ -1,13 +1,7 @@
-import {
-    APPS_ROOT_DIR_NAME,
-    type FSManager,
-    type I18nManager,
-} from 'libmodulor';
+import { APPS_ROOT_DIR_NAME, type FSManager } from 'libmodulor';
 import { NodeCoreCLIManager } from 'libmodulor/node';
 
 import container from './container.js';
-
-await container.get<I18nManager>('I18nManager').init();
 
 await container.get(NodeCoreCLIManager).handleCommand({
     appsRootPath: container

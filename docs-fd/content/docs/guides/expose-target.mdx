@@ -56,6 +56,13 @@ bindCommon(container, settings);
 bindNodeCLI(container); // [!code ++]
 ```
 
+### bindCloudflareWorker
+
+[bindCloudflareWorker](https://github.com/c100k/libmodulor/blob/master/dist/esm/utils/ioc/bindCloudflareWorker.js)
+binds all the standard interfaces used internally by `libmodulor` to implementations suitable for Cloudflare Workers.
+Since it's not a *real* Node.js environment, only [some Node.js implementations](https://developers.cloudflare.com/workers/runtime-apis/nodejs/#supported-nodejs-apis) can be used.
+For the ones not supported yet (e.g. `fs`), simple or stub implementations are used.
+
 ### bindRN
 
 [bindRN](https://github.com/c100k/libmodulor/blob/master/dist/esm/utils/ioc/bindRN.js)
@@ -70,7 +77,7 @@ bindRN(container); // [!code ++]
 ### bindServer
 
 [bindServer](https://github.com/c100k/libmodulor/blob/master/dist/esm/utils/ioc/bindServer.js)
-binds all the standard interfaces used internally by `libmodulor` `NodeExpressServerManager` to basic implementations.
+binds all the standard interfaces used internally by `libmodulor` `ServerBooter` and `SyncEdgeWorkerInitializer` to basic implementations.
 
 ```typescript title="container.ts"
 bindCommon(container, settings);
@@ -115,7 +122,6 @@ Here are some examples.
 ```typescript title="server/index.ts"
 import container from './container.js';
 
-await container.get<I18nManager>('I18nManager').init();
 await container.resolve(ServerBooter).exec({});
 ```
 
@@ -135,14 +141,12 @@ ReactDOM.createRoot(rootElt).render(
 ```typescript title="cli/index.ts"
 import container from './container.js';
 
-await container.get<I18nManager>('I18nManager').init();
 await container.resolve(NodeCoreCLIManager).exec({});
 ```
 
 ```typescript title="mcp-server/index.ts"
 import container from './container.js';
 
-await container.get<I18nManager>('I18nManager').init();
 await container.resolve(MCPServerBooter).exec({});
 ```
 

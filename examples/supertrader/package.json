@@ -7,9 +7,12 @@
     "scripts": {
         "build": "./build.sh",
         "build:analyze:web": "vite-bundle-visualizer -c ./src/products/SuperTrader/web/vite.config.ts",
+        "clean": "./clean.sh",
+        "deploy:server-cloudflare-worker": "cd dist/products/SuperTrader/server-cloudflare-worker && wrangler deploy",
         "run:cli": "cd dist/products/SuperTrader/cli && node index.js",
         "run:rn:android": "cd dist/products/SuperTrader/rn && expo start --android",
         "run:rn:ios": "cd dist/products/SuperTrader/rn && expo start --ios",
+        "run:server-cloudflare-worker": "cd dist/products/SuperTrader/server-cloudflare-worker && wrangler telemetry disable && wrangler dev",
         "run:server-nextjs": "cd dist/products/SuperTrader/server-nextjs && next dev",
         "run:server-node-express": "cd dist/products/SuperTrader/server-node-express && node --env-file .env index.js",
         "run:server-node-hono": "cd dist/products/SuperTrader/server-node-hono && node --env-file .env index.js",
@@ -24,7 +27,7 @@
         "hono": "^4.8.1",
         "inversify": "^7.5.2",
         "knex": "^3.1.0",
-        "libmodulor": "^0.18.1",
+        "libmodulor": "^0.19.0",
         "next": "^15.3.4",
         "react": "^19.1.0",
         "react-dom": "^19.1.0",
@@ -52,6 +55,7 @@
         "typescript": "^5.8.3",
         "vite": "^6.3.5",
         "vite-bundle-visualizer": "^1.2.1",
-        "vitest": "^3.2.4"
+        "vitest": "^3.2.4",
+        "wrangler": "^4.20.3"
     }
 }
