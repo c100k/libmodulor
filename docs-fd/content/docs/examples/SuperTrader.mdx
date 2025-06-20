@@ -225,13 +225,13 @@ pnpm run:server-nextjs
 ```
 
 You can test it the exact same way as above (with `curl` or the different clients).
-The only difference is that the server listens at port `3000` instead of `7443`.
+The only difference is that the server listens on port `3000` instead of `7443`.
 Thus, you need to adapt it in the clients' `container.ts`. That's a good exercise to get used to the settings mechanism.
 
 ### server-cloudflare-worker
 
-This target uses the built-in [`edge-worker-hono-server`](https://github.com/c100k/libmodulor/tree/master/dist/esm/target/edge-worker-hono-server) target in its `sync` flavor,
-and is orchestrated with [`wrangler`](https://developers.cloudflare.com/workers/wrangler). It uses [Cloudflare D1](https://developers.cloudflare.com/d1) as `UCDataStore`.
+This target uses the built-in [`edge-worker-hono-server`](https://github.com/c100k/libmodulor/tree/master/dist/esm/target/edge-worker-hono-server) target in its `sync` flavor
+and is managed with [`wrangler`](https://developers.cloudflare.com/workers/wrangler). It uses [Cloudflare D1](https://developers.cloudflare.com/d1) as `UCDataStore`.
 
 <Callout>
     You need a Cloudflare account to test this target, even locally, as you need to create a D1 database.
@@ -251,7 +251,7 @@ Add the binding in `dist/products/SuperTrader/server-cloudflare-worker/wrangler.
 "d1_databases": [
     {
         "binding": "UCDataStore",
-        "database_id": "b9f07686-a54b-4850-b320-ccc97be69de6",
+        "database_id": "{your_database_id}",
         "database_name": "libmodulor-examples-supertrader-uc-data-store"
     }
 ],
@@ -271,7 +271,7 @@ pnpm run:server-cloudflare-worker
 ```
 
 You can test it the exact same way as above (with `curl` or the different clients).
-The only difference is that the server listens at port `8787` (or a random one assigned by wrangler) instead of `7443`.
+The only difference is that the server listens on port `8787` (or a random one assigned by wrangler) instead of `7443`.
 Thus, you need to adapt it in the clients' `container.ts`. That's a good exercise to get used to the settings mechanism.
 
 You can even deploy it on your account.
@@ -292,7 +292,7 @@ You can inspect the requests in the Cloudflare `Workers & Pages` dashboard as sh
 
 The `server-node-express`, `server-node-hono` and `server-nextjs` targets rebind the `UCDataStore` from `InMemoryUCDataStore` (default) to `KnexUCDataStore` configured with [`SQLite`](https://sqlite.org).
 
-Therefore, if you have executed the use cases via any of the targets above, you can explore the data in the DB file.
+Explore the data with your favorite DB tool like [DBeaver](https://dbeaver.io) or [TablePlus](https://tableplus.com).
 
 ```sh
 open uc-data-store.sqlite
@@ -304,9 +304,11 @@ open uc-data-store.sqlite
 
 The `server-cloudflare-worker` target rebinds `UCDataStore` from `InMemoryUCDataStore` (default) to `CloudflareD1UCDataStore`.
 
-Therefore, if you have executed the use cases via any of the targets above, you can explore the data locally and remotely.
+Explore the data with your favorite DB tool like [DBeaver](https://dbeaver.io) or [TablePlus](https://tableplus.com).
 
-For local data, open the [`SQLite`](https://sqlite.org) file stored at `dist/products/SuperTrader/server-cloudflare-worker/.wrangler/state/v3/d1/miniflare-D1DatabaseObject/`.
+```sh
+open dist/products/SuperTrader/server-cloudflare-worker/.wrangler/state/v3/d1/miniflare-D1DatabaseObject/{hash}.sqlite
+```
 
 For remote data, open the Cloudflare `D1` dashboard as shown below.
 
