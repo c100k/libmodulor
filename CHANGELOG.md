@@ -14,6 +14,10 @@
 - Introduce `NotImplementedError` for better semantics and more meaningful error messages
 - Init `i18nManager` in `MCPServerBooter` and `NodeCoreCLIManager` : you can remove any initialization made before executing those
 
+**Fixed**
+
+- Update `UCOutputBuilder` total when removing
+
 **Misc**
 
 - Extract server targets functions for better reusability

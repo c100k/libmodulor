@@ -51,6 +51,7 @@ export class UCOutputBuilder {
         const idx = this.output.parts._0.items.findIndex(predicate);
         if (idx > -1) {
             this.output.parts._0.items.splice(idx, 1);
+            this.output.parts._0.total -= 1;
         }
         return this;
     }
