@@ -26,7 +26,6 @@ const container = new Container(CONTAINER_OPTS);
 bindCommon<S>(container, () => ({
     ...TARGET_DEFAULT_SERVER_MANAGER_SETTINGS,
     sewhsm_bindings_uc_data_store: 'UCDataStore',
-    uc_data_store_ucs_dataset_name: 'use_cases',
 }));
 bindCloudflareWorker(container);
 bindServer(container);
