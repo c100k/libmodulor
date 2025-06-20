@@ -27,7 +27,7 @@
         "hono": "^4.8.1",
         "inversify": "^7.5.2",
         "knex": "^3.1.0",
-        "libmodulor": "github:c100k/libmodulor#af18fb9",
+        "libmodulor": "^0.19.0",
         "next": "^15.3.4",
         "react": "^19.1.0",
         "react-dom": "^19.1.0",
