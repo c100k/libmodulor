@@ -18,10 +18,12 @@ import {
 } from 'libmodulor/react-web-pure';
 import { type ReactElement, useEffect, useState } from 'react';
 
-import { Manifest as ToolboxManifest } from './apps/Toolbox/manifest';
-import { ExportAsanaUCD } from './apps/Toolbox/ucds/ExportAsanaUCD';
-import { GenerateMiscDataUCD } from './apps/Toolbox/ucds/GenerateMiscDataUCD';
-import { PromptLLMUCD } from './apps/Toolbox/ucds/PromptLLMUCD';
+import {
+    ExportAsanaUCD,
+    GenerateMiscDataUCD,
+    PromptLLMUCD,
+    Manifest as ToolboxManifest,
+} from './apps/Toolbox/index';
 
 interface Props {
     appName: AppName;
