@@ -9,13 +9,13 @@ importers:
   .:
     dependencies:
       '@hono/node-server':
-        specifier: ^1.14.4
+        specifier: ^1.15.0
         version: 1.15.0(hono@4.8.4)
       '@modelcontextprotocol/sdk':
-        specifier: ^1.13.0
+        specifier: ^1.15.0
         version: 1.15.0
       '@stricli/core':
-        specifier: ^1.1.2
+        specifier: ^1.2.0
         version: 1.2.0
       buffer:
         specifier: ^6.0.3
@@ -27,19 +27,19 @@ importers:
         specifier: ^5.1.0
         version: 5.1.0
       express-fileupload:
-        specifier: ^1.5.1
+        specifier: ^1.5.2
         version: 1.5.2
       fast-check:
-        specifier: ^4.1.1
+        specifier: ^4.2.0
         version: 4.2.0
       helmet:
         specifier: ^8.1.0
         version: 8.1.0
       hono:
-        specifier: ^4.8.1
+        specifier: ^4.8.4
         version: 4.8.4
       inversify:
-        specifier: ^7.5.2
+        specifier: ^7.5.4
         version: 7.5.4(reflect-metadata@0.2.2)
       jose:
         specifier: ^6.0.11
@@ -48,10 +48,10 @@ importers:
         specifier: ^3.1.0
         version: 3.1.0(pg@8.16.3)(sqlite3@5.1.7)
       next:
-        specifier: ^15.3.4
+        specifier: ^15.3.5
         version: 15.3.5(@babel/core@7.28.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       pg:
-        specifier: ^8.16.2
+        specifier: ^8.16.3
         version: 8.16.3
       react:
         specifier: ^19.1.0
@@ -60,7 +60,7 @@ importers:
         specifier: ^19.1.0
         version: 19.1.0(react@19.1.0)
       react-native:
-        specifier: ^0.79.4
+        specifier: ^0.79.5
         version: 0.79.5(@babel/core@7.28.0)(@types/react@19.1.8)(react@19.1.0)
       reflect-metadata:
         specifier: ^0.2.2
