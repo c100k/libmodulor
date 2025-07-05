@@ -28,7 +28,6 @@
     },
     "exclude": [
         "dist",
-        "docs-fd",
         "examples/**/dist",
         "examples/**/node_modules",
         "node_modules"

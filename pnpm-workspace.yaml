@@ -1,5 +1,4 @@
 packages:
-  - docs-fd
   - examples/basic
   - examples/supertrader
 onlyBuiltDependencies:

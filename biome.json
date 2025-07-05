@@ -27,9 +27,6 @@
             "!**/.next",
             "!**/coverage",
             "!**/dist",
-            "!**/docs-fd/.next",
-            "!**/docs-fd/.source",
-            "!**/docs-fd/node_modules",
             "!**/node_modules",
             "!**/package.json"
         ]
