@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## v0.20.0 (unreleased)
+
+**Misc**
+
+- Add the `Toolbox` app to `examples` (for docs)
+
 ## v0.19.0 (2025-06-20)
 
 **BREAKING**
