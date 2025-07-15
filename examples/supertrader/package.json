@@ -19,16 +19,16 @@
         "test": "tsc && vitest run --passWithNoTests"
     },
     "dependencies": {
-        "@hono/node-server": "^1.15.0",
-        "@modelcontextprotocol/sdk": "^1.15.0",
+        "@hono/node-server": "^1.16.0",
+        "@modelcontextprotocol/sdk": "^1.15.1",
         "@tailwindcss/vite": "^4.1.11",
-        "daisyui": "^5.0.43",
-        "expo": "^53.0.17",
-        "hono": "^4.8.4",
-        "inversify": "^7.5.4",
+        "daisyui": "^5.0.46",
+        "expo": "^53.0.19",
+        "hono": "^4.8.5",
+        "inversify": "^7.6.1",
         "knex": "^3.1.0",
         "libmodulor": "^0.19.0",
-        "next": "^15.3.5",
+        "next": "^15.4.1",
         "react": "^19.1.0",
         "react-dom": "^19.1.0",
         "react-native": "^0.79.5",
@@ -39,7 +39,7 @@
     "devDependencies": {
         "@babel/plugin-transform-class-static-block": "^7.27.1",
         "@tailwindcss/postcss": "^4.1.11",
-        "@types/node": "^22.16.0",
+        "@types/node": "^22.16.4",
         "@types/react": "^19.1.8",
         "@types/react-dom": "^19.1.6",
         "@vitest/coverage-v8": "^3.2.4",
@@ -56,6 +56,6 @@
         "vite": "^6.3.5",
         "vite-bundle-visualizer": "^1.2.1",
         "vitest": "^3.2.4",
-        "wrangler": "^4.23.0"
+        "wrangler": "^4.24.3"
     }
 }

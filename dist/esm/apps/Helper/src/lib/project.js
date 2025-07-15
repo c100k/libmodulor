@@ -81,13 +81,13 @@ export const PACKAGE_JSON = (name) => `{
         "test": "tsc && vitest run --passWithNoTests"
     },
     "dependencies": {
-        "inversify": "^7.5.4",
+        "inversify": "^7.6.1",
         "libmodulor": "latest",
         "reflect-metadata": "^0.2.2"
     },
     "devDependencies": {
-        "@biomejs/biome": "^2.0.6",
-        "@types/node": "^22.16.0",
+        "@biomejs/biome": "^2.1.1",
+        "@types/node": "^22.16.4",
         "@vitest/coverage-v8": "^3.2.4",
         "buffer": "^6.0.3",
         "cookie-parser": "^1.4.7",
