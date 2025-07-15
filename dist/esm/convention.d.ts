@@ -44,3 +44,5 @@ export declare const UC_OPI_BASE: string;
 export declare const UC_OPI_SUFFIX: string;
 export declare const UC_POLICY_SUFFIX: string;
 export declare const UC_POLICY_SUFFIX_FULL: string;
+export declare const UC_POLICY_FILE_NAME_EXT: string;
+export declare const UC_POLICY_FILE_NAME_SUFFIX: string;

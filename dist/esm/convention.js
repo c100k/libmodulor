@@ -54,3 +54,5 @@ export const UC_OPI_BASE = 'UCOPIBase';
 export const UC_OPI_SUFFIX = 'OPI';
 export const UC_POLICY_SUFFIX = 'Policy';
 export const UC_POLICY_SUFFIX_FULL = `UC${UC_POLICY_SUFFIX}`;
+export const UC_POLICY_FILE_NAME_EXT = '.ts';
+export const UC_POLICY_FILE_NAME_SUFFIX = `${UC_POLICY_SUFFIX_FULL}${UC_POLICY_FILE_NAME_EXT}`;
