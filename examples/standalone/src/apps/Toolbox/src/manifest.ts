@@ -14,6 +14,11 @@ export const Manifest = {
             icon: 'gear',
             name: 'GenerateMiscData',
         },
+        GeocodeAddress: {
+            action: 'Create',
+            icon: 'gear',
+            name: 'GeocodeAddress',
+        },
         PromptLLM: {
             action: 'Create',
             icon: 'gear',

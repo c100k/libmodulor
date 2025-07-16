@@ -7,6 +7,7 @@
 - Add the `Toolbox` app to `examples` (for docs)
 - Expose `UC_POLICY_FILE_NAME_EXT` and `UC_POLICY_FILE_NAME_SUFFIX` in the convention
 - Move `examples/embedded` to `examples/standalone`
+- Add the `GeocodeAddress` UCD to `Toolbox` (for docs)
 
 ## v0.19.0 (2025-06-20)
 
