@@ -2,14 +2,14 @@ import { inject, injectable } from 'inversify';
 import {
     type ErrorMessage,
     EverybodyUCPolicy,
+    type ExternalServiceId,
     type FreeTextLong,
-    type FreeTextShort,
     type FSManager,
     type HTTPAPICaller,
     type JWT,
     type Logger,
     type Password,
-    TFreeTextShort,
+    TExternalServiceId,
     TPassword,
     type UCDef,
     type UCInput,
@@ -25,7 +25,7 @@ import { Manifest } from '../manifest.js';
 
 export interface ExportAsanaInput extends UCInput {
     accessToken: UCInputFieldValue<Password>;
-    projectId: UCInputFieldValue<FreeTextShort>;
+    projectId: UCInputFieldValue<ExternalServiceId>;
 }
 
 @injectable()
@@ -38,7 +38,7 @@ class ExportAsanaClientMain implements UCMain<ExportAsanaInput> {
 
     public async exec({ uc }: UCMainInput<ExportAsanaInput>): Promise<void> {
         const accessToken = uc.reqVal0<Password>('accessToken');
-        const projectId = uc.reqVal0<FreeTextShort>('projectId');
+        const projectId = uc.reqVal0<ExternalServiceId>('projectId');
 
         type Req = {
             limit: UIntQuantity;
@@ -128,7 +128,7 @@ export const ExportAsanaUCD: UCDef<ExportAsanaInput> = {
                     type: new TPassword(),
                 },
                 projectId: {
-                    type: new TFreeTextShort().setExamples(['project-123']),
+                    type: new TExternalServiceId(),
                 },
             },
         },

@@ -1,5 +1,6 @@
 packages:
   - examples/basic
+  - examples/standalone
   - examples/supertrader
 onlyBuiltDependencies:
   - '@biomejs/biome'

@@ -22,7 +22,7 @@ export interface AuthenticateToStravaStep1Input extends UCInput {
 }
 
 @injectable()
-export class AuthenticateToStravaStep1ClientMain
+class AuthenticateToStravaStep1ClientMain
     implements UCMain<AuthenticateToStravaStep1Input>
 {
     constructor(@inject('LinkManager') private linkManager: LinkManager) {}

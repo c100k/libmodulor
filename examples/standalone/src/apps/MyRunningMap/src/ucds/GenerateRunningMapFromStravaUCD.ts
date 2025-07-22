@@ -40,7 +40,7 @@ export interface GenerateRunningMapFromStravaOPI0 extends UCOPIBase {
 }
 
 @injectable()
-export class GenerateRunningMapFromStravaClientMain
+class GenerateRunningMapFromStravaClientMain
     implements
         UCMain<
             GenerateRunningMapFromStravaInput,

@@ -9,6 +9,7 @@
 - Move `examples/embedded` to `examples/standalone`
 - Add the `GeocodeAddress` UCD to `Toolbox` (for docs)
 - Add the `MyRunningMap` app to `examples` (for docs)
+- Harmonize `examples` apps testing
 
 ## v0.19.0 (2025-06-20)
 

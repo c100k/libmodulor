@@ -1,14 +1,11 @@
 {
-    "name": "libmodulor-examples-basic",
+    "name": "libmodulor-examples-standalone",
     "version": "0.1.0",
     "author": "Chafik H'nini <chafik.hnini@gmail.com>",
     "type": "module",
     "private": true,
     "scripts": {
-        "build": "./build.sh",
-        "clean": "./clean.sh",
-        "run:bun": "bun src/index.ts",
-        "run:node": "(cd dist && node index.js)"
+        "test": "tsc && vitest run --passWithNoTests"
     },
     "dependencies": {
         "inversify": "^7.6.1",
@@ -16,6 +13,7 @@
         "reflect-metadata": "^0.2.2"
     },
     "devDependencies": {
+        "@vitest/coverage-v8": "^3.2.4",
         "@types/node": "^22.16.5",
         "jose": "^6.0.12",
         "typescript": "^5.8.3"

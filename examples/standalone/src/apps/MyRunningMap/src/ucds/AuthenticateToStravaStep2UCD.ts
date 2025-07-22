@@ -36,7 +36,7 @@ export interface AuthenticateToStravaStep2OPI0 extends UCOPIBase {
 }
 
 @injectable()
-export class AuthenticateToStravaStep2ClientMain
+class AuthenticateToStravaStep2ClientMain
     implements
         UCMain<AuthenticateToStravaStep2Input, AuthenticateToStravaStep2OPI0>
 {
