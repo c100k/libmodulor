@@ -1,38 +1,5 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Use Cases > 'ExportAsana' > should execute with auth 'ADMIN' and input 'ALL_WITH_EXAMPLES' > hash = 5ac600df0674e0dd252bae64d98c463345387d1ab1a6d7d1f23a3013e12a1076 1`] = `
-{
-  "out": {
-    "args": {
-      "auth": {
-        "organization": {
-          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
-        },
-        "role": "admin",
-        "user": {
-          "firstname": "Dexter",
-          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
-          "initials": "DM",
-        },
-      },
-      "authName": "ADMIN",
-      "inputFiller": [Function],
-      "inputFillerName": "ALL_WITH_EXAMPLES",
-    },
-    "err": [IllegalArgumentError: Not Authorized],
-    "hash": "5ac600df0674e0dd252bae64d98c463345387d1ab1a6d7d1f23a3013e12a1076",
-    "io": {
-      "i": {
-        "accessToken": "fmUUNWXazWH4",
-        "projectId": "project-123",
-      },
-      "o": null,
-    },
-  },
-  "sideEffects": undefined,
-}
-`;
-
 exports[`Use Cases > 'ExportAsana' > should execute with auth 'ADMIN' and input 'ALL_WITH_EXAMPLES' > hash = 6e550fccc8f9f5e661f7d3eaed51728b9d6fbf7122581ead12687ebc7cbbdb09 1`] = `
 {
   "out": {
@@ -99,39 +66,6 @@ exports[`Use Cases > 'ExportAsana' > should execute with auth 'ADMIN' and input 
 }
 `;
 
-exports[`Use Cases > 'ExportAsana' > should execute with auth 'ADMIN' and input 'ONLY_MANDATORY_WITH_EXAMPLES' > hash = f94021dfb364000ff03ee1d5f8780e5afdd693412a95cb03388d9da1de15e0cc 1`] = `
-{
-  "out": {
-    "args": {
-      "auth": {
-        "organization": {
-          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
-        },
-        "role": "admin",
-        "user": {
-          "firstname": "Dexter",
-          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
-          "initials": "DM",
-        },
-      },
-      "authName": "ADMIN",
-      "inputFiller": [Function],
-      "inputFillerName": "ONLY_MANDATORY_WITH_EXAMPLES",
-    },
-    "err": [IllegalArgumentError: Not Authorized],
-    "hash": "f94021dfb364000ff03ee1d5f8780e5afdd693412a95cb03388d9da1de15e0cc",
-    "io": {
-      "i": {
-        "accessToken": "fmUUNWXazWH4",
-        "projectId": "project-123",
-      },
-      "o": null,
-    },
-  },
-  "sideEffects": undefined,
-}
-`;
-
 exports[`Use Cases > 'ExportAsana' > should execute with auth 'ADMIN' and input 'ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPL…' > hash = 0a51999944fbc84a1ace597121e3a9f4778a4377e0845087617b76a1b7d2a957 1`] = `
 {
   "out": {
@@ -157,29 +91,6 @@ exports[`Use Cases > 'ExportAsana' > should execute with auth 'ADMIN' and input 
       "i": {
         "accessToken": undefined,
         "projectId": undefined,
-      },
-      "o": null,
-    },
-  },
-  "sideEffects": undefined,
-}
-`;
-
-exports[`Use Cases > 'ExportAsana' > should execute with auth 'ANONYMOUS' and input 'ALL_WITH_EXAMPLES' > hash = 3016c6d0d98cca8e6b3d3cd8a15fdb22164118f295ac50c5bc344d073a5781f2 1`] = `
-{
-  "out": {
-    "args": {
-      "auth": null,
-      "authName": "ANONYMOUS",
-      "inputFiller": [Function],
-      "inputFillerName": "ALL_WITH_EXAMPLES",
-    },
-    "err": [IllegalArgumentError: Not Authorized],
-    "hash": "3016c6d0d98cca8e6b3d3cd8a15fdb22164118f295ac50c5bc344d073a5781f2",
-    "io": {
-      "i": {
-        "accessToken": "fmUUNWXazWH4",
-        "projectId": "project-123",
       },
       "o": null,
     },
@@ -226,29 +137,6 @@ exports[`Use Cases > 'ExportAsana' > should execute with auth 'ANONYMOUS' and in
       "i": {
         "accessToken": "fmUUNWXazWH4",
         "projectId": "ZNHD34AQW4CV7",
-      },
-      "o": null,
-    },
-  },
-  "sideEffects": undefined,
-}
-`;
-
-exports[`Use Cases > 'ExportAsana' > should execute with auth 'ANONYMOUS' and input 'ONLY_MANDATORY_WITH_EXAMPLES' > hash = f02e4954fca7acabc00c1c95c925ad6df3c8ae4460adf0c1589cb7ee3b80e947 1`] = `
-{
-  "out": {
-    "args": {
-      "auth": null,
-      "authName": "ANONYMOUS",
-      "inputFiller": [Function],
-      "inputFillerName": "ONLY_MANDATORY_WITH_EXAMPLES",
-    },
-    "err": [IllegalArgumentError: Not Authorized],
-    "hash": "f02e4954fca7acabc00c1c95c925ad6df3c8ae4460adf0c1589cb7ee3b80e947",
-    "io": {
-      "i": {
-        "accessToken": "fmUUNWXazWH4",
-        "projectId": "project-123",
       },
       "o": null,
     },
@@ -313,39 +201,6 @@ exports[`Use Cases > 'ExportAsana' > should execute with auth 'REGULAR' and inpu
 }
 `;
 
-exports[`Use Cases > 'ExportAsana' > should execute with auth 'REGULAR' and input 'ALL_WITH_EXAMPLES' > hash = e6c6f1c9df82e064e6d24d1a1fda1952cbf395262ca4cd62d80779f4a660103a 1`] = `
-{
-  "out": {
-    "args": {
-      "auth": {
-        "organization": {
-          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
-        },
-        "role": "regular",
-        "user": {
-          "firstname": "Dexter",
-          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
-          "initials": "DM",
-        },
-      },
-      "authName": "REGULAR",
-      "inputFiller": [Function],
-      "inputFillerName": "ALL_WITH_EXAMPLES",
-    },
-    "err": [IllegalArgumentError: Not Authorized],
-    "hash": "e6c6f1c9df82e064e6d24d1a1fda1952cbf395262ca4cd62d80779f4a660103a",
-    "io": {
-      "i": {
-        "accessToken": "fmUUNWXazWH4",
-        "projectId": "project-123",
-      },
-      "o": null,
-    },
-  },
-  "sideEffects": undefined,
-}
-`;
-
 exports[`Use Cases > 'ExportAsana' > should execute with auth 'REGULAR' and input 'ONLY_MANDATORY_WITH_EXAMPLES' > hash = 02bae67c0be4aec5f311c85d17ae4a87a94328f23752ade05d3255fa3770bba9 1`] = `
 {
   "out": {
@@ -371,39 +226,6 @@ exports[`Use Cases > 'ExportAsana' > should execute with auth 'REGULAR' and inpu
       "i": {
         "accessToken": "fmUUNWXazWH4",
         "projectId": "ZNHD34AQW4CV7",
-      },
-      "o": null,
-    },
-  },
-  "sideEffects": undefined,
-}
-`;
-
-exports[`Use Cases > 'ExportAsana' > should execute with auth 'REGULAR' and input 'ONLY_MANDATORY_WITH_EXAMPLES' > hash = 4ee0eba8c05d9fad8097a8b90ce1f361332ff96611d2a266d34c2c10aa1fc0f6 1`] = `
-{
-  "out": {
-    "args": {
-      "auth": {
-        "organization": {
-          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
-        },
-        "role": "regular",
-        "user": {
-          "firstname": "Dexter",
-          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
-          "initials": "DM",
-        },
-      },
-      "authName": "REGULAR",
-      "inputFiller": [Function],
-      "inputFillerName": "ONLY_MANDATORY_WITH_EXAMPLES",
-    },
-    "err": [IllegalArgumentError: Not Authorized],
-    "hash": "4ee0eba8c05d9fad8097a8b90ce1f361332ff96611d2a266d34c2c10aa1fc0f6",
-    "io": {
-      "i": {
-        "accessToken": "fmUUNWXazWH4",
-        "projectId": "project-123",
       },
       "o": null,
     },
