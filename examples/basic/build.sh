@@ -1,4 +1,4 @@
-pnpm tsc \
+pnpm tsgo \
     --emitDecoratorMetadata \
     --experimentalDecorators \
     --module nodenext \

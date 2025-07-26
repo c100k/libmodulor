@@ -5,7 +5,7 @@ srcDir=src
 productPath=products/SuperTrader
 
 echo "Building all"
-pnpm tsc --project tsconfig.build.json
+pnpm tsgo --project tsconfig.build.json
 
 # Target specifics
 
