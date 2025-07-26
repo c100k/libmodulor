@@ -5,7 +5,7 @@
     "type": "module",
     "private": true,
     "scripts": {
-        "test": "tsc && vitest run --passWithNoTests"
+        "test": "tsgo && vitest run --passWithNoTests"
     },
     "dependencies": {
         "inversify": "^7.6.1",
