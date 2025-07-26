@@ -52,14 +52,14 @@ const template = (serverPortRangeStart, idx, monkeyTestingTimeoutInMs) => `/*
 import { join } from 'node:path';
 
 import {
-    assert,
     type Arbitrary,
     type AsyncCommand,
-    type ModelRunSetup,
     anything,
+    assert,
     asyncModelRun,
     asyncProperty,
     commands,
+    type ModelRunSetup,
     record,
 } from 'fast-check';
 import {
@@ -70,7 +70,7 @@ import {
     type UCInput,
 } from 'libmodulor';
 import { newNodeAppTester } from 'libmodulor/node-test';
-import { afterAll, afterEach, describe, expect, test } from 'vitest';
+import { afterAll, afterEach, beforeAll, describe, expect, test } from 'vitest';
 
 import { Configurator } from './Configurator.js';
 
@@ -84,116 +84,92 @@ const runner = await newNodeAppTester(${serverPortRangeStart}, ${idx}, {
 const ctx = runner.getCtx();
 const logger = ctx.container.get<Logger>('Logger');
 
+const flows = await configurator.flows();
+
 afterAll(async () => {
     await runner.finalize();
 });
 
-test('Sources should be valid', async () => {
-    await runner.checkUCDSources();
-});
-
-test('Folder should be valid', async () => {
-    await runner.checkAppFolder();
-});
-
-test('${APP_MANIFEST_NAME} should be valid', async () => {
-    await runner.checkAppManifest();
-});
-
-test('${APP_I18N_NAME} should be valid', async () => {
-    await runner.checkAppI18n();
-});
-
-test('${APP_INDEX_NAME} should be valid', async () => {
-    await runner.checkAppIndex();
-});
-
-const flows = await configurator.flows();
-describe.runIf(flows.length > 0)('Flows', async () => {
-    afterEach(async () => {
-        await configurator.clearExecution(ctx);
+describe('Check', () => {
+    test('Sources should be valid', async () => {
+        await runner.checkUCDSources();
     });
 
-    test.each(flows)('should execute flow $name', async (flow) => {
-        const output = await runner.execFlow(flow);
+    test('Folder should be valid', async () => {
+        await runner.checkAppFolder();
+    });
 
-        for (const out of output) {
-            if (out.err !== null) {
-                if (!(out.err instanceof CustomError)) {
-                    logger.error(out.err);
-                }
-                expect(out.err).toBeInstanceOf(CustomError);
-            }
-        }
+    test('${APP_MANIFEST_NAME} should be valid', async () => {
+        await runner.checkAppManifest();
+    });
+
+    test('${APP_I18N_NAME} should be valid', async () => {
+        await runner.checkAppI18n();
+    });
+
+    test('${APP_INDEX_NAME} should be valid', async () => {
+        await runner.checkAppIndex();
+    });
+
+    describe.runIf(ctx.ucdRefs.length > 0)('Use Cases', () => {
+        describe.each(ctx.ucdRefs)('$name', async (ucdRef) => {
+            test('should be valid', async () => {
+                await runner.checkUC(ucdRef);
+            });
+        });
     });
 });
 
-const { ucdRefs } = ctx;
-describe.runIf(ucdRefs.length > 0)('Use Cases', () => {
-    describe.each(ucdRefs)('$name', async (ucdRef) => {
+describe('Run', async () => {
+    beforeAll(async () => {
+        await runner.initForUCExec();
+    });
+
+    describe.runIf(flows.length > 0)('Flows', async () => {
         afterEach(async () => {
             await configurator.clearExecution(ctx);
         });
 
-        // biome-ignore lint/suspicious/noExplicitAny: can be anything
-        let ucd: UCDef<any, any, any>;
+        test.each(flows)('should execute flow $name', async (flow) => {
+            const output = await runner.execFlow(flow);
 
-        test('should be valid', async () => {
-            ucd = await runner.checkUC(ucdRef);
-        });
-
-        const data = await runner.ucTestData(ucdRef);
-
-        test.each(data)(
-            'should execute with auth $authName and input $inputFillerName',
-            async ({ auth, authName, inputFiller, inputFillerName }) => {
-                const { out, sideEffects } = await runner.execUC({
-                    auth,
-                    authName: authName as UCAuthSetterName,
-                    inputFiller,
-                    inputFillerName,
-                    ucd,
-                });
-
+            for (const out of output) {
                 if (out.err !== null) {
                     if (!(out.err instanceof CustomError)) {
                         logger.error(out.err);
                     }
                     expect(out.err).toBeInstanceOf(CustomError);
                 }
+            }
+        });
+    });
 
-                const { hash } = out;
-                const assertion = hash
-                    ? (await configurator.specificAssertions())?.get(hash)
-                    : undefined;
-                if (assertion) {
-                    expect(out).toSatisfy(assertion);
-                } else {
-                    expect({ out, sideEffects }).toMatchSnapshot(
-                        \`hash = \${hash\}\`,
-                    );
-                }
-            },
-        );
+    describe.runIf(ctx.ucdRefs.length > 0)('Use Cases', () => {
+        describe.each(ctx.ucdRefs)('$name', async (ucdRef) => {
+            afterEach(async () => {
+                await configurator.clearExecution(ctx);
+            });
 
-        test('should execute with monkey testing', async () => {
-            // Given
-            // biome-ignore lint/complexity/noBannedTypes: nothing for now
-            type Model = {};
-            // biome-ignore lint/complexity/noBannedTypes: nothing for now
-            type RealSystem = {};
+            // biome-ignore lint/suspicious/noExplicitAny: can be anything
+            let ucd: UCDef<any, any, any>;
 
-            class MyCommand<I extends UCInput | undefined = undefined>
-                implements AsyncCommand<Model, RealSystem>
-            {
-                constructor(private input: I) {}
+            beforeAll(() => {
+                // biome-ignore lint/suspicious/noExplicitAny: can be anything
+                ucd = runner.getUCD<any, any, any>(ucdRef.name);
+            });
 
-                public check(_m: Readonly<Model>): boolean {
-                    return true;
-                }
+            const data = await runner.ucTestData(ucdRef);
 
-                public async run(_m: Model, _r: RealSystem): Promise<void> {
-                    const out = await runner.execMonkeyTest(ucd, this.input);
+            test.each(data)(
+                'should execute with auth $authName and input $inputFillerName',
+                async ({ auth, authName, inputFiller, inputFillerName }) => {
+                    const { out, sideEffects } = await runner.execUC({
+                        auth,
+                        authName: authName as UCAuthSetterName,
+                        inputFiller,
+                        inputFillerName,
+                        ucd,
+                    });
 
                     if (out.err !== null) {
                         if (!(out.err instanceof CustomError)) {
@@ -201,41 +177,82 @@ describe.runIf(ucdRefs.length > 0)('Use Cases', () => {
                         }
                         expect(out.err).toBeInstanceOf(CustomError);
                     }
-                }
 
-                public toString(): string {
-                    return \`\${ucd.metadata.name\}(\${JSON.stringify(this.input)\})\`;
-                }
-            }
-
-            const inputFields = ucd.io.i?.fields;
-            if (!inputFields || Object.keys(inputFields).length > 0) {
-                // Mainly to prevent monkey testing from running indefinitely
-                return;
-            }
-
-            // biome-ignore lint/suspicious/noExplicitAny: can be anything
-            const inputLike: Record<string, Arbitrary<any>> = {};
-            for (const k of Object.keys(inputFields)) {
-                inputLike[k] = anything();
-            }
-            const cmdArbs = record(inputLike, { requiredKeys: [] }).map(
-                (r) => new MyCommand(r),
+                    const { hash } = out;
+                    const assertion = hash
+                        ? (await configurator.specificAssertions())?.get(hash)
+                        : undefined;
+                    if (assertion) {
+                        expect(out).toSatisfy(assertion);
+                    } else {
+                        expect({ out, sideEffects }).toMatchSnapshot(
+                            \`hash = \${hash\}\`,
+                        );
+                    }
+                },
             );
 
-            const modelRunSetup: ModelRunSetup<Model, RealSystem> = () => ({
-                model: {},
-                real: {},
-            });
+            test('should execute with monkey testing', async () => {
+                // Given
+                // biome-ignore lint/complexity/noBannedTypes: nothing for now
+                type Model = {};
+                // biome-ignore lint/complexity/noBannedTypes: nothing for now
+                type RealSystem = {};
 
-            // When
-            const property = asyncProperty(commands([cmdArbs]), (cmds) =>
-                asyncModelRun(modelRunSetup, cmds),
-            );
+                class MyCommand<I extends UCInput | undefined = undefined>
+                    implements AsyncCommand<Model, RealSystem>
+                {
+                    constructor(private input: I) {}
 
-            // Then
-            await assert(property);
-        }, ${monkeyTestingTimeoutInMs});
+                    public check(_m: Readonly<Model>): boolean {
+                        return true;
+                    }
+
+                    public async run(_m: Model, _r: RealSystem): Promise<void> {
+                        const out = await runner.execMonkeyTest(ucd, this.input);
+
+                        if (out.err !== null) {
+                            if (!(out.err instanceof CustomError)) {
+                                logger.error(out.err);
+                            }
+                            expect(out.err).toBeInstanceOf(CustomError);
+                        }
+                    }
+
+                    public toString(): string {
+                        return \`\${ucd.metadata.name\}(\${JSON.stringify(this.input)\})\`;
+                    }
+                }
+
+                const inputFields = ucd.io.i?.fields;
+                if (!inputFields || Object.keys(inputFields).length > 0) {
+                    // Mainly to prevent monkey testing from running indefinitely
+                    return;
+                }
+
+                // biome-ignore lint/suspicious/noExplicitAny: can be anything
+                const inputLike: Record<string, Arbitrary<any>> = {};
+                for (const k of Object.keys(inputFields)) {
+                    inputLike[k] = anything();
+                }
+                const cmdArbs = record(inputLike, { requiredKeys: [] }).map(
+                    (r) => new MyCommand(r),
+                );
+
+                const modelRunSetup: ModelRunSetup<Model, RealSystem> = () => ({
+                    model: {},
+                    real: {},
+                });
+
+                // When
+                const property = asyncProperty(commands([cmdArbs]), (cmds) =>
+                    asyncModelRun(modelRunSetup, cmds),
+                );
+
+                // Then
+                await assert(property);
+            }, ${monkeyTestingTimeoutInMs});
+        });
     });
 });
 `;

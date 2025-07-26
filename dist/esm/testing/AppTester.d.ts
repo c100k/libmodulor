@@ -1,7 +1,7 @@
 import type { FilePath } from '../dt/index.js';
 import type { ServerClientManagerSettings } from '../target/lib/client/ServerClientManager.js';
 import type { ServerManager } from '../target/lib/server/ServerManager.js';
-import { type UCAuth, UCBuilder, type UCDef, type UCInput, type UCOPIBase } from '../uc/index.js';
+import { type UCAuth, UCBuilder, type UCDef, type UCInput, type UCName, type UCOPIBase } from '../uc/index.js';
 import type { SrcImporter } from '../utils/index.js';
 import type { AppTesterConfigurator } from './AppTesterConfigurator.js';
 import type { AppTesterCtx, AppTesterUCDRef } from './ctx.js';
@@ -50,6 +50,7 @@ export declare class AppTester {
      * This can happen in case of circular dependencies for example.
      */
     private safeSrcImporter;
+    private ucds;
     private testResults;
     private testSummary;
     private ucDefSourcesCheckerOutput;
@@ -59,13 +60,15 @@ export declare class AppTester {
     checkAppIndex(): Promise<void>;
     checkAppManifest(): Promise<void>;
     checkUCDSources(): Promise<void>;
-    checkUC(ucdRef: AppTesterUCDRef): Promise<UCDef>;
+    checkUC(ucdRef: AppTesterUCDRef): Promise<void>;
     execFlow(flow: AppTesterFlow): Promise<AppTesterFlowExecOutput>;
     execMonkeyTest<I extends UCInput | undefined = undefined, OPI0 extends UCOPIBase | undefined = undefined, OPI1 extends UCOPIBase | undefined = undefined>(ucd: UCDef<I, OPI0, OPI1>, input: I): Promise<UCExecutorExecOutput<I, OPI0, OPI1>>;
     execUC<I extends UCInput | undefined = undefined, OPI0 extends UCOPIBase | undefined = undefined, OPI1 extends UCOPIBase | undefined = undefined>(input: Omit<UCExecutorInput<I, OPI0, OPI1>, 'appManifest'>, flow?: AppTesterFlow): Promise<AppTestSuiteTestResult<I, OPI0, OPI1>>;
     finalize(): Promise<void>;
     getCtx(): AppTesterCtx;
+    getUCD<I extends UCInput | undefined = undefined, OPI0 extends UCOPIBase | undefined = undefined, OPI1 extends UCOPIBase | undefined = undefined>(ucName: UCName): UCDef<I, OPI0, OPI1>;
     init({ appPath, configurator, serverClientSettings, srcImporter, }: AppTesterInitArgs): Promise<void>;
+    initForUCExec(): Promise<void>;
     ucTestData(ucdRef: AppTesterUCDRef): Promise<AppTesterUCTestData[]>;
     private bindI18n;
     private bindServerClientSettings;

@@ -6,6 +6,7 @@
 
 - Add ability to stream data in `ShellCommandExecutor`
 - Stream output with color when using the `TestApp` command
+- Check app sources before executing the test in `TestApp` : this allows to spot errors earlier and avoid cryptic exec errors when the sources are not valid (don't forget to re-generate the tests with `pnpm libmodulor GenerateAppsTests` and use `--updateSnapshots` the next time you call `TestApp --appName YourApp`)
 
 **Misc**
 

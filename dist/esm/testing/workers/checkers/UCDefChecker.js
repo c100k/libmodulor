@@ -15,7 +15,7 @@ const ERR_UCD_NAMES = (fileName, name, ucdKey) => `The file name and the const n
 let UCDefChecker = class UCDefChecker {
     output;
     constructor() {
-        this.output = { errors: [] };
+        this.output = { errors: [], ucd: null };
     }
     async exec({ ucdRef }) {
         const { fileName, source } = ucdRef;
@@ -34,6 +34,9 @@ let UCDefChecker = class UCDefChecker {
         if (name !== fileName.replaceAll(UC_DEF_FILE_NAME_SUFFIX, '') ||
             name !== ucdKey.replaceAll(UC_DEF_SUFFIX, '')) {
             this.output.errors.push(ERR_UCD_NAMES(fileName, name, ucdKey));
+        }
+        if (this.output.errors.length === 0) {
+            this.output.ucd = ucd;
         }
         return this.output;
     }

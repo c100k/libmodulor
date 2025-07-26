@@ -29,6 +29,7 @@ import { AppManifestChecker } from './workers/checkers/AppManifestChecker.js';
 import { UCDefChecker } from './workers/checkers/UCDefChecker.js';
 import { UCDefSourcesChecker, } from './workers/checkers/UCDefSourcesChecker.js';
 import { UCExecutor, } from './workers/UCExecutor.js';
+const ERR_UCD_NOT_FOUND = (ucName) => `Could not find a ucd for ${ucName}`;
 let AppTester = class AppTester {
     appDocsEmitter;
     appFolderChecker;
@@ -50,6 +51,8 @@ let AppTester = class AppTester {
      */
     safeSrcImporter;
     // biome-ignore lint/suspicious/noExplicitAny: can be anything
+    ucds;
+    // biome-ignore lint/suspicious/noExplicitAny: can be anything
     testResults;
     testSummary;
     ucDefSourcesCheckerOutput;
@@ -66,6 +69,7 @@ let AppTester = class AppTester {
         this.ucDefChecker = ucDefChecker;
         this.ucDefSourcesChecker = ucDefSourcesChecker;
         this.ucExecutor = ucExecutor;
+        this.ucds = new Map();
         this.testResults = [];
         this.testSummary = {
             counts: {
@@ -115,13 +119,13 @@ let AppTester = class AppTester {
         });
     }
     async checkUC(ucdRef) {
-        const { errors } = await this.ucDefChecker.exec({ ucdRef });
+        const { errors, ucd } = await this.ucDefChecker.exec({ ucdRef });
         if (errors.length > 0) {
             throw new Error(errors[0]);
         }
-        const { source } = ucdRef;
-        const ucd = source[`${Object.keys(source)[0]}`];
-        return ucd;
+        if (ucd) {
+            this.ucds.set(ucdRef.name, ucd);
+        }
     }
     async execFlow(flow) {
         const output = [];
@@ -226,6 +230,13 @@ let AppTester = class AppTester {
     getCtx() {
         return this.ctx;
     }
+    getUCD(ucName) {
+        const ucd = this.ucds.get(ucName);
+        if (!ucd) {
+            throw new Error(ERR_UCD_NOT_FOUND(ucName));
+        }
+        return ucd;
+    }
     async init({ appPath, configurator, serverClientSettings, srcImporter, }) {
         this.configurator = configurator;
         this.safeSrcImporter = (path) => Promise.race([
@@ -243,6 +254,8 @@ let AppTester = class AppTester {
         await this.configurator.seed(this.ctx);
         await this.bindI18n();
         await this.bindServerClientSettings(serverClientSettings);
+    }
+    async initForUCExec() {
         await this.initI18n();
         await this.initServer();
     }
