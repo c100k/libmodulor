@@ -12,6 +12,7 @@ export interface ShellCommandExecutorInput {
         args?: ShellCommandExecutorCommandArg[];
         cwd?: FilePath;
         env?: ShellCommandExecutorEnv;
+        streamData?: boolean;
     };
 }
 export type ShellCommandExecutorOutput = string;

@@ -2,6 +2,10 @@
 
 ## v0.20.0 (unreleased)
 
+**Added**
+
+- Add ability to stream data in `ShellCommandExecutor`
+
 **Misc**
 
 - Add the `Toolbox` app to `examples` (for docs)

@@ -17,9 +17,15 @@ let NodeSpawnShellCommandExecutor = class NodeSpawnShellCommandExecutor {
             });
             proc.stderr.on('data', (chunk) => {
                 stderr += chunk;
+                if (opts?.streamData) {
+                    process.stderr.write(chunk);
+                }
             });
             proc.stdout.on('data', (chunk) => {
                 stdout += chunk;
+                if (opts?.streamData) {
+                    process.stdout.write(chunk);
+                }
             });
             proc.on('error', (err) => {
                 reject(err);
