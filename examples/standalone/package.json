@@ -9,7 +9,7 @@
     },
     "dependencies": {
         "inversify": "^7.6.1",
-        "libmodulor": "github:c100k/libmodulor#dcc7e7d",
+        "libmodulor": "^0.20.0",
         "reflect-metadata": "^0.2.2"
     },
     "devDependencies": {
