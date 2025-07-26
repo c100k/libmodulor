@@ -14,17 +14,16 @@ import { inject, injectable } from 'inversify';
 import { APP_TEST_DIR_NAME, APP_TEST_REPORTS_DIR_NAME, } from '../../convention.js';
 let VitestAppTestSuiteRunner = class VitestAppTestSuiteRunner {
     fsManager;
-    logger;
     shellCommandExecutor;
-    constructor(fsManager, logger, shellCommandExecutor) {
+    constructor(fsManager, shellCommandExecutor) {
         this.fsManager = fsManager;
-        this.logger = logger;
         this.shellCommandExecutor = shellCommandExecutor;
     }
     async exec({ appPath, skipCoverage, updateSnapshots, }) {
         const testPath = this.fsManager.path(appPath, APP_TEST_DIR_NAME);
         const args = [
             'run',
+            '--color',
             '--dir',
             appPath,
         ];
@@ -34,13 +33,13 @@ let VitestAppTestSuiteRunner = class VitestAppTestSuiteRunner {
         if (updateSnapshots) {
             args.push('--update');
         }
-        const output = await this.shellCommandExecutor.exec({
+        await this.shellCommandExecutor.exec({
             bin: './node_modules/.bin/vitest',
             opts: {
                 args,
+                streamData: true,
             },
         });
-        this.logger.info(output);
     }
     async coverageReportEntrypointPath(appPath) {
         return this.fsManager.path(this.coverageReportPath(appPath), 'index.html');
@@ -53,8 +52,7 @@ let VitestAppTestSuiteRunner = class VitestAppTestSuiteRunner {
 VitestAppTestSuiteRunner = __decorate([
     injectable(),
     __param(0, inject('FSManager')),
-    __param(1, inject('Logger')),
-    __param(2, inject('ShellCommandExecutor')),
-    __metadata("design:paramtypes", [Object, Object, Object])
+    __param(1, inject('ShellCommandExecutor')),
+    __metadata("design:paramtypes", [Object, Object])
 ], VitestAppTestSuiteRunner);
 export { VitestAppTestSuiteRunner };

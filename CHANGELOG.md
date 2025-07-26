@@ -5,6 +5,7 @@
 **Added**
 
 - Add ability to stream data in `ShellCommandExecutor`
+- Stream output with color when using the `TestApp` command
 
 **Misc**
 
