@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Use Cases > 'BuyAsset' > should execute with auth 'ADMIN' and input 'ALL_WITH_EXAMPLES' > hash = 6e248a8072185616c7d1593c1675d445a9b126a53f9839ed87f89b6927cf5e86 1`] = `
+exports[`Run > Use Cases > 'BuyAsset' > should execute with auth 'ADMIN' and input 'ALL_WITH_EXAMPLES' > hash = 6e248a8072185616c7d1593c1675d445a9b126a53f9839ed87f89b6927cf5e86 1`] = `
 {
   "out": {
     "args": {
@@ -49,7 +49,7 @@ exports[`Use Cases > 'BuyAsset' > should execute with auth 'ADMIN' and input 'AL
 }
 `;
 
-exports[`Use Cases > 'BuyAsset' > should execute with auth 'ADMIN' and input 'ONLY_MANDATORY_WITH_EXAMPLES' > hash = 4b956c5532a3dbe1bbbe1c6d128c3c3cff25d2ffca20c4f5fe0ea941a07a7489 1`] = `
+exports[`Run > Use Cases > 'BuyAsset' > should execute with auth 'ADMIN' and input 'ONLY_MANDATORY_WITH_EXAMPLES' > hash = 4b956c5532a3dbe1bbbe1c6d128c3c3cff25d2ffca20c4f5fe0ea941a07a7489 1`] = `
 {
   "out": {
     "args": {
@@ -98,7 +98,7 @@ exports[`Use Cases > 'BuyAsset' > should execute with auth 'ADMIN' and input 'ON
 }
 `;
 
-exports[`Use Cases > 'BuyAsset' > should execute with auth 'ADMIN' and input 'ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPL…' > hash = e11ba862a2667bc551291b9686480b2532558a74c09d9ad52061b9818ce331c4 1`] = `
+exports[`Run > Use Cases > 'BuyAsset' > should execute with auth 'ADMIN' and input 'ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPL…' > hash = e11ba862a2667bc551291b9686480b2532558a74c09d9ad52061b9818ce331c4 1`] = `
 {
   "out": {
     "args": {
@@ -132,7 +132,7 @@ exports[`Use Cases > 'BuyAsset' > should execute with auth 'ADMIN' and input 'ON
 }
 `;
 
-exports[`Use Cases > 'BuyAsset' > should execute with auth 'ANONYMOUS' and input 'ALL_WITH_EXAMPLES' > hash = 2b81275f63642328148b6a0eeac158efe8706c0a61bee2be4d5082b8897326ef 1`] = `
+exports[`Run > Use Cases > 'BuyAsset' > should execute with auth 'ANONYMOUS' and input 'ALL_WITH_EXAMPLES' > hash = 2b81275f63642328148b6a0eeac158efe8706c0a61bee2be4d5082b8897326ef 1`] = `
 {
   "out": {
     "args": {
@@ -171,7 +171,7 @@ exports[`Use Cases > 'BuyAsset' > should execute with auth 'ANONYMOUS' and input
 }
 `;
 
-exports[`Use Cases > 'BuyAsset' > should execute with auth 'ANONYMOUS' and input 'ONLY_MANDATORY_WITH_EXAMPLES' > hash = 2fb4944c258f3a46fbe6b87cf346534be2ce850a2deec284ba92db32c215c59d 1`] = `
+exports[`Run > Use Cases > 'BuyAsset' > should execute with auth 'ANONYMOUS' and input 'ONLY_MANDATORY_WITH_EXAMPLES' > hash = 2fb4944c258f3a46fbe6b87cf346534be2ce850a2deec284ba92db32c215c59d 1`] = `
 {
   "out": {
     "args": {
@@ -210,7 +210,7 @@ exports[`Use Cases > 'BuyAsset' > should execute with auth 'ANONYMOUS' and input
 }
 `;
 
-exports[`Use Cases > 'BuyAsset' > should execute with auth 'ANONYMOUS' and input 'ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPL…' > hash = 943483adb253253c88caf18ae5726e037ad07245147dd0f25f438b33431b7db2 1`] = `
+exports[`Run > Use Cases > 'BuyAsset' > should execute with auth 'ANONYMOUS' and input 'ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPL…' > hash = 943483adb253253c88caf18ae5726e037ad07245147dd0f25f438b33431b7db2 1`] = `
 {
   "out": {
     "args": {
@@ -234,7 +234,7 @@ exports[`Use Cases > 'BuyAsset' > should execute with auth 'ANONYMOUS' and input
 }
 `;
 
-exports[`Use Cases > 'BuyAsset' > should execute with auth 'REGULAR' and input 'ALL_WITH_EXAMPLES' > hash = 05630c7228d77d884497e485972553285963c6d7ec1a2344bc2757bd051f7e87 1`] = `
+exports[`Run > Use Cases > 'BuyAsset' > should execute with auth 'REGULAR' and input 'ALL_WITH_EXAMPLES' > hash = 05630c7228d77d884497e485972553285963c6d7ec1a2344bc2757bd051f7e87 1`] = `
 {
   "out": {
     "args": {
@@ -283,7 +283,7 @@ exports[`Use Cases > 'BuyAsset' > should execute with auth 'REGULAR' and input '
 }
 `;
 
-exports[`Use Cases > 'BuyAsset' > should execute with auth 'REGULAR' and input 'ONLY_MANDATORY_WITH_EXAMPLES' > hash = 6e04d55836b2c174d08a81a0e4befa6b950058856944949384056adfceb5ce85 1`] = `
+exports[`Run > Use Cases > 'BuyAsset' > should execute with auth 'REGULAR' and input 'ONLY_MANDATORY_WITH_EXAMPLES' > hash = 6e04d55836b2c174d08a81a0e4befa6b950058856944949384056adfceb5ce85 1`] = `
 {
   "out": {
     "args": {
@@ -332,7 +332,7 @@ exports[`Use Cases > 'BuyAsset' > should execute with auth 'REGULAR' and input '
 }
 `;
 
-exports[`Use Cases > 'BuyAsset' > should execute with auth 'REGULAR' and input 'ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPL…' > hash = 4a618e2f6516dfbd2cf8c60b745a0e9100b83a7a29aff4cc8181911dbfbcc3bb 1`] = `
+exports[`Run > Use Cases > 'BuyAsset' > should execute with auth 'REGULAR' and input 'ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPL…' > hash = 4a618e2f6516dfbd2cf8c60b745a0e9100b83a7a29aff4cc8181911dbfbcc3bb 1`] = `
 {
   "out": {
     "args": {
@@ -366,7 +366,7 @@ exports[`Use Cases > 'BuyAsset' > should execute with auth 'REGULAR' and input '
 }
 `;
 
-exports[`Use Cases > 'CancelOrder' > should execute with auth 'ADMIN' and input 'ALL_WITH_EXAMPLES' > hash = e6080f5fa9361719c8cac8b39029d49f1ed267e8e4890c29c1f3bfd71d24630a 1`] = `
+exports[`Run > Use Cases > 'CancelOrder' > should execute with auth 'ADMIN' and input 'ALL_WITH_EXAMPLES' > hash = e6080f5fa9361719c8cac8b39029d49f1ed267e8e4890c29c1f3bfd71d24630a 1`] = `
 {
   "out": {
     "args": {
@@ -398,7 +398,7 @@ exports[`Use Cases > 'CancelOrder' > should execute with auth 'ADMIN' and input 
 }
 `;
 
-exports[`Use Cases > 'CancelOrder' > should execute with auth 'ADMIN' and input 'ONLY_MANDATORY_WITH_EXAMPLES' > hash = edd2c62f1bcf301f535f9537bfc059a889f07f9a38837f61b6f276375707f729 1`] = `
+exports[`Run > Use Cases > 'CancelOrder' > should execute with auth 'ADMIN' and input 'ONLY_MANDATORY_WITH_EXAMPLES' > hash = edd2c62f1bcf301f535f9537bfc059a889f07f9a38837f61b6f276375707f729 1`] = `
 {
   "out": {
     "args": {
@@ -430,7 +430,7 @@ exports[`Use Cases > 'CancelOrder' > should execute with auth 'ADMIN' and input 
 }
 `;
 
-exports[`Use Cases > 'CancelOrder' > should execute with auth 'ADMIN' and input 'ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPL…' > hash = 29c5864283bf8f4633435538848915ea7ed907404c452fd3c12d5f917251921f 1`] = `
+exports[`Run > Use Cases > 'CancelOrder' > should execute with auth 'ADMIN' and input 'ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPL…' > hash = 29c5864283bf8f4633435538848915ea7ed907404c452fd3c12d5f917251921f 1`] = `
 {
   "out": {
     "args": {
@@ -462,7 +462,7 @@ exports[`Use Cases > 'CancelOrder' > should execute with auth 'ADMIN' and input 
 }
 `;
 
-exports[`Use Cases > 'CancelOrder' > should execute with auth 'ANONYMOUS' and input 'ALL_WITH_EXAMPLES' > hash = d80d322c9733342b0a3f7ed4991b7ef363c899904efab1a0850f0151fbb82ad7 1`] = `
+exports[`Run > Use Cases > 'CancelOrder' > should execute with auth 'ANONYMOUS' and input 'ALL_WITH_EXAMPLES' > hash = d80d322c9733342b0a3f7ed4991b7ef363c899904efab1a0850f0151fbb82ad7 1`] = `
 {
   "out": {
     "args": {
@@ -484,7 +484,7 @@ exports[`Use Cases > 'CancelOrder' > should execute with auth 'ANONYMOUS' and in
 }
 `;
 
-exports[`Use Cases > 'CancelOrder' > should execute with auth 'ANONYMOUS' and input 'ONLY_MANDATORY_WITH_EXAMPLES' > hash = ada4bd9c38b5446e1380bbf8c2f61f344e3c6c26cf3be9fc9c216a57df1d2243 1`] = `
+exports[`Run > Use Cases > 'CancelOrder' > should execute with auth 'ANONYMOUS' and input 'ONLY_MANDATORY_WITH_EXAMPLES' > hash = ada4bd9c38b5446e1380bbf8c2f61f344e3c6c26cf3be9fc9c216a57df1d2243 1`] = `
 {
   "out": {
     "args": {
@@ -506,7 +506,7 @@ exports[`Use Cases > 'CancelOrder' > should execute with auth 'ANONYMOUS' and in
 }
 `;
 
-exports[`Use Cases > 'CancelOrder' > should execute with auth 'ANONYMOUS' and input 'ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPL…' > hash = f1ce550c727350b18204d9cec7b0b0a20f368f391a626fbc2f090f480f79b3b2 1`] = `
+exports[`Run > Use Cases > 'CancelOrder' > should execute with auth 'ANONYMOUS' and input 'ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPL…' > hash = f1ce550c727350b18204d9cec7b0b0a20f368f391a626fbc2f090f480f79b3b2 1`] = `
 {
   "out": {
     "args": {
@@ -528,7 +528,7 @@ exports[`Use Cases > 'CancelOrder' > should execute with auth 'ANONYMOUS' and in
 }
 `;
 
-exports[`Use Cases > 'CancelOrder' > should execute with auth 'REGULAR' and input 'ALL_WITH_EXAMPLES' > hash = a92e8c81bbc93b85569ff4168bc45d9e5e82929e89c13ebfe27401f1ecbfc5c5 1`] = `
+exports[`Run > Use Cases > 'CancelOrder' > should execute with auth 'REGULAR' and input 'ALL_WITH_EXAMPLES' > hash = a92e8c81bbc93b85569ff4168bc45d9e5e82929e89c13ebfe27401f1ecbfc5c5 1`] = `
 {
   "out": {
     "args": {
@@ -560,7 +560,7 @@ exports[`Use Cases > 'CancelOrder' > should execute with auth 'REGULAR' and inpu
 }
 `;
 
-exports[`Use Cases > 'CancelOrder' > should execute with auth 'REGULAR' and input 'ONLY_MANDATORY_WITH_EXAMPLES' > hash = a2b4d17375aeb2e4c3d16171814e541d80968a364be1fbc461dc2685aeb765bb 1`] = `
+exports[`Run > Use Cases > 'CancelOrder' > should execute with auth 'REGULAR' and input 'ONLY_MANDATORY_WITH_EXAMPLES' > hash = a2b4d17375aeb2e4c3d16171814e541d80968a364be1fbc461dc2685aeb765bb 1`] = `
 {
   "out": {
     "args": {
@@ -592,7 +592,7 @@ exports[`Use Cases > 'CancelOrder' > should execute with auth 'REGULAR' and inpu
 }
 `;
 
-exports[`Use Cases > 'CancelOrder' > should execute with auth 'REGULAR' and input 'ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPL…' > hash = 8ea60e27fbf532e1467925bfca670ba427136842647492c97cdc5b1c3e0a99c1 1`] = `
+exports[`Run > Use Cases > 'CancelOrder' > should execute with auth 'REGULAR' and input 'ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPL…' > hash = 8ea60e27fbf532e1467925bfca670ba427136842647492c97cdc5b1c3e0a99c1 1`] = `
 {
   "out": {
     "args": {
@@ -624,7 +624,7 @@ exports[`Use Cases > 'CancelOrder' > should execute with auth 'REGULAR' and inpu
 }
 `;
 
-exports[`Use Cases > 'ListOrders' > should execute with auth 'ADMIN' and input 'ALL_WITH_EXAMPLES' > hash = af764f22392bfdaf545ed9f5ee5c740417a555f10f34d564a522685ea56de723 1`] = `
+exports[`Run > Use Cases > 'ListOrders' > should execute with auth 'ADMIN' and input 'ALL_WITH_EXAMPLES' > hash = af764f22392bfdaf545ed9f5ee5c740417a555f10f34d564a522685ea56de723 1`] = `
 {
   "out": {
     "args": {
@@ -666,7 +666,7 @@ exports[`Use Cases > 'ListOrders' > should execute with auth 'ADMIN' and input '
 }
 `;
 
-exports[`Use Cases > 'ListOrders' > should execute with auth 'ADMIN' and input 'ONLY_MANDATORY_WITH_EXAMPLES' > hash = efb3bf2b1a104d556e295d30733a4abb236b7dd5d54efc4dc67678c032446019 1`] = `
+exports[`Run > Use Cases > 'ListOrders' > should execute with auth 'ADMIN' and input 'ONLY_MANDATORY_WITH_EXAMPLES' > hash = efb3bf2b1a104d556e295d30733a4abb236b7dd5d54efc4dc67678c032446019 1`] = `
 {
   "out": {
     "args": {
@@ -708,7 +708,7 @@ exports[`Use Cases > 'ListOrders' > should execute with auth 'ADMIN' and input '
 }
 `;
 
-exports[`Use Cases > 'ListOrders' > should execute with auth 'ADMIN' and input 'ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPL…' > hash = 2ba4765a0b04e0c3df2f0e68e510eb8cc72af093c06938ecc70f19303a7476ba 1`] = `
+exports[`Run > Use Cases > 'ListOrders' > should execute with auth 'ADMIN' and input 'ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPL…' > hash = 2ba4765a0b04e0c3df2f0e68e510eb8cc72af093c06938ecc70f19303a7476ba 1`] = `
 {
   "out": {
     "args": {
@@ -750,7 +750,7 @@ exports[`Use Cases > 'ListOrders' > should execute with auth 'ADMIN' and input '
 }
 `;
 
-exports[`Use Cases > 'ListOrders' > should execute with auth 'ANONYMOUS' and input 'ALL_WITH_EXAMPLES' > hash = f6f72579c8185eef64d91a365f3a46dec8f6d69eb7f89050c0fc3f0c6cc9527e 1`] = `
+exports[`Run > Use Cases > 'ListOrders' > should execute with auth 'ANONYMOUS' and input 'ALL_WITH_EXAMPLES' > hash = f6f72579c8185eef64d91a365f3a46dec8f6d69eb7f89050c0fc3f0c6cc9527e 1`] = `
 {
   "out": {
     "args": {
@@ -782,7 +782,7 @@ exports[`Use Cases > 'ListOrders' > should execute with auth 'ANONYMOUS' and inp
 }
 `;
 
-exports[`Use Cases > 'ListOrders' > should execute with auth 'ANONYMOUS' and input 'ONLY_MANDATORY_WITH_EXAMPLES' > hash = 20d37f75d0b33945544a2a50a7ec706c059cbb728cb6d48363083ea741f6545b 1`] = `
+exports[`Run > Use Cases > 'ListOrders' > should execute with auth 'ANONYMOUS' and input 'ONLY_MANDATORY_WITH_EXAMPLES' > hash = 20d37f75d0b33945544a2a50a7ec706c059cbb728cb6d48363083ea741f6545b 1`] = `
 {
   "out": {
     "args": {
@@ -814,7 +814,7 @@ exports[`Use Cases > 'ListOrders' > should execute with auth 'ANONYMOUS' and inp
 }
 `;
 
-exports[`Use Cases > 'ListOrders' > should execute with auth 'ANONYMOUS' and input 'ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPL…' > hash = 6ff38b14bcb7c43b5942bb841c9da2e8351d8b3f5ab89f5f6095569488c14859 1`] = `
+exports[`Run > Use Cases > 'ListOrders' > should execute with auth 'ANONYMOUS' and input 'ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPL…' > hash = 6ff38b14bcb7c43b5942bb841c9da2e8351d8b3f5ab89f5f6095569488c14859 1`] = `
 {
   "out": {
     "args": {
@@ -846,7 +846,7 @@ exports[`Use Cases > 'ListOrders' > should execute with auth 'ANONYMOUS' and inp
 }
 `;
 
-exports[`Use Cases > 'ListOrders' > should execute with auth 'REGULAR' and input 'ALL_WITH_EXAMPLES' > hash = e345185d908cc4aa2f9992e359b57d01044af5a8bc67d2e1deef9ad949638cee 1`] = `
+exports[`Run > Use Cases > 'ListOrders' > should execute with auth 'REGULAR' and input 'ALL_WITH_EXAMPLES' > hash = e345185d908cc4aa2f9992e359b57d01044af5a8bc67d2e1deef9ad949638cee 1`] = `
 {
   "out": {
     "args": {
@@ -888,7 +888,7 @@ exports[`Use Cases > 'ListOrders' > should execute with auth 'REGULAR' and input
 }
 `;
 
-exports[`Use Cases > 'ListOrders' > should execute with auth 'REGULAR' and input 'ONLY_MANDATORY_WITH_EXAMPLES' > hash = b7172d07cd5c3f5c60ec135e13232b836738ac7c0c53ec6a946539135bd12b2d 1`] = `
+exports[`Run > Use Cases > 'ListOrders' > should execute with auth 'REGULAR' and input 'ONLY_MANDATORY_WITH_EXAMPLES' > hash = b7172d07cd5c3f5c60ec135e13232b836738ac7c0c53ec6a946539135bd12b2d 1`] = `
 {
   "out": {
     "args": {
@@ -930,7 +930,7 @@ exports[`Use Cases > 'ListOrders' > should execute with auth 'REGULAR' and input
 }
 `;
 
-exports[`Use Cases > 'ListOrders' > should execute with auth 'REGULAR' and input 'ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPL…' > hash = b25833f275de3eb74bb6cf79cbee6386505b46245c61ccbbc50f7ba0b5397bc3 1`] = `
+exports[`Run > Use Cases > 'ListOrders' > should execute with auth 'REGULAR' and input 'ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPL…' > hash = b25833f275de3eb74bb6cf79cbee6386505b46245c61ccbbc50f7ba0b5397bc3 1`] = `
 {
   "out": {
     "args": {
