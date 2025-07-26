@@ -17,7 +17,7 @@
     },
     "devDependencies": {
         "@types/node": "^22.16.5",
-        "@typescript/native-preview": "7.0.0-dev.20250527.1",
+        "@typescript/native-preview": "7.0.0-dev.20250726.1",
         "jose": "^6.0.12",
         "typescript": "^5.8.3"
     }
