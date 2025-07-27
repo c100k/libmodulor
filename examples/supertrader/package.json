@@ -16,7 +16,7 @@
         "run:server-nextjs": "cd dist/products/SuperTrader/server-nextjs && next dev",
         "run:server-node-express": "cd dist/products/SuperTrader/server-node-express && node --env-file .env index.js",
         "run:server-node-hono": "cd dist/products/SuperTrader/server-node-hono && node --env-file .env index.js",
-        "test": "tsc && vitest run --passWithNoTests"
+        "test": "tsgo && vitest run --passWithNoTests"
     },
     "dependencies": {
         "@hono/node-server": "^1.17.1",
@@ -42,6 +42,7 @@
         "@types/node": "^22.16.5",
         "@types/react": "^19.1.8",
         "@types/react-dom": "^19.1.6",
+        "@typescript/native-preview": "7.0.0-dev.20250726.1",
         "@vitest/coverage-v8": "^3.2.4",
         "babel-plugin-parameter-decorator": "^1.0.16",
         "babel-plugin-transform-typescript-metadata": "^0.3.2",
