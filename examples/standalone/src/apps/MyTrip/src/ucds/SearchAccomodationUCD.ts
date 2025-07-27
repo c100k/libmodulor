@@ -5,6 +5,8 @@ import {
     type CountryISO3166Alpha2,
     type DateISO8601,
     EverybodyUCPolicy,
+    type I18nManager,
+    IllegalArgumentError,
     type Logger,
     TCountryISO3166Alpha2,
     TDateISO8601,
@@ -34,7 +36,10 @@ export interface SearchAccomodationOPI0 extends UCOPIBase {
 class SearchAccomodationClientMain
     implements UCMain<SearchAccomodationInput, SearchAccomodationOPI0>
 {
-    constructor(@inject('Logger') private logger: Logger) {}
+    constructor(
+        @inject('I18nManager') private i18nManager: I18nManager,
+        @inject('Logger') private logger: Logger,
+    ) {}
 
     public async exec({
         uc,
@@ -46,6 +51,12 @@ class SearchAccomodationClientMain
         const to = uc.reqVal0<DateISO8601>('to');
 
         this.logger.info('Searching', { country, from, to });
+
+        if (from.localeCompare(to) >= 0) {
+            throw new IllegalArgumentError(
+                this.i18nManager.t('err_from_before_to'),
+            );
+        }
     }
 }
 
@@ -60,10 +71,10 @@ export const SearchAccomodationUCD: UCDef<
                     type: new TCountryISO3166Alpha2(),
                 },
                 from: {
-                    type: new TDateISO8601(),
+                    type: new TDateISO8601().setExamples(['2022-07-14']),
                 },
                 to: {
-                    type: new TDateISO8601(),
+                    type: new TDateISO8601().setExamples(['2022-07-20']),
                 },
             },
         },

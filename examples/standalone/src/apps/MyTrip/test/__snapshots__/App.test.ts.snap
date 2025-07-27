@@ -1,6 +1,40 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Run > Use Cases > 'SearchAccomodation' > should execute with auth 'ADMIN' and input 'ALL_WITH_EXAMPLES' > hash = efa35aeeb557b4ab1a3f2df7a7b88a9ffdc30a4a123bf61f04e9e40410a4971f 1`] = `
+exports[`Run > Use Cases > 'SearchAccomodation' > should execute with auth 'ADMIN' and input 'ALL_CORRECT_BUT_TO_BEFORE_FROM' > hash = 2b17dc2e33c2b29565e0100bef5375b534a394425ba9c4b43d773bf5f2fb74fa 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "admin",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "ADMIN",
+      "inputFiller": [Function],
+      "inputFillerName": "ALL_CORRECT_BUT_TO_BEFORE_FROM",
+    },
+    "err": [IllegalArgumentError: The check-in date must be before the checkout date],
+    "hash": "2b17dc2e33c2b29565e0100bef5375b534a394425ba9c4b43d773bf5f2fb74fa",
+    "io": {
+      "i": {
+        "country": "AF",
+        "from": "2022-07-14",
+        "to": "2022-07-12",
+      },
+      "o": null,
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'SearchAccomodation' > should execute with auth 'ADMIN' and input 'ALL_WITH_EXAMPLES' > hash = b0221f25b761b9678b8970ab96f595d592fae4fcea4b6b2ef66ee80a5b7e3fa0 1`] = `
 {
   "out": {
     "args": {
@@ -20,12 +54,12 @@ exports[`Run > Use Cases > 'SearchAccomodation' > should execute with auth 'ADMI
       "inputFillerName": "ALL_WITH_EXAMPLES",
     },
     "err": null,
-    "hash": "efa35aeeb557b4ab1a3f2df7a7b88a9ffdc30a4a123bf61f04e9e40410a4971f",
+    "hash": "b0221f25b761b9678b8970ab96f595d592fae4fcea4b6b2ef66ee80a5b7e3fa0",
     "io": {
       "i": {
         "country": "AF",
         "from": "2022-07-14",
-        "to": "2022-07-14",
+        "to": "2022-07-20",
       },
       "o": null,
     },
@@ -34,7 +68,7 @@ exports[`Run > Use Cases > 'SearchAccomodation' > should execute with auth 'ADMI
 }
 `;
 
-exports[`Run > Use Cases > 'SearchAccomodation' > should execute with auth 'ADMIN' and input 'ONLY_MANDATORY_WITH_EXAMPLES' > hash = 2f1c56697d0a4df2abb1cc1b6ab4adc78ca0afcb710043996db7d1927290f445 1`] = `
+exports[`Run > Use Cases > 'SearchAccomodation' > should execute with auth 'ADMIN' and input 'ONLY_MANDATORY_WITH_EXAMPLES' > hash = 294da52b3473c469b941cbfe3badc472175af966e0f09bb52ddebd1fd8afafb5 1`] = `
 {
   "out": {
     "args": {
@@ -54,12 +88,12 @@ exports[`Run > Use Cases > 'SearchAccomodation' > should execute with auth 'ADMI
       "inputFillerName": "ONLY_MANDATORY_WITH_EXAMPLES",
     },
     "err": null,
-    "hash": "2f1c56697d0a4df2abb1cc1b6ab4adc78ca0afcb710043996db7d1927290f445",
+    "hash": "294da52b3473c469b941cbfe3badc472175af966e0f09bb52ddebd1fd8afafb5",
     "io": {
       "i": {
         "country": "AF",
         "from": "2022-07-14",
-        "to": "2022-07-14",
+        "to": "2022-07-20",
       },
       "o": null,
     },
@@ -102,7 +136,31 @@ exports[`Run > Use Cases > 'SearchAccomodation' > should execute with auth 'ADMI
 }
 `;
 
-exports[`Run > Use Cases > 'SearchAccomodation' > should execute with auth 'ANONYMOUS' and input 'ALL_WITH_EXAMPLES' > hash = 75a2c75fbf735ed0c2a748cd9aecc1195219e698a88be650dd48f8db60323586 1`] = `
+exports[`Run > Use Cases > 'SearchAccomodation' > should execute with auth 'ANONYMOUS' and input 'ALL_CORRECT_BUT_TO_BEFORE_FROM' > hash = 57fd31d908ad7978ccaedbbfe4f3248bedab7d302374a5f017aa290e167147bc 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": null,
+      "authName": "ANONYMOUS",
+      "inputFiller": [Function],
+      "inputFillerName": "ALL_CORRECT_BUT_TO_BEFORE_FROM",
+    },
+    "err": [IllegalArgumentError: The check-in date must be before the checkout date],
+    "hash": "57fd31d908ad7978ccaedbbfe4f3248bedab7d302374a5f017aa290e167147bc",
+    "io": {
+      "i": {
+        "country": "AF",
+        "from": "2022-07-14",
+        "to": "2022-07-12",
+      },
+      "o": null,
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'SearchAccomodation' > should execute with auth 'ANONYMOUS' and input 'ALL_WITH_EXAMPLES' > hash = 3bf5cb403a05df5b680bcb0a855d2a792e069f0b232675b4f6cd943f8a52092d 1`] = `
 {
   "out": {
     "args": {
@@ -112,12 +170,12 @@ exports[`Run > Use Cases > 'SearchAccomodation' > should execute with auth 'ANON
       "inputFillerName": "ALL_WITH_EXAMPLES",
     },
     "err": null,
-    "hash": "75a2c75fbf735ed0c2a748cd9aecc1195219e698a88be650dd48f8db60323586",
+    "hash": "3bf5cb403a05df5b680bcb0a855d2a792e069f0b232675b4f6cd943f8a52092d",
     "io": {
       "i": {
         "country": "AF",
         "from": "2022-07-14",
-        "to": "2022-07-14",
+        "to": "2022-07-20",
       },
       "o": null,
     },
@@ -126,7 +184,7 @@ exports[`Run > Use Cases > 'SearchAccomodation' > should execute with auth 'ANON
 }
 `;
 
-exports[`Run > Use Cases > 'SearchAccomodation' > should execute with auth 'ANONYMOUS' and input 'ONLY_MANDATORY_WITH_EXAMPLES' > hash = 69adce5111ef365dbebada6da0fef929248985d76a308b92a5d60b7b5cd61b29 1`] = `
+exports[`Run > Use Cases > 'SearchAccomodation' > should execute with auth 'ANONYMOUS' and input 'ONLY_MANDATORY_WITH_EXAMPLES' > hash = dfc9a1bce9044fc7da55597352cc6d6e755d62924e6bf0952db97ff8eb1dc6f4 1`] = `
 {
   "out": {
     "args": {
@@ -136,12 +194,12 @@ exports[`Run > Use Cases > 'SearchAccomodation' > should execute with auth 'ANON
       "inputFillerName": "ONLY_MANDATORY_WITH_EXAMPLES",
     },
     "err": null,
-    "hash": "69adce5111ef365dbebada6da0fef929248985d76a308b92a5d60b7b5cd61b29",
+    "hash": "dfc9a1bce9044fc7da55597352cc6d6e755d62924e6bf0952db97ff8eb1dc6f4",
     "io": {
       "i": {
         "country": "AF",
         "from": "2022-07-14",
-        "to": "2022-07-14",
+        "to": "2022-07-20",
       },
       "o": null,
     },
@@ -174,7 +232,41 @@ exports[`Run > Use Cases > 'SearchAccomodation' > should execute with auth 'ANON
 }
 `;
 
-exports[`Run > Use Cases > 'SearchAccomodation' > should execute with auth 'REGULAR' and input 'ALL_WITH_EXAMPLES' > hash = dd7c32fd6efc837ce14b4f6fc16ec89bf6809fb5e413971eb2b1359b1f0f871e 1`] = `
+exports[`Run > Use Cases > 'SearchAccomodation' > should execute with auth 'REGULAR' and input 'ALL_CORRECT_BUT_TO_BEFORE_FROM' > hash = 6bcad013d5beb076c8f329567b7e26b22153b06669be6c8bd3ee36cac7581571 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "regular",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "REGULAR",
+      "inputFiller": [Function],
+      "inputFillerName": "ALL_CORRECT_BUT_TO_BEFORE_FROM",
+    },
+    "err": [IllegalArgumentError: The check-in date must be before the checkout date],
+    "hash": "6bcad013d5beb076c8f329567b7e26b22153b06669be6c8bd3ee36cac7581571",
+    "io": {
+      "i": {
+        "country": "AF",
+        "from": "2022-07-14",
+        "to": "2022-07-12",
+      },
+      "o": null,
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'SearchAccomodation' > should execute with auth 'REGULAR' and input 'ALL_WITH_EXAMPLES' > hash = 9dd0b8597e5e797ae568c83dfd4e0890ae39c70eb0c604ffe7df07cc78371515 1`] = `
 {
   "out": {
     "args": {
@@ -194,12 +286,12 @@ exports[`Run > Use Cases > 'SearchAccomodation' > should execute with auth 'REGU
       "inputFillerName": "ALL_WITH_EXAMPLES",
     },
     "err": null,
-    "hash": "dd7c32fd6efc837ce14b4f6fc16ec89bf6809fb5e413971eb2b1359b1f0f871e",
+    "hash": "9dd0b8597e5e797ae568c83dfd4e0890ae39c70eb0c604ffe7df07cc78371515",
     "io": {
       "i": {
         "country": "AF",
         "from": "2022-07-14",
-        "to": "2022-07-14",
+        "to": "2022-07-20",
       },
       "o": null,
     },
@@ -208,7 +300,7 @@ exports[`Run > Use Cases > 'SearchAccomodation' > should execute with auth 'REGU
 }
 `;
 
-exports[`Run > Use Cases > 'SearchAccomodation' > should execute with auth 'REGULAR' and input 'ONLY_MANDATORY_WITH_EXAMPLES' > hash = 984727f8ba0b9d7b3bb2463412798fcba7a86a2cece6fac6f93f7b3f3811b13b 1`] = `
+exports[`Run > Use Cases > 'SearchAccomodation' > should execute with auth 'REGULAR' and input 'ONLY_MANDATORY_WITH_EXAMPLES' > hash = 61060ccc2e3553d242f828b2265aee9487ba99e0ccace998436a5b4b2ed79215 1`] = `
 {
   "out": {
     "args": {
@@ -228,12 +320,12 @@ exports[`Run > Use Cases > 'SearchAccomodation' > should execute with auth 'REGU
       "inputFillerName": "ONLY_MANDATORY_WITH_EXAMPLES",
     },
     "err": null,
-    "hash": "984727f8ba0b9d7b3bb2463412798fcba7a86a2cece6fac6f93f7b3f3811b13b",
+    "hash": "61060ccc2e3553d242f828b2265aee9487ba99e0ccace998436a5b4b2ed79215",
     "io": {
       "i": {
         "country": "AF",
         "from": "2022-07-14",
-        "to": "2022-07-14",
+        "to": "2022-07-20",
       },
       "o": null,
     },
