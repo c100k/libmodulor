@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Run > Use Cases > 'SearchAccomodation' > should execute with auth 'ADMIN' and input 'ALL_CORRECT_BUT_TO_BEFORE_FROM' > hash = 17ec5300aa2b7b021684485d95bee76874c0356485882982a507b4f166597af0 1`] = `
+exports[`Run > Use Cases > 'SearchAccomodation' > should execute with auth 'ADMIN' and input 'ALL_CORRECT_BUT_TO_BEFORE_FROM' > hash = 8b1aecb7f25fa28a0f0175fd11696662f3f6d0a91fc2949e3c34960f06ceb983 1`] = `
 {
   "out": {
     "args": {
@@ -20,7 +20,7 @@ exports[`Run > Use Cases > 'SearchAccomodation' > should execute with auth 'ADMI
       "inputFillerName": "ALL_CORRECT_BUT_TO_BEFORE_FROM",
     },
     "err": [IllegalArgumentError: The check-in date must be before the checkout date],
-    "hash": "17ec5300aa2b7b021684485d95bee76874c0356485882982a507b4f166597af0",
+    "hash": "8b1aecb7f25fa28a0f0175fd11696662f3f6d0a91fc2949e3c34960f06ceb983",
     "io": {
       "i": {
         "adultsCount": 2,
@@ -37,7 +37,7 @@ exports[`Run > Use Cases > 'SearchAccomodation' > should execute with auth 'ADMI
 }
 `;
 
-exports[`Run > Use Cases > 'SearchAccomodation' > should execute with auth 'ADMIN' and input 'ALL_WITH_EXAMPLES' > hash = 85409ad4cd9198536d83c72330558f54e5f8617d4ca8752d2e433235d05a3d88 1`] = `
+exports[`Run > Use Cases > 'SearchAccomodation' > should execute with auth 'ADMIN' and input 'ALL_WITH_EXAMPLES' > hash = 3079f7889648ee6ee9f068636e85b016b7d80e630c578acc053762cafedaf7e8 1`] = `
 {
   "out": {
     "args": {
@@ -57,7 +57,7 @@ exports[`Run > Use Cases > 'SearchAccomodation' > should execute with auth 'ADMI
       "inputFillerName": "ALL_WITH_EXAMPLES",
     },
     "err": null,
-    "hash": "85409ad4cd9198536d83c72330558f54e5f8617d4ca8752d2e433235d05a3d88",
+    "hash": "3079f7889648ee6ee9f068636e85b016b7d80e630c578acc053762cafedaf7e8",
     "io": {
       "i": {
         "adultsCount": 2,
@@ -74,7 +74,7 @@ exports[`Run > Use Cases > 'SearchAccomodation' > should execute with auth 'ADMI
 }
 `;
 
-exports[`Run > Use Cases > 'SearchAccomodation' > should execute with auth 'ADMIN' and input 'ONLY_MANDATORY_WITH_EXAMPLES' > hash = 7f1f466d25bdae07c4983ab7d810d63f87f91842bc2d8a62252660c15e7ce000 1`] = `
+exports[`Run > Use Cases > 'SearchAccomodation' > should execute with auth 'ADMIN' and input 'ONLY_MANDATORY_WITH_EXAMPLES' > hash = 2797b646782707d1853a4c358056fee736132cbafbb786b2fe8194670c33b7c2 1`] = `
 {
   "out": {
     "args": {
@@ -94,7 +94,7 @@ exports[`Run > Use Cases > 'SearchAccomodation' > should execute with auth 'ADMI
       "inputFillerName": "ONLY_MANDATORY_WITH_EXAMPLES",
     },
     "err": null,
-    "hash": "7f1f466d25bdae07c4983ab7d810d63f87f91842bc2d8a62252660c15e7ce000",
+    "hash": "2797b646782707d1853a4c358056fee736132cbafbb786b2fe8194670c33b7c2",
     "io": {
       "i": {
         "adultsCount": 2,
@@ -111,7 +111,7 @@ exports[`Run > Use Cases > 'SearchAccomodation' > should execute with auth 'ADMI
 }
 `;
 
-exports[`Run > Use Cases > 'SearchAccomodation' > should execute with auth 'ADMIN' and input 'ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPL…' > hash = 001eb74e676031b8c34d211d202e1a84d8cc1ff525c72fe5aaa5880ecde28620 1`] = `
+exports[`Run > Use Cases > 'SearchAccomodation' > should execute with auth 'ADMIN' and input 'ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPL…' > hash = 467b9af3505fc9f0d31893ea1458798314b146a7f6fae1fa7ecb38f00fc367f2 1`] = `
 {
   "out": {
     "args": {
@@ -131,7 +131,7 @@ exports[`Run > Use Cases > 'SearchAccomodation' > should execute with auth 'ADMI
       "inputFillerName": "ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPLES",
     },
     "err": [IllegalArgumentError: Country must be filled],
-    "hash": "001eb74e676031b8c34d211d202e1a84d8cc1ff525c72fe5aaa5880ecde28620",
+    "hash": "467b9af3505fc9f0d31893ea1458798314b146a7f6fae1fa7ecb38f00fc367f2",
     "io": {
       "i": {
         "adultsCount": 2,
@@ -148,7 +148,7 @@ exports[`Run > Use Cases > 'SearchAccomodation' > should execute with auth 'ADMI
 }
 `;
 
-exports[`Run > Use Cases > 'SearchAccomodation' > should execute with auth 'ANONYMOUS' and input 'ALL_CORRECT_BUT_TO_BEFORE_FROM' > hash = a1f96d08d27dadb61690ae562db5a5b346b2e172fa3b6402cd1a7f1032aee400 1`] = `
+exports[`Run > Use Cases > 'SearchAccomodation' > should execute with auth 'ANONYMOUS' and input 'ALL_CORRECT_BUT_TO_BEFORE_FROM' > hash = b0fce06365e4a94fe8fe1a37535a7f423c7d7994fef2976f43a067611290f64f 1`] = `
 {
   "out": {
     "args": {
@@ -158,7 +158,7 @@ exports[`Run > Use Cases > 'SearchAccomodation' > should execute with auth 'ANON
       "inputFillerName": "ALL_CORRECT_BUT_TO_BEFORE_FROM",
     },
     "err": [IllegalArgumentError: The check-in date must be before the checkout date],
-    "hash": "a1f96d08d27dadb61690ae562db5a5b346b2e172fa3b6402cd1a7f1032aee400",
+    "hash": "b0fce06365e4a94fe8fe1a37535a7f423c7d7994fef2976f43a067611290f64f",
     "io": {
       "i": {
         "adultsCount": 2,
@@ -175,7 +175,7 @@ exports[`Run > Use Cases > 'SearchAccomodation' > should execute with auth 'ANON
 }
 `;
 
-exports[`Run > Use Cases > 'SearchAccomodation' > should execute with auth 'ANONYMOUS' and input 'ALL_WITH_EXAMPLES' > hash = 9630529f77d12a86a02e14ca79f04628f52bbe226525257abe496f2d5d907217 1`] = `
+exports[`Run > Use Cases > 'SearchAccomodation' > should execute with auth 'ANONYMOUS' and input 'ALL_WITH_EXAMPLES' > hash = bc46e949313a03bcdd145789c49ccd1e23953a3a8f2d8587be963cc39dfeb25a 1`] = `
 {
   "out": {
     "args": {
@@ -185,7 +185,7 @@ exports[`Run > Use Cases > 'SearchAccomodation' > should execute with auth 'ANON
       "inputFillerName": "ALL_WITH_EXAMPLES",
     },
     "err": null,
-    "hash": "9630529f77d12a86a02e14ca79f04628f52bbe226525257abe496f2d5d907217",
+    "hash": "bc46e949313a03bcdd145789c49ccd1e23953a3a8f2d8587be963cc39dfeb25a",
     "io": {
       "i": {
         "adultsCount": 2,
@@ -202,7 +202,7 @@ exports[`Run > Use Cases > 'SearchAccomodation' > should execute with auth 'ANON
 }
 `;
 
-exports[`Run > Use Cases > 'SearchAccomodation' > should execute with auth 'ANONYMOUS' and input 'ONLY_MANDATORY_WITH_EXAMPLES' > hash = 6a3233d13653019ad2914fa3ca0c6f40db7d1de9d2cb7da5b86450d6dd336f3e 1`] = `
+exports[`Run > Use Cases > 'SearchAccomodation' > should execute with auth 'ANONYMOUS' and input 'ONLY_MANDATORY_WITH_EXAMPLES' > hash = e7110fb31ffa2d7b038a0a6478263b978672043e2cded129635368616173a858 1`] = `
 {
   "out": {
     "args": {
@@ -212,7 +212,7 @@ exports[`Run > Use Cases > 'SearchAccomodation' > should execute with auth 'ANON
       "inputFillerName": "ONLY_MANDATORY_WITH_EXAMPLES",
     },
     "err": null,
-    "hash": "6a3233d13653019ad2914fa3ca0c6f40db7d1de9d2cb7da5b86450d6dd336f3e",
+    "hash": "e7110fb31ffa2d7b038a0a6478263b978672043e2cded129635368616173a858",
     "io": {
       "i": {
         "adultsCount": 2,
@@ -229,7 +229,7 @@ exports[`Run > Use Cases > 'SearchAccomodation' > should execute with auth 'ANON
 }
 `;
 
-exports[`Run > Use Cases > 'SearchAccomodation' > should execute with auth 'ANONYMOUS' and input 'ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPL…' > hash = e81eb07626b4a9ca3416b230ea17b675ef678ed35be10ead4aa35cbb8d046b02 1`] = `
+exports[`Run > Use Cases > 'SearchAccomodation' > should execute with auth 'ANONYMOUS' and input 'ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPL…' > hash = 92f9d2a6d119bbf30f727541b5ce15b77c8555d585ebae924689207b367276b7 1`] = `
 {
   "out": {
     "args": {
@@ -239,7 +239,7 @@ exports[`Run > Use Cases > 'SearchAccomodation' > should execute with auth 'ANON
       "inputFillerName": "ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPLES",
     },
     "err": [IllegalArgumentError: Country must be filled],
-    "hash": "e81eb07626b4a9ca3416b230ea17b675ef678ed35be10ead4aa35cbb8d046b02",
+    "hash": "92f9d2a6d119bbf30f727541b5ce15b77c8555d585ebae924689207b367276b7",
     "io": {
       "i": {
         "adultsCount": 2,
@@ -256,7 +256,7 @@ exports[`Run > Use Cases > 'SearchAccomodation' > should execute with auth 'ANON
 }
 `;
 
-exports[`Run > Use Cases > 'SearchAccomodation' > should execute with auth 'REGULAR' and input 'ALL_CORRECT_BUT_TO_BEFORE_FROM' > hash = 88cbc09134ff815de64066668579831efdf535dbcaa847f4005429f6aa997c5a 1`] = `
+exports[`Run > Use Cases > 'SearchAccomodation' > should execute with auth 'REGULAR' and input 'ALL_CORRECT_BUT_TO_BEFORE_FROM' > hash = 425ba3f06a8fba28ddad411f6d0cbb708c25c851b32b62dc2d4faa8d5411f6e2 1`] = `
 {
   "out": {
     "args": {
@@ -276,7 +276,7 @@ exports[`Run > Use Cases > 'SearchAccomodation' > should execute with auth 'REGU
       "inputFillerName": "ALL_CORRECT_BUT_TO_BEFORE_FROM",
     },
     "err": [IllegalArgumentError: The check-in date must be before the checkout date],
-    "hash": "88cbc09134ff815de64066668579831efdf535dbcaa847f4005429f6aa997c5a",
+    "hash": "425ba3f06a8fba28ddad411f6d0cbb708c25c851b32b62dc2d4faa8d5411f6e2",
     "io": {
       "i": {
         "adultsCount": 2,
@@ -293,7 +293,7 @@ exports[`Run > Use Cases > 'SearchAccomodation' > should execute with auth 'REGU
 }
 `;
 
-exports[`Run > Use Cases > 'SearchAccomodation' > should execute with auth 'REGULAR' and input 'ALL_WITH_EXAMPLES' > hash = 956f28a213a6e53d0c8206fb240a10292e2e8998be37462e012e5b11aab57dbf 1`] = `
+exports[`Run > Use Cases > 'SearchAccomodation' > should execute with auth 'REGULAR' and input 'ALL_WITH_EXAMPLES' > hash = 59f2d3dd95d34a3ad003902e62ec73d2a21930a83d77abe75b4bff1b8d862009 1`] = `
 {
   "out": {
     "args": {
@@ -313,7 +313,7 @@ exports[`Run > Use Cases > 'SearchAccomodation' > should execute with auth 'REGU
       "inputFillerName": "ALL_WITH_EXAMPLES",
     },
     "err": null,
-    "hash": "956f28a213a6e53d0c8206fb240a10292e2e8998be37462e012e5b11aab57dbf",
+    "hash": "59f2d3dd95d34a3ad003902e62ec73d2a21930a83d77abe75b4bff1b8d862009",
     "io": {
       "i": {
         "adultsCount": 2,
@@ -330,7 +330,7 @@ exports[`Run > Use Cases > 'SearchAccomodation' > should execute with auth 'REGU
 }
 `;
 
-exports[`Run > Use Cases > 'SearchAccomodation' > should execute with auth 'REGULAR' and input 'ONLY_MANDATORY_WITH_EXAMPLES' > hash = 6c6d76fc331dfa2dda5afade315b0ba4a94c01eb2a4dc7a34ceb4e679b350785 1`] = `
+exports[`Run > Use Cases > 'SearchAccomodation' > should execute with auth 'REGULAR' and input 'ONLY_MANDATORY_WITH_EXAMPLES' > hash = 18221d8c322c2300e8152a29804740afc9a529b50c78c1f61ae3b33292fbde97 1`] = `
 {
   "out": {
     "args": {
@@ -350,7 +350,7 @@ exports[`Run > Use Cases > 'SearchAccomodation' > should execute with auth 'REGU
       "inputFillerName": "ONLY_MANDATORY_WITH_EXAMPLES",
     },
     "err": null,
-    "hash": "6c6d76fc331dfa2dda5afade315b0ba4a94c01eb2a4dc7a34ceb4e679b350785",
+    "hash": "18221d8c322c2300e8152a29804740afc9a529b50c78c1f61ae3b33292fbde97",
     "io": {
       "i": {
         "adultsCount": 2,
@@ -367,7 +367,7 @@ exports[`Run > Use Cases > 'SearchAccomodation' > should execute with auth 'REGU
 }
 `;
 
-exports[`Run > Use Cases > 'SearchAccomodation' > should execute with auth 'REGULAR' and input 'ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPL…' > hash = 6a99be3f6be400ced21a96110584f5e820b4f0479563433f56987b6159892f31 1`] = `
+exports[`Run > Use Cases > 'SearchAccomodation' > should execute with auth 'REGULAR' and input 'ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPL…' > hash = 850ef644d4bf7485d41306fa37077e2e2ef769adc9e61970a33be8e1feb222c6 1`] = `
 {
   "out": {
     "args": {
@@ -387,7 +387,7 @@ exports[`Run > Use Cases > 'SearchAccomodation' > should execute with auth 'REGU
       "inputFillerName": "ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPLES",
     },
     "err": [IllegalArgumentError: Country must be filled],
-    "hash": "6a99be3f6be400ced21a96110584f5e820b4f0479563433f56987b6159892f31",
+    "hash": "850ef644d4bf7485d41306fa37077e2e2ef769adc9e61970a33be8e1feb222c6",
     "io": {
       "i": {
         "adultsCount": 2,

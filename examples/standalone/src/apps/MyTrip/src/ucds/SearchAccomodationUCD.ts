@@ -110,6 +110,14 @@ export const SearchAccomodationUCD: UCDef<
                     type: new TDateISO8601().setExamples(['2022-07-20']),
                 },
             },
+            order: [
+                'country',
+                'from',
+                'to',
+                'roomsCount',
+                'adultsCount',
+                'childrenCount',
+            ],
         },
     },
     lifecycle: {
