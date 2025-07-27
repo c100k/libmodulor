@@ -13,7 +13,7 @@
 ```mermaid
 sequenceDiagram
     actor User
-    User->>+Client: ✏️ Fill<br/>country: CountryISO3166Alpha2<br/>from: DateISO8601<br/>to: DateISO8601
+    User->>+Client: ✏️ Fill<br/>adultsCount: UIntQuantity<br/>childrenCount: UIntQuantity<br/>country: CountryISO3166Alpha2<br/>from: DateISO8601<br/>roomsCount: UIntQuantity<br/>to: DateISO8601
     User->>Client: ↩️ Submit
     Client->>Client: 🔐 Check policy "Everybody"
     break when any validation fails
@@ -26,4 +26,4 @@ sequenceDiagram
 
 |#|filePath|constName|metadataName|metadataAction|metadataBeta|metadataIcon|metadataNew|metadataSensitive|externalImports|internalImports|ioI|ioIFields|ioOPI0|ioOPI0Fields|ioOPI1|ioOPI1Fields|lifecycleClientPolicy|lifecycleServerPolicy|
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-|1|/src/ucds/SearchAccomodationUCD.ts|SearchAccomodationUCD|SearchAccomodation|Search||magnifying-glass|||inversify<br>libmodulor|../manifest.js|SearchAccomodationInput|country: UCInputFieldValue&#60;CountryISO3166Alpha2&#62;<br>from: UCInputFieldValue&#60;DateISO8601&#62;<br>to: UCInputFieldValue&#60;DateISO8601&#62;|SearchAccomodationOPI0|name: CompanyName<br>price: Amount<br>id: UUID|||Everybody||
+|1|/src/ucds/SearchAccomodationUCD.ts|SearchAccomodationUCD|SearchAccomodation|Search||magnifying-glass|||inversify<br>libmodulor|../manifest.js|SearchAccomodationInput|adultsCount: UCInputFieldValue&#60;UIntQuantity&#62;<br>childrenCount: UCInputFieldValue&#60;UIntQuantity&#62;<br>country: UCInputFieldValue&#60;CountryISO3166Alpha2&#62;<br>from: UCInputFieldValue&#60;DateISO8601&#62;<br>roomsCount: UCInputFieldValue&#60;UIntQuantity&#62;<br>to: UCInputFieldValue&#60;DateISO8601&#62;|SearchAccomodationOPI0|name: CompanyName<br>price: Amount<br>id: UUID|||Everybody||
