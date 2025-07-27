@@ -1,0 +1,277 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Run > Use Cases > 'SearchAccomodation' > should execute with auth 'ADMIN' and input 'ALL_WITH_EXAMPLES' > hash = efa35aeeb557b4ab1a3f2df7a7b88a9ffdc30a4a123bf61f04e9e40410a4971f 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "admin",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "ADMIN",
+      "inputFiller": [Function],
+      "inputFillerName": "ALL_WITH_EXAMPLES",
+    },
+    "err": null,
+    "hash": "efa35aeeb557b4ab1a3f2df7a7b88a9ffdc30a4a123bf61f04e9e40410a4971f",
+    "io": {
+      "i": {
+        "country": "AF",
+        "from": "2022-07-14",
+        "to": "2022-07-14",
+      },
+      "o": null,
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'SearchAccomodation' > should execute with auth 'ADMIN' and input 'ONLY_MANDATORY_WITH_EXAMPLES' > hash = 2f1c56697d0a4df2abb1cc1b6ab4adc78ca0afcb710043996db7d1927290f445 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "admin",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "ADMIN",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_MANDATORY_WITH_EXAMPLES",
+    },
+    "err": null,
+    "hash": "2f1c56697d0a4df2abb1cc1b6ab4adc78ca0afcb710043996db7d1927290f445",
+    "io": {
+      "i": {
+        "country": "AF",
+        "from": "2022-07-14",
+        "to": "2022-07-14",
+      },
+      "o": null,
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'SearchAccomodation' > should execute with auth 'ADMIN' and input 'ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPL…' > hash = 9338b3425875e5725f9c958ddd5c5ad4f08da3d2d76f78bdd357f8efec0318d0 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "admin",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "ADMIN",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPLES",
+    },
+    "err": [IllegalArgumentError: Country must be filled],
+    "hash": "9338b3425875e5725f9c958ddd5c5ad4f08da3d2d76f78bdd357f8efec0318d0",
+    "io": {
+      "i": {
+        "country": undefined,
+        "from": undefined,
+        "to": undefined,
+      },
+      "o": null,
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'SearchAccomodation' > should execute with auth 'ANONYMOUS' and input 'ALL_WITH_EXAMPLES' > hash = 75a2c75fbf735ed0c2a748cd9aecc1195219e698a88be650dd48f8db60323586 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": null,
+      "authName": "ANONYMOUS",
+      "inputFiller": [Function],
+      "inputFillerName": "ALL_WITH_EXAMPLES",
+    },
+    "err": null,
+    "hash": "75a2c75fbf735ed0c2a748cd9aecc1195219e698a88be650dd48f8db60323586",
+    "io": {
+      "i": {
+        "country": "AF",
+        "from": "2022-07-14",
+        "to": "2022-07-14",
+      },
+      "o": null,
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'SearchAccomodation' > should execute with auth 'ANONYMOUS' and input 'ONLY_MANDATORY_WITH_EXAMPLES' > hash = 69adce5111ef365dbebada6da0fef929248985d76a308b92a5d60b7b5cd61b29 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": null,
+      "authName": "ANONYMOUS",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_MANDATORY_WITH_EXAMPLES",
+    },
+    "err": null,
+    "hash": "69adce5111ef365dbebada6da0fef929248985d76a308b92a5d60b7b5cd61b29",
+    "io": {
+      "i": {
+        "country": "AF",
+        "from": "2022-07-14",
+        "to": "2022-07-14",
+      },
+      "o": null,
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'SearchAccomodation' > should execute with auth 'ANONYMOUS' and input 'ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPL…' > hash = 97dd0f4154cf2c28b3f5f21f6ca7883530568c12e6ae9bc55e5dfcf29f2d7fba 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": null,
+      "authName": "ANONYMOUS",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPLES",
+    },
+    "err": [IllegalArgumentError: Country must be filled],
+    "hash": "97dd0f4154cf2c28b3f5f21f6ca7883530568c12e6ae9bc55e5dfcf29f2d7fba",
+    "io": {
+      "i": {
+        "country": undefined,
+        "from": undefined,
+        "to": undefined,
+      },
+      "o": null,
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'SearchAccomodation' > should execute with auth 'REGULAR' and input 'ALL_WITH_EXAMPLES' > hash = dd7c32fd6efc837ce14b4f6fc16ec89bf6809fb5e413971eb2b1359b1f0f871e 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "regular",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "REGULAR",
+      "inputFiller": [Function],
+      "inputFillerName": "ALL_WITH_EXAMPLES",
+    },
+    "err": null,
+    "hash": "dd7c32fd6efc837ce14b4f6fc16ec89bf6809fb5e413971eb2b1359b1f0f871e",
+    "io": {
+      "i": {
+        "country": "AF",
+        "from": "2022-07-14",
+        "to": "2022-07-14",
+      },
+      "o": null,
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'SearchAccomodation' > should execute with auth 'REGULAR' and input 'ONLY_MANDATORY_WITH_EXAMPLES' > hash = 984727f8ba0b9d7b3bb2463412798fcba7a86a2cece6fac6f93f7b3f3811b13b 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "regular",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "REGULAR",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_MANDATORY_WITH_EXAMPLES",
+    },
+    "err": null,
+    "hash": "984727f8ba0b9d7b3bb2463412798fcba7a86a2cece6fac6f93f7b3f3811b13b",
+    "io": {
+      "i": {
+        "country": "AF",
+        "from": "2022-07-14",
+        "to": "2022-07-14",
+      },
+      "o": null,
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'SearchAccomodation' > should execute with auth 'REGULAR' and input 'ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPL…' > hash = d2bf11008dacc2c91fbcee3faf4b762aca552b84172407ffd0ae5f9d1977a526 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "regular",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "REGULAR",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPLES",
+    },
+    "err": [IllegalArgumentError: Country must be filled],
+    "hash": "d2bf11008dacc2c91fbcee3faf4b762aca552b84172407ffd0ae5f9d1977a526",
+    "io": {
+      "i": {
+        "country": undefined,
+        "from": undefined,
+        "to": undefined,
+      },
+      "o": null,
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
