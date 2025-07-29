@@ -209,7 +209,10 @@ describe('Run', async () => {
                     }
 
                     public async run(_m: Model, _r: RealSystem): Promise<void> {
-                        const out = await runner.execMonkeyTest(ucd, this.input);
+                        const out = await runner.execMonkeyTest(
+                            ucd,
+                            this.input,
+                        );
 
                         if (out.err !== null) {
                             if (!(out.err instanceof CustomError)) {
