@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## v0.21.0 (unreleased)
+
+**Fixed**
+
+- Display expected falsy values in violation
+
 ## v0.20.0 (2025-07-26)
 
 **Added**

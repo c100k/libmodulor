@@ -15,7 +15,7 @@ export class Validation {
             return null;
         }
         const key = this.violationAsI18nable(violation);
-        const expected = (violation.expected || '').toString();
+        const expected = (violation.expected ?? '').toString();
         return [key, expected];
     }
     getViolations() {
