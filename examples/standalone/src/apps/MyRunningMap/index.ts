@@ -3,8 +3,11 @@
 export { I18n } from './src/i18n.js';
 export type { GeospatialManager } from './src/lib/geospatial/GeospatialManager.js';
 export { SimpleGeospatialManager } from './src/lib/geospatial/SimpleGeospatialManager.js';
-export type { LinkManager } from './src/lib/link/LinkManager.js';
-export { WebLinkManager } from './src/lib/link/WebLinkManager.js';
+export type {
+    LinkManager,
+    LinkManagerOpenable,
+    LinkManagerOpenOpts,
+} from './src/lib/link/LinkManager.js';
 export { Manifest } from './src/manifest.js';
 export {
     type AuthenticateToStravaStep1Input,
