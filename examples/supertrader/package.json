@@ -19,13 +19,13 @@
         "test": "tsc && vitest run --passWithNoTests"
     },
     "dependencies": {
-        "@hono/node-server": "^1.17.1",
-        "@modelcontextprotocol/sdk": "^1.17.0",
+        "@hono/node-server": "^1.18.1",
+        "@modelcontextprotocol/sdk": "^1.17.1",
         "@tailwindcss/vite": "^4.1.11",
         "daisyui": "^5.0.50",
         "expo": "^53.0.20",
-        "hono": "^4.8.10",
-        "inversify": "^7.6.1",
+        "hono": "^4.8.12",
+        "inversify": "^7.7.0",
         "knex": "^3.1.0",
         "libmodulor": "^0.20.0",
         "next": "^15.4.5",
@@ -52,10 +52,10 @@
         "fast-check": "^4.2.0",
         "helmet": "^8.1.0",
         "jose": "^6.0.12",
-        "typescript": "^5.8.3",
+        "typescript": "^5.9.2",
         "vite": "^6.3.5",
         "vite-bundle-visualizer": "^1.2.1",
         "vitest": "^3.2.4",
-        "wrangler": "^4.26.1"
+        "wrangler": "^4.28.0"
     }
 }

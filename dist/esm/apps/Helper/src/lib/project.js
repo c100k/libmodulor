@@ -81,7 +81,7 @@ export const PACKAGE_JSON = (name) => `{
         "test": "tsc && vitest run --passWithNoTests"
     },
     "dependencies": {
-        "inversify": "^7.6.1",
+        "inversify": "^7.7.0",
         "libmodulor": "latest",
         "reflect-metadata": "^0.2.2"
     },
@@ -96,7 +96,7 @@ export const PACKAGE_JSON = (name) => `{
         "fast-check": "^4.2.0",
         "helmet": "^8.1.0",
         "jose": "^6.0.12",
-        "typescript": "^5.8.3",
+        "typescript": "^5.9.2",
         "vite": "^6.3.5",
         "vitest": "^3.2.4"
     }

@@ -19,7 +19,9 @@ let NodeFormDataBuilder = class NodeFormDataBuilder {
                     chunks.push(chunk);
                 });
                 rs.on('end', () => {
-                    fd.append(key, new Blob(chunks, { type: val.type }), basename(val.uri));
+                    fd.append(key, 
+                    // @ts-ignore
+                    new Blob(chunks, { type: val.type }), basename(val.uri));
                     resolve(null);
                 });
                 rs.on('error', (err) => {
