@@ -88,8 +88,8 @@ importers:
         specifier: ^7.8.1
         version: 7.8.1(reflect-metadata@0.2.2)
       libmodulor:
-        specifier: github:c100k/libmodulor#bc4729e
-        version: https://codeload.github.com/c100k/libmodulor/tar.gz/bc4729e(@hono/node-server@1.18.1(hono@4.8.12))(@modelcontextprotocol/sdk@1.17.1)(@stricli/core@1.2.0)(buffer@6.0.3)(cookie-parser@1.4.7)(express-fileupload@1.5.2)(express@5.1.0)(fast-check@4.2.0)(helmet@8.1.0)(hono@4.8.12)(inversify@7.7.0(reflect-metadata@0.2.2))(jose@6.0.12)(knex@3.1.0(pg@8.16.3)(sqlite3@5.1.7))(next@15.4.5(@babel/core@7.28.0)(@playwright/test@1.54.2)(react-dom@19.1.1(react@19.1.1))(react@19.1.1))(pg@8.16.3)(react-dom@19.1.1(react@19.1.1))(react-native@0.79.5(@babel/core@7.28.0)(@types/react@19.1.9)(react@19.1.1))(react@19.1.1)(reflect-metadata@0.2.2)(sqlite3@5.1.7)(typescript@5.9.2)(vite@6.3.5(@types/node@22.17.0)(jiti@2.5.1)(lightningcss@1.30.1)(terser@5.43.1)(yaml@2.8.1))(vitest@3.2.4(@types/debug@4.1.12)(@types/node@22.17.0)(jiti@2.5.1)(lightningcss@1.30.1)(terser@5.43.1)(yaml@2.8.1))
+        specifier: github:c100k/libmodulor#25c71b7
+        version: https://codeload.github.com/c100k/libmodulor/tar.gz/25c71b7(@hono/node-server@1.18.1(hono@4.8.12))(@modelcontextprotocol/sdk@1.17.1)(@stricli/core@1.2.0)(buffer@6.0.3)(cookie-parser@1.4.7)(express-fileupload@1.5.2)(express@5.1.0)(fast-check@4.2.0)(helmet@8.1.0)(hono@4.8.12)(inversify@7.7.0(reflect-metadata@0.2.2))(jose@6.0.12)(knex@3.1.0(pg@8.16.3)(sqlite3@5.1.7))(next@15.4.5(@babel/core@7.28.0)(@playwright/test@1.54.2)(react-dom@19.1.1(react@19.1.1))(react@19.1.1))(pg@8.16.3)(react-dom@19.1.1(react@19.1.1))(react-native@0.79.5(@babel/core@7.28.0)(@types/react@19.1.9)(react@19.1.1))(react@19.1.1)(reflect-metadata@0.2.2)(sqlite3@5.1.7)(typescript@5.9.2)(vite@6.3.5(@types/node@22.17.0)(jiti@2.5.1)(lightningcss@1.30.1)(terser@5.43.1)(yaml@2.8.1))(vitest@3.2.4(@types/debug@4.1.12)(@types/node@22.17.0)(jiti@2.5.1)(lightningcss@1.30.1)(terser@5.43.1)(yaml@2.8.1))
       reflect-metadata:
         specifier: ^0.2.2
         version: 0.2.2
@@ -110,8 +110,8 @@ importers:
         specifier: ^7.8.1
         version: 7.8.1(reflect-metadata@0.2.2)
       libmodulor:
-        specifier: github:c100k/libmodulor#bc4729e
-        version: https://codeload.github.com/c100k/libmodulor/tar.gz/bc4729e(@hono/node-server@1.18.1(hono@4.8.12))(@modelcontextprotocol/sdk@1.17.1)(@stricli/core@1.2.0)(buffer@6.0.3)(cookie-parser@1.4.7)(express-fileupload@1.5.2)(express@5.1.0)(fast-check@4.2.0)(helmet@8.1.0)(hono@4.8.12)(inversify@7.7.0(reflect-metadata@0.2.2))(jose@6.0.12)(knex@3.1.0(pg@8.16.3)(sqlite3@5.1.7))(next@15.4.5(@babel/core@7.28.0)(@playwright/test@1.54.2)(react-dom@19.1.1(react@19.1.1))(react@19.1.1))(pg@8.16.3)(react-dom@19.1.1(react@19.1.1))(react-native@0.79.5(@babel/core@7.28.0)(@types/react@19.1.9)(react@19.1.1))(react@19.1.1)(reflect-metadata@0.2.2)(sqlite3@5.1.7)(typescript@5.9.2)(vite@6.3.5(@types/node@22.17.0)(jiti@2.5.1)(lightningcss@1.30.1)(terser@5.43.1)(yaml@2.8.1))(vitest@3.2.4(@types/debug@4.1.12)(@types/node@22.17.0)(jiti@2.5.1)(lightningcss@1.30.1)(terser@5.43.1)(yaml@2.8.1))
+        specifier: github:c100k/libmodulor#25c71b7
+        version: https://codeload.github.com/c100k/libmodulor/tar.gz/25c71b7(@hono/node-server@1.18.1(hono@4.8.12))(@modelcontextprotocol/sdk@1.17.1)(@stricli/core@1.2.0)(buffer@6.0.3)(cookie-parser@1.4.7)(express-fileupload@1.5.2)(express@5.1.0)(fast-check@4.2.0)(helmet@8.1.0)(hono@4.8.12)(inversify@7.7.0(reflect-metadata@0.2.2))(jose@6.0.12)(knex@3.1.0(pg@8.16.3)(sqlite3@5.1.7))(next@15.4.5(@babel/core@7.28.0)(@playwright/test@1.54.2)(react-dom@19.1.1(react@19.1.1))(react@19.1.1))(pg@8.16.3)(react-dom@19.1.1(react@19.1.1))(react-native@0.79.5(@babel/core@7.28.0)(@types/react@19.1.9)(react@19.1.1))(react@19.1.1)(reflect-metadata@0.2.2)(sqlite3@5.1.7)(typescript@5.9.2)(vite@6.3.5(@types/node@22.17.0)(jiti@2.5.1)(lightningcss@1.30.1)(terser@5.43.1)(yaml@2.8.1))(vitest@3.2.4(@types/debug@4.1.12)(@types/node@22.17.0)(jiti@2.5.1)(lightningcss@1.30.1)(terser@5.43.1)(yaml@2.8.1))
       reflect-metadata:
         specifier: ^0.2.2
         version: 0.2.2
@@ -159,8 +159,8 @@ importers:
         specifier: ^3.1.0
         version: 3.1.0(pg@8.16.3)(sqlite3@5.1.7)
       libmodulor:
-        specifier: github:c100k/libmodulor#bc4729e
-        version: https://codeload.github.com/c100k/libmodulor/tar.gz/bc4729e(@hono/node-server@1.18.1(hono@4.8.12))(@modelcontextprotocol/sdk@1.17.1)(@stricli/core@1.2.0)(buffer@6.0.3)(cookie-parser@1.4.7)(express-fileupload@1.5.2)(express@5.1.0)(fast-check@4.2.0)(helmet@8.1.0)(hono@4.8.12)(inversify@7.7.0(reflect-metadata@0.2.2))(jose@6.0.12)(knex@3.1.0(pg@8.16.3)(sqlite3@5.1.7))(next@15.4.5(@babel/core@7.28.0)(@playwright/test@1.54.2)(react-dom@19.1.1(react@19.1.1))(react@19.1.1))(pg@8.16.3)(react-dom@19.1.1(react@19.1.1))(react-native@0.79.5(@babel/core@7.28.0)(@types/react@19.1.9)(react@19.1.1))(react@19.1.1)(reflect-metadata@0.2.2)(sqlite3@5.1.7)(typescript@5.9.2)(vite@6.3.5(@types/node@22.17.0)(jiti@2.5.1)(lightningcss@1.30.1)(terser@5.43.1)(yaml@2.8.1))(vitest@3.2.4(@types/debug@4.1.12)(@types/node@22.17.0)(jiti@2.5.1)(lightningcss@1.30.1)(terser@5.43.1)(yaml@2.8.1))
+        specifier: github:c100k/libmodulor#25c71b7
+        version: https://codeload.github.com/c100k/libmodulor/tar.gz/25c71b7(@hono/node-server@1.18.1(hono@4.8.12))(@modelcontextprotocol/sdk@1.17.1)(@stricli/core@1.2.0)(buffer@6.0.3)(cookie-parser@1.4.7)(express-fileupload@1.5.2)(express@5.1.0)(fast-check@4.2.0)(helmet@8.1.0)(hono@4.8.12)(inversify@7.7.0(reflect-metadata@0.2.2))(jose@6.0.12)(knex@3.1.0(pg@8.16.3)(sqlite3@5.1.7))(next@15.4.5(@babel/core@7.28.0)(@playwright/test@1.54.2)(react-dom@19.1.1(react@19.1.1))(react@19.1.1))(pg@8.16.3)(react-dom@19.1.1(react@19.1.1))(react-native@0.79.5(@babel/core@7.28.0)(@types/react@19.1.9)(react@19.1.1))(react@19.1.1)(reflect-metadata@0.2.2)(sqlite3@5.1.7)(typescript@5.9.2)(vite@6.3.5(@types/node@22.17.0)(jiti@2.5.1)(lightningcss@1.30.1)(terser@5.43.1)(yaml@2.8.1))(vitest@3.2.4(@types/debug@4.1.12)(@types/node@22.17.0)(jiti@2.5.1)(lightningcss@1.30.1)(terser@5.43.1)(yaml@2.8.1))
       next:
         specifier: ^15.4.7
         version: 15.4.7(@babel/core@7.28.3)(@playwright/test@1.54.2)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
@@ -3322,8 +3322,8 @@ packages:
     resolution: {integrity: sha512-qsda+H8jTaUaN/x5vzW2rzc+8Rw4TAQ/4KjB46IwK5VH+IlVeeeje/EoZRpiXvIqjFgK84QffqPztGI3VBLG1A==}
     engines: {node: '>=6'}
 
-  libmodulor@https://codeload.github.com/c100k/libmodulor/tar.gz/bc4729e:
-    resolution: {tarball: https://codeload.github.com/c100k/libmodulor/tar.gz/bc4729e}
+  libmodulor@https://codeload.github.com/c100k/libmodulor/tar.gz/25c71b7:
+    resolution: {tarball: https://codeload.github.com/c100k/libmodulor/tar.gz/25c71b7}
     version: 0.20.0
     hasBin: true
     peerDependencies:
@@ -8372,7 +8372,7 @@ snapshots:
 
   leven@3.1.0: {}
 
-  libmodulor@https://codeload.github.com/c100k/libmodulor/tar.gz/bc4729e(@hono/node-server@1.18.1(hono@4.8.12))(@modelcontextprotocol/sdk@1.17.1)(@stricli/core@1.2.0)(buffer@6.0.3)(cookie-parser@1.4.7)(express-fileupload@1.5.2)(express@5.1.0)(fast-check@4.2.0)(helmet@8.1.0)(hono@4.8.12)(inversify@7.7.0(reflect-metadata@0.2.2))(jose@6.0.12)(knex@3.1.0(pg@8.16.3)(sqlite3@5.1.7))(next@15.4.5(@babel/core@7.28.0)(@playwright/test@1.54.2)(react-dom@19.1.1(react@19.1.1))(react@19.1.1))(pg@8.16.3)(react-dom@19.1.1(react@19.1.1))(react-native@0.79.5(@babel/core@7.28.0)(@types/react@19.1.9)(react@19.1.1))(react@19.1.1)(reflect-metadata@0.2.2)(sqlite3@5.1.7)(typescript@5.9.2)(vite@6.3.5(@types/node@22.17.0)(jiti@2.5.1)(lightningcss@1.30.1)(terser@5.43.1)(yaml@2.8.1))(vitest@3.2.4(@types/debug@4.1.12)(@types/node@22.17.0)(jiti@2.5.1)(lightningcss@1.30.1)(terser@5.43.1)(yaml@2.8.1)):
+  libmodulor@https://codeload.github.com/c100k/libmodulor/tar.gz/25c71b7(@hono/node-server@1.18.1(hono@4.8.12))(@modelcontextprotocol/sdk@1.17.1)(@stricli/core@1.2.0)(buffer@6.0.3)(cookie-parser@1.4.7)(express-fileupload@1.5.2)(express@5.1.0)(fast-check@4.2.0)(helmet@8.1.0)(hono@4.8.12)(inversify@7.7.0(reflect-metadata@0.2.2))(jose@6.0.12)(knex@3.1.0(pg@8.16.3)(sqlite3@5.1.7))(next@15.4.5(@babel/core@7.28.0)(@playwright/test@1.54.2)(react-dom@19.1.1(react@19.1.1))(react@19.1.1))(pg@8.16.3)(react-dom@19.1.1(react@19.1.1))(react-native@0.79.5(@babel/core@7.28.0)(@types/react@19.1.9)(react@19.1.1))(react@19.1.1)(reflect-metadata@0.2.2)(sqlite3@5.1.7)(typescript@5.9.2)(vite@6.3.5(@types/node@22.17.0)(jiti@2.5.1)(lightningcss@1.30.1)(terser@5.43.1)(yaml@2.8.1))(vitest@3.2.4(@types/debug@4.1.12)(@types/node@22.17.0)(jiti@2.5.1)(lightningcss@1.30.1)(terser@5.43.1)(yaml@2.8.1)):
     dependencies:
       inversify: 7.8.1(reflect-metadata@0.2.2)
       reflect-metadata: 0.2.2
