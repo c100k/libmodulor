@@ -43,9 +43,9 @@ class PromptLLMClientMain implements UCMain<PromptLLMInput, PromptLLMOPI0> {
     }: UCMainInput<PromptLLMInput, PromptLLMOPI0>): Promise<
         UCOutput<PromptLLMOPI0>
     > {
-        const apiKey = uc.reqVal0<ApiKey>('apiKey');
-        const modelName = uc.reqVal0<Slug>('modelName');
-        const prompt = uc.reqVal0<FreeTextLong>('prompt');
+        const apiKey = uc.reqVal0('apiKey');
+        const modelName = uc.reqVal0('modelName');
+        const prompt = uc.reqVal0('prompt');
 
         const { choices } = await this.llmManager.send(
             {

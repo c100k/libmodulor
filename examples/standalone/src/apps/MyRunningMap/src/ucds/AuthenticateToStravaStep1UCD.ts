@@ -18,7 +18,7 @@ import { Manifest } from '../manifest.js';
 
 export interface AuthenticateToStravaStep1Input extends UCInput {
     clientId: UCInputFieldValue<ExternalServiceId>;
-    redirectURI: UCInputFieldValue<URL>;
+    redirectURI: UCInputFieldValue<URLString>;
 }
 
 @injectable()
@@ -30,8 +30,8 @@ class AuthenticateToStravaStep1ClientMain
     public async exec({
         uc,
     }: UCMainInput<AuthenticateToStravaStep1Input>): Promise<void> {
-        const clientId = uc.reqVal0<ExternalServiceId>('clientId');
-        const redirectURI = uc.reqVal0<URLString>('redirectURI');
+        const clientId = uc.reqVal0('clientId');
+        const redirectURI = uc.reqVal0('redirectURI');
 
         // Register the application
         // https://www.strava.com/settings/api

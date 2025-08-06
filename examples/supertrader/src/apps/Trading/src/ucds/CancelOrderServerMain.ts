@@ -11,7 +11,6 @@ import {
     type UCManager,
     type UCOutput,
     UCOutputBuilder,
-    type UUID,
 } from 'libmodulor';
 
 import type { Order } from '../lib/order.js';
@@ -36,7 +35,7 @@ export class CancelOrderServerMain
     }: UCMainInput<CancelOrderInput, CancelOrderOPI0>): Promise<
         UCOutput<CancelOrderOPI0>
     > {
-        const id = uc.reqVal0<UUID>('id');
+        const id = uc.reqVal0('id');
 
         // >=> Check that the order exists
         const { records } = await this.ucDataStore.read<

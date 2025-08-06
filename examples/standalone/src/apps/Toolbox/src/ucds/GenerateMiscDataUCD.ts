@@ -57,7 +57,7 @@ class GenerateMiscDataClientMain
         GenerateMiscDataOPI0,
         GenerateMiscDataOPI1
     >): Promise<UCOutput<GenerateMiscDataOPI0, GenerateMiscDataOPI1>> {
-        const uuidCount = uc.reqVal0<UIntQuantity>('uuidCount');
+        const uuidCount = uc.reqVal0('uuidCount');
 
         return new UCOutputBuilder<GenerateMiscDataOPI0, GenerateMiscDataOPI1>()
             .add({
