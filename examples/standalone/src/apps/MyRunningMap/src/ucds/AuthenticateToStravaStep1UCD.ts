@@ -10,7 +10,7 @@ import {
     type UCInputFieldValue,
     type UCMain,
     type UCMainInput,
-    type URL as URLString,
+    type URL,
 } from 'libmodulor';
 
 import type { LinkManager } from '../lib/link/LinkManager.js';
@@ -18,7 +18,7 @@ import { Manifest } from '../manifest.js';
 
 export interface AuthenticateToStravaStep1Input extends UCInput {
     clientId: UCInputFieldValue<ExternalServiceId>;
-    redirectURI: UCInputFieldValue<URLString>;
+    redirectURI: UCInputFieldValue<URL>;
 }
 
 @injectable()
@@ -43,7 +43,7 @@ class AuthenticateToStravaStep1ClientMain
         url.searchParams.append('response_type', 'code');
         url.searchParams.append('scope', 'activity:read_all');
 
-        await this.linkManager.open(url.toString() as URLString, {
+        await this.linkManager.open(url.toString() as URL, {
             withinContext: true,
         });
     }
