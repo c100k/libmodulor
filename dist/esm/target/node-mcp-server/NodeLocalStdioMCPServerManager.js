@@ -125,6 +125,7 @@ let NodeLocalStdioMCPServerManager = class NodeLocalStdioMCPServerManager {
                 def: ucd,
             });
             if (args) {
+                // biome-ignore lint/suspicious/noExplicitAny: can be anything
                 uc.fill(args);
             }
             const confirmed = await this.ucManager.confirmClient(uc);

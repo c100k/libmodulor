@@ -36,6 +36,7 @@ export function rInput(uc, opts) {
         if (!ignoreUndefined || (ignoreUndefined && value !== undefined)) {
             // Useful when we get the input before persisting for example.
             // Otherwise it will persist `undefined` as a string in the database, for nothing.
+            // @ts-expect-error
             input[f.key] = value;
         }
     }

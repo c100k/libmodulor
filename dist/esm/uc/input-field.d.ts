@@ -72,7 +72,8 @@ export interface UCInputFieldDef<T extends DataType> {
     transient?: boolean;
     type: TBase<T>;
 }
-export type UCInputFieldValue<T extends DataType> = Value<T>;
+export type UCInputFieldValue<T> = Value<T>;
+export type UCInputFieldValueUnwrapped<T> = T extends UCInputFieldValue<infer U> ? U : never;
 export declare function ucifExamples<T extends DataType>(def: UCInputFieldDef<T>): T[] | undefined;
 export declare function ucifHint<T extends DataType>(def: UCInputFieldDef<T>): string | undefined;
 /**

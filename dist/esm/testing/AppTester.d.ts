@@ -62,7 +62,7 @@ export declare class AppTester {
     checkUCDSources(): Promise<void>;
     checkUC(ucdRef: AppTesterUCDRef): Promise<void>;
     execFlow(flow: AppTesterFlow): Promise<AppTesterFlowExecOutput>;
-    execMonkeyTest<I extends UCInput | undefined = undefined, OPI0 extends UCOPIBase | undefined = undefined, OPI1 extends UCOPIBase | undefined = undefined>(ucd: UCDef<I, OPI0, OPI1>, input: I): Promise<UCExecutorExecOutput<I, OPI0, OPI1>>;
+    execMonkeyTest<I extends UCInput | undefined = undefined, OPI0 extends UCOPIBase | undefined = undefined, OPI1 extends UCOPIBase | undefined = undefined>(ucd: UCDef<I, OPI0, OPI1>, input: NonNullable<I>): Promise<UCExecutorExecOutput<I, OPI0, OPI1>>;
     execUC<I extends UCInput | undefined = undefined, OPI0 extends UCOPIBase | undefined = undefined, OPI1 extends UCOPIBase | undefined = undefined>(input: Omit<UCExecutorInput<I, OPI0, OPI1>, 'appManifest'>, flow?: AppTesterFlow): Promise<AppTestSuiteTestResult<I, OPI0, OPI1>>;
     finalize(): Promise<void>;
     getCtx(): AppTesterCtx;

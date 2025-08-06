@@ -1,4 +1,3 @@
-import type { DataType } from '../../dt/index.js';
 import type { Value } from '../value.js';
 /**
  * Read the value as a primitive
@@ -9,7 +8,7 @@ import type { Value } from '../value.js';
  * @param or
  * @returns
  */
-export declare function rVal0<T extends DataType>(value: Value<T>, or?: T): T | null;
+export declare function rVal0<T>(value: Value<T>, or?: T): T | null;
 /**
  * Require the value as a primitive
  *
@@ -18,7 +17,7 @@ export declare function rVal0<T extends DataType>(value: Value<T>, or?: T): T | 
  * @param value
  * @returns
  */
-export declare function reqVal0<T extends DataType>(value: Value<T>): T;
+export declare function reqVal0<T>(value: Value<T>): T;
 /**
  * Get the value as an array
  *
@@ -27,4 +26,4 @@ export declare function reqVal0<T extends DataType>(value: Value<T>): T;
  * @param value
  * @returns
  */
-export declare function rValArr<T extends DataType>(value: Value<T>): T[];
+export declare function rValArr<T>(value: Value<T>): T[];

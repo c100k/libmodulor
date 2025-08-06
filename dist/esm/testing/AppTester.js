@@ -137,7 +137,10 @@ let AppTester = class AppTester {
                 if (inputOverride) {
                     const inputOverrides = inputOverride(output);
                     for (const [k, v] of Object.entries(inputOverrides)) {
-                        uc.inputField(k).setValue(UCInputFieldChangeOperator.SET, v);
+                        // @ts-expect-error
+                        uc.inputField(k).setValue(UCInputFieldChangeOperator.SET, 
+                        // @ts-expect-error
+                        v);
                     }
                 }
             };

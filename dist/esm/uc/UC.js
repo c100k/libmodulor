@@ -8,7 +8,6 @@ export class UC {
     appManifest;
     def;
     auth;
-    // biome-ignore lint/suspicious/noExplicitAny: can be anything
     inputFields;
     constructor(appManifest, def, auth) {
         this.appManifest = appManifest;
@@ -40,7 +39,8 @@ export class UC {
     }
     fill(input) {
         for (const f of this.inputFields) {
-            f.setValue(UCInputFieldChangeOperator.SET, input[f.key]);
+            const val = input[f.key];
+            f.setValue(UCInputFieldChangeOperator.SET, val);
         }
         return this;
     }
@@ -58,6 +58,7 @@ export class UC {
         if (!field) {
             throw new Error(`Input field ${key.toString()} does not exist`);
         }
+        // @ts-expect-error
         return field;
     }
     // biome-ignore lint/suspicious/noExplicitAny: can be anything
