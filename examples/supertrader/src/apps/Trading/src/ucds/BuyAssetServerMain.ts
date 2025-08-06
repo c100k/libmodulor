@@ -1,15 +1,12 @@
 import { inject, injectable } from 'inversify';
 import {
-    type Amount,
     type UCMain,
     type UCMainInput,
     type UCManager,
     type UCOutput,
     UCOutputBuilder,
-    type UIntQuantity,
 } from 'libmodulor';
 
-import type { ISIN } from '../lib/TISIN.js';
 import type { BuyAssetInput, BuyAssetOPI0 } from './BuyAssetUCD.js';
 
 @injectable()
@@ -21,9 +18,9 @@ export class BuyAssetServerMain implements UCMain<BuyAssetInput, BuyAssetOPI0> {
     }: UCMainInput<BuyAssetInput, BuyAssetOPI0>): Promise<
         UCOutput<BuyAssetOPI0>
     > {
-        const isin = uc.reqVal0<ISIN>('isin');
-        const limit = uc.reqVal0<Amount>('limit');
-        const qty = uc.reqVal0<UIntQuantity>('qty');
+        const isin = uc.reqVal0('isin');
+        const limit = uc.reqVal0('limit');
+        const qty = uc.reqVal0('qty');
 
         // >=> Persist the order
         const { aggregateId } = await this.ucManager.persist(uc);
