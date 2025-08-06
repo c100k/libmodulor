@@ -8,7 +8,8 @@ import type { Value } from '../value.js';
  * @param or
  * @returns
  */
-export declare function rVal0<T>(value: Value<T>, or?: T): T | null;
+export declare function rVal0<T>(value: Value<T>, or: T): T;
+export declare function rVal0<T>(value: Value<T>, or?: undefined): T | null;
 /**
  * Require the value as a primitive
  *

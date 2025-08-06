@@ -1,15 +1,4 @@
 import { isBlank } from '../../utils/index.js';
-// NOTE : the "r" prefix stands for "read" and the "req" prefix stands for "require"
-/**
- * Read the value as a primitive
- *
- * To be used when the field has a 0..1 cardinality.
- *
- * @param value
- * @param or
- * @returns
- */
-// TODO : Find a way to return `T` when `or` is set (function override does not work)
 export function rVal0(value, or) {
     if (isBlank(value)) {
         return or ?? null;

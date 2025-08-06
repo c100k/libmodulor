@@ -6,6 +6,10 @@
 
 - Infer UC input field type without explicit generic when using `UC` methods like `inputField`, `reqVal0`, `rVal0`, `rValArr` : simply fix the TypeScript errors by removing the generic (e.g `uc.reqVal<DateISO8601>('from')` => `uc.reqVal('from')`)
 
+**Added**
+
+- Add overrides to `rVal0` to avoid non null assertion
+
 **Fixed**
 
 - Display expected falsy values in violation
