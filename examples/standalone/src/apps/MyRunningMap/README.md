@@ -13,7 +13,7 @@
 ```mermaid
 sequenceDiagram
     actor User
-    User->>+Client: ✏️ Fill<br/>clientId: ExternalServiceId<br/>redirectURI: URLString
+    User->>+Client: ✏️ Fill<br/>clientId: ExternalServiceId<br/>redirectURI: URL
     User->>Client: ↩️ Submit
     Client->>Client: 🔐 Check policy "Everybody"
     break when any validation fails
@@ -27,7 +27,7 @@ sequenceDiagram
 ```mermaid
 sequenceDiagram
     actor User
-    User->>+Client: ✏️ Fill<br/>clientId: ExternalServiceId<br/>clientSecret: ApiKey<br/>url: URLString
+    User->>+Client: ✏️ Fill<br/>clientId: ExternalServiceId<br/>clientSecret: ApiKey<br/>url: URL
     User->>Client: ↩️ Submit
     Client->>Client: 🔐 Check policy "Everybody"
     break when any validation fails
@@ -54,6 +54,6 @@ sequenceDiagram
 
 |#|filePath|constName|metadataName|metadataAction|metadataBeta|metadataIcon|metadataNew|metadataSensitive|externalImports|internalImports|ioI|ioIFields|ioOPI0|ioOPI0Fields|ioOPI1|ioOPI1Fields|lifecycleClientPolicy|lifecycleServerPolicy|
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-|1|/src/ucds/AuthenticateToStravaStep1UCD.ts|AuthenticateToStravaStep1UCD|AuthenticateToStravaStep1|Create||right-to-bracket|||inversify<br>libmodulor|../lib/link/LinkManager.js<br>../manifest.js|AuthenticateToStravaStep1Input|clientId: UCInputFieldValue&#60;ExternalServiceId&#62;<br>redirectURI: UCInputFieldValue&#60;URLString&#62;|||||Everybody||
-|2|/src/ucds/AuthenticateToStravaStep2UCD.ts|AuthenticateToStravaStep2UCD|AuthenticateToStravaStep2|Create||right-to-bracket|||inversify<br>libmodulor|../manifest.js|AuthenticateToStravaStep2Input|clientId: UCInputFieldValue&#60;ExternalServiceId&#62;<br>clientSecret: UCInputFieldValue&#60;ApiKey&#62;<br>url: UCInputFieldValue&#60;URLString&#62;|AuthenticateToStravaStep2OPI0|accessToken: ApiKey<br>id: UUID|||Everybody||
+|1|/src/ucds/AuthenticateToStravaStep1UCD.ts|AuthenticateToStravaStep1UCD|AuthenticateToStravaStep1|Create||right-to-bracket|||inversify<br>libmodulor|../lib/link/LinkManager.js<br>../manifest.js|AuthenticateToStravaStep1Input|clientId: UCInputFieldValue&#60;ExternalServiceId&#62;<br>redirectURI: UCInputFieldValue&#60;URL&#62;|||||Everybody||
+|2|/src/ucds/AuthenticateToStravaStep2UCD.ts|AuthenticateToStravaStep2UCD|AuthenticateToStravaStep2|Create||right-to-bracket|||inversify<br>libmodulor|../manifest.js|AuthenticateToStravaStep2Input|clientId: UCInputFieldValue&#60;ExternalServiceId&#62;<br>clientSecret: UCInputFieldValue&#60;ApiKey&#62;<br>url: UCInputFieldValue&#60;URL&#62;|AuthenticateToStravaStep2OPI0|accessToken: ApiKey<br>id: UUID|||Everybody||
 |3|/src/ucds/GenerateRunningMapFromStravaUCD.ts|GenerateRunningMapFromStravaUCD|GenerateRunningMapFromStrava|Create||map|||inversify<br>libmodulor|../lib/geospatial/GeospatialManager.js<br>../manifest.js|GenerateRunningMapFromStravaInput|activitiesCount: UCInputFieldValue&#60;UIntQuantity&#62;<br>mapboxAccessToken: UCInputFieldValue&#60;ApiKey&#62;<br>stravaAccessToken: UCInputFieldValue&#60;ApiKey&#62;|GenerateRunningMapFromStravaOPI0|mapURL: URLString<br>mapURLCharsCount: UIntQuantity<br>id: UUID|||Everybody||
