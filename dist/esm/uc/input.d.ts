@@ -1,6 +1,6 @@
 import type { DataType } from '../dt/index.js';
 import type { StringKeys } from '../utils/index.js';
-import type { UCInputFieldDef, UCInputFieldValueUnwrapped } from './input-field.js';
+import type { UCInputFieldDef, UCInputFieldValue, UCInputFieldValueUnwrapped } from './input-field.js';
 /**
  * Base interface all the use case input interfaces must extend
  */
@@ -9,7 +9,7 @@ export type UCInputUnwrapped<I extends UCInput | undefined> = {
     [K in keyof I]: UCInputFieldValueUnwrapped<I[K]>;
 };
 export type UCInputKey<I extends UCInput | undefined> = StringKeys<UCInputUnwrapped<I>>;
-export type UCInputPartial<I extends UCInput | undefined> = Partial<Record<UCInputKey<I>, DataType>>;
+export type UCInputPartial<I extends UCInput | undefined> = Partial<Record<UCInputKey<I>, UCInputFieldValue<DataType>>>;
 export type UCInputKeyDataType<I extends UCInput | undefined, K extends UCInputKey<I>> = NonNullable<UCInputUnwrapped<I>[K]>;
 /**
  * Definition of a use case input
