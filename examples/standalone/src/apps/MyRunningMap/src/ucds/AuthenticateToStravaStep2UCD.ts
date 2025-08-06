@@ -20,7 +20,7 @@ import {
     type UCOPIBase,
     type UCOutput,
     UCOutputBuilder,
-    type URL as URLString,
+    type URL,
 } from 'libmodulor';
 
 import { Manifest } from '../manifest.js';
@@ -28,7 +28,7 @@ import { Manifest } from '../manifest.js';
 export interface AuthenticateToStravaStep2Input extends UCInput {
     clientId: UCInputFieldValue<ExternalServiceId>;
     clientSecret: UCInputFieldValue<ApiKey>;
-    url: UCInputFieldValue<URLString>;
+    url: UCInputFieldValue<URL>;
 }
 
 export interface AuthenticateToStravaStep2OPI0 extends UCOPIBase {
