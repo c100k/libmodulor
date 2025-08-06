@@ -37,8 +37,8 @@ class ExportAsanaClientMain implements UCMain<ExportAsanaInput> {
     ) {}
 
     public async exec({ uc }: UCMainInput<ExportAsanaInput>): Promise<void> {
-        const accessToken = uc.reqVal0<Password>('accessToken');
-        const projectId = uc.reqVal0<ExternalServiceId>('projectId');
+        const accessToken = uc.reqVal0('accessToken');
+        const projectId = uc.reqVal0('projectId');
 
         type Req = {
             limit: UIntQuantity;
