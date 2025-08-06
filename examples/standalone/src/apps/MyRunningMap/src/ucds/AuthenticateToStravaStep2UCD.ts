@@ -28,7 +28,7 @@ import { Manifest } from '../manifest.js';
 export interface AuthenticateToStravaStep2Input extends UCInput {
     clientId: UCInputFieldValue<ExternalServiceId>;
     clientSecret: UCInputFieldValue<ApiKey>;
-    url: UCInputFieldValue<URL>;
+    url: UCInputFieldValue<URLString>;
 }
 
 export interface AuthenticateToStravaStep2OPI0 extends UCOPIBase {
@@ -52,9 +52,9 @@ class AuthenticateToStravaStep2ClientMain
         AuthenticateToStravaStep2Input,
         AuthenticateToStravaStep2OPI0
     >): Promise<UCOutput<AuthenticateToStravaStep2OPI0>> {
-        const clientId = uc.reqVal0<ExternalServiceId>('clientId');
-        const clientSecret = uc.reqVal0<ApiKey>('clientSecret');
-        const url = uc.reqVal0<URLString>('url');
+        const clientId = uc.reqVal0('clientId');
+        const clientSecret = uc.reqVal0('clientSecret');
+        const url = uc.reqVal0('url');
 
         const parsedURL = new URL(url);
         const code = parsedURL.searchParams.get('code');
