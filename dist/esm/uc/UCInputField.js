@@ -1,8 +1,7 @@
 import { Validation } from '../dt/index.js';
 import { isBlank } from '../utils/index.js';
-import { UCInputFieldChangeOperator, ucifIsMandatory, ucifMustBeFilledManually, ucifRepeatability, } from './input-field.js';
+import { ucifIsMandatory, ucifMustBeFilledManually, ucifRepeatability, } from './input-field.js';
 import { rVal0, rValArr } from './utils/rVal.js';
-import { ucifcoIsForArray } from './utils/ucifcoIsForArray.js';
 export class UCInputField {
     key;
     def;
@@ -21,11 +20,35 @@ export class UCInputField {
             this.value = initialValue;
         }
     }
+    addVal(value) {
+        const { type } = this.def;
+        type.assign(value);
+        const val = type.val();
+        if (val === undefined) {
+            // The value is invalid for T (we might want to throw an error here)
+            return;
+        }
+        const current = Array.isArray(this.value) ? this.value : [];
+        // We are not really forced to use immutability here, to be reconsidered
+        this.value = current.concat([val]);
+    }
     clear() {
         this.value = undefined;
         const initialValue = this.def.type.getInitialValue();
         if (initialValue !== undefined) {
             this.value = initialValue;
+        }
+    }
+    fillWithExample() {
+        this.clear();
+        const [isRepeatable] = ucifRepeatability(this.def);
+        const { type } = this.def;
+        const val = type.getExamples()?.[0] ?? type.example();
+        if (isRepeatable) {
+            this.addVal(val);
+        }
+        else {
+            this.setVal(val);
         }
     }
     getDynamicWording() {
@@ -77,7 +100,7 @@ export class UCInputField {
         throw new Error(`${this.key.toString()} is not set and has no default value. Do not require it.`);
     }
     /**
-     * Require the value as an array
+     * Read the value as an array
      *
      * Unlink the standalone {@link rValArr}, it returns the default value in an array if present.
      *
@@ -100,40 +123,27 @@ export class UCInputField {
         // Otherwise, we could not get the value of an optional repeatable field (see remark above on the defaultValue).
         return [];
     }
-    setValue(op, value) {
-        if (op === UCInputFieldChangeOperator.RESET) {
-            this.clear();
-            return;
-        }
+    rmVal(value) {
         const { type } = this.def;
         type.assign(value);
         const val = type.val();
         if (val === undefined) {
-            return;
-        }
-        if (!ucifcoIsForArray(op)) {
-            // Using a switch, even for just one case, to have it trigger an error if we miss to handle an enum value
-            switch (op) {
-                case UCInputFieldChangeOperator.SET:
-                    this.value = val;
-                    break;
-                default:
-                    ((_) => { })(op);
-            }
+            // The value is invalid for T (we might want to throw an error here)
             return;
         }
         const current = Array.isArray(this.value) ? this.value : [];
-        switch (op) {
-            // We are not really forced to use immutability here, but it's better for consistency
-            case UCInputFieldChangeOperator.ADD:
-                this.value = current.concat([val]);
-                break;
-            case UCInputFieldChangeOperator.REMOVE:
-                this.value = current.filter((v) => v !== val);
-                break;
-            default:
-                ((_) => { })(op);
+        // We are not really forced to use immutability here, to be reconsidered
+        this.value = current.filter((v) => v !== val);
+    }
+    setVal(value) {
+        const { type } = this.def;
+        type.assign(value);
+        const val = type.val();
+        if (val === undefined) {
+            // The value is invalid for T (we might want to throw an error here)
+            return;
         }
+        this.value = val;
     }
     updateDef(def) {
         this.def = def;

@@ -3,7 +3,7 @@ import { useRef } from 'react';
 import { useStyleContext } from '../lib/react/StyleContextProvider.js';
 import { UCFormField } from './UCFormField.js';
 import { UCFormSubmitControl } from './UCFormSubmitControl.js';
-export function UCForm({ clearAfterExec, disabled, execState, onChange, onSubmit: onSubmitBase, uc, }) {
+export function UCForm({ clearAfterExec, disabled, execState, onSubmit: onSubmitBase, uc, }) {
     const { form } = useStyleContext();
     const formRef = useRef(null);
     const onSubmit = async (e) => {
@@ -13,5 +13,5 @@ export function UCForm({ clearAfterExec, disabled, execState, onChange, onSubmit
             formRef.current?.reset();
         }
     };
-    return (_jsxs("form", { className: form?.className, onSubmit: onSubmit, ref: formRef, style: form?.style, children: [uc.inputFieldsForForm().map((f) => (_jsx(UCFormField, { disabled: disabled, execState: execState, f: f, onChange: onChange }, f.key))), _jsx(UCFormSubmitControl, { disabled: disabled, execState: execState, uc: uc })] }));
+    return (_jsxs("form", { className: form?.className, onSubmit: onSubmit, ref: formRef, style: form?.style, children: [uc.inputFieldsForForm().map((f) => (_jsx(UCFormField, { disabled: disabled, execState: execState, f: f }, f.key))), _jsx(UCFormSubmitControl, { disabled: disabled, execState: execState, uc: uc })] }));
 }

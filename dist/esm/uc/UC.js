@@ -1,6 +1,6 @@
 import { TFile, Validation } from '../dt/index.js';
 import { isBlank } from '../utils/index.js';
-import { UCInputFieldChangeOperator, ucifIsMandatory, ucifIsSensitive, ucifMustBeFilledManually, } from './input-field.js';
+import { ucifIsMandatory, ucifIsSensitive, ucifMustBeFilledManually, } from './input-field.js';
 import { AggregateInputDef } from './io/input/AggregateInput.js';
 import { ListInputDef } from './io/input/ListInput.js';
 import { UCInputField } from './UCInputField.js';
@@ -40,7 +40,7 @@ export class UC {
     fill(input) {
         for (const f of this.inputFields) {
             const val = input[f.key];
-            f.setValue(UCInputFieldChangeOperator.SET, val);
+            f.setVal(val);
         }
         return this;
     }

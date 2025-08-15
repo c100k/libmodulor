@@ -1,22 +1,3 @@
-export var UCInputFieldChangeOperator;
-(function (UCInputFieldChangeOperator) {
-    /**
-     * Considering the cardinality of the field (min > 1), add a new value
-     */
-    UCInputFieldChangeOperator["ADD"] = "ADD";
-    /**
-     * Considering the cardinality of the field (min > 1), remove a value
-     */
-    UCInputFieldChangeOperator["REMOVE"] = "REMOVE";
-    /**
-     * Reset the value of the field
-     */
-    UCInputFieldChangeOperator["RESET"] = "RESET";
-    /**
-     * Considering the cardinality of the field (max <= 1), set the value
-     */
-    UCInputFieldChangeOperator["SET"] = "SET";
-})(UCInputFieldChangeOperator || (UCInputFieldChangeOperator = {}));
 export var UCInputFieldFillingMode;
 (function (UCInputFieldFillingMode) {
     /**

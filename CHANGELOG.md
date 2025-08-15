@@ -5,6 +5,7 @@
 **BREAKING**
 
 - Infer UC input field type without explicit generic when using `UC` methods like `inputField`, `reqVal0`, `rVal0`, `rValArr` : simply fix the TypeScript errors by removing the generic (e.g `uc.reqVal<DateISO8601>('from')` => `uc.reqVal('from')`)
+- Change `UCInputField.setValue` to `UCInputField.setVal`, `UCInputField.addVal`, `UCInputField.rmVal` : simply fix the TypeScript errors by replacing `setValue` to  the appropriate method. Also, `UCInputFieldChangeOperator` has been removed as it became useless. If you created custom `UCForm` field controls, you need to call the appropriate method to set the value in the field.
 
 **Added**
 

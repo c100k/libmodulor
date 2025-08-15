@@ -1,6 +1,6 @@
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 import { TBoolean } from '../../dt/index.js';
-import { UCInputFieldChangeOperator, ucifRepeatability, } from '../../uc/index.js';
+import { ucifRepeatability } from '../../uc/index.js';
 import { styleDef, useStyleContext, } from '../lib/react/StyleContextProvider.js';
 import { htmlInputDef } from '../lib/web/input.js';
 const CHECKED_FIELD_TYPES = ['checkbox', 'radio'];
@@ -27,7 +27,8 @@ export function UCFormFieldControl({ disabled, errMsg = null, execState, f, onCh
         if (target.localName === 'select' && !value) {
             // Prevent the value from being '' when we set/unset the select
             // Otherwise it sets '' as value and prevents the form for being valid
-            onChangeBase(f, UCInputFieldChangeOperator.RESET, value);
+            f.clear();
+            onChangeBase();
             return;
         }
         if (CHECKED_FIELD_TYPES.includes(type) && 'checked' in target) {
@@ -41,10 +42,12 @@ export function UCFormFieldControl({ disabled, errMsg = null, execState, f, onCh
             const valueArr = value
                 .split(MULTIPLE_VALUES_SEPARATOR)
                 .map((v) => v.trim());
-            onChangeBase(f, UCInputFieldChangeOperator.SET, valueArr);
+            f.setVal(valueArr);
+            onChangeBase();
         }
         else {
-            onChangeBase(f, UCInputFieldChangeOperator.SET, value);
+            f.setVal(value);
+            onChangeBase();
         }
     };
     const defaultChecked = attrs.internal?.checked;

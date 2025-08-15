@@ -5,18 +5,15 @@ export const UC_FORM_FIELD_ELEMENTS = [
     'err',
     'label',
 ];
-export function validateFormField(i18nManager, f, v) {
-    if (isBlank(v)) {
+export function validateFormField(i18nManager, f) {
+    if (isBlank(f.getValue())) {
         return null;
     }
-    const vArr = Array.isArray(v) ? v : [v];
-    for (const vv of vArr) {
-        const validation = f.def.type.assign(vv).validate();
-        const violation = validation.get();
-        if (violation) {
-            const [key, expected] = violation;
-            return i18nManager.t(key, { vars: { expected } });
-        }
+    const validation = f.validate();
+    const violation = validation.get();
+    if (violation) {
+        const [key, expected] = violation;
+        return i18nManager.t(key, { vars: { expected } });
     }
     return null;
 }

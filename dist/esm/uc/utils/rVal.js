@@ -21,7 +21,7 @@ export function reqVal0(value) {
     return val;
 }
 /**
- * Get the value as an array
+ * Read the value as an array
  *
  * To be used when the field has a 0..* cardinality.
  *

@@ -2,7 +2,7 @@ import { jsx as _jsx } from "react/jsx-runtime";
 import { useEffect, useState } from 'react';
 import { FlatList, Pressable, StyleSheet, Switch, Text, TextInput, } from 'react-native';
 import { TBoolean } from '../../dt/index.js';
-import { UCInputFieldChangeOperator, ucifRepeatability, } from '../../uc/index.js';
+import { ucifRepeatability } from '../../uc/index.js';
 import { isBlank } from '../../utils/index.js';
 import { styleDef, useStyleContext, } from '../lib/react/StyleContextProvider.js';
 import { rnInputDef } from '../lib/rn/input.js';
@@ -31,24 +31,30 @@ export function UCFormFieldControl({ disabled, errMsg = null, execState, f, onCh
             const valueArr = value
                 .split(MULTIPLE_VALUES_SEPARATOR)
                 .map((v) => v.trim());
-            onChangeBase(f, UCInputFieldChangeOperator.SET, valueArr);
+            f.setVal(valueArr);
+            onChangeBase();
+            setInternalValue(valueArr);
         }
         else {
-            onChangeBase(f, UCInputFieldChangeOperator.SET, value);
+            f.setVal(value);
+            onChangeBase();
+            setInternalValue(value);
         }
-        setInternalValue(value);
     };
     const onSelect = (value) => {
         if (internalValue === value) {
-            onChangeBase(f, UCInputFieldChangeOperator.RESET, null);
+            f.clear();
+            onChangeBase();
             setInternalValue(null);
             return;
         }
-        onChangeBase(f, UCInputFieldChangeOperator.SET, value);
+        f.setVal(value);
+        onChangeBase();
         setInternalValue(value);
     };
     const onValueChange = (value) => {
-        onChangeBase(f, UCInputFieldChangeOperator.SET, value);
+        f.setVal(value);
+        onChangeBase();
         setInternalValue(value);
     };
     const attrs = rnInputDef(f, disabled, errMsg);

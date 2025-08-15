@@ -13,7 +13,7 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 import { inject, injectable } from 'inversify';
 import { I18nEN } from '../i18n/locales/en.js';
 import { I18nFR } from '../i18n/locales/fr.js';
-import { FAKE_USER_ADMIN, UCBuilder, UCInputFieldChangeOperator, ucHTTPContract, } from '../uc/index.js';
+import { FAKE_USER_ADMIN, UCBuilder, ucHTTPContract, } from '../uc/index.js';
 // We inject directly the implementation because we'll generate all the reports and not only the one that is bound to the interface.
 // We can plan a setting à la Vitest where we specify the types of reports to generate though.
 import { SimpleHTMLAppTestReportEmitter } from './impl/SimpleHTMLAppTestReportEmitter.js';
@@ -138,9 +138,7 @@ let AppTester = class AppTester {
                     const inputOverrides = inputOverride(output);
                     for (const [k, v] of Object.entries(inputOverrides)) {
                         // @ts-expect-error
-                        uc.inputField(k).setValue(UCInputFieldChangeOperator.SET, 
-                        // @ts-expect-error
-                        v);
+                        uc.inputField(k).setVal(v);
                     }
                 }
             };

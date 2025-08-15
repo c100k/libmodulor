@@ -14,7 +14,7 @@ var CommandExecutor_1;
 import { inject, injectable } from 'inversify';
 import { WordingManager } from '../../../i18n/index.js';
 import { FSManagerItemInfoType, } from '../../../std/index.js';
-import { UCInputFieldChangeOperator, ucifMustBeFilledManually, } from '../../../uc/index.js';
+import { ucifMustBeFilledManually, } from '../../../uc/index.js';
 import { print, printError } from './renderer.js';
 let CommandExecutor = class CommandExecutor {
     static { CommandExecutor_1 = this; }
@@ -89,7 +89,7 @@ let CommandExecutor = class CommandExecutor {
             const invite = `${label}${help}`;
             await this.promptManager.prompt(invite, {
                 validate: async (v) => {
-                    f.setValue(UCInputFieldChangeOperator.SET, v);
+                    f.setVal(v);
                     const validation = f.validate();
                     const violation = validation.get();
                     if (!violation) {

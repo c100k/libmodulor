@@ -50,7 +50,6 @@ export * from './utils/rInput.js';
 export * from './utils/rVal.js';
 export * from './utils/stripUCDLifecycleServer.js';
 export * from './utils/ucHTTPContract.js';
-export * from './utils/ucifcoIsForArray.js';
 export * from './utils/ucMountingPoint.js';
 export * from './value.js';
 export * from './workers/SimpleAggregateFinder.js';

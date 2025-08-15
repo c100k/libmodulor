@@ -27,9 +27,6 @@ export function UCPanel({ autoExec = false, clearAfterExec = true, onDone, onErr
         },
         sleepInMs,
     });
-    const onChange = (f, op, v) => {
-        f.setValue(op, v);
-    };
     const clear = () => {
         if (!clearAfterExec) {
             return;
@@ -46,7 +43,6 @@ export function UCPanel({ autoExec = false, clearAfterExec = true, onDone, onErr
     return (_jsxs(UCContainer, { uc: uc, children: [autoExec && ctx.disabled && renderAutoExecLoader(), !autoExec && (_jsxs(_Fragment, { children: [needsInputFilling &&
                         renderForm({
                             ...ctx,
-                            onChange,
                             onSubmit: exec,
                         }), !needsInputFilling &&
                         renderExecTouchable({

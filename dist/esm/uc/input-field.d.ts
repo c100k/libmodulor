@@ -1,24 +1,6 @@
 import type { DataType, TBase, UIntQuantity } from '../dt/index.js';
 import type { UCFieldKey } from './def.js';
 import type { Value } from './value.js';
-export declare enum UCInputFieldChangeOperator {
-    /**
-     * Considering the cardinality of the field (min > 1), add a new value
-     */
-    ADD = "ADD",
-    /**
-     * Considering the cardinality of the field (min > 1), remove a value
-     */
-    REMOVE = "REMOVE",
-    /**
-     * Reset the value of the field
-     */
-    RESET = "RESET",
-    /**
-     * Considering the cardinality of the field (max <= 1), set the value
-     */
-    SET = "SET"
-}
 export declare enum UCInputFieldFillingMode {
     /**
      * Set programmatically on behalf of the user (e.g. a foreign key id for a given object)

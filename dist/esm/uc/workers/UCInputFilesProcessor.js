@@ -12,7 +12,7 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 };
 import { inject, injectable } from 'inversify';
 import { TFile } from '../../dt/index.js';
-import { UCInputFieldChangeOperator, ucifRepeatability, } from '../input-field.js';
+import { ucifRepeatability } from '../input-field.js';
 import { rVal0, rValArr } from '../utils/rVal.js';
 let UCInputFilesProcessor = class UCInputFilesProcessor {
     clockManager;
@@ -45,13 +45,13 @@ let UCInputFilesProcessor = class UCInputFilesProcessor {
                 // Although the field is a file, here we fill it with the refs (for persistence)
                 // TODO : Improve the mgmt of FileNameRef vs actual File at the use case level
                 // I think we need to introduce another value, something like `setValueSerialized` or similar.
-                field.setValue(UCInputFieldChangeOperator.SET, fileNameRefs);
+                field.setVal(fileNameRefs);
             }
             else {
                 const file = rVal0(field.getValue());
                 if (file) {
                     const fileNameRef = await this.processFile(file);
-                    field.setValue(UCInputFieldChangeOperator.SET, fileNameRef);
+                    field.setVal(fileNameRef);
                 }
             }
         }

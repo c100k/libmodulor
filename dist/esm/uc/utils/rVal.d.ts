@@ -20,7 +20,7 @@ export declare function rVal0<T>(value: Value<T>, or?: undefined): T | null;
  */
 export declare function reqVal0<T>(value: Value<T>): T;
 /**
- * Get the value as an array
+ * Read the value as an array
  *
  * To be used when the field has a 0..* cardinality.
  *

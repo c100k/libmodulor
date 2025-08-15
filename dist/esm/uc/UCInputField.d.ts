@@ -1,6 +1,6 @@
 import { type DataType, Validation } from '../dt/index.js';
 import type { UCFieldKey, UCWording } from './def.js';
-import { UCInputFieldChangeOperator, type UCInputFieldDef, type UCInputFieldValue } from './input-field.js';
+import { type UCInputFieldDef, type UCInputFieldValue } from './input-field.js';
 import { type reqVal0, rVal0, rValArr } from './utils/rVal.js';
 export declare class UCInputField<T extends DataType> {
     key: UCFieldKey;
@@ -13,7 +13,9 @@ export declare class UCInputField<T extends DataType> {
     private dynamicWording;
     private value;
     constructor(key: UCFieldKey, def: UCInputFieldDef<T>);
+    addVal(value: UCInputFieldValue<T>): void;
     clear(): void;
+    fillWithExample(): void;
     getDynamicWording(): Partial<UCWording> | undefined;
     getValue(): UCInputFieldValue<T>;
     /**
@@ -35,14 +37,15 @@ export declare class UCInputField<T extends DataType> {
      */
     reqVal0(): ReturnType<typeof reqVal0<T>>;
     /**
-     * Require the value as an array
+     * Read the value as an array
      *
      * Unlink the standalone {@link rValArr}, it returns the default value in an array if present.
      *
      * @returns
      */
     rValArr(): ReturnType<typeof rValArr<T>>;
-    setValue(op: UCInputFieldChangeOperator, value: UCInputFieldValue<T>): void;
+    rmVal(value: UCInputFieldValue<T>): void;
+    setVal(value: UCInputFieldValue<T>): void;
     updateDef(def: UCInputFieldDef<T>): void;
     updateDynamicWording(dynamicWording: Partial<UCWording> | undefined): void;
     updateType(type: UCInputFieldDef<T>['type']): void;

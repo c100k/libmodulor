@@ -1,5 +1,5 @@
 import { TFile } from '../dt/index.js';
-import { UCInputFieldChangeOperator, ucifIsMandatory, ucifMustBeFilledManually, ucifRepeatability, } from '../uc/index.js';
+import { ucifIsMandatory, ucifMustBeFilledManually, ucifRepeatability, } from '../uc/index.js';
 export const DEFAULT_UC_INPUT_FILLERS = [
     'ALL_WITH_EXAMPLES',
     'ONLY_MANDATORY_WITH_EXAMPLES',
@@ -36,19 +36,20 @@ export function onlySetProgrammaticallyWithExamples(uc) {
 // biome-ignore lint/suspicious/noExplicitAny: can be anything
 function fillWithExample(f) {
     const { type } = f.def;
-    let val = type.getExamples()?.[0] ?? type.example();
     if (type instanceof TFile) {
-        const file = val;
+        const example = type.getExamples()?.[0] ?? type.example();
         // TODO : Consider building a real file with real data (e.g. image, pdf, txt, etc.)
-        val = new File(['01010101010101010101010101010101'], file.path, {
-            type: file.type,
+        const val = new File(['01010101010101010101010101010101'], example.path, {
+            type: example.type,
         });
+        const [isRepeatable] = ucifRepeatability(f.def);
+        if (isRepeatable) {
+            f.addVal(val);
+        }
+        else {
+            f.setVal(val);
+        }
+        return;
     }
-    const [isRepeatable] = ucifRepeatability(f.def);
-    if (isRepeatable) {
-        f.setValue(UCInputFieldChangeOperator.ADD, val);
-    }
-    else {
-        f.setValue(UCInputFieldChangeOperator.SET, val);
-    }
+    f.fillWithExample();
 }
