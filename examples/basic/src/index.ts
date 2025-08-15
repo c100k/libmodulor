@@ -25,7 +25,6 @@ import {
     type UCDataStore,
     type UCDef,
     type UCInput,
-    UCInputFieldChangeOperator,
     type UCInputFieldValue,
     type UCMain,
     type UCMainInput,
@@ -170,9 +169,7 @@ try {
 }
 
 print('Filling a valid email');
-registerUC
-    .inputField('email')
-    .setValue(UCInputFieldChangeOperator.SET, new TEmail().example());
+registerUC.inputField('email').fillWithExample();
 
 try {
     ucor = await ucManager.execClient(registerUC);
