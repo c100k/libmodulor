@@ -63,12 +63,12 @@ class SearchAccomodationClientMain
     }: UCMainInput<SearchAccomodationInput, SearchAccomodationOPI0>): Promise<
         UCOutputOrNothing<SearchAccomodationOPI0>
     > {
-        const adultsCount = uc.reqVal0<UIntQuantity>('adultsCount');
-        const childrenCount = uc.reqVal0<UIntQuantity>('childrenCount');
-        const country = uc.reqVal0<CountryISO3166Alpha2>('country');
-        const from = uc.reqVal0<DateISO8601>('from');
-        const roomsCount = uc.reqVal0<UIntQuantity>('roomsCount');
-        const to = uc.reqVal0<DateISO8601>('to');
+        const adultsCount = uc.reqVal0('adultsCount');
+        const childrenCount = uc.reqVal0('childrenCount');
+        const country = uc.reqVal0('country');
+        const from = uc.reqVal0('from');
+        const roomsCount = uc.reqVal0('roomsCount');
+        const to = uc.reqVal0('to');
 
         if (from.localeCompare(to) >= 0) {
             throw new IllegalArgumentError(
