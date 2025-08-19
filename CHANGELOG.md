@@ -15,6 +15,10 @@
 
 - Display expected falsy values in violation
 
+**Misc**
+
+- Expose `TGitSSHURLConstraints`
+
 ## v0.20.0 (2025-07-26)
 
 **Added**
