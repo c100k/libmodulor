@@ -92,13 +92,13 @@ let UCExecutor = class UCExecutor {
             if (Array.isArray(v)) {
                 v.forEach((vv, idx) => {
                     if (vv instanceof File) {
-                        // @ts-ignore
+                        // @ts-expect-error
                         input[k][idx] = this.derandomizeInputFile(vv);
                     }
                 });
             }
             else if (v instanceof File) {
-                // @ts-ignore
+                // @ts-expect-error
                 input[k] = this.derandomizeInputFile(v);
             }
         }

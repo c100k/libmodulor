@@ -186,7 +186,7 @@ describe('Run', async () => {
                         expect(out).toSatisfy(assertion);
                     } else {
                         expect({ out, sideEffects }).toMatchSnapshot(
-                            \`hash = \${hash\}\`,
+                            \`hash = \${hash}\`,
                         );
                     }
                 },
@@ -223,7 +223,7 @@ describe('Run', async () => {
                     }
 
                     public toString(): string {
-                        return \`\${ucd.metadata.name\}(\${JSON.stringify(this.input)\})\`;
+                        return \`\${ucd.metadata.name}(\${JSON.stringify(this.input)})\`;
                     }
                 }
 

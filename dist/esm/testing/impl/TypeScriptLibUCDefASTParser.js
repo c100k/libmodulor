@@ -92,9 +92,9 @@ let TypeScriptLibUCDefASTParser = class TypeScriptLibUCDefASTParser {
                 target)],
         };
         this.compilerOptions.incremental = false; // Otherwise it triggers the following error : Option '--incremental' can only be specified using tsconfig, emitting to single file or when option '--tsBuildInfoFile' is specified.
-        // @ts-ignore
+        // @ts-expect-error
         this.compilerOptions.jsx = undefined; // Otherwise it triggers the following error since TS 5.5 : jsx is a string value; tsconfig JSON must be parsed with parseJsonSourceFileConfigFileContent or getParsedCommandLineOfConfigFile before passing to createProgram
-        // @ts-ignore
+        // @ts-expect-error
         this.compilerOptions.lib = undefined; // Otherwise it triggers errors saying it does not find them
     }
     getTypeFields(node) {

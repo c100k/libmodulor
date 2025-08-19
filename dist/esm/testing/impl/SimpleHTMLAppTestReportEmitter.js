@@ -140,7 +140,7 @@ const template = (appPath, testResults, testSummary) => `<!DOCTYPE html>
                 const search = new URLSearchParams(window.location.search);
                 const status = search.get('status');
                 if (status) {
-                    document.querySelectorAll(\`table tbody tr:not(.\${status\})\`).forEach((n) => n.remove());
+                    document.querySelectorAll(\`table tbody tr:not(.\${status})\`).forEach((n) => n.remove());
                 }
             </script>
         </table>

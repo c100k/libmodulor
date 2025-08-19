@@ -17,7 +17,7 @@ import { injectable } from 'inversify';
 let FetchHTTPAPICallExecutor = class FetchHTTPAPICallExecutor {
     fn() {
         // The generalization in HTTPAPICallExecutor is not exactly the same as the actual implementation
-        // @ts-ignore
+        // @ts-expect-error
         return fetch;
     }
 };

@@ -68,8 +68,8 @@ let ConsoleLogger = class ConsoleLogger {
         console.warn(`${this.t()} [warn] ${message}`, ...meta);
     }
     shouldLog(level) {
-        const configLevelIndex = ConsoleLogger_1.LEVELS.findIndex((l) => l === this.s().logger_level);
-        const levelIndex = ConsoleLogger_1.LEVELS.findIndex((l) => l === level);
+        const configLevelIndex = ConsoleLogger_1.LEVELS.indexOf(this.s().logger_level);
+        const levelIndex = ConsoleLogger_1.LEVELS.indexOf(level);
         return levelIndex >= configLevelIndex;
     }
     t() {

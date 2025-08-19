@@ -20,7 +20,7 @@ let NodeFormDataBuilder = class NodeFormDataBuilder {
                 });
                 rs.on('end', () => {
                     fd.append(key, 
-                    // @ts-ignore
+                    // @ts-expect-error
                     new Blob(chunks, { type: val.type }), basename(val.uri));
                     resolve(null);
                 });

@@ -177,7 +177,7 @@ let SimpleHTTPAPICaller = class SimpleHTTPAPICaller {
                 payload = {};
                 // TODO : Find a better way to do this (without adding any external dependency because the code must be portable)
                 new URL(`http://localhost?${asText}`).searchParams.forEach((v, k) => {
-                    // @ts-ignore
+                    // @ts-expect-error
                     payload[k] = v;
                 });
             }
