@@ -5,9 +5,7 @@ import {
     allWithExamples,
     bindCommon,
     type CryptoManager,
-    type DateISO8601,
     type UC,
-    UCInputFieldChangeOperator,
 } from 'libmodulor';
 import { bindNodeCore, NodeDeterministicCryptoManager } from 'libmodulor/node';
 import { SimpleAppTesterConfigurator } from 'libmodulor/node-test';
@@ -58,10 +56,7 @@ export class Configurator extends SimpleAppTesterConfigurator {
                         uc: UC<SearchAccomodationInput, SearchAccomodationOPI0>,
                     ): void => {
                         allWithExamples(uc);
-                        uc.inputField<DateISO8601>('to').setValue(
-                            UCInputFieldChangeOperator.SET,
-                            uc.reqVal0<DateISO8601>('from'),
-                        );
+                        uc.inputField('to').setVal(uc.reqVal0('from'));
                     },
                 },
             ],
@@ -72,10 +67,7 @@ export class Configurator extends SimpleAppTesterConfigurator {
                         uc: UC<SearchAccomodationInput, SearchAccomodationOPI0>,
                     ): void => {
                         allWithExamples(uc);
-                        uc.inputField<DateISO8601>('to').setValue(
-                            UCInputFieldChangeOperator.SET,
-                            '2022-07-12',
-                        );
+                        uc.inputField('to').setVal('2022-07-12');
                     },
                 },
             ],

@@ -61,9 +61,9 @@ class GenerateRunningMapFromStravaClientMain
         GenerateRunningMapFromStravaInput,
         GenerateRunningMapFromStravaOPI0
     >): Promise<UCOutput<GenerateRunningMapFromStravaOPI0>> {
-        const activitiesCount = uc.reqVal0<UIntQuantity>('activitiesCount');
-        const mapboxAccessToken = uc.reqVal0<ApiKey>('mapboxAccessToken');
-        const stravaAccessToken = uc.reqVal0<ApiKey>('stravaAccessToken');
+        const activitiesCount = uc.reqVal0('activitiesCount');
+        const mapboxAccessToken = uc.reqVal0('mapboxAccessToken');
+        const stravaAccessToken = uc.reqVal0('stravaAccessToken');
 
         // https://developers.strava.com/docs/reference/#api-Activities-getLoggedInAthleteActivities
         let items: {

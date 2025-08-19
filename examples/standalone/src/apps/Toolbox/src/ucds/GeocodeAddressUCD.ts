@@ -45,7 +45,7 @@ class GeocodeAddressClientMain
     }: UCMainInput<GeocodeAddressInput, GeocodeAddressOPI0>): Promise<
         UCOutputOrNothing<GeocodeAddressOPI0>
     > {
-        const address = uc.reqVal0<Address>('address');
+        const address = uc.reqVal0('address');
 
         const geolocation = await this.geocodingManager.geocode(address);
         let googleMapsURL: GeocodeAddressOPI0['googleMapsURL'] = null;

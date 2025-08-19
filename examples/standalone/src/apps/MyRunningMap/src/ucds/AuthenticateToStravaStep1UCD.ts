@@ -10,7 +10,7 @@ import {
     type UCInputFieldValue,
     type UCMain,
     type UCMainInput,
-    type URL as URLString,
+    type URL,
 } from 'libmodulor';
 
 import type { LinkManager } from '../lib/link/LinkManager.js';
@@ -30,8 +30,8 @@ class AuthenticateToStravaStep1ClientMain
     public async exec({
         uc,
     }: UCMainInput<AuthenticateToStravaStep1Input>): Promise<void> {
-        const clientId = uc.reqVal0<ExternalServiceId>('clientId');
-        const redirectURI = uc.reqVal0<URLString>('redirectURI');
+        const clientId = uc.reqVal0('clientId');
+        const redirectURI = uc.reqVal0('redirectURI');
 
         // Register the application
         // https://www.strava.com/settings/api
@@ -43,7 +43,7 @@ class AuthenticateToStravaStep1ClientMain
         url.searchParams.append('response_type', 'code');
         url.searchParams.append('scope', 'activity:read_all');
 
-        await this.linkManager.open(url.toString() as URLString, {
+        await this.linkManager.open(url.toString() as URL, {
             withinContext: true,
         });
     }
