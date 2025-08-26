@@ -12,7 +12,7 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 };
 import { inject, injectable } from 'inversify';
 import { APPS_ROOT_PATH, PRODUCTS_ROOT_PATH } from '../../../../convention.js';
-import { TDirPath, TFileName, TFreeTextShort, TSlug, } from '../../../../dt/index.js';
+import { TBoolean, TDirPath, TFileName, TFreeTextShort, TSlug, } from '../../../../dt/index.js';
 import { IllegalArgumentError } from '../../../../error/index.js';
 import { EverybodyUCPolicy, } from '../../../../uc/index.js';
 import { projectFiles } from '../lib/project.js';
@@ -32,17 +32,18 @@ let CreateProjectClientMain = class CreateProjectClientMain {
         const pkgManagerBin = uc.reqVal0('pkgManagerBin');
         const projectName = uc.reqVal0('projectName');
         const scmBin = uc.reqVal0('scmBin');
+        const verbose = uc.reqVal0('verbose');
         await this.assertBinPresence(pkgManagerBin);
         await this.assertBinPresence(scmBin);
         const cwd = this.fsManager.path(outPath, projectName);
         // TODO : Rollback the whole thing in case of failure
         await this.createRootDir(cwd);
-        await this.initRepository(scmBin, cwd);
+        await this.initRepository(scmBin, cwd, verbose);
         await this.createConfigFiles(projectName, cwd);
         await this.createDirs(cwd);
-        await this.installDeps(pkgManagerBin, cwd);
-        await this.commit(scmBin, initialCommit, cwd);
-        await this.runDevCmds(pkgManagerBin, cwd);
+        await this.installDeps(pkgManagerBin, cwd, verbose);
+        await this.commit(scmBin, initialCommit, cwd, verbose);
+        await this.runDevCmds(pkgManagerBin, cwd, verbose);
         this.logger.info('Done ! Project ready ! ✅ 🚀');
     }
     async assertBinPresence(bin) {
@@ -56,7 +57,7 @@ let CreateProjectClientMain = class CreateProjectClientMain {
             throw new IllegalArgumentError(`'${bin}' seems missing. Is it installed on your machine ?`);
         }
     }
-    async commit(scmBin, initialCommit, cwd) {
+    async commit(scmBin, initialCommit, cwd, verbose) {
         this.logger.info('Committing');
         const cmdArgs = [
             ['branch', '-M', 'master'],
@@ -66,7 +67,7 @@ let CreateProjectClientMain = class CreateProjectClientMain {
         for await (const args of cmdArgs) {
             await this.shellCommandExecutor.exec({
                 bin: scmBin,
-                opts: { args, cwd },
+                opts: { args, cwd, streamData: verbose },
             });
         }
     }
@@ -90,30 +91,30 @@ let CreateProjectClientMain = class CreateProjectClientMain {
         this.logger.info('Creating root dir : %s', cwd);
         await this.fsManager.mkdir(cwd, { recursive: true });
     }
-    async initRepository(scmBin, cwd) {
+    async initRepository(scmBin, cwd, verbose) {
         const cmd = 'init';
         this.logger.info('Initializing repository : %s %s', scmBin, cmd);
         await this.shellCommandExecutor.exec({
             bin: scmBin,
-            opts: { args: [cmd], cwd },
+            opts: { args: [cmd], cwd, streamData: verbose },
         });
     }
-    async installDeps(pkgManagerBin, cwd) {
+    async installDeps(pkgManagerBin, cwd, verbose) {
         const cmd = 'install';
         this.logger.info('Installing dependencies : %s %s', pkgManagerBin, cmd);
         await this.shellCommandExecutor.exec({
             bin: pkgManagerBin,
-            opts: { args: [cmd], cwd },
+            opts: { args: [cmd], cwd, streamData: verbose },
         });
     }
-    async runDevCmds(pkgManagerBin, cwd) {
+    async runDevCmds(pkgManagerBin, cwd, verbose) {
         const cmd = 'run';
         const scripts = ['lint', 'test'];
         for await (const script of scripts) {
             this.logger.info('Running dev command : %s %s %s', pkgManagerBin, cmd, script);
             await this.shellCommandExecutor.exec({
                 bin: pkgManagerBin,
-                opts: { args: [cmd, script], cwd },
+                opts: { args: [cmd, script], cwd, streamData: verbose },
             });
         }
     }
@@ -169,6 +170,12 @@ export const CreateProjectUCD = {
                     type: new TFileName()
                         .setDefaultValue('git')
                         .setExamples(['git']),
+                },
+                verbose: {
+                    cardinality: {
+                        min: 0,
+                    },
+                    type: new TBoolean().setDefaultValue(false),
                 },
             },
         },

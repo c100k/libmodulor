@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## v0.22.0 (unreleased)
+
+**Added**
+
+- Add `verbose` option to `CreateProject` : `pnpm libmodulor CreateProject --outPath ~/Downloads --projectName libmodulor-test --verbose`
+
 ## v0.21.0 (2025-08-19)
 
 **BREAKING**

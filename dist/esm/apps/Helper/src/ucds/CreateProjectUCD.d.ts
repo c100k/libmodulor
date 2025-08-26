@@ -7,6 +7,7 @@ export interface CreateProjectInput extends UCInput {
     pkgManagerBin: UCInputFieldValue<FileName>;
     projectName: UCInputFieldValue<Slug>;
     scmBin: UCInputFieldValue<FileName>;
+    verbose: UCInputFieldValue<boolean>;
 }
 export declare class CreateProjectClientMain implements UCMain<CreateProjectInput> {
     private fsManager;
