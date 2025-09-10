@@ -22,7 +22,7 @@
         "@hono/node-server": "^1.19.1",
         "@modelcontextprotocol/sdk": "^1.17.5",
         "@tailwindcss/vite": "^4.1.13",
-        "daisyui": "^5.1.8",
+        "daisyui": "^5.1.9",
         "expo": "^53.0.22",
         "hono": "^4.9.6",
         "inversify": "^7.9.1",
@@ -56,6 +56,6 @@
         "vite": "^6.3.6",
         "vite-bundle-visualizer": "^1.2.1",
         "vitest": "^3.2.4",
-        "wrangler": "^4.34.0"
+        "wrangler": "^4.35.0"
     }
 }

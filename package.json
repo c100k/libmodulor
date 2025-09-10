@@ -81,7 +81,7 @@
         "lint:ci": "biome check"
     },
     "devDependencies": {
-        "@biomejs/biome": "^2.2.0"
+        "@biomejs/biome": "^2.2.3"
     },
     "peerDependencies": {
         "@hono/node-server": "^1.19.1",
