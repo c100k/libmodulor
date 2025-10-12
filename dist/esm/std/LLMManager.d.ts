@@ -8,6 +8,7 @@ export interface LLMManagerSendOpts {
     auth?: {
         apiKey?: ApiKey;
     };
+    onPartialOutput?: (chunk: LLMManagerSendRes) => void;
 }
 export interface LLMManagerSendReq {
     messages: {
@@ -19,11 +20,21 @@ export interface LLMManagerSendReq {
         role: 'assistant' | 'developer' | 'system' | 'user';
     }[];
     model: LLMManagerModel;
-    temperature?: LLMManagerTemperature;
+    stream?: boolean | undefined;
+    temperature?: LLMManagerTemperature | undefined;
 }
 export interface LLMManagerSendRes {
     choices: {
-        message: {
+        /**
+         * Result chunk when stream is enabled
+         */
+        delta?: {
+            content: string;
+        };
+        /**
+         * Full result stream is not enabled
+         */
+        message?: {
             content: string;
         };
     }[];

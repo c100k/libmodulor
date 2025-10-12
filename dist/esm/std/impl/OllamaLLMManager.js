@@ -24,7 +24,7 @@ let OllamaLLMManager = class OllamaLLMManager {
             oll_base_url: this.settingsManager.get()('oll_base_url'),
         };
     }
-    async send(req) {
+    async send(req, opts) {
         const firstMessage = req.messages[0];
         if (!firstMessage) {
             throw new IllegalArgumentError('Please provide at least one message');
@@ -32,19 +32,30 @@ let OllamaLLMManager = class OllamaLLMManager {
         return await this.httpAPICaller.exec({
             errBuilder: async (error) => error.error,
             method: 'POST',
-            outputBuilder: async (res) => ({
-                choices: [{ message: { content: res.response } }],
-            }),
+            onPartialOutput: (res) => {
+                opts?.onPartialOutput?.(res);
+            },
+            outputBuilder: async (res) => this.toRes(req.stream, res),
             req: {
                 builder: async () => ({
                     model: req.model,
                     prompt: firstMessage.content,
-                    stream: false,
+                    stream: req.stream ?? false,
                 }),
                 envelope: 'json',
             },
             urlBuilder: async () => `${this.s().oll_base_url}/api/generate`,
         });
+    }
+    toRes(stream, res) {
+        if (stream) {
+            return {
+                choices: [{ delta: { content: res.response } }],
+            };
+        }
+        return {
+            choices: [{ message: { content: res.response } }],
+        };
     }
 };
 OllamaLLMManager = __decorate([

@@ -12,23 +12,27 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 };
 import { inject, injectable } from 'inversify';
 import { CustomError, IllegalArgumentError } from '../../error/index.js';
-import { HTTPRequestBuilder } from '../../utils/index.js';
+import { HTTPRequestBuilder, NDJSONStreamManager, SSEStreamManager, } from '../../utils/index.js';
 let SimpleHTTPAPICaller = class SimpleHTTPAPICaller {
     bufferManager;
     httpAPICallExecutor;
     httpAPICallExecutorAgentBuilder;
     httpRequestBuilder;
     logger;
+    ndJSONStreamManager;
+    sseStreamManager;
     xmlManager;
-    constructor(bufferManager, httpAPICallExecutor, httpAPICallExecutorAgentBuilder, httpRequestBuilder, logger, xmlManager) {
+    constructor(bufferManager, httpAPICallExecutor, httpAPICallExecutorAgentBuilder, httpRequestBuilder, logger, ndJSONStreamManager, sseStreamManager, xmlManager) {
         this.bufferManager = bufferManager;
         this.httpAPICallExecutor = httpAPICallExecutor;
         this.httpAPICallExecutorAgentBuilder = httpAPICallExecutorAgentBuilder;
         this.httpRequestBuilder = httpRequestBuilder;
         this.logger = logger;
+        this.ndJSONStreamManager = ndJSONStreamManager;
+        this.sseStreamManager = sseStreamManager;
         this.xmlManager = xmlManager;
     }
-    async exec({ additionalHeadersBuilder, authorizationHeader, basicAuth, contentType = 'application/json', errBuilder, method, opts, outputBuilder, req, urlBuilder, unknownErrorMessage = CustomError.ERROR_UNKNOWN, }) {
+    async exec({ additionalHeadersBuilder, authorizationHeader, basicAuth, contentType = 'application/json', errBuilder, method, onPartialOutput, opts, outputBuilder, req, urlBuilder, unknownErrorMessage = CustomError.ERROR_UNKNOWN, }) {
         const baseURL = await urlBuilder();
         const data = (await req?.builder?.()) || {};
         const { body, url } = await this.httpRequestBuilder.exec({
@@ -66,17 +70,21 @@ let SimpleHTTPAPICaller = class SimpleHTTPAPICaller {
         }
         // Using .startsWith instead of === because the value can look like this 'application/json; charset=utf-8'
         const responseContentType = headers.get('Content-Type');
-        const isJSON = responseContentType?.startsWith('application/json');
         const isFormURLEncoded = responseContentType?.startsWith('application/x-www-form-urlencoded');
+        const isJSON = responseContentType?.startsWith('application/json');
+        const isNDJSON = responseContentType?.startsWith('application/x-ndjson');
+        const isSSE = responseContentType?.startsWith('text/event-stream');
         const isXML = responseContentType?.startsWith('text/xml');
         this.logger.trace('HTTPAPICaller', {
             isFormURLEncoded,
             isJSON,
+            isNDJSON,
+            isSSE,
             isXML,
         });
         const { ok, redirected } = response;
         if (ok || redirected) {
-            return this.processResGood({ opts, outputBuilder }, isFormURLEncoded, isJSON, isXML, response);
+            return this.processResGood({ onPartialOutput, opts, outputBuilder }, isFormURLEncoded, isJSON, isNDJSON, isSSE, isXML, response);
         }
         const errMsg = await this.processResBad({ errBuilder, opts }, isJSON, isXML, response);
         const message = errMsg ?? unknownErrorMessage;
@@ -163,9 +171,35 @@ let SimpleHTTPAPICaller = class SimpleHTTPAPICaller {
             return JSON.stringify(error);
         }
     }
-    async processResGood({ opts, outputBuilder, }, isFormURLEncoded, isJSON, isXML, response) {
+    async processResGood({ onPartialOutput, opts, outputBuilder, }, isFormURLEncoded, isJSON, isNDJSON, isSSE, isXML, response) {
         let payload;
-        if (isJSON) {
+        if (isNDJSON && onPartialOutput) {
+            await this.ndJSONStreamManager.exec({
+                onData: async (data) => {
+                    if (outputBuilder) {
+                        onPartialOutput(await outputBuilder(data));
+                    }
+                    else {
+                        onPartialOutput(data);
+                    }
+                },
+                reader: response.body.getReader(),
+            });
+        }
+        else if (isSSE && onPartialOutput) {
+            await this.sseStreamManager.exec({
+                onData: async (data) => {
+                    if (outputBuilder) {
+                        onPartialOutput(await outputBuilder(data));
+                    }
+                    else {
+                        onPartialOutput(data);
+                    }
+                },
+                reader: response.body.getReader(),
+            });
+        }
+        else if (isJSON) {
             payload = await response.json();
         }
         else {
@@ -204,7 +238,10 @@ SimpleHTTPAPICaller = __decorate([
     __param(2, inject('HTTPAPICallExecutorAgentBuilder')),
     __param(3, inject(HTTPRequestBuilder)),
     __param(4, inject('Logger')),
-    __param(5, inject('XMLManager')),
-    __metadata("design:paramtypes", [Object, Object, Object, HTTPRequestBuilder, Object, Object])
+    __param(5, inject(NDJSONStreamManager)),
+    __param(6, inject(SSEStreamManager)),
+    __param(7, inject('XMLManager')),
+    __metadata("design:paramtypes", [Object, Object, Object, HTTPRequestBuilder, Object, NDJSONStreamManager,
+        SSEStreamManager, Object])
 ], SimpleHTTPAPICaller);
 export { SimpleHTTPAPICaller };

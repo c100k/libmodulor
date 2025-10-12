@@ -5,6 +5,7 @@
 **Added**
 
 - Add `verbose` option to `CreateProject` : `pnpm libmodulor CreateProject --outPath ~/Downloads --projectName libmodulor-test --verbose`
+- Add stream ability to `LLMManager`
 
 ## v0.21.0 (2025-08-19)
 

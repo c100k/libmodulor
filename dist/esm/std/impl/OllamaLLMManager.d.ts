@@ -1,7 +1,10 @@
 import type { URL } from '../../dt/index.js';
 import type { HTTPAPICaller } from '../HTTPAPICaller.js';
-import type { LLMManager, LLMManagerSendReq, LLMManagerSendRes } from '../LLMManager.js';
+import type { LLMManager, LLMManagerSendOpts, LLMManagerSendReq, LLMManagerSendRes } from '../LLMManager.js';
 import type { Configurable, Settings, SettingsManager } from '../SettingsManager.js';
+interface OllamaGenerateRes {
+    response: NonNullable<LLMManagerSendRes['choices'][0]['message']>['content'];
+}
 /**
  * Unlike the "commercial" APIs, Ollama does not secure the API with an API key
  * @see https://github.com/ollama/ollama/issues/849
@@ -15,6 +18,7 @@ export declare class OllamaLLMManager implements Configurable<S>, LLMManager {
     private settingsManager;
     constructor(httpAPICaller: HTTPAPICaller, settingsManager: SettingsManager<S>);
     s(): OllamaLLMManagerSettings;
-    send(req: LLMManagerSendReq): Promise<LLMManagerSendRes>;
+    send(req: LLMManagerSendReq, opts?: LLMManagerSendOpts): Promise<LLMManagerSendRes>;
+    toRes(stream: LLMManagerSendReq['stream'], res: OllamaGenerateRes): LLMManagerSendRes;
 }
 export {};

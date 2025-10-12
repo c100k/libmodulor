@@ -36,9 +36,15 @@ let MistralAILLMManager = class MistralAILLMManager {
                 if ('message' in error) {
                     return error.message;
                 }
+                if (typeof error.detail === 'string') {
+                    return error.detail;
+                }
                 return error.detail.map((d) => d.msg).join('\n');
             },
             method: 'POST',
+            onPartialOutput: (res) => {
+                opts?.onPartialOutput?.(res);
+            },
             req: {
                 builder: async () => req,
                 envelope: 'json',

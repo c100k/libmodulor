@@ -17,15 +17,23 @@ export type HTTPAPICallExecutorFunc<Res> = (url: URL | URLString, info?: {
     headers?: HTTPAPICallerHeaders;
     method?: HTTPMethod;
 }) => Promise<HTTPAPICallExecutorResponse<Res>>;
+export interface HTTPAPICallExecutorResBody {
+    getReader(): {
+        read: () => Promise<{
+            done: boolean;
+            value: Uint8Array;
+        }>;
+    };
+    readable: boolean;
+}
+export interface HTTPAPICallExecutorResHeaders {
+    entries(): IterableIterator<[string, string]>;
+    get: (name: 'Content-Type') => HTTPContentType;
+}
 export interface HTTPAPICallExecutorResponse<Res> {
     arrayBuffer(): Promise<Buffer>;
-    body: {
-        readable: boolean;
-    };
-    headers: {
-        entries(): IterableIterator<[string, string]>;
-        get: (name: 'Content-Type') => HTTPContentType;
-    };
+    body: HTTPAPICallExecutorResBody;
+    headers: HTTPAPICallExecutorResHeaders;
     json: () => Promise<Res>;
     ok: boolean;
     redirected: boolean;

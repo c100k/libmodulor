@@ -34,6 +34,9 @@ let OpenAILLMManager = class OpenAILLMManager {
             },
             errBuilder: async (error) => error.error.message,
             method: 'POST',
+            onPartialOutput: (res) => {
+                opts?.onPartialOutput?.(res);
+            },
             req: {
                 builder: async () => req,
                 envelope: 'json',

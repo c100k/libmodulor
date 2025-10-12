@@ -26,19 +26,27 @@ let FakeHTTPAPICallExecutor = class FakeHTTPAPICallExecutor {
             }
             const key = (typeof url === 'string' ? url : url.toString());
             const content = this.entries.get(key);
+            const body = {
+                getReader: () => ({
+                    read: async () => ({
+                        done: true,
+                        value: new Uint8Array(),
+                    }),
+                }),
+                readable: true,
+            };
+            const headers = {
+                entries: () => [
+                    ['Content-Type', 'application/json'],
+                ].values(),
+                get: (_) => 'application/json',
+            };
             if (!content) {
                 const message = `Endpoint ${url} not defined in FakeHTTPAPICallExecutor.entries`;
                 return {
                     arrayBuffer: async () => Buffer.from(''),
-                    body: {
-                        readable: true,
-                    },
-                    headers: {
-                        entries: () => [
-                            ['Content-Type', 'application/json'],
-                        ].values(),
-                        get: (_) => 'application/json',
-                    },
+                    body,
+                    headers,
                     json: async () => ({ message }),
                     ok: false,
                     redirected: false,
@@ -48,15 +56,8 @@ let FakeHTTPAPICallExecutor = class FakeHTTPAPICallExecutor {
             }
             return {
                 arrayBuffer: async () => Buffer.from(content),
-                body: {
-                    readable: true,
-                },
-                headers: {
-                    entries: () => [
-                        ['Content-Type', 'application/json'],
-                    ].values(),
-                    get: (_) => 'application/json',
-                },
+                body,
+                headers,
                 json: async () => JSON.parse(content),
                 ok: true,
                 redirected: false,

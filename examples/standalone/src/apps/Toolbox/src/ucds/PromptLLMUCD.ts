@@ -68,9 +68,9 @@ class PromptLLMClientMain implements UCMain<PromptLLMInput, PromptLLMOPI0> {
                 },
             },
         );
-        const res = choices.map((c) => c.message.content).join('\n');
 
         const id = this.cryptoManager.randomUUID();
+        const res = choices[0]?.message?.content ?? '';
 
         return new UCOutputBuilder<PromptLLMOPI0>()
             .add({

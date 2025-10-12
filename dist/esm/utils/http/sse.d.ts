@@ -1,0 +1,10 @@
+import type { UIntDuration } from '../../dt/index.js';
+import type { UCOPIBase, UCOutputPart } from '../../uc/index.js';
+export declare const SSE_HEADERS: [string, string][];
+export declare const SSE_DATA_PREFIX = "data:";
+export declare const SSE_DATA_SEP = "\n";
+export declare const SSE_MSG_SEP = "\n\n";
+export type SSEStreamDataCleanUpFunc = () => void;
+export declare function streamOPI<OPI extends UCOPIBase = UCOPIBase>(part: UCOutputPart<OPI>, onData: (data: string) => void, onDone: () => void, intervalInMS?: UIntDuration): SSEStreamDataCleanUpFunc | null;
+export declare function fmtSingleDataMsg<D extends object = object>(data: D): string;
+export declare function parseDataLine(line: string): string;
