@@ -1,6 +1,7 @@
 import { inject, injectable } from 'inversify';
 import {
     type ApiKey,
+    buildSingleItemOutput,
     type CryptoManager,
     EverybodyUCPolicy,
     type FreeTextLong,
@@ -8,7 +9,9 @@ import {
     type Slug,
     TApiKey,
     TFreeTextLong,
+    type TransportType,
     TSlug,
+    TTransportType,
     type UCDef,
     type UCInput,
     type UCInputFieldValue,
@@ -25,6 +28,7 @@ export interface PromptLLMInput extends UCInput {
     apiKey: UCInputFieldValue<ApiKey>;
     modelName: UCInputFieldValue<Slug>;
     prompt: UCInputFieldValue<FreeTextLong>;
+    transportType: UCInputFieldValue<TransportType>;
 }
 
 export interface PromptLLMOPI0 extends UCOPIBase {
@@ -39,6 +43,7 @@ class PromptLLMClientMain implements UCMain<PromptLLMInput, PromptLLMOPI0> {
     ) {}
 
     public async exec({
+        onPartialOutput,
         uc,
     }: UCMainInput<PromptLLMInput, PromptLLMOPI0>): Promise<
         UCOutput<PromptLLMOPI0>
@@ -46,8 +51,10 @@ class PromptLLMClientMain implements UCMain<PromptLLMInput, PromptLLMOPI0> {
         const apiKey = uc.reqVal0('apiKey');
         const modelName = uc.reqVal0('modelName');
         const prompt = uc.reqVal0('prompt');
+        const transportType = uc.reqVal0('transportType');
 
-        const { choices } = await this.llmManager.send(
+        // We don't destructure `choices` because it can be undefined if `stream` is `true`.
+        const response = await this.llmManager.send(
             {
                 messages: [
                     {
@@ -61,16 +68,36 @@ class PromptLLMClientMain implements UCMain<PromptLLMInput, PromptLLMOPI0> {
                     },
                 ],
                 model: modelName,
+                stream: transportType === 'stream',
             },
             {
                 auth: {
                     apiKey,
                 },
+                onPartialOutput: (chunk) => {
+                    onPartialOutput?.(
+                        buildSingleItemOutput({
+                            id: this.cryptoManager.randomUUID(),
+                            res: chunk.choices[0]?.delta?.content ?? '',
+                        }),
+                    );
+                },
             },
         );
 
+        let res = '';
+        switch (transportType) {
+            case 'standard':
+                res = response.choices[0]?.message?.content ?? '';
+                break;
+            case 'stream':
+                res = '<streamed>';
+                break;
+            default:
+                ((_: never): void => {})(transportType);
+        }
+
         const id = this.cryptoManager.randomUUID();
-        const res = choices[0]?.message?.content ?? '';
 
         return new UCOutputBuilder<PromptLLMOPI0>()
             .add({
@@ -108,6 +135,9 @@ export const PromptLLMUCD: UCDef<PromptLLMInput, PromptLLMOPI0> = {
                         .setInitialValue(
                             'Who won the FIFA World Cup in 1998 and 2018 ?',
                         ),
+                },
+                transportType: {
+                    type: new TTransportType().setInitialValue('standard'),
                 },
             },
         },

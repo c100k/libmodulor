@@ -1449,7 +1449,7 @@ exports[`Run > Use Cases > 'GeocodeAddress' > should execute with auth 'REGULAR'
 }
 `;
 
-exports[`Run > Use Cases > 'PromptLLM' > should execute with auth 'ADMIN' and input 'ALL_WITH_EXAMPLES' > hash = 3304deddf7e17d7dfd01c5e7e7ba3992e8cfbd34826529bc6fdbe1bcf93995bb 1`] = `
+exports[`Run > Use Cases > 'PromptLLM' > should execute with auth 'ADMIN' and input 'ALL_WITH_EXAMPLES' > hash = 7ec47dd357212993952748c262cc7b0d6e1cb8ff635cead234af68b7efe6f4e6 1`] = `
 {
   "out": {
     "args": {
@@ -1469,12 +1469,13 @@ exports[`Run > Use Cases > 'PromptLLM' > should execute with auth 'ADMIN' and in
       "inputFillerName": "ALL_WITH_EXAMPLES",
     },
     "err": null,
-    "hash": "3304deddf7e17d7dfd01c5e7e7ba3992e8cfbd34826529bc6fdbe1bcf93995bb",
+    "hash": "7ec47dd357212993952748c262cc7b0d6e1cb8ff635cead234af68b7efe6f4e6",
     "io": {
       "i": {
         "apiKey": "pk_bxa2HCdsT7CKwVSdem8fjS8rW",
         "modelName": "mistral-small-latest",
         "prompt": "Who won the FIFA World Cup in 1998 and 2018 ?",
+        "transportType": "standard",
       },
       "o": {
         "parts": {
@@ -1482,7 +1483,7 @@ exports[`Run > Use Cases > 'PromptLLM' > should execute with auth 'ADMIN' and in
             "items": [
               {
                 "id": "356a192b-7913-404c-9457-4d18c28d46e6",
-                "res": "I'm not able to process your request : {"messages":[{"content":"Answer only quick questions about Sports in general. Discard any other request.","role":"system"},{"content":"Who won the FIFA World Cup in 1998 and 2018 ?","role":"user"}],"model":"mistral-small-latest"}",
+                "res": "I'm not able to process your request : {"messages":[{"content":"Answer only quick questions about Sports in general. Discard any other request.","role":"system"},{"content":"Who won the FIFA World Cup in 1998 and 2018 ?","role":"user"}],"model":"mistral-small-latest","stream":false}",
               },
             ],
             "total": 1,
@@ -1495,7 +1496,7 @@ exports[`Run > Use Cases > 'PromptLLM' > should execute with auth 'ADMIN' and in
 }
 `;
 
-exports[`Run > Use Cases > 'PromptLLM' > should execute with auth 'ADMIN' and input 'ONLY_MANDATORY_WITH_EXAMPLES' > hash = 3a3cb51e3b2b0eb60c7bd23677a2e61eda72d971b220bf8be58fe55945bc7ca0 1`] = `
+exports[`Run > Use Cases > 'PromptLLM' > should execute with auth 'ADMIN' and input 'ONLY_MANDATORY_WITH_EXAMPLES' > hash = 8073381e2c6cfcd6fc4a673321db6945b1c33dae927286534d9d09b39505fa30 1`] = `
 {
   "out": {
     "args": {
@@ -1515,12 +1516,13 @@ exports[`Run > Use Cases > 'PromptLLM' > should execute with auth 'ADMIN' and in
       "inputFillerName": "ONLY_MANDATORY_WITH_EXAMPLES",
     },
     "err": null,
-    "hash": "3a3cb51e3b2b0eb60c7bd23677a2e61eda72d971b220bf8be58fe55945bc7ca0",
+    "hash": "8073381e2c6cfcd6fc4a673321db6945b1c33dae927286534d9d09b39505fa30",
     "io": {
       "i": {
         "apiKey": "pk_bxa2HCdsT7CKwVSdem8fjS8rW",
         "modelName": "mistral-small-latest",
         "prompt": "Who won the FIFA World Cup in 1998 and 2018 ?",
+        "transportType": "standard",
       },
       "o": {
         "parts": {
@@ -1528,7 +1530,7 @@ exports[`Run > Use Cases > 'PromptLLM' > should execute with auth 'ADMIN' and in
             "items": [
               {
                 "id": "356a192b-7913-404c-9457-4d18c28d46e6",
-                "res": "I'm not able to process your request : {"messages":[{"content":"Answer only quick questions about Sports in general. Discard any other request.","role":"system"},{"content":"Who won the FIFA World Cup in 1998 and 2018 ?","role":"user"}],"model":"mistral-small-latest"}",
+                "res": "I'm not able to process your request : {"messages":[{"content":"Answer only quick questions about Sports in general. Discard any other request.","role":"system"},{"content":"Who won the FIFA World Cup in 1998 and 2018 ?","role":"user"}],"model":"mistral-small-latest","stream":false}",
               },
             ],
             "total": 1,
@@ -1541,7 +1543,7 @@ exports[`Run > Use Cases > 'PromptLLM' > should execute with auth 'ADMIN' and in
 }
 `;
 
-exports[`Run > Use Cases > 'PromptLLM' > should execute with auth 'ADMIN' and input 'ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPL…' > hash = d634bec431e3bffd90829ea9d1f905dcbd38ba04d18a9314ab68a9fefa752a1d 1`] = `
+exports[`Run > Use Cases > 'PromptLLM' > should execute with auth 'ADMIN' and input 'ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPL…' > hash = 2b6596a954c3f762dd73b48e2c05c2e5cbd5d68ee0076297fce68e645b374ebc 1`] = `
 {
   "out": {
     "args": {
@@ -1561,12 +1563,13 @@ exports[`Run > Use Cases > 'PromptLLM' > should execute with auth 'ADMIN' and in
       "inputFillerName": "ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPLES",
     },
     "err": [IllegalArgumentError: Api Key must be filled],
-    "hash": "d634bec431e3bffd90829ea9d1f905dcbd38ba04d18a9314ab68a9fefa752a1d",
+    "hash": "2b6596a954c3f762dd73b48e2c05c2e5cbd5d68ee0076297fce68e645b374ebc",
     "io": {
       "i": {
         "apiKey": undefined,
         "modelName": undefined,
         "prompt": "Who won the FIFA World Cup in 1998 and 2018 ?",
+        "transportType": "standard",
       },
       "o": null,
     },
@@ -1575,7 +1578,7 @@ exports[`Run > Use Cases > 'PromptLLM' > should execute with auth 'ADMIN' and in
 }
 `;
 
-exports[`Run > Use Cases > 'PromptLLM' > should execute with auth 'ANONYMOUS' and input 'ALL_WITH_EXAMPLES' > hash = 61a9de30986f7f1a0a87acc285b90542d4e65cdcb4df340319a27fed0f693402 1`] = `
+exports[`Run > Use Cases > 'PromptLLM' > should execute with auth 'ANONYMOUS' and input 'ALL_WITH_EXAMPLES' > hash = 3705e7987010c0d67cc470fd500342fc54c485636ef50827e462060157e6532b 1`] = `
 {
   "out": {
     "args": {
@@ -1585,12 +1588,13 @@ exports[`Run > Use Cases > 'PromptLLM' > should execute with auth 'ANONYMOUS' an
       "inputFillerName": "ALL_WITH_EXAMPLES",
     },
     "err": null,
-    "hash": "61a9de30986f7f1a0a87acc285b90542d4e65cdcb4df340319a27fed0f693402",
+    "hash": "3705e7987010c0d67cc470fd500342fc54c485636ef50827e462060157e6532b",
     "io": {
       "i": {
         "apiKey": "pk_bxa2HCdsT7CKwVSdem8fjS8rW",
         "modelName": "mistral-small-latest",
         "prompt": "Who won the FIFA World Cup in 1998 and 2018 ?",
+        "transportType": "standard",
       },
       "o": {
         "parts": {
@@ -1598,7 +1602,7 @@ exports[`Run > Use Cases > 'PromptLLM' > should execute with auth 'ANONYMOUS' an
             "items": [
               {
                 "id": "356a192b-7913-404c-9457-4d18c28d46e6",
-                "res": "I'm not able to process your request : {"messages":[{"content":"Answer only quick questions about Sports in general. Discard any other request.","role":"system"},{"content":"Who won the FIFA World Cup in 1998 and 2018 ?","role":"user"}],"model":"mistral-small-latest"}",
+                "res": "I'm not able to process your request : {"messages":[{"content":"Answer only quick questions about Sports in general. Discard any other request.","role":"system"},{"content":"Who won the FIFA World Cup in 1998 and 2018 ?","role":"user"}],"model":"mistral-small-latest","stream":false}",
               },
             ],
             "total": 1,
@@ -1611,7 +1615,7 @@ exports[`Run > Use Cases > 'PromptLLM' > should execute with auth 'ANONYMOUS' an
 }
 `;
 
-exports[`Run > Use Cases > 'PromptLLM' > should execute with auth 'ANONYMOUS' and input 'ONLY_MANDATORY_WITH_EXAMPLES' > hash = 28623d419d8038745fc83151dab5db4dca451e41859e79f0b06f7ddd3ac8dc48 1`] = `
+exports[`Run > Use Cases > 'PromptLLM' > should execute with auth 'ANONYMOUS' and input 'ONLY_MANDATORY_WITH_EXAMPLES' > hash = f38640f5a0ef68090f4e63d21ec8fe706b6951f88aa5c5f729f8505e3a996cfa 1`] = `
 {
   "out": {
     "args": {
@@ -1621,12 +1625,13 @@ exports[`Run > Use Cases > 'PromptLLM' > should execute with auth 'ANONYMOUS' an
       "inputFillerName": "ONLY_MANDATORY_WITH_EXAMPLES",
     },
     "err": null,
-    "hash": "28623d419d8038745fc83151dab5db4dca451e41859e79f0b06f7ddd3ac8dc48",
+    "hash": "f38640f5a0ef68090f4e63d21ec8fe706b6951f88aa5c5f729f8505e3a996cfa",
     "io": {
       "i": {
         "apiKey": "pk_bxa2HCdsT7CKwVSdem8fjS8rW",
         "modelName": "mistral-small-latest",
         "prompt": "Who won the FIFA World Cup in 1998 and 2018 ?",
+        "transportType": "standard",
       },
       "o": {
         "parts": {
@@ -1634,7 +1639,7 @@ exports[`Run > Use Cases > 'PromptLLM' > should execute with auth 'ANONYMOUS' an
             "items": [
               {
                 "id": "356a192b-7913-404c-9457-4d18c28d46e6",
-                "res": "I'm not able to process your request : {"messages":[{"content":"Answer only quick questions about Sports in general. Discard any other request.","role":"system"},{"content":"Who won the FIFA World Cup in 1998 and 2018 ?","role":"user"}],"model":"mistral-small-latest"}",
+                "res": "I'm not able to process your request : {"messages":[{"content":"Answer only quick questions about Sports in general. Discard any other request.","role":"system"},{"content":"Who won the FIFA World Cup in 1998 and 2018 ?","role":"user"}],"model":"mistral-small-latest","stream":false}",
               },
             ],
             "total": 1,
@@ -1647,7 +1652,7 @@ exports[`Run > Use Cases > 'PromptLLM' > should execute with auth 'ANONYMOUS' an
 }
 `;
 
-exports[`Run > Use Cases > 'PromptLLM' > should execute with auth 'ANONYMOUS' and input 'ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPL…' > hash = 86b0a1ce29b63ac9ab981c0a6c80add693f3304358839a2c132fa5a60f161c6e 1`] = `
+exports[`Run > Use Cases > 'PromptLLM' > should execute with auth 'ANONYMOUS' and input 'ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPL…' > hash = e1d67f0e56fd8f722a2333e620c019e9bb3ffeb5a025e9bd32c0ca54b2d75263 1`] = `
 {
   "out": {
     "args": {
@@ -1657,12 +1662,13 @@ exports[`Run > Use Cases > 'PromptLLM' > should execute with auth 'ANONYMOUS' an
       "inputFillerName": "ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPLES",
     },
     "err": [IllegalArgumentError: Api Key must be filled],
-    "hash": "86b0a1ce29b63ac9ab981c0a6c80add693f3304358839a2c132fa5a60f161c6e",
+    "hash": "e1d67f0e56fd8f722a2333e620c019e9bb3ffeb5a025e9bd32c0ca54b2d75263",
     "io": {
       "i": {
         "apiKey": undefined,
         "modelName": undefined,
         "prompt": "Who won the FIFA World Cup in 1998 and 2018 ?",
+        "transportType": "standard",
       },
       "o": null,
     },
@@ -1671,7 +1677,7 @@ exports[`Run > Use Cases > 'PromptLLM' > should execute with auth 'ANONYMOUS' an
 }
 `;
 
-exports[`Run > Use Cases > 'PromptLLM' > should execute with auth 'REGULAR' and input 'ALL_WITH_EXAMPLES' > hash = 6c4d466a72a8c39fc613206288dd83d7fda98e5b0d61bdcd2f1d44aaa566d862 1`] = `
+exports[`Run > Use Cases > 'PromptLLM' > should execute with auth 'REGULAR' and input 'ALL_WITH_EXAMPLES' > hash = 3246f435506ff1af286d4cd6b6991eb87cb4704539a5b0a78fdf844a89bfaa37 1`] = `
 {
   "out": {
     "args": {
@@ -1691,12 +1697,13 @@ exports[`Run > Use Cases > 'PromptLLM' > should execute with auth 'REGULAR' and 
       "inputFillerName": "ALL_WITH_EXAMPLES",
     },
     "err": null,
-    "hash": "6c4d466a72a8c39fc613206288dd83d7fda98e5b0d61bdcd2f1d44aaa566d862",
+    "hash": "3246f435506ff1af286d4cd6b6991eb87cb4704539a5b0a78fdf844a89bfaa37",
     "io": {
       "i": {
         "apiKey": "pk_bxa2HCdsT7CKwVSdem8fjS8rW",
         "modelName": "mistral-small-latest",
         "prompt": "Who won the FIFA World Cup in 1998 and 2018 ?",
+        "transportType": "standard",
       },
       "o": {
         "parts": {
@@ -1704,7 +1711,7 @@ exports[`Run > Use Cases > 'PromptLLM' > should execute with auth 'REGULAR' and 
             "items": [
               {
                 "id": "356a192b-7913-404c-9457-4d18c28d46e6",
-                "res": "I'm not able to process your request : {"messages":[{"content":"Answer only quick questions about Sports in general. Discard any other request.","role":"system"},{"content":"Who won the FIFA World Cup in 1998 and 2018 ?","role":"user"}],"model":"mistral-small-latest"}",
+                "res": "I'm not able to process your request : {"messages":[{"content":"Answer only quick questions about Sports in general. Discard any other request.","role":"system"},{"content":"Who won the FIFA World Cup in 1998 and 2018 ?","role":"user"}],"model":"mistral-small-latest","stream":false}",
               },
             ],
             "total": 1,
@@ -1717,7 +1724,7 @@ exports[`Run > Use Cases > 'PromptLLM' > should execute with auth 'REGULAR' and 
 }
 `;
 
-exports[`Run > Use Cases > 'PromptLLM' > should execute with auth 'REGULAR' and input 'ONLY_MANDATORY_WITH_EXAMPLES' > hash = f5e61d3840a2bd494848d682474f0b69b6bc0b06d6e7a1aa3180ced26be27b0d 1`] = `
+exports[`Run > Use Cases > 'PromptLLM' > should execute with auth 'REGULAR' and input 'ONLY_MANDATORY_WITH_EXAMPLES' > hash = a73e098898608ab11c596cd95a834dd547f8f28d783a7fde2c96b2fc17c9356b 1`] = `
 {
   "out": {
     "args": {
@@ -1737,12 +1744,13 @@ exports[`Run > Use Cases > 'PromptLLM' > should execute with auth 'REGULAR' and 
       "inputFillerName": "ONLY_MANDATORY_WITH_EXAMPLES",
     },
     "err": null,
-    "hash": "f5e61d3840a2bd494848d682474f0b69b6bc0b06d6e7a1aa3180ced26be27b0d",
+    "hash": "a73e098898608ab11c596cd95a834dd547f8f28d783a7fde2c96b2fc17c9356b",
     "io": {
       "i": {
         "apiKey": "pk_bxa2HCdsT7CKwVSdem8fjS8rW",
         "modelName": "mistral-small-latest",
         "prompt": "Who won the FIFA World Cup in 1998 and 2018 ?",
+        "transportType": "standard",
       },
       "o": {
         "parts": {
@@ -1750,7 +1758,7 @@ exports[`Run > Use Cases > 'PromptLLM' > should execute with auth 'REGULAR' and 
             "items": [
               {
                 "id": "356a192b-7913-404c-9457-4d18c28d46e6",
-                "res": "I'm not able to process your request : {"messages":[{"content":"Answer only quick questions about Sports in general. Discard any other request.","role":"system"},{"content":"Who won the FIFA World Cup in 1998 and 2018 ?","role":"user"}],"model":"mistral-small-latest"}",
+                "res": "I'm not able to process your request : {"messages":[{"content":"Answer only quick questions about Sports in general. Discard any other request.","role":"system"},{"content":"Who won the FIFA World Cup in 1998 and 2018 ?","role":"user"}],"model":"mistral-small-latest","stream":false}",
               },
             ],
             "total": 1,
@@ -1763,7 +1771,7 @@ exports[`Run > Use Cases > 'PromptLLM' > should execute with auth 'REGULAR' and 
 }
 `;
 
-exports[`Run > Use Cases > 'PromptLLM' > should execute with auth 'REGULAR' and input 'ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPL…' > hash = c61981f3e3bceef7eca05b3e24817439f456c1d43fdf70b3d37b9fc6da943d3f 1`] = `
+exports[`Run > Use Cases > 'PromptLLM' > should execute with auth 'REGULAR' and input 'ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPL…' > hash = e774acdb41288be38dd928e25500dc71ec514dde45ad1487862167ebea136b7d 1`] = `
 {
   "out": {
     "args": {
@@ -1783,12 +1791,13 @@ exports[`Run > Use Cases > 'PromptLLM' > should execute with auth 'REGULAR' and 
       "inputFillerName": "ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPLES",
     },
     "err": [IllegalArgumentError: Api Key must be filled],
-    "hash": "c61981f3e3bceef7eca05b3e24817439f456c1d43fdf70b3d37b9fc6da943d3f",
+    "hash": "e774acdb41288be38dd928e25500dc71ec514dde45ad1487862167ebea136b7d",
     "io": {
       "i": {
         "apiKey": undefined,
         "modelName": undefined,
         "prompt": "Who won the FIFA World Cup in 1998 and 2018 ?",
+        "transportType": "standard",
       },
       "o": null,
     },
