@@ -8,15 +8,15 @@
         "test": "tsc && vitest run --passWithNoTests"
     },
     "dependencies": {
-        "inversify": "^7.10.1",
+        "inversify": "^7.10.2",
         "libmodulor": "^0.21.0",
         "reflect-metadata": "^0.2.2"
     },
     "devDependencies": {
-        "@types/node": "^24.5.2",
+        "@types/node": "^24.7.1",
         "@vitest/coverage-v8": "^3.2.4",
         "jose": "^6.1.0",
-        "typescript": "^5.9.2",
+        "typescript": "^5.9.3",
         "vitest": "^3.2.4"
     }
 }
