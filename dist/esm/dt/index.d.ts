@@ -66,6 +66,7 @@ export { type SSHPrivateKey, TSSHPrivateKey } from './final/TSSHPrivateKey.js';
 export { type SSHPublicKey, TSSHPublicKey } from './final/TSSHPublicKey.js';
 export { type Time, TTime } from './final/TTime.js';
 export { type Timestamp, TTimestamp } from './final/TTimestamp.js';
+export { type TransportType, TTransportType } from './final/TTransportType.js';
 export { TUIntDuration, type UIntDuration } from './final/TUIntDuration.js';
 export { TUIntQuantity, type UIntQuantity } from './final/TUIntQuantity.js';
 export { TURL, type URL } from './final/TURL.js';

@@ -16,8 +16,10 @@ let SendClientMain = class SendClientMain {
     constructor(ucTransporter) {
         this.ucTransporter = ucTransporter;
     }
-    async exec({ uc, }) {
-        return this.ucTransporter.send(uc);
+    async exec({ onPartialOutput, uc, }) {
+        return this.ucTransporter.send(uc, {
+            onPartialOutput,
+        });
     }
 };
 SendClientMain = __decorate([

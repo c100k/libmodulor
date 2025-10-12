@@ -20,3 +20,4 @@ export interface UCOutputDef<OPI0 extends UCOPIBase | undefined = undefined, OPI
     };
     sideEffects?: UCOutputSideEffect[];
 }
+export declare function buildSingleItemOutput<OPI0 extends UCOPIBase>(item: OPI0): UCOutput<OPI0>;

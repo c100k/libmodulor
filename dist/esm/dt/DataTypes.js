@@ -58,6 +58,7 @@ export const DataTypes = [
     'Slug',
     'Time',
     'Timestamp',
+    'TransportType',
     'UIntDuration',
     'UIntQuantity',
     'URL',

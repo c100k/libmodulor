@@ -5,12 +5,12 @@ import { sleep } from '../../../utils/index.js';
 import { useDIContext } from './DIContextProvider.js';
 import { UCContainer } from './UCContainer.js';
 import { useAction } from './useAction.js';
-export function UCPanel({ autoExec = false, clearAfterExec = true, onDone, onError, onInit, onStartSubmitting, renderAutoExecLoader, renderForm, renderExecTouchable, sleepInMs, uc, }) {
+export function UCPanel({ autoExec = false, clearAfterExec = true, onDone, onError, onInit, onPartialOutput, onStartSubmitting, renderAutoExecLoader, renderForm, renderExecTouchable, sleepInMs, uc, }) {
     const { container } = useDIContext();
     const [ucManager] = useState(container.get('UCManager'));
     const { exec, execState } = useAction({
         action: async () => {
-            const ucor = await ucManager.execClient(uc);
+            const ucor = await ucManager.execClient(uc, onPartialOutput);
             await onDone?.(ucor);
             clear();
         },

@@ -59,7 +59,7 @@ let SimpleUCManager = class SimpleUCManager {
         }
         return this.ucClientConfirmManager.exec(def);
     }
-    async execClient(uc) {
+    async execClient(uc, onPartialOutput) {
         const { lifecycle, metadata } = uc.def;
         const { client, server } = lifecycle;
         if (!client) {
@@ -81,7 +81,12 @@ let SimpleUCManager = class SimpleUCManager {
             await this.ucInputFilesProcessor.exec({ uc });
         }
         const main = (await this.ucMainProvider(client.main));
-        const output = await main.exec({ uc });
+        const output = await main.exec({
+            onPartialOutput: onPartialOutput
+                ? (output) => onPartialOutput(new UCOutputReader(uc.def, output ?? undefined))
+                : undefined,
+            uc,
+        });
         return new UCOutputReader(uc.def, output ?? undefined);
     }
     async execServer(uc) {

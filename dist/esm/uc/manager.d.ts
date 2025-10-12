@@ -23,10 +23,11 @@ export interface UCManagerPersistOpts {
      */
     organizationId?: UUID;
 }
+export type UCManagerOnPartialOutput<I extends UCInput | undefined = undefined, OPI0 extends UCOPIBase | undefined = undefined, OPI1 extends UCOPIBase | undefined = undefined> = (ucor: UCOutputReader<I, OPI0, OPI1>) => Promise<void>;
 export interface UCManager {
     commitTx(): Promise<void>;
     confirmClient<I extends UCInput | undefined = undefined, OPI0 extends UCOPIBase | undefined = undefined, OPI1 extends UCOPIBase | undefined = undefined>(uc: UC<I, OPI0, OPI1>): Promise<boolean>;
-    execClient<I extends UCInput | undefined = undefined, OPI0 extends UCOPIBase | undefined = undefined, OPI1 extends UCOPIBase | undefined = undefined>(uc: UC<I, OPI0, OPI1>): Promise<UCOutputReader<I, OPI0, OPI1>>;
+    execClient<I extends UCInput | undefined = undefined, OPI0 extends UCOPIBase | undefined = undefined, OPI1 extends UCOPIBase | undefined = undefined>(uc: UC<I, OPI0, OPI1>, onPartialOutput?: UCManagerOnPartialOutput<I, OPI0, OPI1>): Promise<UCOutputReader<I, OPI0, OPI1>>;
     execServer<I extends UCInput | undefined = undefined, OPI0 extends UCOPIBase | undefined = undefined, OPI1 extends UCOPIBase | undefined = undefined>(uc: UC<I, OPI0, OPI1>): Promise<UCOutputOrNothing<OPI0, OPI1>>;
     initServer<I extends UCInput | undefined = undefined, OPI0 extends UCOPIBase | undefined = undefined, OPI1 extends UCOPIBase | undefined = undefined>(uc: UC<I, OPI0, OPI1>): Promise<void>;
     startTx(): Promise<void>;

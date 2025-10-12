@@ -1,4 +1,4 @@
-import type { HTTPMethod, URLPath } from '../dt/index.js';
+import type { HTTPMethod, TransportType, URLPath } from '../dt/index.js';
 import type { UCOPIBase } from './opi.js';
 import type { UCOutput } from './output.js';
 import type { UCMountingPoint } from './utils/ucMountingPoint.js';
@@ -41,5 +41,11 @@ export interface UCExt<OPI0 extends UCOPIBase | undefined = undefined, OPI1 exte
          * @returns
          */
         transform?: (output: UCOutput<OPI0, OPI1>) => object;
+        /**
+         * The way the output is transported
+         *
+         * By default, it's `standard`.
+         */
+        transportType?: TransportType;
     };
 }

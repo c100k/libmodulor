@@ -29,7 +29,7 @@ let HTTPUCTransporter = class HTTPUCTransporter {
             server_public_api_key_header_name: this.settingsManager.get()('server_public_api_key_header_name'),
         };
     }
-    async send(uc) {
+    async send(uc, opts) {
         const { auth, def: { sec }, } = uc;
         const baseURL = await this.serverClientManager.baseURL({ auth });
         const { contentType, envelope, method, path } = ucHTTPContract(uc);
@@ -96,6 +96,7 @@ let HTTPUCTransporter = class HTTPUCTransporter {
             contentType,
             errBuilder: async (error) => error.message,
             method,
+            onPartialOutput: opts.onPartialOutput,
             req: {
                 builder: async () => rInput(uc, { ignoreUndefined: true }),
                 envelope,

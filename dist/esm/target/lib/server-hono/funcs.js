@@ -3,7 +3,7 @@ import { deleteCookie, getCookie, setCookie } from 'hono/cookie';
 import { logger } from 'hono/logger';
 import { secureHeaders } from 'hono/secure-headers';
 import { NotFoundError } from '../../../error/index.js';
-import { fromFormData } from '../../../utils/index.js';
+import { fromFormData, SSE_HEADERS, streamOPI } from '../../../utils/index.js';
 export function buildHandler(appManifest, ucd, contract, serverRequestHandler, ucManager, beforeExec) {
     const { envelope } = contract;
     const handler = async (c) => {
@@ -18,6 +18,32 @@ export function buildHandler(appManifest, ucd, contract, serverRequestHandler, u
         });
         if (!body) {
             return c.newResponse(null, status);
+        }
+        const transportType = ucd.ext?.http?.transportType ?? 'standard';
+        switch (transportType) {
+            case 'standard':
+                return c.json(body, status);
+            case 'stream': {
+                const stream = new ReadableStream({
+                    start: (controller) => {
+                        const cleanUpFunc = streamOPI(body.parts._0, (data) => controller.enqueue(data), 
+                        // () => controller.close(), // It seems already closed
+                        () => { });
+                        if (!cleanUpFunc) {
+                            controller.close();
+                        }
+                        c.req.raw.signal.addEventListener('abort', () => {
+                            cleanUpFunc?.();
+                            controller.close();
+                        });
+                    },
+                });
+                return new Response(stream, {
+                    headers: SSE_HEADERS,
+                });
+            }
+            default:
+                ((_) => { })(transportType);
         }
         return c.json(body, status);
     };

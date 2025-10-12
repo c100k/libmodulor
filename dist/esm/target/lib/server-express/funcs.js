@@ -1,6 +1,7 @@
 import cookieParser from 'cookie-parser';
 import express, {} from 'express';
 import fileUpload from 'express-fileupload';
+import { SSE_HEADERS, streamOPI, } from '../../../utils/index.js';
 export function buildHandler(appManifest, ucd, contract, serverRequestHandler, ucManager) {
     const { envelope } = contract;
     const handler = async (req, res) => {
@@ -16,7 +17,29 @@ export function buildHandler(appManifest, ucd, contract, serverRequestHandler, u
             res.status(status).send();
             return;
         }
-        res.status(status).send(body);
+        const transportType = ucd.ext?.http?.transportType ?? 'standard';
+        switch (transportType) {
+            case 'standard':
+                res.status(status).send(body);
+                return;
+            case 'stream': {
+                for (const [k, v] of SSE_HEADERS) {
+                    res.setHeader(k, v);
+                }
+                res.flushHeaders();
+                const cleanUpFunc = streamOPI(body.parts._0, (data) => res.write(data), () => res.end());
+                if (!cleanUpFunc) {
+                    res.end();
+                }
+                res.on('close', () => {
+                    cleanUpFunc?.();
+                    res.end();
+                });
+                return;
+            }
+            default:
+                ((_) => { })(transportType);
+        }
     };
     return handler;
 }
