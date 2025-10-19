@@ -11,12 +11,12 @@
         "run:node": "(cd dist && node index.js)"
     },
     "dependencies": {
-        "inversify": "^7.10.2",
+        "inversify": "^7.10.3",
         "libmodulor": "^0.21.0",
         "reflect-metadata": "^0.2.2"
     },
     "devDependencies": {
-        "@types/node": "^24.7.1",
+        "@types/node": "^24.8.1",
         "jose": "^6.1.0",
         "typescript": "^5.9.3"
     }
