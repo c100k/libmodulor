@@ -3,7 +3,8 @@ import type { HTTPAPICaller } from '../HTTPAPICaller.js';
 import type { LLMManager, LLMManagerSendOpts, LLMManagerSendReq, LLMManagerSendRes } from '../LLMManager.js';
 import type { Configurable, Settings, SettingsManager } from '../SettingsManager.js';
 interface OllamaGenerateRes {
-    response: NonNullable<LLMManagerSendRes['choices'][0]['message']>['content'];
+    done: boolean;
+    response: string;
 }
 /**
  * Unlike the "commercial" APIs, Ollama does not secure the API with an API key

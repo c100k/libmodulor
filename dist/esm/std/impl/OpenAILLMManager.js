@@ -34,12 +34,18 @@ let OpenAILLMManager = class OpenAILLMManager {
             },
             errBuilder: async (error) => error.error.message,
             method: 'POST',
-            onPartialOutput: (res) => {
-                opts?.onPartialOutput?.(res);
-            },
             req: {
                 builder: async () => req,
                 envelope: 'json',
+            },
+            stream: {
+                onData: (res) => {
+                    opts?.stream?.onData?.(res);
+                    // Beware : this won't work if/when we accept multiple choices in the request
+                    if (res.choices[0]?.finish_reason) {
+                        opts?.stream?.onDone();
+                    }
+                },
             },
             urlBuilder: async () => `${OpenAILLMManager_1.BASE_URL}/chat/completions`,
         });

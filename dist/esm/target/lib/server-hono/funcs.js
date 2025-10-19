@@ -3,14 +3,60 @@ import { deleteCookie, getCookie, setCookie } from 'hono/cookie';
 import { logger } from 'hono/logger';
 import { secureHeaders } from 'hono/secure-headers';
 import { NotFoundError } from '../../../error/index.js';
-import { fromFormData, SSE_HEADERS, streamOPI } from '../../../utils/index.js';
+import { fmtSingleDataMsg, fmtSSEError, fromFormData, isError, SSE_HEADERS, } from '../../../utils/index.js';
 export function buildHandler(appManifest, ucd, contract, serverRequestHandler, ucManager, beforeExec) {
     const { envelope } = contract;
     const handler = async (c) => {
         await beforeExec?.(c);
+        const transportType = ucd.ext?.http?.transportType ?? 'standard';
+        let execOpts;
+        let stream;
+        let controller;
+        switch (transportType) {
+            case 'standard':
+                // Nothing to do
+                break;
+            case 'stream': {
+                stream = new ReadableStream({
+                    start: (ctrl) => {
+                        controller = ctrl;
+                        let closed = false;
+                        const close = () => {
+                            if (closed) {
+                                return;
+                            }
+                            ctrl.close();
+                            closed = true;
+                        };
+                        execOpts = {
+                            stream: {
+                                onClose: async () => { },
+                                onData: async (output) => {
+                                    if (!output || closed) {
+                                        return;
+                                    }
+                                    ctrl.enqueue(fmtSingleDataMsg(output));
+                                },
+                                onDone: async () => {
+                                    close();
+                                },
+                            },
+                        };
+                        c.req.raw.signal.addEventListener('abort', async () => {
+                            close();
+                            await execOpts?.stream?.onClose();
+                        });
+                    },
+                });
+                break;
+            }
+            default:
+                ((_) => { })(transportType);
+        }
         const { body, status } = await serverRequestHandler.exec({
             appManifest,
             envelope,
+            execOpts,
             req: toReq(c),
             res: toRes(c),
             ucd,
@@ -19,25 +65,16 @@ export function buildHandler(appManifest, ucd, contract, serverRequestHandler, u
         if (!body) {
             return c.newResponse(null, status);
         }
-        const transportType = ucd.ext?.http?.transportType ?? 'standard';
         switch (transportType) {
             case 'standard':
                 return c.json(body, status);
             case 'stream': {
-                const stream = new ReadableStream({
-                    start: (controller) => {
-                        const cleanUpFunc = streamOPI(body.parts._0, (data) => controller.enqueue(data), 
-                        // () => controller.close(), // It seems already closed
-                        () => { });
-                        if (!cleanUpFunc) {
-                            controller.close();
-                        }
-                        c.req.raw.signal.addEventListener('abort', () => {
-                            cleanUpFunc?.();
-                            controller.close();
-                        });
-                    },
-                });
+                if (isError(status)) {
+                    controller?.enqueue(fmtSSEError({
+                        message: body.message,
+                        status,
+                    }));
+                }
                 return new Response(stream, {
                     headers: SSE_HEADERS,
                 });
@@ -76,7 +113,7 @@ export function toReq(c) {
     return {
         bodyFromFormData: async () => fromFormData(await c.req.formData()),
         bodyFromJSON: () => c.req.json(),
-        bodyFromQueryParams: async () => c.req.queries(),
+        bodyFromQueryParams: async () => c.req.query(),
         bodyRaw: c.req.raw,
         cookie: async (name) => getCookie(c, name),
         header: async (name) => c.req.header(name),

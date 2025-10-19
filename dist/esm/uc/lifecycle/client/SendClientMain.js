@@ -16,9 +16,9 @@ let SendClientMain = class SendClientMain {
     constructor(ucTransporter) {
         this.ucTransporter = ucTransporter;
     }
-    async exec({ onPartialOutput, uc, }) {
+    async exec({ opts, uc, }) {
         return this.ucTransporter.send(uc, {
-            onPartialOutput,
+            stream: opts?.stream,
         });
     }
 };

@@ -32,9 +32,6 @@ let OllamaLLMManager = class OllamaLLMManager {
         return await this.httpAPICaller.exec({
             errBuilder: async (error) => error.error,
             method: 'POST',
-            onPartialOutput: (res) => {
-                opts?.onPartialOutput?.(res);
-            },
             outputBuilder: async (res) => this.toRes(req.stream, res),
             req: {
                 builder: async () => ({
@@ -44,17 +41,36 @@ let OllamaLLMManager = class OllamaLLMManager {
                 }),
                 envelope: 'json',
             },
+            stream: {
+                onData: (res) => {
+                    opts?.stream?.onData?.(res);
+                    // Beware : this won't work if/when we accept multiple choices in the request
+                    if (res.choices[0]?.finish_reason) {
+                        opts?.stream?.onDone();
+                    }
+                },
+            },
             urlBuilder: async () => `${this.s().oll_base_url}/api/generate`,
         });
     }
     toRes(stream, res) {
         if (stream) {
             return {
-                choices: [{ delta: { content: res.response } }],
+                choices: [
+                    {
+                        delta: { content: res.response },
+                        finish_reason: res.done ? 'stop' : null,
+                    },
+                ],
             };
         }
         return {
-            choices: [{ message: { content: res.response } }],
+            choices: [
+                {
+                    finish_reason: res.done ? 'stop' : null,
+                    message: { content: res.response },
+                },
+            ],
         };
     }
 };

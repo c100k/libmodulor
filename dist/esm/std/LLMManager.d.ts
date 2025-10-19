@@ -1,14 +1,19 @@
 import type { ApiKey, FreeTextLong } from '../dt/index.js';
+import type { StreamConfig } from '../utils/index.js';
 export type LLMManagerModel = string;
 export type LLMManagerTemperature = number;
 export interface LLMManagerSendOpts {
     /**
-     * By default, each implementation reads the auth from the settings. If provided here, it takes precedence over the settings value.
+     * By default, each implementation reads the auth from the settings.
+     * If provided here, it takes precedence over the settings value.
      */
     auth?: {
         apiKey?: ApiKey;
     };
-    onPartialOutput?: (chunk: LLMManagerSendRes) => void;
+    /**
+     * Callbacks used when `stream` is `true`
+     */
+    stream?: StreamConfig<LLMManagerSendRes>;
 }
 export interface LLMManagerSendReq {
     messages: {
@@ -31,6 +36,7 @@ export interface LLMManagerSendRes {
         delta?: {
             content: string;
         };
+        finish_reason: 'content_filter' | 'length' | 'stop' | 'tool_calls' | null;
         /**
          * Full result stream is not enabled
          */

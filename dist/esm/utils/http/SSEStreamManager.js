@@ -6,7 +6,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 var SSEStreamManager_1;
 import { injectable } from 'inversify';
-import { parseDataLine, SSE_DATA_SEP, SSE_MSG_SEP } from './sse.js';
+import { throwCustomError } from '../../error/index.js';
+import { isSSEError, parseDataLine, SSE_DATA_SEP, SSE_MSG_SEP } from './sse.js';
 let SSEStreamManager = class SSEStreamManager {
     static { SSEStreamManager_1 = this; }
     static DEFAULT_ENCODING = 'utf-8';
@@ -31,11 +32,20 @@ let SSEStreamManager = class SSEStreamManager {
                 if (!data) {
                     continue;
                 }
+                let parsedData;
                 try {
-                    onData(JSON.parse(data));
+                    parsedData = JSON.parse(data);
                 }
                 catch (_err) {
                     // Ignore invalid message
+                    continue;
+                }
+                if (isSSEError(parsedData)) {
+                    const { message, status } = parsedData;
+                    throwCustomError(message, status);
+                }
+                else {
+                    onData(parsedData);
                 }
             }
         }

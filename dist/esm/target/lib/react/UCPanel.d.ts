@@ -1,6 +1,7 @@
 import { type ReactElement } from 'react';
 import type { UIntDuration } from '../../../dt/index.js';
-import { type UCInput, type UCManagerOnPartialOutput, type UCOPIBase } from '../../../uc/index.js';
+import { type UCInput, type UCOPIBase, type UCOutputReader } from '../../../uc/index.js';
+import { type StreamConfig } from '../../../utils/index.js';
 import type { RenderUCForm } from './form.js';
 import type { RenderUCAutoExecLoader } from './loader.js';
 import type { UCPanelCtx, UCPanelOnDone, UCPanelOnError, UCPanelOnInit, UCPanelOnStartSubmitting } from './panel.js';
@@ -10,12 +11,12 @@ type Props<I extends UCInput | undefined = undefined, OPI0 extends UCOPIBase | u
     onDone?: UCPanelOnDone<I, OPI0, OPI1>;
     onInit?: UCPanelOnInit<I, OPI0, OPI1>;
     onError?: UCPanelOnError;
-    onPartialOutput?: UCManagerOnPartialOutput<I, OPI0, OPI1>;
     onStartSubmitting?: UCPanelOnStartSubmitting;
     renderAutoExecLoader: RenderUCAutoExecLoader;
     renderExecTouchable: RenderUCExecTouchable<I, OPI0, OPI1>;
     renderForm: RenderUCForm<I, OPI0, OPI1>;
     sleepInMs?: UIntDuration;
+    stream?: StreamConfig<UCOutputReader<I, OPI0, OPI1>> | undefined;
 };
-export declare function UCPanel<I extends UCInput | undefined = undefined, OPI0 extends UCOPIBase | undefined = undefined, OPI1 extends UCOPIBase | undefined = undefined>({ autoExec, clearAfterExec, onDone, onError, onInit, onPartialOutput, onStartSubmitting, renderAutoExecLoader, renderForm, renderExecTouchable, sleepInMs, uc, }: Props<I, OPI0, OPI1>): ReactElement;
+export declare function UCPanel<I extends UCInput | undefined = undefined, OPI0 extends UCOPIBase | undefined = undefined, OPI1 extends UCOPIBase | undefined = undefined>({ autoExec, clearAfterExec, onDone, onError, onInit, onStartSubmitting, renderAutoExecLoader, renderForm, renderExecTouchable, sleepInMs, stream, uc, }: Props<I, OPI0, OPI1>): ReactElement;
 export {};

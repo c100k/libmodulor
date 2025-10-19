@@ -13,6 +13,7 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 var UCExecutor_1;
 import { inject, injectable } from 'inversify';
 import { rInput, UCBuilder, } from '../../uc/index.js';
+const ERR_CLIENT_EXPECTED_UCOR = (name) => `${name} client is expected to return an ucor`;
 const ERR_CLIENT_EXPECTED_OUTPUT = (name) => `${name} client is expected to return an output but returned nothing`;
 const ERR_CLIENT_UNEXPECTED_OUTPUT = (name) => `${name} client is expected to return nothing but returned an output`;
 let UCExecutor = class UCExecutor {
@@ -70,7 +71,33 @@ let UCExecutor = class UCExecutor {
         out.io.i = input;
         out.hash = this.cryptoManager.hash(UCExecutor_1.HASH_ALG, [name, JSON.stringify(args), JSON.stringify(input)].join(UCExecutor_1.HASH_SEP), UCExecutor_1.HASH_BTT_ENCODING);
         try {
-            const ucor = await this.ucManager.execClient(uc);
+            let ucor;
+            const transportType = ucd.ext?.http?.transportType ?? 'standard';
+            switch (transportType) {
+                case 'standard':
+                    ucor = await this.ucManager.execClient(uc);
+                    break;
+                case 'stream': {
+                    await this.ucManager.execClient(uc, {
+                        stream: {
+                            // TODO : Make it stop once we have one ucor
+                            onClose: async () => { },
+                            onData: async (ucor2) => {
+                                if (!ucor) {
+                                    ucor = ucor2;
+                                }
+                            },
+                            onDone: async () => { },
+                        },
+                    });
+                    break;
+                }
+                default:
+                    ((_) => { })(transportType);
+            }
+            if (!ucor) {
+                throw new Error(ERR_CLIENT_EXPECTED_UCOR(name));
+            }
             const output = ucor.output();
             if (uc.hasOutputParts() && !output) {
                 throw new Error(ERR_CLIENT_EXPECTED_OUTPUT(name));

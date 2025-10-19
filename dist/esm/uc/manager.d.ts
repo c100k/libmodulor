@@ -1,9 +1,11 @@
 import type { UUID } from '../dt/index.js';
+import type { StreamConfig } from '../utils/index.js';
 import type { UCData } from './data.js';
 import type { UCDataStoreRecord } from './data-store.js';
 import type { UCExecMode } from './exec.js';
 import type { UCOutputReader } from './helpers/UCOutputReader.js';
 import type { UCInput } from './input.js';
+import type { UCMainStream } from './main.js';
 import type { UCOPIBase } from './opi.js';
 import type { UCOutputOrNothing } from './output.js';
 import type { UC } from './UC.js';
@@ -23,12 +25,17 @@ export interface UCManagerPersistOpts {
      */
     organizationId?: UUID;
 }
-export type UCManagerOnPartialOutput<I extends UCInput | undefined = undefined, OPI0 extends UCOPIBase | undefined = undefined, OPI1 extends UCOPIBase | undefined = undefined> = (ucor: UCOutputReader<I, OPI0, OPI1>) => Promise<void>;
+export interface UCManagerExecClientOpts<I extends UCInput | undefined = undefined, OPI0 extends UCOPIBase | undefined = undefined, OPI1 extends UCOPIBase | undefined = undefined> {
+    stream?: StreamConfig<UCOutputReader<I, OPI0, OPI1>> | undefined;
+}
+export interface UCManagerExecServerOpts<OPI0 extends UCOPIBase | undefined = undefined, OPI1 extends UCOPIBase | undefined = undefined> {
+    stream?: UCMainStream<OPI0, OPI1> | undefined;
+}
 export interface UCManager {
     commitTx(): Promise<void>;
     confirmClient<I extends UCInput | undefined = undefined, OPI0 extends UCOPIBase | undefined = undefined, OPI1 extends UCOPIBase | undefined = undefined>(uc: UC<I, OPI0, OPI1>): Promise<boolean>;
-    execClient<I extends UCInput | undefined = undefined, OPI0 extends UCOPIBase | undefined = undefined, OPI1 extends UCOPIBase | undefined = undefined>(uc: UC<I, OPI0, OPI1>, onPartialOutput?: UCManagerOnPartialOutput<I, OPI0, OPI1>): Promise<UCOutputReader<I, OPI0, OPI1>>;
-    execServer<I extends UCInput | undefined = undefined, OPI0 extends UCOPIBase | undefined = undefined, OPI1 extends UCOPIBase | undefined = undefined>(uc: UC<I, OPI0, OPI1>): Promise<UCOutputOrNothing<OPI0, OPI1>>;
+    execClient<I extends UCInput | undefined = undefined, OPI0 extends UCOPIBase | undefined = undefined, OPI1 extends UCOPIBase | undefined = undefined>(uc: UC<I, OPI0, OPI1>, opts?: UCManagerExecClientOpts<I, OPI0, OPI1>): Promise<UCOutputReader<I, OPI0, OPI1>>;
+    execServer<I extends UCInput | undefined = undefined, OPI0 extends UCOPIBase | undefined = undefined, OPI1 extends UCOPIBase | undefined = undefined>(uc: UC<I, OPI0, OPI1>, opts?: UCManagerExecServerOpts<OPI0, OPI1>): Promise<UCOutputOrNothing<OPI0, OPI1>>;
     initServer<I extends UCInput | undefined = undefined, OPI0 extends UCOPIBase | undefined = undefined, OPI1 extends UCOPIBase | undefined = undefined>(uc: UC<I, OPI0, OPI1>): Promise<void>;
     startTx(): Promise<void>;
     persist<I extends UCInput | undefined = undefined, D extends UCData | null = null, OPI0 extends UCOPIBase | undefined = undefined, OPI1 extends UCOPIBase | undefined = undefined>(uc: UC<I, OPI0, OPI1>, data?: D, opts?: UCManagerPersistOpts): Promise<UCDataStoreRecord<I, D>>;

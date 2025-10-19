@@ -1,6 +1,7 @@
 export { CustomError, type ServerError } from './CustomError.js';
 export { ForbiddenAsNotFoundError } from './ForbiddenAsNotFoundError.js';
 export { ForbiddenError } from './ForbiddenError.js';
+export { throwCustomError } from './funcs.js';
 export { IllegalArgumentError } from './IllegalArgumentError.js';
 export { InternalServerError } from './InternalServerError.js';
 export { NotAvailableError } from './internal/NotAvailableError.js';

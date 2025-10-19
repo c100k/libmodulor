@@ -14,8 +14,9 @@ export declare class SimpleHTTPAPICaller implements HTTPAPICaller {
     private sseStreamManager;
     private xmlManager;
     constructor(bufferManager: BufferManager, httpAPICallExecutor: HTTPAPICallExecutor, httpAPICallExecutorAgentBuilder: HTTPAPICallExecutorAgentBuilder, httpRequestBuilder: HTTPRequestBuilder, logger: Logger, ndJSONStreamManager: NDJSONStreamManager, sseStreamManager: SSEStreamManager, xmlManager: XMLManager);
-    exec<AH extends object | undefined, Req extends object, ResBad, ResGood, O>({ additionalHeadersBuilder, authorizationHeader, basicAuth, contentType, errBuilder, method, onPartialOutput, opts, outputBuilder, req, urlBuilder, unknownErrorMessage, }: HTTPAPICallerInput<AH, Req, ResBad, ResGood, O>): Promise<O>;
+    exec<AH extends object | undefined, Req extends object, ResBad, ResGood, O>({ additionalHeadersBuilder, authorizationHeader, basicAuth, contentType, errBuilder, method, opts, outputBuilder, req, stream, urlBuilder, unknownErrorMessage, }: HTTPAPICallerInput<AH, Req, ResBad, ResGood, O>): Promise<O>;
     private computeHeaders;
     private processResBad;
     private processResGood;
+    private throwError;
 }

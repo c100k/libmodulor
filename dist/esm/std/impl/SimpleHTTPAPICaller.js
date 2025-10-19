@@ -12,7 +12,7 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 };
 import { inject, injectable } from 'inversify';
 import { CustomError, IllegalArgumentError } from '../../error/index.js';
-import { HTTPRequestBuilder, NDJSONStreamManager, SSEStreamManager, } from '../../utils/index.js';
+import { HTTPRequestBuilder, isClientError, NDJSONStreamManager, SSEStreamManager, } from '../../utils/index.js';
 let SimpleHTTPAPICaller = class SimpleHTTPAPICaller {
     bufferManager;
     httpAPICallExecutor;
@@ -32,7 +32,7 @@ let SimpleHTTPAPICaller = class SimpleHTTPAPICaller {
         this.sseStreamManager = sseStreamManager;
         this.xmlManager = xmlManager;
     }
-    async exec({ additionalHeadersBuilder, authorizationHeader, basicAuth, contentType = 'application/json', errBuilder, method, onPartialOutput, opts, outputBuilder, req, urlBuilder, unknownErrorMessage = CustomError.ERROR_UNKNOWN, }) {
+    async exec({ additionalHeadersBuilder, authorizationHeader, basicAuth, contentType = 'application/json', errBuilder, method, opts, outputBuilder, req, stream, urlBuilder, unknownErrorMessage = CustomError.ERROR_UNKNOWN, }) {
         const baseURL = await urlBuilder();
         const data = (await req?.builder?.()) || {};
         const { body, url } = await this.httpRequestBuilder.exec({
@@ -84,14 +84,10 @@ let SimpleHTTPAPICaller = class SimpleHTTPAPICaller {
         });
         const { ok, redirected } = response;
         if (ok || redirected) {
-            return this.processResGood({ onPartialOutput, opts, outputBuilder }, isFormURLEncoded, isJSON, isNDJSON, isSSE, isXML, response);
+            return this.processResGood({ opts, outputBuilder, stream }, isFormURLEncoded, isJSON, isNDJSON, isSSE, isXML, response);
         }
-        const errMsg = await this.processResBad({ errBuilder, opts }, isJSON, isXML, response);
-        const message = errMsg ?? unknownErrorMessage;
-        if (status < 500) {
-            throw new IllegalArgumentError(message);
-        }
-        throw new Error(message);
+        const message = await this.processResBad({ errBuilder, opts }, isJSON, isXML, response);
+        this.throwError(message ?? unknownErrorMessage, status);
     }
     async computeHeaders({ additionalHeadersBuilder, authorizationHeader, basicAuth, contentType = 'application/json', req, }) {
         const headers = {};
@@ -171,29 +167,29 @@ let SimpleHTTPAPICaller = class SimpleHTTPAPICaller {
             return JSON.stringify(error);
         }
     }
-    async processResGood({ onPartialOutput, opts, outputBuilder, }, isFormURLEncoded, isJSON, isNDJSON, isSSE, isXML, response) {
+    async processResGood({ opts, outputBuilder, stream, }, isFormURLEncoded, isJSON, isNDJSON, isSSE, isXML, response) {
         let payload;
-        if (isNDJSON && onPartialOutput) {
+        if (isNDJSON && stream) {
             await this.ndJSONStreamManager.exec({
                 onData: async (data) => {
                     if (outputBuilder) {
-                        onPartialOutput(await outputBuilder(data));
+                        stream.onData(await outputBuilder(data));
                     }
                     else {
-                        onPartialOutput(data);
+                        stream.onData(data);
                     }
                 },
                 reader: response.body.getReader(),
             });
         }
-        else if (isSSE && onPartialOutput) {
+        else if (isSSE && stream) {
             await this.sseStreamManager.exec({
                 onData: async (data) => {
                     if (outputBuilder) {
-                        onPartialOutput(await outputBuilder(data));
+                        stream.onData(await outputBuilder(data));
                     }
                     else {
-                        onPartialOutput(data);
+                        stream.onData(data);
                     }
                 },
                 reader: response.body.getReader(),
@@ -229,6 +225,12 @@ let SimpleHTTPAPICaller = class SimpleHTTPAPICaller {
             return outputBuilder(payload);
         }
         return payload;
+    }
+    throwError(message, status) {
+        if (isClientError(status)) {
+            throw new IllegalArgumentError(message);
+        }
+        throw new Error(message);
     }
 };
 SimpleHTTPAPICaller = __decorate([

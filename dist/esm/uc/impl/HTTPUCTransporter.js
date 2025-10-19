@@ -96,11 +96,11 @@ let HTTPUCTransporter = class HTTPUCTransporter {
             contentType,
             errBuilder: async (error) => error.message,
             method,
-            onPartialOutput: opts.onPartialOutput,
             req: {
                 builder: async () => rInput(uc, { ignoreUndefined: true }),
                 envelope,
             },
+            stream: opts.stream,
             urlBuilder: async () => `${baseURL}${path}`,
         });
         // In case of 204, we get an empty object.

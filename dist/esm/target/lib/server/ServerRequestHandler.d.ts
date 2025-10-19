@@ -1,7 +1,7 @@
 import type { AppManifest } from '../../../app/index.js';
 import type { HTTPMethod, HTTPStatusNumber, URL, URLPath } from '../../../dt/index.js';
 import type { SettingsManager, Worker } from '../../../std/index.js';
-import { UCBuilder, type UCDef, type UCInput, type UCManager, type UCOPIBase, type UCOutput } from '../../../uc/index.js';
+import { UCBuilder, type UCDef, type UCInput, type UCManager, type UCManagerExecServerOpts, type UCOPIBase, type UCOutput } from '../../../uc/index.js';
 import type { HTTPDataEnvelope, HTTPReqData } from '../../../utils/index.js';
 import { AuthCookieCreator, type Output as AuthCookieCreatorOutput } from './AuthCookieCreator.js';
 import { AuthenticationChecker } from './AuthenticationChecker.js';
@@ -29,6 +29,7 @@ export interface ServerRequestHandlerRes {
 interface Input<I extends UCInput | undefined = undefined, OPI0 extends UCOPIBase | undefined = undefined, OPI1 extends UCOPIBase | undefined = undefined> {
     appManifest: AppManifest;
     envelope: HTTPDataEnvelope;
+    execOpts?: UCManagerExecServerOpts<OPI0, OPI1> | undefined;
     req: ServerRequestHandlerReq;
     res: ServerRequestHandlerRes;
     ucd: UCDef<I, OPI0, OPI1>;
@@ -61,7 +62,7 @@ export declare class ServerRequestHandler implements Worker<Input, Promise<Outpu
     private static X_FORWARDED_PROTO_HEADER_NAME;
     constructor(authCookieCreator: AuthCookieCreator, authenticationChecker: AuthenticationChecker, customerFacingErrorBuilder: CustomerFacingErrorBuilder, publicApiKeyChecker: PublicApiKeyChecker, requestChecker: RequestChecker, requestLogger: RequestLogger, settingsManager: SettingsManager<S>, ucBuilder: UCBuilder);
     s(): S;
-    exec<I extends UCInput | undefined = undefined, OPI0 extends UCOPIBase | undefined = undefined, OPI1 extends UCOPIBase | undefined = undefined>({ appManifest, envelope, req, res, ucd, ucManager, }: Input<I, OPI0, OPI1>): Promise<Output<OPI0, OPI1>>;
+    exec<I extends UCInput | undefined = undefined, OPI0 extends UCOPIBase | undefined = undefined, OPI1 extends UCOPIBase | undefined = undefined>({ appManifest, envelope, execOpts, req, res, ucd, ucManager, }: Input<I, OPI0, OPI1>): Promise<Output<OPI0, OPI1>>;
     private fill;
     private applySideEffects;
     private applyClearAuthSideEffect;

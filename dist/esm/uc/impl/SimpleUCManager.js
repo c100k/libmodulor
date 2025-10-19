@@ -59,7 +59,7 @@ let SimpleUCManager = class SimpleUCManager {
         }
         return this.ucClientConfirmManager.exec(def);
     }
-    async execClient(uc, onPartialOutput) {
+    async execClient(uc, opts) {
         const { lifecycle, metadata } = uc.def;
         const { client, server } = lifecycle;
         if (!client) {
@@ -81,15 +81,22 @@ let SimpleUCManager = class SimpleUCManager {
             await this.ucInputFilesProcessor.exec({ uc });
         }
         const main = (await this.ucMainProvider(client.main));
+        const streamOpts = opts?.stream;
         const output = await main.exec({
-            onPartialOutput: onPartialOutput
-                ? (output) => onPartialOutput(new UCOutputReader(uc.def, output ?? undefined))
-                : undefined,
+            opts: {
+                stream: streamOpts
+                    ? {
+                        onClose: streamOpts.onClose,
+                        onData: (output) => streamOpts.onData(new UCOutputReader(uc.def, output ?? undefined)),
+                        onDone: streamOpts.onDone,
+                    }
+                    : undefined,
+            },
             uc,
         });
         return new UCOutputReader(uc.def, output ?? undefined);
     }
-    async execServer(uc) {
+    async execServer(uc, opts) {
         const { lifecycle, metadata } = uc.def;
         const { server } = lifecycle;
         if (typeof server !== 'object') {
@@ -106,7 +113,13 @@ let SimpleUCManager = class SimpleUCManager {
         this.ucInputValidator.exec({ uc });
         await this.ucInputFilesProcessor.exec({ uc });
         const main = (await this.ucMainProvider(server.main));
-        return main.exec({ uc });
+        const output = main.exec({
+            opts: {
+                stream: opts?.stream,
+            },
+            uc,
+        });
+        return output;
     }
     async initServer(uc) {
         const { lifecycle, metadata } = uc.def;
