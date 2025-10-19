@@ -11,7 +11,6 @@ export class FakeLLMManager implements LLMManager {
         return {
             choices: [
                 {
-                    finish_reason: 'stop',
                     message: {
                         content: `I'm not able to process your request : ${JSON.stringify(req)}`,
                     },
