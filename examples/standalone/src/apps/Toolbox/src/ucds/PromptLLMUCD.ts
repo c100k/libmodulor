@@ -43,7 +43,7 @@ class PromptLLMClientMain implements UCMain<PromptLLMInput, PromptLLMOPI0> {
     ) {}
 
     public async exec({
-        onPartialOutput,
+        opts,
         uc,
     }: UCMainInput<PromptLLMInput, PromptLLMOPI0>): Promise<
         UCOutput<PromptLLMOPI0>
@@ -74,13 +74,19 @@ class PromptLLMClientMain implements UCMain<PromptLLMInput, PromptLLMOPI0> {
                 auth: {
                     apiKey,
                 },
-                onPartialOutput: (chunk) => {
-                    onPartialOutput?.(
-                        buildSingleItemOutput({
-                            id: this.cryptoManager.randomUUID(),
-                            res: chunk.choices[0]?.delta?.content ?? '',
-                        }),
-                    );
+                stream: {
+                    onClose: async () => opts?.stream?.onClose(),
+                    onData: async (chunk) => {
+                        opts?.stream?.onData?.(
+                            buildSingleItemOutput({
+                                id: this.cryptoManager.randomUUID(),
+                                res: chunk.choices[0]?.delta?.content ?? '',
+                            }),
+                        );
+                    },
+                    onDone: async () => {
+                        opts?.stream?.onDone();
+                    },
                 },
             },
         );
