@@ -41,7 +41,15 @@ let CommandExecutor = class CommandExecutor {
             if (!confirmed) {
                 return;
             }
-            const ucor = await this.ucManager.execClient(uc);
+            const ucor = await this.ucManager.execClient(uc, {
+                stream: {
+                    onClose: async () => { },
+                    onData: async (ucor) => {
+                        print(JSON.stringify(ucor.output()));
+                    },
+                    onDone: async () => { },
+                },
+            });
             const output = ucor.output();
             if (output) {
                 print(JSON.stringify(output));
