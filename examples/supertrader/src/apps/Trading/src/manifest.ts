@@ -20,5 +20,10 @@ export const Manifest = {
             icon: 'list',
             name: 'ListOrders',
         },
+        ViewAssetPrice: {
+            action: 'View',
+            icon: 'money-bill-wave',
+            name: 'ViewAssetPrice',
+        },
     },
 } satisfies AppManifest;
