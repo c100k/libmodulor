@@ -32,7 +32,7 @@ export interface HTTPAPICallExecutorResHeaders {
 }
 export interface HTTPAPICallExecutorResponse<Res> {
     arrayBuffer(): Promise<Buffer>;
-    body: HTTPAPICallExecutorResBody;
+    body: HTTPAPICallExecutorResBody | undefined;
     headers: HTTPAPICallExecutorResHeaders;
     json: () => Promise<Res>;
     ok: boolean;

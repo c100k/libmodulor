@@ -13,6 +13,7 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 import { inject, injectable } from 'inversify';
 import { CustomError, IllegalArgumentError } from '../../error/index.js';
 import { HTTPRequestBuilder, isClientError, NDJSONStreamManager, SSEStreamManager, } from '../../utils/index.js';
+export const ERR_STREAM_UNAVAILABLE = 'The internal HTTP impl (fetch ?) does not implement streaming (React Native ?)';
 let SimpleHTTPAPICaller = class SimpleHTTPAPICaller {
     bufferManager;
     httpAPICallExecutor;
@@ -170,6 +171,9 @@ let SimpleHTTPAPICaller = class SimpleHTTPAPICaller {
     async processResGood({ opts, outputBuilder, stream, }, isFormURLEncoded, isJSON, isNDJSON, isSSE, isXML, response) {
         let payload;
         if (isNDJSON && stream) {
+            if (!response.body) {
+                throw new Error(ERR_STREAM_UNAVAILABLE);
+            }
             await this.ndJSONStreamManager.exec({
                 onData: async (data) => {
                     if (outputBuilder) {
@@ -183,6 +187,9 @@ let SimpleHTTPAPICaller = class SimpleHTTPAPICaller {
             });
         }
         else if (isSSE && stream) {
+            if (!response.body) {
+                throw new Error(ERR_STREAM_UNAVAILABLE);
+            }
             await this.sseStreamManager.exec({
                 onData: async (data) => {
                     if (outputBuilder) {

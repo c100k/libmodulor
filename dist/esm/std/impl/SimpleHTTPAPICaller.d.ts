@@ -4,6 +4,7 @@ import type { HTTPAPICallExecutor, HTTPAPICallExecutorAgentBuilder } from '../HT
 import type { HTTPAPICaller, HTTPAPICallerInput } from '../HTTPAPICaller.js';
 import type { Logger } from '../Logger.js';
 import type { XMLManager } from '../XMLManager.js';
+export declare const ERR_STREAM_UNAVAILABLE = "The internal HTTP impl (fetch ?) does not implement streaming (React Native ?)";
 export declare class SimpleHTTPAPICaller implements HTTPAPICaller {
     private bufferManager;
     private httpAPICallExecutor;
