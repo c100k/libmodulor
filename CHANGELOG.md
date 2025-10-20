@@ -8,6 +8,7 @@
 - Add stream ability to `LLMManager`
 - Introduce stream output to use cases : set `transportType: 'stream'` in `ucd.def.http` and send partial output in your `ServerMain` so your clients can start showing data before the processing is done
 - Use stream from client to server
+- Add `FakeClockManager` and `FakeLLMManager` to `std` : they are now centralized so they can be reused by all the apps instead of duplicating them
 
 ## v0.21.0 (2025-08-19)
 
