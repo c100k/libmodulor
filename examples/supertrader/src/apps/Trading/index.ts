@@ -1,6 +1,7 @@
 // Expose only what's necessary
 
 export { I18n } from './src/i18n.js';
+export { type AssetPrice, TAssetPrice } from './src/lib/TAssetPrice.js';
 export { type ISIN, TISIN } from './src/lib/TISIN.js';
 export { type OrderStatus, TOrderStatus } from './src/lib/TOrderStatus.js';
 export { Manifest } from './src/manifest.js';

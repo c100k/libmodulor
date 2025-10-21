@@ -20,6 +20,8 @@ export class ViewAssetPriceServerMain
 {
     private static PRICES = new Map<ISIN, Amount>([
         ['US0378331005', 262.42], // https://www.google.com/finance/quote/AAPL:NASDAQ
+        ['US02079K3059', 251.34], // https://www.google.com/finance/quote/GOOG:NASDAQ
+        ['US67066G1040', 181.16], // https://www.google.com/finance/quote/NVDA:NASDAQ
     ]);
     private static UNKNOWN_PRICE = 0.0;
 

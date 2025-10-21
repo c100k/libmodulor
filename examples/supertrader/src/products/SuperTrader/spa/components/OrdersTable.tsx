@@ -71,7 +71,7 @@ export default function OrdersTable({
                     {fields.map((f) => (
                         <th key={f.key}>{wordingManager.ucof(f.key).label}</th>
                     ))}
-                    <th className="min-w-48" />
+                    <th className="min-w-96" />
                     <th className="min-w-48" />
                 </tr>
             </thead>
@@ -87,11 +87,10 @@ export default function OrdersTable({
                         <td>
                             <UCPanel
                                 autoExec={true}
-                                onError={async (err) => {
-                                    // biome-ignore lint/suspicious/noConsole: we want it
-                                    console.log(err);
+                                onError={async (_err) => {
+                                    // Ignore for now
                                 }}
-                                renderAutoExecLoader={UCAutoExecLoader}
+                                renderAutoExecLoader={() => <></>}
                                 renderExecTouchable={UCExecTouchable}
                                 renderForm={UCForm}
                                 stream={{

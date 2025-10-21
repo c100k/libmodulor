@@ -2,13 +2,13 @@ import {
     type Amount,
     EverybodyUCPolicy,
     SendClientMain,
-    TAmount,
     type UCDef,
     type UCInput,
     type UCInputFieldValue,
     type UCOPIBase,
 } from 'libmodulor';
 
+import { TAssetPrice } from '../lib/TAssetPrice.js';
 import { type ISIN, TISIN } from '../lib/TISIN.js';
 import { Manifest } from '../manifest.js';
 import { ViewAssetPriceServerMain } from './ViewAssetPriceServerMain.js';
@@ -42,20 +42,10 @@ export const ViewAssetPriceUCD: UCDef<ViewAssetPriceInput, ViewAssetPriceOPI0> =
                     _0: {
                         fields: {
                             evol: {
-                                type: new TAmount('USD').setSemanticsPredicate(
-                                    (v) => {
-                                        if (v < 0) {
-                                            return { variant: 'danger' };
-                                        }
-                                        if (v > 0) {
-                                            return { variant: 'success' };
-                                        }
-                                        return {};
-                                    },
-                                ),
+                                type: new TAssetPrice('USD'),
                             },
                             price: {
-                                type: new TAmount('USD'),
+                                type: new TAssetPrice('USD'),
                             },
                         },
                     },
