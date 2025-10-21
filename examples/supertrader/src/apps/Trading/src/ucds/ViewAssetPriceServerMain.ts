@@ -59,7 +59,7 @@ export class ViewAssetPriceServerMain
                     })
                     .get(),
             );
-        }, 2000);
+        }, 1000);
         if (opts?.stream) {
             opts.stream.onClose = async () => {
                 clearInterval(intervalID);

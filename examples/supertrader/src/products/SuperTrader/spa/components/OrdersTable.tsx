@@ -1,9 +1,4 @@
-import {
-    type Amount,
-    UC,
-    type UCOutputField,
-    type UCOutputReaderPart,
-} from 'libmodulor';
+import { UC, UCOutputReader, type UCOutputReaderPart } from 'libmodulor';
 import {
     UCPanel,
     type UCPanelOnError,
@@ -26,6 +21,7 @@ import {
     type ViewAssetPriceOPI0,
     ViewAssetPriceUCD,
 } from '../../../../apps/Trading/index.js';
+import AssetPriceLive from './AssetPriceLive.js';
 import { Hero } from './Hero.js';
 import UCOutputFieldValue from './UCOutputFieldValue.js';
 
@@ -42,14 +38,7 @@ export default function OrdersTable({
 }: Props): ReactElement {
     const { i18nManager, wordingManager } = useDIContext();
 
-    const [evolField, setEvolField] = useState<UCOutputField<
-        ViewAssetPriceOPI0,
-        ViewAssetPriceOPI0['evol']
-    > | null>(null);
-    const [priceField, setPriceField] = useState<UCOutputField<
-        ViewAssetPriceOPI0,
-        ViewAssetPriceOPI0['price']
-    > | null>(null);
+    const [ucor] = useState(new UCOutputReader(ViewAssetPriceUCD, undefined));
     const [prices, setPrices] = useState<Record<ISIN, ViewAssetPriceOPI0>>({});
 
     const {
@@ -71,7 +60,7 @@ export default function OrdersTable({
                     {fields.map((f) => (
                         <th key={f.key}>{wordingManager.ucof(f.key).label}</th>
                     ))}
-                    <th className="min-w-96" />
+                    <th className="min-w-96">$$$</th>
                     <th className="min-w-48" />
                 </tr>
             </thead>
@@ -85,63 +74,37 @@ export default function OrdersTable({
                             </td>
                         ))}
                         <td>
-                            <UCPanel
-                                autoExec={true}
-                                onError={async (_err) => {
-                                    // Ignore for now
-                                }}
-                                renderAutoExecLoader={() => <></>}
-                                renderExecTouchable={UCExecTouchable}
-                                renderForm={UCForm}
-                                stream={{
-                                    onClose: async () => {},
-                                    onData: async (ucor) => {
-                                        const { fields } = ucor.part0();
-                                        if (!evolField) {
-                                            setEvolField(
-                                                // biome-ignore lint/style/noNonNullAssertion: we want it
-                                                fields.find(
-                                                    (f) => f.key === 'evol',
-                                                )!,
-                                            );
-                                        }
-                                        if (!priceField) {
-                                            setPriceField(
-                                                // biome-ignore lint/style/noNonNullAssertion: we want it
-                                                fields.find(
-                                                    (f) => f.key === 'price',
-                                                )!,
-                                            );
-                                        }
-                                        setPrices((prev) => ({
-                                            ...prev,
-                                            [i.isin]: ucor.item00().item,
-                                        }));
-                                    },
-                                    onDone: async () => {},
-                                }}
-                                uc={new UC(
-                                    Manifest,
-                                    ViewAssetPriceUCD,
-                                    null,
-                                ).fill({ isin: i.isin })}
-                            />
-                            {priceField && (
-                                <UCOutputFieldValue
-                                    f={priceField}
-                                    value={prices[i.isin]?.price as Amount}
+                            <div className="flex gap-3">
+                                <UCPanel
+                                    autoExec={true}
+                                    onError={async (_err) => {
+                                        // Ignore for now
+                                    }}
+                                    renderAutoExecLoader={UCAutoExecLoader}
+                                    renderExecTouchable={UCExecTouchable}
+                                    renderForm={UCForm}
+                                    stream={{
+                                        onClose: async () => {},
+                                        onData: async (ucor) => {
+                                            setPrices((prev) => ({
+                                                ...prev,
+                                                [i.isin]: ucor.item00().item,
+                                            }));
+                                        },
+                                        onDone: async () => {},
+                                    }}
+                                    uc={new UC(
+                                        Manifest,
+                                        ViewAssetPriceUCD,
+                                        null,
+                                    ).fill({ isin: i.isin })}
                                 />
-                            )}{' '}
-                            {evolField && (
-                                <>
-                                    {'('}
-                                    <UCOutputFieldValue
-                                        f={evolField}
-                                        value={prices[i.isin]?.evol as Amount}
-                                    />
-                                    {')'}
-                                </>
-                            )}
+                                <AssetPriceLive
+                                    evolField={ucor.field0('evol')}
+                                    priceField={ucor.field0('price')}
+                                    value={prices[i.isin]}
+                                />
+                            </div>
                         </td>
                         <td>
                             <UCPanel
