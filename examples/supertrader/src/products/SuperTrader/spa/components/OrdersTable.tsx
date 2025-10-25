@@ -18,10 +18,9 @@ import {
     type ListOrdersOPI0,
     ListOrdersUCD,
     Manifest,
-    type ViewAssetPriceOPI0,
     ViewAssetPriceUCD,
 } from '../../../../apps/Trading/index.js';
-import AssetPriceLive from './AssetPriceLive.js';
+import AssetPriceLive, { type AssetPriceLiveValue } from './AssetPriceLive.js';
 import { Hero } from './Hero.js';
 import UCOutputFieldValue from './UCOutputFieldValue.js';
 
@@ -39,7 +38,7 @@ export default function OrdersTable({
     const { i18nManager, wordingManager } = useDIContext();
 
     const [ucor] = useState(new UCOutputReader(ViewAssetPriceUCD, undefined));
-    const [prices, setPrices] = useState<Record<ISIN, ViewAssetPriceOPI0>>({});
+    const [prices, setPrices] = useState<Record<ISIN, AssetPriceLiveValue>>({});
 
     const {
         fields,
@@ -77,8 +76,14 @@ export default function OrdersTable({
                             <div className="flex gap-3">
                                 <UCPanel
                                     autoExec={true}
-                                    onError={async (_err) => {
-                                        // Ignore for now
+                                    onError={async (err) => {
+                                        setPrices((prev) => ({
+                                            ...prev,
+                                            [i.isin]: {
+                                                error: (err as Error).message,
+                                                opi: null,
+                                            },
+                                        }));
                                     }}
                                     renderAutoExecLoader={UCAutoExecLoader}
                                     renderExecTouchable={UCExecTouchable}
@@ -88,7 +93,10 @@ export default function OrdersTable({
                                         onData: async (ucor) => {
                                             setPrices((prev) => ({
                                                 ...prev,
-                                                [i.isin]: ucor.item00().item,
+                                                [i.isin]: {
+                                                    error: null,
+                                                    opi: ucor.item00().item,
+                                                },
                                             }));
                                         },
                                         onDone: async () => {},

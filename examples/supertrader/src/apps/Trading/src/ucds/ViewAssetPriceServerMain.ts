@@ -2,6 +2,8 @@ import { inject, injectable } from 'inversify';
 import {
     type Amount,
     type CryptoManager,
+    type I18nManager,
+    IllegalArgumentError,
     type UCMain,
     type UCMainInput,
     type UCOutput,
@@ -23,10 +25,10 @@ export class ViewAssetPriceServerMain
         ['US02079K3059', 251.34], // https://www.google.com/finance/quote/GOOG:NASDAQ
         ['US67066G1040', 181.16], // https://www.google.com/finance/quote/NVDA:NASDAQ
     ]);
-    private static UNKNOWN_PRICE = 0.0;
 
     constructor(
         @inject('CryptoManager') private cryptoManager: CryptoManager,
+        @inject('I18nManager') private i18nManager: I18nManager,
     ) {}
 
     public async exec({
@@ -37,9 +39,10 @@ export class ViewAssetPriceServerMain
     > {
         const isin = uc.reqVal0('isin');
 
-        const initialPrice =
-            ViewAssetPriceServerMain.PRICES.get(isin) ??
-            ViewAssetPriceServerMain.UNKNOWN_PRICE;
+        const initialPrice = ViewAssetPriceServerMain.PRICES.get(isin);
+        if (!initialPrice) {
+            throw new IllegalArgumentError(this.i18nManager.t('err_isin_price_not_found'));
+        }
 
         const id = this.cryptoManager.randomUUID();
         const ob = new UCOutputBuilder<ViewAssetPriceOPI0>().add({
