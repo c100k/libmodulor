@@ -41,7 +41,9 @@ export class ViewAssetPriceServerMain
 
         const initialPrice = ViewAssetPriceServerMain.PRICES.get(isin);
         if (!initialPrice) {
-            throw new IllegalArgumentError(this.i18nManager.t('err_isin_price_not_found'));
+            throw new IllegalArgumentError(
+                this.i18nManager.t('err_isin_price_not_found'),
+            );
         }
 
         const id = this.cryptoManager.randomUUID();

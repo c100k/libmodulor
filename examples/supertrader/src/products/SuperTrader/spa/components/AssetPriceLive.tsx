@@ -7,7 +7,7 @@ import type {
 } from '../../../../apps/Trading/index.js';
 import UCOutputFieldValue from './UCOutputFieldValue.js';
 
-export type AssetPriceLiveValue = {
+export interface AssetPriceLiveValue {
     error: ErrorMessage | null;
     opi: ViewAssetPriceOPI0 | null;
 }
@@ -29,7 +29,7 @@ export default function AssetPriceLive({
 
     const { error, opi } = value;
     if (error) {
-        return <span className="text-error">{error}</span>
+        return <span className="text-error">{error}</span>;
     }
 
     if (!opi) {
