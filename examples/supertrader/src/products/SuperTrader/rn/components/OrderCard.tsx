@@ -1,30 +1,25 @@
-import type { NumIndex, UCOutputReaderPart } from 'libmodulor';
-import {
-    UCPanel,
-    type UCPanelOnError,
-    type UpdateFunc,
-    useUC,
-} from 'libmodulor/react';
-import {
-    UCAutoExecLoader,
-    UCExecTouchable,
-    UCForm,
-} from 'libmodulor/react-native-pure';
-import type { ReactElement } from 'react';
+import type { NumIndex, UCOutputReader, UCOutputReaderPart } from 'libmodulor';
+import type { UCPanelOnError, UpdateFunc } from 'libmodulor/react';
+import type { Dispatch, ReactElement, SetStateAction } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
-import {
-    CancelOrderUCD,
-    type ListOrdersOPI0,
-    Manifest,
+import type {
+    ListOrdersOPI0,
+    ViewAssetPriceInput,
+    ViewAssetPriceOPI0,
 } from '../../../../apps/Trading/index.js';
+import CancelOrderUCPanel from './CancelOrderUCPanel.js';
 import OrderCardBody from './OrderCardBody.js';
+import ViewAssetPriceUCPanel, { type Prices } from './ViewAssetPriceUCPanel.js';
 
 interface Props {
     fields: UCOutputReaderPart<ListOrdersOPI0>['fields'];
     item: ListOrdersOPI0;
     num: NumIndex;
     onError: UCPanelOnError;
+    prices: Prices;
+    setPrices: Dispatch<SetStateAction<Prices>>;
+    ucor: UCOutputReader<ViewAssetPriceInput, ViewAssetPriceOPI0>;
     update0: UpdateFunc<ListOrdersOPI0>;
 }
 
@@ -33,28 +28,31 @@ export default function OrderCard({
     item,
     num,
     onError,
+    prices,
+    setPrices,
+    ucor,
     update0,
 }: Props): ReactElement {
-    const [deleteUC] = useUC(Manifest, CancelOrderUCD, null, {
-        fillWith: { id: item.id },
-    });
-
     return (
         <View key={item.id} style={styles.container}>
             <View style={styles.content}>
                 <Text style={styles.num}>{num}</Text>
 
                 <OrderCardBody fields={fields} item={item} />
+
+                <ViewAssetPriceUCPanel
+                    item={item}
+                    prices={prices}
+                    setPrices={setPrices}
+                    ucor={ucor}
+                />
             </View>
 
             <View style={styles.actions}>
-                <UCPanel
-                    onDone={async (ucor) => update0(ucor)}
+                <CancelOrderUCPanel
+                    item={item}
                     onError={onError}
-                    renderAutoExecLoader={UCAutoExecLoader}
-                    renderExecTouchable={UCExecTouchable}
-                    renderForm={UCForm}
-                    uc={deleteUC}
+                    update0={update0}
                 />
             </View>
         </View>

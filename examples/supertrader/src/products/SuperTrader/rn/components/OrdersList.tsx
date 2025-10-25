@@ -1,19 +1,21 @@
-import type { UCOutputReaderPart } from 'libmodulor';
+import { UCOutputReader, type UCOutputReaderPart } from 'libmodulor';
 import {
     type UCPanelOnError,
     type UpdateFunc,
     useDIContext,
 } from 'libmodulor/react';
-import type { ReactElement } from 'react';
+import { type ReactElement, useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 
 import {
     type ListOrdersOPI0,
     ListOrdersUCD,
+    ViewAssetPriceUCD,
 } from '../../../../apps/Trading/index.js';
 import { Hero } from './Hero.js';
 import OrderCard from './OrderCard.js';
 import OrderTotals from './OrderTotals.js';
+import type { Prices } from './ViewAssetPriceUCPanel.js';
 
 interface Props {
     listOrdersPart0: UCOutputReaderPart<ListOrdersOPI0>;
@@ -27,6 +29,9 @@ export default function OrdersList({
     update0,
 }: Props): ReactElement {
     const { wordingManager } = useDIContext();
+
+    const [ucor] = useState(new UCOutputReader(ViewAssetPriceUCD, undefined));
+    const [prices, setPrices] = useState<Prices>({});
 
     const { fields, items, pagination } = listOrdersPart0;
     const { total } = pagination;
@@ -46,6 +51,9 @@ export default function OrdersList({
                         key={item.id}
                         num={idx + 1}
                         onError={onError}
+                        prices={prices}
+                        setPrices={setPrices}
+                        ucor={ucor}
                         update0={update0}
                     />
                 ))}

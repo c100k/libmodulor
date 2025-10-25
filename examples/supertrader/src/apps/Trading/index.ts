@@ -13,6 +13,7 @@ export {
     ListOrdersUCD,
 } from './src/ucds/ListOrdersUCD.js';
 export {
+    type ViewAssetPriceInput,
     type ViewAssetPriceOPI0,
     ViewAssetPriceUCD,
 } from './src/ucds/ViewAssetPriceUCD.js';

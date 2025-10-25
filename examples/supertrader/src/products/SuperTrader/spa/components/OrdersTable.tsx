@@ -1,28 +1,20 @@
-import { UC, UCOutputReader, type UCOutputReaderPart } from 'libmodulor';
+import { UCOutputReader, type UCOutputReaderPart } from 'libmodulor';
 import {
-    UCPanel,
     type UCPanelOnError,
     type UpdateFunc,
     useDIContext,
 } from 'libmodulor/react';
-import {
-    UCAutoExecLoader,
-    UCExecTouchable,
-    UCForm,
-} from 'libmodulor/react-web-pure';
 import { type ReactElement, useState } from 'react';
 
 import {
-    CancelOrderUCD,
-    type ISIN,
     type ListOrdersOPI0,
     ListOrdersUCD,
-    Manifest,
     ViewAssetPriceUCD,
 } from '../../../../apps/Trading/index.js';
-import AssetPriceLive, { type AssetPriceLiveValue } from './AssetPriceLive.js';
+import CancelOrderUCPanel from './CancelOrderUCPanel.js';
 import { Hero } from './Hero.js';
 import UCOutputFieldValue from './UCOutputFieldValue.js';
+import ViewAssetPriceUCPanel, { type Prices } from './ViewAssetPriceUCPanel.js';
 
 interface Props {
     listOrdersPart0: UCOutputReaderPart<ListOrdersOPI0>;
@@ -38,7 +30,7 @@ export default function OrdersTable({
     const { i18nManager, wordingManager } = useDIContext();
 
     const [ucor] = useState(new UCOutputReader(ViewAssetPriceUCD, undefined));
-    const [prices, setPrices] = useState<Record<ISIN, AssetPriceLiveValue>>({});
+    const [prices, setPrices] = useState<Prices>({});
 
     const {
         fields,
@@ -73,57 +65,18 @@ export default function OrdersTable({
                             </td>
                         ))}
                         <td>
-                            <div className="flex gap-3">
-                                <UCPanel
-                                    autoExec={true}
-                                    onError={async (err) => {
-                                        setPrices((prev) => ({
-                                            ...prev,
-                                            [i.isin]: {
-                                                error: (err as Error).message,
-                                                opi: null,
-                                            },
-                                        }));
-                                    }}
-                                    renderAutoExecLoader={UCAutoExecLoader}
-                                    renderExecTouchable={UCExecTouchable}
-                                    renderForm={UCForm}
-                                    stream={{
-                                        onClose: async () => {},
-                                        onData: async (ucor) => {
-                                            setPrices((prev) => ({
-                                                ...prev,
-                                                [i.isin]: {
-                                                    error: null,
-                                                    opi: ucor.item00().item,
-                                                },
-                                            }));
-                                        },
-                                        onDone: async () => {},
-                                    }}
-                                    uc={new UC(
-                                        Manifest,
-                                        ViewAssetPriceUCD,
-                                        null,
-                                    ).fill({ isin: i.isin })}
-                                />
-                                <AssetPriceLive
-                                    evolField={ucor.field0('evol')}
-                                    priceField={ucor.field0('price')}
-                                    value={prices[i.isin]}
-                                />
-                            </div>
+                            <ViewAssetPriceUCPanel
+                                item={i}
+                                prices={prices}
+                                setPrices={setPrices}
+                                ucor={ucor}
+                            />
                         </td>
                         <td>
-                            <UCPanel
-                                onDone={async (ucor) => update0(ucor)}
+                            <CancelOrderUCPanel
+                                item={i}
                                 onError={onError}
-                                renderAutoExecLoader={UCAutoExecLoader}
-                                renderExecTouchable={UCExecTouchable}
-                                renderForm={UCForm}
-                                uc={new UC(Manifest, CancelOrderUCD, null).fill(
-                                    { id: i.id },
-                                )}
+                                update0={update0}
                             />
                         </td>
                     </tr>
