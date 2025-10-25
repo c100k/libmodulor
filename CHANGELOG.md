@@ -1,6 +1,6 @@
 # CHANGELOG
 
-## v0.22.0 (unreleased)
+## v0.22.0 (2025-10-25)
 
 **Added**
 
