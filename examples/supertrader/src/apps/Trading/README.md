@@ -78,6 +78,26 @@ sequenceDiagram
     Client-->>-User: 👍 OK
 ```
 
+### ViewAssetPrice
+
+```mermaid
+sequenceDiagram
+    actor User
+    User->>+Client: ✏️ Fill<br/>isin: ISIN
+    User->>Client: ↩️ Submit
+    Client->>Client: 🔐 Check policy "Everybody"
+    break when any validation fails
+        Client-->User: show failure
+    end
+    Client->>+Server: 📤 Send<br/>isin: ISIN
+    Server->>Server: 🔐 Check policy "Everybody"
+    break when any validation fails
+        Server-->User: show failure
+    end
+    Server-->>-Client: 👍 OK<br/>evol: Amount<br/>price: Amount<br/>id: UUID
+    Client-->>-User: 👍 OK
+```
+
 ## Technical Summary
 
 |#|filePath|constName|metadataName|metadataAction|metadataBeta|metadataIcon|metadataNew|metadataSensitive|externalImports|internalImports|ioI|ioIFields|ioOPI0|ioOPI0Fields|ioOPI1|ioOPI1Fields|lifecycleClientPolicy|lifecycleServerPolicy|
@@ -85,3 +105,4 @@ sequenceDiagram
 |1|/src/ucds/BuyAssetUCD.ts|BuyAssetUCD|BuyAsset|Create||plus|||libmodulor|../lib/order.js<br>../lib/TISIN.js<br>../manifest.js<br>./BuyAssetServerMain.js|BuyAssetInput|isin: UCInputFieldValue&#60;ISIN&#62;<br>limit: UCInputFieldValue&#60;Amount&#62;<br>qty: UCInputFieldValue&#60;UIntQuantity&#62;|BuyAssetOPI0|isin: ISIN<br>limit: Amount<br>qty: UIntQuantity<br>status: OrderStatus<br>id: UUID|||Everybody|Everybody|
 |2|/src/ucds/CancelOrderUCD.ts|CancelOrderUCD|CancelOrder|Delete||circle-xmark||true|libmodulor|../lib/order.js<br>../manifest.js<br>./CancelOrderServerMain.js|CancelOrderInput|id: UCInputFieldValue&#60;UUID&#62;|CancelOrderOPI0|isin: ISIN<br>limit: Amount<br>qty: UIntQuantity<br>status: OrderStatus<br>id: UUID|||Everybody|Everybody|
 |3|/src/ucds/ListOrdersUCD.ts|ListOrdersUCD|ListOrders|List||list|||libmodulor|../lib/order.js<br>../manifest.js<br>./ListOrdersServerMain.js|ListOrdersInput|id: UCInputFieldValue&#60;UUID&#62;<br>limit: UCInputFieldValue&#60;UIntQuantity&#62;<br>offset: UCInputFieldValue&#60;NumIndex&#62;<br>q: UCInputFieldValue&#60;SearchQuery&#62;|ListOrdersOPI0|isin: ISIN<br>limit: Amount<br>qty: UIntQuantity<br>status: OrderStatus<br>id: UUID|||Everybody|Everybody|
+|4|/src/ucds/ViewAssetPriceUCD.ts|ViewAssetPriceUCD|ViewAssetPrice|View||money-bill-wave|||libmodulor|../lib/TAssetPrice.js<br>../lib/TISIN.js<br>../manifest.js<br>./ViewAssetPriceServerMain.js|ViewAssetPriceInput|isin: UCInputFieldValue&#60;ISIN&#62;|ViewAssetPriceOPI0|evol: Amount<br>price: Amount<br>id: UUID|||Everybody|Everybody|

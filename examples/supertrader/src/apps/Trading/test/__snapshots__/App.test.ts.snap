@@ -971,3 +971,339 @@ exports[`Run > Use Cases > 'ListOrders' > should execute with auth 'REGULAR' and
   "sideEffects": undefined,
 }
 `;
+
+exports[`Run > Use Cases > 'ViewAssetPrice' > should execute with auth 'ADMIN' and input 'ALL_WITH_EXAMPLES' > hash = 4f88fa3441c68ccb858ba6a6765a4ea0f1f501f8f4d432148438846bf14de642 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "admin",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "ADMIN",
+      "inputFiller": [Function],
+      "inputFillerName": "ALL_WITH_EXAMPLES",
+    },
+    "err": null,
+    "hash": "4f88fa3441c68ccb858ba6a6765a4ea0f1f501f8f4d432148438846bf14de642",
+    "io": {
+      "i": {
+        "isin": "US02079K3059",
+      },
+      "o": {
+        "parts": {
+          "_0": {
+            "items": [
+              {
+                "evol": 0.6939293534194357,
+                "id": "356a192b-7913-404c-9457-4d18c28d46e6",
+                "price": 252.03392935341944,
+              },
+            ],
+            "total": 1,
+          },
+        },
+      },
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'ViewAssetPrice' > should execute with auth 'ADMIN' and input 'ONLY_MANDATORY_WITH_EXAMPLES' > hash = 50b1a7686ab8e2fc7fdeb1dea6e1d5f453f177c1704f7ebb2dbd20e17c5e435a 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "admin",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "ADMIN",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_MANDATORY_WITH_EXAMPLES",
+    },
+    "err": null,
+    "hash": "50b1a7686ab8e2fc7fdeb1dea6e1d5f453f177c1704f7ebb2dbd20e17c5e435a",
+    "io": {
+      "i": {
+        "isin": "US02079K3059",
+      },
+      "o": {
+        "parts": {
+          "_0": {
+            "items": [
+              {
+                "evol": 0.9466864848314511,
+                "id": "356a192b-7913-404c-9457-4d18c28d46e6",
+                "price": 252.28668648483145,
+              },
+            ],
+            "total": 1,
+          },
+        },
+      },
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'ViewAssetPrice' > should execute with auth 'ADMIN' and input 'ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPL…' > hash = 6abf262b7b625994e504abc8e0a05b5bce99e3947282b4ea7a6042e6a33ca893 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "admin",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "ADMIN",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPLES",
+    },
+    "err": [IllegalArgumentError: ISIN must be filled],
+    "hash": "6abf262b7b625994e504abc8e0a05b5bce99e3947282b4ea7a6042e6a33ca893",
+    "io": {
+      "i": {
+        "isin": undefined,
+      },
+      "o": null,
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'ViewAssetPrice' > should execute with auth 'ANONYMOUS' and input 'ALL_WITH_EXAMPLES' > hash = 234f58c93cef1d4f5674d959e510407cd4f046cf8c4a37743738432311c7b1ef 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": null,
+      "authName": "ANONYMOUS",
+      "inputFiller": [Function],
+      "inputFillerName": "ALL_WITH_EXAMPLES",
+    },
+    "err": null,
+    "hash": "234f58c93cef1d4f5674d959e510407cd4f046cf8c4a37743738432311c7b1ef",
+    "io": {
+      "i": {
+        "isin": "US02079K3059",
+      },
+      "o": {
+        "parts": {
+          "_0": {
+            "items": [
+              {
+                "evol": 0.631789231431666,
+                "id": "356a192b-7913-404c-9457-4d18c28d46e6",
+                "price": 251.97178923143167,
+              },
+            ],
+            "total": 1,
+          },
+        },
+      },
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'ViewAssetPrice' > should execute with auth 'ANONYMOUS' and input 'ONLY_MANDATORY_WITH_EXAMPLES' > hash = dc1d6fb2af8eead2a3f731ad6f65eb6d37846be35f8b80bc8f2b54be2c2decec 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": null,
+      "authName": "ANONYMOUS",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_MANDATORY_WITH_EXAMPLES",
+    },
+    "err": null,
+    "hash": "dc1d6fb2af8eead2a3f731ad6f65eb6d37846be35f8b80bc8f2b54be2c2decec",
+    "io": {
+      "i": {
+        "isin": "US02079K3059",
+      },
+      "o": {
+        "parts": {
+          "_0": {
+            "items": [
+              {
+                "evol": 0.8349403113387663,
+                "id": "356a192b-7913-404c-9457-4d18c28d46e6",
+                "price": 252.17494031133876,
+              },
+            ],
+            "total": 1,
+          },
+        },
+      },
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'ViewAssetPrice' > should execute with auth 'ANONYMOUS' and input 'ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPL…' > hash = 5b453945fc9a9d33053151ac3800dcaf3966dc58c6965cba37025a571f053d2d 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": null,
+      "authName": "ANONYMOUS",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPLES",
+    },
+    "err": [IllegalArgumentError: ISIN must be filled],
+    "hash": "5b453945fc9a9d33053151ac3800dcaf3966dc58c6965cba37025a571f053d2d",
+    "io": {
+      "i": {
+        "isin": undefined,
+      },
+      "o": null,
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'ViewAssetPrice' > should execute with auth 'REGULAR' and input 'ALL_WITH_EXAMPLES' > hash = 650588bfa30049fee19802335c846b4f5397deac9137a1b945230c9914383204 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "regular",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "REGULAR",
+      "inputFiller": [Function],
+      "inputFillerName": "ALL_WITH_EXAMPLES",
+    },
+    "err": null,
+    "hash": "650588bfa30049fee19802335c846b4f5397deac9137a1b945230c9914383204",
+    "io": {
+      "i": {
+        "isin": "US02079K3059",
+      },
+      "o": {
+        "parts": {
+          "_0": {
+            "items": [
+              {
+                "evol": 0.9131995873831209,
+                "id": "356a192b-7913-404c-9457-4d18c28d46e6",
+                "price": 252.25319958738314,
+              },
+            ],
+            "total": 1,
+          },
+        },
+      },
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'ViewAssetPrice' > should execute with auth 'REGULAR' and input 'ONLY_MANDATORY_WITH_EXAMPLES' > hash = 6189c79befeac63f516e3d6b2d786ffefbaa40e7780da1391765cc5d55aa669d 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "regular",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "REGULAR",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_MANDATORY_WITH_EXAMPLES",
+    },
+    "err": null,
+    "hash": "6189c79befeac63f516e3d6b2d786ffefbaa40e7780da1391765cc5d55aa669d",
+    "io": {
+      "i": {
+        "isin": "US02079K3059",
+      },
+      "o": {
+        "parts": {
+          "_0": {
+            "items": [
+              {
+                "evol": 0.9930485131422768,
+                "id": "356a192b-7913-404c-9457-4d18c28d46e6",
+                "price": 252.33304851314227,
+              },
+            ],
+            "total": 1,
+          },
+        },
+      },
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'ViewAssetPrice' > should execute with auth 'REGULAR' and input 'ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPL…' > hash = c12b3fae6ff65fd71d15a0d74a5b3d95dad0c20dfe0e92ff52add7681dd01fac 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "regular",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "REGULAR",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPLES",
+    },
+    "err": [IllegalArgumentError: ISIN must be filled],
+    "hash": "c12b3fae6ff65fd71d15a0d74a5b3d95dad0c20dfe0e92ff52add7681dd01fac",
+    "io": {
+      "i": {
+        "isin": undefined,
+      },
+      "o": null,
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
