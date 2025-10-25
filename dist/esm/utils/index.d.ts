@@ -1,4 +1,5 @@
 export { sleep } from './async/sleep.js';
+export type { AbortFunc, RegisterAbortFunc } from './async/types.js';
 export type { Clearable } from './concerns/Clearable.js';
 export type { Initializable } from './concerns/Initializable.js';
 export type { SrcImporter } from './esm/srcImporter.js';

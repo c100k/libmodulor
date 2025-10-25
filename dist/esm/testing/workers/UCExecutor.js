@@ -78,18 +78,29 @@ let UCExecutor = class UCExecutor {
                     ucor = await this.ucManager.execClient(uc);
                     break;
                 case 'stream': {
-                    await this.ucManager.execClient(uc, {
-                        stream: {
-                            // TODO : Make it stop once we have one ucor
-                            onClose: async () => { },
-                            onData: async (ucor2) => {
-                                if (!ucor) {
-                                    ucor = ucor2;
-                                }
+                    try {
+                        let abort;
+                        await this.ucManager.execClient(uc, {
+                            registerAbort: (func) => {
+                                abort = func;
                             },
-                            onDone: async () => { },
-                        },
-                    });
+                            stream: {
+                                onClose: async () => { },
+                                onData: async (ucor2) => {
+                                    if (!ucor) {
+                                        ucor = ucor2;
+                                        abort();
+                                    }
+                                },
+                                onDone: async () => { },
+                            },
+                        });
+                    }
+                    catch (err) {
+                        if (err.name !== 'AbortError') {
+                            throw err;
+                        }
+                    }
                     break;
                 }
                 default:

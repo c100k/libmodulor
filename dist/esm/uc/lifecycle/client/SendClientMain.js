@@ -18,6 +18,7 @@ let SendClientMain = class SendClientMain {
     }
     async exec({ opts, uc, }) {
         return this.ucTransporter.send(uc, {
+            registerAbort: opts?.registerAbort,
             stream: opts?.stream,
         });
     }

@@ -1,5 +1,5 @@
 import type { ApiKey, ErrorMessage, HTTPContentType, HTTPMethod, JWT, Password, URL, Username } from '../dt/index.js';
-import type { HTTPDataEnvelope } from '../utils/index.js';
+import type { HTTPDataEnvelope, RegisterAbortFunc } from '../utils/index.js';
 import type { XMLManagerParseOpts } from './XMLManager.js';
 type AdditionalHeadersBuilder<AH> = () => Promise<AH>;
 type ErrBuilder<ResBad> = (response: ResBad) => Promise<ErrorMessage>;
@@ -41,6 +41,7 @@ export interface HTTPAPICallerInput<AH extends object | undefined, Req extends o
      * If not set, it will assume that `ResGood` and `O` are the same and thus return `ResGood` as is.
      */
     outputBuilder?: OutputBuilder<ResGood, O> | undefined;
+    registerAbort?: RegisterAbortFunc | undefined;
     req?: {
         builder: ReqBuilder<Req>;
         envelope: HTTPDataEnvelope;

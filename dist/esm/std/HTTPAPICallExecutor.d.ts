@@ -16,6 +16,7 @@ export type HTTPAPICallExecutorFunc<Res> = (url: URL | URLString, info?: {
     body?: Awaited<ReturnType<HTTPRequestBuilder['exec']>>['body'];
     headers?: HTTPAPICallerHeaders;
     method?: HTTPMethod;
+    signal?: AbortController['signal'];
 }) => Promise<HTTPAPICallExecutorResponse<Res>>;
 export interface HTTPAPICallExecutorResBody {
     getReader(): {

@@ -1,5 +1,5 @@
 import type { UUID } from '../dt/index.js';
-import type { StreamConfig } from '../utils/index.js';
+import type { RegisterAbortFunc, StreamConfig } from '../utils/index.js';
 import type { UCData } from './data.js';
 import type { UCDataStoreRecord } from './data-store.js';
 import type { UCExecMode } from './exec.js';
@@ -26,6 +26,7 @@ export interface UCManagerPersistOpts {
     organizationId?: UUID;
 }
 export interface UCManagerExecClientOpts<I extends UCInput | undefined = undefined, OPI0 extends UCOPIBase | undefined = undefined, OPI1 extends UCOPIBase | undefined = undefined> {
+    registerAbort?: RegisterAbortFunc | undefined;
     stream?: StreamConfig<UCOutputReader<I, OPI0, OPI1>> | undefined;
 }
 export interface UCManagerExecServerOpts<OPI0 extends UCOPIBase | undefined = undefined, OPI1 extends UCOPIBase | undefined = undefined> {

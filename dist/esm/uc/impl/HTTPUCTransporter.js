@@ -96,6 +96,7 @@ let HTTPUCTransporter = class HTTPUCTransporter {
             contentType,
             errBuilder: async (error) => error.message,
             method,
+            registerAbort: opts.registerAbort,
             req: {
                 builder: async () => rInput(uc, { ignoreUndefined: true }),
                 envelope,

@@ -33,7 +33,7 @@ let SimpleHTTPAPICaller = class SimpleHTTPAPICaller {
         this.sseStreamManager = sseStreamManager;
         this.xmlManager = xmlManager;
     }
-    async exec({ additionalHeadersBuilder, authorizationHeader, basicAuth, contentType = 'application/json', errBuilder, method, opts, outputBuilder, req, stream, urlBuilder, unknownErrorMessage = CustomError.ERROR_UNKNOWN, }) {
+    async exec({ additionalHeadersBuilder, authorizationHeader, basicAuth, contentType = 'application/json', errBuilder, method, opts, outputBuilder, registerAbort, req, stream, urlBuilder, unknownErrorMessage = CustomError.ERROR_UNKNOWN, }) {
         const baseURL = await urlBuilder();
         const data = (await req?.builder?.()) || {};
         const { body, url } = await this.httpRequestBuilder.exec({
@@ -51,11 +51,16 @@ let SimpleHTTPAPICaller = class SimpleHTTPAPICaller {
         const agent = this.httpAPICallExecutorAgentBuilder.exec({
             url: new URL(url),
         });
+        const abortController = new AbortController();
+        registerAbort?.(() => {
+            abortController.abort();
+        });
         const response = await this.httpAPICallExecutor.fn()(url, {
             agent,
             body,
             headers: reqHeaders,
             method,
+            signal: abortController.signal,
         });
         const { headers, status } = response;
         this.logger.trace('HTTPAPICaller', {

@@ -1,9 +1,11 @@
+import type { RegisterAbortFunc } from '../utils/index.js';
 import type { UCInput } from './input.js';
 import type { UCMainStream } from './main.js';
 import type { UCOPIBase } from './opi.js';
 import type { UCOutputOrNothing } from './output.js';
 import type { UC } from './UC.js';
 export interface UCTransporterOpts<OPI0 extends UCOPIBase | undefined = undefined, OPI1 extends UCOPIBase | undefined = undefined> {
+    registerAbort?: RegisterAbortFunc | undefined;
     stream?: UCMainStream<OPI0, OPI1> | undefined;
 }
 export interface UCTransporter {

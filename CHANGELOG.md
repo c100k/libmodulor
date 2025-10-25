@@ -11,6 +11,7 @@
 - Add `FakeClockManager` and `FakeLLMManager` to `std` : they are now centralized so they can be reused by all the apps instead of duplicating them
 - Handle targets without fetch stream capabilities
 - Stream responses in cli targets
+- Add ability to abort UC execution
 
 ## v0.21.0 (2025-08-19)
 

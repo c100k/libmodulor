@@ -84,6 +84,7 @@ let SimpleUCManager = class SimpleUCManager {
         const streamOpts = opts?.stream;
         const output = await main.exec({
             opts: {
+                registerAbort: opts?.registerAbort,
                 stream: streamOpts
                     ? {
                         onClose: streamOpts.onClose,
