@@ -9,7 +9,7 @@
     },
     "dependencies": {
         "inversify": "^7.10.3",
-        "libmodulor": "^0.21.0",
+        "libmodulor": "^0.22.0",
         "reflect-metadata": "^0.2.2"
     },
     "devDependencies": {

@@ -2,6 +2,7 @@ import type { AppI18n } from 'libmodulor';
 
 export const I18n: AppI18n = {
     en: {
+        err_isin_price_not_found: 'Cannot find the price of this ISIN',
         err_order_uncancellable: 'Cannot cancel an order that is not pending',
         uc_BuyAsset_i_submit_idle: 'Send buy order',
         uc_BuyAsset_i_submit_submitting: 'Sending',

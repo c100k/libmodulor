@@ -3,7 +3,6 @@ import type { ReactElement } from 'react';
 
 interface Props<T extends DataType> {
     type: TBase<T>;
-    value: string;
 }
 
 // https://daisyui.com/components/badge/#badge-with-dash-style
@@ -20,9 +19,13 @@ const SEMANTICS_VARIANT_BADGE_CLASSES_MAPPING: Record<SemanticsVariant, Slug> =
 
 export default function Badge<T extends DataType>({
     type,
-    value,
 }: Props<T>): ReactElement {
-    const semantics = type.getSemanticsMapping()?.[value];
+    const val = type.val();
+    if (!val) {
+        return <>{type.fmt()}</>;
+    }
+
+    const semantics = type.getSemanticsMapping()?.[val.toString()];
 
     let className = '';
     if (!semantics?.variant) {
@@ -31,5 +34,5 @@ export default function Badge<T extends DataType>({
         className = SEMANTICS_VARIANT_BADGE_CLASSES_MAPPING[semantics.variant];
     }
 
-    return <div className={`badge ${className}`}>{value}</div>;
+    return <div className={`badge ${className}`}>{type.fmt()}</div>;
 }

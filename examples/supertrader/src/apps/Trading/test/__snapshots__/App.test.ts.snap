@@ -971,3 +971,89 @@ exports[`Run > Use Cases > 'ListOrders' > should execute with auth 'REGULAR' and
   "sideEffects": undefined,
 }
 `;
+
+exports[`Run > Use Cases > 'ViewAssetPrice' > should execute with auth 'ADMIN' and input 'ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPL…' > hash = 6abf262b7b625994e504abc8e0a05b5bce99e3947282b4ea7a6042e6a33ca893 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "admin",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "ADMIN",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPLES",
+    },
+    "err": [IllegalArgumentError: ISIN must be filled],
+    "hash": "6abf262b7b625994e504abc8e0a05b5bce99e3947282b4ea7a6042e6a33ca893",
+    "io": {
+      "i": {
+        "isin": undefined,
+      },
+      "o": null,
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'ViewAssetPrice' > should execute with auth 'ANONYMOUS' and input 'ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPL…' > hash = 5b453945fc9a9d33053151ac3800dcaf3966dc58c6965cba37025a571f053d2d 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": null,
+      "authName": "ANONYMOUS",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPLES",
+    },
+    "err": [IllegalArgumentError: ISIN must be filled],
+    "hash": "5b453945fc9a9d33053151ac3800dcaf3966dc58c6965cba37025a571f053d2d",
+    "io": {
+      "i": {
+        "isin": undefined,
+      },
+      "o": null,
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'ViewAssetPrice' > should execute with auth 'REGULAR' and input 'ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPL…' > hash = c12b3fae6ff65fd71d15a0d74a5b3d95dad0c20dfe0e92ff52add7681dd01fac 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "regular",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "REGULAR",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPLES",
+    },
+    "err": [IllegalArgumentError: ISIN must be filled],
+    "hash": "c12b3fae6ff65fd71d15a0d74a5b3d95dad0c20dfe0e92ff52add7681dd01fac",
+    "io": {
+      "i": {
+        "isin": undefined,
+      },
+      "o": null,
+    },
+  },
+  "sideEffects": undefined,
+}
+`;

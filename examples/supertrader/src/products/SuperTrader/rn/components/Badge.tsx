@@ -4,35 +4,37 @@ import { StyleSheet, Text, View } from 'react-native';
 
 interface Props<T extends DataType> {
     type: TBase<T>;
-    value: string;
 }
 
-const SEMANTICS_VARIANT_BADGE_CLASSES_MAPPING: Record<SemanticsVariant, Color> =
-    {
-        danger: 'red',
-        info: 'cyan',
-        primary: 'blue',
-        secondary: 'green',
-        success: 'green',
-        warning: 'orange',
-    };
+const SEMANTICS_VARIANT_COLORS_MAPPING: Record<SemanticsVariant, Color> = {
+    danger: 'red',
+    info: 'cyan',
+    primary: 'blue',
+    secondary: 'green',
+    success: 'green',
+    warning: 'orange',
+};
 
 export default function Badge<T extends DataType>({
     type,
-    value,
 }: Props<T>): ReactElement | null {
-    const semantics = type.getSemanticsMapping()?.[value];
+    const val = type.val();
+    if (!val) {
+        return <>{type.fmt()}</>;
+    }
+
+    const semantics = type.getSemanticsMapping()?.[val.toString()];
 
     let color = '';
     if (!semantics?.variant) {
         color = 'gray';
     } else {
-        color = SEMANTICS_VARIANT_BADGE_CLASSES_MAPPING[semantics.variant];
+        color = SEMANTICS_VARIANT_COLORS_MAPPING[semantics.variant];
     }
 
     return (
         <View style={[styles.container, { borderColor: color }]}>
-            <Text style={[styles.text, { color }]}>{value}</Text>
+            <Text style={[styles.text, { color }]}>{type.fmt()}</Text>
         </View>
     );
 }

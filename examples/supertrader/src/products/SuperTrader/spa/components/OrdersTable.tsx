@@ -1,25 +1,20 @@
-import { UC, type UCOutputReaderPart } from 'libmodulor';
+import { UCOutputReader, type UCOutputReaderPart } from 'libmodulor';
 import {
-    UCPanel,
     type UCPanelOnError,
     type UpdateFunc,
     useDIContext,
 } from 'libmodulor/react';
-import {
-    UCAutoExecLoader,
-    UCExecTouchable,
-    UCForm,
-} from 'libmodulor/react-web-pure';
-import type { ReactElement } from 'react';
+import { type ReactElement, useState } from 'react';
 
 import {
-    CancelOrderUCD,
     type ListOrdersOPI0,
     ListOrdersUCD,
-    Manifest,
+    ViewAssetPriceUCD,
 } from '../../../../apps/Trading/index.js';
+import CancelOrderUCPanel from './CancelOrderUCPanel.js';
 import { Hero } from './Hero.js';
 import UCOutputFieldValue from './UCOutputFieldValue.js';
+import ViewAssetPriceUCPanel, { type Prices } from './ViewAssetPriceUCPanel.js';
 
 interface Props {
     listOrdersPart0: UCOutputReaderPart<ListOrdersOPI0>;
@@ -33,6 +28,9 @@ export default function OrdersTable({
     update0,
 }: Props): ReactElement {
     const { i18nManager, wordingManager } = useDIContext();
+
+    const [ucor] = useState(new UCOutputReader(ViewAssetPriceUCD, undefined));
+    const [prices, setPrices] = useState<Prices>({});
 
     const {
         fields,
@@ -53,6 +51,7 @@ export default function OrdersTable({
                     {fields.map((f) => (
                         <th key={f.key}>{wordingManager.ucof(f.key).label}</th>
                     ))}
+                    <th className="min-w-96">$$$</th>
                     <th className="min-w-48" />
                 </tr>
             </thead>
@@ -66,15 +65,18 @@ export default function OrdersTable({
                             </td>
                         ))}
                         <td>
-                            <UCPanel
-                                onDone={async (ucor) => update0(ucor)}
+                            <ViewAssetPriceUCPanel
+                                item={i}
+                                prices={prices}
+                                setPrices={setPrices}
+                                ucor={ucor}
+                            />
+                        </td>
+                        <td>
+                            <CancelOrderUCPanel
+                                item={i}
                                 onError={onError}
-                                renderAutoExecLoader={UCAutoExecLoader}
-                                renderExecTouchable={UCExecTouchable}
-                                renderForm={UCForm}
-                                uc={new UC(Manifest, CancelOrderUCD, null).fill(
-                                    { id: i.id },
-                                )}
+                                update0={update0}
                             />
                         </td>
                     </tr>
@@ -82,10 +84,10 @@ export default function OrdersTable({
             </tbody>
             <tfoot>
                 <tr>
-                    <th />
                     <th>{i18nManager.t('total')}</th>
-                    <th />
-                    <th />
+                    {fields.map((f) => (
+                        <th key={f.key} />
+                    ))}
                     <th />
                     <th>{total}</th>
                 </tr>

@@ -3,7 +3,12 @@ import type { UCOutputFieldValueFragmentProps } from 'libmodulor/react';
 import { UCOutputFieldValue as UCOutputFieldValueBase } from 'libmodulor/react-web-pure';
 import type { ReactElement } from 'react';
 
-import { TISIN, TOrderStatus } from '../../../../apps/Trading/index.js';
+import {
+    TAssetPrice,
+    TISIN,
+    TOrderStatus,
+} from '../../../../apps/Trading/index.js';
+import AssetPriceText from './AssetPriceText.js';
 import Badge from './Badge.js';
 
 export default function UCOutputFieldValue<
@@ -15,12 +20,16 @@ export default function UCOutputFieldValue<
     } = f;
     type.assign(value);
 
-    if (type instanceof TISIN && typeof value === 'string') {
-        return <Badge type={type} value={type.fmt()} />;
+    if (type instanceof TAssetPrice) {
+        return <AssetPriceText type={type} />;
     }
 
-    if (type instanceof TOrderStatus && typeof value === 'string') {
-        return <Badge type={type} value={type.fmt()} />;
+    if (type instanceof TISIN) {
+        return <Badge type={type} />;
+    }
+
+    if (type instanceof TOrderStatus) {
+        return <Badge type={type} />;
     }
 
     return <UCOutputFieldValueBase f={f} value={value} />;
