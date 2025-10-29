@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { UC, } from '../../../uc/index.js';
 /**
  * This hook provides utilities to init a use case and perform actions on it in a React way
@@ -21,6 +21,16 @@ export function useUC(appManifest, def, auth, opts) {
         }
         return v;
     });
+    // biome-ignore lint/correctness/useExhaustiveDependencies(appManifest): avoid infinite re-rendering
+    // biome-ignore lint/correctness/useExhaustiveDependencies(def): avoid infinite re-rendering
+    // biome-ignore lint/correctness/useExhaustiveDependencies(opts?.fillWith): avoid infinite re-rendering
+    useEffect(() => {
+        const v = new UC(appManifest, def, auth);
+        if (opts?.fillWith) {
+            v.fill(opts?.fillWith);
+        }
+        setUC(v);
+    }, [auth]);
     /**
      * Get a new `UC` based on the initial one
      * @param i

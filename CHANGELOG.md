@@ -4,6 +4,7 @@ While it's unreleased, commits are listed with most recent first. At release tim
 
 ## v0.23.0 (unreleased)
 
+- feat(target react): handle `auth` change in `useUC` hook
 - feat(std)!: add `decodeUnsafe` to `JWTManager`
 
 ## v0.22.0 (2025-10-25)
