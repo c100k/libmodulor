@@ -54,6 +54,10 @@ let JoseJWTManager = class JoseJWTManager {
         }
         throw new Error(`Unsupported alg ${alg}`);
     }
+    async decodeUnsafe(value) {
+        const decoded = decodeJwt(value);
+        return decoded;
+    }
     async encode(payload, opts) {
         const alg = opts?.alg ?? this.s().jwt_manager_algorithm;
         const aud = opts?.aud ?? this.s().jwt_manager_audience;

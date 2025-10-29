@@ -42,6 +42,19 @@ export interface JWTManager {
      */
     decode<T extends JWTManagerPayload>(value: JWT, opts?: JWTManagerDecodeOpts): Promise<T>;
     /**
+     * Decode the token without checking the signature
+     *
+     * IMPORTANT : IT DOES NOT CHECK THE SIGNATURE
+     *
+     * The main purpose of this method is to be used client side to decode the JWT in order to update some state including :
+     *   - displaying the firstname in the UI
+     *   - set the payload in some state
+     *   - etc.
+     *
+     * @param value
+     */
+    decodeUnsafe<T extends JWTManagerPayload>(value: JWT): Promise<T>;
+    /**
      * Encode the payload
      *
      * It uses the global {@link JWTManagerSettings} or the ones provided via `opts`.
@@ -53,7 +66,9 @@ export interface JWTManager {
     /**
      * Check whether the token is usable or not
      *
-     * Note that the signature is not checked. Indeed, the main purpose of this method is to be used client side to save some requests (e.g. when the token is expired).
+     * IMPORTANT : IT DOES NOT CHECK THE SIGNATURE
+     *
+     * The main purpose of this method is to be used client side to save some requests (e.g. when the token is expired).
      * In this case, no need to send a request that will trigger an error. Better to renew the token at the client's initiative.
      */
     isUsable(value: JWT): Promise<boolean>;
