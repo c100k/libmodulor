@@ -20,8 +20,8 @@ import {
     type UCMain,
     type UCMainInput,
     type UCOPIBase,
+    type UCOutput,
     UCOutputBuilder,
-    type UCOutputOrNothing,
     type UIntQuantity,
 } from 'libmodulor';
 
@@ -61,7 +61,7 @@ class SearchAccomodationClientMain
     public async exec({
         uc,
     }: UCMainInput<SearchAccomodationInput, SearchAccomodationOPI0>): Promise<
-        UCOutputOrNothing<SearchAccomodationOPI0>
+        UCOutput<SearchAccomodationOPI0>
     > {
         const adultsCount = uc.reqVal0('adultsCount');
         const childrenCount = uc.reqVal0('childrenCount');

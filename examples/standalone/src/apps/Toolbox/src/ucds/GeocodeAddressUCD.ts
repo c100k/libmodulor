@@ -14,8 +14,8 @@ import {
     type UCMainInput,
     type UCOPIBase,
     type UCOPIValue,
+    type UCOutput,
     UCOutputBuilder,
-    type UCOutputOrNothing,
     type URL,
 } from 'libmodulor';
 
@@ -43,7 +43,7 @@ class GeocodeAddressClientMain
     public async exec({
         uc,
     }: UCMainInput<GeocodeAddressInput, GeocodeAddressOPI0>): Promise<
-        UCOutputOrNothing<GeocodeAddressOPI0>
+        UCOutput<GeocodeAddressOPI0>
     > {
         const address = uc.reqVal0('address');
 

@@ -29,8 +29,8 @@ import {
     type UCMain,
     type UCMainInput,
     type UCManager,
+    type UCOutput,
     UCOutputBuilder,
-    type UCOutputOrNothing,
     type UCOutputReader,
     WordingManager,
 } from 'libmodulor';
@@ -74,7 +74,7 @@ class RegisterClientMain implements UCMain<RegisterInput, RegisterOPI0> {
     public async exec({
         uc,
     }: UCMainInput<RegisterInput, RegisterOPI0>): Promise<
-        UCOutputOrNothing<RegisterOPI0>
+        UCOutput<RegisterOPI0>
     > {
         const { aggregateId } = await this.ucManager.persist(uc);
 
