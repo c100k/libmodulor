@@ -20,6 +20,11 @@
             }
         }
     },
+    "css": {
+        "parser": {
+            "tailwindDirectives": true
+        }
+    },
     "files": {
         "ignoreUnknown": true,
         "includes": [
@@ -28,7 +33,8 @@
             "!**/coverage",
             "!**/dist",
             "!**/node_modules",
-            "!**/package.json"
+            "!**/package.json",
+            "!examples/*/src/apps/*/test"
         ]
     },
     "formatter": {

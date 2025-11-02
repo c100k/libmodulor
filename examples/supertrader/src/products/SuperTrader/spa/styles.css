@@ -1,3 +1,2 @@
 @import "tailwindcss";
-/* biome-ignore lint/suspicious/noUnknownAtRules: we want it */
 @plugin "daisyui";

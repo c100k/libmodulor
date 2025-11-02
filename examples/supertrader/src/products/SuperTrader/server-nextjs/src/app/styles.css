@@ -1,8 +1,5 @@
 @import "tailwindcss";
-/* biome-ignore lint/suspicious/noUnknownAtRules: we want it */
 @plugin "daisyui";
 
-/* biome-ignore lint/suspicious/noUnknownAtRules: we want it */
-@source '../../../spa/components/*.js';
-/* biome-ignore lint/suspicious/noUnknownAtRules: we want it */
-@source '../../../spa/style.js';
+@source "../../../spa/components/*.js";
+@source "../../../spa/style.js";
