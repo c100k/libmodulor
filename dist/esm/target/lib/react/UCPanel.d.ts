@@ -6,17 +6,16 @@ import type { RenderUCForm } from './form.js';
 import type { RenderUCAutoExecLoader } from './loader.js';
 import type { UCPanelCtx, UCPanelOnDone, UCPanelOnError, UCPanelOnInit, UCPanelOnStartSubmitting } from './panel.js';
 import type { RenderUCExecTouchable } from './touchable.js';
-type Props<I extends UCInput | undefined = undefined, OPI0 extends UCOPIBase | undefined = undefined, OPI1 extends UCOPIBase | undefined = undefined> = Pick<UCPanelCtx<I, OPI0, OPI1>, 'clearAfterExec' | 'uc'> & {
-    autoExec?: boolean;
-    onDone?: UCPanelOnDone<I, OPI0, OPI1>;
-    onInit?: UCPanelOnInit<I, OPI0, OPI1>;
-    onError?: UCPanelOnError;
-    onStartSubmitting?: UCPanelOnStartSubmitting;
+export type Props<I extends UCInput | undefined = undefined, OPI0 extends UCOPIBase | undefined = undefined, OPI1 extends UCOPIBase | undefined = undefined> = Pick<UCPanelCtx<I, OPI0, OPI1>, 'clearAfterExec' | 'uc'> & {
+    autoExec?: boolean | undefined;
+    onDone?: UCPanelOnDone<I, OPI0, OPI1> | undefined;
+    onInit?: UCPanelOnInit<I, OPI0, OPI1> | undefined;
+    onError?: UCPanelOnError | undefined;
+    onStartSubmitting?: UCPanelOnStartSubmitting | undefined;
     renderAutoExecLoader: RenderUCAutoExecLoader;
     renderExecTouchable: RenderUCExecTouchable<I, OPI0, OPI1>;
     renderForm: RenderUCForm<I, OPI0, OPI1>;
-    sleepInMs?: UIntDuration;
+    sleepInMs?: UIntDuration | undefined;
     stream?: StreamConfig<UCOutputReader<I, OPI0, OPI1>> | undefined;
 };
 export declare function UCPanel<I extends UCInput | undefined = undefined, OPI0 extends UCOPIBase | undefined = undefined, OPI1 extends UCOPIBase | undefined = undefined>({ autoExec, clearAfterExec, onDone, onError, onInit, onStartSubmitting, renderAutoExecLoader, renderForm, renderExecTouchable, sleepInMs, stream, uc, }: Props<I, OPI0, OPI1>): ReactElement;
-export {};

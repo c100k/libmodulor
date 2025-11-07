@@ -6,7 +6,7 @@ export type { RenderUCEntrypointTouchable, RenderUCExecTouchable, UCEntrypointTo
 export { UCContainer } from './target/lib/react/UCContainer.js';
 export { UCEntrypoint } from './target/lib/react/UCEntrypoint.js';
 export { type Props as UCOutputFieldValueFragmentProps, UCOutputFieldValueFragment, } from './target/lib/react/UCOutputFieldValueFragment.js';
-export { UCPanel } from './target/lib/react/UCPanel.js';
+export { type Props as UCPanelProps, UCPanel, } from './target/lib/react/UCPanel.js';
 export { type UseActionOpts, useAction, } from './target/lib/react/useAction.js';
 export { type CloneFunc, type DivertFunc, type RefillFunc, useUC, } from './target/lib/react/useUC.js';
 export { type AppendFunc, type RemoveFunc, type UpdateFunc, useUCOR, } from './target/lib/react/useUCOR.js';

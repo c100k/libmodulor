@@ -6,6 +6,7 @@ While it's unreleased, commits are listed with most recent first. At release tim
 
 - feat(target react): handle `auth` change in `useUC` hook
 - feat(std)!: add `decodeUnsafe` to `JWTManager`
+- feat(target react): expose `UCPanel` props
 
 ## v0.22.0 (2025-10-25)
 
