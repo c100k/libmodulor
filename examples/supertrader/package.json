@@ -20,10 +20,10 @@
     },
     "dependencies": {
         "@hono/node-server": "^1.19.6",
-        "@modelcontextprotocol/sdk": "^1.20.2",
-        "@tailwindcss/vite": "^4.1.16",
-        "daisyui": "^5.3.10",
-        "expo": "^54.0.21",
+        "@modelcontextprotocol/sdk": "^1.21.0",
+        "@tailwindcss/vite": "^4.1.17",
+        "daisyui": "^5.4.5",
+        "expo": "^54.0.22",
         "hono": "^4.10.4",
         "inversify": "^7.10.4",
         "knex": "^3.1.0",
@@ -34,12 +34,12 @@
         "react-native": "^0.81.5",
         "reflect-metadata": "^0.2.2",
         "sqlite3": "^5.1.7",
-        "tailwindcss": "^4.1.16"
+        "tailwindcss": "^4.1.17"
     },
     "devDependencies": {
         "@babel/plugin-transform-class-static-block": "^7.28.3",
-        "@tailwindcss/postcss": "^4.1.16",
-        "@types/node": "^24.9.2",
+        "@tailwindcss/postcss": "^4.1.17",
+        "@types/node": "^24.10.0",
         "@types/react": "^19.2.2",
         "@types/react-dom": "^19.2.2",
         "@vitest/coverage-v8": "^3.2.4",
@@ -56,6 +56,6 @@
         "vite": "^6.4.1",
         "vite-bundle-visualizer": "^1.2.1",
         "vitest": "^3.2.4",
-        "wrangler": "^4.45.3"
+        "wrangler": "^4.46.0"
     }
 }
