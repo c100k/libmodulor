@@ -12,6 +12,7 @@ import { bindNodeCore, NodeDeterministicCryptoManager } from 'libmodulor/node';
 import { bindServer } from 'libmodulor/node-express';
 import { SimpleAppTesterConfigurator } from 'libmodulor/node-test';
 
+import type { AssetPriceStreamerSettings } from '../src/lib/AssetPriceStreamer.js';
 import type {
     ViewAssetPriceInput,
     ViewAssetPriceOPI0,
@@ -30,6 +31,14 @@ export class Configurator extends SimpleAppTesterConfigurator {
         bindCommon(container);
         bindNodeCore(container);
         bindServer(container);
+
+        type S = AssetPriceStreamerSettings;
+        const current = container.get<S>('Settings');
+        const settings: S = {
+            ...current,
+            asset_price_streamer_speed: 100,
+        };
+        container.rebindSync<S>('Settings').toConstantValue(settings);
 
         (await container.rebind<CryptoManager>('CryptoManager')).to(
             NodeDeterministicCryptoManager,

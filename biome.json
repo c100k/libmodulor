@@ -34,7 +34,7 @@
             "!**/dist",
             "!**/node_modules",
             "!**/package.json",
-            "!examples/*/src/apps/*/test"
+            "!examples/*/src/apps/*/test/reports"
         ]
     },
     "formatter": {

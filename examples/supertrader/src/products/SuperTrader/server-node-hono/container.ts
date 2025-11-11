@@ -17,15 +17,19 @@ import {
     type KnexUCDataStoreSettings,
 } from 'libmodulor/uc-data-store-knex';
 
+import type { AssetPriceStreamerSettings } from '../../../apps/Trading/index.js';
 import { I18n } from '../i18n.js';
 import { Manifest } from '../manifest.js';
 
-type S = KnexUCDataStoreSettings & ServerManagerSettings;
+type S = AssetPriceStreamerSettings &
+    KnexUCDataStoreSettings &
+    ServerManagerSettings;
 
 const container = new Container(CONTAINER_OPTS);
 
 bindCommon<S>(container, () => ({
     ...TARGET_DEFAULT_SERVER_MANAGER_SETTINGS,
+    asset_price_streamer_speed: 1,
     knex_uc_data_store_conn_string: 'postgresql://toto',
     knex_uc_data_store_file_path: '../../../../uc-data-store.sqlite',
     knex_uc_data_store_pool_max: 5,

@@ -10,6 +10,7 @@ import {
     UCOutputBuilder,
 } from 'libmodulor';
 
+import { AssetPriceStreamer } from '../lib/AssetPriceStreamer.js';
 import type { ISIN } from '../lib/TISIN.js';
 import type {
     ViewAssetPriceInput,
@@ -27,6 +28,8 @@ export class ViewAssetPriceServerMain
     ]);
 
     constructor(
+        @inject(AssetPriceStreamer)
+        private assetPriceStreamer: AssetPriceStreamer,
         @inject('CryptoManager') private cryptoManager: CryptoManager,
         @inject('I18nManager') private i18nManager: I18nManager,
     ) {}
@@ -53,23 +56,24 @@ export class ViewAssetPriceServerMain
             price: initialPrice,
         });
 
-        const intervalID = setInterval(() => {
-            opts?.stream?.onData(
-                ob
-                    .update(id, (item) => {
-                        const rand = Math.random();
-                        const way = rand < 0.5 ? -1 : 1;
-                        item.evol = way * rand;
-                        item.price = item.price + item.evol;
-                    })
-                    .get(),
-            );
-        }, 1000);
         if (opts?.stream) {
             opts.stream.onClose = async () => {
-                clearInterval(intervalID);
+                stop();
             };
         }
+        const { stop } = await this.assetPriceStreamer.exec({
+            initialPrice,
+            onProgress: (evol, price) => {
+                opts?.stream?.onData?.(
+                    ob
+                        .update(id, (item) => {
+                            item.evol = evol;
+                            item.price = price;
+                        })
+                        .get(),
+                );
+            },
+        });
 
         return ob.get();
     }
