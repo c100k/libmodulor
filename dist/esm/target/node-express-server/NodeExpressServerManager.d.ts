@@ -8,8 +8,8 @@ import type { ServerManager, ServerManagerSettings } from '../lib/server/ServerM
 import { ServerRequestHandler } from '../lib/server/ServerRequestHandler.js';
 import { ServerSSLCertLoader } from '../lib/server/ServerSSLCertLoader.js';
 import { HelmetMiddlewareBuilder } from '../lib/server-express/HelmetMiddlewareBuilder.js';
-import type { ListenSettings } from '../lib/server-node/types.js';
-type S = ListenSettings & Pick<LoggerSettings, 'logger_level'> & Pick<ServerManagerSettings, 'server_tmp_path'>;
+import type { ListenSettings, StopSettings } from '../lib/server-node/types.js';
+type S = ListenSettings & Pick<LoggerSettings, 'logger_level'> & Pick<ServerManagerSettings, 'server_tmp_path'> & StopSettings;
 export declare class NodeExpressServerManager implements Configurable<S>, ServerManager {
     private entrypointsBuilder;
     protected environmentManager: EnvironmentManager;

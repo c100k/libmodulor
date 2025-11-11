@@ -27,6 +27,7 @@ export interface ServerManagerSettings extends ServerManagerAuthSettings, Settin
     server_ssl_fullchain_path: FilePath | null;
     server_ssl_key_path: FilePath | null;
     server_static_dir_path: DirPath | null;
+    server_stop_mode: 'aggressive' | 'patient';
     server_tmp_path: FilePath;
 }
 export interface ServerManager extends Initializable {

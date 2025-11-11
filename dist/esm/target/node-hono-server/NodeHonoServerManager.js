@@ -44,6 +44,7 @@ let NodeHonoServerManager = class NodeHonoServerManager {
         return {
             server_binding_host: this.settingsManager.get()('server_binding_host'),
             server_binding_port: this.settingsManager.get()('server_binding_port'),
+            server_stop_mode: this.settingsManager.get()('server_stop_mode'),
         };
     }
     getRuntime() {
@@ -75,7 +76,7 @@ let NodeHonoServerManager = class NodeHonoServerManager {
         listen(this.server, this.entrypointsBuilder, this.logger, this.settingsManager);
     }
     async stop() {
-        await stop(this.server);
+        await stop(this.server, this.settingsManager);
     }
     async warmUp() {
         // Nothing to do

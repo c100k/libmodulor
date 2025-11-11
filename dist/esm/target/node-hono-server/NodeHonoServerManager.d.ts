@@ -7,8 +7,8 @@ import { EntrypointsBuilder } from '../lib/server/EntrypointsBuilder.js';
 import type { ServerManager } from '../lib/server/ServerManager.js';
 import { ServerRequestHandler } from '../lib/server/ServerRequestHandler.js';
 import { ServerSSLCertLoader } from '../lib/server/ServerSSLCertLoader.js';
-import type { ListenSettings } from '../lib/server-node/types.js';
-type S = ListenSettings;
+import type { ListenSettings, StopSettings } from '../lib/server-node/types.js';
+type S = ListenSettings & StopSettings;
 export declare class NodeHonoServerManager implements Configurable<S>, ServerManager {
     private entrypointsBuilder;
     protected environmentManager: EnvironmentManager;

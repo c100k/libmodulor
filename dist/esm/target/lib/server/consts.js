@@ -19,5 +19,6 @@ export const TARGET_DEFAULT_SERVER_MANAGER_SETTINGS = {
     server_ssl_fullchain_path: null,
     server_ssl_key_path: null,
     server_static_dir_path: null,
+    server_stop_mode: 'patient',
     server_tmp_path: 'tmp',
 };

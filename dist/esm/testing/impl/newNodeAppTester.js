@@ -28,6 +28,7 @@ export async function newNodeAppTester(serverPortRangeStart, idx, args) {
         server_binding_port: serverPortRangeStart + idx,
         server_private_api_key_entries: [new TApiKey().example()],
         server_public_api_key_entries: [new TApiKey().example()],
+        server_stop_mode: 'aggressive',
     };
     const container = new Container(CONTAINER_OPTS);
     bindCommon(container, () => settings);

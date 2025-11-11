@@ -47,6 +47,7 @@ let NodeExpressServerManager = class NodeExpressServerManager {
             logger_level: this.settingsManager.get()('logger_level'),
             server_binding_host: this.settingsManager.get()('server_binding_host'),
             server_binding_port: this.settingsManager.get()('server_binding_port'),
+            server_stop_mode: this.settingsManager.get()('server_stop_mode'),
             server_tmp_path: this.settingsManager.get()('server_tmp_path'),
         };
     }
@@ -79,7 +80,7 @@ let NodeExpressServerManager = class NodeExpressServerManager {
         listen(this.server, this.entrypointsBuilder, this.logger, this.settingsManager);
     }
     async stop() {
-        await stop(this.server);
+        await stop(this.server, this.settingsManager);
     }
     async warmUp() {
         // Nothing to do
