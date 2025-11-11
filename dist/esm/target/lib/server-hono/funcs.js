@@ -51,7 +51,7 @@ export function buildHandler(appManifest, ucd, contract, serverRequestHandler, u
                 break;
             }
             default:
-                ((_) => { })(transportType);
+                transportType;
         }
         const { body, status } = await serverRequestHandler.exec({
             appManifest,
@@ -80,7 +80,7 @@ export function buildHandler(appManifest, ucd, contract, serverRequestHandler, u
                 });
             }
             default:
-                ((_) => { })(transportType);
+                transportType;
         }
         return c.json(body, status);
     };

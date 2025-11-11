@@ -110,7 +110,7 @@ let NodeFSManager = class NodeFSManager {
             case 'library':
                 return [];
             default:
-                ((_) => { })(source);
+                source;
                 return [];
         }
     }

@@ -39,7 +39,7 @@ let PublicApiKeyChecker = class PublicApiKeyChecker {
                 }
                 break;
             default:
-                ((_) => { })(checkType);
+                checkType;
         }
         if (!allowed) {
             throw new UnauthorizedError();

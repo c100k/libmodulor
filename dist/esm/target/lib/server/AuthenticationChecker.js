@@ -80,7 +80,7 @@ let AuthenticationChecker = class AuthenticationChecker {
                     }
                     break;
                 default:
-                    ((_) => { })(authType);
+                    authType;
             }
             uc.auth = output.auth;
             const { allowed } = await policy.exec({ uc });

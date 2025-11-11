@@ -120,7 +120,7 @@ let UCDefSourcesChecker = class UCDefSourcesChecker {
                 item.lifecycleServerSteps.push({ err: null, value: step });
                 break;
             default:
-                ((_) => { })(lifecycle);
+                lifecycle;
         }
     }
     checkMetadata(metadata, item) {
@@ -177,7 +177,7 @@ let UCDefSourcesChecker = class UCDefSourcesChecker {
                 };
                 break;
             default:
-                ((_) => { })(lifecycle);
+                lifecycle;
         }
     }
     async processFiles(appPath, paths) {

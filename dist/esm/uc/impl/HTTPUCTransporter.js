@@ -51,7 +51,7 @@ let HTTPUCTransporter = class HTTPUCTransporter {
                 break;
             }
             default:
-                ((_) => { })(publicApiKeyCheckType);
+                publicApiKeyCheckType;
         }
         if (auth) {
             switch (authType) {
@@ -86,7 +86,7 @@ let HTTPUCTransporter = class HTTPUCTransporter {
                     break;
                 }
                 default:
-                    ((_) => { })(authType);
+                    authType;
             }
         }
         const res = await this.httpAPICaller.exec({

@@ -59,7 +59,7 @@ let UCExecChecker = class UCExecChecker {
                 output.allowed = typeof server === 'object';
                 break;
             default:
-                ((_) => { })(lifecycle);
+                lifecycle;
         }
         return output;
     }

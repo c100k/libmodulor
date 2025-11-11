@@ -23,7 +23,7 @@ export async function stop(server, settingsManager) {
             case 'patient':
                 break;
             default:
-                ((_) => { })(mode);
+                mode;
         }
         server.close((err) => {
             if (err) {

@@ -65,7 +65,7 @@ export class TObject extends TBase {
                     break;
                 }
                 default:
-                    ((_) => { })(strategy);
+                    strategy;
             }
         }
         return validation;

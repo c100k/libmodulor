@@ -104,7 +104,7 @@ let UCExecutor = class UCExecutor {
                     break;
                 }
                 default:
-                    ((_) => { })(transportType);
+                    transportType;
             }
             if (!ucor) {
                 throw new Error(ERR_CLIENT_EXPECTED_UCOR(name));

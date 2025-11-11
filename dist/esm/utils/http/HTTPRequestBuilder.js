@@ -41,7 +41,7 @@ let HTTPRequestBuilder = class HTTPRequestBuilder {
                 break;
             }
             default:
-                ((_) => { })(envelope);
+                envelope;
                 return output;
         }
         return output;

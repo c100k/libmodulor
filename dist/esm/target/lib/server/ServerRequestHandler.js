@@ -127,7 +127,7 @@ let ServerRequestHandler = class ServerRequestHandler {
                 uc.fill((await req.bodyFromQueryParams()));
                 break;
             default:
-                ((_) => { })(envelope);
+                envelope;
         }
     }
     async applySideEffects(res, ucd, output) {
@@ -154,7 +154,7 @@ let ServerRequestHandler = class ServerRequestHandler {
                     await this.applySetAuthSideEffect(res, item);
                     break;
                 default:
-                    ((_) => { })(type);
+                    (type);
             }
         }
         return { status: undefined };

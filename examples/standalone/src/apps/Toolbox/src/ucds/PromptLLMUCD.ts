@@ -100,7 +100,7 @@ class PromptLLMClientMain implements UCMain<PromptLLMInput, PromptLLMOPI0> {
                 res = '<streamed>';
                 break;
             default:
-                ((_: never): void => {})(transportType);
+                transportType satisfies never;
         }
 
         const id = this.cryptoManager.randomUUID();

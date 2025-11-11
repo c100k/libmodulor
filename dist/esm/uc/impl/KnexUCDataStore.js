@@ -112,7 +112,7 @@ let KnexUCDataStore = class KnexUCDataStore {
             case 'sqlite3':
                 return [];
             default:
-                ((_) => { })(type);
+                (type);
                 return [];
         }
     }
@@ -156,7 +156,7 @@ let KnexUCDataStore = class KnexUCDataStore {
                 this.fillConfigForSQLite3();
                 break;
             default:
-                ((_) => { })(type);
+                (type);
         }
     }
     fillConfigForPG() {
