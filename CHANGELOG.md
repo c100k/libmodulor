@@ -1,10 +1,8 @@
 # CHANGELOG
 
-While it's unreleased, commits are listed with most recent first. At release time, a proper changelog for humans will be written.
+## v0.23.0 (2025-11-11)
 
-## v0.23.0 (unreleased)
-
-https://github.com/c100k/libmodulor/compare/v0.22.0...master
+See all the changes here : https://github.com/c100k/libmodulor/compare/v0.22.0...master
 
 ## v0.22.0 (2025-10-25)
 
