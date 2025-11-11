@@ -90,7 +90,7 @@ let SimpleHTTPAPICaller = class SimpleHTTPAPICaller {
         });
         const { ok, redirected } = response;
         if (ok || redirected) {
-            return this.processResGood({ opts, outputBuilder, stream }, isFormURLEncoded, isJSON, isNDJSON, isSSE, isXML, response);
+            return this.processResGood({ opts, outputBuilder, stream }, abortController, isFormURLEncoded, isJSON, isNDJSON, isSSE, isXML, response);
         }
         const message = await this.processResBad({ errBuilder, opts }, isJSON, isXML, response);
         this.throwError(message ?? unknownErrorMessage, status);
@@ -173,13 +173,14 @@ let SimpleHTTPAPICaller = class SimpleHTTPAPICaller {
             return JSON.stringify(error);
         }
     }
-    async processResGood({ opts, outputBuilder, stream, }, isFormURLEncoded, isJSON, isNDJSON, isSSE, isXML, response) {
+    async processResGood({ opts, outputBuilder, stream, }, abortController, isFormURLEncoded, isJSON, isNDJSON, isSSE, isXML, response) {
         let payload;
         if (isNDJSON && stream) {
             if (!response.body) {
                 throw new Error(ERR_STREAM_UNAVAILABLE);
             }
             await this.ndJSONStreamManager.exec({
+                abortController,
                 onData: async (data) => {
                     if (outputBuilder) {
                         stream.onData(await outputBuilder(data));
@@ -196,6 +197,7 @@ let SimpleHTTPAPICaller = class SimpleHTTPAPICaller {
                 throw new Error(ERR_STREAM_UNAVAILABLE);
             }
             await this.sseStreamManager.exec({
+                abortController,
                 onData: async (data) => {
                     if (outputBuilder) {
                         stream.onData(await outputBuilder(data));

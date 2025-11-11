@@ -11,10 +11,13 @@ import { isSSEError, parseDataLine, SSE_DATA_SEP, SSE_MSG_SEP } from './sse.js';
 let SSEStreamManager = class SSEStreamManager {
     static { SSEStreamManager_1 = this; }
     static DEFAULT_ENCODING = 'utf-8';
-    async exec({ encoding = SSEStreamManager_1.DEFAULT_ENCODING, onData, reader, }) {
+    async exec({ abortController, encoding = SSEStreamManager_1.DEFAULT_ENCODING, onData, reader, }) {
         const decoder = new TextDecoder(encoding);
         let buffer = '';
         while (true) {
+            if (abortController.signal.aborted) {
+                return;
+            }
             const { done, value } = await reader.read();
             if (done) {
                 return;

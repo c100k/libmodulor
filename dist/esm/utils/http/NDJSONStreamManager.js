@@ -10,10 +10,13 @@ import { NDJSON_DATA_SEP } from './nd-json.js';
 let NDJSONStreamManager = class NDJSONStreamManager {
     static { NDJSONStreamManager_1 = this; }
     static DEFAULT_ENCODING = 'utf-8';
-    async exec({ encoding = NDJSONStreamManager_1.DEFAULT_ENCODING, onData, reader, }) {
+    async exec({ abortController, encoding = NDJSONStreamManager_1.DEFAULT_ENCODING, onData, reader, }) {
         const decoder = new TextDecoder(encoding);
         let buffer = '';
         while (true) {
+            if (abortController.signal.aborted) {
+                return;
+            }
             const { done, value } = await reader.read();
             if (done) {
                 return;

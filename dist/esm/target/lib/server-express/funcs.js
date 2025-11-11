@@ -14,7 +14,9 @@ export function buildHandler(appManifest, ucd, contract, serverRequestHandler, u
             case 'stream': {
                 execOpts = {
                     stream: {
-                        onClose: async () => { },
+                        onClose: async () => {
+                            throw new Error('execOpts.stream.onClose needs to be set in the UC ServerMain');
+                        },
                         onData: async (output) => {
                             if (!output) {
                                 return;
@@ -31,7 +33,6 @@ export function buildHandler(appManifest, ucd, contract, serverRequestHandler, u
                 }
                 res.flushHeaders();
                 res.on('close', async () => {
-                    res.end();
                     await execOpts?.stream?.onClose();
                 });
                 break;
