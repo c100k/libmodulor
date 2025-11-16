@@ -7,7 +7,7 @@ import { defineConfig, type PluginOption } from 'vite';
 import { StripUCDLifecycleServerPlugin } from '../../../../dist/esm/index.vite.js';
 
 const projectRoot = process.cwd();
-const productPath = join('products', 'playground');
+const productPath = join('products', 'Playground');
 const root = join('examples', productPath, 'spa');
 const distPathRoot = join(projectRoot, 'dist-examples');
 const distPath = existsSync(join(distPathRoot, 'examples'))
