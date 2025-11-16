@@ -5,12 +5,12 @@
     "d1_databases": [
         {
             "binding": "UCDataStore",
-            "database_id": "968b383e-fd0c-45cc-9ec0-4df119c40aa4",
-            "database_name": "fik-sdk-examples-playground-uc-data-store"
+            "database_id": "{your_database_id}",
+            "database_name": "libmodulor-examples-playground-uc-data-store"
         }
     ],
     "main": "src/index.ts",
-    "name": "fik-sdk-examples-playground",
+    "name": "libmodulor-examples-playground",
     "observability": {
         "enabled": true
     }

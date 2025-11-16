@@ -5,3 +5,4 @@ onlyBuiltDependencies:
   - esbuild
   - sharp
   - sqlite3
+  - workerd
