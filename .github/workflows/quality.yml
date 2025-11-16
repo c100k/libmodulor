@@ -34,8 +34,3 @@ jobs:
         run: |
           cd examples/basic
           ./check.sh
-
-      - name: Check examples/standalone
-        run: |
-          cd examples/standalone
-          ./check.sh

@@ -1,7 +1,6 @@
 minimumReleaseAge: 2880
 packages:
   - examples/basic
-  - examples/standalone
 onlyBuiltDependencies:
   - '@biomejs/biome'
   - '@tailwindcss/oxide'
