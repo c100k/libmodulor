@@ -20,11 +20,11 @@
     },
     "dependencies": {
         "@hono/node-server": "^1.19.6",
-        "@modelcontextprotocol/sdk": "^1.21.0",
+        "@modelcontextprotocol/sdk": "^1.22.0",
         "@tailwindcss/vite": "^4.1.17",
-        "daisyui": "^5.4.5",
-        "expo": "^54.0.22",
-        "hono": "^4.10.4",
+        "daisyui": "^5.5.3",
+        "expo": "^54.0.23",
+        "hono": "^4.10.5",
         "inversify": "^7.10.4",
         "knex": "^3.1.0",
         "libmodulor": "^0.23.0",
@@ -39,9 +39,9 @@
     "devDependencies": {
         "@babel/plugin-transform-class-static-block": "^7.28.3",
         "@tailwindcss/postcss": "^4.1.17",
-        "@types/node": "^24.10.0",
-        "@types/react": "^19.2.2",
-        "@types/react-dom": "^19.2.2",
+        "@types/node": "^24.10.1",
+        "@types/react": "^19.2.4",
+        "@types/react-dom": "^19.2.3",
         "@vitest/coverage-v8": "^3.2.4",
         "babel-plugin-parameter-decorator": "^1.0.16",
         "babel-plugin-transform-typescript-metadata": "^0.3.2",
@@ -51,11 +51,11 @@
         "express-fileupload": "^1.5.2",
         "fast-check": "^4.3.0",
         "helmet": "^8.1.0",
-        "jose": "^6.1.0",
+        "jose": "^6.1.1",
         "typescript": "^5.9.3",
         "vite": "^6.4.1",
         "vite-bundle-visualizer": "^1.2.1",
         "vitest": "^3.2.4",
-        "wrangler": "^4.46.0"
+        "wrangler": "^4.47.0"
     }
 }
