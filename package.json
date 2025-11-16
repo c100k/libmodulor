@@ -84,7 +84,11 @@
         "lint:ci": "biome check"
     },
     "devDependencies": {
-        "@biomejs/biome": "^2.3.5"
+        "@biomejs/biome": "^2.3.5",
+        "@react-native-community/slider": "^4.5.7",
+        "@types/react": "^19.2.4",
+        "@types/react-dom": "^19.2.3",
+        "expo": "^54.0.23"
     },
     "peerDependencies": {
         "@hono/node-server": "^1.19.6",

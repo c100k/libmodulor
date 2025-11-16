@@ -2,7 +2,6 @@ minimumReleaseAge: 2880
 packages:
   - examples/basic
   - examples/standalone
-  - examples/supertrader
 onlyBuiltDependencies:
   - '@biomejs/biome'
   - '@tailwindcss/oxide'
