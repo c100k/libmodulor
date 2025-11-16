@@ -26,6 +26,10 @@ jobs:
         run: |
           pnpm lint:ci
 
+      - name: Build examples
+        run: |
+          ./scripts/examples/build.sh
+
       - name: Check examples/basic
         run: |
           cd examples/basic

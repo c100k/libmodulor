@@ -1,0 +1,28 @@
+{
+    "expo": {
+        "android": {
+            "adaptiveIcon": {
+                "backgroundColor": "#ffffff",
+                "foregroundImage": "./assets/adaptive-icon.png"
+            }
+        },
+        "icon": "./assets/icon.png",
+        "ios": {
+            "supportsTablet": true
+        },
+        "name": "Playground",
+        "newArchEnabled": true,
+        "orientation": "portrait",
+        "slug": "playground",
+        "splash": {
+            "backgroundColor": "#ffffff",
+            "image": "./assets/splash-icon.png",
+            "resizeMode": "contain"
+        },
+        "userInterfaceStyle": "light",
+        "version": "1.0.0",
+        "web": {
+            "favicon": "./assets/favicon.png"
+        }
+    }
+}

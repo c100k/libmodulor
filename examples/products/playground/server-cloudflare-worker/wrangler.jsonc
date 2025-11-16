@@ -1,0 +1,17 @@
+{
+    "$schema": "../../../../node_modules/wrangler/config-schema.json",
+    "compatibility_date": "2025-06-12",
+    "compatibility_flags": ["nodejs_compat"],
+    "d1_databases": [
+        {
+            "binding": "UCDataStore",
+            "database_id": "968b383e-fd0c-45cc-9ec0-4df119c40aa4",
+            "database_name": "fik-sdk-examples-playground-uc-data-store"
+        }
+    ],
+    "main": "src/index.ts",
+    "name": "fik-sdk-examples-playground",
+    "observability": {
+        "enabled": true
+    }
+}

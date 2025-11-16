@@ -1,0 +1,1807 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Run > Use Cases > 'ExportAsana' > should execute with auth 'ADMIN' and input 'ALL_WITH_EXAMPLES' > hash = 6e550fccc8f9f5e661f7d3eaed51728b9d6fbf7122581ead12687ebc7cbbdb09 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "admin",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "ADMIN",
+      "inputFiller": [Function],
+      "inputFillerName": "ALL_WITH_EXAMPLES",
+    },
+    "err": [IllegalArgumentError: Endpoint https://app.asana.com/api/1.0/projects/ZNHD34AQW4CV7/tasks?limit=100&opt_expand=%28this%7Csubtasks%252B%29 not defined in FakeHTTPAPICallExecutor.entries],
+    "hash": "6e550fccc8f9f5e661f7d3eaed51728b9d6fbf7122581ead12687ebc7cbbdb09",
+    "io": {
+      "i": {
+        "accessToken": "fmUUNWXazWH4",
+        "projectId": "ZNHD34AQW4CV7",
+      },
+      "o": null,
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'ExportAsana' > should execute with auth 'ADMIN' and input 'ONLY_MANDATORY_WITH_EXAMPLES' > hash = c401ec1aebfde40311f0ad542fa3f51016c1c6e6e94628f9c9ca44e4d49a02de 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "admin",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "ADMIN",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_MANDATORY_WITH_EXAMPLES",
+    },
+    "err": [IllegalArgumentError: Endpoint https://app.asana.com/api/1.0/projects/ZNHD34AQW4CV7/tasks?limit=100&opt_expand=%28this%7Csubtasks%252B%29 not defined in FakeHTTPAPICallExecutor.entries],
+    "hash": "c401ec1aebfde40311f0ad542fa3f51016c1c6e6e94628f9c9ca44e4d49a02de",
+    "io": {
+      "i": {
+        "accessToken": "fmUUNWXazWH4",
+        "projectId": "ZNHD34AQW4CV7",
+      },
+      "o": null,
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'ExportAsana' > should execute with auth 'ADMIN' and input 'ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPL…' > hash = 0a51999944fbc84a1ace597121e3a9f4778a4377e0845087617b76a1b7d2a957 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "admin",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "ADMIN",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPLES",
+    },
+    "err": [IllegalArgumentError: Access Token must be filled],
+    "hash": "0a51999944fbc84a1ace597121e3a9f4778a4377e0845087617b76a1b7d2a957",
+    "io": {
+      "i": {
+        "accessToken": undefined,
+        "projectId": undefined,
+      },
+      "o": null,
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'ExportAsana' > should execute with auth 'ANONYMOUS' and input 'ALL_WITH_EXAMPLES' > hash = c6c790be9d055dba220df7553f359f19781aef4bf80f8c96ca228a86271eecd9 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": null,
+      "authName": "ANONYMOUS",
+      "inputFiller": [Function],
+      "inputFillerName": "ALL_WITH_EXAMPLES",
+    },
+    "err": [IllegalArgumentError: Endpoint https://app.asana.com/api/1.0/projects/ZNHD34AQW4CV7/tasks?limit=100&opt_expand=%28this%7Csubtasks%252B%29 not defined in FakeHTTPAPICallExecutor.entries],
+    "hash": "c6c790be9d055dba220df7553f359f19781aef4bf80f8c96ca228a86271eecd9",
+    "io": {
+      "i": {
+        "accessToken": "fmUUNWXazWH4",
+        "projectId": "ZNHD34AQW4CV7",
+      },
+      "o": null,
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'ExportAsana' > should execute with auth 'ANONYMOUS' and input 'ONLY_MANDATORY_WITH_EXAMPLES' > hash = 083db2c3b2802ded084ba7af0c6c81b6795f1ad97cfe156f1f77b3ed59fec74f 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": null,
+      "authName": "ANONYMOUS",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_MANDATORY_WITH_EXAMPLES",
+    },
+    "err": [IllegalArgumentError: Endpoint https://app.asana.com/api/1.0/projects/ZNHD34AQW4CV7/tasks?limit=100&opt_expand=%28this%7Csubtasks%252B%29 not defined in FakeHTTPAPICallExecutor.entries],
+    "hash": "083db2c3b2802ded084ba7af0c6c81b6795f1ad97cfe156f1f77b3ed59fec74f",
+    "io": {
+      "i": {
+        "accessToken": "fmUUNWXazWH4",
+        "projectId": "ZNHD34AQW4CV7",
+      },
+      "o": null,
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'ExportAsana' > should execute with auth 'ANONYMOUS' and input 'ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPL…' > hash = c388079a430ccfd826f532341e8ab31df27a6922c4d701141e309d0ffa44d496 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": null,
+      "authName": "ANONYMOUS",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPLES",
+    },
+    "err": [IllegalArgumentError: Access Token must be filled],
+    "hash": "c388079a430ccfd826f532341e8ab31df27a6922c4d701141e309d0ffa44d496",
+    "io": {
+      "i": {
+        "accessToken": undefined,
+        "projectId": undefined,
+      },
+      "o": null,
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'ExportAsana' > should execute with auth 'REGULAR' and input 'ALL_WITH_EXAMPLES' > hash = 22e6b3b89db9480b9a396305a751109963232234b8f4bd039b156572da2c18ac 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "regular",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "REGULAR",
+      "inputFiller": [Function],
+      "inputFillerName": "ALL_WITH_EXAMPLES",
+    },
+    "err": [IllegalArgumentError: Endpoint https://app.asana.com/api/1.0/projects/ZNHD34AQW4CV7/tasks?limit=100&opt_expand=%28this%7Csubtasks%252B%29 not defined in FakeHTTPAPICallExecutor.entries],
+    "hash": "22e6b3b89db9480b9a396305a751109963232234b8f4bd039b156572da2c18ac",
+    "io": {
+      "i": {
+        "accessToken": "fmUUNWXazWH4",
+        "projectId": "ZNHD34AQW4CV7",
+      },
+      "o": null,
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'ExportAsana' > should execute with auth 'REGULAR' and input 'ONLY_MANDATORY_WITH_EXAMPLES' > hash = 02bae67c0be4aec5f311c85d17ae4a87a94328f23752ade05d3255fa3770bba9 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "regular",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "REGULAR",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_MANDATORY_WITH_EXAMPLES",
+    },
+    "err": [IllegalArgumentError: Endpoint https://app.asana.com/api/1.0/projects/ZNHD34AQW4CV7/tasks?limit=100&opt_expand=%28this%7Csubtasks%252B%29 not defined in FakeHTTPAPICallExecutor.entries],
+    "hash": "02bae67c0be4aec5f311c85d17ae4a87a94328f23752ade05d3255fa3770bba9",
+    "io": {
+      "i": {
+        "accessToken": "fmUUNWXazWH4",
+        "projectId": "ZNHD34AQW4CV7",
+      },
+      "o": null,
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'ExportAsana' > should execute with auth 'REGULAR' and input 'ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPL…' > hash = ae47867332d8260928d867b82a34df6433a8a13b112907e6b9e4ceaee2fd4a7b 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "regular",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "REGULAR",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPLES",
+    },
+    "err": [IllegalArgumentError: Access Token must be filled],
+    "hash": "ae47867332d8260928d867b82a34df6433a8a13b112907e6b9e4ceaee2fd4a7b",
+    "io": {
+      "i": {
+        "accessToken": undefined,
+        "projectId": undefined,
+      },
+      "o": null,
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'GenerateMiscData' > should execute with auth 'ADMIN' and input 'ALL_WITH_EXAMPLES' > hash = b5c67487e6a0dcca67ee10c3f8ee3884bd7f21b0195273830520b6bad9289fe9 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "admin",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "ADMIN",
+      "inputFiller": [Function],
+      "inputFillerName": "ALL_WITH_EXAMPLES",
+    },
+    "err": null,
+    "hash": "b5c67487e6a0dcca67ee10c3f8ee3884bd7f21b0195273830520b6bad9289fe9",
+    "io": {
+      "i": {
+        "uuidCount": 10,
+      },
+      "o": {
+        "parts": {
+          "_0": {
+            "items": [
+              {
+                "id": "356a192b-7913-404c-9457-4d18c28d46e6",
+                "label": "Timestamp",
+                "value": "1652646210",
+              },
+            ],
+            "total": 1,
+          },
+          "_1": {
+            "items": [
+              {
+                "id": "da4b9237-bacc-4df1-9c07-60cab7aec4a8",
+                "value": "77de68da-ecd8-43ba-bbb5-8edb1c8e14d7",
+              },
+              {
+                "id": "1b645389-2473-4467-9073-72d45eb05abc",
+                "value": "ac3478d6-9a3c-41fa-a2e6-0f5c3696165a",
+              },
+              {
+                "id": "c1dfd96e-ea8c-42b6-a785-275bca38ac26",
+                "value": "902ba3cd-a188-4801-994b-6e1b452790cc",
+              },
+              {
+                "id": "fe5dbbce-a5ce-4e29-88b8-c69bcfdfde89",
+                "value": "0ade7c2c-f97f-45d0-8997-5f4d720d1fa6",
+              },
+              {
+                "id": "b1d57811-11d8-4f7b-bfe4-5a0852e59758",
+                "value": "17ba0791-499d-4908-833b-80f37c5fbc89",
+              },
+              {
+                "id": "7b52009b-64fd-4a2a-89e6-d8a939753077",
+                "value": "bd307a3e-c329-410a-acff-8fb87480823d",
+              },
+              {
+                "id": "fa35e192-121e-4bf3-9abf-9f5ea6abdbcb",
+                "value": "f1abd670-358e-436c-b129-6e66b3b66c38",
+              },
+              {
+                "id": "1574bddb-75c7-4a6f-9225-1d61e2993b51",
+                "value": "0716d970-8d32-4ffb-aa00-818614779e77",
+              },
+              {
+                "id": "9e6a55b6-b456-4e65-aa23-be9d623ca505",
+                "value": "b3f0c7f6-bb76-4af1-be91-d9e74eabfeb1",
+              },
+              {
+                "id": "91032ad7-bbcb-4cf7-a875-e8e8207dcfba",
+                "value": "472b07b9-fcf2-4245-9e87-81e944bf5f77",
+              },
+            ],
+            "total": 10,
+          },
+        },
+      },
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'GenerateMiscData' > should execute with auth 'ADMIN' and input 'ONLY_MANDATORY_WITH_EXAMPLES' > hash = d8af11d0575ee444518dea52b3fed82fcd415c2ff9cda5c6ea2c677007065012 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "admin",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "ADMIN",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_MANDATORY_WITH_EXAMPLES",
+    },
+    "err": null,
+    "hash": "d8af11d0575ee444518dea52b3fed82fcd415c2ff9cda5c6ea2c677007065012",
+    "io": {
+      "i": {
+        "uuidCount": 12,
+      },
+      "o": {
+        "parts": {
+          "_0": {
+            "items": [
+              {
+                "id": "356a192b-7913-404c-9457-4d18c28d46e6",
+                "label": "Timestamp",
+                "value": "1652646210",
+              },
+            ],
+            "total": 1,
+          },
+          "_1": {
+            "items": [
+              {
+                "id": "da4b9237-bacc-4df1-9c07-60cab7aec4a8",
+                "value": "77de68da-ecd8-43ba-bbb5-8edb1c8e14d7",
+              },
+              {
+                "id": "1b645389-2473-4467-9073-72d45eb05abc",
+                "value": "ac3478d6-9a3c-41fa-a2e6-0f5c3696165a",
+              },
+              {
+                "id": "c1dfd96e-ea8c-42b6-a785-275bca38ac26",
+                "value": "902ba3cd-a188-4801-994b-6e1b452790cc",
+              },
+              {
+                "id": "fe5dbbce-a5ce-4e29-88b8-c69bcfdfde89",
+                "value": "0ade7c2c-f97f-45d0-8997-5f4d720d1fa6",
+              },
+              {
+                "id": "b1d57811-11d8-4f7b-bfe4-5a0852e59758",
+                "value": "17ba0791-499d-4908-833b-80f37c5fbc89",
+              },
+              {
+                "id": "7b52009b-64fd-4a2a-89e6-d8a939753077",
+                "value": "bd307a3e-c329-410a-acff-8fb87480823d",
+              },
+              {
+                "id": "fa35e192-121e-4bf3-9abf-9f5ea6abdbcb",
+                "value": "f1abd670-358e-436c-b129-6e66b3b66c38",
+              },
+              {
+                "id": "1574bddb-75c7-4a6f-9225-1d61e2993b51",
+                "value": "0716d970-8d32-4ffb-aa00-818614779e77",
+              },
+              {
+                "id": "9e6a55b6-b456-4e65-aa23-be9d623ca505",
+                "value": "b3f0c7f6-bb76-4af1-be91-d9e74eabfeb1",
+              },
+              {
+                "id": "91032ad7-bbcb-4cf7-a875-e8e8207dcfba",
+                "value": "472b07b9-fcf2-4245-9e87-81e944bf5f77",
+              },
+              {
+                "id": "12c6fc06-c99a-4623-b5ee-b3f43dfd832b",
+                "value": "d435a6cd-d786-400d-bf20-4ee7c2ef942d",
+              },
+              {
+                "id": "4d134bc0-7221-4ace-adf3-85dae143139d",
+                "value": "f6e1126c-edeb-423e-9463-aee73f9df087",
+              },
+            ],
+            "total": 12,
+          },
+        },
+      },
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'GenerateMiscData' > should execute with auth 'ADMIN' and input 'ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPL…' > hash = 1703117595df60ab148ddff8a2ed7fc67135b0744326198493693895ff6ce102 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "admin",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "ADMIN",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPLES",
+    },
+    "err": null,
+    "hash": "1703117595df60ab148ddff8a2ed7fc67135b0744326198493693895ff6ce102",
+    "io": {
+      "i": {
+        "uuidCount": 12,
+      },
+      "o": {
+        "parts": {
+          "_0": {
+            "items": [
+              {
+                "id": "356a192b-7913-404c-9457-4d18c28d46e6",
+                "label": "Timestamp",
+                "value": "1652646210",
+              },
+            ],
+            "total": 1,
+          },
+          "_1": {
+            "items": [
+              {
+                "id": "da4b9237-bacc-4df1-9c07-60cab7aec4a8",
+                "value": "77de68da-ecd8-43ba-bbb5-8edb1c8e14d7",
+              },
+              {
+                "id": "1b645389-2473-4467-9073-72d45eb05abc",
+                "value": "ac3478d6-9a3c-41fa-a2e6-0f5c3696165a",
+              },
+              {
+                "id": "c1dfd96e-ea8c-42b6-a785-275bca38ac26",
+                "value": "902ba3cd-a188-4801-994b-6e1b452790cc",
+              },
+              {
+                "id": "fe5dbbce-a5ce-4e29-88b8-c69bcfdfde89",
+                "value": "0ade7c2c-f97f-45d0-8997-5f4d720d1fa6",
+              },
+              {
+                "id": "b1d57811-11d8-4f7b-bfe4-5a0852e59758",
+                "value": "17ba0791-499d-4908-833b-80f37c5fbc89",
+              },
+              {
+                "id": "7b52009b-64fd-4a2a-89e6-d8a939753077",
+                "value": "bd307a3e-c329-410a-acff-8fb87480823d",
+              },
+              {
+                "id": "fa35e192-121e-4bf3-9abf-9f5ea6abdbcb",
+                "value": "f1abd670-358e-436c-b129-6e66b3b66c38",
+              },
+              {
+                "id": "1574bddb-75c7-4a6f-9225-1d61e2993b51",
+                "value": "0716d970-8d32-4ffb-aa00-818614779e77",
+              },
+              {
+                "id": "9e6a55b6-b456-4e65-aa23-be9d623ca505",
+                "value": "b3f0c7f6-bb76-4af1-be91-d9e74eabfeb1",
+              },
+              {
+                "id": "91032ad7-bbcb-4cf7-a875-e8e8207dcfba",
+                "value": "472b07b9-fcf2-4245-9e87-81e944bf5f77",
+              },
+              {
+                "id": "12c6fc06-c99a-4623-b5ee-b3f43dfd832b",
+                "value": "d435a6cd-d786-400d-bf20-4ee7c2ef942d",
+              },
+              {
+                "id": "4d134bc0-7221-4ace-adf3-85dae143139d",
+                "value": "f6e1126c-edeb-423e-9463-aee73f9df087",
+              },
+            ],
+            "total": 12,
+          },
+        },
+      },
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'GenerateMiscData' > should execute with auth 'ANONYMOUS' and input 'ALL_WITH_EXAMPLES' > hash = 2dfe392c7d81e0b97930e3ecdd9bab998f38d99e90841f72544ab7df4fd20187 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": null,
+      "authName": "ANONYMOUS",
+      "inputFiller": [Function],
+      "inputFillerName": "ALL_WITH_EXAMPLES",
+    },
+    "err": null,
+    "hash": "2dfe392c7d81e0b97930e3ecdd9bab998f38d99e90841f72544ab7df4fd20187",
+    "io": {
+      "i": {
+        "uuidCount": 10,
+      },
+      "o": {
+        "parts": {
+          "_0": {
+            "items": [
+              {
+                "id": "356a192b-7913-404c-9457-4d18c28d46e6",
+                "label": "Timestamp",
+                "value": "1652646210",
+              },
+            ],
+            "total": 1,
+          },
+          "_1": {
+            "items": [
+              {
+                "id": "da4b9237-bacc-4df1-9c07-60cab7aec4a8",
+                "value": "77de68da-ecd8-43ba-bbb5-8edb1c8e14d7",
+              },
+              {
+                "id": "1b645389-2473-4467-9073-72d45eb05abc",
+                "value": "ac3478d6-9a3c-41fa-a2e6-0f5c3696165a",
+              },
+              {
+                "id": "c1dfd96e-ea8c-42b6-a785-275bca38ac26",
+                "value": "902ba3cd-a188-4801-994b-6e1b452790cc",
+              },
+              {
+                "id": "fe5dbbce-a5ce-4e29-88b8-c69bcfdfde89",
+                "value": "0ade7c2c-f97f-45d0-8997-5f4d720d1fa6",
+              },
+              {
+                "id": "b1d57811-11d8-4f7b-bfe4-5a0852e59758",
+                "value": "17ba0791-499d-4908-833b-80f37c5fbc89",
+              },
+              {
+                "id": "7b52009b-64fd-4a2a-89e6-d8a939753077",
+                "value": "bd307a3e-c329-410a-acff-8fb87480823d",
+              },
+              {
+                "id": "fa35e192-121e-4bf3-9abf-9f5ea6abdbcb",
+                "value": "f1abd670-358e-436c-b129-6e66b3b66c38",
+              },
+              {
+                "id": "1574bddb-75c7-4a6f-9225-1d61e2993b51",
+                "value": "0716d970-8d32-4ffb-aa00-818614779e77",
+              },
+              {
+                "id": "9e6a55b6-b456-4e65-aa23-be9d623ca505",
+                "value": "b3f0c7f6-bb76-4af1-be91-d9e74eabfeb1",
+              },
+              {
+                "id": "91032ad7-bbcb-4cf7-a875-e8e8207dcfba",
+                "value": "472b07b9-fcf2-4245-9e87-81e944bf5f77",
+              },
+            ],
+            "total": 10,
+          },
+        },
+      },
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'GenerateMiscData' > should execute with auth 'ANONYMOUS' and input 'ONLY_MANDATORY_WITH_EXAMPLES' > hash = f0f9e421e1da17f52f604cd0e00b47af1bee24e9b377f04bd019e35aeb7860dc 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": null,
+      "authName": "ANONYMOUS",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_MANDATORY_WITH_EXAMPLES",
+    },
+    "err": null,
+    "hash": "f0f9e421e1da17f52f604cd0e00b47af1bee24e9b377f04bd019e35aeb7860dc",
+    "io": {
+      "i": {
+        "uuidCount": 12,
+      },
+      "o": {
+        "parts": {
+          "_0": {
+            "items": [
+              {
+                "id": "356a192b-7913-404c-9457-4d18c28d46e6",
+                "label": "Timestamp",
+                "value": "1652646210",
+              },
+            ],
+            "total": 1,
+          },
+          "_1": {
+            "items": [
+              {
+                "id": "da4b9237-bacc-4df1-9c07-60cab7aec4a8",
+                "value": "77de68da-ecd8-43ba-bbb5-8edb1c8e14d7",
+              },
+              {
+                "id": "1b645389-2473-4467-9073-72d45eb05abc",
+                "value": "ac3478d6-9a3c-41fa-a2e6-0f5c3696165a",
+              },
+              {
+                "id": "c1dfd96e-ea8c-42b6-a785-275bca38ac26",
+                "value": "902ba3cd-a188-4801-994b-6e1b452790cc",
+              },
+              {
+                "id": "fe5dbbce-a5ce-4e29-88b8-c69bcfdfde89",
+                "value": "0ade7c2c-f97f-45d0-8997-5f4d720d1fa6",
+              },
+              {
+                "id": "b1d57811-11d8-4f7b-bfe4-5a0852e59758",
+                "value": "17ba0791-499d-4908-833b-80f37c5fbc89",
+              },
+              {
+                "id": "7b52009b-64fd-4a2a-89e6-d8a939753077",
+                "value": "bd307a3e-c329-410a-acff-8fb87480823d",
+              },
+              {
+                "id": "fa35e192-121e-4bf3-9abf-9f5ea6abdbcb",
+                "value": "f1abd670-358e-436c-b129-6e66b3b66c38",
+              },
+              {
+                "id": "1574bddb-75c7-4a6f-9225-1d61e2993b51",
+                "value": "0716d970-8d32-4ffb-aa00-818614779e77",
+              },
+              {
+                "id": "9e6a55b6-b456-4e65-aa23-be9d623ca505",
+                "value": "b3f0c7f6-bb76-4af1-be91-d9e74eabfeb1",
+              },
+              {
+                "id": "91032ad7-bbcb-4cf7-a875-e8e8207dcfba",
+                "value": "472b07b9-fcf2-4245-9e87-81e944bf5f77",
+              },
+              {
+                "id": "12c6fc06-c99a-4623-b5ee-b3f43dfd832b",
+                "value": "d435a6cd-d786-400d-bf20-4ee7c2ef942d",
+              },
+              {
+                "id": "4d134bc0-7221-4ace-adf3-85dae143139d",
+                "value": "f6e1126c-edeb-423e-9463-aee73f9df087",
+              },
+            ],
+            "total": 12,
+          },
+        },
+      },
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'GenerateMiscData' > should execute with auth 'ANONYMOUS' and input 'ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPL…' > hash = 514ad5d00fff4717eee102dc3b2bb2dde67fe26f15c09eaecd0b1376d515f91a 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": null,
+      "authName": "ANONYMOUS",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPLES",
+    },
+    "err": null,
+    "hash": "514ad5d00fff4717eee102dc3b2bb2dde67fe26f15c09eaecd0b1376d515f91a",
+    "io": {
+      "i": {
+        "uuidCount": 12,
+      },
+      "o": {
+        "parts": {
+          "_0": {
+            "items": [
+              {
+                "id": "356a192b-7913-404c-9457-4d18c28d46e6",
+                "label": "Timestamp",
+                "value": "1652646210",
+              },
+            ],
+            "total": 1,
+          },
+          "_1": {
+            "items": [
+              {
+                "id": "da4b9237-bacc-4df1-9c07-60cab7aec4a8",
+                "value": "77de68da-ecd8-43ba-bbb5-8edb1c8e14d7",
+              },
+              {
+                "id": "1b645389-2473-4467-9073-72d45eb05abc",
+                "value": "ac3478d6-9a3c-41fa-a2e6-0f5c3696165a",
+              },
+              {
+                "id": "c1dfd96e-ea8c-42b6-a785-275bca38ac26",
+                "value": "902ba3cd-a188-4801-994b-6e1b452790cc",
+              },
+              {
+                "id": "fe5dbbce-a5ce-4e29-88b8-c69bcfdfde89",
+                "value": "0ade7c2c-f97f-45d0-8997-5f4d720d1fa6",
+              },
+              {
+                "id": "b1d57811-11d8-4f7b-bfe4-5a0852e59758",
+                "value": "17ba0791-499d-4908-833b-80f37c5fbc89",
+              },
+              {
+                "id": "7b52009b-64fd-4a2a-89e6-d8a939753077",
+                "value": "bd307a3e-c329-410a-acff-8fb87480823d",
+              },
+              {
+                "id": "fa35e192-121e-4bf3-9abf-9f5ea6abdbcb",
+                "value": "f1abd670-358e-436c-b129-6e66b3b66c38",
+              },
+              {
+                "id": "1574bddb-75c7-4a6f-9225-1d61e2993b51",
+                "value": "0716d970-8d32-4ffb-aa00-818614779e77",
+              },
+              {
+                "id": "9e6a55b6-b456-4e65-aa23-be9d623ca505",
+                "value": "b3f0c7f6-bb76-4af1-be91-d9e74eabfeb1",
+              },
+              {
+                "id": "91032ad7-bbcb-4cf7-a875-e8e8207dcfba",
+                "value": "472b07b9-fcf2-4245-9e87-81e944bf5f77",
+              },
+              {
+                "id": "12c6fc06-c99a-4623-b5ee-b3f43dfd832b",
+                "value": "d435a6cd-d786-400d-bf20-4ee7c2ef942d",
+              },
+              {
+                "id": "4d134bc0-7221-4ace-adf3-85dae143139d",
+                "value": "f6e1126c-edeb-423e-9463-aee73f9df087",
+              },
+            ],
+            "total": 12,
+          },
+        },
+      },
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'GenerateMiscData' > should execute with auth 'REGULAR' and input 'ALL_WITH_EXAMPLES' > hash = b359de977763a9b4f68d02677195e389cde4e855d124947b8a26bd7f405f1ab0 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "regular",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "REGULAR",
+      "inputFiller": [Function],
+      "inputFillerName": "ALL_WITH_EXAMPLES",
+    },
+    "err": null,
+    "hash": "b359de977763a9b4f68d02677195e389cde4e855d124947b8a26bd7f405f1ab0",
+    "io": {
+      "i": {
+        "uuidCount": 10,
+      },
+      "o": {
+        "parts": {
+          "_0": {
+            "items": [
+              {
+                "id": "356a192b-7913-404c-9457-4d18c28d46e6",
+                "label": "Timestamp",
+                "value": "1652646210",
+              },
+            ],
+            "total": 1,
+          },
+          "_1": {
+            "items": [
+              {
+                "id": "da4b9237-bacc-4df1-9c07-60cab7aec4a8",
+                "value": "77de68da-ecd8-43ba-bbb5-8edb1c8e14d7",
+              },
+              {
+                "id": "1b645389-2473-4467-9073-72d45eb05abc",
+                "value": "ac3478d6-9a3c-41fa-a2e6-0f5c3696165a",
+              },
+              {
+                "id": "c1dfd96e-ea8c-42b6-a785-275bca38ac26",
+                "value": "902ba3cd-a188-4801-994b-6e1b452790cc",
+              },
+              {
+                "id": "fe5dbbce-a5ce-4e29-88b8-c69bcfdfde89",
+                "value": "0ade7c2c-f97f-45d0-8997-5f4d720d1fa6",
+              },
+              {
+                "id": "b1d57811-11d8-4f7b-bfe4-5a0852e59758",
+                "value": "17ba0791-499d-4908-833b-80f37c5fbc89",
+              },
+              {
+                "id": "7b52009b-64fd-4a2a-89e6-d8a939753077",
+                "value": "bd307a3e-c329-410a-acff-8fb87480823d",
+              },
+              {
+                "id": "fa35e192-121e-4bf3-9abf-9f5ea6abdbcb",
+                "value": "f1abd670-358e-436c-b129-6e66b3b66c38",
+              },
+              {
+                "id": "1574bddb-75c7-4a6f-9225-1d61e2993b51",
+                "value": "0716d970-8d32-4ffb-aa00-818614779e77",
+              },
+              {
+                "id": "9e6a55b6-b456-4e65-aa23-be9d623ca505",
+                "value": "b3f0c7f6-bb76-4af1-be91-d9e74eabfeb1",
+              },
+              {
+                "id": "91032ad7-bbcb-4cf7-a875-e8e8207dcfba",
+                "value": "472b07b9-fcf2-4245-9e87-81e944bf5f77",
+              },
+            ],
+            "total": 10,
+          },
+        },
+      },
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'GenerateMiscData' > should execute with auth 'REGULAR' and input 'ONLY_MANDATORY_WITH_EXAMPLES' > hash = 45a000fe21f8bd94754e0386fbd0d3b3cc61b8fbca47203ff8556f8f95464cd8 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "regular",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "REGULAR",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_MANDATORY_WITH_EXAMPLES",
+    },
+    "err": null,
+    "hash": "45a000fe21f8bd94754e0386fbd0d3b3cc61b8fbca47203ff8556f8f95464cd8",
+    "io": {
+      "i": {
+        "uuidCount": 12,
+      },
+      "o": {
+        "parts": {
+          "_0": {
+            "items": [
+              {
+                "id": "356a192b-7913-404c-9457-4d18c28d46e6",
+                "label": "Timestamp",
+                "value": "1652646210",
+              },
+            ],
+            "total": 1,
+          },
+          "_1": {
+            "items": [
+              {
+                "id": "da4b9237-bacc-4df1-9c07-60cab7aec4a8",
+                "value": "77de68da-ecd8-43ba-bbb5-8edb1c8e14d7",
+              },
+              {
+                "id": "1b645389-2473-4467-9073-72d45eb05abc",
+                "value": "ac3478d6-9a3c-41fa-a2e6-0f5c3696165a",
+              },
+              {
+                "id": "c1dfd96e-ea8c-42b6-a785-275bca38ac26",
+                "value": "902ba3cd-a188-4801-994b-6e1b452790cc",
+              },
+              {
+                "id": "fe5dbbce-a5ce-4e29-88b8-c69bcfdfde89",
+                "value": "0ade7c2c-f97f-45d0-8997-5f4d720d1fa6",
+              },
+              {
+                "id": "b1d57811-11d8-4f7b-bfe4-5a0852e59758",
+                "value": "17ba0791-499d-4908-833b-80f37c5fbc89",
+              },
+              {
+                "id": "7b52009b-64fd-4a2a-89e6-d8a939753077",
+                "value": "bd307a3e-c329-410a-acff-8fb87480823d",
+              },
+              {
+                "id": "fa35e192-121e-4bf3-9abf-9f5ea6abdbcb",
+                "value": "f1abd670-358e-436c-b129-6e66b3b66c38",
+              },
+              {
+                "id": "1574bddb-75c7-4a6f-9225-1d61e2993b51",
+                "value": "0716d970-8d32-4ffb-aa00-818614779e77",
+              },
+              {
+                "id": "9e6a55b6-b456-4e65-aa23-be9d623ca505",
+                "value": "b3f0c7f6-bb76-4af1-be91-d9e74eabfeb1",
+              },
+              {
+                "id": "91032ad7-bbcb-4cf7-a875-e8e8207dcfba",
+                "value": "472b07b9-fcf2-4245-9e87-81e944bf5f77",
+              },
+              {
+                "id": "12c6fc06-c99a-4623-b5ee-b3f43dfd832b",
+                "value": "d435a6cd-d786-400d-bf20-4ee7c2ef942d",
+              },
+              {
+                "id": "4d134bc0-7221-4ace-adf3-85dae143139d",
+                "value": "f6e1126c-edeb-423e-9463-aee73f9df087",
+              },
+            ],
+            "total": 12,
+          },
+        },
+      },
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'GenerateMiscData' > should execute with auth 'REGULAR' and input 'ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPL…' > hash = 3157687942c4489db6d212316297a3ea511a99f55a80324b686ac8f4690bba22 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "regular",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "REGULAR",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPLES",
+    },
+    "err": null,
+    "hash": "3157687942c4489db6d212316297a3ea511a99f55a80324b686ac8f4690bba22",
+    "io": {
+      "i": {
+        "uuidCount": 12,
+      },
+      "o": {
+        "parts": {
+          "_0": {
+            "items": [
+              {
+                "id": "356a192b-7913-404c-9457-4d18c28d46e6",
+                "label": "Timestamp",
+                "value": "1652646210",
+              },
+            ],
+            "total": 1,
+          },
+          "_1": {
+            "items": [
+              {
+                "id": "da4b9237-bacc-4df1-9c07-60cab7aec4a8",
+                "value": "77de68da-ecd8-43ba-bbb5-8edb1c8e14d7",
+              },
+              {
+                "id": "1b645389-2473-4467-9073-72d45eb05abc",
+                "value": "ac3478d6-9a3c-41fa-a2e6-0f5c3696165a",
+              },
+              {
+                "id": "c1dfd96e-ea8c-42b6-a785-275bca38ac26",
+                "value": "902ba3cd-a188-4801-994b-6e1b452790cc",
+              },
+              {
+                "id": "fe5dbbce-a5ce-4e29-88b8-c69bcfdfde89",
+                "value": "0ade7c2c-f97f-45d0-8997-5f4d720d1fa6",
+              },
+              {
+                "id": "b1d57811-11d8-4f7b-bfe4-5a0852e59758",
+                "value": "17ba0791-499d-4908-833b-80f37c5fbc89",
+              },
+              {
+                "id": "7b52009b-64fd-4a2a-89e6-d8a939753077",
+                "value": "bd307a3e-c329-410a-acff-8fb87480823d",
+              },
+              {
+                "id": "fa35e192-121e-4bf3-9abf-9f5ea6abdbcb",
+                "value": "f1abd670-358e-436c-b129-6e66b3b66c38",
+              },
+              {
+                "id": "1574bddb-75c7-4a6f-9225-1d61e2993b51",
+                "value": "0716d970-8d32-4ffb-aa00-818614779e77",
+              },
+              {
+                "id": "9e6a55b6-b456-4e65-aa23-be9d623ca505",
+                "value": "b3f0c7f6-bb76-4af1-be91-d9e74eabfeb1",
+              },
+              {
+                "id": "91032ad7-bbcb-4cf7-a875-e8e8207dcfba",
+                "value": "472b07b9-fcf2-4245-9e87-81e944bf5f77",
+              },
+              {
+                "id": "12c6fc06-c99a-4623-b5ee-b3f43dfd832b",
+                "value": "d435a6cd-d786-400d-bf20-4ee7c2ef942d",
+              },
+              {
+                "id": "4d134bc0-7221-4ace-adf3-85dae143139d",
+                "value": "f6e1126c-edeb-423e-9463-aee73f9df087",
+              },
+            ],
+            "total": 12,
+          },
+        },
+      },
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'GeocodeAddress' > should execute with auth 'ADMIN' and input 'ALL_WITH_EXAMPLES' > hash = ae5217860462970e9d3baea807e35ef18d5c3a2c4f7cebd69f40e26486932e56 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "admin",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "ADMIN",
+      "inputFiller": [Function],
+      "inputFillerName": "ALL_WITH_EXAMPLES",
+    },
+    "err": null,
+    "hash": "ae5217860462970e9d3baea807e35ef18d5c3a2c4f7cebd69f40e26486932e56",
+    "io": {
+      "i": {
+        "address": "55 Rue du Faubourg Saint-Honoré, 75008 Paris",
+      },
+      "o": {
+        "parts": {
+          "_0": {
+            "items": [
+              {
+                "geolocation": {
+                  "lat": 48.87063,
+                  "lng": 2.316931,
+                },
+                "googleMapsURL": "https://www.google.com/maps?q=loc:@48.87063,2.316931",
+                "id": "356a192b-7913-404c-9457-4d18c28d46e6",
+              },
+            ],
+            "total": 1,
+          },
+        },
+      },
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'GeocodeAddress' > should execute with auth 'ADMIN' and input 'ONLY_MANDATORY_WITH_EXAMPLES' > hash = 2adaed08521fbd5031830558b320b96f808a9094ffca6468b34fb6f02180ccb2 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "admin",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "ADMIN",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_MANDATORY_WITH_EXAMPLES",
+    },
+    "err": null,
+    "hash": "2adaed08521fbd5031830558b320b96f808a9094ffca6468b34fb6f02180ccb2",
+    "io": {
+      "i": {
+        "address": "55 Rue du Faubourg Saint-Honoré, 75008 Paris",
+      },
+      "o": {
+        "parts": {
+          "_0": {
+            "items": [
+              {
+                "geolocation": {
+                  "lat": 48.87063,
+                  "lng": 2.316931,
+                },
+                "googleMapsURL": "https://www.google.com/maps?q=loc:@48.87063,2.316931",
+                "id": "356a192b-7913-404c-9457-4d18c28d46e6",
+              },
+            ],
+            "total": 1,
+          },
+        },
+      },
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'GeocodeAddress' > should execute with auth 'ADMIN' and input 'ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPL…' > hash = 88e47d5cd6455cd0c963db5b95552ba731b2d620e7f5d2f6ad7c76dbbce4019a 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "admin",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "ADMIN",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPLES",
+    },
+    "err": [IllegalArgumentError: Address must be filled],
+    "hash": "88e47d5cd6455cd0c963db5b95552ba731b2d620e7f5d2f6ad7c76dbbce4019a",
+    "io": {
+      "i": {
+        "address": undefined,
+      },
+      "o": null,
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'GeocodeAddress' > should execute with auth 'ANONYMOUS' and input 'ALL_WITH_EXAMPLES' > hash = 26c74d4d4fa91f7b54f8b8a63134580af59829af1d0ab1ce71f9f8ecc5715538 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": null,
+      "authName": "ANONYMOUS",
+      "inputFiller": [Function],
+      "inputFillerName": "ALL_WITH_EXAMPLES",
+    },
+    "err": null,
+    "hash": "26c74d4d4fa91f7b54f8b8a63134580af59829af1d0ab1ce71f9f8ecc5715538",
+    "io": {
+      "i": {
+        "address": "55 Rue du Faubourg Saint-Honoré, 75008 Paris",
+      },
+      "o": {
+        "parts": {
+          "_0": {
+            "items": [
+              {
+                "geolocation": {
+                  "lat": 48.87063,
+                  "lng": 2.316931,
+                },
+                "googleMapsURL": "https://www.google.com/maps?q=loc:@48.87063,2.316931",
+                "id": "356a192b-7913-404c-9457-4d18c28d46e6",
+              },
+            ],
+            "total": 1,
+          },
+        },
+      },
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'GeocodeAddress' > should execute with auth 'ANONYMOUS' and input 'ONLY_MANDATORY_WITH_EXAMPLES' > hash = 19dbb2a73b12e2a32215da1162b24fdec6783f806e431084e59d848a560b5bd0 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": null,
+      "authName": "ANONYMOUS",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_MANDATORY_WITH_EXAMPLES",
+    },
+    "err": null,
+    "hash": "19dbb2a73b12e2a32215da1162b24fdec6783f806e431084e59d848a560b5bd0",
+    "io": {
+      "i": {
+        "address": "55 Rue du Faubourg Saint-Honoré, 75008 Paris",
+      },
+      "o": {
+        "parts": {
+          "_0": {
+            "items": [
+              {
+                "geolocation": {
+                  "lat": 48.87063,
+                  "lng": 2.316931,
+                },
+                "googleMapsURL": "https://www.google.com/maps?q=loc:@48.87063,2.316931",
+                "id": "356a192b-7913-404c-9457-4d18c28d46e6",
+              },
+            ],
+            "total": 1,
+          },
+        },
+      },
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'GeocodeAddress' > should execute with auth 'ANONYMOUS' and input 'ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPL…' > hash = e88b06a18b3bc354ecd087f7308a1f8090b2b84c41c04807ce3aaecfa9fc0aec 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": null,
+      "authName": "ANONYMOUS",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPLES",
+    },
+    "err": [IllegalArgumentError: Address must be filled],
+    "hash": "e88b06a18b3bc354ecd087f7308a1f8090b2b84c41c04807ce3aaecfa9fc0aec",
+    "io": {
+      "i": {
+        "address": undefined,
+      },
+      "o": null,
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'GeocodeAddress' > should execute with auth 'REGULAR' and input 'ALL_WITH_EXAMPLES' > hash = 207e1fd27a959d89811c46ab8e2c72979cab2c20fe1500d80b107a707569b0b7 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "regular",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "REGULAR",
+      "inputFiller": [Function],
+      "inputFillerName": "ALL_WITH_EXAMPLES",
+    },
+    "err": null,
+    "hash": "207e1fd27a959d89811c46ab8e2c72979cab2c20fe1500d80b107a707569b0b7",
+    "io": {
+      "i": {
+        "address": "55 Rue du Faubourg Saint-Honoré, 75008 Paris",
+      },
+      "o": {
+        "parts": {
+          "_0": {
+            "items": [
+              {
+                "geolocation": {
+                  "lat": 48.87063,
+                  "lng": 2.316931,
+                },
+                "googleMapsURL": "https://www.google.com/maps?q=loc:@48.87063,2.316931",
+                "id": "356a192b-7913-404c-9457-4d18c28d46e6",
+              },
+            ],
+            "total": 1,
+          },
+        },
+      },
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'GeocodeAddress' > should execute with auth 'REGULAR' and input 'ONLY_MANDATORY_WITH_EXAMPLES' > hash = b275cd055a7c959b784804b4dc1f541aa361547ece91a674ae5261337d7b66da 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "regular",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "REGULAR",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_MANDATORY_WITH_EXAMPLES",
+    },
+    "err": null,
+    "hash": "b275cd055a7c959b784804b4dc1f541aa361547ece91a674ae5261337d7b66da",
+    "io": {
+      "i": {
+        "address": "55 Rue du Faubourg Saint-Honoré, 75008 Paris",
+      },
+      "o": {
+        "parts": {
+          "_0": {
+            "items": [
+              {
+                "geolocation": {
+                  "lat": 48.87063,
+                  "lng": 2.316931,
+                },
+                "googleMapsURL": "https://www.google.com/maps?q=loc:@48.87063,2.316931",
+                "id": "356a192b-7913-404c-9457-4d18c28d46e6",
+              },
+            ],
+            "total": 1,
+          },
+        },
+      },
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'GeocodeAddress' > should execute with auth 'REGULAR' and input 'ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPL…' > hash = 25bc7fd8f1667dbf965783d726005a9741c3ccf8bde6c539f0289bfcfc79be36 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "regular",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "REGULAR",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPLES",
+    },
+    "err": [IllegalArgumentError: Address must be filled],
+    "hash": "25bc7fd8f1667dbf965783d726005a9741c3ccf8bde6c539f0289bfcfc79be36",
+    "io": {
+      "i": {
+        "address": undefined,
+      },
+      "o": null,
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'PromptLLM' > should execute with auth 'ADMIN' and input 'ALL_WITH_EXAMPLES' > hash = 7ec47dd357212993952748c262cc7b0d6e1cb8ff635cead234af68b7efe6f4e6 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "admin",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "ADMIN",
+      "inputFiller": [Function],
+      "inputFillerName": "ALL_WITH_EXAMPLES",
+    },
+    "err": null,
+    "hash": "7ec47dd357212993952748c262cc7b0d6e1cb8ff635cead234af68b7efe6f4e6",
+    "io": {
+      "i": {
+        "apiKey": "pk_bxa2HCdsT7CKwVSdem8fjS8rW",
+        "modelName": "mistral-small-latest",
+        "prompt": "Who won the FIFA World Cup in 1998 and 2018 ?",
+        "transportType": "standard",
+      },
+      "o": {
+        "parts": {
+          "_0": {
+            "items": [
+              {
+                "id": "356a192b-7913-404c-9457-4d18c28d46e6",
+                "res": "I'm not able to process your request : {"messages":[{"content":"Answer only quick questions about Sports in general. Discard any other request.","role":"system"},{"content":"Who won the FIFA World Cup in 1998 and 2018 ?","role":"user"}],"model":"mistral-small-latest","stream":false}",
+              },
+            ],
+            "total": 1,
+          },
+        },
+      },
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'PromptLLM' > should execute with auth 'ADMIN' and input 'ONLY_MANDATORY_WITH_EXAMPLES' > hash = 8073381e2c6cfcd6fc4a673321db6945b1c33dae927286534d9d09b39505fa30 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "admin",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "ADMIN",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_MANDATORY_WITH_EXAMPLES",
+    },
+    "err": null,
+    "hash": "8073381e2c6cfcd6fc4a673321db6945b1c33dae927286534d9d09b39505fa30",
+    "io": {
+      "i": {
+        "apiKey": "pk_bxa2HCdsT7CKwVSdem8fjS8rW",
+        "modelName": "mistral-small-latest",
+        "prompt": "Who won the FIFA World Cup in 1998 and 2018 ?",
+        "transportType": "standard",
+      },
+      "o": {
+        "parts": {
+          "_0": {
+            "items": [
+              {
+                "id": "356a192b-7913-404c-9457-4d18c28d46e6",
+                "res": "I'm not able to process your request : {"messages":[{"content":"Answer only quick questions about Sports in general. Discard any other request.","role":"system"},{"content":"Who won the FIFA World Cup in 1998 and 2018 ?","role":"user"}],"model":"mistral-small-latest","stream":false}",
+              },
+            ],
+            "total": 1,
+          },
+        },
+      },
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'PromptLLM' > should execute with auth 'ADMIN' and input 'ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPL…' > hash = 2b6596a954c3f762dd73b48e2c05c2e5cbd5d68ee0076297fce68e645b374ebc 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "admin",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "ADMIN",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPLES",
+    },
+    "err": [IllegalArgumentError: Api Key must be filled],
+    "hash": "2b6596a954c3f762dd73b48e2c05c2e5cbd5d68ee0076297fce68e645b374ebc",
+    "io": {
+      "i": {
+        "apiKey": undefined,
+        "modelName": undefined,
+        "prompt": "Who won the FIFA World Cup in 1998 and 2018 ?",
+        "transportType": "standard",
+      },
+      "o": null,
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'PromptLLM' > should execute with auth 'ANONYMOUS' and input 'ALL_WITH_EXAMPLES' > hash = 3705e7987010c0d67cc470fd500342fc54c485636ef50827e462060157e6532b 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": null,
+      "authName": "ANONYMOUS",
+      "inputFiller": [Function],
+      "inputFillerName": "ALL_WITH_EXAMPLES",
+    },
+    "err": null,
+    "hash": "3705e7987010c0d67cc470fd500342fc54c485636ef50827e462060157e6532b",
+    "io": {
+      "i": {
+        "apiKey": "pk_bxa2HCdsT7CKwVSdem8fjS8rW",
+        "modelName": "mistral-small-latest",
+        "prompt": "Who won the FIFA World Cup in 1998 and 2018 ?",
+        "transportType": "standard",
+      },
+      "o": {
+        "parts": {
+          "_0": {
+            "items": [
+              {
+                "id": "356a192b-7913-404c-9457-4d18c28d46e6",
+                "res": "I'm not able to process your request : {"messages":[{"content":"Answer only quick questions about Sports in general. Discard any other request.","role":"system"},{"content":"Who won the FIFA World Cup in 1998 and 2018 ?","role":"user"}],"model":"mistral-small-latest","stream":false}",
+              },
+            ],
+            "total": 1,
+          },
+        },
+      },
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'PromptLLM' > should execute with auth 'ANONYMOUS' and input 'ONLY_MANDATORY_WITH_EXAMPLES' > hash = f38640f5a0ef68090f4e63d21ec8fe706b6951f88aa5c5f729f8505e3a996cfa 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": null,
+      "authName": "ANONYMOUS",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_MANDATORY_WITH_EXAMPLES",
+    },
+    "err": null,
+    "hash": "f38640f5a0ef68090f4e63d21ec8fe706b6951f88aa5c5f729f8505e3a996cfa",
+    "io": {
+      "i": {
+        "apiKey": "pk_bxa2HCdsT7CKwVSdem8fjS8rW",
+        "modelName": "mistral-small-latest",
+        "prompt": "Who won the FIFA World Cup in 1998 and 2018 ?",
+        "transportType": "standard",
+      },
+      "o": {
+        "parts": {
+          "_0": {
+            "items": [
+              {
+                "id": "356a192b-7913-404c-9457-4d18c28d46e6",
+                "res": "I'm not able to process your request : {"messages":[{"content":"Answer only quick questions about Sports in general. Discard any other request.","role":"system"},{"content":"Who won the FIFA World Cup in 1998 and 2018 ?","role":"user"}],"model":"mistral-small-latest","stream":false}",
+              },
+            ],
+            "total": 1,
+          },
+        },
+      },
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'PromptLLM' > should execute with auth 'ANONYMOUS' and input 'ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPL…' > hash = e1d67f0e56fd8f722a2333e620c019e9bb3ffeb5a025e9bd32c0ca54b2d75263 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": null,
+      "authName": "ANONYMOUS",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPLES",
+    },
+    "err": [IllegalArgumentError: Api Key must be filled],
+    "hash": "e1d67f0e56fd8f722a2333e620c019e9bb3ffeb5a025e9bd32c0ca54b2d75263",
+    "io": {
+      "i": {
+        "apiKey": undefined,
+        "modelName": undefined,
+        "prompt": "Who won the FIFA World Cup in 1998 and 2018 ?",
+        "transportType": "standard",
+      },
+      "o": null,
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'PromptLLM' > should execute with auth 'REGULAR' and input 'ALL_WITH_EXAMPLES' > hash = 3246f435506ff1af286d4cd6b6991eb87cb4704539a5b0a78fdf844a89bfaa37 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "regular",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "REGULAR",
+      "inputFiller": [Function],
+      "inputFillerName": "ALL_WITH_EXAMPLES",
+    },
+    "err": null,
+    "hash": "3246f435506ff1af286d4cd6b6991eb87cb4704539a5b0a78fdf844a89bfaa37",
+    "io": {
+      "i": {
+        "apiKey": "pk_bxa2HCdsT7CKwVSdem8fjS8rW",
+        "modelName": "mistral-small-latest",
+        "prompt": "Who won the FIFA World Cup in 1998 and 2018 ?",
+        "transportType": "standard",
+      },
+      "o": {
+        "parts": {
+          "_0": {
+            "items": [
+              {
+                "id": "356a192b-7913-404c-9457-4d18c28d46e6",
+                "res": "I'm not able to process your request : {"messages":[{"content":"Answer only quick questions about Sports in general. Discard any other request.","role":"system"},{"content":"Who won the FIFA World Cup in 1998 and 2018 ?","role":"user"}],"model":"mistral-small-latest","stream":false}",
+              },
+            ],
+            "total": 1,
+          },
+        },
+      },
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'PromptLLM' > should execute with auth 'REGULAR' and input 'ONLY_MANDATORY_WITH_EXAMPLES' > hash = a73e098898608ab11c596cd95a834dd547f8f28d783a7fde2c96b2fc17c9356b 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "regular",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "REGULAR",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_MANDATORY_WITH_EXAMPLES",
+    },
+    "err": null,
+    "hash": "a73e098898608ab11c596cd95a834dd547f8f28d783a7fde2c96b2fc17c9356b",
+    "io": {
+      "i": {
+        "apiKey": "pk_bxa2HCdsT7CKwVSdem8fjS8rW",
+        "modelName": "mistral-small-latest",
+        "prompt": "Who won the FIFA World Cup in 1998 and 2018 ?",
+        "transportType": "standard",
+      },
+      "o": {
+        "parts": {
+          "_0": {
+            "items": [
+              {
+                "id": "356a192b-7913-404c-9457-4d18c28d46e6",
+                "res": "I'm not able to process your request : {"messages":[{"content":"Answer only quick questions about Sports in general. Discard any other request.","role":"system"},{"content":"Who won the FIFA World Cup in 1998 and 2018 ?","role":"user"}],"model":"mistral-small-latest","stream":false}",
+              },
+            ],
+            "total": 1,
+          },
+        },
+      },
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'PromptLLM' > should execute with auth 'REGULAR' and input 'ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPL…' > hash = e774acdb41288be38dd928e25500dc71ec514dde45ad1487862167ebea136b7d 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "regular",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "REGULAR",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPLES",
+    },
+    "err": [IllegalArgumentError: Api Key must be filled],
+    "hash": "e774acdb41288be38dd928e25500dc71ec514dde45ad1487862167ebea136b7d",
+    "io": {
+      "i": {
+        "apiKey": undefined,
+        "modelName": undefined,
+        "prompt": "Who won the FIFA World Cup in 1998 and 2018 ?",
+        "transportType": "standard",
+      },
+      "o": null,
+    },
+  },
+  "sideEffects": undefined,
+}
+`;

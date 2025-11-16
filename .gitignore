@@ -1,3 +1,4 @@
+dist-examples
 examples/**/test/reports
 examples/**/test/App.test.ts
 node_modules

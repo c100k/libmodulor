@@ -1,0 +1,321 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Run > Use Cases > 'CreateActivity' > should execute with auth 'ANONYMOUS' and input 'ALL_CORRECT_BUT_BAD_TITLE' > hash = d17d9d70898b35943773de7768f5319c57ad1dee21ad056bbb2df53d774a41ed 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": null,
+      "authName": "ANONYMOUS",
+      "inputFiller": [Function],
+      "inputFillerName": "ALL_CORRECT_BUT_BAD_TITLE",
+    },
+    "err": [ForbiddenError: Forbidden],
+    "hash": "d17d9d70898b35943773de7768f5319c57ad1dee21ad056bbb2df53d774a41ed",
+    "io": {
+      "i": {
+        "date": "2022-07-14",
+        "description": "On est jeunes et ambitieux. Parfois vicieux. Faut qu'tu te dises que. Tu peux être le prince de la ville si tu veux (si tu veux). Où tu veux (où tu veux) quand tu veux (quand tu veux).",
+        "title": "toto",
+        "type": "Trail",
+      },
+      "o": null,
+    },
+  },
+  "sideEffects": Map {
+    "ActivityProcessor.entries" => [],
+  },
+}
+`;
+
+exports[`Run > Use Cases > 'CreateActivity' > should execute with auth 'ANONYMOUS' and input 'ALL_CORRECT_BUT_BAD_TYPE' > hash = 0e2bdf087c0649efc34c5027140691436a7a8d201cc8956639b3b8bf63cf6e0a 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": null,
+      "authName": "ANONYMOUS",
+      "inputFiller": [Function],
+      "inputFillerName": "ALL_CORRECT_BUT_BAD_TYPE",
+    },
+    "err": [ForbiddenError: Forbidden],
+    "hash": "0e2bdf087c0649efc34c5027140691436a7a8d201cc8956639b3b8bf63cf6e0a",
+    "io": {
+      "i": {
+        "date": "2022-07-14",
+        "description": "On est jeunes et ambitieux. Parfois vicieux. Faut qu'tu te dises que. Tu peux être le prince de la ville si tu veux (si tu veux). Où tu veux (où tu veux) quand tu veux (quand tu veux).",
+        "title": "Morning Run",
+        "type": "toto",
+      },
+      "o": null,
+    },
+  },
+  "sideEffects": Map {
+    "ActivityProcessor.entries" => [],
+  },
+}
+`;
+
+exports[`Run > Use Cases > 'CreateActivity' > should execute with auth 'ANONYMOUS' and input 'ALL_WITH_EXAMPLES' > hash = f6e44d547b3013b361119def08278f75bf2213017749f1a00806f61c6e77ca5e 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": null,
+      "authName": "ANONYMOUS",
+      "inputFiller": [Function],
+      "inputFillerName": "ALL_WITH_EXAMPLES",
+    },
+    "err": [ForbiddenError: Forbidden],
+    "hash": "f6e44d547b3013b361119def08278f75bf2213017749f1a00806f61c6e77ca5e",
+    "io": {
+      "i": {
+        "date": "2022-07-14",
+        "description": "On est jeunes et ambitieux. Parfois vicieux. Faut qu'tu te dises que. Tu peux être le prince de la ville si tu veux (si tu veux). Où tu veux (où tu veux) quand tu veux (quand tu veux).",
+        "title": "Morning Run",
+        "type": "Trail",
+      },
+      "o": null,
+    },
+  },
+  "sideEffects": Map {
+    "ActivityProcessor.entries" => [],
+  },
+}
+`;
+
+exports[`Run > Use Cases > 'CreateActivity' > should execute with auth 'ANONYMOUS' and input 'ONLY_MANDATORY_WITH_EXAMPLES' > hash = e9d50920e1252ff229a2b2a443f238ed8becd175ac48aa5c048d8819004b36cd 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": null,
+      "authName": "ANONYMOUS",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_MANDATORY_WITH_EXAMPLES",
+    },
+    "err": [ForbiddenError: Forbidden],
+    "hash": "e9d50920e1252ff229a2b2a443f238ed8becd175ac48aa5c048d8819004b36cd",
+    "io": {
+      "i": {
+        "date": "2022-07-14",
+        "description": "On est jeunes et ambitieux. Parfois vicieux. Faut qu'tu te dises que. Tu peux être le prince de la ville si tu veux (si tu veux). Où tu veux (où tu veux) quand tu veux (quand tu veux).",
+        "title": "Morning Run",
+        "type": "Trail",
+      },
+      "o": null,
+    },
+  },
+  "sideEffects": Map {
+    "ActivityProcessor.entries" => [],
+  },
+}
+`;
+
+exports[`Run > Use Cases > 'CreateActivity' > should execute with auth 'ANONYMOUS' and input 'ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPL…' > hash = ce43904a9cb1a8973c72aa3bf91e233c9552a285fedd301654f9a0d6ddd8c15d 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": null,
+      "authName": "ANONYMOUS",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPLES",
+    },
+    "err": [ForbiddenError: Forbidden],
+    "hash": "ce43904a9cb1a8973c72aa3bf91e233c9552a285fedd301654f9a0d6ddd8c15d",
+    "io": {
+      "i": {
+        "date": undefined,
+        "description": undefined,
+        "title": undefined,
+        "type": undefined,
+      },
+      "o": null,
+    },
+  },
+  "sideEffects": Map {
+    "ActivityProcessor.entries" => [],
+  },
+}
+`;
+
+exports[`Run > Use Cases > 'CreateActivity' > should execute with auth 'VIEWER' and input 'ALL_CORRECT_BUT_BAD_TITLE' > hash = 19eddbf32913df7c31befcb91aee679a4886be945fdc396aa58ac647a4545fdd 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "viewer",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "VIEWER",
+      "inputFiller": [Function],
+      "inputFillerName": "ALL_CORRECT_BUT_BAD_TITLE",
+    },
+    "err": [ForbiddenError: Forbidden],
+    "hash": "19eddbf32913df7c31befcb91aee679a4886be945fdc396aa58ac647a4545fdd",
+    "io": {
+      "i": {
+        "date": "2022-07-14",
+        "description": "On est jeunes et ambitieux. Parfois vicieux. Faut qu'tu te dises que. Tu peux être le prince de la ville si tu veux (si tu veux). Où tu veux (où tu veux) quand tu veux (quand tu veux).",
+        "title": "toto",
+        "type": "Trail",
+      },
+      "o": null,
+    },
+  },
+  "sideEffects": Map {
+    "ActivityProcessor.entries" => [],
+  },
+}
+`;
+
+exports[`Run > Use Cases > 'CreateActivity' > should execute with auth 'VIEWER' and input 'ALL_CORRECT_BUT_BAD_TYPE' > hash = ce1e8d345c7966af172e8fec92ab42ec902051f673db3e7bf02555c2451f8a62 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "viewer",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "VIEWER",
+      "inputFiller": [Function],
+      "inputFillerName": "ALL_CORRECT_BUT_BAD_TYPE",
+    },
+    "err": [ForbiddenError: Forbidden],
+    "hash": "ce1e8d345c7966af172e8fec92ab42ec902051f673db3e7bf02555c2451f8a62",
+    "io": {
+      "i": {
+        "date": "2022-07-14",
+        "description": "On est jeunes et ambitieux. Parfois vicieux. Faut qu'tu te dises que. Tu peux être le prince de la ville si tu veux (si tu veux). Où tu veux (où tu veux) quand tu veux (quand tu veux).",
+        "title": "Morning Run",
+        "type": "toto",
+      },
+      "o": null,
+    },
+  },
+  "sideEffects": Map {
+    "ActivityProcessor.entries" => [],
+  },
+}
+`;
+
+exports[`Run > Use Cases > 'CreateActivity' > should execute with auth 'VIEWER' and input 'ALL_WITH_EXAMPLES' > hash = 1d95d3f09e8d4f294dd0a823012d114da70485e5ab8f29e1e39414440f36e23b 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "viewer",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "VIEWER",
+      "inputFiller": [Function],
+      "inputFillerName": "ALL_WITH_EXAMPLES",
+    },
+    "err": [ForbiddenError: Forbidden],
+    "hash": "1d95d3f09e8d4f294dd0a823012d114da70485e5ab8f29e1e39414440f36e23b",
+    "io": {
+      "i": {
+        "date": "2022-07-14",
+        "description": "On est jeunes et ambitieux. Parfois vicieux. Faut qu'tu te dises que. Tu peux être le prince de la ville si tu veux (si tu veux). Où tu veux (où tu veux) quand tu veux (quand tu veux).",
+        "title": "Morning Run",
+        "type": "Trail",
+      },
+      "o": null,
+    },
+  },
+  "sideEffects": Map {
+    "ActivityProcessor.entries" => [],
+  },
+}
+`;
+
+exports[`Run > Use Cases > 'CreateActivity' > should execute with auth 'VIEWER' and input 'ONLY_MANDATORY_WITH_EXAMPLES' > hash = 2c2560ea6371042dfe0559d94def3d52e2c86d7ea0d9fcaea00cac98f92a862b 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "viewer",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "VIEWER",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_MANDATORY_WITH_EXAMPLES",
+    },
+    "err": [ForbiddenError: Forbidden],
+    "hash": "2c2560ea6371042dfe0559d94def3d52e2c86d7ea0d9fcaea00cac98f92a862b",
+    "io": {
+      "i": {
+        "date": "2022-07-14",
+        "description": "On est jeunes et ambitieux. Parfois vicieux. Faut qu'tu te dises que. Tu peux être le prince de la ville si tu veux (si tu veux). Où tu veux (où tu veux) quand tu veux (quand tu veux).",
+        "title": "Morning Run",
+        "type": "Trail",
+      },
+      "o": null,
+    },
+  },
+  "sideEffects": Map {
+    "ActivityProcessor.entries" => [],
+  },
+}
+`;
+
+exports[`Run > Use Cases > 'CreateActivity' > should execute with auth 'VIEWER' and input 'ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPL…' > hash = 91cbedbbec11be9219e5e58a7bd1937516ea44cd9e4db01c9b33f46e0a6f0a25 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "viewer",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "VIEWER",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPLES",
+    },
+    "err": [ForbiddenError: Forbidden],
+    "hash": "91cbedbbec11be9219e5e58a7bd1937516ea44cd9e4db01c9b33f46e0a6f0a25",
+    "io": {
+      "i": {
+        "date": undefined,
+        "description": undefined,
+        "title": undefined,
+        "type": undefined,
+      },
+      "o": null,
+    },
+  },
+  "sideEffects": Map {
+    "ActivityProcessor.entries" => [],
+  },
+}
+`;

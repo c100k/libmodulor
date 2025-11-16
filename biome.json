@@ -31,10 +31,10 @@
             "**",
             "!**/.next",
             "!**/coverage",
-            "!**/dist",
+            "!**/dist*",
             "!**/node_modules",
             "!**/package.json",
-            "!examples/*/src/apps/*/test/reports"
+            "!examples/**/test/reports"
         ]
     },
     "formatter": {

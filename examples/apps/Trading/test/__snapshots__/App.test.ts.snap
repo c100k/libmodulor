@@ -1,0 +1,1335 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Run > Use Cases > 'AskQuestion' > should execute with auth 'ADMIN' and input 'ALL_WITH_EXAMPLES' > hash = 89519e3cec165cc516047a0a2903f5c54aca5d6cc415dea58dc3a3cddcda1fdf 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "admin",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "ADMIN",
+      "inputFiller": [Function],
+      "inputFillerName": "ALL_WITH_EXAMPLES",
+    },
+    "err": null,
+    "hash": "89519e3cec165cc516047a0a2903f5c54aca5d6cc415dea58dc3a3cddcda1fdf",
+    "io": {
+      "i": {
+        "prompt": "What stock to buy ?",
+      },
+      "o": {
+        "parts": {
+          "_0": {
+            "items": [
+              {
+                "id": "356a192b-7913-404c-9457-4d18c28d46e6",
+                "res": "I'm not able to process your request : {"messages":[{"content":"You are an expert in stock investment. Only reply to questions asking you to recommend stocks to buy","role":"system"},{"content":"What stock to buy ?","role":"user"}],"model":"mistral-large-latest","stream":true}",
+              },
+            ],
+            "total": 1,
+          },
+        },
+      },
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'AskQuestion' > should execute with auth 'ADMIN' and input 'ONLY_MANDATORY_WITH_EXAMPLES' > hash = 5502d2a9c675db0aed78e87e6c282d3d039b6a18ea61669a8c26dcc19a35aa83 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "admin",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "ADMIN",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_MANDATORY_WITH_EXAMPLES",
+    },
+    "err": null,
+    "hash": "5502d2a9c675db0aed78e87e6c282d3d039b6a18ea61669a8c26dcc19a35aa83",
+    "io": {
+      "i": {
+        "prompt": "What stock to buy ?",
+      },
+      "o": {
+        "parts": {
+          "_0": {
+            "items": [
+              {
+                "id": "356a192b-7913-404c-9457-4d18c28d46e6",
+                "res": "I'm not able to process your request : {"messages":[{"content":"You are an expert in stock investment. Only reply to questions asking you to recommend stocks to buy","role":"system"},{"content":"What stock to buy ?","role":"user"}],"model":"mistral-large-latest","stream":true}",
+              },
+            ],
+            "total": 1,
+          },
+        },
+      },
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'AskQuestion' > should execute with auth 'ADMIN' and input 'ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPL…' > hash = f6bd8d26779499e5d4407d18fb29b920e8058b5f0c187c68e2eb8313858cafc4 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "admin",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "ADMIN",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPLES",
+    },
+    "err": [IllegalArgumentError: Prompt must be filled],
+    "hash": "f6bd8d26779499e5d4407d18fb29b920e8058b5f0c187c68e2eb8313858cafc4",
+    "io": {
+      "i": {
+        "prompt": undefined,
+      },
+      "o": null,
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'AskQuestion' > should execute with auth 'ANONYMOUS' and input 'ALL_WITH_EXAMPLES' > hash = d19a69ba5d8aaad37dc7b277f20a995c866b348f5544a22934444034d08548eb 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": null,
+      "authName": "ANONYMOUS",
+      "inputFiller": [Function],
+      "inputFillerName": "ALL_WITH_EXAMPLES",
+    },
+    "err": [ForbiddenError: Forbidden],
+    "hash": "d19a69ba5d8aaad37dc7b277f20a995c866b348f5544a22934444034d08548eb",
+    "io": {
+      "i": {
+        "prompt": "What stock to buy ?",
+      },
+      "o": null,
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'AskQuestion' > should execute with auth 'ANONYMOUS' and input 'ONLY_MANDATORY_WITH_EXAMPLES' > hash = eb8b4cd8476af82c749b2058ccaee773ea518755351b7eec2e1d2cdeb9351927 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": null,
+      "authName": "ANONYMOUS",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_MANDATORY_WITH_EXAMPLES",
+    },
+    "err": [ForbiddenError: Forbidden],
+    "hash": "eb8b4cd8476af82c749b2058ccaee773ea518755351b7eec2e1d2cdeb9351927",
+    "io": {
+      "i": {
+        "prompt": "What stock to buy ?",
+      },
+      "o": null,
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'AskQuestion' > should execute with auth 'ANONYMOUS' and input 'ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPL…' > hash = 8b3c6446917c39afad46d0c60c6a1e933dfe6d6c526f9f9e36d3afa2d073725d 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": null,
+      "authName": "ANONYMOUS",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPLES",
+    },
+    "err": [ForbiddenError: Forbidden],
+    "hash": "8b3c6446917c39afad46d0c60c6a1e933dfe6d6c526f9f9e36d3afa2d073725d",
+    "io": {
+      "i": {
+        "prompt": undefined,
+      },
+      "o": null,
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'AskQuestion' > should execute with auth 'REGULAR' and input 'ALL_WITH_EXAMPLES' > hash = 14d9fda1247ff027b9950f71d42580e40dd25d3e641460796f2add50755a744c 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "regular",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "REGULAR",
+      "inputFiller": [Function],
+      "inputFillerName": "ALL_WITH_EXAMPLES",
+    },
+    "err": null,
+    "hash": "14d9fda1247ff027b9950f71d42580e40dd25d3e641460796f2add50755a744c",
+    "io": {
+      "i": {
+        "prompt": "What stock to buy ?",
+      },
+      "o": {
+        "parts": {
+          "_0": {
+            "items": [
+              {
+                "id": "356a192b-7913-404c-9457-4d18c28d46e6",
+                "res": "I'm not able to process your request : {"messages":[{"content":"You are an expert in stock investment. Only reply to questions asking you to recommend stocks to buy","role":"system"},{"content":"What stock to buy ?","role":"user"}],"model":"mistral-large-latest","stream":true}",
+              },
+            ],
+            "total": 1,
+          },
+        },
+      },
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'AskQuestion' > should execute with auth 'REGULAR' and input 'ONLY_MANDATORY_WITH_EXAMPLES' > hash = b0d7ac205cfce5fd838cc7f1067106de93b663d7b0092c4a6ccf85c4874ad570 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "regular",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "REGULAR",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_MANDATORY_WITH_EXAMPLES",
+    },
+    "err": null,
+    "hash": "b0d7ac205cfce5fd838cc7f1067106de93b663d7b0092c4a6ccf85c4874ad570",
+    "io": {
+      "i": {
+        "prompt": "What stock to buy ?",
+      },
+      "o": {
+        "parts": {
+          "_0": {
+            "items": [
+              {
+                "id": "356a192b-7913-404c-9457-4d18c28d46e6",
+                "res": "I'm not able to process your request : {"messages":[{"content":"You are an expert in stock investment. Only reply to questions asking you to recommend stocks to buy","role":"system"},{"content":"What stock to buy ?","role":"user"}],"model":"mistral-large-latest","stream":true}",
+              },
+            ],
+            "total": 1,
+          },
+        },
+      },
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'AskQuestion' > should execute with auth 'REGULAR' and input 'ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPL…' > hash = 85bc4692edfbfef0cf8b0f4f4486f3a4bc1d088b334304f90caf9f748d6637c3 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "regular",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "REGULAR",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPLES",
+    },
+    "err": [IllegalArgumentError: Prompt must be filled],
+    "hash": "85bc4692edfbfef0cf8b0f4f4486f3a4bc1d088b334304f90caf9f748d6637c3",
+    "io": {
+      "i": {
+        "prompt": undefined,
+      },
+      "o": null,
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'BuyAsset' > should execute with auth 'ADMIN' and input 'ALL_WITH_EXAMPLES' > hash = 6e248a8072185616c7d1593c1675d445a9b126a53f9839ed87f89b6927cf5e86 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "admin",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "ADMIN",
+      "inputFiller": [Function],
+      "inputFillerName": "ALL_WITH_EXAMPLES",
+    },
+    "err": null,
+    "hash": "6e248a8072185616c7d1593c1675d445a9b126a53f9839ed87f89b6927cf5e86",
+    "io": {
+      "i": {
+        "isin": "US02079K3059",
+        "limit": 999.99,
+        "qty": 10,
+      },
+      "o": {
+        "parts": {
+          "_0": {
+            "items": [
+              {
+                "id": "356a192b-7913-404c-9457-4d18c28d46e6",
+                "isin": "US02079K3059",
+                "limit": 999.99,
+                "qty": 10,
+                "status": "pending",
+              },
+            ],
+            "total": 1,
+          },
+        },
+      },
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'BuyAsset' > should execute with auth 'ADMIN' and input 'ONLY_MANDATORY_WITH_EXAMPLES' > hash = 4b956c5532a3dbe1bbbe1c6d128c3c3cff25d2ffca20c4f5fe0ea941a07a7489 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "admin",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "ADMIN",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_MANDATORY_WITH_EXAMPLES",
+    },
+    "err": null,
+    "hash": "4b956c5532a3dbe1bbbe1c6d128c3c3cff25d2ffca20c4f5fe0ea941a07a7489",
+    "io": {
+      "i": {
+        "isin": "US02079K3059",
+        "limit": 999.99,
+        "qty": 10,
+      },
+      "o": {
+        "parts": {
+          "_0": {
+            "items": [
+              {
+                "id": "356a192b-7913-404c-9457-4d18c28d46e6",
+                "isin": "US02079K3059",
+                "limit": 999.99,
+                "qty": 10,
+                "status": "pending",
+              },
+            ],
+            "total": 1,
+          },
+        },
+      },
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'BuyAsset' > should execute with auth 'ADMIN' and input 'ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPL…' > hash = e11ba862a2667bc551291b9686480b2532558a74c09d9ad52061b9818ce331c4 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "admin",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "ADMIN",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPLES",
+    },
+    "err": [IllegalArgumentError: ISIN must be filled],
+    "hash": "e11ba862a2667bc551291b9686480b2532558a74c09d9ad52061b9818ce331c4",
+    "io": {
+      "i": {
+        "isin": undefined,
+        "limit": undefined,
+        "qty": undefined,
+      },
+      "o": null,
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'BuyAsset' > should execute with auth 'ANONYMOUS' and input 'ALL_WITH_EXAMPLES' > hash = 2b81275f63642328148b6a0eeac158efe8706c0a61bee2be4d5082b8897326ef 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": null,
+      "authName": "ANONYMOUS",
+      "inputFiller": [Function],
+      "inputFillerName": "ALL_WITH_EXAMPLES",
+    },
+    "err": [ForbiddenError: Forbidden],
+    "hash": "2b81275f63642328148b6a0eeac158efe8706c0a61bee2be4d5082b8897326ef",
+    "io": {
+      "i": {
+        "isin": "US02079K3059",
+        "limit": 999.99,
+        "qty": 10,
+      },
+      "o": null,
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'BuyAsset' > should execute with auth 'ANONYMOUS' and input 'ONLY_MANDATORY_WITH_EXAMPLES' > hash = 2fb4944c258f3a46fbe6b87cf346534be2ce850a2deec284ba92db32c215c59d 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": null,
+      "authName": "ANONYMOUS",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_MANDATORY_WITH_EXAMPLES",
+    },
+    "err": [ForbiddenError: Forbidden],
+    "hash": "2fb4944c258f3a46fbe6b87cf346534be2ce850a2deec284ba92db32c215c59d",
+    "io": {
+      "i": {
+        "isin": "US02079K3059",
+        "limit": 999.99,
+        "qty": 10,
+      },
+      "o": null,
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'BuyAsset' > should execute with auth 'ANONYMOUS' and input 'ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPL…' > hash = 943483adb253253c88caf18ae5726e037ad07245147dd0f25f438b33431b7db2 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": null,
+      "authName": "ANONYMOUS",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPLES",
+    },
+    "err": [ForbiddenError: Forbidden],
+    "hash": "943483adb253253c88caf18ae5726e037ad07245147dd0f25f438b33431b7db2",
+    "io": {
+      "i": {
+        "isin": undefined,
+        "limit": undefined,
+        "qty": undefined,
+      },
+      "o": null,
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'BuyAsset' > should execute with auth 'REGULAR' and input 'ALL_WITH_EXAMPLES' > hash = 05630c7228d77d884497e485972553285963c6d7ec1a2344bc2757bd051f7e87 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "regular",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "REGULAR",
+      "inputFiller": [Function],
+      "inputFillerName": "ALL_WITH_EXAMPLES",
+    },
+    "err": null,
+    "hash": "05630c7228d77d884497e485972553285963c6d7ec1a2344bc2757bd051f7e87",
+    "io": {
+      "i": {
+        "isin": "US02079K3059",
+        "limit": 999.99,
+        "qty": 10,
+      },
+      "o": {
+        "parts": {
+          "_0": {
+            "items": [
+              {
+                "id": "356a192b-7913-404c-9457-4d18c28d46e6",
+                "isin": "US02079K3059",
+                "limit": 999.99,
+                "qty": 10,
+                "status": "pending",
+              },
+            ],
+            "total": 1,
+          },
+        },
+      },
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'BuyAsset' > should execute with auth 'REGULAR' and input 'ONLY_MANDATORY_WITH_EXAMPLES' > hash = 6e04d55836b2c174d08a81a0e4befa6b950058856944949384056adfceb5ce85 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "regular",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "REGULAR",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_MANDATORY_WITH_EXAMPLES",
+    },
+    "err": null,
+    "hash": "6e04d55836b2c174d08a81a0e4befa6b950058856944949384056adfceb5ce85",
+    "io": {
+      "i": {
+        "isin": "US02079K3059",
+        "limit": 999.99,
+        "qty": 10,
+      },
+      "o": {
+        "parts": {
+          "_0": {
+            "items": [
+              {
+                "id": "356a192b-7913-404c-9457-4d18c28d46e6",
+                "isin": "US02079K3059",
+                "limit": 999.99,
+                "qty": 10,
+                "status": "pending",
+              },
+            ],
+            "total": 1,
+          },
+        },
+      },
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'BuyAsset' > should execute with auth 'REGULAR' and input 'ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPL…' > hash = 4a618e2f6516dfbd2cf8c60b745a0e9100b83a7a29aff4cc8181911dbfbcc3bb 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "regular",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "REGULAR",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPLES",
+    },
+    "err": [IllegalArgumentError: ISIN must be filled],
+    "hash": "4a618e2f6516dfbd2cf8c60b745a0e9100b83a7a29aff4cc8181911dbfbcc3bb",
+    "io": {
+      "i": {
+        "isin": undefined,
+        "limit": undefined,
+        "qty": undefined,
+      },
+      "o": null,
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'CancelOrder' > should execute with auth 'ADMIN' and input 'ALL_WITH_EXAMPLES' > hash = e6080f5fa9361719c8cac8b39029d49f1ed267e8e4890c29c1f3bfd71d24630a 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "admin",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "ADMIN",
+      "inputFiller": [Function],
+      "inputFillerName": "ALL_WITH_EXAMPLES",
+    },
+    "err": [IllegalArgumentError: Not found],
+    "hash": "e6080f5fa9361719c8cac8b39029d49f1ed267e8e4890c29c1f3bfd71d24630a",
+    "io": {
+      "i": {
+        "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+      },
+      "o": null,
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'CancelOrder' > should execute with auth 'ADMIN' and input 'ONLY_MANDATORY_WITH_EXAMPLES' > hash = edd2c62f1bcf301f535f9537bfc059a889f07f9a38837f61b6f276375707f729 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "admin",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "ADMIN",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_MANDATORY_WITH_EXAMPLES",
+    },
+    "err": [IllegalArgumentError: Not found],
+    "hash": "edd2c62f1bcf301f535f9537bfc059a889f07f9a38837f61b6f276375707f729",
+    "io": {
+      "i": {
+        "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+      },
+      "o": null,
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'CancelOrder' > should execute with auth 'ADMIN' and input 'ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPL…' > hash = 29c5864283bf8f4633435538848915ea7ed907404c452fd3c12d5f917251921f 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "admin",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "ADMIN",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPLES",
+    },
+    "err": [IllegalArgumentError: Not found],
+    "hash": "29c5864283bf8f4633435538848915ea7ed907404c452fd3c12d5f917251921f",
+    "io": {
+      "i": {
+        "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+      },
+      "o": null,
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'CancelOrder' > should execute with auth 'ANONYMOUS' and input 'ALL_WITH_EXAMPLES' > hash = d80d322c9733342b0a3f7ed4991b7ef363c899904efab1a0850f0151fbb82ad7 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": null,
+      "authName": "ANONYMOUS",
+      "inputFiller": [Function],
+      "inputFillerName": "ALL_WITH_EXAMPLES",
+    },
+    "err": [ForbiddenError: Forbidden],
+    "hash": "d80d322c9733342b0a3f7ed4991b7ef363c899904efab1a0850f0151fbb82ad7",
+    "io": {
+      "i": {
+        "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+      },
+      "o": null,
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'CancelOrder' > should execute with auth 'ANONYMOUS' and input 'ONLY_MANDATORY_WITH_EXAMPLES' > hash = ada4bd9c38b5446e1380bbf8c2f61f344e3c6c26cf3be9fc9c216a57df1d2243 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": null,
+      "authName": "ANONYMOUS",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_MANDATORY_WITH_EXAMPLES",
+    },
+    "err": [ForbiddenError: Forbidden],
+    "hash": "ada4bd9c38b5446e1380bbf8c2f61f344e3c6c26cf3be9fc9c216a57df1d2243",
+    "io": {
+      "i": {
+        "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+      },
+      "o": null,
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'CancelOrder' > should execute with auth 'ANONYMOUS' and input 'ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPL…' > hash = f1ce550c727350b18204d9cec7b0b0a20f368f391a626fbc2f090f480f79b3b2 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": null,
+      "authName": "ANONYMOUS",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPLES",
+    },
+    "err": [ForbiddenError: Forbidden],
+    "hash": "f1ce550c727350b18204d9cec7b0b0a20f368f391a626fbc2f090f480f79b3b2",
+    "io": {
+      "i": {
+        "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+      },
+      "o": null,
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'CancelOrder' > should execute with auth 'REGULAR' and input 'ALL_WITH_EXAMPLES' > hash = a92e8c81bbc93b85569ff4168bc45d9e5e82929e89c13ebfe27401f1ecbfc5c5 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "regular",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "REGULAR",
+      "inputFiller": [Function],
+      "inputFillerName": "ALL_WITH_EXAMPLES",
+    },
+    "err": [ForbiddenError: Forbidden],
+    "hash": "a92e8c81bbc93b85569ff4168bc45d9e5e82929e89c13ebfe27401f1ecbfc5c5",
+    "io": {
+      "i": {
+        "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+      },
+      "o": null,
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'CancelOrder' > should execute with auth 'REGULAR' and input 'ONLY_MANDATORY_WITH_EXAMPLES' > hash = a2b4d17375aeb2e4c3d16171814e541d80968a364be1fbc461dc2685aeb765bb 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "regular",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "REGULAR",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_MANDATORY_WITH_EXAMPLES",
+    },
+    "err": [ForbiddenError: Forbidden],
+    "hash": "a2b4d17375aeb2e4c3d16171814e541d80968a364be1fbc461dc2685aeb765bb",
+    "io": {
+      "i": {
+        "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+      },
+      "o": null,
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'CancelOrder' > should execute with auth 'REGULAR' and input 'ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPL…' > hash = 8ea60e27fbf532e1467925bfca670ba427136842647492c97cdc5b1c3e0a99c1 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "regular",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "REGULAR",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPLES",
+    },
+    "err": [ForbiddenError: Forbidden],
+    "hash": "8ea60e27fbf532e1467925bfca670ba427136842647492c97cdc5b1c3e0a99c1",
+    "io": {
+      "i": {
+        "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+      },
+      "o": null,
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'ListOrders' > should execute with auth 'ADMIN' and input 'ALL_WITH_EXAMPLES' > hash = af764f22392bfdaf545ed9f5ee5c740417a555f10f34d564a522685ea56de723 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "admin",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "ADMIN",
+      "inputFiller": [Function],
+      "inputFillerName": "ALL_WITH_EXAMPLES",
+    },
+    "err": null,
+    "hash": "af764f22392bfdaf545ed9f5ee5c740417a555f10f34d564a522685ea56de723",
+    "io": {
+      "i": {
+        "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        "limit": 10,
+        "offset": 0,
+        "q": "Nike Streakfly",
+      },
+      "o": {
+        "parts": {
+          "_0": {
+            "items": [],
+            "total": 0,
+          },
+        },
+      },
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'ListOrders' > should execute with auth 'ADMIN' and input 'ONLY_MANDATORY_WITH_EXAMPLES' > hash = efb3bf2b1a104d556e295d30733a4abb236b7dd5d54efc4dc67678c032446019 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "admin",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "ADMIN",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_MANDATORY_WITH_EXAMPLES",
+    },
+    "err": null,
+    "hash": "efb3bf2b1a104d556e295d30733a4abb236b7dd5d54efc4dc67678c032446019",
+    "io": {
+      "i": {
+        "id": undefined,
+        "limit": undefined,
+        "offset": undefined,
+        "q": undefined,
+      },
+      "o": {
+        "parts": {
+          "_0": {
+            "items": [],
+            "total": 0,
+          },
+        },
+      },
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'ListOrders' > should execute with auth 'ADMIN' and input 'ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPL…' > hash = 2ba4765a0b04e0c3df2f0e68e510eb8cc72af093c06938ecc70f19303a7476ba 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "admin",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "ADMIN",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPLES",
+    },
+    "err": null,
+    "hash": "2ba4765a0b04e0c3df2f0e68e510eb8cc72af093c06938ecc70f19303a7476ba",
+    "io": {
+      "i": {
+        "id": undefined,
+        "limit": undefined,
+        "offset": undefined,
+        "q": undefined,
+      },
+      "o": {
+        "parts": {
+          "_0": {
+            "items": [],
+            "total": 0,
+          },
+        },
+      },
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'ListOrders' > should execute with auth 'ANONYMOUS' and input 'ALL_WITH_EXAMPLES' > hash = f6f72579c8185eef64d91a365f3a46dec8f6d69eb7f89050c0fc3f0c6cc9527e 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": null,
+      "authName": "ANONYMOUS",
+      "inputFiller": [Function],
+      "inputFillerName": "ALL_WITH_EXAMPLES",
+    },
+    "err": null,
+    "hash": "f6f72579c8185eef64d91a365f3a46dec8f6d69eb7f89050c0fc3f0c6cc9527e",
+    "io": {
+      "i": {
+        "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        "limit": 10,
+        "offset": 0,
+        "q": "Nike Streakfly",
+      },
+      "o": {
+        "parts": {
+          "_0": {
+            "items": [],
+            "total": 0,
+          },
+        },
+      },
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'ListOrders' > should execute with auth 'ANONYMOUS' and input 'ONLY_MANDATORY_WITH_EXAMPLES' > hash = 20d37f75d0b33945544a2a50a7ec706c059cbb728cb6d48363083ea741f6545b 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": null,
+      "authName": "ANONYMOUS",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_MANDATORY_WITH_EXAMPLES",
+    },
+    "err": null,
+    "hash": "20d37f75d0b33945544a2a50a7ec706c059cbb728cb6d48363083ea741f6545b",
+    "io": {
+      "i": {
+        "id": undefined,
+        "limit": undefined,
+        "offset": undefined,
+        "q": undefined,
+      },
+      "o": {
+        "parts": {
+          "_0": {
+            "items": [],
+            "total": 0,
+          },
+        },
+      },
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'ListOrders' > should execute with auth 'ANONYMOUS' and input 'ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPL…' > hash = 6ff38b14bcb7c43b5942bb841c9da2e8351d8b3f5ab89f5f6095569488c14859 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": null,
+      "authName": "ANONYMOUS",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPLES",
+    },
+    "err": null,
+    "hash": "6ff38b14bcb7c43b5942bb841c9da2e8351d8b3f5ab89f5f6095569488c14859",
+    "io": {
+      "i": {
+        "id": undefined,
+        "limit": undefined,
+        "offset": undefined,
+        "q": undefined,
+      },
+      "o": {
+        "parts": {
+          "_0": {
+            "items": [],
+            "total": 0,
+          },
+        },
+      },
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'ListOrders' > should execute with auth 'REGULAR' and input 'ALL_WITH_EXAMPLES' > hash = e345185d908cc4aa2f9992e359b57d01044af5a8bc67d2e1deef9ad949638cee 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "regular",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "REGULAR",
+      "inputFiller": [Function],
+      "inputFillerName": "ALL_WITH_EXAMPLES",
+    },
+    "err": null,
+    "hash": "e345185d908cc4aa2f9992e359b57d01044af5a8bc67d2e1deef9ad949638cee",
+    "io": {
+      "i": {
+        "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        "limit": 10,
+        "offset": 0,
+        "q": "Nike Streakfly",
+      },
+      "o": {
+        "parts": {
+          "_0": {
+            "items": [],
+            "total": 0,
+          },
+        },
+      },
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'ListOrders' > should execute with auth 'REGULAR' and input 'ONLY_MANDATORY_WITH_EXAMPLES' > hash = b7172d07cd5c3f5c60ec135e13232b836738ac7c0c53ec6a946539135bd12b2d 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "regular",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "REGULAR",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_MANDATORY_WITH_EXAMPLES",
+    },
+    "err": null,
+    "hash": "b7172d07cd5c3f5c60ec135e13232b836738ac7c0c53ec6a946539135bd12b2d",
+    "io": {
+      "i": {
+        "id": undefined,
+        "limit": undefined,
+        "offset": undefined,
+        "q": undefined,
+      },
+      "o": {
+        "parts": {
+          "_0": {
+            "items": [],
+            "total": 0,
+          },
+        },
+      },
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'ListOrders' > should execute with auth 'REGULAR' and input 'ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPL…' > hash = b25833f275de3eb74bb6cf79cbee6386505b46245c61ccbbc50f7ba0b5397bc3 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "regular",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "REGULAR",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPLES",
+    },
+    "err": null,
+    "hash": "b25833f275de3eb74bb6cf79cbee6386505b46245c61ccbbc50f7ba0b5397bc3",
+    "io": {
+      "i": {
+        "id": undefined,
+        "limit": undefined,
+        "offset": undefined,
+        "q": undefined,
+      },
+      "o": {
+        "parts": {
+          "_0": {
+            "items": [],
+            "total": 0,
+          },
+        },
+      },
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'ViewAssetPrice' > should execute with auth 'ADMIN' and input 'ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPL…' > hash = 6abf262b7b625994e504abc8e0a05b5bce99e3947282b4ea7a6042e6a33ca893 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "admin",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "ADMIN",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPLES",
+    },
+    "err": [IllegalArgumentError: ISIN must be filled],
+    "hash": "6abf262b7b625994e504abc8e0a05b5bce99e3947282b4ea7a6042e6a33ca893",
+    "io": {
+      "i": {
+        "isin": undefined,
+      },
+      "o": null,
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'ViewAssetPrice' > should execute with auth 'ANONYMOUS' and input 'ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPL…' > hash = 5b453945fc9a9d33053151ac3800dcaf3966dc58c6965cba37025a571f053d2d 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": null,
+      "authName": "ANONYMOUS",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPLES",
+    },
+    "err": [IllegalArgumentError: ISIN must be filled],
+    "hash": "5b453945fc9a9d33053151ac3800dcaf3966dc58c6965cba37025a571f053d2d",
+    "io": {
+      "i": {
+        "isin": undefined,
+      },
+      "o": null,
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'ViewAssetPrice' > should execute with auth 'REGULAR' and input 'ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPL…' > hash = c12b3fae6ff65fd71d15a0d74a5b3d95dad0c20dfe0e92ff52add7681dd01fac 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "regular",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "REGULAR",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPLES",
+    },
+    "err": [IllegalArgumentError: ISIN must be filled],
+    "hash": "c12b3fae6ff65fd71d15a0d74a5b3d95dad0c20dfe0e92ff52add7681dd01fac",
+    "io": {
+      "i": {
+        "isin": undefined,
+      },
+      "o": null,
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
