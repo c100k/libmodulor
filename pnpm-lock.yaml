@@ -94,28 +94,6 @@ importers:
         specifier: ^54.0.23
         version: 54.0.23(@babel/core@7.28.5)(@modelcontextprotocol/sdk@1.22.0)(react-native@0.81.5(@babel/core@7.28.5)(@types/react@19.2.4)(react@19.2.0))(react@19.2.0)
 
-  examples/basic:
-    dependencies:
-      inversify:
-        specifier: ^7.10.4
-        version: 7.10.4(reflect-metadata@0.2.2)
-      libmodulor:
-        specifier: ^0.23.0
-        version: 0.23.0(@hono/node-server@1.19.6(hono@4.10.5))(@modelcontextprotocol/sdk@1.22.0)(@stricli/core@1.2.4)(buffer@6.0.3)(cookie-parser@1.4.7)(express-fileupload@1.5.2)(express@5.1.0)(fast-check@4.3.0)(helmet@8.1.0)(hono@4.10.5)(inversify@7.10.4(reflect-metadata@0.2.2))(jose@6.1.1)(knex@3.1.0(pg@8.16.3)(sqlite3@5.1.7))(next@15.5.6(@babel/core@7.28.5)(@playwright/test@1.55.0)(babel-plugin-react-compiler@1.0.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(pg@8.16.3)(react-dom@19.2.0(react@19.2.0))(react-native@0.81.5(@babel/core@7.28.5)(@types/react@19.2.4)(react@19.2.0))(react@19.2.0)(reflect-metadata@0.2.2)(sqlite3@5.1.7)(typescript@5.9.3)(vite@6.4.1(@types/node@24.10.1)(jiti@2.6.1)(lightningcss@1.30.2)(terser@5.44.1)(yaml@2.8.1))(vitest@3.2.4(@types/debug@4.1.12)(@types/node@24.10.1)(jiti@2.6.1)(lightningcss@1.30.2)(terser@5.44.1)(yaml@2.8.1))
-      reflect-metadata:
-        specifier: ^0.2.2
-        version: 0.2.2
-    devDependencies:
-      '@types/node':
-        specifier: ^24.10.1
-        version: 24.10.1
-      jose:
-        specifier: ^6.1.1
-        version: 6.1.1
-      typescript:
-        specifier: ^5.9.3
-        version: 5.9.3
-
 packages:
 
   '@0no-co/graphql.web@1.2.0':
@@ -2751,75 +2729,6 @@ packages:
   leven@3.1.0:
     resolution: {integrity: sha512-qsda+H8jTaUaN/x5vzW2rzc+8Rw4TAQ/4KjB46IwK5VH+IlVeeeje/EoZRpiXvIqjFgK84QffqPztGI3VBLG1A==}
     engines: {node: '>=6'}
-
-  libmodulor@0.23.0:
-    resolution: {integrity: sha512-dcAvZKxx8fmjGiocfe2JGZS++QAhn1S5XJDCIsGQRQ1FWD7BfRzFKQNxt6vbBY1FOX0bNTo/aUnM/grGK3C5TQ==}
-    hasBin: true
-    peerDependencies:
-      '@hono/node-server': ^1.19.6
-      '@modelcontextprotocol/sdk': ^1.21.0
-      '@stricli/core': ^1.2.4
-      buffer: ^6.0.3
-      cookie-parser: ^1.4.7
-      express: ^5.1.0
-      express-fileupload: ^1.5.2
-      fast-check: ^4.3.0
-      helmet: ^8.1.0
-      hono: ^4.10.4
-      inversify: ^7.10.4
-      jose: ^6.1.0
-      knex: ^3.1.0
-      next: ^15.5.6
-      pg: ^8.16.3
-      react: ^19.2.0
-      react-dom: ^19.2.0
-      react-native: ^0.81.5
-      reflect-metadata: ^0.2.2
-      sqlite3: ^5.1.7
-      typescript: ^5.9.3
-      vite: ^6.4.1
-      vitest: ^3.2.4
-    peerDependenciesMeta:
-      '@hono/node-server':
-        optional: true
-      '@modelcontextprotocol/sdk':
-        optional: true
-      '@stricli/core':
-        optional: true
-      buffer:
-        optional: true
-      cookie-parser:
-        optional: true
-      express:
-        optional: true
-      express-fileupload:
-        optional: true
-      fast-check:
-        optional: true
-      helmet:
-        optional: true
-      hono:
-        optional: true
-      jose:
-        optional: true
-      knex:
-        optional: true
-      next:
-        optional: true
-      pg:
-        optional: true
-      react:
-        optional: true
-      react-dom:
-        optional: true
-      react-native:
-        optional: true
-      sqlite3:
-        optional: true
-      vite:
-        optional: true
-      vitest:
-        optional: true
 
   lighthouse-logger@1.4.2:
     resolution: {integrity: sha512-gPWxznF6TKmUHrOQjlVo2UbaL2EJ71mb2CCeRs/2qBpi4L/g4LUVc9+3lKQ6DTUZwJswfM7ainGrLO1+fOqa2g==}
@@ -7271,33 +7180,6 @@ snapshots:
   lan-network@0.1.7: {}
 
   leven@3.1.0: {}
-
-  libmodulor@0.23.0(@hono/node-server@1.19.6(hono@4.10.5))(@modelcontextprotocol/sdk@1.22.0)(@stricli/core@1.2.4)(buffer@6.0.3)(cookie-parser@1.4.7)(express-fileupload@1.5.2)(express@5.1.0)(fast-check@4.3.0)(helmet@8.1.0)(hono@4.10.5)(inversify@7.10.4(reflect-metadata@0.2.2))(jose@6.1.1)(knex@3.1.0(pg@8.16.3)(sqlite3@5.1.7))(next@15.5.6(@babel/core@7.28.5)(@playwright/test@1.55.0)(babel-plugin-react-compiler@1.0.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(pg@8.16.3)(react-dom@19.2.0(react@19.2.0))(react-native@0.81.5(@babel/core@7.28.5)(@types/react@19.2.4)(react@19.2.0))(react@19.2.0)(reflect-metadata@0.2.2)(sqlite3@5.1.7)(typescript@5.9.3)(vite@6.4.1(@types/node@24.10.1)(jiti@2.6.1)(lightningcss@1.30.2)(terser@5.44.1)(yaml@2.8.1))(vitest@3.2.4(@types/debug@4.1.12)(@types/node@24.10.1)(jiti@2.6.1)(lightningcss@1.30.2)(terser@5.44.1)(yaml@2.8.1)):
-    dependencies:
-      inversify: 7.10.4(reflect-metadata@0.2.2)
-      reflect-metadata: 0.2.2
-      typescript: 5.9.3
-    optionalDependencies:
-      '@hono/node-server': 1.19.6(hono@4.10.5)
-      '@modelcontextprotocol/sdk': 1.22.0
-      '@stricli/core': 1.2.4
-      buffer: 6.0.3
-      cookie-parser: 1.4.7
-      express: 5.1.0
-      express-fileupload: 1.5.2
-      fast-check: 4.3.0
-      helmet: 8.1.0
-      hono: 4.10.5
-      jose: 6.1.1
-      knex: 3.1.0(pg@8.16.3)(sqlite3@5.1.7)
-      next: 15.5.6(@babel/core@7.28.5)(@playwright/test@1.55.0)(babel-plugin-react-compiler@1.0.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
-      pg: 8.16.3
-      react: 19.2.0
-      react-dom: 19.2.0(react@19.2.0)
-      react-native: 0.81.5(@babel/core@7.28.5)(@types/react@19.2.4)(react@19.2.0)
-      sqlite3: 5.1.7
-      vite: 6.4.1(@types/node@24.10.1)(jiti@2.6.1)(lightningcss@1.30.2)(terser@5.44.1)(yaml@2.8.1)
-      vitest: 3.2.4(@types/debug@4.1.12)(@types/node@24.10.1)(jiti@2.6.1)(lightningcss@1.30.2)(terser@5.44.1)(yaml@2.8.1)
 
   lighthouse-logger@1.4.2:
     dependencies:
