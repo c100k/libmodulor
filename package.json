@@ -35,9 +35,6 @@
         "./nextjs": {
             "import": "./dist/esm/index.nextjs.js"
         },
-        "./node-stricli-cli": {
-            "import": "./dist/esm/index.node-stricli-cli.js"
-        },
         "./node-express": {
             "import": "./dist/esm/index.node-express.js"
         },
@@ -46,6 +43,9 @@
         },
         "./node-mcp": {
             "import": "./dist/esm/index.node-mcp.js"
+        },
+        "./node-stricli-cli": {
+            "import": "./dist/esm/index.node-stricli-cli.js"
         },
         "./node-test": {
             "import": "./dist/esm/index.node-test.js"
