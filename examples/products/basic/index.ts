@@ -1,4 +1,6 @@
 import { Container, inject, injectable } from 'inversify';
+
+import { I18nEN } from '../../../dist/esm/i18n/locales/en.js';
 import {
     type AggregateOPI0,
     AggregateOutputDef,
@@ -33,9 +35,8 @@ import {
     UCOutputBuilder,
     type UCOutputReader,
     WordingManager,
-} from 'libmodulor';
-import { I18nEN } from 'libmodulor/locales/en';
-import { bindNodeCore } from 'libmodulor/node';
+} from '../../../dist/esm/index.js';
+import { bindNodeCore } from '../../../dist/esm/index.node.js';
 
 print('Declaring the App');
 const appManifest: AppManifest = {

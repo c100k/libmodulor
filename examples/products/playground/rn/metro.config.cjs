@@ -33,7 +33,5 @@ while (!existsSync(join(rootFolder, 'node_modules'))) {
     rootFolder = join(rootFolder, '..');
 }
 config.watchFolders = [rootFolder];
-// biome-ignore lint/suspicious/noConsole: we want it
-console.log(config.watchFolders);
 
 module.exports = config;
