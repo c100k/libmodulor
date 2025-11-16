@@ -26,21 +26,6 @@ jobs:
         run: |
           pnpm lint:ci
 
-      - name: Check examples/basic
+      - name: Build examples
         run: |
-          cd examples/basic
-          ./check.sh
-
-      - name: Check examples/standalone
-        run: |
-          cd examples/standalone
-          ./check.sh
-
-      - name: Check examples/supertrader
-        run: |
-          cd examples/supertrader
-          ./check.sh
-          nohup pnpm run:server-node-express &
-          sleep 3
-          curl -X POST -H "Content-Type: application/json" http://localhost:7443/api/v1/Trading_BuyAsset
-          pnpm run:cli Trading_BuyAsset
+          ./scripts/examples/build.sh

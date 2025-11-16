@@ -1,0 +1,11 @@
+{
+    "compilerOptions": {
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "jsx": "preserve",
+        "module": "NodeNext",
+        "moduleResolution": "NodeNext",
+        "strict": true
+    },
+    "extends": "expo/tsconfig.base"
+}

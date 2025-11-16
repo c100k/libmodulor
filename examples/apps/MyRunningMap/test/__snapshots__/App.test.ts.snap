@@ -1,0 +1,820 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Run > Use Cases > 'AuthenticateToStravaStep1' > should execute with auth 'ADMIN' and input 'ALL_WITH_EXAMPLES' > hash = 6380be79aefc89ab046e439a53fd85e25c445c35d846a208eb59dc6b880a1956 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "admin",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "ADMIN",
+      "inputFiller": [Function],
+      "inputFillerName": "ALL_WITH_EXAMPLES",
+    },
+    "err": null,
+    "hash": "6380be79aefc89ab046e439a53fd85e25c445c35d846a208eb59dc6b880a1956",
+    "io": {
+      "i": {
+        "clientId": "12345",
+        "redirectURI": "https://myservice.toto.com",
+      },
+      "o": null,
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'AuthenticateToStravaStep1' > should execute with auth 'ADMIN' and input 'ONLY_MANDATORY_WITH_EXAMPLES' > hash = dd38c00b328095774eeb0790f95290e4bd108645f786078b2f40918ca7c2e27b 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "admin",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "ADMIN",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_MANDATORY_WITH_EXAMPLES",
+    },
+    "err": null,
+    "hash": "dd38c00b328095774eeb0790f95290e4bd108645f786078b2f40918ca7c2e27b",
+    "io": {
+      "i": {
+        "clientId": "12345",
+        "redirectURI": "https://myservice.toto.com",
+      },
+      "o": null,
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'AuthenticateToStravaStep1' > should execute with auth 'ADMIN' and input 'ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPL…' > hash = fa7cfdd35ef1b724d606df6c964ab2d11bd528671ba4a47eaebe44abd1db200a 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "admin",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "ADMIN",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPLES",
+    },
+    "err": [IllegalArgumentError: Client ID must be filled],
+    "hash": "fa7cfdd35ef1b724d606df6c964ab2d11bd528671ba4a47eaebe44abd1db200a",
+    "io": {
+      "i": {
+        "clientId": undefined,
+        "redirectURI": "https://myservice.toto.com",
+      },
+      "o": null,
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'AuthenticateToStravaStep1' > should execute with auth 'ANONYMOUS' and input 'ALL_WITH_EXAMPLES' > hash = b221784cfb5ce7d14db75f70077c43e32f5557e2cd1728709bc2051983aeebeb 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": null,
+      "authName": "ANONYMOUS",
+      "inputFiller": [Function],
+      "inputFillerName": "ALL_WITH_EXAMPLES",
+    },
+    "err": null,
+    "hash": "b221784cfb5ce7d14db75f70077c43e32f5557e2cd1728709bc2051983aeebeb",
+    "io": {
+      "i": {
+        "clientId": "12345",
+        "redirectURI": "https://myservice.toto.com",
+      },
+      "o": null,
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'AuthenticateToStravaStep1' > should execute with auth 'ANONYMOUS' and input 'ONLY_MANDATORY_WITH_EXAMPLES' > hash = e3b78514ec916b5a157d1bfc31b2012e51ed1347817f9b0c197594d9c0b60d8d 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": null,
+      "authName": "ANONYMOUS",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_MANDATORY_WITH_EXAMPLES",
+    },
+    "err": null,
+    "hash": "e3b78514ec916b5a157d1bfc31b2012e51ed1347817f9b0c197594d9c0b60d8d",
+    "io": {
+      "i": {
+        "clientId": "12345",
+        "redirectURI": "https://myservice.toto.com",
+      },
+      "o": null,
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'AuthenticateToStravaStep1' > should execute with auth 'ANONYMOUS' and input 'ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPL…' > hash = 676720d2201ff28d3509870f9aa7f84c83871aa103dc6eb74f67fa8939f834bf 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": null,
+      "authName": "ANONYMOUS",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPLES",
+    },
+    "err": [IllegalArgumentError: Client ID must be filled],
+    "hash": "676720d2201ff28d3509870f9aa7f84c83871aa103dc6eb74f67fa8939f834bf",
+    "io": {
+      "i": {
+        "clientId": undefined,
+        "redirectURI": "https://myservice.toto.com",
+      },
+      "o": null,
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'AuthenticateToStravaStep1' > should execute with auth 'REGULAR' and input 'ALL_WITH_EXAMPLES' > hash = 5ef57c0f484579b5997cbc56eefdd530661fa0a53aee0470ed334a01ae1da324 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "regular",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "REGULAR",
+      "inputFiller": [Function],
+      "inputFillerName": "ALL_WITH_EXAMPLES",
+    },
+    "err": null,
+    "hash": "5ef57c0f484579b5997cbc56eefdd530661fa0a53aee0470ed334a01ae1da324",
+    "io": {
+      "i": {
+        "clientId": "12345",
+        "redirectURI": "https://myservice.toto.com",
+      },
+      "o": null,
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'AuthenticateToStravaStep1' > should execute with auth 'REGULAR' and input 'ONLY_MANDATORY_WITH_EXAMPLES' > hash = f32c6ce676d00601abe9898ffb8f8845ca34315b1f5da6eb788fb58aaf521775 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "regular",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "REGULAR",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_MANDATORY_WITH_EXAMPLES",
+    },
+    "err": null,
+    "hash": "f32c6ce676d00601abe9898ffb8f8845ca34315b1f5da6eb788fb58aaf521775",
+    "io": {
+      "i": {
+        "clientId": "12345",
+        "redirectURI": "https://myservice.toto.com",
+      },
+      "o": null,
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'AuthenticateToStravaStep1' > should execute with auth 'REGULAR' and input 'ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPL…' > hash = 4ba2fe32e24ece45c932c73578733e97b00e7bd8c1847727ea0e5f045d3c56a4 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "regular",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "REGULAR",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPLES",
+    },
+    "err": [IllegalArgumentError: Client ID must be filled],
+    "hash": "4ba2fe32e24ece45c932c73578733e97b00e7bd8c1847727ea0e5f045d3c56a4",
+    "io": {
+      "i": {
+        "clientId": undefined,
+        "redirectURI": "https://myservice.toto.com",
+      },
+      "o": null,
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'AuthenticateToStravaStep2' > should execute with auth 'ADMIN' and input 'ALL_WITH_EXAMPLES' > hash = 1aae6a1e71c3b7b79703a3f1cc95dd45c594116f58c2b02adcd4efc0f79f9417 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "admin",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "ADMIN",
+      "inputFiller": [Function],
+      "inputFillerName": "ALL_WITH_EXAMPLES",
+    },
+    "err": [IllegalArgumentError: The URL must contain a code query param],
+    "hash": "1aae6a1e71c3b7b79703a3f1cc95dd45c594116f58c2b02adcd4efc0f79f9417",
+    "io": {
+      "i": {
+        "clientId": "12345",
+        "clientSecret": "pk_bxa2HCdsT7CKwVSdem8fjS8rW",
+        "url": "https://myservice.toto.com",
+      },
+      "o": null,
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'AuthenticateToStravaStep2' > should execute with auth 'ADMIN' and input 'ONLY_MANDATORY_WITH_EXAMPLES' > hash = 3a64b923a620cfb212d58cc677a398221b2e31e73f02faff3bc9ea3105b10f38 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "admin",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "ADMIN",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_MANDATORY_WITH_EXAMPLES",
+    },
+    "err": [IllegalArgumentError: The URL must contain a code query param],
+    "hash": "3a64b923a620cfb212d58cc677a398221b2e31e73f02faff3bc9ea3105b10f38",
+    "io": {
+      "i": {
+        "clientId": "12345",
+        "clientSecret": "pk_bxa2HCdsT7CKwVSdem8fjS8rW",
+        "url": "https://myservice.toto.com",
+      },
+      "o": null,
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'AuthenticateToStravaStep2' > should execute with auth 'ADMIN' and input 'ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPL…' > hash = 169746ac672a86540ae227751e609165fa6a049784d182aa78e81fc0ba4a0f65 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "admin",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "ADMIN",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPLES",
+    },
+    "err": [IllegalArgumentError: Client ID must be filled],
+    "hash": "169746ac672a86540ae227751e609165fa6a049784d182aa78e81fc0ba4a0f65",
+    "io": {
+      "i": {
+        "clientId": undefined,
+        "clientSecret": undefined,
+        "url": "https://myservice.toto.com",
+      },
+      "o": null,
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'AuthenticateToStravaStep2' > should execute with auth 'ANONYMOUS' and input 'ALL_WITH_EXAMPLES' > hash = b65f185c4d0166992d12c3330997076cec08d287efd3b2521f4d46062cec75d9 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": null,
+      "authName": "ANONYMOUS",
+      "inputFiller": [Function],
+      "inputFillerName": "ALL_WITH_EXAMPLES",
+    },
+    "err": [IllegalArgumentError: The URL must contain a code query param],
+    "hash": "b65f185c4d0166992d12c3330997076cec08d287efd3b2521f4d46062cec75d9",
+    "io": {
+      "i": {
+        "clientId": "12345",
+        "clientSecret": "pk_bxa2HCdsT7CKwVSdem8fjS8rW",
+        "url": "https://myservice.toto.com",
+      },
+      "o": null,
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'AuthenticateToStravaStep2' > should execute with auth 'ANONYMOUS' and input 'ONLY_MANDATORY_WITH_EXAMPLES' > hash = 311e29e1488b4362f7f0b1cb5cdcd742bf0fa141118fd43d7adba2f8b763f013 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": null,
+      "authName": "ANONYMOUS",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_MANDATORY_WITH_EXAMPLES",
+    },
+    "err": [IllegalArgumentError: The URL must contain a code query param],
+    "hash": "311e29e1488b4362f7f0b1cb5cdcd742bf0fa141118fd43d7adba2f8b763f013",
+    "io": {
+      "i": {
+        "clientId": "12345",
+        "clientSecret": "pk_bxa2HCdsT7CKwVSdem8fjS8rW",
+        "url": "https://myservice.toto.com",
+      },
+      "o": null,
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'AuthenticateToStravaStep2' > should execute with auth 'ANONYMOUS' and input 'ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPL…' > hash = ba11e07438550030fc28e30847f3bf0e77c13de3264fa49b82825f7528edadd4 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": null,
+      "authName": "ANONYMOUS",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPLES",
+    },
+    "err": [IllegalArgumentError: Client ID must be filled],
+    "hash": "ba11e07438550030fc28e30847f3bf0e77c13de3264fa49b82825f7528edadd4",
+    "io": {
+      "i": {
+        "clientId": undefined,
+        "clientSecret": undefined,
+        "url": "https://myservice.toto.com",
+      },
+      "o": null,
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'AuthenticateToStravaStep2' > should execute with auth 'REGULAR' and input 'ALL_WITH_EXAMPLES' > hash = 1c1ff8269ef286b7730df90dc8494d232e6a2f0218bd88052aa36adcea8dde85 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "regular",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "REGULAR",
+      "inputFiller": [Function],
+      "inputFillerName": "ALL_WITH_EXAMPLES",
+    },
+    "err": [IllegalArgumentError: The URL must contain a code query param],
+    "hash": "1c1ff8269ef286b7730df90dc8494d232e6a2f0218bd88052aa36adcea8dde85",
+    "io": {
+      "i": {
+        "clientId": "12345",
+        "clientSecret": "pk_bxa2HCdsT7CKwVSdem8fjS8rW",
+        "url": "https://myservice.toto.com",
+      },
+      "o": null,
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'AuthenticateToStravaStep2' > should execute with auth 'REGULAR' and input 'ONLY_MANDATORY_WITH_EXAMPLES' > hash = d121818049177acbf5bc61182983dc5d6e4aa07ace2a216d15c507101d832395 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "regular",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "REGULAR",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_MANDATORY_WITH_EXAMPLES",
+    },
+    "err": [IllegalArgumentError: The URL must contain a code query param],
+    "hash": "d121818049177acbf5bc61182983dc5d6e4aa07ace2a216d15c507101d832395",
+    "io": {
+      "i": {
+        "clientId": "12345",
+        "clientSecret": "pk_bxa2HCdsT7CKwVSdem8fjS8rW",
+        "url": "https://myservice.toto.com",
+      },
+      "o": null,
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'AuthenticateToStravaStep2' > should execute with auth 'REGULAR' and input 'ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPL…' > hash = b36f8772dfd65c8dec412dab22e97c9ff160203b4757592e921748d2d246ddb9 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "regular",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "REGULAR",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPLES",
+    },
+    "err": [IllegalArgumentError: Client ID must be filled],
+    "hash": "b36f8772dfd65c8dec412dab22e97c9ff160203b4757592e921748d2d246ddb9",
+    "io": {
+      "i": {
+        "clientId": undefined,
+        "clientSecret": undefined,
+        "url": "https://myservice.toto.com",
+      },
+      "o": null,
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'GenerateRunningMapFromStrava' > should execute with auth 'ADMIN' and input 'ALL_WITH_EXAMPLES' > hash = 506b7f6a200f444ac16b57c9b8939e791da5c8e2023d9c0959b99868e8944c81 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "admin",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "ADMIN",
+      "inputFiller": [Function],
+      "inputFillerName": "ALL_WITH_EXAMPLES",
+    },
+    "err": [IllegalArgumentError: Endpoint https://www.strava.com/api/v3/athlete/activities?page=1&per_page=10 not defined in FakeHTTPAPICallExecutor.entries],
+    "hash": "506b7f6a200f444ac16b57c9b8939e791da5c8e2023d9c0959b99868e8944c81",
+    "io": {
+      "i": {
+        "activitiesCount": 10,
+        "mapboxAccessToken": "pk_bxa2HCdsT7CKwVSdem8fjS8rW",
+        "stravaAccessToken": "pk_bxa2HCdsT7CKwVSdem8fjS8rW",
+      },
+      "o": null,
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'GenerateRunningMapFromStrava' > should execute with auth 'ADMIN' and input 'ONLY_MANDATORY_WITH_EXAMPLES' > hash = f3c5e820ab5e9f32bd1b699133af5cca0a8ad539a83b048ab5677b1886efa423 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "admin",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "ADMIN",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_MANDATORY_WITH_EXAMPLES",
+    },
+    "err": [IllegalArgumentError: Endpoint https://www.strava.com/api/v3/athlete/activities?page=1&per_page=10 not defined in FakeHTTPAPICallExecutor.entries],
+    "hash": "f3c5e820ab5e9f32bd1b699133af5cca0a8ad539a83b048ab5677b1886efa423",
+    "io": {
+      "i": {
+        "activitiesCount": 10,
+        "mapboxAccessToken": "pk_bxa2HCdsT7CKwVSdem8fjS8rW",
+        "stravaAccessToken": "pk_bxa2HCdsT7CKwVSdem8fjS8rW",
+      },
+      "o": null,
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'GenerateRunningMapFromStrava' > should execute with auth 'ADMIN' and input 'ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPL…' > hash = a49c9b7d180e0287b637928a3e8f26606381859ef206bca996da85201c9325b2 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "admin",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "ADMIN",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPLES",
+    },
+    "err": [IllegalArgumentError: Activities Count must be filled],
+    "hash": "a49c9b7d180e0287b637928a3e8f26606381859ef206bca996da85201c9325b2",
+    "io": {
+      "i": {
+        "activitiesCount": undefined,
+        "mapboxAccessToken": undefined,
+        "stravaAccessToken": "pk_bxa2HCdsT7CKwVSdem8fjS8rW",
+      },
+      "o": null,
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'GenerateRunningMapFromStrava' > should execute with auth 'ANONYMOUS' and input 'ALL_WITH_EXAMPLES' > hash = de6302fe9cc529060fba646e8b46f9bc36c5129548f515491099495e7ee980f1 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": null,
+      "authName": "ANONYMOUS",
+      "inputFiller": [Function],
+      "inputFillerName": "ALL_WITH_EXAMPLES",
+    },
+    "err": [IllegalArgumentError: Endpoint https://www.strava.com/api/v3/athlete/activities?page=1&per_page=10 not defined in FakeHTTPAPICallExecutor.entries],
+    "hash": "de6302fe9cc529060fba646e8b46f9bc36c5129548f515491099495e7ee980f1",
+    "io": {
+      "i": {
+        "activitiesCount": 10,
+        "mapboxAccessToken": "pk_bxa2HCdsT7CKwVSdem8fjS8rW",
+        "stravaAccessToken": "pk_bxa2HCdsT7CKwVSdem8fjS8rW",
+      },
+      "o": null,
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'GenerateRunningMapFromStrava' > should execute with auth 'ANONYMOUS' and input 'ONLY_MANDATORY_WITH_EXAMPLES' > hash = bad34e49dc55c7f34296300bc1a817cb2e0f6f569fde1a355e3c15ae646a1788 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": null,
+      "authName": "ANONYMOUS",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_MANDATORY_WITH_EXAMPLES",
+    },
+    "err": [IllegalArgumentError: Endpoint https://www.strava.com/api/v3/athlete/activities?page=1&per_page=10 not defined in FakeHTTPAPICallExecutor.entries],
+    "hash": "bad34e49dc55c7f34296300bc1a817cb2e0f6f569fde1a355e3c15ae646a1788",
+    "io": {
+      "i": {
+        "activitiesCount": 10,
+        "mapboxAccessToken": "pk_bxa2HCdsT7CKwVSdem8fjS8rW",
+        "stravaAccessToken": "pk_bxa2HCdsT7CKwVSdem8fjS8rW",
+      },
+      "o": null,
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'GenerateRunningMapFromStrava' > should execute with auth 'ANONYMOUS' and input 'ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPL…' > hash = 3dbed95f9410e0bdec06683b63157b0a3953d70f73403f67f5ed17b7ca1021ed 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": null,
+      "authName": "ANONYMOUS",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPLES",
+    },
+    "err": [IllegalArgumentError: Activities Count must be filled],
+    "hash": "3dbed95f9410e0bdec06683b63157b0a3953d70f73403f67f5ed17b7ca1021ed",
+    "io": {
+      "i": {
+        "activitiesCount": undefined,
+        "mapboxAccessToken": undefined,
+        "stravaAccessToken": "pk_bxa2HCdsT7CKwVSdem8fjS8rW",
+      },
+      "o": null,
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'GenerateRunningMapFromStrava' > should execute with auth 'REGULAR' and input 'ALL_WITH_EXAMPLES' > hash = 2cdc27acbaa3be080a1b3ced3596c116f6981c8a7a7b6ec8e44c8933042c0107 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "regular",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "REGULAR",
+      "inputFiller": [Function],
+      "inputFillerName": "ALL_WITH_EXAMPLES",
+    },
+    "err": [IllegalArgumentError: Endpoint https://www.strava.com/api/v3/athlete/activities?page=1&per_page=10 not defined in FakeHTTPAPICallExecutor.entries],
+    "hash": "2cdc27acbaa3be080a1b3ced3596c116f6981c8a7a7b6ec8e44c8933042c0107",
+    "io": {
+      "i": {
+        "activitiesCount": 10,
+        "mapboxAccessToken": "pk_bxa2HCdsT7CKwVSdem8fjS8rW",
+        "stravaAccessToken": "pk_bxa2HCdsT7CKwVSdem8fjS8rW",
+      },
+      "o": null,
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'GenerateRunningMapFromStrava' > should execute with auth 'REGULAR' and input 'ONLY_MANDATORY_WITH_EXAMPLES' > hash = 07ebb5422f1a991d0f1111d306b4c87e2e92c6cb715f23426726961e0e130fa1 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "regular",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "REGULAR",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_MANDATORY_WITH_EXAMPLES",
+    },
+    "err": [IllegalArgumentError: Endpoint https://www.strava.com/api/v3/athlete/activities?page=1&per_page=10 not defined in FakeHTTPAPICallExecutor.entries],
+    "hash": "07ebb5422f1a991d0f1111d306b4c87e2e92c6cb715f23426726961e0e130fa1",
+    "io": {
+      "i": {
+        "activitiesCount": 10,
+        "mapboxAccessToken": "pk_bxa2HCdsT7CKwVSdem8fjS8rW",
+        "stravaAccessToken": "pk_bxa2HCdsT7CKwVSdem8fjS8rW",
+      },
+      "o": null,
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'GenerateRunningMapFromStrava' > should execute with auth 'REGULAR' and input 'ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPL…' > hash = 11addb4c678b355321886458e5d329846f3c1cca406cd79fa8fcdbe84e0010a4 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "regular",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "REGULAR",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPLES",
+    },
+    "err": [IllegalArgumentError: Activities Count must be filled],
+    "hash": "11addb4c678b355321886458e5d329846f3c1cca406cd79fa8fcdbe84e0010a4",
+    "io": {
+      "i": {
+        "activitiesCount": undefined,
+        "mapboxAccessToken": undefined,
+        "stravaAccessToken": "pk_bxa2HCdsT7CKwVSdem8fjS8rW",
+      },
+      "o": null,
+    },
+  },
+  "sideEffects": undefined,
+}
+`;

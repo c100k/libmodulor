@@ -28,6 +28,7 @@
     },
     "exclude": [
         "dist",
+        "dist-examples",
         "examples/**/dist",
         "examples/**/node_modules",
         "node_modules"

@@ -1,0 +1,499 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Run > Use Cases > 'SignIn' > should execute with auth 'ADMIN' and input 'ALL_WITH_EXAMPLES' > hash = 51c300ed4b9089e7fbee998f77e93ff9d9a1b45bcb4e648ba651a3f63cdc231d 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "admin",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "ADMIN",
+      "inputFiller": [Function],
+      "inputFillerName": "ALL_WITH_EXAMPLES",
+    },
+    "err": [ForbiddenError: Forbidden],
+    "hash": "51c300ed4b9089e7fbee998f77e93ff9d9a1b45bcb4e648ba651a3f63cdc231d",
+    "io": {
+      "i": {
+        "role": "admin",
+      },
+      "o": null,
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'SignIn' > should execute with auth 'ADMIN' and input 'ONLY_MANDATORY_WITH_EXAMPLES' > hash = 225ff6d19b801218b8ad806739fb406f1f790cb92fb3abfe2603853b2b2a57f5 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "admin",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "ADMIN",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_MANDATORY_WITH_EXAMPLES",
+    },
+    "err": [ForbiddenError: Forbidden],
+    "hash": "225ff6d19b801218b8ad806739fb406f1f790cb92fb3abfe2603853b2b2a57f5",
+    "io": {
+      "i": {
+        "role": "admin",
+      },
+      "o": null,
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'SignIn' > should execute with auth 'ADMIN' and input 'ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPL…' > hash = 12d94087f04193817346b0c06de251b89f21931786a455467fee47a4e58ed08d 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "admin",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "ADMIN",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPLES",
+    },
+    "err": [ForbiddenError: Forbidden],
+    "hash": "12d94087f04193817346b0c06de251b89f21931786a455467fee47a4e58ed08d",
+    "io": {
+      "i": {
+        "role": undefined,
+      },
+      "o": null,
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'SignIn' > should execute with auth 'ANONYMOUS' and input 'ALL_WITH_EXAMPLES' > hash = 44264f8ce4d9668eb7b3cd20ebf624045a88a819327b78b2ccaf03bdfd9e52f6 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": null,
+      "authName": "ANONYMOUS",
+      "inputFiller": [Function],
+      "inputFillerName": "ALL_WITH_EXAMPLES",
+    },
+    "err": [IllegalArgumentError: Invalid credentials],
+    "hash": "44264f8ce4d9668eb7b3cd20ebf624045a88a819327b78b2ccaf03bdfd9e52f6",
+    "io": {
+      "i": {
+        "role": "admin",
+      },
+      "o": null,
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'SignIn' > should execute with auth 'ANONYMOUS' and input 'ONLY_MANDATORY_WITH_EXAMPLES' > hash = 5b6561f93a78241c1a5527825ddfea50348c86bf8743704b7f403673eb571c09 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": null,
+      "authName": "ANONYMOUS",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_MANDATORY_WITH_EXAMPLES",
+    },
+    "err": [IllegalArgumentError: Invalid credentials],
+    "hash": "5b6561f93a78241c1a5527825ddfea50348c86bf8743704b7f403673eb571c09",
+    "io": {
+      "i": {
+        "role": "admin",
+      },
+      "o": null,
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'SignIn' > should execute with auth 'ANONYMOUS' and input 'ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPL…' > hash = 788d02c6d2a12dd6f1e0617d82806fb3249c5092a38a30a8b04c6cf5e42899ea 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": null,
+      "authName": "ANONYMOUS",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPLES",
+    },
+    "err": [IllegalArgumentError: Role must be filled],
+    "hash": "788d02c6d2a12dd6f1e0617d82806fb3249c5092a38a30a8b04c6cf5e42899ea",
+    "io": {
+      "i": {
+        "role": undefined,
+      },
+      "o": null,
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'SignIn' > should execute with auth 'REGULAR' and input 'ALL_WITH_EXAMPLES' > hash = 671c3056399af88cfe427875f7886307561173d7778353bf4770219286f634dd 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "regular",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "REGULAR",
+      "inputFiller": [Function],
+      "inputFillerName": "ALL_WITH_EXAMPLES",
+    },
+    "err": [ForbiddenError: Forbidden],
+    "hash": "671c3056399af88cfe427875f7886307561173d7778353bf4770219286f634dd",
+    "io": {
+      "i": {
+        "role": "admin",
+      },
+      "o": null,
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'SignIn' > should execute with auth 'REGULAR' and input 'ONLY_MANDATORY_WITH_EXAMPLES' > hash = d78587a4501264865216ea8b79796e2d7fa66124de993ed04891aae1d75786f3 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "regular",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "REGULAR",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_MANDATORY_WITH_EXAMPLES",
+    },
+    "err": [ForbiddenError: Forbidden],
+    "hash": "d78587a4501264865216ea8b79796e2d7fa66124de993ed04891aae1d75786f3",
+    "io": {
+      "i": {
+        "role": "admin",
+      },
+      "o": null,
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'SignIn' > should execute with auth 'REGULAR' and input 'ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPL…' > hash = a066bcfd3047241dcd2f24a7181d2a1180e4844f6b2e5998800b6f36fe7f706e 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "regular",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "REGULAR",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPLES",
+    },
+    "err": [ForbiddenError: Forbidden],
+    "hash": "a066bcfd3047241dcd2f24a7181d2a1180e4844f6b2e5998800b6f36fe7f706e",
+    "io": {
+      "i": {
+        "role": undefined,
+      },
+      "o": null,
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'SignOut' > should execute with auth 'ADMIN' and input 'ALL_WITH_EXAMPLES' > hash = df589be0f5d1563f6031a758105a604dca3fc798a3b3db7a9643f781b43f8e58 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "admin",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "ADMIN",
+      "inputFiller": [Function],
+      "inputFillerName": "ALL_WITH_EXAMPLES",
+    },
+    "err": null,
+    "hash": "df589be0f5d1563f6031a758105a604dca3fc798a3b3db7a9643f781b43f8e58",
+    "io": {
+      "i": {},
+      "o": null,
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'SignOut' > should execute with auth 'ADMIN' and input 'ONLY_MANDATORY_WITH_EXAMPLES' > hash = bedc4dfb36e78b2e8981003de3182210dec512e171789489927c4b26d709805d 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "admin",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "ADMIN",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_MANDATORY_WITH_EXAMPLES",
+    },
+    "err": null,
+    "hash": "bedc4dfb36e78b2e8981003de3182210dec512e171789489927c4b26d709805d",
+    "io": {
+      "i": {},
+      "o": null,
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'SignOut' > should execute with auth 'ADMIN' and input 'ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPL…' > hash = 56ecbfcd98a010a121f4fa49915a91532e8865c77728209d8970d2f675d9ea97 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "admin",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "ADMIN",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPLES",
+    },
+    "err": null,
+    "hash": "56ecbfcd98a010a121f4fa49915a91532e8865c77728209d8970d2f675d9ea97",
+    "io": {
+      "i": {},
+      "o": null,
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'SignOut' > should execute with auth 'ANONYMOUS' and input 'ALL_WITH_EXAMPLES' > hash = 5c8729f9b83cc6433d1980fa4401dcae0ff79e263ea407272cc124dc47fac010 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": null,
+      "authName": "ANONYMOUS",
+      "inputFiller": [Function],
+      "inputFillerName": "ALL_WITH_EXAMPLES",
+    },
+    "err": [ForbiddenError: Forbidden],
+    "hash": "5c8729f9b83cc6433d1980fa4401dcae0ff79e263ea407272cc124dc47fac010",
+    "io": {
+      "i": {},
+      "o": null,
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'SignOut' > should execute with auth 'ANONYMOUS' and input 'ONLY_MANDATORY_WITH_EXAMPLES' > hash = 17b47d4c70e815737356a01fae9f02b0807e789a3c2ea0ac69d8365c560405b8 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": null,
+      "authName": "ANONYMOUS",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_MANDATORY_WITH_EXAMPLES",
+    },
+    "err": [ForbiddenError: Forbidden],
+    "hash": "17b47d4c70e815737356a01fae9f02b0807e789a3c2ea0ac69d8365c560405b8",
+    "io": {
+      "i": {},
+      "o": null,
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'SignOut' > should execute with auth 'ANONYMOUS' and input 'ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPL…' > hash = 76a8a49495667566d3b6a2e7549e3cb02ff293d187966806d7b16d384d1b3f26 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": null,
+      "authName": "ANONYMOUS",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPLES",
+    },
+    "err": [ForbiddenError: Forbidden],
+    "hash": "76a8a49495667566d3b6a2e7549e3cb02ff293d187966806d7b16d384d1b3f26",
+    "io": {
+      "i": {},
+      "o": null,
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'SignOut' > should execute with auth 'REGULAR' and input 'ALL_WITH_EXAMPLES' > hash = e6c764622abbbca6bcf03ee8176f9f2c10f957a9476dffefc8ece95e0f9d2a61 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "regular",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "REGULAR",
+      "inputFiller": [Function],
+      "inputFillerName": "ALL_WITH_EXAMPLES",
+    },
+    "err": null,
+    "hash": "e6c764622abbbca6bcf03ee8176f9f2c10f957a9476dffefc8ece95e0f9d2a61",
+    "io": {
+      "i": {},
+      "o": null,
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'SignOut' > should execute with auth 'REGULAR' and input 'ONLY_MANDATORY_WITH_EXAMPLES' > hash = 40aaf822b9cda086828f8fcd5174942685f219fc110267f3a67b16c02a244bc9 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "regular",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "REGULAR",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_MANDATORY_WITH_EXAMPLES",
+    },
+    "err": null,
+    "hash": "40aaf822b9cda086828f8fcd5174942685f219fc110267f3a67b16c02a244bc9",
+    "io": {
+      "i": {},
+      "o": null,
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'SignOut' > should execute with auth 'REGULAR' and input 'ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPL…' > hash = 7bc7f8a1e66ba6c428fcc0d8463f431d22e7a69a663340f7902035f13a003b91 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "regular",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "REGULAR",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPLES",
+    },
+    "err": null,
+    "hash": "7bc7f8a1e66ba6c428fcc0d8463f431d22e7a69a663340f7902035f13a003b91",
+    "io": {
+      "i": {},
+      "o": null,
+    },
+  },
+  "sideEffects": undefined,
+}
+`;

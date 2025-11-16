@@ -1,0 +1,17 @@
+{
+    "$schema": "../../../../node_modules/wrangler/config-schema.json",
+    "compatibility_date": "2025-06-12",
+    "compatibility_flags": ["nodejs_compat"],
+    "d1_databases": [
+        {
+            "binding": "UCDataStore",
+            "database_id": "{your_database_id}",
+            "database_name": "libmodulor-examples-playground-uc-data-store"
+        }
+    ],
+    "main": "src/index.ts",
+    "name": "libmodulor-examples-playground",
+    "observability": {
+        "enabled": true
+    }
+}

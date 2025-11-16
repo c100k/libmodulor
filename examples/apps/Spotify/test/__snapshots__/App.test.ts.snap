@@ -1,0 +1,2014 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Run > Use Cases > 'CreateAlbum' > should execute with auth 'ADMIN' and input 'ALL_WITH_EXAMPLES' > hash = 62f2a511f5f71be0c291625ab9ca96d9d8106af65791cec45ec11290780731fc 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "admin",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "ADMIN",
+      "inputFiller": [Function],
+      "inputFillerName": "ALL_WITH_EXAMPLES",
+    },
+    "err": null,
+    "hash": "62f2a511f5f71be0c291625ab9ca96d9d8106af65791cec45ec11290780731fc",
+    "io": {
+      "i": {
+        "artist": "Daft Punk",
+        "cover": {
+          "name": "/Users/dexter/Desktop/picture.png",
+          "size": 32,
+          "type": "image/png",
+        },
+        "description": "Alive 2007 is the second live album by the French electronic music duo Daft Punk, released on 19 November 2007",
+        "isPrivate": true,
+        "language": "en",
+        "name": "Alive 2007",
+        "releaseYear": 2025,
+        "tags": [
+          "Electronic",
+        ],
+      },
+      "o": {
+        "parts": {
+          "_0": {
+            "items": [
+              {
+                "artist": "Daft Punk",
+                "description": "Alive 2007 is the second live album by the French electronic music duo Daft Punk, released on 19 November 2007",
+                "id": "356a192b-7913-404c-9457-4d18c28d46e6",
+                "isPrivate": true,
+                "language": "en",
+                "name": "Alive 2007",
+                "releaseYear": 2025,
+                "tags": [
+                  "Electronic",
+                ],
+              },
+            ],
+            "total": 1,
+          },
+        },
+      },
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'CreateAlbum' > should execute with auth 'ADMIN' and input 'ONLY_MANDATORY_WITH_EXAMPLES' > hash = 8ed980118ea0b5ff83ea5acf582247aad960a7f2e32fdfd651318ea05eab836a 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "admin",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "ADMIN",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_MANDATORY_WITH_EXAMPLES",
+    },
+    "err": null,
+    "hash": "8ed980118ea0b5ff83ea5acf582247aad960a7f2e32fdfd651318ea05eab836a",
+    "io": {
+      "i": {
+        "artist": "Daft Punk",
+        "cover": undefined,
+        "description": undefined,
+        "isPrivate": true,
+        "language": undefined,
+        "name": "Alive 2007",
+        "releaseYear": 2012,
+        "tags": undefined,
+      },
+      "o": {
+        "parts": {
+          "_0": {
+            "items": [
+              {
+                "artist": "Daft Punk",
+                "description": null,
+                "id": "356a192b-7913-404c-9457-4d18c28d46e6",
+                "isPrivate": true,
+                "language": null,
+                "name": "Alive 2007",
+                "releaseYear": 2012,
+                "tags": [],
+              },
+            ],
+            "total": 1,
+          },
+        },
+      },
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'CreateAlbum' > should execute with auth 'ADMIN' and input 'ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPL…' > hash = 2c833cf16b356dbbb3b17f88102f96ad082b63b746add459fa278180c6cfd263 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "admin",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "ADMIN",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPLES",
+    },
+    "err": [IllegalArgumentError: Name must be filled],
+    "hash": "2c833cf16b356dbbb3b17f88102f96ad082b63b746add459fa278180c6cfd263",
+    "io": {
+      "i": {
+        "artist": "Daft Punk",
+        "cover": undefined,
+        "description": undefined,
+        "isPrivate": true,
+        "language": undefined,
+        "name": undefined,
+        "releaseYear": 2012,
+        "tags": undefined,
+      },
+      "o": null,
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'CreateAlbum' > should execute with auth 'ANONYMOUS' and input 'ALL_WITH_EXAMPLES' > hash = f36d840785fc0bf5e61b96c461cc08f448eed38ee9604214a85ca8a4f7ac2878 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": null,
+      "authName": "ANONYMOUS",
+      "inputFiller": [Function],
+      "inputFillerName": "ALL_WITH_EXAMPLES",
+    },
+    "err": null,
+    "hash": "f36d840785fc0bf5e61b96c461cc08f448eed38ee9604214a85ca8a4f7ac2878",
+    "io": {
+      "i": {
+        "artist": "Daft Punk",
+        "cover": {
+          "name": "/Users/dexter/Desktop/picture.png",
+          "size": 32,
+          "type": "image/png",
+        },
+        "description": "Alive 2007 is the second live album by the French electronic music duo Daft Punk, released on 19 November 2007",
+        "isPrivate": true,
+        "language": "en",
+        "name": "Alive 2007",
+        "releaseYear": 2025,
+        "tags": [
+          "Electronic",
+        ],
+      },
+      "o": {
+        "parts": {
+          "_0": {
+            "items": [
+              {
+                "artist": "Daft Punk",
+                "description": "Alive 2007 is the second live album by the French electronic music duo Daft Punk, released on 19 November 2007",
+                "id": "356a192b-7913-404c-9457-4d18c28d46e6",
+                "isPrivate": true,
+                "language": "en",
+                "name": "Alive 2007",
+                "releaseYear": 2025,
+                "tags": [
+                  "Electronic",
+                ],
+              },
+            ],
+            "total": 1,
+          },
+        },
+      },
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'CreateAlbum' > should execute with auth 'ANONYMOUS' and input 'ONLY_MANDATORY_WITH_EXAMPLES' > hash = fcb7964470f3ec1f9b85f838d9f0a4c4808b683b45a9bf6b7bec263a9d126110 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": null,
+      "authName": "ANONYMOUS",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_MANDATORY_WITH_EXAMPLES",
+    },
+    "err": null,
+    "hash": "fcb7964470f3ec1f9b85f838d9f0a4c4808b683b45a9bf6b7bec263a9d126110",
+    "io": {
+      "i": {
+        "artist": "Daft Punk",
+        "cover": undefined,
+        "description": undefined,
+        "isPrivate": true,
+        "language": undefined,
+        "name": "Alive 2007",
+        "releaseYear": 2012,
+        "tags": undefined,
+      },
+      "o": {
+        "parts": {
+          "_0": {
+            "items": [
+              {
+                "artist": "Daft Punk",
+                "description": null,
+                "id": "356a192b-7913-404c-9457-4d18c28d46e6",
+                "isPrivate": true,
+                "language": null,
+                "name": "Alive 2007",
+                "releaseYear": 2012,
+                "tags": [],
+              },
+            ],
+            "total": 1,
+          },
+        },
+      },
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'CreateAlbum' > should execute with auth 'ANONYMOUS' and input 'ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPL…' > hash = 51ea6ef23106ad152ed42a1f39f4c07d41db2e3d7b2ce139cf7c34e91a8dac72 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": null,
+      "authName": "ANONYMOUS",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPLES",
+    },
+    "err": [IllegalArgumentError: Name must be filled],
+    "hash": "51ea6ef23106ad152ed42a1f39f4c07d41db2e3d7b2ce139cf7c34e91a8dac72",
+    "io": {
+      "i": {
+        "artist": "Daft Punk",
+        "cover": undefined,
+        "description": undefined,
+        "isPrivate": true,
+        "language": undefined,
+        "name": undefined,
+        "releaseYear": 2012,
+        "tags": undefined,
+      },
+      "o": null,
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'CreateAlbum' > should execute with auth 'REGULAR' and input 'ALL_WITH_EXAMPLES' > hash = 88454341edb52cc05f4ebeb253acd7b755e60d65a6870f7562b7358191778fe8 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "regular",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "REGULAR",
+      "inputFiller": [Function],
+      "inputFillerName": "ALL_WITH_EXAMPLES",
+    },
+    "err": null,
+    "hash": "88454341edb52cc05f4ebeb253acd7b755e60d65a6870f7562b7358191778fe8",
+    "io": {
+      "i": {
+        "artist": "Daft Punk",
+        "cover": {
+          "name": "/Users/dexter/Desktop/picture.png",
+          "size": 32,
+          "type": "image/png",
+        },
+        "description": "Alive 2007 is the second live album by the French electronic music duo Daft Punk, released on 19 November 2007",
+        "isPrivate": true,
+        "language": "en",
+        "name": "Alive 2007",
+        "releaseYear": 2025,
+        "tags": [
+          "Electronic",
+        ],
+      },
+      "o": {
+        "parts": {
+          "_0": {
+            "items": [
+              {
+                "artist": "Daft Punk",
+                "description": "Alive 2007 is the second live album by the French electronic music duo Daft Punk, released on 19 November 2007",
+                "id": "356a192b-7913-404c-9457-4d18c28d46e6",
+                "isPrivate": true,
+                "language": "en",
+                "name": "Alive 2007",
+                "releaseYear": 2025,
+                "tags": [
+                  "Electronic",
+                ],
+              },
+            ],
+            "total": 1,
+          },
+        },
+      },
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'CreateAlbum' > should execute with auth 'REGULAR' and input 'ONLY_MANDATORY_WITH_EXAMPLES' > hash = 11ab6a26a577005e156a404afd33c2ae3404e4795db91031b5086eb2a5cf63fb 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "regular",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "REGULAR",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_MANDATORY_WITH_EXAMPLES",
+    },
+    "err": null,
+    "hash": "11ab6a26a577005e156a404afd33c2ae3404e4795db91031b5086eb2a5cf63fb",
+    "io": {
+      "i": {
+        "artist": "Daft Punk",
+        "cover": undefined,
+        "description": undefined,
+        "isPrivate": true,
+        "language": undefined,
+        "name": "Alive 2007",
+        "releaseYear": 2012,
+        "tags": undefined,
+      },
+      "o": {
+        "parts": {
+          "_0": {
+            "items": [
+              {
+                "artist": "Daft Punk",
+                "description": null,
+                "id": "356a192b-7913-404c-9457-4d18c28d46e6",
+                "isPrivate": true,
+                "language": null,
+                "name": "Alive 2007",
+                "releaseYear": 2012,
+                "tags": [],
+              },
+            ],
+            "total": 1,
+          },
+        },
+      },
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'CreateAlbum' > should execute with auth 'REGULAR' and input 'ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPL…' > hash = 26f83649ed0d5b851e58909462ac3d129a11380b16ce49a2b487293e9e2bea8b 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "regular",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "REGULAR",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPLES",
+    },
+    "err": [IllegalArgumentError: Name must be filled],
+    "hash": "26f83649ed0d5b851e58909462ac3d129a11380b16ce49a2b487293e9e2bea8b",
+    "io": {
+      "i": {
+        "artist": "Daft Punk",
+        "cover": undefined,
+        "description": undefined,
+        "isPrivate": true,
+        "language": undefined,
+        "name": undefined,
+        "releaseYear": 2012,
+        "tags": undefined,
+      },
+      "o": null,
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'DeleteAlbum' > should execute with auth 'ADMIN' and input 'ALL_WITH_EXAMPLES' > hash = 6cea9f7badc186e9ce3d6843349b7d42a6a278a9a3e73c3a057b24f694459cb4 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "admin",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "ADMIN",
+      "inputFiller": [Function],
+      "inputFillerName": "ALL_WITH_EXAMPLES",
+    },
+    "err": null,
+    "hash": "6cea9f7badc186e9ce3d6843349b7d42a6a278a9a3e73c3a057b24f694459cb4",
+    "io": {
+      "i": {
+        "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+      },
+      "o": null,
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'DeleteAlbum' > should execute with auth 'ADMIN' and input 'ONLY_MANDATORY_WITH_EXAMPLES' > hash = 4edd6513dafeb77504c19a7b35f0b41df5ca3e8008a7649c5d8cac1232f65e33 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "admin",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "ADMIN",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_MANDATORY_WITH_EXAMPLES",
+    },
+    "err": null,
+    "hash": "4edd6513dafeb77504c19a7b35f0b41df5ca3e8008a7649c5d8cac1232f65e33",
+    "io": {
+      "i": {
+        "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+      },
+      "o": null,
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'DeleteAlbum' > should execute with auth 'ADMIN' and input 'ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPL…' > hash = c1f383bd4a37f4b28caf292934bc2b450371a703931ff03ef3ca59b4b586a5fe 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "admin",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "ADMIN",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPLES",
+    },
+    "err": null,
+    "hash": "c1f383bd4a37f4b28caf292934bc2b450371a703931ff03ef3ca59b4b586a5fe",
+    "io": {
+      "i": {
+        "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+      },
+      "o": null,
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'DeleteAlbum' > should execute with auth 'ANONYMOUS' and input 'ALL_WITH_EXAMPLES' > hash = 1569cdb5a289a22bac4c39d12ffbdaed67c2b0874590974c300144334dbbefe9 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": null,
+      "authName": "ANONYMOUS",
+      "inputFiller": [Function],
+      "inputFillerName": "ALL_WITH_EXAMPLES",
+    },
+    "err": null,
+    "hash": "1569cdb5a289a22bac4c39d12ffbdaed67c2b0874590974c300144334dbbefe9",
+    "io": {
+      "i": {
+        "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+      },
+      "o": null,
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'DeleteAlbum' > should execute with auth 'ANONYMOUS' and input 'ONLY_MANDATORY_WITH_EXAMPLES' > hash = 6b29b20ce953ede5f8e83129b15500e1faf81531f37c360e0fa8df14b7bdfcde 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": null,
+      "authName": "ANONYMOUS",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_MANDATORY_WITH_EXAMPLES",
+    },
+    "err": null,
+    "hash": "6b29b20ce953ede5f8e83129b15500e1faf81531f37c360e0fa8df14b7bdfcde",
+    "io": {
+      "i": {
+        "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+      },
+      "o": null,
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'DeleteAlbum' > should execute with auth 'ANONYMOUS' and input 'ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPL…' > hash = ab021596389799036ba7d755468e42696477167b841b458b86ad2ffe99987ee9 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": null,
+      "authName": "ANONYMOUS",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPLES",
+    },
+    "err": null,
+    "hash": "ab021596389799036ba7d755468e42696477167b841b458b86ad2ffe99987ee9",
+    "io": {
+      "i": {
+        "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+      },
+      "o": null,
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'DeleteAlbum' > should execute with auth 'REGULAR' and input 'ALL_WITH_EXAMPLES' > hash = f2d12a66e5101eada61e121a1ab83475b3e9669c9bf1ab2a335c1302f34ed058 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "regular",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "REGULAR",
+      "inputFiller": [Function],
+      "inputFillerName": "ALL_WITH_EXAMPLES",
+    },
+    "err": null,
+    "hash": "f2d12a66e5101eada61e121a1ab83475b3e9669c9bf1ab2a335c1302f34ed058",
+    "io": {
+      "i": {
+        "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+      },
+      "o": null,
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'DeleteAlbum' > should execute with auth 'REGULAR' and input 'ONLY_MANDATORY_WITH_EXAMPLES' > hash = a819f5c96f40c2fcb1e5058bc6c3ae42413aa55d6a2d5f06c3dd41f27a0c334b 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "regular",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "REGULAR",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_MANDATORY_WITH_EXAMPLES",
+    },
+    "err": null,
+    "hash": "a819f5c96f40c2fcb1e5058bc6c3ae42413aa55d6a2d5f06c3dd41f27a0c334b",
+    "io": {
+      "i": {
+        "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+      },
+      "o": null,
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'DeleteAlbum' > should execute with auth 'REGULAR' and input 'ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPL…' > hash = 5255e852c6d0ebffe3f323e1610dc0330ca121e5006d53aa2f0d563209f538e5 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "regular",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "REGULAR",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPLES",
+    },
+    "err": null,
+    "hash": "5255e852c6d0ebffe3f323e1610dc0330ca121e5006d53aa2f0d563209f538e5",
+    "io": {
+      "i": {
+        "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+      },
+      "o": null,
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'LikeAlbum' > should execute with auth 'ADMIN' and input 'ALL_WITH_EXAMPLES' > hash = 2e407fb70dc8fb093c0158c97836bb3e0ead87240f6bd1be08b18cd2cd05c405 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "admin",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "ADMIN",
+      "inputFiller": [Function],
+      "inputFillerName": "ALL_WITH_EXAMPLES",
+    },
+    "err": null,
+    "hash": "2e407fb70dc8fb093c0158c97836bb3e0ead87240f6bd1be08b18cd2cd05c405",
+    "io": {
+      "i": {
+        "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+      },
+      "o": null,
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'LikeAlbum' > should execute with auth 'ADMIN' and input 'ONLY_MANDATORY_WITH_EXAMPLES' > hash = f65e766e3f76eaf88b7be6b2257dee56af3457e6cd21c6b83a25c8bb1ccdf99e 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "admin",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "ADMIN",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_MANDATORY_WITH_EXAMPLES",
+    },
+    "err": null,
+    "hash": "f65e766e3f76eaf88b7be6b2257dee56af3457e6cd21c6b83a25c8bb1ccdf99e",
+    "io": {
+      "i": {
+        "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+      },
+      "o": null,
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'LikeAlbum' > should execute with auth 'ADMIN' and input 'ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPL…' > hash = 9c5d1d4e14d3b1b2b1823c91ecc822a62d3e464fbc13e44f2ca8fcdc4fa59fcd 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "admin",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "ADMIN",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPLES",
+    },
+    "err": null,
+    "hash": "9c5d1d4e14d3b1b2b1823c91ecc822a62d3e464fbc13e44f2ca8fcdc4fa59fcd",
+    "io": {
+      "i": {
+        "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+      },
+      "o": null,
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'LikeAlbum' > should execute with auth 'ANONYMOUS' and input 'ALL_WITH_EXAMPLES' > hash = c15713b4f7851f84503593e97f45e826d0576fb619dcb129f66854ceec1b5587 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": null,
+      "authName": "ANONYMOUS",
+      "inputFiller": [Function],
+      "inputFillerName": "ALL_WITH_EXAMPLES",
+    },
+    "err": null,
+    "hash": "c15713b4f7851f84503593e97f45e826d0576fb619dcb129f66854ceec1b5587",
+    "io": {
+      "i": {
+        "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+      },
+      "o": null,
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'LikeAlbum' > should execute with auth 'ANONYMOUS' and input 'ONLY_MANDATORY_WITH_EXAMPLES' > hash = 5624790ff704566ed42d595e09bc8d293b095aea7e6a22172b8f2f51719e671e 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": null,
+      "authName": "ANONYMOUS",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_MANDATORY_WITH_EXAMPLES",
+    },
+    "err": null,
+    "hash": "5624790ff704566ed42d595e09bc8d293b095aea7e6a22172b8f2f51719e671e",
+    "io": {
+      "i": {
+        "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+      },
+      "o": null,
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'LikeAlbum' > should execute with auth 'ANONYMOUS' and input 'ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPL…' > hash = 910d72e99e08c745e7861b4a4160c2ab65f18c174af00cb05a5d0d804ae17c3d 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": null,
+      "authName": "ANONYMOUS",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPLES",
+    },
+    "err": null,
+    "hash": "910d72e99e08c745e7861b4a4160c2ab65f18c174af00cb05a5d0d804ae17c3d",
+    "io": {
+      "i": {
+        "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+      },
+      "o": null,
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'LikeAlbum' > should execute with auth 'REGULAR' and input 'ALL_WITH_EXAMPLES' > hash = 7a80cf60f46f2a470a4e09773a51631927c16802f6568305aa13fadf01a45ff1 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "regular",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "REGULAR",
+      "inputFiller": [Function],
+      "inputFillerName": "ALL_WITH_EXAMPLES",
+    },
+    "err": null,
+    "hash": "7a80cf60f46f2a470a4e09773a51631927c16802f6568305aa13fadf01a45ff1",
+    "io": {
+      "i": {
+        "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+      },
+      "o": null,
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'LikeAlbum' > should execute with auth 'REGULAR' and input 'ONLY_MANDATORY_WITH_EXAMPLES' > hash = 773eb4624cfeb51db00e6c923e1867d3284d30298af0a97ed4812405fae1cbd6 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "regular",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "REGULAR",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_MANDATORY_WITH_EXAMPLES",
+    },
+    "err": null,
+    "hash": "773eb4624cfeb51db00e6c923e1867d3284d30298af0a97ed4812405fae1cbd6",
+    "io": {
+      "i": {
+        "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+      },
+      "o": null,
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'LikeAlbum' > should execute with auth 'REGULAR' and input 'ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPL…' > hash = 30452faeaee42f743c60c29e20ad11f3e28a1671fcc1bd799d85696886bbab35 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "regular",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "REGULAR",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPLES",
+    },
+    "err": null,
+    "hash": "30452faeaee42f743c60c29e20ad11f3e28a1671fcc1bd799d85696886bbab35",
+    "io": {
+      "i": {
+        "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+      },
+      "o": null,
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'ListAlbums' > should execute with auth 'ADMIN' and input 'ALL_WITH_EXAMPLES' > hash = 8feed1b4d6a830657606a8b8c9b621b27e734935a04fbbe7f05a60dda4360d21 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "admin",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "ADMIN",
+      "inputFiller": [Function],
+      "inputFillerName": "ALL_WITH_EXAMPLES",
+    },
+    "err": null,
+    "hash": "8feed1b4d6a830657606a8b8c9b621b27e734935a04fbbe7f05a60dda4360d21",
+    "io": {
+      "i": {
+        "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        "limit": 10,
+        "offset": 0,
+        "q": "Nike Streakfly",
+      },
+      "o": {
+        "parts": {
+          "_0": {
+            "items": [],
+            "total": 0,
+          },
+        },
+      },
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'ListAlbums' > should execute with auth 'ADMIN' and input 'ONLY_MANDATORY_WITH_EXAMPLES' > hash = 823165a7fe154fcf382d03e0d6b721435beff55cbcd04943c6eae82055c34b08 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "admin",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "ADMIN",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_MANDATORY_WITH_EXAMPLES",
+    },
+    "err": null,
+    "hash": "823165a7fe154fcf382d03e0d6b721435beff55cbcd04943c6eae82055c34b08",
+    "io": {
+      "i": {
+        "id": undefined,
+        "limit": undefined,
+        "offset": undefined,
+        "q": undefined,
+      },
+      "o": {
+        "parts": {
+          "_0": {
+            "items": [],
+            "total": 0,
+          },
+        },
+      },
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'ListAlbums' > should execute with auth 'ADMIN' and input 'ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPL…' > hash = ada7574435fd2bf61cf425e77f27299c841b23ba0f59141a1814582661200839 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "admin",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "ADMIN",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPLES",
+    },
+    "err": null,
+    "hash": "ada7574435fd2bf61cf425e77f27299c841b23ba0f59141a1814582661200839",
+    "io": {
+      "i": {
+        "id": undefined,
+        "limit": undefined,
+        "offset": undefined,
+        "q": undefined,
+      },
+      "o": {
+        "parts": {
+          "_0": {
+            "items": [],
+            "total": 0,
+          },
+        },
+      },
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'ListAlbums' > should execute with auth 'ANONYMOUS' and input 'ALL_WITH_EXAMPLES' > hash = f109876701da1977e842950ba330a6911a4fd54a527c50ec6b85c8e0166aa616 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": null,
+      "authName": "ANONYMOUS",
+      "inputFiller": [Function],
+      "inputFillerName": "ALL_WITH_EXAMPLES",
+    },
+    "err": null,
+    "hash": "f109876701da1977e842950ba330a6911a4fd54a527c50ec6b85c8e0166aa616",
+    "io": {
+      "i": {
+        "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        "limit": 10,
+        "offset": 0,
+        "q": "Nike Streakfly",
+      },
+      "o": {
+        "parts": {
+          "_0": {
+            "items": [],
+            "total": 0,
+          },
+        },
+      },
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'ListAlbums' > should execute with auth 'ANONYMOUS' and input 'ONLY_MANDATORY_WITH_EXAMPLES' > hash = 08b8e044cd0d4de2a1baac4e60cc56de36b135b202db8e7f408353bc335050d3 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": null,
+      "authName": "ANONYMOUS",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_MANDATORY_WITH_EXAMPLES",
+    },
+    "err": null,
+    "hash": "08b8e044cd0d4de2a1baac4e60cc56de36b135b202db8e7f408353bc335050d3",
+    "io": {
+      "i": {
+        "id": undefined,
+        "limit": undefined,
+        "offset": undefined,
+        "q": undefined,
+      },
+      "o": {
+        "parts": {
+          "_0": {
+            "items": [],
+            "total": 0,
+          },
+        },
+      },
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'ListAlbums' > should execute with auth 'ANONYMOUS' and input 'ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPL…' > hash = 9ad4cc07cef50ae2ddd3d90ce1ba1718a4c648ee18ad5b827eab71a433faf28e 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": null,
+      "authName": "ANONYMOUS",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPLES",
+    },
+    "err": null,
+    "hash": "9ad4cc07cef50ae2ddd3d90ce1ba1718a4c648ee18ad5b827eab71a433faf28e",
+    "io": {
+      "i": {
+        "id": undefined,
+        "limit": undefined,
+        "offset": undefined,
+        "q": undefined,
+      },
+      "o": {
+        "parts": {
+          "_0": {
+            "items": [],
+            "total": 0,
+          },
+        },
+      },
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'ListAlbums' > should execute with auth 'REGULAR' and input 'ALL_WITH_EXAMPLES' > hash = 81c6f3158c5f1eea49a69df0f69a86b92e05575d44cd32303b7172fe0e44a39b 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "regular",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "REGULAR",
+      "inputFiller": [Function],
+      "inputFillerName": "ALL_WITH_EXAMPLES",
+    },
+    "err": null,
+    "hash": "81c6f3158c5f1eea49a69df0f69a86b92e05575d44cd32303b7172fe0e44a39b",
+    "io": {
+      "i": {
+        "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        "limit": 10,
+        "offset": 0,
+        "q": "Nike Streakfly",
+      },
+      "o": {
+        "parts": {
+          "_0": {
+            "items": [],
+            "total": 0,
+          },
+        },
+      },
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'ListAlbums' > should execute with auth 'REGULAR' and input 'ONLY_MANDATORY_WITH_EXAMPLES' > hash = c1b66642e46819bef7e7922e641a06e5cccc4e0c01b87e498f5b91becbb49637 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "regular",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "REGULAR",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_MANDATORY_WITH_EXAMPLES",
+    },
+    "err": null,
+    "hash": "c1b66642e46819bef7e7922e641a06e5cccc4e0c01b87e498f5b91becbb49637",
+    "io": {
+      "i": {
+        "id": undefined,
+        "limit": undefined,
+        "offset": undefined,
+        "q": undefined,
+      },
+      "o": {
+        "parts": {
+          "_0": {
+            "items": [],
+            "total": 0,
+          },
+        },
+      },
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'ListAlbums' > should execute with auth 'REGULAR' and input 'ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPL…' > hash = b016c9bc59782578b42d00a4d57140552341e229e523155be1305b3251823d9c 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "regular",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "REGULAR",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPLES",
+    },
+    "err": null,
+    "hash": "b016c9bc59782578b42d00a4d57140552341e229e523155be1305b3251823d9c",
+    "io": {
+      "i": {
+        "id": undefined,
+        "limit": undefined,
+        "offset": undefined,
+        "q": undefined,
+      },
+      "o": {
+        "parts": {
+          "_0": {
+            "items": [],
+            "total": 0,
+          },
+        },
+      },
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'ListStats' > should execute with auth 'ADMIN' and input 'ALL_WITH_EXAMPLES' > hash = 3e6650075d4a145c3c3c6621341b23874f113578700066adbc7590a1385a3761 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "admin",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "ADMIN",
+      "inputFiller": [Function],
+      "inputFillerName": "ALL_WITH_EXAMPLES",
+    },
+    "err": null,
+    "hash": "3e6650075d4a145c3c3c6621341b23874f113578700066adbc7590a1385a3761",
+    "io": {
+      "i": {},
+      "o": {
+        "count": 1,
+        "items": [
+          {
+            "id": "a6b4b3ce-8729-4123-88df-1ede18d1ffc3",
+            "name": "Songs Played",
+            "value": 9837378,
+          },
+        ],
+      },
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'ListStats' > should execute with auth 'ADMIN' and input 'ONLY_MANDATORY_WITH_EXAMPLES' > hash = b29f7e9ff606c6127b64c5f6b6f4f25969311e419674ca38fd3690dc4e2d81cb 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "admin",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "ADMIN",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_MANDATORY_WITH_EXAMPLES",
+    },
+    "err": null,
+    "hash": "b29f7e9ff606c6127b64c5f6b6f4f25969311e419674ca38fd3690dc4e2d81cb",
+    "io": {
+      "i": {},
+      "o": {
+        "count": 1,
+        "items": [
+          {
+            "id": "a6b4b3ce-8729-4123-88df-1ede18d1ffc3",
+            "name": "Songs Played",
+            "value": 9837378,
+          },
+        ],
+      },
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'ListStats' > should execute with auth 'ADMIN' and input 'ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPL…' > hash = 26f8e15acbb1aeeb523bc865dbd6197a1595dfd08a00309588463cfd19bdffb2 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "admin",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "ADMIN",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPLES",
+    },
+    "err": null,
+    "hash": "26f8e15acbb1aeeb523bc865dbd6197a1595dfd08a00309588463cfd19bdffb2",
+    "io": {
+      "i": {},
+      "o": {
+        "count": 1,
+        "items": [
+          {
+            "id": "a6b4b3ce-8729-4123-88df-1ede18d1ffc3",
+            "name": "Songs Played",
+            "value": 9837378,
+          },
+        ],
+      },
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'ListStats' > should execute with auth 'ANONYMOUS' and input 'ALL_WITH_EXAMPLES' > hash = 9690a948b8aa24af1c412ba8be547654c1a73e87d7bce03ce5ee0a680604b19d 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": null,
+      "authName": "ANONYMOUS",
+      "inputFiller": [Function],
+      "inputFillerName": "ALL_WITH_EXAMPLES",
+    },
+    "err": [ForbiddenError: Forbidden],
+    "hash": "9690a948b8aa24af1c412ba8be547654c1a73e87d7bce03ce5ee0a680604b19d",
+    "io": {
+      "i": {},
+      "o": null,
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'ListStats' > should execute with auth 'ANONYMOUS' and input 'ONLY_MANDATORY_WITH_EXAMPLES' > hash = 90cfb624ccf998ca7e88f575f7ede71f2b6f2d130ac6cf85990fbdb3d294c0b7 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": null,
+      "authName": "ANONYMOUS",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_MANDATORY_WITH_EXAMPLES",
+    },
+    "err": [ForbiddenError: Forbidden],
+    "hash": "90cfb624ccf998ca7e88f575f7ede71f2b6f2d130ac6cf85990fbdb3d294c0b7",
+    "io": {
+      "i": {},
+      "o": null,
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'ListStats' > should execute with auth 'ANONYMOUS' and input 'ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPL…' > hash = 6cd325fc1bb61a4b72544af7d40a0f8a83026937617e95628d4b7ca823e1ab82 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": null,
+      "authName": "ANONYMOUS",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPLES",
+    },
+    "err": [ForbiddenError: Forbidden],
+    "hash": "6cd325fc1bb61a4b72544af7d40a0f8a83026937617e95628d4b7ca823e1ab82",
+    "io": {
+      "i": {},
+      "o": null,
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'ListStats' > should execute with auth 'REGULAR' and input 'ALL_WITH_EXAMPLES' > hash = c3f19ce648f82105056183112e3bc4dcfcff3edb275408bf72898b7c06fa9753 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "regular",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "REGULAR",
+      "inputFiller": [Function],
+      "inputFillerName": "ALL_WITH_EXAMPLES",
+    },
+    "err": null,
+    "hash": "c3f19ce648f82105056183112e3bc4dcfcff3edb275408bf72898b7c06fa9753",
+    "io": {
+      "i": {},
+      "o": {
+        "count": 1,
+        "items": [
+          {
+            "id": "a6b4b3ce-8729-4123-88df-1ede18d1ffc3",
+            "name": "Songs Played",
+            "value": 9837378,
+          },
+        ],
+      },
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'ListStats' > should execute with auth 'REGULAR' and input 'ONLY_MANDATORY_WITH_EXAMPLES' > hash = c294b7bef6bf30506e6ef8b14f68e4a57e61713e9d2c24c5cfcbd57ef4cfc032 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "regular",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "REGULAR",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_MANDATORY_WITH_EXAMPLES",
+    },
+    "err": null,
+    "hash": "c294b7bef6bf30506e6ef8b14f68e4a57e61713e9d2c24c5cfcbd57ef4cfc032",
+    "io": {
+      "i": {},
+      "o": {
+        "count": 1,
+        "items": [
+          {
+            "id": "a6b4b3ce-8729-4123-88df-1ede18d1ffc3",
+            "name": "Songs Played",
+            "value": 9837378,
+          },
+        ],
+      },
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'ListStats' > should execute with auth 'REGULAR' and input 'ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPL…' > hash = c9778f879c18ea7756e5f208cac5346e30131ea896fb9acef4f7b47547334fa0 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "regular",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "REGULAR",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPLES",
+    },
+    "err": null,
+    "hash": "c9778f879c18ea7756e5f208cac5346e30131ea896fb9acef4f7b47547334fa0",
+    "io": {
+      "i": {},
+      "o": {
+        "count": 1,
+        "items": [
+          {
+            "id": "a6b4b3ce-8729-4123-88df-1ede18d1ffc3",
+            "name": "Songs Played",
+            "value": 9837378,
+          },
+        ],
+      },
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'PlaySong' > should execute with auth 'ADMIN' and input 'ALL_WITH_EXAMPLES' > hash = b8e1289ef712a1bef6fc52fc0439764e06ecc1dd2b771e77bde3864d5a1b74ca 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "admin",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "ADMIN",
+      "inputFiller": [Function],
+      "inputFillerName": "ALL_WITH_EXAMPLES",
+    },
+    "err": null,
+    "hash": "b8e1289ef712a1bef6fc52fc0439764e06ecc1dd2b771e77bde3864d5a1b74ca",
+    "io": {
+      "i": {
+        "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+      },
+      "o": {
+        "parts": {
+          "_0": {
+            "items": [
+              {
+                "duration": {
+                  "hours": 0,
+                  "minutes": 0,
+                  "seconds": 0,
+                },
+                "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+              },
+            ],
+            "total": 1,
+          },
+        },
+      },
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'PlaySong' > should execute with auth 'ADMIN' and input 'ONLY_MANDATORY_WITH_EXAMPLES' > hash = 46fd1c5181511e587a32b96f5b840fcb5802d2f449fbdf7f301bc9357780912d 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "admin",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "ADMIN",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_MANDATORY_WITH_EXAMPLES",
+    },
+    "err": null,
+    "hash": "46fd1c5181511e587a32b96f5b840fcb5802d2f449fbdf7f301bc9357780912d",
+    "io": {
+      "i": {
+        "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+      },
+      "o": {
+        "parts": {
+          "_0": {
+            "items": [
+              {
+                "duration": {
+                  "hours": 0,
+                  "minutes": 0,
+                  "seconds": 0,
+                },
+                "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+              },
+            ],
+            "total": 1,
+          },
+        },
+      },
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'PlaySong' > should execute with auth 'ADMIN' and input 'ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPL…' > hash = 8b51d2b30631315b773caa643ebb4055efa8e43e31ed5a3d53ff757d64cc2943 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "admin",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "ADMIN",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPLES",
+    },
+    "err": null,
+    "hash": "8b51d2b30631315b773caa643ebb4055efa8e43e31ed5a3d53ff757d64cc2943",
+    "io": {
+      "i": {
+        "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+      },
+      "o": {
+        "parts": {
+          "_0": {
+            "items": [
+              {
+                "duration": {
+                  "hours": 0,
+                  "minutes": 0,
+                  "seconds": 0,
+                },
+                "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+              },
+            ],
+            "total": 1,
+          },
+        },
+      },
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'PlaySong' > should execute with auth 'ANONYMOUS' and input 'ALL_WITH_EXAMPLES' > hash = 02815bf2e223fb9e3c5c8bb8ed7c3fd8592204db40f03600bab97cb564db4ca4 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": null,
+      "authName": "ANONYMOUS",
+      "inputFiller": [Function],
+      "inputFillerName": "ALL_WITH_EXAMPLES",
+    },
+    "err": null,
+    "hash": "02815bf2e223fb9e3c5c8bb8ed7c3fd8592204db40f03600bab97cb564db4ca4",
+    "io": {
+      "i": {
+        "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+      },
+      "o": {
+        "parts": {
+          "_0": {
+            "items": [
+              {
+                "duration": {
+                  "hours": 0,
+                  "minutes": 0,
+                  "seconds": 0,
+                },
+                "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+              },
+            ],
+            "total": 1,
+          },
+        },
+      },
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'PlaySong' > should execute with auth 'ANONYMOUS' and input 'ONLY_MANDATORY_WITH_EXAMPLES' > hash = 2c0cae3704453dbfc7b7d87a00f8b9e3a6f8f091eacd41fdacce00ce580f7db0 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": null,
+      "authName": "ANONYMOUS",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_MANDATORY_WITH_EXAMPLES",
+    },
+    "err": null,
+    "hash": "2c0cae3704453dbfc7b7d87a00f8b9e3a6f8f091eacd41fdacce00ce580f7db0",
+    "io": {
+      "i": {
+        "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+      },
+      "o": {
+        "parts": {
+          "_0": {
+            "items": [
+              {
+                "duration": {
+                  "hours": 0,
+                  "minutes": 0,
+                  "seconds": 0,
+                },
+                "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+              },
+            ],
+            "total": 1,
+          },
+        },
+      },
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'PlaySong' > should execute with auth 'ANONYMOUS' and input 'ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPL…' > hash = 00235b5dc551013be89abfdd963cd52b3d46cdba9262f34ba45d27ce4820c7e2 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": null,
+      "authName": "ANONYMOUS",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPLES",
+    },
+    "err": null,
+    "hash": "00235b5dc551013be89abfdd963cd52b3d46cdba9262f34ba45d27ce4820c7e2",
+    "io": {
+      "i": {
+        "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+      },
+      "o": {
+        "parts": {
+          "_0": {
+            "items": [
+              {
+                "duration": {
+                  "hours": 0,
+                  "minutes": 0,
+                  "seconds": 0,
+                },
+                "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+              },
+            ],
+            "total": 1,
+          },
+        },
+      },
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'PlaySong' > should execute with auth 'REGULAR' and input 'ALL_WITH_EXAMPLES' > hash = 401b975d388ba308710e7a531cf99f218fc948ae7974ca0beb3d0b4f6185e4b3 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "regular",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "REGULAR",
+      "inputFiller": [Function],
+      "inputFillerName": "ALL_WITH_EXAMPLES",
+    },
+    "err": null,
+    "hash": "401b975d388ba308710e7a531cf99f218fc948ae7974ca0beb3d0b4f6185e4b3",
+    "io": {
+      "i": {
+        "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+      },
+      "o": {
+        "parts": {
+          "_0": {
+            "items": [
+              {
+                "duration": {
+                  "hours": 0,
+                  "minutes": 0,
+                  "seconds": 0,
+                },
+                "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+              },
+            ],
+            "total": 1,
+          },
+        },
+      },
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'PlaySong' > should execute with auth 'REGULAR' and input 'ONLY_MANDATORY_WITH_EXAMPLES' > hash = af0650d3fe96527da5dbc08621fa43cb511303065786ba06c82037df5ee52013 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "regular",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "REGULAR",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_MANDATORY_WITH_EXAMPLES",
+    },
+    "err": null,
+    "hash": "af0650d3fe96527da5dbc08621fa43cb511303065786ba06c82037df5ee52013",
+    "io": {
+      "i": {
+        "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+      },
+      "o": {
+        "parts": {
+          "_0": {
+            "items": [
+              {
+                "duration": {
+                  "hours": 0,
+                  "minutes": 0,
+                  "seconds": 0,
+                },
+                "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+              },
+            ],
+            "total": 1,
+          },
+        },
+      },
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'PlaySong' > should execute with auth 'REGULAR' and input 'ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPL…' > hash = cf5f193079026b0c914044ae319592aa50d94c34604b7faaf840573647e8b348 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "regular",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "REGULAR",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPLES",
+    },
+    "err": null,
+    "hash": "cf5f193079026b0c914044ae319592aa50d94c34604b7faaf840573647e8b348",
+    "io": {
+      "i": {
+        "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+      },
+      "o": {
+        "parts": {
+          "_0": {
+            "items": [
+              {
+                "duration": {
+                  "hours": 0,
+                  "minutes": 0,
+                  "seconds": 0,
+                },
+                "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+              },
+            ],
+            "total": 1,
+          },
+        },
+      },
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
