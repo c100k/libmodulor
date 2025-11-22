@@ -1,9 +1,11 @@
 import { Container, inject, injectable } from 'inversify';
 
 import { I18nEN } from '../../../dist/esm/i18n/locales/en.js';
+import { I18nFR } from '../../../dist/esm/i18n/locales/fr.js';
 import {
     type AggregateOPI0,
     AggregateOutputDef,
+    type Amount,
     type AppI18n,
     type AppManifest,
     bindCommon,
@@ -12,16 +14,19 @@ import {
     type Email,
     type ErrorMessage,
     EverybodyUCPolicy,
-    fmtBold,
     fmtPadEndFor,
+    type I18nLanguageCode,
     type I18nManager,
     type PersonFirstname,
     type PersonLastname,
     type ProductI18n,
     type ProductManifest,
+    TAmount,
     TEmail,
+    type TName,
     TPersonFirstname,
     TPersonLastname,
+    TUInt,
     UC,
     type UCAuth,
     type UCDataStore,
@@ -34,13 +39,30 @@ import {
     type UCOutput,
     UCOutputBuilder,
     type UCOutputReader,
+    type UInt,
     WordingManager,
 } from '../../../dist/esm/index.js';
 import { bindNodeCore } from '../../../dist/esm/index.node.js';
 
+//#region Declaring
+
+printSection('Declaring');
+
+print('Declaring a specific DataType');
+type TicketNumber = UInt;
+class TTicketNumber extends TUInt<TicketNumber> {
+    constructor() {
+        super({ max: 100, min: 0 });
+    }
+
+    public override tName(): TName {
+        return 'TicketNumber';
+    }
+}
+
 print('Declaring the App');
-const appManifest: AppManifest = {
-    languageCodes: ['en'],
+const appManifest = {
+    languageCodes: ['en', 'fr'],
     name: 'Event',
     ucReg: {
         Register: {
@@ -49,13 +71,21 @@ const appManifest: AppManifest = {
             name: 'Register',
         },
     },
-};
+} satisfies AppManifest;
 const appI18n: AppI18n = {
     en: {
         ucif_email_label: 'Your email address',
-        ucif_firstname_label: 'Your wonderful firstname',
-        ucif_lastname_label: 'Your awesome lastname',
+        ucif_firstname_label: 'Your firstname',
+        ucif_lastname_label: 'Your lastname',
         ucof_id_label: 'Your registration #',
+        ucof_ticketNumber_label: 'Your ticket #',
+    },
+    fr: {
+        ucif_email_label: 'Votre adresse email',
+        ucif_firstname_label: 'Votre prénom',
+        ucif_lastname_label: 'Votre nom',
+        ucof_id_label: "Votre # d'inscription",
+        ucof_ticketNumber_label: 'Votre # de ticket',
     },
 };
 
@@ -66,7 +96,10 @@ interface RegisterInput extends UCInput {
     lastname: UCInputFieldValue<PersonLastname>;
 }
 
-interface RegisterOPI0 extends AggregateOPI0 {}
+interface RegisterOPI0 extends AggregateOPI0 {
+    amount: Amount;
+    ticketNumber: TicketNumber;
+}
 
 @injectable()
 class RegisterClientMain implements UCMain<RegisterInput, RegisterOPI0> {
@@ -79,9 +112,14 @@ class RegisterClientMain implements UCMain<RegisterInput, RegisterOPI0> {
     > {
         const { aggregateId } = await this.ucManager.persist(uc);
 
+        const amount: Amount = 99.99; // Should come from some catalog in a real application
+        const ticketNumber: TicketNumber = 1; // Should come from a safely auto-generated sequence in a real application
+
         return new UCOutputBuilder<RegisterOPI0>()
             .add({
+                amount,
                 id: aggregateId,
+                ticketNumber,
             })
             .get();
     }
@@ -102,7 +140,22 @@ const RegisterUCD: UCDef<RegisterInput, RegisterOPI0> = {
                 },
             },
         },
-        o: AggregateOutputDef,
+        o: {
+            parts: {
+                _0: {
+                    fields: {
+                        ...AggregateOutputDef.parts?._0.fields,
+                        amount: {
+                            type: new TAmount('EUR'),
+                        },
+                        ticketNumber: {
+                            type: new TTicketNumber(),
+                        },
+                    },
+                    order: ['ticketNumber', 'amount', 'id'],
+                },
+            },
+        },
     },
     lifecycle: {
         client: {
@@ -110,11 +163,7 @@ const RegisterUCD: UCDef<RegisterInput, RegisterOPI0> = {
             policy: EverybodyUCPolicy,
         },
     },
-    metadata: {
-        action: 'Create',
-        icon: 'user',
-        name: 'Register',
-    },
+    metadata: appManifest.ucReg.Register,
 };
 
 print('Declaring the Product');
@@ -127,6 +176,10 @@ const productI18n: ProductI18n = {
         ...I18nEN,
         ...appI18n.en,
     },
+    fr: {
+        ...I18nFR,
+        ...appI18n.fr,
+    },
 };
 
 print('Declaring the Target');
@@ -136,10 +189,17 @@ bindCommon(container);
 bindNodeCore(container);
 bindProduct(container, productManifest, productI18n);
 
+//#endregion
+
+//#region Initializing
+
+printSection('Initializing');
+
 print('Initializing i18n');
 const i18nManager = container.get<I18nManager>('I18nManager');
 await i18nManager.init();
 
+print('Initializing dependency injected managers');
 const ucDataStore = container.get<UCDataStore>('UCDataStore');
 const ucManager = container.get<UCManager>('UCManager');
 const wordingManager = container.get(WordingManager);
@@ -147,75 +207,93 @@ const wordingManager = container.get(WordingManager);
 print('Initializing the UseCase');
 const auth: UCAuth | null = null;
 const registerUC = new UC(appManifest, RegisterUCD, auth);
-let ucor: UCOutputReader<RegisterInput, RegisterOPI0> | undefined;
 
-try {
-    print('Submitting the use case empty');
-    ucor = await ucManager.execClient(registerUC);
-} catch (err) {
-    printErr(err);
+//#endregion
+
+//#region Playing with the use case
+
+for await (const lang of appManifest.languageCodes) {
+    registerUC.clear();
+    await i18nManager.changeLang(lang as I18nLanguageCode);
+
+    printSection(`Playing with the use case in '${lang}'`);
+
+    for (const f of registerUC.inputFieldsOrdered()) {
+        const label = wordingManager.ucif(
+            registerUC.inputField(f.key as keyof RegisterInput),
+        ).label;
+        print(`${label} : _`);
+    }
+
+    print('\nLeaving input fields blank');
+    let ucor = await execUC();
+
+    print(
+        '\nFilling all the fields correctly except the email, filled with an invalid value',
+    );
+    registerUC.fill({
+        email: 'this is not a valid email',
+        firstname: new TPersonFirstname().example(),
+        lastname: new TPersonLastname().example(),
+    });
+    ucor = await execUC();
+
+    print('\nFilling a valid email');
+    registerUC.inputField('email').fillWithExample();
+    ucor = await execUC();
+
+    if (!ucor) {
+        printErr('Expected an ucor from the UC exec');
+        process.exit(1);
+    }
+
+    print('\nResponse with translated labels and formatted values');
+    printSummary(ucor);
 }
 
-print('Filling all the fields correctly except the email (invalid)');
-registerUC.fill({
-    email: 'xxx',
-    firstname: new TPersonFirstname().example(),
-    lastname: new TPersonLastname().example(),
-});
-
-try {
-    ucor = await ucManager.execClient(registerUC);
-} catch (err) {
-    printErr(err);
-}
-
-print('Filling a valid email');
-registerUC.inputField('email').fillWithExample();
-
-try {
-    ucor = await ucManager.execClient(registerUC);
-} catch (err) {
-    printErr(err);
-    process.exit(1);
-}
-
-print('✅ Use case executed successfully');
-
-print('💾 Persisted record in InMemoryUCDataStore');
+print('\nRecords persisted in InMemoryUCDataStore');
 const { records } = await ucDataStore.read();
 for (const record of records) {
     print(record);
 }
 
-const email = registerUC.reqVal0('email');
-const emailLabel = wordingManager.ucif(registerUC.inputField('email')).label;
-const firstname = registerUC.reqVal0('firstname');
-const firstnameLabel = wordingManager.ucif(
-    registerUC.inputField('firstname'),
-).label;
-const lastname = registerUC.reqVal0('lastname');
-const lastnameLabel = wordingManager.ucif(
-    registerUC.inputField('lastname'),
-).label;
-const { id } = ucor.item00().item;
-const idLabel = wordingManager.ucof('id').label;
+//#endregion
 
-const padEnd = fmtPadEndFor([
-    emailLabel,
-    firstnameLabel,
-    lastnameLabel,
-    idLabel,
-]);
+//#region Utilities
 
-print(fmtBold('📓 Summary with fields from I18n/WordingManager'));
-const summary = [
-    `${idLabel.padEnd(padEnd)} : ${id}`,
-    `${emailLabel.padEnd(padEnd)} : ${email}`,
-    `${firstnameLabel.padEnd(padEnd)} : ${firstname}`,
-    `${lastnameLabel.padEnd(padEnd)} : ${lastname}`,
-];
-for (const line of summary) {
-    print(line);
+async function execUC(): Promise<UCOutputReader<
+    RegisterInput,
+    RegisterOPI0
+> | null> {
+    print('Submitting');
+    try {
+        const res = await ucManager.execClient(registerUC);
+        printSuccess('Use case executed successfully');
+        return res;
+    } catch (err) {
+        printErr(err);
+        return null;
+    }
+}
+
+async function printSummary(ucor: UCOutputReader<RegisterInput, RegisterOPI0>) {
+    const { fields } = ucor.part0();
+    const { item } = ucor.item00();
+
+    const labels: string[] = [];
+    const values: string[] = [];
+    for (const field of fields) {
+        const { def, key } = field;
+        labels.push(wordingManager.ucof(key).label);
+        values.push(def.type.assign(item[key]).fmt());
+    }
+
+    const padEnd = fmtPadEndFor(labels);
+    for (let i = 0; i < labels.length; i++) {
+        const label = labels[i]?.padEnd(padEnd);
+        const value = values[i];
+        print(`${label} : ${value}`);
+    }
 }
 
 function print(message?: unknown, ...optionalParams: unknown[]): void {
@@ -231,7 +309,19 @@ function printErr(err: unknown): void {
         message = 'unknown error';
     }
     // biome-ignore lint/suspicious/noConsole: we want it
-    console.log(`❌ Oops : ${message}`);
+    console.error(`❌ ${message}`);
 }
+
+function printSection(title: string): void {
+    print('\n****************************************************************');
+    print(`* ${title}`);
+    print('****************************************************************\n');
+}
+
+function printSuccess(message: string): void {
+    print(`✅ ${message}`);
+}
+
+//#endregion
 
 process.exit(0);
