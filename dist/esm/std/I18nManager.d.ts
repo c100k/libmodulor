@@ -17,6 +17,14 @@ export interface I18nManager extends Initializable {
      */
     add<K extends I18nTranslationKey>(key: K, value: string): Promise<void>;
     /**
+     * Change the current lang
+     *
+     * It might not work for all the implementations, depending on how langs are managed.
+     *
+     * @param lang
+     */
+    changeLang(lang: I18nLanguageCode): Promise<void>;
+    /**
      * Get the current lang code
      */
     l(): I18nLanguageCode;

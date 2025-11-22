@@ -19,13 +19,19 @@ let SimpleMapI18nManager = class SimpleMapI18nManager {
     logger;
     static PLACEHOLDERS_REGEX = /{{([A-Z-a-z0-9]+)}}/g; // Note the 'g' so it can be used with `matchAll`
     entries;
+    currentLang;
     constructor(i18n, logger) {
         this.i18n = i18n;
         this.logger = logger;
         this.entries = new Map();
+        this.currentLang = I18N_DEFAULT_LANG;
     }
     async add(key, value) {
         this.entries.set(key, value);
+    }
+    async changeLang(lang) {
+        this.currentLang = lang;
+        this.initCommon();
     }
     async init() {
         this.initCommon();
@@ -34,7 +40,7 @@ let SimpleMapI18nManager = class SimpleMapI18nManager {
         this.initCommon();
     }
     l() {
-        return I18N_DEFAULT_LANG;
+        return this.currentLang;
     }
     t(key, opts) {
         const v = this.entries.get(key);

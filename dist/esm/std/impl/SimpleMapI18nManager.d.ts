@@ -6,8 +6,10 @@ export declare class SimpleMapI18nManager implements I18nManager {
     private logger;
     private static PLACEHOLDERS_REGEX;
     private entries;
+    private currentLang;
     constructor(i18n: I18n, logger: Logger);
     add<K extends I18nTranslationKey>(key: K, value: string): Promise<void>;
+    changeLang(lang: I18nLanguageCode): Promise<void>;
     init(): Promise<void>;
     initSync(): void;
     l(): I18nLanguageCode;
