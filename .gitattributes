@@ -2,3 +2,4 @@
 *.mjs linguist-documentation
 *.css linguist-documentation
 *.mdx linguist-documentation
+*.sh linguist-vendored
