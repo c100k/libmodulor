@@ -5,7 +5,7 @@ export declare class VitestAppTestSuiteRunner implements AppTestSuiteRunner {
     private fsManager;
     private shellCommandExecutor;
     constructor(fsManager: FSManager, shellCommandExecutor: ShellCommandExecutor);
-    exec({ appPath, skipCoverage, updateSnapshots, }: Input): Promise<void>;
+    exec({ appPath, only, skipCoverage, updateSnapshots, }: Input): Promise<void>;
     coverageReportEntrypointPath(appPath: FilePath): Promise<FilePath>;
     private coverageReportPath;
 }

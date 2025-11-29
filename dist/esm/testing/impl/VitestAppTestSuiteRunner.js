@@ -19,18 +19,33 @@ let VitestAppTestSuiteRunner = class VitestAppTestSuiteRunner {
         this.fsManager = fsManager;
         this.shellCommandExecutor = shellCommandExecutor;
     }
-    async exec({ appPath, skipCoverage, updateSnapshots, }) {
+    async exec({ appPath, only, skipCoverage, updateSnapshots, }) {
         const testPath = this.fsManager.path(appPath, APP_TEST_DIR_NAME);
         const args = [
             'run',
             '--color',
+            // https://vitest.dev/guide/cli.html#dir
             '--dir',
             appPath,
         ];
+        if (only) {
+            args.push(
+            // https://vitest.dev/guide/cli.html#testnamepattern
+            '--testNamePattern', only);
+        }
         if (!skipCoverage) {
-            args.push('--coverage.enabled', '--coverage.exclude', testPath, '--coverage.include', appPath, '--coverage.reportsDirectory', this.coverageReportPath(appPath));
+            args.push(
+            // https://vitest.dev/guide/cli.html#coverage-enabled
+            '--coverage.enabled', 
+            // https://vitest.dev/guide/cli.html#coverage-exclude
+            '--coverage.exclude', testPath, 
+            // https://vitest.dev/guide/cli.html#coverage-include
+            '--coverage.include', appPath, 
+            // https://vitest.dev/guide/cli.html#coverage-reportsdirectory
+            '--coverage.reportsDirectory', this.coverageReportPath(appPath));
         }
         if (updateSnapshots) {
+            // https://vitest.dev/guide/cli.html#update
             args.push('--update');
         }
         await this.shellCommandExecutor.exec({

@@ -34,6 +34,7 @@ let TestAppClientMain = class TestAppClientMain {
     async exec({ uc }) {
         const appsPath = uc.reqVal0('appsPath');
         const appName = uc.reqVal0('appName');
+        const only = uc.rVal0('only');
         const skipCoverage = uc.reqVal0('skipCoverage');
         const updateSnapshots = uc.reqVal0('updateSnapshots');
         const appPath = this.fsManager.path(appsPath, appName);
@@ -42,6 +43,7 @@ let TestAppClientMain = class TestAppClientMain {
         }
         await this.appTestSuiteRunner.exec({
             appPath,
+            only,
             skipCoverage,
             updateSnapshots,
         });
@@ -83,6 +85,12 @@ export const TestAppUCD = {
                 ...AppInputFieldsDef,
                 appName: {
                     type: new TString().setExamples([APP_NAME_PLACEHOLDER]),
+                },
+                only: {
+                    cardinality: {
+                        min: 0,
+                    },
+                    type: new TString().setExamples(['CreatePost']),
                 },
                 skipCoverage: {
                     type: new TBoolean().setDefaultValue(false),
