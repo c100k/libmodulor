@@ -4,6 +4,11 @@ export const Manifest = {
     languageCodes: ['en'],
     name: 'Toolbox',
     ucReg: {
+        DecodeJWT: {
+            action: 'Create',
+            icon: 'gears',
+            name: 'DecodeJWT',
+        },
         ExportAsana: {
             action: 'Create',
             icon: 'rotate',

@@ -1,5 +1,359 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
+exports[`Run > Use Cases > 'DecodeJWT' > should execute with auth 'ADMIN' and input 'ALL_WITH_EXAMPLES' > hash = a5ab6a263a8ac4fa297e5e97522bccc607d1f053c3b2861daa197ca5c2c96d5d 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "admin",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "ADMIN",
+      "inputFiller": [Function],
+      "inputFillerName": "ALL_WITH_EXAMPLES",
+    },
+    "err": null,
+    "hash": "a5ab6a263a8ac4fa297e5e97522bccc607d1f053c3b2861daa197ca5c2c96d5d",
+    "io": {
+      "i": {
+        "jwt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c",
+      },
+      "o": {
+        "parts": {
+          "_0": {
+            "items": [
+              {
+                "id": "356a192b-7913-404c-9457-4d18c28d46e6",
+                "payload": {
+                  "iat": 1516239022,
+                  "name": "John Doe",
+                  "sub": "1234567890",
+                },
+              },
+            ],
+            "total": 1,
+          },
+        },
+      },
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'DecodeJWT' > should execute with auth 'ADMIN' and input 'ONLY_MANDATORY_WITH_EXAMPLES' > hash = 6b6c31199eb1a7cdbc088b68a75f254a08d87df358910b7579df80d525242f87 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "admin",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "ADMIN",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_MANDATORY_WITH_EXAMPLES",
+    },
+    "err": null,
+    "hash": "6b6c31199eb1a7cdbc088b68a75f254a08d87df358910b7579df80d525242f87",
+    "io": {
+      "i": {
+        "jwt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c",
+      },
+      "o": {
+        "parts": {
+          "_0": {
+            "items": [
+              {
+                "id": "356a192b-7913-404c-9457-4d18c28d46e6",
+                "payload": {
+                  "iat": 1516239022,
+                  "name": "John Doe",
+                  "sub": "1234567890",
+                },
+              },
+            ],
+            "total": 1,
+          },
+        },
+      },
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'DecodeJWT' > should execute with auth 'ADMIN' and input 'ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPL…' > hash = c28927dff1453b9a10edf60eab20a11a891e2ba72d5b09e634dfc904e8e3b329 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "admin",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "ADMIN",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPLES",
+    },
+    "err": [IllegalArgumentError: JWT must be filled],
+    "hash": "c28927dff1453b9a10edf60eab20a11a891e2ba72d5b09e634dfc904e8e3b329",
+    "io": {
+      "i": {
+        "jwt": undefined,
+      },
+      "o": null,
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'DecodeJWT' > should execute with auth 'ANONYMOUS' and input 'ALL_WITH_EXAMPLES' > hash = 4ab2178091ad70eed15061677287be8d5a664257bde85ebc8bc39c7e77f7103d 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": null,
+      "authName": "ANONYMOUS",
+      "inputFiller": [Function],
+      "inputFillerName": "ALL_WITH_EXAMPLES",
+    },
+    "err": null,
+    "hash": "4ab2178091ad70eed15061677287be8d5a664257bde85ebc8bc39c7e77f7103d",
+    "io": {
+      "i": {
+        "jwt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c",
+      },
+      "o": {
+        "parts": {
+          "_0": {
+            "items": [
+              {
+                "id": "356a192b-7913-404c-9457-4d18c28d46e6",
+                "payload": {
+                  "iat": 1516239022,
+                  "name": "John Doe",
+                  "sub": "1234567890",
+                },
+              },
+            ],
+            "total": 1,
+          },
+        },
+      },
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'DecodeJWT' > should execute with auth 'ANONYMOUS' and input 'ONLY_MANDATORY_WITH_EXAMPLES' > hash = 7bff4712a23f5feb053ed1da11795ccaa1fb88b49ebd9690875b68972cecdc5f 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": null,
+      "authName": "ANONYMOUS",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_MANDATORY_WITH_EXAMPLES",
+    },
+    "err": null,
+    "hash": "7bff4712a23f5feb053ed1da11795ccaa1fb88b49ebd9690875b68972cecdc5f",
+    "io": {
+      "i": {
+        "jwt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c",
+      },
+      "o": {
+        "parts": {
+          "_0": {
+            "items": [
+              {
+                "id": "356a192b-7913-404c-9457-4d18c28d46e6",
+                "payload": {
+                  "iat": 1516239022,
+                  "name": "John Doe",
+                  "sub": "1234567890",
+                },
+              },
+            ],
+            "total": 1,
+          },
+        },
+      },
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'DecodeJWT' > should execute with auth 'ANONYMOUS' and input 'ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPL…' > hash = 8a1f46b71e99d5366055b7057b37ab4e137048fbe34416ce8e10754dec50e43e 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": null,
+      "authName": "ANONYMOUS",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPLES",
+    },
+    "err": [IllegalArgumentError: JWT must be filled],
+    "hash": "8a1f46b71e99d5366055b7057b37ab4e137048fbe34416ce8e10754dec50e43e",
+    "io": {
+      "i": {
+        "jwt": undefined,
+      },
+      "o": null,
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'DecodeJWT' > should execute with auth 'REGULAR' and input 'ALL_WITH_EXAMPLES' > hash = f6157dd2b0983730cd35609b928bbafe7627a852ee41f0a82780926ec705d02d 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "regular",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "REGULAR",
+      "inputFiller": [Function],
+      "inputFillerName": "ALL_WITH_EXAMPLES",
+    },
+    "err": null,
+    "hash": "f6157dd2b0983730cd35609b928bbafe7627a852ee41f0a82780926ec705d02d",
+    "io": {
+      "i": {
+        "jwt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c",
+      },
+      "o": {
+        "parts": {
+          "_0": {
+            "items": [
+              {
+                "id": "356a192b-7913-404c-9457-4d18c28d46e6",
+                "payload": {
+                  "iat": 1516239022,
+                  "name": "John Doe",
+                  "sub": "1234567890",
+                },
+              },
+            ],
+            "total": 1,
+          },
+        },
+      },
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'DecodeJWT' > should execute with auth 'REGULAR' and input 'ONLY_MANDATORY_WITH_EXAMPLES' > hash = 6b87b6b7c1c3c2922f86a05207cd4f8128f48dcef5b357e6bca98752d8a25c3c 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "regular",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "REGULAR",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_MANDATORY_WITH_EXAMPLES",
+    },
+    "err": null,
+    "hash": "6b87b6b7c1c3c2922f86a05207cd4f8128f48dcef5b357e6bca98752d8a25c3c",
+    "io": {
+      "i": {
+        "jwt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c",
+      },
+      "o": {
+        "parts": {
+          "_0": {
+            "items": [
+              {
+                "id": "356a192b-7913-404c-9457-4d18c28d46e6",
+                "payload": {
+                  "iat": 1516239022,
+                  "name": "John Doe",
+                  "sub": "1234567890",
+                },
+              },
+            ],
+            "total": 1,
+          },
+        },
+      },
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'DecodeJWT' > should execute with auth 'REGULAR' and input 'ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPL…' > hash = d5e0af06b459916ae68f5a8b0ea096ae0ac541ed2103773aaec64c4f73e3335d 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "regular",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "REGULAR",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPLES",
+    },
+    "err": [IllegalArgumentError: JWT must be filled],
+    "hash": "d5e0af06b459916ae68f5a8b0ea096ae0ac541ed2103773aaec64c4f73e3335d",
+    "io": {
+      "i": {
+        "jwt": undefined,
+      },
+      "o": null,
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
 exports[`Run > Use Cases > 'ExportAsana' > should execute with auth 'ADMIN' and input 'ALL_WITH_EXAMPLES' > hash = 6e550fccc8f9f5e661f7d3eaed51728b9d6fbf7122581ead12687ebc7cbbdb09 1`] = `
 {
   "out": {
