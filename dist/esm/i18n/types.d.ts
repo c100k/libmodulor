@@ -1,6 +1,6 @@
 import type { ViolationI18nable, YesNo } from '../dt/index.js';
 import type { UCClientConfirmConfig, UCExecState, UCWording } from '../uc/index.js';
-export type I18nLanguageCode = 'en' | 'fr';
+export type I18nLanguageCode = 'de' | 'en' | 'es' | 'fr';
 /**
  * A translation value
  *
