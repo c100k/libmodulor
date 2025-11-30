@@ -42,3 +42,9 @@ export function initOutputItem() {
         metadataSensitive: null,
     };
 }
+export function ioFieldName(field) {
+    if (field.err) {
+        return null;
+    }
+    return field.value.split(':')[0]?.trim() || null;
+}

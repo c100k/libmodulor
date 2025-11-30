@@ -49,7 +49,7 @@ export function bindCommon(container, settingsFunc) {
         .bind('I18nManager')
         .to(SimpleMapI18nManager)
         .inSingletonScope();
-    container.bind('I18n').toConstantValue({});
+    container.bind('I18n').toConstantValue({ en: {} });
     container.bind('Logger').to(ConsoleLogger);
     container.bind('Settings').toConstantValue(settings);
     container

@@ -1,5 +1,5 @@
 import type { ErrorMessage, FilePath } from '../dt/index.js';
-import type { UCDefLifecycle, UCMetadata, UCOutputPartIdx } from '../uc/index.js';
+import type { UCDefLifecycle, UCFieldKey, UCMetadata, UCOutputPartIdx } from '../uc/index.js';
 import type { AppTesterOptsAllSet } from './opts.js';
 export interface OutputItemField<T extends string = string> {
     err: ErrorMessage | null;
@@ -41,3 +41,4 @@ export interface UCDefASTParser {
     transpile(): Promise<void>;
 }
 export declare function initOutputItem(): OutputItem;
+export declare function ioFieldName(field: OutputItemField): UCFieldKey | null;

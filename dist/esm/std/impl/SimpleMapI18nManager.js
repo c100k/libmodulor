@@ -12,22 +12,30 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 };
 var SimpleMapI18nManager_1;
 import { inject, injectable } from 'inversify';
-import { I18N_DEFAULT_LANG, } from '../../i18n/index.js';
 let SimpleMapI18nManager = class SimpleMapI18nManager {
     static { SimpleMapI18nManager_1 = this; }
     i18n;
     logger;
     static PLACEHOLDERS_REGEX = /{{([A-Z-a-z0-9]+)}}/g; // Note the 'g' so it can be used with `matchAll`
+    langs;
     entries;
     currentLang;
     constructor(i18n, logger) {
         this.i18n = i18n;
         this.logger = logger;
+        this.langs = Object.keys(i18n);
+        if (this.langs.length === 0) {
+            throw new Error('I18n must define at least one lang');
+        }
         this.entries = new Map();
-        this.currentLang = I18N_DEFAULT_LANG;
+        // biome-ignore lint/style/noNonNullAssertion: we want it
+        this.currentLang = this.langs[0];
     }
     async add(key, value) {
-        this.entries.set(key, value);
+        this.current().set(key, value);
+    }
+    availableLangs() {
+        return this.langs;
     }
     async changeLang(lang) {
         this.currentLang = lang;
@@ -43,7 +51,7 @@ let SimpleMapI18nManager = class SimpleMapI18nManager {
         return this.currentLang;
     }
     t(key, opts) {
-        const v = this.entries.get(key);
+        const v = this.current().get(key);
         if (v) {
             return this.replacePlaceholders(v, opts);
         }
@@ -53,17 +61,32 @@ let SimpleMapI18nManager = class SimpleMapI18nManager {
         return key; // Mimic the behavior of some common libraries like i18next
     }
     initCommon() {
-        const translations = this.i18n[this.l()];
-        this.logger.trace('Initializing I18nManager', { translations });
-        if (!translations) {
-            return;
-        }
-        for (const [k, v] of Object.entries(translations)) {
-            this.entries.set(k, v);
+        for (const lang of this.langs) {
+            const translations = this.i18n[lang];
+            this.logger.trace('Initializing I18nManager', {
+                lang,
+                translations,
+            });
+            if (!translations) {
+                return;
+            }
+            if (!this.entries.has(lang)) {
+                this.entries.set(lang, new Map());
+            }
+            for (const [k, v] of Object.entries(translations)) {
+                this.entries.get(lang)?.set(k, v);
+            }
         }
     }
     tOrNull(key, _opts) {
-        return this.entries.get(key) || null;
+        return this.current().get(key) || null;
+    }
+    current() {
+        const entry = this.entries.get(this.currentLang);
+        if (!entry) {
+            throw new Error(`I18nManager must contain an entry for lang : ${this.currentLang}`);
+        }
+        return entry;
     }
     replacePlaceholders(v, opts) {
         // DO NOT USE THIS IN PRODUCTION

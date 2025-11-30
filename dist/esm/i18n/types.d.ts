@@ -14,6 +14,7 @@ export type I18nSource = any;
 export type I18nSourceSafe = {
     I18n: I18n;
 };
+export type I18nEntry = Record<I18nTranslationKey, I18nTranslation>;
 export type I18n = {
-    [key in I18nLanguageCode]?: Record<I18nTranslationKey, I18nTranslation>;
+    [key in I18nLanguageCode]?: I18nEntry;
 };

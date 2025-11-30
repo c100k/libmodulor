@@ -143,7 +143,10 @@ function diagramUCClientConfirm(participant, caller) {
 }
 function diagramUCFields(fields) {
     return (fields
-        ?.map((f) => f.value.replace(new RegExp(UC_INPUT_FIELD_PATTERN.slice(1)), '$1'))
+        ?.map((f) => f.value.replace(
+    // TODO : Generalize this
+    // It's also used for OPI fields so it's not "correct" to use this pattern
+    new RegExp(UC_INPUT_FIELD_PATTERN.slice(1)), '$1'))
         .join(LB) || '');
 }
 function diagramUCMainSteps(participant, field) {

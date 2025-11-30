@@ -12,7 +12,6 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 };
 import { inject, injectable } from 'inversify';
 import { I18nEN } from '../i18n/locales/en.js';
-import { I18nFR } from '../i18n/locales/fr.js';
 import { FAKE_USER_ADMIN, UCBuilder, ucHTTPContract, } from '../uc/index.js';
 // We inject directly the implementation because we'll generate all the reports and not only the one that is bound to the interface.
 // We can plan a setting à la Vitest where we specify the types of reports to generate though.
@@ -88,9 +87,13 @@ let AppTester = class AppTester {
         }
     }
     async checkAppI18n() {
+        if (!this.ucDefSourcesCheckerOutput) {
+            throw new Error('checkUCDSources must be called before checkAppI18n');
+        }
         const { errors } = await this.appI18nChecker.exec({
             appI18n: this.ctx.appI18n,
             appManifest: this.ctx.appManifest,
+            ucDefSourcesCheckerOutput: this.ucDefSourcesCheckerOutput,
         });
         if (errors.length > 0) {
             throw new Error(errors[0]);
@@ -302,14 +305,10 @@ let AppTester = class AppTester {
         const appLangCodes = Object.keys(appI18n);
         const coreI18n = {
             en: I18nEN,
-            fr: I18nFR,
         };
         const productI18n = {
             en: {
                 ...I18nEN,
-            },
-            fr: {
-                ...I18nFR,
             },
         };
         for (const l of appLangCodes) {

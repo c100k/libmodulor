@@ -18,5 +18,9 @@ export const I18n: AppI18n = {
         uc_SignOut_client_confirm_message: 'Êtes-vous sûr(e) ?',
         uc_SignOut_i_submit_idle: 'Se déconnecter',
         uc_SignOut_i_submit_submitting: 'Déconnexion',
+        uc_SignOut_label: 'Se déconnecter',
+        ucif_role_label: 'Role',
+        ucof_id_label: 'Identifiant',
+        ucof_jwt_label: 'JWT',
     },
 };
