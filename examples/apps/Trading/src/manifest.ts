@@ -1,7 +1,7 @@
 import type { AppManifest } from '../../../../dist/esm/index.js';
 
 export const Manifest = {
-    languageCodes: ['en'],
+    languageCodes: ['en', 'fr'],
     name: 'Trading',
     ucReg: {
         AskQuestion: {

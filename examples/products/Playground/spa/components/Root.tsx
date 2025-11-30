@@ -20,6 +20,7 @@ export default function Root(): ReactElement {
         (async () => {
             logger.debug('Initializing i18n');
             await i18nManager.init();
+            await i18nManager.changeLang('en');
             logger.debug('Done initializing i18n');
             setInitializing(false);
         })();

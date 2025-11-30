@@ -1,7 +1,7 @@
 import type { AppManifest } from '../../../../dist/esm/index.js';
 
 export const Manifest = {
-    languageCodes: ['en', 'fr'],
+    languageCodes: ['de', 'en', 'es', 'fr'],
     name: 'Auth',
     ucReg: {
         SignIn: {

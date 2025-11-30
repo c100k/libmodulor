@@ -1,6 +1,19 @@
 import type { AppI18n } from '../../../../dist/esm/index.js';
 
 export const I18n: AppI18n = {
+    de: {
+        uc_SignIn_desc: 'Melden Sie sich bei Ihrem Konto an, um zu beginnen',
+        uc_SignIn_i_submit_idle: 'Anmelden',
+        uc_SignIn_i_submit_submitting: 'Anmeldung',
+        uc_SignIn_label: 'Anmelden',
+        uc_SignOut_client_confirm_message: 'Sind Sie sicher?',
+        uc_SignOut_i_submit_idle: 'Abmelden',
+        uc_SignOut_i_submit_submitting: 'Abmeldung',
+        uc_SignOut_label: 'Abmelden',
+        ucif_role_label: 'Rolle',
+        ucof_id_label: 'Kennung',
+        ucof_jwt_label: 'JWT',
+    },
     en: {
         uc_SignIn_desc: 'Sign in to your account to get started.',
         uc_SignIn_i_submit_idle: 'Sign in',
@@ -9,6 +22,19 @@ export const I18n: AppI18n = {
         uc_SignOut_client_confirm_message: 'Are you sure?',
         uc_SignOut_i_submit_idle: 'Sign out',
         uc_SignOut_i_submit_submitting: 'Signing out',
+    },
+    es: {
+        uc_SignIn_desc: 'Inicia sesión en tu cuenta para comenzar',
+        uc_SignIn_i_submit_idle: 'Iniciar sesión',
+        uc_SignIn_i_submit_submitting: 'Conectando',
+        uc_SignIn_label: 'Iniciar sesión',
+        uc_SignOut_client_confirm_message: '¿Estás seguro?',
+        uc_SignOut_i_submit_idle: 'Cerrar sesión',
+        uc_SignOut_i_submit_submitting: 'Cerrando sesión',
+        uc_SignOut_label: 'Cerrar sesión',
+        ucif_role_label: 'Rol',
+        ucof_id_label: 'Identificador',
+        ucof_jwt_label: 'JWT',
     },
     fr: {
         uc_SignIn_desc: 'Connectez-vous à votre compte pour commencer',
