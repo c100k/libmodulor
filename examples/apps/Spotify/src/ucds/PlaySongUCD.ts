@@ -1,6 +1,7 @@
 import {
     type AggregateInput,
     AggregateInputDef,
+    type EmbeddedObject,
     EverybodyUCPolicy,
     SendClientMain,
     TEmbeddedObject,
@@ -14,11 +15,11 @@ import { PlaySongServerMain } from './PlaySongServerMain.js';
 export type PlaySongInput = AggregateInput;
 
 export interface PlaySongOPI0 extends UCOPIBase {
-    duration: {
+    duration: EmbeddedObject<{
         hours: UIntDuration;
         minutes: UIntDuration;
         seconds: UIntDuration;
-    };
+    }>;
 }
 
 export const PlaySongUCD: UCDef<PlaySongInput, PlaySongOPI0> = {

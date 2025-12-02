@@ -1,21 +1,39 @@
 import type { ErrorMessage, FilePath } from '../dt/index.js';
-import type { UCDefLifecycle, UCFieldKey, UCMetadata, UCOutputPartIdx } from '../uc/index.js';
+import type { UCDefLifecycle, UCMetadata, UCOutputPartIdx } from '../uc/index.js';
 import type { AppTesterOptsAllSet } from './opts.js';
-export interface OutputItemField<T extends string = string> {
+export interface OutputItemField<T = string> {
     err: ErrorMessage | null;
     value: T;
 }
+export type OutputItemFieldIOField = OutputItemField<{
+    /**
+     * @example `FreeTextShort`
+     */
+    dataType: string | null;
+    /**
+     * @example `name`
+     */
+    name: string | null;
+    /**
+     * @example `name: UCInputField<FreeTextShort>`
+     */
+    raw: string | null;
+    /**
+     * @example `UCInputField<FreeTextShort>`
+     */
+    type: string | null;
+}>;
 export interface OutputItem {
     constName: OutputItemField | null;
     externalImports: OutputItemField[] | null;
     filePath: OutputItemField | null;
     internalImports: OutputItemField[] | null;
     ioI: OutputItemField | null;
-    ioIFields: OutputItemField[] | null;
+    ioIFields: OutputItemFieldIOField[] | null;
     ioOPI0: OutputItemField | null;
-    ioOPI0Fields: OutputItemField[] | null;
+    ioOPI0Fields: OutputItemFieldIOField[] | null;
     ioOPI1: OutputItemField | null;
-    ioOPI1Fields: OutputItemField[] | null;
+    ioOPI1Fields: OutputItemFieldIOField[] | null;
     lifecycleClientPolicy: OutputItemField | null;
     lifecycleClientSteps: OutputItemField[] | null;
     lifecycleServerPolicy: OutputItemField | null;
@@ -29,10 +47,10 @@ export interface OutputItem {
 }
 export declare const OUTPUT_ITEM_FIELDS: (keyof OutputItem)[];
 export type OnImport = (name: string) => void;
-export type OnInputType = (name: string, fields: OutputItemField[]) => void;
+export type OnInputType = (name: string, fields: OutputItemFieldIOField[]) => void;
 export type OnMainStep = (lifecycle: UCDefLifecycle, step: string) => void;
 export type OnMetadata = (metadata: UCMetadata) => void;
-export type OnOPIType = (name: string, fields: OutputItemField[], idx: UCOutputPartIdx) => void;
+export type OnOPIType = (name: string, fields: OutputItemFieldIOField[], idx: UCOutputPartIdx) => void;
 export type OnPolicy = (lifecycle: UCDefLifecycle, name: string) => void;
 export type OnVariable = (name: string) => void;
 export interface UCDefASTParser {
@@ -41,4 +59,3 @@ export interface UCDefASTParser {
     transpile(): Promise<void>;
 }
 export declare function initOutputItem(): OutputItem;
-export declare function ioFieldName(field: OutputItemField): UCFieldKey | null;

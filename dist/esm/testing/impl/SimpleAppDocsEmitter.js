@@ -11,7 +11,7 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
 import { inject, injectable } from 'inversify';
-import { APP_DOCS_FILE_NAME, UC_INPUT_FIELD_PATTERN, UC_MAIN_STEP_PREFIX_REGULAR, } from '../../convention.js';
+import { APP_DOCS_FILE_NAME, UC_MAIN_STEP_PREFIX_REGULAR, } from '../../convention.js';
 import { OUTPUT_ITEM_FIELDS, } from '../UCDefASTParser.js';
 let SimpleAppDocsEmitter = class SimpleAppDocsEmitter {
     fsManager;
@@ -142,12 +142,8 @@ function diagramUCClientConfirm(participant, caller) {
     ];
 }
 function diagramUCFields(fields) {
-    return (fields
-        ?.map((f) => f.value.replace(
-    // TODO : Generalize this
-    // It's also used for OPI fields so it's not "correct" to use this pattern
-    new RegExp(UC_INPUT_FIELD_PATTERN.slice(1)), '$1'))
-        .join(LB) || '');
+    return (fields?.map((f) => `${f.value.name}: ${f.value.dataType}`).join(LB) ||
+        '');
 }
 function diagramUCMainSteps(participant, field) {
     return field.map((f) => `${participant}->>${participant}: ${f.value.replace(UC_MAIN_STEP_PREFIX_REGULAR, '').trim()}`);
@@ -174,7 +170,7 @@ function fmtTechSummaryField(field) {
 }
 function fmtTechSummaryFieldVal(field) {
     const { err, value } = field;
-    let res = value;
+    let res = (typeof value === 'string' ? value : value.raw) ?? '';
     if (err) {
         res += `❌ ${err}`;
     }

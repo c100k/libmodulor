@@ -11,7 +11,8 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
 import { inject, injectable } from 'inversify';
-import typescript, { isClassDeclaration, isObjectLiteralExpression, isPropertyAssignment, } from 'typescript';
+import typescript, { isClassDeclaration, isObjectLiteralExpression, isPropertyAssignment, SyntaxKind, } from 'typescript';
+// https://ts-ast-viewer.com
 // To avoid the following error when used in a consumer :
 // SyntaxError: Named export 'ModuleKind' not found. The requested module 'typescript' is a CommonJS module, which may not support all module.exports as named exports.
 // CommonJS modules can always be imported via the default export
@@ -99,20 +100,46 @@ let TypeScriptLibUCDefASTParser = class TypeScriptLibUCDefASTParser {
     }
     getTypeFields(node) {
         const type = this.typeChecker.getTypeAtLocation(node);
-        const fields = type.getProperties().map((p) => {
+        const fields = type
+            .getProperties()
+            .map((p) => {
             const field = {
                 err: null,
-                value: p.getName(),
+                value: {
+                    dataType: null,
+                    name: null,
+                    raw: null,
+                    type: null,
+                },
             };
             const declarations = p.getDeclarations();
-            if (declarations) {
-                const [first] = declarations;
-                if (first && isPropertySignature(first)) {
-                    field.value = first
-                        .getText()
-                        .replaceAll('\n', '')
-                        .replaceAll(';', '');
-                }
+            if (!declarations) {
+                return field;
+            }
+            const [first] = declarations;
+            if (first && isPropertySignature(first)) {
+                field.value.raw = first
+                    .getText()
+                    .replaceAll('\n', '')
+                    .replaceAll(';', '')
+                    .replaceAll(/\s+/g, ' ');
+                first.forEachChild((node1) => {
+                    if (isIdentifier(node1)) {
+                        field.value.name = node1.getText();
+                    }
+                    else if (isTypeReferenceNode(node1)) {
+                        field.value.type = node1.getText();
+                        node1.forEachChild((node2) => {
+                            if (isIdentifier(node2) ||
+                                isTypeReferenceNode(node2) ||
+                                node2.kind === SyntaxKind.BooleanKeyword ||
+                                node2.kind === SyntaxKind.NumberKeyword ||
+                                node2.kind === SyntaxKind.StringKeyword) {
+                                field.value.dataType = node2.getText();
+                            }
+                        });
+                    }
+                });
             }
             return field;
         });

@@ -27,7 +27,7 @@ sequenceDiagram
     Server->>Server: Log if the album is private
     Server->>Server: Fetch the artist via an LLM
     Server->>Server: Persist the album
-    Server-->>-Client: 👍 OK<br/>artist: UCOPIValue<FreeTextShort><br/>description: UCOPIValue<FreeTextLong><br/>isPrivate: UCOPIValue<boolean><br/>language: UCOPIValue<FreeTextShort><br/>name: UCOPIValue<FreeTextShort><br/>releaseYear: UCOPIValue<Year><br/>tags: UCOPIValue<FreeTextShort><br/>id: UUID
+    Server-->>-Client: 👍 OK<br/>artist: FreeTextShort<br/>description: FreeTextLong<br/>isPrivate: boolean<br/>language: FreeTextShort<br/>name: FreeTextShort<br/>releaseYear: Year<br/>tags: FreeTextShort<br/>id: UUID
     Client-->>-User: 👍 OK
 ```
 
@@ -94,7 +94,7 @@ sequenceDiagram
     break when any validation fails
         Server-->User: show failure
     end
-    Server-->>-Client: 👍 OK<br/>artist: UCOPIValue<FreeTextShort><br/>description: UCOPIValue<FreeTextLong><br/>isPrivate: UCOPIValue<boolean><br/>language: UCOPIValue<FreeTextShort><br/>name: UCOPIValue<FreeTextShort><br/>releaseYear: UCOPIValue<Year><br/>tags: UCOPIValue<FreeTextShort><br/>id: UUID
+    Server-->>-Client: 👍 OK<br/>artist: FreeTextShort<br/>description: FreeTextLong<br/>isPrivate: boolean<br/>language: FreeTextShort<br/>name: FreeTextShort<br/>releaseYear: Year<br/>tags: FreeTextShort<br/>id: UUID
     Client-->>-User: 👍 OK
 ```
 
@@ -134,7 +134,7 @@ sequenceDiagram
     break when any validation fails
         Server-->User: show failure
     end
-    Server-->>-Client: 👍 OK<br/>duration: {        hours: UIntDuration        minutes: UIntDuration        seconds: UIntDuration    }<br/>id: UUID
+    Server-->>-Client: 👍 OK<br/>duration: EmbeddedObject<br/>id: UUID
     Client-->>-User: 👍 OK
 ```
 
@@ -147,4 +147,4 @@ sequenceDiagram
 |3|/src/ucds/LikeAlbumUCD.ts|LikeAlbumUCD|LikeAlbum|Update||circle-check||||../../../../../dist/esm/index.js<br>../manifest.js|LikeAlbumInput|id: UCInputFieldValue&#60;UUID&#62;|||||Everybody|Everybody|
 |4|/src/ucds/ListAlbumsUCD.ts|ListAlbumsUCD|ListAlbums|List||list||||../../../../../dist/esm/index.js<br>../lib/album.js<br>../manifest.js<br>./ListAlbumsServerMain.js|ListAlbumsInput|id: UCInputFieldValue&#60;UUID&#62;<br>limit: UCInputFieldValue&#60;UIntQuantity&#62;<br>offset: UCInputFieldValue&#60;NumIndex&#62;<br>q: UCInputFieldValue&#60;SearchQuery&#62;|ListAlbumsOPI0|artist: UCOPIValue&#60;FreeTextShort&#62;<br>description: UCOPIValue&#60;FreeTextLong&#62;<br>isPrivate: UCOPIValue&#60;boolean&#62;<br>language: UCOPIValue&#60;FreeTextShort&#62;<br>name: UCOPIValue&#60;FreeTextShort&#62;<br>releaseYear: UCOPIValue&#60;Year&#62;<br>tags: UCOPIValue&#60;FreeTextShort&#62;<br>id: UUID|||Everybody|Everybody|
 |5|/src/ucds/ListStatsUCD.ts|ListStatsUCD|ListStats|List||list||||../../../../../dist/esm/index.js<br>../manifest.js<br>./ListStatsServerMain.js|ListStatsInput||ListStatsOPI0|name: FreeTextShort<br>value: UIntQuantity<br>id: UUID|||Authenticated|Authenticated|
-|6|/src/ucds/PlaySongUCD.ts|PlaySongUCD|PlaySong|View||eye||||../../../../../dist/esm/index.js<br>../manifest.js<br>./PlaySongServerMain.js|PlaySongInput|id: UCInputFieldValue&#60;UUID&#62;|PlaySongOPI0|duration: {        hours: UIntDuration        minutes: UIntDuration        seconds: UIntDuration    }<br>id: UUID|||Everybody|Everybody|
+|6|/src/ucds/PlaySongUCD.ts|PlaySongUCD|PlaySong|View||eye||||../../../../../dist/esm/index.js<br>../manifest.js<br>./PlaySongServerMain.js|PlaySongInput|id: UCInputFieldValue&#60;UUID&#62;|PlaySongOPI0|duration: EmbeddedObject&#60;{ hours: UIntDuration minutes: UIntDuration seconds: UIntDuration }&#62;<br>id: UUID|||Everybody|Everybody|

@@ -10,7 +10,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var AppI18nChecker_1;
 import { injectable } from 'inversify';
 import { I18N_DEFAULT_LANG, } from '../../../i18n/index.js';
-import { ioFieldName } from '../../UCDefASTParser.js';
 const ERR_I18N_MISMATCH = () => 'The languageCodes in app manifest must match with the keys in i18n';
 const ERR_I18N_KEY_INVALID = (key) => `The i18n key '${key}' must respect the i18n key pattern`;
 const ERR_I18N_LABEL_NO_DOT = (key) => `The i18n key '${key}' is a label, thus it should not end with a dot`;
@@ -78,7 +77,7 @@ let AppI18nChecker = class AppI18nChecker {
             return;
         }
         for (const f of fields) {
-            this.checkKey(lang, translations, `${prefix}_${ioFieldName(f)}_${suffix}`);
+            this.checkKey(lang, translations, `${prefix}_${f.value.name}_${suffix}`);
         }
     }
     checkKey(lang, translations, key) {
