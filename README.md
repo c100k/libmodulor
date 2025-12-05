@@ -36,6 +36,7 @@ const appManifest = {
         },
     },
 } satisfies AppManifest;
+
 const appI18n: AppI18n = {
     en: {
         ucif_email_label: 'Your email address',
@@ -111,7 +112,6 @@ const RegisterUCD: UCDef<RegisterInput, RegisterOPI0> = {
             parts: {
                 _0: {
                     fields: {
-                        ...AggregateOutputDef.parts?._0.fields,
                         amount: {
                             type: new TAmount('EUR'),
                         },
@@ -145,6 +145,7 @@ const productManifest: ProductManifest = {
     appReg: [{ name: 'Event' }],
     name: 'Eventer',
 };
+
 const productI18n: ProductI18n = {
     en: {
         ...I18nEN,

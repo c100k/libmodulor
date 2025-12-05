@@ -4,7 +4,6 @@ import { I18nEN } from '../../../dist/esm/i18n/locales/en.js';
 import { I18nFR } from '../../../dist/esm/i18n/locales/fr.js';
 import {
     type AggregateOPI0,
-    AggregateOutputDef,
     type Amount,
     type AppI18n,
     type AppManifest,
@@ -144,7 +143,6 @@ const RegisterUCD: UCDef<RegisterInput, RegisterOPI0> = {
             parts: {
                 _0: {
                     fields: {
-                        ...AggregateOutputDef.parts?._0.fields,
                         amount: {
                             type: new TAmount('EUR'),
                         },
