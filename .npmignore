@@ -1,4 +1,6 @@
 .github
-.gitattributes
+dist-examples
 examples
+tmp
+.gitattributes
 biome.json

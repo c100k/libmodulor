@@ -1,6 +1,19 @@
 # CHANGELOG
 
-## v0.24.0 (unreleased)
+## v0.24.0 (2025-12-07)
+
+**Highlights**
+
+- Introduced `babel`, `vite` plugins and `webpack` loader => https://libmodulor.c100k.eu/docs/guides/bundle-target
+- Introduced the `node-stricli-cli` target using @bloomberg's `stricli` library
+- Introduced the `Playground` example, runnable locally, to play with all the features of `libmodulor` => https://libmodulor.c100k.eu/docs/examples/Playground
+- Improved apps testing by making sure non-english languages are fully translated
+- Improved apps testing performance by optimizing use cases testing using the `stream` transport
+- Introduced `de` 🇩🇪 and `es` 🇪🇸 locales (see them in action in the `Playground`)
+
+Some breaking changes but at the very low level. If your apps break, just follow the TypeScript errors and you should be good to go.
+
+Also bumped React versions for the infamous [React2Shell vulnerability](https://react.dev/blog/2025/12/03/critical-security-vulnerability-in-react-server-components).
 
 See all the changes here : https://github.com/c100k/libmodulor/compare/v0.23.0...master
 
