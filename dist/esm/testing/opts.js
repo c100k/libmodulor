@@ -4,7 +4,7 @@ export const DEFAULT_APP_TESTER_OPTS = {
         imports: {
             external: {
                 aliasPrefix: '@',
-                allowed: ['inversify', 'libmodulor'],
+                allowed: ['libmodulor', 'inversify'],
             },
             internal: {
                 maxDepth: '../../',

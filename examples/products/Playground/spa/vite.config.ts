@@ -4,7 +4,7 @@ import { join } from 'node:path';
 
 import { defineConfig, type PluginOption } from 'vite';
 
-import { StripUCDLifecycleServerPlugin } from '../../../../dist/esm/index.vite.js';
+import { Plugin } from '../../../../dist/esm/index.vite.js';
 
 const projectRoot = process.cwd();
 const productPath = join('products', 'Playground');
@@ -36,7 +36,7 @@ export default defineConfig({
         minify: false,
         outDir,
     },
-    plugins: [StripUCDLifecycleServerPlugin, CopyBuildToOtherServersPlugin],
+    plugins: [Plugin, CopyBuildToOtherServersPlugin],
     root,
     server: {
         open: true,

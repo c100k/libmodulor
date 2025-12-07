@@ -1,1 +1,1 @@
-export { StripUCDLifecycleServerPlugin } from './utils/bundling/vite/StripUCDLifecycleServerPlugin.js';
+export { Plugin } from './utils/bundling/vite/plugin.js';

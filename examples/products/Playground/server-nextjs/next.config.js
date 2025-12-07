@@ -1,3 +1,6 @@
+import { Plugin } from '../../../../dist/esm/index.babel.js';
+import { UC_DEF_SUFFIX } from '../../../../dist/esm/index.js';
+
 /**
  * @type {import('next').NextConfig}
  */
@@ -17,7 +20,7 @@ export default {
      */
     serverExternalPackages: ['knex'],
 
-    webpack: (config) => {
+    webpack: (config, { isServer }) => {
         config.resolve.extensionAlias = {
             '.js': (config.resolve.extensionAlias ?? []).concat([
                 '.js',
@@ -26,6 +29,19 @@ export default {
                 '.tsx',
             ]),
         };
+
+        if (!isServer) {
+            config.module.rules.push({
+                exclude: /node_modules/,
+                test: new RegExp(`${UC_DEF_SUFFIX}.js$`), // Files are already transpiled by the build.sh script
+                use: {
+                    loader: 'babel-loader',
+                    options: {
+                        plugins: [[Plugin]],
+                    },
+                },
+            });
+        }
 
         return config;
     },

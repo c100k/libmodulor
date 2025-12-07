@@ -23,6 +23,9 @@
         ".": {
             "import": "./dist/esm/index.js"
         },
+        "./babel": {
+            "import": "./dist/esm/index.babel.js"
+        },
         "./cloudflare-worker-hono": {
             "import": "./dist/esm/index.cloudflare-worker-hono.js"
         },
@@ -82,6 +85,9 @@
         },
         "./web": {
             "import": "./dist/esm/index.web.js"
+        },
+        "./webpack": {
+            "import": "./dist/esm/index.webpack.js"
         }
     },
     "bin": "./dist/esm/products/Helper/index.js",

@@ -1,3 +1,5 @@
+const { Plugin } = require('./babel.config.esm-bridge.js').default;
+
 module.exports = (api) => {
     api.cache(true);
     return {
@@ -8,6 +10,7 @@ module.exports = (api) => {
             '@babel/plugin-transform-class-static-block',
             ['@babel/plugin-transform-class-properties', { loose: true }],
             'babel-plugin-parameter-decorator',
+            [Plugin],
         ],
         presets: ['babel-preset-expo'],
     };

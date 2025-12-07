@@ -71,3 +71,23 @@ cp $buildDir/$productPath/.env $buildDir/$productPath/$targetName/
 targetName=spa
 echo "Adapting $targetName"
 pnpm vite -c $srcDir/$productPath/$targetName/vite.config.ts build
+
+################################
+# --help
+################################
+
+echo "[Basic]"
+productPath=products/Basic
+echo "(cd ${srcDir}/${productPath} && bun index.ts)"
+echo "(cd ${buildDir}/${productPath} && node index.js)"
+echo "\n"
+
+echo "[Playground]"
+productPath=products/Playground
+echo "pnpm wrangler dev --cwd ${buildDir}/${productPath}/server-cloudflare-worker"
+echo "(cd ${buildDir}/${productPath}/server-node-express && node --env-file .env index.js)"
+echo "(cd ${buildDir}/${productPath}/server-node-hono && node --env-file .env index.js)"
+echo "(cd ${buildDir}/${productPath}/server-nextjs && pnpm next dev)"
+echo "(cd ${buildDir}/${productPath}/cli-node-core && node index.js)"
+echo "pnpm expo start --android ${buildDir}/${productPath}/rn"
+echo "pnpm expo start --ios ${buildDir}/${productPath}/rn"
