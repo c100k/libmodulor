@@ -1,14 +1,13 @@
-export var UCInputFieldFillingMode;
-(function (UCInputFieldFillingMode) {
+export const UCInputFieldFillingMode = {
     /**
      * Set programmatically on behalf of the user (e.g. a foreign key id for a given object)
      */
-    UCInputFieldFillingMode["AUTO_PRE"] = "AUTO_PRE";
+    AUTO_PRE: 'AUTO_PRE',
     /**
      * Set manually by the user (e.g. a form field, a cli flag, etc.)
      */
-    UCInputFieldFillingMode["MANUAL"] = "MANUAL";
-})(UCInputFieldFillingMode || (UCInputFieldFillingMode = {}));
+    MANUAL: 'MANUAL',
+};
 export function ucifExamples(def) {
     const { type } = def;
     const examples = type.getExamples();

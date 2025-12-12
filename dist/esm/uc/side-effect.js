@@ -1,9 +1,8 @@
-export var UCOutputSideEffectType;
-(function (UCOutputSideEffectType) {
+export const UCOutputSideEffectType = {
     /**
      * Trigger a clearing of the auth on the calling system (e.g. `SignOut`).
      */
-    UCOutputSideEffectType["CLEAR_AUTH"] = "CLEAR_AUTH";
+    CLEAR_AUTH: 'CLEAR_AUTH',
     /**
      * Trigger a redirect on the calling system (e.g. after the final round of an OAuth1 flow)
      *
@@ -12,11 +11,11 @@ export var UCOutputSideEffectType;
      *
      * It expects a field `redirect: URL` in `output.parts._0.items[0]`.
      */
-    UCOutputSideEffectType["REDIRECT"] = "REDIRECT";
+    REDIRECT: 'REDIRECT',
     /**
      * Trigger a setting of the auth on the calling system (e.g. `SignIn` / `SignUp`).
      *
      * It expects a field `jwt: JWT` in `output.parts._0.items[0]`.
      */
-    UCOutputSideEffectType["SET_AUTH"] = "SET_AUTH";
-})(UCOutputSideEffectType || (UCOutputSideEffectType = {}));
+    SET_AUTH: 'SET_AUTH',
+};

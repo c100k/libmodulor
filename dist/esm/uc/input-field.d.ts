@@ -1,16 +1,18 @@
 import type { DataType, TBase, UIntQuantity } from '../dt/index.js';
+import type { EnumOf } from '../utils/index.js';
 import type { UCFieldKey } from './def.js';
 import type { Value } from './value.js';
-export declare enum UCInputFieldFillingMode {
+export declare const UCInputFieldFillingMode: {
     /**
      * Set programmatically on behalf of the user (e.g. a foreign key id for a given object)
      */
-    AUTO_PRE = "AUTO_PRE",
+    readonly AUTO_PRE: "AUTO_PRE";
     /**
      * Set manually by the user (e.g. a form field, a cli flag, etc.)
      */
-    MANUAL = "MANUAL"
-}
+    readonly MANUAL: "MANUAL";
+};
+export type UCInputFieldFillingMode = EnumOf<typeof UCInputFieldFillingMode>;
 export interface UCInputFieldDefCardinality {
     max?: UIntQuantity;
     min?: UIntQuantity;

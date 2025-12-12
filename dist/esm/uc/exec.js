@@ -1,20 +1,55 @@
 /**
  * Mode of execution of a use case
- *
- * Unlike all the other enums, the values are lowercased for compatibility reasons.
- * Indeed, this value is persisted in the database so we need to support all existing deployments.
  */
-export var UCExecMode;
-(function (UCExecMode) {
+export const UCExecMode = {
     /**
      * The use case has been executed programmatically
      */
-    UCExecMode["AUTO"] = "auto";
+    AUTO: 'auto',
     /**
      * The use case has been executed explicitly by a user
      */
-    UCExecMode["USER"] = "user";
-})(UCExecMode || (UCExecMode = {}));
+    USER: 'user',
+};
+/**
+ * Result of execution of a use case
+ */
+export const UCExecRes = {
+    /**
+     * The user aborted the exec (e.g. by not confirming)
+     */
+    ABORTED: 'aborted',
+    /**
+     * The execution failed
+     */
+    FAILED: 'failed',
+    /**
+     * The execution succeeded
+     */
+    SUCCEEDED: 'succeeded',
+};
+/**
+ * State of execution of a use case
+ * It applies to a form, but it can be applied and generalized to any other interaction mechanism (i.e. cli, voice...).
+ */
+export const UCExecState = {
+    /**
+     * An action triggered a change, fields should be disabled
+     */
+    CHANGING: 'changing',
+    /**
+     * It can be touched and filled by the user
+     */
+    IDLE: 'idle',
+    /**
+     * It's initializing in some way, fields should be disabled
+     */
+    INITIALIZING: 'initializing',
+    /**
+     * It's submitting, fields should be disabled and some indicator should show the processing
+     */
+    SUBMITTING: 'submitting',
+};
 /**
  * Check whether the execution corresponds to a "disabled" state
  *
@@ -24,19 +59,19 @@ export var UCExecMode;
  * @returns
  */
 export function ucIsDisabled(execState) {
-    return execState !== 'idle';
+    return execState !== UCExecState.IDLE;
 }
 /**
  * Check whether the execution corresponds to a "loading" state
  *
- * Typically, this is used to show a `loading` indicator. Thus, it's `true` when `execState === 'submitting'`.
- * Note that it's not for `changing` or `initializing` because these are not triggered by the user per sé.
+ * Typically, this is used to show a `loading` indicator. Thus, it's `true` when `execState === UCExecState.SUBMITTING`.
+ * Note that it's not for `UCExecState.CHANGING` or `UCExecState.INITIALIZING` because these are not triggered by the user per sé.
  *
  * @param execState
  * @returns
  */
 export function ucIsLoading(execState) {
-    return execState === 'submitting';
+    return execState === UCExecState.SUBMITTING;
 }
 /**
  * Check whether the execution corresponds to an "error" result
@@ -45,5 +80,5 @@ export function ucIsLoading(execState) {
  * @returns
  */
 export function ucIsOnErr(execRes) {
-    return execRes === 'failed';
+    return execRes === UCExecRes.FAILED;
 }

@@ -1,4 +1,5 @@
 import type { DateISO8601, DirPath, File, FileExtension, FileMimeType, FileName, FilePath, UIntQuantity } from '../dt/index.js';
+import type { EnumOf } from '../utils/index.js';
 export type FSManagerChmodMode = number | string;
 export interface FSManagerCatOpts {
     encoding?: FSManagerEncoding;
@@ -9,11 +10,12 @@ export interface FSManagerFilePickerOpts {
     path?: FilePath;
 }
 export type FSManagerFilePickerSource = 'camera' | 'library' | 'path';
-export declare enum FSManagerItemInfoType {
-    DIR = "DIR",
-    FILE = "FILE",
-    OTHER = "OTHER"
-}
+export declare const FSManagerItemInfoType: {
+    readonly DIR: "DIR";
+    readonly FILE: "FILE";
+    readonly OTHER: "OTHER";
+};
+export type FSManagerItemInfoType = EnumOf<typeof FSManagerItemInfoType>;
 export interface FSManagerItemInfo {
     base: string;
     birthtime: DateISO8601;

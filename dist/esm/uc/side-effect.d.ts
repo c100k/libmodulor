@@ -1,8 +1,9 @@
-export declare enum UCOutputSideEffectType {
+import type { EnumOf } from '../utils/index.js';
+export declare const UCOutputSideEffectType: {
     /**
      * Trigger a clearing of the auth on the calling system (e.g. `SignOut`).
      */
-    CLEAR_AUTH = "CLEAR_AUTH",
+    readonly CLEAR_AUTH: "CLEAR_AUTH";
     /**
      * Trigger a redirect on the calling system (e.g. after the final round of an OAuth1 flow)
      *
@@ -11,18 +12,19 @@ export declare enum UCOutputSideEffectType {
      *
      * It expects a field `redirect: URL` in `output.parts._0.items[0]`.
      */
-    REDIRECT = "REDIRECT",
+    readonly REDIRECT: "REDIRECT";
     /**
      * Trigger a setting of the auth on the calling system (e.g. `SignIn` / `SignUp`).
      *
      * It expects a field `jwt: JWT` in `output.parts._0.items[0]`.
      */
-    SET_AUTH = "SET_AUTH"
-}
+    readonly SET_AUTH: "SET_AUTH";
+};
+export type UCOutputSideEffectType = EnumOf<typeof UCOutputSideEffectType>;
 export type UCOutputSideEffect = {
-    type: UCOutputSideEffectType.CLEAR_AUTH;
+    type: typeof UCOutputSideEffectType.CLEAR_AUTH;
 } | {
-    type: UCOutputSideEffectType.REDIRECT;
+    type: typeof UCOutputSideEffectType.REDIRECT;
 } | {
-    type: UCOutputSideEffectType.SET_AUTH;
+    type: typeof UCOutputSideEffectType.SET_AUTH;
 };

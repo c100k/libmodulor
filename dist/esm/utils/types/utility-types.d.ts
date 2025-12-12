@@ -1,4 +1,8 @@
 /**
+ * Get an enum-like type with the keys of the object
+ */
+export type EnumOf<T extends object> = T[keyof T];
+/**
  * Extract a subset of a union type in a strict manner
  *
  * @example

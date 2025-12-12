@@ -1,6 +1,7 @@
+import type { EnumOf } from '../../utils/index.js';
 import type { Validation } from '../Validation.js';
 import { TBase, type TName } from './TBase.js';
-export declare enum TObjectShapeValidationStrategy {
+export declare const TObjectShapeValidationStrategy: {
     /**
      * No shape validation is performed
      *
@@ -8,14 +9,15 @@ export declare enum TObjectShapeValidationStrategy {
      *
      * Otherwise, you can still override {@link validate} in the `T*` class and do your own validation.
      */
-    NONE = "NONE",
+    readonly NONE: "NONE";
     /**
      * Validate against the {@link TObject.example()}
      *
      * It checks that the keys of the value, sorted alphabetically, are the same as the example's keys.
      */
-    SAME_AS_EXAMPLE = "SAME_AS_EXAMPLE"
-}
+    readonly SAME_AS_EXAMPLE: "SAME_AS_EXAMPLE";
+};
+export type TObjectShapeValidationStrategy = EnumOf<typeof TObjectShapeValidationStrategy>;
 export interface TObjectConstraints {
     /**
      * @defaultValue {@link TObjectShapeValidationStrategy.SAME_AS_EXAMPLE}

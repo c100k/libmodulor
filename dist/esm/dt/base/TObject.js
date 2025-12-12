@@ -1,6 +1,5 @@
 import { TBase } from './TBase.js';
-export var TObjectShapeValidationStrategy;
-(function (TObjectShapeValidationStrategy) {
+export const TObjectShapeValidationStrategy = {
     /**
      * No shape validation is performed
      *
@@ -8,14 +7,14 @@ export var TObjectShapeValidationStrategy;
      *
      * Otherwise, you can still override {@link validate} in the `T*` class and do your own validation.
      */
-    TObjectShapeValidationStrategy["NONE"] = "NONE";
+    NONE: 'NONE',
     /**
      * Validate against the {@link TObject.example()}
      *
      * It checks that the keys of the value, sorted alphabetically, are the same as the example's keys.
      */
-    TObjectShapeValidationStrategy["SAME_AS_EXAMPLE"] = "SAME_AS_EXAMPLE";
-})(TObjectShapeValidationStrategy || (TObjectShapeValidationStrategy = {}));
+    SAME_AS_EXAMPLE: 'SAME_AS_EXAMPLE',
+};
 export class TObject extends TBase {
     constraints;
     constructor(constraints = {
