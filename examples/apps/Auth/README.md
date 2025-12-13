@@ -10,6 +10,31 @@
 
 ### SignIn
 
+- **Type** : `Client / Server`
+- **Client Policy** : `Anonymous`
+- **Server Policy** : `Anonymous`
+
+#### Input (I)
+
+|#|name|humanized|dataType|
+|---|---|---|---|
+|1|`role`|Role|`Role`|
+
+#### Output (O)
+
+##### Part 0 (OPI0)
+
+|#|name|humanized|dataType|
+|---|---|---|---|
+|1|`jwt`|Jwt|`JWT`|
+|2|`id`|Id|`UUID`|
+
+##### Part 1 (OPI1)
+
+None
+
+#### Sequence Diagram
+
 ```mermaid
 sequenceDiagram
     actor User
@@ -30,6 +55,26 @@ sequenceDiagram
 ```
 
 ### SignOut
+
+- **Type** : `Client / Server`
+- **Client Policy** : `Authenticated`
+- **Server Policy** : `Authenticated`
+
+#### Input (I)
+
+None
+
+#### Output (O)
+
+##### Part 0 (OPI0)
+
+None
+
+##### Part 1 (OPI1)
+
+None
+
+#### Sequence Diagram
 
 ```mermaid
 sequenceDiagram

@@ -10,6 +10,31 @@
 
 ### AskQuestion
 
+- **Type** : `Client / Server`
+- **Client Policy** : `Authenticated`
+- **Server Policy** : `Authenticated`
+
+#### Input (I)
+
+|#|name|humanized|dataType|
+|---|---|---|---|
+|1|`prompt`|Prompt|`FreeTextLong`|
+
+#### Output (O)
+
+##### Part 0 (OPI0)
+
+|#|name|humanized|dataType|
+|---|---|---|---|
+|1|`res`|Res|`FreeTextLong`|
+|2|`id`|Id|`UUID`|
+
+##### Part 1 (OPI1)
+
+None
+
+#### Sequence Diagram
+
 ```mermaid
 sequenceDiagram
     actor User
@@ -29,6 +54,36 @@ sequenceDiagram
 ```
 
 ### BuyAsset
+
+- **Type** : `Client / Server`
+- **Client Policy** : `Authenticated`
+- **Server Policy** : `Authenticated`
+
+#### Input (I)
+
+|#|name|humanized|dataType|
+|---|---|---|---|
+|1|`isin`|Isin|`ISIN`|
+|2|`limit`|Limit|`Amount`|
+|3|`qty`|Qty|`UIntQuantity`|
+
+#### Output (O)
+
+##### Part 0 (OPI0)
+
+|#|name|humanized|dataType|
+|---|---|---|---|
+|1|`isin`|Isin|`ISIN`|
+|2|`limit`|Limit|`Amount`|
+|3|`qty`|Qty|`UIntQuantity`|
+|4|`status`|Status|`OrderStatus`|
+|5|`id`|Id|`UUID`|
+
+##### Part 1 (OPI1)
+
+None
+
+#### Sequence Diagram
 
 ```mermaid
 sequenceDiagram
@@ -52,6 +107,34 @@ sequenceDiagram
 ```
 
 ### CancelOrder
+
+- **Type** : `Client / Server`
+- **Client Policy** : `RoleAdmin`
+- **Server Policy** : `RoleAdmin`
+
+#### Input (I)
+
+|#|name|humanized|dataType|
+|---|---|---|---|
+|1|`id`|Id|`UUID`|
+
+#### Output (O)
+
+##### Part 0 (OPI0)
+
+|#|name|humanized|dataType|
+|---|---|---|---|
+|1|`isin`|Isin|`ISIN`|
+|2|`limit`|Limit|`Amount`|
+|3|`qty`|Qty|`UIntQuantity`|
+|4|`status`|Status|`OrderStatus`|
+|5|`id`|Id|`UUID`|
+
+##### Part 1 (OPI1)
+
+None
+
+#### Sequence Diagram
 
 ```mermaid
 sequenceDiagram
@@ -80,6 +163,37 @@ sequenceDiagram
 
 ### ListOrders
 
+- **Type** : `Client / Server`
+- **Client Policy** : `Everybody`
+- **Server Policy** : `Everybody`
+
+#### Input (I)
+
+|#|name|humanized|dataType|
+|---|---|---|---|
+|1|`id`|Id|`UUID`|
+|2|`limit`|Limit|`UIntQuantity`|
+|3|`offset`|Offset|`NumIndex`|
+|4|`q`|Q|`SearchQuery`|
+
+#### Output (O)
+
+##### Part 0 (OPI0)
+
+|#|name|humanized|dataType|
+|---|---|---|---|
+|1|`isin`|Isin|`ISIN`|
+|2|`limit`|Limit|`Amount`|
+|3|`qty`|Qty|`UIntQuantity`|
+|4|`status`|Status|`OrderStatus`|
+|5|`id`|Id|`UUID`|
+
+##### Part 1 (OPI1)
+
+None
+
+#### Sequence Diagram
+
 ```mermaid
 sequenceDiagram
     actor User
@@ -99,6 +213,32 @@ sequenceDiagram
 ```
 
 ### ViewAssetPrice
+
+- **Type** : `Client / Server`
+- **Client Policy** : `Everybody`
+- **Server Policy** : `Everybody`
+
+#### Input (I)
+
+|#|name|humanized|dataType|
+|---|---|---|---|
+|1|`isin`|Isin|`ISIN`|
+
+#### Output (O)
+
+##### Part 0 (OPI0)
+
+|#|name|humanized|dataType|
+|---|---|---|---|
+|1|`evol`|Evol|`Amount`|
+|2|`price`|Price|`Amount`|
+|3|`id`|Id|`UUID`|
+
+##### Part 1 (OPI1)
+
+None
+
+#### Sequence Diagram
 
 ```mermaid
 sequenceDiagram

@@ -10,6 +10,39 @@
 
 ### SearchAccomodation
 
+- **Type** : `Client only`
+- **Client Policy** : `Everybody`
+- **Server Policy** : -
+
+#### Input (I)
+
+|#|name|humanized|dataType|
+|---|---|---|---|
+|1|`adultsCount`|Adults Count|`UIntQuantity`|
+|2|`childrenCount`|Children Count|`UIntQuantity`|
+|3|`country`|Country|`CountryISO3166Alpha2`|
+|4|`from`|From|`DateISO8601`|
+|5|`roomsCount`|Rooms Count|`UIntQuantity`|
+|6|`to`|To|`DateISO8601`|
+
+#### Output (O)
+
+##### Part 0 (OPI0)
+
+|#|name|humanized|dataType|
+|---|---|---|---|
+|1|`name`|Name|`CompanyName`|
+|2|`price`|Price|`Amount`|
+|3|`rate`|Rate|`AccomodationRate`|
+|4|`title`|Title|`FreeTextShort`|
+|5|`id`|Id|`UUID`|
+
+##### Part 1 (OPI1)
+
+None
+
+#### Sequence Diagram
+
 ```mermaid
 sequenceDiagram
     actor User

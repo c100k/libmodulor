@@ -10,6 +10,31 @@
 
 ### DecodeJWT
 
+- **Type** : `Client only`
+- **Client Policy** : `Everybody`
+- **Server Policy** : -
+
+#### Input (I)
+
+|#|name|humanized|dataType|
+|---|---|---|---|
+|1|`jwt`|Jwt|`JWT`|
+
+#### Output (O)
+
+##### Part 0 (OPI0)
+
+|#|name|humanized|dataType|
+|---|---|---|---|
+|1|`payload`|Payload|`EmbeddedObject`|
+|2|`id`|Id|`UUID`|
+
+##### Part 1 (OPI1)
+
+None
+
+#### Sequence Diagram
+
 ```mermaid
 sequenceDiagram
     actor User
@@ -25,6 +50,29 @@ sequenceDiagram
 
 ### ExportAsana
 
+- **Type** : `Client only`
+- **Client Policy** : `Everybody`
+- **Server Policy** : -
+
+#### Input (I)
+
+|#|name|humanized|dataType|
+|---|---|---|---|
+|1|`accessToken`|Access Token|`Password`|
+|2|`projectId`|Project Id|`ExternalServiceId`|
+
+#### Output (O)
+
+##### Part 0 (OPI0)
+
+None
+
+##### Part 1 (OPI1)
+
+None
+
+#### Sequence Diagram
+
 ```mermaid
 sequenceDiagram
     actor User
@@ -38,6 +86,35 @@ sequenceDiagram
 ```
 
 ### GenerateMiscData
+
+- **Type** : `Client only`
+- **Client Policy** : `Everybody`
+- **Server Policy** : -
+
+#### Input (I)
+
+|#|name|humanized|dataType|
+|---|---|---|---|
+|1|`uuidCount`|Uuid Count|`UIntQuantity`|
+
+#### Output (O)
+
+##### Part 0 (OPI0)
+
+|#|name|humanized|dataType|
+|---|---|---|---|
+|1|`label`|Label|`FreeTextShort`|
+|2|`value`|Value|`FreeTextShort`|
+|3|`id`|Id|`UUID`|
+
+##### Part 1 (OPI1)
+
+|#|name|humanized|dataType|
+|---|---|---|---|
+|1|`value`|Value|`UUID`|
+|2|`id`|Id|`UUID`|
+
+#### Sequence Diagram
 
 ```mermaid
 sequenceDiagram
@@ -53,6 +130,32 @@ sequenceDiagram
 
 ### GeocodeAddress
 
+- **Type** : `Client only`
+- **Client Policy** : `Everybody`
+- **Server Policy** : -
+
+#### Input (I)
+
+|#|name|humanized|dataType|
+|---|---|---|---|
+|1|`address`|Address|`Address`|
+
+#### Output (O)
+
+##### Part 0 (OPI0)
+
+|#|name|humanized|dataType|
+|---|---|---|---|
+|1|`geolocation`|Geolocation|`Geolocation`|
+|2|`googleMapsURL`|Google Maps URL|`URL`|
+|3|`id`|Id|`UUID`|
+
+##### Part 1 (OPI1)
+
+None
+
+#### Sequence Diagram
+
 ```mermaid
 sequenceDiagram
     actor User
@@ -66,6 +169,34 @@ sequenceDiagram
 ```
 
 ### PromptLLM
+
+- **Type** : `Client only`
+- **Client Policy** : `Everybody`
+- **Server Policy** : -
+
+#### Input (I)
+
+|#|name|humanized|dataType|
+|---|---|---|---|
+|1|`apiKey`|Api Key|`ApiKey`|
+|2|`modelName`|Model Name|`Slug`|
+|3|`prompt`|Prompt|`FreeTextLong`|
+|4|`transportType`|Transport Type|`TransportType`|
+
+#### Output (O)
+
+##### Part 0 (OPI0)
+
+|#|name|humanized|dataType|
+|---|---|---|---|
+|1|`res`|Res|`FreeTextLong`|
+|2|`id`|Id|`UUID`|
+
+##### Part 1 (OPI1)
+
+None
+
+#### Sequence Diagram
 
 ```mermaid
 sequenceDiagram

@@ -10,7 +10,7 @@ import { bindNodeCore } from '../../utils/ioc/bindNodeCore.js';
 import { bindServer } from '../../utils/ioc/bindServer.js';
 import { AppTester } from '../AppTester.js';
 import { optsAllSet } from '../opts.js';
-import { SimpleAppDocsEmitter } from './SimpleAppDocsEmitter.js';
+import { SimpleAppDocsEmitter } from './SimpleAppDocsEmitter/SimpleAppDocsEmitter.js';
 import { TypeScriptLibUCDefASTParser } from './TypeScriptLibUCDefASTParser.js';
 export async function newNodeAppTester(serverPortRangeStart, idx, args) {
     const { configurator } = args;

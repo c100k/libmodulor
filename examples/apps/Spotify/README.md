@@ -10,6 +10,44 @@
 
 ### CreateAlbum
 
+- **Type** : `Client / Server`
+- **Client Policy** : `Everybody`
+- **Server Policy** : `Everybody`
+
+#### Input (I)
+
+|#|name|humanized|dataType|
+|---|---|---|---|
+|1|`artist`|Artist|`FreeTextShort`|
+|2|`cover`|Cover|`File`|
+|3|`description`|Description|`FreeTextLong`|
+|4|`isPrivate`|Is Private|`boolean`|
+|5|`language`|Language|`FreeTextShort`|
+|6|`name`|Name|`FreeTextShort`|
+|7|`releaseYear`|Release Year|`Year`|
+|8|`tags`|Tags|`FreeTextShort`|
+
+#### Output (O)
+
+##### Part 0 (OPI0)
+
+|#|name|humanized|dataType|
+|---|---|---|---|
+|1|`artist`|Artist|`FreeTextShort`|
+|2|`description`|Description|`FreeTextLong`|
+|3|`isPrivate`|Is Private|`boolean`|
+|4|`language`|Language|`FreeTextShort`|
+|5|`name`|Name|`FreeTextShort`|
+|6|`releaseYear`|Release Year|`Year`|
+|7|`tags`|Tags|`FreeTextShort`|
+|8|`id`|Id|`UUID`|
+
+##### Part 1 (OPI1)
+
+None
+
+#### Sequence Diagram
+
 ```mermaid
 sequenceDiagram
     actor User
@@ -32,6 +70,28 @@ sequenceDiagram
 ```
 
 ### DeleteAlbum
+
+- **Type** : `Client / Server`
+- **Client Policy** : `Everybody`
+- **Server Policy** : `Everybody`
+
+#### Input (I)
+
+|#|name|humanized|dataType|
+|---|---|---|---|
+|1|`id`|Id|`UUID`|
+
+#### Output (O)
+
+##### Part 0 (OPI0)
+
+None
+
+##### Part 1 (OPI1)
+
+None
+
+#### Sequence Diagram
 
 ```mermaid
 sequenceDiagram
@@ -60,6 +120,28 @@ sequenceDiagram
 
 ### LikeAlbum
 
+- **Type** : `Client / Server`
+- **Client Policy** : `Everybody`
+- **Server Policy** : `Everybody`
+
+#### Input (I)
+
+|#|name|humanized|dataType|
+|---|---|---|---|
+|1|`id`|Id|`UUID`|
+
+#### Output (O)
+
+##### Part 0 (OPI0)
+
+None
+
+##### Part 1 (OPI1)
+
+None
+
+#### Sequence Diagram
+
 ```mermaid
 sequenceDiagram
     actor User
@@ -79,6 +161,40 @@ sequenceDiagram
 ```
 
 ### ListAlbums
+
+- **Type** : `Client / Server`
+- **Client Policy** : `Everybody`
+- **Server Policy** : `Everybody`
+
+#### Input (I)
+
+|#|name|humanized|dataType|
+|---|---|---|---|
+|1|`id`|Id|`UUID`|
+|2|`limit`|Limit|`UIntQuantity`|
+|3|`offset`|Offset|`NumIndex`|
+|4|`q`|Q|`SearchQuery`|
+
+#### Output (O)
+
+##### Part 0 (OPI0)
+
+|#|name|humanized|dataType|
+|---|---|---|---|
+|1|`artist`|Artist|`FreeTextShort`|
+|2|`description`|Description|`FreeTextLong`|
+|3|`isPrivate`|Is Private|`boolean`|
+|4|`language`|Language|`FreeTextShort`|
+|5|`name`|Name|`FreeTextShort`|
+|6|`releaseYear`|Release Year|`Year`|
+|7|`tags`|Tags|`FreeTextShort`|
+|8|`id`|Id|`UUID`|
+
+##### Part 1 (OPI1)
+
+None
+
+#### Sequence Diagram
 
 ```mermaid
 sequenceDiagram
@@ -100,6 +216,30 @@ sequenceDiagram
 
 ### ListStats
 
+- **Type** : `Client / Server`
+- **Client Policy** : `Authenticated`
+- **Server Policy** : `Authenticated`
+
+#### Input (I)
+
+None
+
+#### Output (O)
+
+##### Part 0 (OPI0)
+
+|#|name|humanized|dataType|
+|---|---|---|---|
+|1|`name`|Name|`FreeTextShort`|
+|2|`value`|Value|`UIntQuantity`|
+|3|`id`|Id|`UUID`|
+
+##### Part 1 (OPI1)
+
+None
+
+#### Sequence Diagram
+
 ```mermaid
 sequenceDiagram
     actor User
@@ -119,6 +259,31 @@ sequenceDiagram
 ```
 
 ### PlaySong
+
+- **Type** : `Client / Server`
+- **Client Policy** : `Everybody`
+- **Server Policy** : `Everybody`
+
+#### Input (I)
+
+|#|name|humanized|dataType|
+|---|---|---|---|
+|1|`id`|Id|`UUID`|
+
+#### Output (O)
+
+##### Part 0 (OPI0)
+
+|#|name|humanized|dataType|
+|---|---|---|---|
+|1|`duration`|Duration|`EmbeddedObject`|
+|2|`id`|Id|`UUID`|
+
+##### Part 1 (OPI1)
+
+None
+
+#### Sequence Diagram
 
 ```mermaid
 sequenceDiagram

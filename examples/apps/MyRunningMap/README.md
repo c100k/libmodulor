@@ -10,6 +10,29 @@
 
 ### AuthenticateToStravaStep1
 
+- **Type** : `Client only`
+- **Client Policy** : `Everybody`
+- **Server Policy** : -
+
+#### Input (I)
+
+|#|name|humanized|dataType|
+|---|---|---|---|
+|1|`clientId`|Client Id|`ExternalServiceId`|
+|2|`redirectURI`|Redirect URI|`URL`|
+
+#### Output (O)
+
+##### Part 0 (OPI0)
+
+None
+
+##### Part 1 (OPI1)
+
+None
+
+#### Sequence Diagram
+
 ```mermaid
 sequenceDiagram
     actor User
@@ -24,6 +47,33 @@ sequenceDiagram
 
 ### AuthenticateToStravaStep2
 
+- **Type** : `Client only`
+- **Client Policy** : `Everybody`
+- **Server Policy** : -
+
+#### Input (I)
+
+|#|name|humanized|dataType|
+|---|---|---|---|
+|1|`clientId`|Client Id|`ExternalServiceId`|
+|2|`clientSecret`|Client Secret|`ApiKey`|
+|3|`url`|Url|`URL`|
+
+#### Output (O)
+
+##### Part 0 (OPI0)
+
+|#|name|humanized|dataType|
+|---|---|---|---|
+|1|`accessToken`|Access Token|`ApiKey`|
+|2|`id`|Id|`UUID`|
+
+##### Part 1 (OPI1)
+
+None
+
+#### Sequence Diagram
+
 ```mermaid
 sequenceDiagram
     actor User
@@ -37,6 +87,34 @@ sequenceDiagram
 ```
 
 ### GenerateRunningMapFromStrava
+
+- **Type** : `Client only`
+- **Client Policy** : `Everybody`
+- **Server Policy** : -
+
+#### Input (I)
+
+|#|name|humanized|dataType|
+|---|---|---|---|
+|1|`activitiesCount`|Activities Count|`UIntQuantity`|
+|2|`mapboxAccessToken`|Mapbox Access Token|`ApiKey`|
+|3|`stravaAccessToken`|Strava Access Token|`ApiKey`|
+
+#### Output (O)
+
+##### Part 0 (OPI0)
+
+|#|name|humanized|dataType|
+|---|---|---|---|
+|1|`mapURL`|Map URL|`URLString`|
+|2|`mapURLCharsCount`|Map URLChars Count|`UIntQuantity`|
+|3|`id`|Id|`UUID`|
+
+##### Part 1 (OPI1)
+
+None
+
+#### Sequence Diagram
 
 ```mermaid
 sequenceDiagram

@@ -10,6 +10,33 @@
 
 ### CreateActivity
 
+- **Type** : `Client only`
+- **Client Policy** : `Nobody`
+- **Server Policy** : -
+
+#### Input (I)
+
+|#|name|humanized|dataType|
+|---|---|---|---|
+|1|`date`|Date|`DateISO8601`|
+|2|`description`|Description|`FreeTextLong`|
+|3|`title`|Title|`FreeTextShort`|
+|4|`type`|Type|`ActivityType`|
+
+#### Output (O)
+
+##### Part 0 (OPI0)
+
+|#|name|humanized|dataType|
+|---|---|---|---|
+|1|`id`|Id|`UUID`|
+
+##### Part 1 (OPI1)
+
+None
+
+#### Sequence Diagram
+
 ```mermaid
 sequenceDiagram
     actor User
