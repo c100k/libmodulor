@@ -35,7 +35,8 @@ export function htmlInputDef(field, disabled, errMsg) {
         def.internal.checked = fType.getInitialValue() === true;
     }
     else if (fType instanceof TFile) {
-        def.spec.accept = fType.allowed().join(',');
+        const constraints = fType.getFileConstraints();
+        def.spec.accept = constraints.accept.join(',');
     }
     if (!(fType instanceof TBoolean)) {
         def.internal.value = fType.getInitialValue()?.toString() || '';

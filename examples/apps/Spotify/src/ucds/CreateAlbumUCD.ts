@@ -55,8 +55,8 @@ export const CreateAlbumUCD: UCDef<CreateAlbumInput, CreateAlbumOPI0> = {
                         min: 0,
                     },
                     type: new TFile({
+                        accept: ['application/pdf'],
                         maxSizeInBytes: 5 * 1024 * 1024,
-                        type: { allowed: ['application/pdf'] },
                     }).withOneExample('book.pdf'),
                 },
                 cover: {
@@ -64,10 +64,8 @@ export const CreateAlbumUCD: UCDef<CreateAlbumInput, CreateAlbumOPI0> = {
                         min: 0,
                     },
                     type: new TFile({
+                        accept: ['image/png', 'image/jpeg', 'image/jpg'],
                         maxSizeInBytes: 1 * 1024 * 1024,
-                        type: {
-                            allowed: ['image/png', 'image/jpeg', 'image/jpg'],
-                        },
                     }),
                 },
                 description: {

@@ -1,5 +1,5 @@
 import { TObject, TObjectShapeValidationStrategy } from '../base/TObject.js';
-import { TFileMimeType, } from './TFileMimeType.js';
+import { TFileMimeType } from './TFileMimeType.js';
 import { TFileName } from './TFileName.js';
 import { TFilePath } from './TFilePath.js';
 export class TFile extends TObject {
@@ -45,12 +45,15 @@ export class TFile extends TObject {
         }
         const val = this.raw;
         validation.concat(new TFileName().assign(val.name).validate());
+        const { accept, maxSizeInBytes, minSizeInBytes } = this.fileConstraints;
+        const { path, size, type } = val;
         if (!(val instanceof File)) {
-            validation.concat(new TFilePath().assign(val.path).validate());
+            validation.concat(new TFilePath().assign(path).validate());
         }
-        const { maxSizeInBytes, minSizeInBytes, type } = this.fileConstraints;
-        validation.concat(new TFileMimeType(type).assign(val.type).validate());
-        const { size } = val;
+        validation.concat(new TFileMimeType()
+            .setOptions(accept.map((a) => ({ label: a, value: a })))
+            .assign(type)
+            .validate());
         if (minSizeInBytes && size < minSizeInBytes) {
             validation.add({
                 constraint: 'minSize',
@@ -65,8 +68,8 @@ export class TFile extends TObject {
         }
         return validation;
     }
-    allowed() {
-        return this.fileConstraints.type.allowed;
+    getFileConstraints() {
+        return this.fileConstraints;
     }
     fmtBytes(bytes, decimals = 2) {
         const k = 1024;
@@ -80,7 +83,7 @@ export class TFile extends TObject {
                 name,
                 path: `${TFilePath.ABS_PATH}/${name}`,
                 size: TFilePath.FILE_SIZE,
-                type: this.fileConstraints.type.allowed[0] ?? TFilePath.MIME_TYPE,
+                type: this.fileConstraints.accept[0] ?? TFilePath.MIME_TYPE,
             },
         ]);
         return this;
