@@ -94,7 +94,7 @@ let NodeFSManager = class NodeFSManager {
         }
         switch (source) {
             case 'path': {
-                const { base: name, mimeType: type } = await this.info(path);
+                const { base: name, mimeType: type, size, } = await this.info(path);
                 if (!type) {
                     return [];
                 }
@@ -102,6 +102,7 @@ let NodeFSManager = class NodeFSManager {
                     {
                         name,
                         path,
+                        size,
                         type,
                     },
                 ];

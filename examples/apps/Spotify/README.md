@@ -19,13 +19,14 @@
 |#|name|humanized|dataType|
 |---|---|---|---|
 |1|`artist`|Artist|`FreeTextShort`|
-|2|`cover`|Cover|`File`|
-|3|`description`|Description|`FreeTextLong`|
-|4|`isPrivate`|Is Private|`boolean`|
-|5|`language`|Language|`FreeTextShort`|
-|6|`name`|Name|`FreeTextShort`|
-|7|`releaseYear`|Release Year|`Year`|
-|8|`tags`|Tags|`FreeTextShort`|
+|2|`book`|Book|`File`|
+|3|`cover`|Cover|`File`|
+|4|`description`|Description|`FreeTextLong`|
+|5|`isPrivate`|Is Private|`boolean`|
+|6|`language`|Language|`FreeTextShort`|
+|7|`name`|Name|`FreeTextShort`|
+|8|`releaseYear`|Release Year|`Year`|
+|9|`tags`|Tags|`FreeTextShort`|
 
 #### Output (O)
 
@@ -51,13 +52,13 @@ None
 ```mermaid
 sequenceDiagram
     actor User
-    User->>+Client: ✏️ Fill<br/>artist: FreeTextShort<br/>cover: File<br/>description: FreeTextLong<br/>isPrivate: boolean<br/>language: FreeTextShort<br/>name: FreeTextShort<br/>releaseYear: Year<br/>tags: FreeTextShort
+    User->>+Client: ✏️ Fill<br/>artist: FreeTextShort<br/>book: File<br/>cover: File<br/>description: FreeTextLong<br/>isPrivate: boolean<br/>language: FreeTextShort<br/>name: FreeTextShort<br/>releaseYear: Year<br/>tags: FreeTextShort
     User->>Client: ↩️ Submit
     Client->>Client: 🔐 Check policy "Everybody"
     break when any validation fails
         Client-->User: show failure
     end
-    Client->>+Server: 📤 Send<br/>artist: FreeTextShort<br/>cover: File<br/>description: FreeTextLong<br/>isPrivate: boolean<br/>language: FreeTextShort<br/>name: FreeTextShort<br/>releaseYear: Year<br/>tags: FreeTextShort
+    Client->>+Server: 📤 Send<br/>artist: FreeTextShort<br/>book: File<br/>cover: File<br/>description: FreeTextLong<br/>isPrivate: boolean<br/>language: FreeTextShort<br/>name: FreeTextShort<br/>releaseYear: Year<br/>tags: FreeTextShort
     Server->>Server: 🔐 Check policy "Everybody"
     break when any validation fails
         Server-->User: show failure
@@ -307,7 +308,7 @@ sequenceDiagram
 
 |#|filePath|constName|metadataName|metadataAction|metadataBeta|metadataIcon|metadataNew|metadataSensitive|externalImports|internalImports|ioI|ioIFields|ioOPI0|ioOPI0Fields|ioOPI1|ioOPI1Fields|lifecycleClientPolicy|lifecycleServerPolicy|
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-|1|/src/ucds/CreateAlbumUCD.ts|CreateAlbumUCD|CreateAlbum|Create||circle-plus||||../../../../../dist/esm/index.js<br>../lib/album.js<br>../manifest.js<br>./CreateAlbumServerMain.js<br>./ListAlbumsUCD.js|CreateAlbumInput|artist: UCInputFieldValue&#60;FreeTextShort&#62;<br>cover: UCInputFieldValue&#60;File&#62;<br>description: UCInputFieldValue&#60;FreeTextLong&#62;<br>isPrivate: UCInputFieldValue&#60;boolean&#62;<br>language: UCInputFieldValue&#60;FreeTextShort&#62;<br>name: UCInputFieldValue&#60;FreeTextShort&#62;<br>releaseYear: UCInputFieldValue&#60;Year&#62;<br>tags: UCInputFieldValue&#60;FreeTextShort&#62;|CreateAlbumOPI0|artist: UCOPIValue&#60;FreeTextShort&#62;<br>description: UCOPIValue&#60;FreeTextLong&#62;<br>isPrivate: UCOPIValue&#60;boolean&#62;<br>language: UCOPIValue&#60;FreeTextShort&#62;<br>name: UCOPIValue&#60;FreeTextShort&#62;<br>releaseYear: UCOPIValue&#60;Year&#62;<br>tags: UCOPIValue&#60;FreeTextShort&#62;<br>id: UUID|||Everybody|Everybody|
+|1|/src/ucds/CreateAlbumUCD.ts|CreateAlbumUCD|CreateAlbum|Create||circle-plus||||../../../../../dist/esm/index.js<br>../lib/album.js<br>../manifest.js<br>./CreateAlbumServerMain.js<br>./ListAlbumsUCD.js|CreateAlbumInput|artist: UCInputFieldValue&#60;FreeTextShort&#62;<br>book: UCInputFieldValue&#60;File&#62;<br>cover: UCInputFieldValue&#60;File&#62;<br>description: UCInputFieldValue&#60;FreeTextLong&#62;<br>isPrivate: UCInputFieldValue&#60;boolean&#62;<br>language: UCInputFieldValue&#60;FreeTextShort&#62;<br>name: UCInputFieldValue&#60;FreeTextShort&#62;<br>releaseYear: UCInputFieldValue&#60;Year&#62;<br>tags: UCInputFieldValue&#60;FreeTextShort&#62;|CreateAlbumOPI0|artist: UCOPIValue&#60;FreeTextShort&#62;<br>description: UCOPIValue&#60;FreeTextLong&#62;<br>isPrivate: UCOPIValue&#60;boolean&#62;<br>language: UCOPIValue&#60;FreeTextShort&#62;<br>name: UCOPIValue&#60;FreeTextShort&#62;<br>releaseYear: UCOPIValue&#60;Year&#62;<br>tags: UCOPIValue&#60;FreeTextShort&#62;<br>id: UUID|||Everybody|Everybody|
 |2|/src/ucds/DeleteAlbumUCD.ts|DeleteAlbumUCD|DeleteAlbum|Delete||trash-can||true||../../../../../dist/esm/index.js<br>../manifest.js<br>./DeleteAlbumServerMain.js|DeleteAlbumInput|id: UCInputFieldValue&#60;UUID&#62;|||||Everybody|Everybody|
 |3|/src/ucds/LikeAlbumUCD.ts|LikeAlbumUCD|LikeAlbum|Update||circle-check||||../../../../../dist/esm/index.js<br>../manifest.js|LikeAlbumInput|id: UCInputFieldValue&#60;UUID&#62;|||||Everybody|Everybody|
 |4|/src/ucds/ListAlbumsUCD.ts|ListAlbumsUCD|ListAlbums|List||list||||../../../../../dist/esm/index.js<br>../lib/album.js<br>../manifest.js<br>./ListAlbumsServerMain.js|ListAlbumsInput|id: UCInputFieldValue&#60;UUID&#62;<br>limit: UCInputFieldValue&#60;UIntQuantity&#62;<br>offset: UCInputFieldValue&#60;NumIndex&#62;<br>q: UCInputFieldValue&#60;SearchQuery&#62;|ListAlbumsOPI0|artist: UCOPIValue&#60;FreeTextShort&#62;<br>description: UCOPIValue&#60;FreeTextLong&#62;<br>isPrivate: UCOPIValue&#60;boolean&#62;<br>language: UCOPIValue&#60;FreeTextShort&#62;<br>name: UCOPIValue&#60;FreeTextShort&#62;<br>releaseYear: UCOPIValue&#60;Year&#62;<br>tags: UCOPIValue&#60;FreeTextShort&#62;<br>id: UUID|||Everybody|Everybody|

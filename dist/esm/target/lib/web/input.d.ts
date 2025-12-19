@@ -34,6 +34,7 @@ export interface HTMLInputDef {
      * @see node_modules/@types/react/index.d.ts `InputHTMLAttributes`
      */
     spec?: {
+        accept?: string | undefined;
         'aria-errormessage'?: string | undefined;
         'aria-invalid'?: boolean | undefined;
         disabled?: boolean | undefined;

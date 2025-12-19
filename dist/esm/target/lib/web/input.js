@@ -1,4 +1,4 @@
-import { TBoolean, TNumber, TString, } from '../../../dt/index.js';
+import { TBoolean, TFile, TNumber, TString, } from '../../../dt/index.js';
 import { ucifHint, ucifId, ucifIsMandatory, } from '../../../uc/index.js';
 export function htmlInputDef(field, disabled, errMsg) {
     const def = {
@@ -33,6 +33,9 @@ export function htmlInputDef(field, disabled, errMsg) {
     }
     else if (fType instanceof TBoolean) {
         def.internal.checked = fType.getInitialValue() === true;
+    }
+    else if (fType instanceof TFile) {
+        def.spec.accept = fType.allowed().join(',');
     }
     if (!(fType instanceof TBoolean)) {
         def.internal.value = fType.getInitialValue()?.toString() || '';

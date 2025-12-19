@@ -17,6 +17,7 @@ export const I18n: AppI18n = {
         ucif_artist_desc:
             'Wenn leer gelassen, wird es automatisch von Mistral AI ausgefüllt',
         ucif_artist_label: 'Künstler',
+        ucif_book_label: 'Buch',
         ucif_cover_label: 'Cover',
         ucif_description_label: 'Beschreibung',
         ucif_id_label: 'Kennung',
@@ -76,6 +77,7 @@ export const I18n: AppI18n = {
         ucif_artist_desc:
             'Si se deja vacío, se rellena automáticamente con Mistral AI',
         ucif_artist_label: 'Artista',
+        ucif_book_label: 'Libro',
         ucif_cover_label: 'Carátula',
         ucif_description_label: 'Descripción',
         ucif_id_label: 'Identificador',
@@ -116,6 +118,7 @@ export const I18n: AppI18n = {
         ucif_artist_desc:
             "S'il est laissé vide, il est automatiquement rempli par Mistral AI",
         ucif_artist_label: 'Artiste',
+        ucif_book_label: 'Livre',
         ucif_cover_label: 'Jaquette',
         ucif_description_label: 'Description',
         ucif_id_label: 'Identifiant',

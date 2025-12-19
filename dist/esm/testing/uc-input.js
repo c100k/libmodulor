@@ -1,5 +1,6 @@
-import { TFile } from '../dt/index.js';
+import { TFile, TFilePath } from '../dt/index.js';
 import { ucifIsMandatory, ucifMustBeFilledManually, ucifRepeatability, } from '../uc/index.js';
+import { range } from '../utils/index.js';
 export const DEFAULT_UC_INPUT_FILLERS = [
     'ALL_WITH_EXAMPLES',
     'ONLY_MANDATORY_WITH_EXAMPLES',
@@ -39,7 +40,9 @@ function fillWithExample(f) {
     if (type instanceof TFile) {
         const example = type.getExamples()?.[0] ?? type.example();
         // TODO : Consider building a real file with real data (e.g. image, pdf, txt, etc.)
-        const val = new File(['01010101010101010101010101010101'], example.path, {
+        // A fake file filled with 0s and 1s
+        const blob = range(TFilePath.FILE_SIZE).map((i) => (i % 2).toString());
+        const val = new File(blob, example.path, {
             type: example.type,
         });
         const [isRepeatable] = ucifRepeatability(f.def);

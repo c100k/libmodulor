@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Run > Use Cases > 'CreateAlbum' > should execute with auth 'ADMIN' and input 'ALL_WITH_EXAMPLES' > hash = 62f2a511f5f71be0c291625ab9ca96d9d8106af65791cec45ec11290780731fc 1`] = `
+exports[`Run > Use Cases > 'CreateAlbum' > should execute with auth 'ADMIN' and input 'ALL_WITH_EXAMPLES' > hash = b85e1284dc61d392b82fdfc001e28cebd781c2b8b4dfacc9192ed6c525ecb631 1`] = `
 {
   "out": {
     "args": {
@@ -20,10 +20,15 @@ exports[`Run > Use Cases > 'CreateAlbum' > should execute with auth 'ADMIN' and 
       "inputFillerName": "ALL_WITH_EXAMPLES",
     },
     "err": null,
-    "hash": "62f2a511f5f71be0c291625ab9ca96d9d8106af65791cec45ec11290780731fc",
+    "hash": "b85e1284dc61d392b82fdfc001e28cebd781c2b8b4dfacc9192ed6c525ecb631",
     "io": {
       "i": {
         "artist": "Daft Punk",
+        "book": {
+          "name": "/Users/dexter/Desktop/book.pdf",
+          "size": 32,
+          "type": "application/pdf",
+        },
         "cover": {
           "name": "/Users/dexter/Desktop/picture.png",
           "size": 32,
@@ -89,6 +94,7 @@ exports[`Run > Use Cases > 'CreateAlbum' > should execute with auth 'ADMIN' and 
     "io": {
       "i": {
         "artist": "Daft Punk",
+        "book": undefined,
         "cover": undefined,
         "description": undefined,
         "isPrivate": true,
@@ -146,6 +152,7 @@ exports[`Run > Use Cases > 'CreateAlbum' > should execute with auth 'ADMIN' and 
     "io": {
       "i": {
         "artist": "Daft Punk",
+        "book": undefined,
         "cover": undefined,
         "description": undefined,
         "isPrivate": true,
@@ -161,7 +168,7 @@ exports[`Run > Use Cases > 'CreateAlbum' > should execute with auth 'ADMIN' and 
 }
 `;
 
-exports[`Run > Use Cases > 'CreateAlbum' > should execute with auth 'ANONYMOUS' and input 'ALL_WITH_EXAMPLES' > hash = f36d840785fc0bf5e61b96c461cc08f448eed38ee9604214a85ca8a4f7ac2878 1`] = `
+exports[`Run > Use Cases > 'CreateAlbum' > should execute with auth 'ANONYMOUS' and input 'ALL_WITH_EXAMPLES' > hash = 957276cba07ca0658418c2b76198b4a505eacdc71b66cee64d41a1558d23040b 1`] = `
 {
   "out": {
     "args": {
@@ -171,10 +178,15 @@ exports[`Run > Use Cases > 'CreateAlbum' > should execute with auth 'ANONYMOUS' 
       "inputFillerName": "ALL_WITH_EXAMPLES",
     },
     "err": null,
-    "hash": "f36d840785fc0bf5e61b96c461cc08f448eed38ee9604214a85ca8a4f7ac2878",
+    "hash": "957276cba07ca0658418c2b76198b4a505eacdc71b66cee64d41a1558d23040b",
     "io": {
       "i": {
         "artist": "Daft Punk",
+        "book": {
+          "name": "/Users/dexter/Desktop/book.pdf",
+          "size": 32,
+          "type": "application/pdf",
+        },
         "cover": {
           "name": "/Users/dexter/Desktop/picture.png",
           "size": 32,
@@ -230,6 +242,7 @@ exports[`Run > Use Cases > 'CreateAlbum' > should execute with auth 'ANONYMOUS' 
     "io": {
       "i": {
         "artist": "Daft Punk",
+        "book": undefined,
         "cover": undefined,
         "description": undefined,
         "isPrivate": true,
@@ -277,6 +290,7 @@ exports[`Run > Use Cases > 'CreateAlbum' > should execute with auth 'ANONYMOUS' 
     "io": {
       "i": {
         "artist": "Daft Punk",
+        "book": undefined,
         "cover": undefined,
         "description": undefined,
         "isPrivate": true,
@@ -292,7 +306,7 @@ exports[`Run > Use Cases > 'CreateAlbum' > should execute with auth 'ANONYMOUS' 
 }
 `;
 
-exports[`Run > Use Cases > 'CreateAlbum' > should execute with auth 'REGULAR' and input 'ALL_WITH_EXAMPLES' > hash = 88454341edb52cc05f4ebeb253acd7b755e60d65a6870f7562b7358191778fe8 1`] = `
+exports[`Run > Use Cases > 'CreateAlbum' > should execute with auth 'REGULAR' and input 'ALL_WITH_EXAMPLES' > hash = c1f5150fb2f90623c5a29b011f22b46163093115b4e2bdf85c1acf35051c2ca8 1`] = `
 {
   "out": {
     "args": {
@@ -312,10 +326,15 @@ exports[`Run > Use Cases > 'CreateAlbum' > should execute with auth 'REGULAR' an
       "inputFillerName": "ALL_WITH_EXAMPLES",
     },
     "err": null,
-    "hash": "88454341edb52cc05f4ebeb253acd7b755e60d65a6870f7562b7358191778fe8",
+    "hash": "c1f5150fb2f90623c5a29b011f22b46163093115b4e2bdf85c1acf35051c2ca8",
     "io": {
       "i": {
         "artist": "Daft Punk",
+        "book": {
+          "name": "/Users/dexter/Desktop/book.pdf",
+          "size": 32,
+          "type": "application/pdf",
+        },
         "cover": {
           "name": "/Users/dexter/Desktop/picture.png",
           "size": 32,
@@ -381,6 +400,7 @@ exports[`Run > Use Cases > 'CreateAlbum' > should execute with auth 'REGULAR' an
     "io": {
       "i": {
         "artist": "Daft Punk",
+        "book": undefined,
         "cover": undefined,
         "description": undefined,
         "isPrivate": true,
@@ -438,6 +458,7 @@ exports[`Run > Use Cases > 'CreateAlbum' > should execute with auth 'REGULAR' an
     "io": {
       "i": {
         "artist": "Daft Punk",
+        "book": undefined,
         "cover": undefined,
         "description": undefined,
         "isPrivate": true,

@@ -21,6 +21,7 @@ import type { ListAlbumsOPI0 } from './ListAlbumsUCD.js';
 
 export interface CreateAlbumInput extends UCInput {
     artist: UCInputFieldValue<FreeTextShort>;
+    book: UCInputFieldValue<File>;
     cover: UCInputFieldValue<File>;
     description: UCInputFieldValue<FreeTextLong>;
     isPrivate: UCInputFieldValue<boolean>;
@@ -49,11 +50,25 @@ export const CreateAlbumUCD: UCDef<CreateAlbumInput, CreateAlbumOPI0> = {
                         .setExamples(['Daft Punk'])
                         .setInitialValue('Daft Punk'),
                 },
+                book: {
+                    cardinality: {
+                        min: 0,
+                    },
+                    type: new TFile({
+                        maxSizeInBytes: 5 * 1024 * 1024,
+                        type: { allowed: ['application/pdf'] },
+                    }).withOneExample('book.pdf'),
+                },
                 cover: {
                     cardinality: {
                         min: 0,
                     },
-                    type: new TFile({ type: { allowed: ['image/png'] } }),
+                    type: new TFile({
+                        maxSizeInBytes: 1 * 1024 * 1024,
+                        type: {
+                            allowed: ['image/png', 'image/jpeg', 'image/jpg'],
+                        },
+                    }),
                 },
                 description: {
                     cardinality: {
@@ -115,6 +130,7 @@ export const CreateAlbumUCD: UCDef<CreateAlbumInput, CreateAlbumOPI0> = {
                 'tags',
                 'artist',
                 'cover',
+                'book',
                 'isPrivate',
             ],
         },

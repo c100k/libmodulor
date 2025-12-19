@@ -98,6 +98,7 @@ export function toFile(f) {
     return {
         name: f.name,
         path: f.tempFilePath,
+        size: f.size,
         type: f.mimetype,
     };
 }

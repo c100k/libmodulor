@@ -34,7 +34,8 @@ let UCInputValidator = class UCInputValidator {
         let message = this.i18nManager.t(key, { vars: { expected } });
         if (field) {
             const { label } = this.wordingManager.ucif(field);
-            message = `${label} ${message ? message.toLowerCase() : ''}`.trim();
+            message = `${message.charAt(0).toLowerCase()}${message.slice(1)}`;
+            message = `${label} ${message}`.trim();
         }
         throw new IllegalArgumentError(message);
     }
