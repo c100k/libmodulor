@@ -5,7 +5,7 @@ import {
     useState,
 } from 'react';
 
-import { isBlank, type Year } from '../../../../../dist/esm/index.js';
+import { isBlank, ucifId, type Year } from '../../../../../dist/esm/index.js';
 import {
     styleDef,
     type UCFormFieldControlProps,
@@ -28,6 +28,7 @@ export default function Slider({
 
     const {
         def: { type },
+        key,
     } = f;
 
     const options = type.getOptions();
@@ -53,6 +54,7 @@ export default function Slider({
         <span className={className} style={style}>
             <input
                 disabled={disabled}
+                id={ucifId(key)}
                 max={max}
                 min={min}
                 onChange={onChange}
