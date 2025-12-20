@@ -26,6 +26,7 @@ export interface OptionsOpts {
     shouldTranslateLabels?: boolean;
     strict?: boolean;
 }
+export type ConstraintsForHuman = Record<string, string>;
 export declare abstract class TBase<T extends DataType> {
     static DEFAULT_OPTIONS: Required<OptionsOpts>;
     protected defaultValue: T | undefined;
@@ -44,6 +45,7 @@ export declare abstract class TBase<T extends DataType> {
     fmt(ifNullOrUndefined?: string): string;
     getDefaultValue(): T | undefined;
     getExamples(): T[] | undefined;
+    getConstraintsForHuman(): ConstraintsForHuman | null;
     getInitialValue(): T | undefined;
     getOptions(): Option<T>[] | undefined;
     getSemanticsMapping(): SemanticsMapping | undefined;

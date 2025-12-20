@@ -1,4 +1,10 @@
 export const I18nES = {
+    dt_File_constr_accept: 'Tipos aceptados: {{expected}}',
+    dt_File_constr_maxSizeInBytes: 'Tamaño máximo: {{expected}}',
+    dt_File_constr_minSizeInBytes: 'Tamaño mínimo: {{expected}}',
+    dt_FreeTextShort_constr_format: 'Formato: {{expected}}',
+    dt_FreeTextShort_constr_maxLength: 'Longitud máxima: {{expected}}',
+    dt_FreeTextShort_constr_minLength: 'Longitud mínima: {{expected}}',
     dt_YesNo_N_desc: '',
     dt_YesNo_N_label: 'No',
     dt_YesNo_Y_desc: '',

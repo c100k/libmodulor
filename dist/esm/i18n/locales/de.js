@@ -1,4 +1,10 @@
 export const I18nDE = {
+    dt_File_constr_accept: 'Akzeptierte Typen: {{expected}}',
+    dt_File_constr_maxSizeInBytes: 'Maximale Größe: {{expected}}',
+    dt_File_constr_minSizeInBytes: 'Minimale Größe: {{expected}}',
+    dt_FreeTextShort_constr_format: 'Format: {{expected}}',
+    dt_FreeTextShort_constr_maxLength: 'Maximale Länge: {{expected}}',
+    dt_FreeTextShort_constr_minLength: 'Minimale Länge: {{expected}}',
     dt_YesNo_N_desc: '',
     dt_YesNo_N_label: 'Nein',
     dt_YesNo_Y_desc: '',

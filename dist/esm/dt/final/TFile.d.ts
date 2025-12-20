@@ -1,4 +1,4 @@
-import type { TName } from '../base/TBase.js';
+import type { ConstraintsForHuman, TName } from '../base/TBase.js';
 import { TObject } from '../base/TObject.js';
 import type { HTMLInputType } from '../targets/web.js';
 import type { Validation } from '../Validation.js';
@@ -8,9 +8,9 @@ import { type FilePath } from './TFilePath.js';
 import type { UIntQuantity } from './TUIntQuantity.js';
 export type File = {
     name: FileName;
-    path: FilePath;
     size: UIntQuantity;
     type: FileMimeType;
+    uri: FilePath;
 };
 export interface TFileConstraints {
     accept: FileMimeType[];
@@ -23,6 +23,7 @@ export declare class TFile extends TObject<File> {
     constructor(fileConstraints: TFileConstraints);
     tName(): TName;
     example(): File;
+    getConstraintsForHuman(): ConstraintsForHuman | null;
     htmlInputType(): HTMLInputType;
     validate(): Validation;
     getFileConstraints(): TFileConstraints;

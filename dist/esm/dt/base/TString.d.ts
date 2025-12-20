@@ -1,5 +1,5 @@
 import type { Validation, ViolationFormat } from '../Validation.js';
-import { TBase, type TName } from './TBase.js';
+import { type ConstraintsForHuman, TBase, type TName } from './TBase.js';
 export interface TStringConstraints<VF extends ViolationFormat | (string & {}) = ViolationFormat> {
     format?: {
         f: VF;
@@ -15,6 +15,7 @@ export declare class TString<T extends string = string, VF extends ViolationForm
     constructor(constraints?: TStringConstraints<VF> | undefined);
     tName(): TName;
     example(): T;
+    getConstraintsForHuman(): ConstraintsForHuman | null;
     getConstraints(): TStringConstraints<VF> | undefined;
     isPotentiallyLong(): boolean;
     protected removeFormatConstraint(): void;

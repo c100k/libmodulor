@@ -27,7 +27,7 @@ export { type Emoji, TEmoji } from './final/TEmoji.js';
 export { type EncryptionKey, TEncryptionKey } from './final/TEncryptionKey.js';
 export { type ErrorMessage, TErrorMessage } from './final/TErrorMessage.js';
 export { type ExternalServiceId, TExternalServiceId, } from './final/TExternalServiceId.js';
-export { type File, TFile } from './final/TFile.js';
+export { type File, TFile, type TFileConstraints } from './final/TFile.js';
 export { type FileExtension, TFileExtension } from './final/TFileExtension.js';
 export { type FileMimeType, TFileMimeType } from './final/TFileMimeType.js';
 export { type FileName, TFileName } from './final/TFileName.js';

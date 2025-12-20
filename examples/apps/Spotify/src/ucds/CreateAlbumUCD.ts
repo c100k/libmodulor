@@ -93,7 +93,9 @@ export const CreateAlbumUCD: UCDef<CreateAlbumInput, CreateAlbumOPI0> = {
                     ]),
                 },
                 name: {
-                    type: new TFreeTextShort().setExamples(['Alive 2007']),
+                    type: new TFreeTextShort({ maxLength: 150 }).setExamples([
+                        'Alive 2007',
+                    ]),
                 },
                 releaseYear: {
                     cardinality: {

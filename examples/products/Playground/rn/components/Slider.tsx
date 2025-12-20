@@ -18,7 +18,7 @@ export default function Slider({
 
     const [internalValue, setInternalValue] = useState(f.getValue());
 
-    // biome-ignore lint/correctness/useExhaustiveDependencies: false positive : It is actually necessary (only `f` does not trigger the effect)
+    // biome-ignore lint/correctness/useExhaustiveDependencies: It is actually necessary because only `f` or `f.getValue` does not trigger the effect
     useEffect(() => {
         setInternalValue(f.getValue());
     }, [f.getValue()]);

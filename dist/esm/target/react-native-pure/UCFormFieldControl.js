@@ -1,7 +1,7 @@
 import { jsx as _jsx } from "react/jsx-runtime";
 import { useEffect, useState } from 'react';
 import { FlatList, Pressable, StyleSheet, Switch, Text, TextInput, } from 'react-native';
-import { TBoolean } from '../../dt/index.js';
+import { TBoolean, TFile } from '../../dt/index.js';
 import { ucifRepeatability } from '../../uc/index.js';
 import { isBlank } from '../../utils/index.js';
 import { styleDef, useStyleContext, } from '../lib/react/StyleContextProvider.js';
@@ -11,7 +11,7 @@ const MULTIPLE_VALUES_SEPARATOR = ',';
 export function UCFormFieldControl({ disabled, errMsg = null, execState, f, onChange: onChangeBase, }) {
     const { colors, formFieldControl, renderFormFieldControl } = useStyleContext();
     const [internalValue, setInternalValue] = useState(f.getValue());
-    // biome-ignore lint/correctness/useExhaustiveDependencies: false positive : It is actually necessary (only `f` does not trigger the effect)
+    // biome-ignore lint/correctness/useExhaustiveDependencies: It is actually necessary because only `f` or `f.getValue` does not trigger the effect
     useEffect(() => {
         setInternalValue(f.getValue());
     }, [f.getValue()]);
@@ -24,6 +24,10 @@ export function UCFormFieldControl({ disabled, errMsg = null, execState, f, onCh
     });
     if (component) {
         return component;
+    }
+    const { type } = f.def;
+    if (type instanceof TFile) {
+        return (_jsx(Text, { style: { color: 'red' }, children: "Generic file picker not available in RN" }));
     }
     const onChangeText = (value) => {
         const [isRepeatable] = ucifRepeatability(f.def);
@@ -58,7 +62,6 @@ export function UCFormFieldControl({ disabled, errMsg = null, execState, f, onCh
         setInternalValue(value);
     };
     const attrs = rnInputDef(f, disabled, errMsg);
-    const { type } = f.def;
     const options = type.getOptions();
     if (options) {
         // TODO : Handle type.hasStrictOptions() => display an input text alongside the options
@@ -72,7 +75,6 @@ export function UCFormFieldControl({ disabled, errMsg = null, execState, f, onCh
                     },
                 ], children: _jsx(Text, { children: item.label }) })), showsHorizontalScrollIndicator: false, style: styles.select }));
     }
-    // TODO : Implement picker for TFile (requires a dependency...)
     if (type instanceof TBoolean) {
         const { style } = styleDef(formFieldControl, 'Switch');
         return (_jsx(Switch, { disabled: !attrs.spec?.editable, onValueChange: onValueChange, style: style, trackColor: { true: colors?.primary }, value: internalValue }));

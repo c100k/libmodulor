@@ -39,6 +39,24 @@ let WordingManager = class WordingManager {
         }
         return { desc, label };
     }
+    dtConstr(type) {
+        const constraints = type.getConstraintsForHuman();
+        if (!constraints) {
+            return null;
+        }
+        const entries = Object.entries(constraints);
+        if (entries.length === 0) {
+            return null;
+        }
+        const parts = [];
+        for (const [k, v] of Object.entries(constraints)) {
+            parts.push(
+            // TODO : Consider moving up the type hierarchy to fetch the constr of the parent when missing
+            // e.g. TFreeTextShort > TString
+            this.t(`dt_${type.tName()}_constr_${k}`, undefined, v));
+        }
+        return parts;
+    }
     p() {
         return {
             desc: this.tOrNull('p_desc'),
@@ -87,8 +105,11 @@ let WordingManager = class WordingManager {
             label: this.tOrNull(`uc_${name}_op_${idx}_label`),
         };
     }
-    t(key, fallback = undefined) {
-        return this.i18nManager.t(key, { fallback });
+    t(key, fallback = undefined, expected = undefined) {
+        return this.i18nManager.t(key, {
+            fallback,
+            vars: expected ? { expected } : {},
+        });
     }
     tOr(key, fallbackKey) {
         let val = this.tOrNull(key);

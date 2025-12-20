@@ -101,9 +101,9 @@ let NodeFSManager = class NodeFSManager {
                 return [
                     {
                         name,
-                        path,
                         size,
                         type,
+                        uri: path,
                     },
                 ];
             }

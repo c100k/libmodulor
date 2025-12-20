@@ -18,6 +18,8 @@ export const I18n: AppI18n = {
             'Wenn leer gelassen, wird es automatisch von Mistral AI ausgefüllt',
         ucif_artist_label: 'Künstler',
         ucif_book_label: 'Buch',
+        ucif_cover_desc:
+            'In der Regel ein quadratisches Bild, das das Album veranschaulicht',
         ucif_cover_label: 'Cover',
         ucif_description_label: 'Beschreibung',
         ucif_id_label: 'Kennung',
@@ -58,6 +60,7 @@ export const I18n: AppI18n = {
         uc_PlaySong_label: 'Play a song',
         ucif_artist_desc:
             "If left empty, it's automatically populated by Mistral AI",
+        ucif_cover_desc: 'Usually a square image illustrating the album',
         ucif_isPrivate_desc: 'Whether to keep this album to yourself or not',
         ucif_language_desc: 'If there are multiple, select the most used one',
     },
@@ -78,6 +81,7 @@ export const I18n: AppI18n = {
             'Si se deja vacío, se rellena automáticamente con Mistral AI',
         ucif_artist_label: 'Artista',
         ucif_book_label: 'Libro',
+        ucif_cover_desc: 'Normalmente una imagen cuadrada que ilustra el álbum',
         ucif_cover_label: 'Carátula',
         ucif_description_label: 'Descripción',
         ucif_id_label: 'Identificador',
@@ -119,6 +123,7 @@ export const I18n: AppI18n = {
             "S'il est laissé vide, il est automatiquement rempli par Mistral AI",
         ucif_artist_label: 'Artiste',
         ucif_book_label: 'Livre',
+        ucif_cover_desc: "Généralement une image carrée illustrant l'album",
         ucif_cover_label: 'Jaquette',
         ucif_description_label: 'Description',
         ucif_id_label: 'Identifiant',

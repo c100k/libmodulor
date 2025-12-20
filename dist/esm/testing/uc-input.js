@@ -42,7 +42,7 @@ function fillWithExample(f) {
         // TODO : Consider building a real file with real data (e.g. image, pdf, txt, etc.)
         // A fake file filled with 0s and 1s
         const blob = range(TFilePath.FILE_SIZE).map((i) => (i % 2).toString());
-        const val = new File(blob, example.path, {
+        const val = new File(blob, example.uri, {
             type: example.type,
         });
         const [isRepeatable] = ucifRepeatability(f.def);

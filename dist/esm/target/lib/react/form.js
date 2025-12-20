@@ -3,6 +3,7 @@ export const UC_FORM_FIELD_ELEMENTS = [
     'control',
     'desc',
     'err',
+    'help',
     'label',
 ];
 export function validateFormField(i18nManager, f) {

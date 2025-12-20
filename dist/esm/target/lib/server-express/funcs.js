@@ -97,9 +97,9 @@ export function mountHandler(contract, express, handler) {
 export function toFile(f) {
     return {
         name: f.name,
-        path: f.tempFilePath,
         size: f.size,
         type: f.mimetype,
+        uri: f.tempFilePath,
     };
 }
 export function toReq(req) {

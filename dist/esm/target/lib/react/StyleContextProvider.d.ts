@@ -18,6 +18,7 @@ export interface StyleContextT {
     formField?: StyleDef | undefined;
     formFieldControl?: Record<SelectiveStyleDefKey, StyleDef | undefined>;
     formFieldDesc?: StyleDef | undefined;
+    formFieldHelp?: StyleDef | undefined;
     formFieldErr?: StyleDef | undefined;
     formFieldLabel?: StyleDef | undefined;
     formSubmitControl?: StyleDef | undefined;

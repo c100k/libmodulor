@@ -66,9 +66,9 @@ let UCInputFilesProcessor = class UCInputFilesProcessor {
             await this.fsManager.touch(destPath, await file.arrayBuffer());
         }
         else {
-            const { path } = file;
-            await this.fsManager.cp(path, destPath);
-            await this.fsManager.rm(path);
+            const { uri } = file;
+            await this.fsManager.cp(uri, destPath);
+            await this.fsManager.rm(uri);
         }
         return fileNameRef;
     }

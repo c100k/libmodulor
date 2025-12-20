@@ -13,6 +13,28 @@ export class TString extends TBase {
     example() {
         return 'Miami';
     }
+    getConstraintsForHuman() {
+        if (!this.constraints) {
+            return null;
+        }
+        const c = {};
+        const { format, maxLength, minLength } = this.constraints;
+        if (minLength) {
+            // biome-ignore lint/complexity/useLiteralKeys: typescript disagrees
+            c['minLength'] = minLength.toString();
+        }
+        if (maxLength) {
+            // biome-ignore lint/complexity/useLiteralKeys: typescript disagrees
+            c['maxLength'] = maxLength.toString();
+        }
+        if (format) {
+            // Are regexes really "human" ?
+            // TODO : Find a more human way of displaying regexes
+            // biome-ignore lint/complexity/useLiteralKeys: typescript disagrees
+            c['format'] = format.regexp.toString();
+        }
+        return c;
+    }
     getConstraints() {
         return this.constraints;
     }

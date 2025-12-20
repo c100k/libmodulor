@@ -44,7 +44,7 @@ let UCOutputFilesProcessor = class UCOutputFilesProcessor {
                 filePath = this.fsManager.path(this.s().uc_files_directory_path, fileName); // => /path/to/files/20230110143732-155eb8d3-9af5-430e-b856-248007859df1.jpg
             }
             else {
-                filePath = fileNameRef.path;
+                filePath = fileNameRef.uri;
             }
             if (keepOnlyFileName) {
                 const { base } = await this.fsManager.info(filePath);

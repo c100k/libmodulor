@@ -1,4 +1,4 @@
-import type { ViolationI18nable, YesNo } from '../dt/index.js';
+import type { TFileConstraints, TStringConstraints, ViolationI18nable, YesNo } from '../dt/index.js';
 import type { UCClientConfirmConfig, UCExecState, UCWording } from '../uc/index.js';
 export type I18nLanguageCode = 'de' | 'en' | 'es' | 'fr';
 /**
@@ -8,7 +8,7 @@ export type I18nLanguageCode = 'de' | 'en' | 'es' | 'fr';
  */
 export type I18nTranslation = string;
 export type I18nTranslationKey = string;
-export type I18nCoreKey = ViolationI18nable | `dt_YesNo_${YesNo}_${keyof UCWording}` | `uc_client_confirm_${keyof UCClientConfirmConfig}` | `uc_i_submit_${UCExecState}`;
+export type I18nCoreKey = ViolationI18nable | `dt_FreeTextShort_constr_${keyof TStringConstraints}` | `dt_File_constr_${keyof TFileConstraints}` | `dt_YesNo_${YesNo}_${keyof UCWording}` | `uc_client_confirm_${keyof UCClientConfirmConfig}` | `uc_i_submit_${UCExecState}`;
 export type I18nCoreTranslations = Record<I18nCoreKey, I18nTranslation>;
 export type I18nSource = any;
 export type I18nSourceSafe = {

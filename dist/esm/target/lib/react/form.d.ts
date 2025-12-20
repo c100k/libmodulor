@@ -18,7 +18,7 @@ export interface UCFormFieldErrProps {
 export interface UCFormFieldLabelProps<T extends DataType> {
     f: UCInputField<T>;
 }
-export declare const UC_FORM_FIELD_ELEMENTS: readonly ["control", "desc", "err", "label"];
+export declare const UC_FORM_FIELD_ELEMENTS: readonly ["control", "desc", "err", "help", "label"];
 export type UCFormFieldElement = (typeof UC_FORM_FIELD_ELEMENTS)[number];
 export type UCFormFieldProps<T extends DataType> = Omit<UCFormFieldControlProps<T>, 'onChange'> & {
     only?: UCFormFieldElement[];

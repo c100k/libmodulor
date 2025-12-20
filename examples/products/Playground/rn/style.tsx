@@ -58,6 +58,10 @@ const styles = StyleSheet.create({
     formFieldErr: {
         color: 'red',
     },
+    formFieldHelp: {
+        color: GREY_500,
+        fontSize: 10,
+    },
     formFieldLabel: {
         fontWeight: 'bold',
         minWidth: 90,
@@ -103,6 +107,9 @@ export const style: StyleContextT = {
     },
     formFieldErr: {
         style: styles.formFieldErr,
+    },
+    formFieldHelp: {
+        style: styles.formFieldHelp,
     },
     formFieldLabel: {
         style: styles.formFieldLabel,

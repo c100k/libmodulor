@@ -30,10 +30,25 @@ export class TFile extends TObject {
     example() {
         return {
             name: TFilePath.FILE_NAME,
-            path: `${TFilePath.ABS_PATH}/${TFilePath.FILE_NAME}`,
             size: TFilePath.FILE_SIZE,
             type: TFilePath.MIME_TYPE,
+            uri: `${TFilePath.ABS_PATH}/${TFilePath.FILE_NAME}`,
         };
+    }
+    getConstraintsForHuman() {
+        const c = {};
+        const { accept, maxSizeInBytes, minSizeInBytes } = this.fileConstraints;
+        if (minSizeInBytes) {
+            // biome-ignore lint/complexity/useLiteralKeys: typescript disagrees
+            c['minSizeInBytes'] = this.fmtBytes(minSizeInBytes);
+        }
+        if (maxSizeInBytes) {
+            // biome-ignore lint/complexity/useLiteralKeys: typescript disagrees
+            c['maxSizeInBytes'] = this.fmtBytes(maxSizeInBytes);
+        }
+        // biome-ignore lint/complexity/useLiteralKeys: typescript disagrees
+        c['accept'] = accept.join(', ');
+        return c;
     }
     htmlInputType() {
         return 'file';
@@ -46,9 +61,9 @@ export class TFile extends TObject {
         const val = this.raw;
         validation.concat(new TFileName().assign(val.name).validate());
         const { accept, maxSizeInBytes, minSizeInBytes } = this.fileConstraints;
-        const { path, size, type } = val;
+        const { size, type, uri } = val;
         if (!(val instanceof File)) {
-            validation.concat(new TFilePath().assign(path).validate());
+            validation.concat(new TFilePath().assign(uri).validate());
         }
         validation.concat(new TFileMimeType()
             .setOptions(accept.map((a) => ({ label: a, value: a })))
@@ -81,9 +96,9 @@ export class TFile extends TObject {
         this.setExamples([
             {
                 name,
-                path: `${TFilePath.ABS_PATH}/${name}`,
                 size: TFilePath.FILE_SIZE,
                 type: this.fileConstraints.accept[0] ?? TFilePath.MIME_TYPE,
+                uri: `${TFilePath.ABS_PATH}/${name}`,
             },
         ]);
         return this;

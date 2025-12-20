@@ -39,6 +39,9 @@ export class TBase {
     getExamples() {
         return this.examples;
     }
+    getConstraintsForHuman() {
+        return null;
+    }
     getInitialValue() {
         return this.initialValue;
     }

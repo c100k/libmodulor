@@ -29,8 +29,9 @@ export const style: StyleContextT = {
     },
     formField: {
         style: {
-            alignItems: 'center',
+            alignItems: 'flex-start',
             display: 'flex',
+            flexDirection: 'column',
             gap: 4,
         },
     },
@@ -58,6 +59,12 @@ export const style: StyleContextT = {
     formFieldErr: {
         style: {
             color: 'red',
+        },
+    },
+    formFieldHelp: {
+        style: {
+            color: GREY_500,
+            fontSize: '0.8em',
         },
     },
     formFieldLabel: {

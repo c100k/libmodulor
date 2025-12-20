@@ -1,4 +1,10 @@
 export const I18nFR = {
+    dt_File_constr_accept: 'Types acceptés : {{expected}}',
+    dt_File_constr_maxSizeInBytes: 'Taille max : {{expected}}',
+    dt_File_constr_minSizeInBytes: 'Taille min : {{expected}}',
+    dt_FreeTextShort_constr_format: 'Format : {{expected}}',
+    dt_FreeTextShort_constr_maxLength: 'Longueur max : {{expected}}',
+    dt_FreeTextShort_constr_minLength: 'Longueur min : {{expected}}',
     dt_YesNo_N_desc: '',
     dt_YesNo_N_label: 'Non',
     dt_YesNo_Y_desc: '',
