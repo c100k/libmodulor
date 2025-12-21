@@ -1,6 +1,19 @@
 # CHANGELOG
 
-## v0.25.0 (unereleased)
+## v0.25.0 (2025-12-21)
+
+**Highlights**
+
+- Added use case summary in the auto-generated app docs : In addition to the existing mermaid diagram, there is now a summary of the lifecyle, input and output in a dedicated table
+    - Example : https://github.com/c100k/libmodulor/tree/42fd11307cdd9f8cdec19b4de75d4959bc9f9a9e/examples/apps/Spotify#createalbum
+- Improved the `File` data type
+    - Changed the property `path` to `uri` to conform to the `FormData` spec (this is a breaking change)
+    - Simplified the declaration by inlining the accepted types via `accept` instead of `type.allowed` (this is also a breaking change)
+    - Added `maxSizeInBytes` and `minSizeInBytes` for size validation
+- Added `getConstraintsForHuman` to format constraints for the end user in the targets. For instance :
+    - For `FreeTextShort`, it displays `Max length: 150` 🇬🇧 when present
+    - For `File`, it displays `Max size: 8MB - Accepted types: application/png, application/jpg` 🇬🇧 when present
+    - Applied to the `react-native-pure` and `react-native-web` targets (see `UCFormFieldHelp.tsx`)
 
 See all the changes here : https://github.com/c100k/libmodulor/compare/v0.24.0...master
 
