@@ -35,7 +35,8 @@ const BIOME_JSON = `{
             "!**/coverage",
             "!**/dist",
             "!**/node_modules",
-            "!**/package.json"
+            "!**/package.json",
+            "!**/src/**/test/reports"
         ]
     },
     "formatter": {
@@ -109,33 +110,30 @@ const README_MD = (name) => `# ${name}
 const TSCONFIG_JSON = `{
     "compilerOptions": {
         "allowSyntheticDefaultImports": true,
+        "allowUnreachableCode": false,
+        "allowUnusedLabels": false,
         "declaration": true,
+        "emitDecoratorMetadata": true,
+        "exactOptionalPropertyTypes": true,
+        "experimentalDecorators": true,
+        "jsx": "react-jsx",
         "lib": ["dom", "esnext"],
         "module": "NodeNext",
         "moduleResolution": "NodeNext",
         "noEmit": true,
-        "removeComments": true,
-        "skipLibCheck": true,
-        "sourceMap": true,
-        "target": "ESNext",
-
-        "strict": true,
-        "allowUnreachableCode": false,
-        "allowUnusedLabels": false,
-        "exactOptionalPropertyTypes": true,
         "noFallthroughCasesInSwitch": true,
-        "noPropertyAccessFromIndexSignature": true,
         "noImplicitOverride": true,
         "noImplicitReturns": true,
+        "noPropertyAccessFromIndexSignature": true,
         "noUncheckedIndexedAccess": true,
         "noUnusedLocals": true,
         "noUnusedParameters": true,
-        "verbatimModuleSyntax": true,
-
-        "emitDecoratorMetadata": true,
-        "experimentalDecorators": true,
-
-        "jsx": "react-jsx"
+        "removeComments": true,
+        "skipLibCheck": true,
+        "sourceMap": true,
+        "strict": true,
+        "target": "ESNext",
+        "verbatimModuleSyntax": true
     }
 }
 `;
