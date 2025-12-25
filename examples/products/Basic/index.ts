@@ -71,7 +71,7 @@ const appManifest = {
         },
     },
 } satisfies AppManifest;
-const appI18n: AppI18n = {
+const appI18n = {
     en: {
         ucif_email_label: 'Your email address',
         ucif_firstname_label: 'Your firstname',
@@ -86,7 +86,7 @@ const appI18n: AppI18n = {
         ucof_id_label: "Votre # d'inscription",
         ucof_ticketNumber_label: 'Votre # de ticket',
     },
-};
+} satisfies AppI18n;
 
 print('Declaring the UseCase');
 interface RegisterInput extends UCInput {
@@ -165,11 +165,11 @@ const RegisterUCD: UCDef<RegisterInput, RegisterOPI0> = {
 };
 
 print('Declaring the Product');
-const productManifest: ProductManifest = {
+const productManifest = {
     appReg: [{ name: 'Event' }],
     name: 'Eventer',
-};
-const productI18n: ProductI18n = {
+} satisfies ProductManifest;
+const productI18n = {
     en: {
         ...I18nEN,
         ...appI18n.en,
@@ -178,7 +178,7 @@ const productI18n: ProductI18n = {
         ...I18nFR,
         ...appI18n.fr,
     },
-};
+} satisfies ProductI18n;
 
 print('Declaring the Target');
 const container = new Container(CONTAINER_OPTS);

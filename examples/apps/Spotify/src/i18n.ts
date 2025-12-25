@@ -1,6 +1,6 @@
 import type { AppI18n } from '../../../../dist/esm/index.js';
 
-export const I18n: AppI18n = {
+export const I18n = {
     de: {
         uc_CreateAlbum_label: 'Ein Album erstellen',
         uc_DeleteAlbum_i_submit_idle: 'Löschen',
@@ -149,4 +149,4 @@ export const I18n: AppI18n = {
         ucof_tags_label: 'Tags',
         ucof_value_label: 'Valeur',
     },
-};
+} satisfies AppI18n;

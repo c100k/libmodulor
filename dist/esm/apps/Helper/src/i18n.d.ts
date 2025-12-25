@@ -1,2 +1,29 @@
-import type { AppI18n } from '../../../index.js';
-export declare const I18n: AppI18n;
+export declare const I18n: {
+    en: {
+        err_existing_app: string;
+        err_existing_product: string;
+        err_unknown_app: string;
+        uc_CreateProject_desc: string;
+        uc_CreateProject_label: string;
+        uc_DeleteGeneratedAppsTests_desc: string;
+        uc_DeleteGeneratedAppsTests_label: string;
+        uc_GenerateAppsTests_desc: string;
+        uc_GenerateAppsTests_label: string;
+        uc_TestApp_desc: string;
+        uc_TestApp_label: string;
+        ucif_appName_desc: string;
+        ucif_appPath_desc: string;
+        ucif_appsPath_desc: string;
+        ucif_depsMapping_desc: string;
+        ucif_initialCommit_desc: string;
+        ucif_monkeyTestingTimeoutInMs_desc: string;
+        ucif_outPath_desc: string;
+        ucif_pkgManagerBin_desc: string;
+        ucif_productName_desc: string;
+        ucif_projectName_desc: string;
+        ucif_scmBin_desc: string;
+        ucif_serverPortRangeStart_desc: string;
+        ucif_skipCoverage_desc: string;
+        ucif_updateSnapshots_desc: string;
+    };
+};

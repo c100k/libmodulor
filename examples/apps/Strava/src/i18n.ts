@@ -1,6 +1,6 @@
 import type { AppI18n } from '../../../../dist/esm/index.js';
 
-export const I18n: AppI18n = {
+export const I18n = {
     en: {
         uc_CreateActivity_i_submit_idle: 'Post',
         uc_CreateActivity_i_submit_submitting: 'Posting',
@@ -18,4 +18,4 @@ export const I18n: AppI18n = {
         ucof_id_label: 'Identifiant',
         validation_format_NotSeriousTitle: 'Voyons ! Utilisez un titre sérieux',
     },
-};
+} satisfies AppI18n;

@@ -1,6 +1,6 @@
 import type { AppI18n } from '../../../../dist/esm/index.js';
 
-export const I18n: AppI18n = {
+export const I18n = {
     en: {
         err_isin_price_not_found: 'Cannot find the price of this ISIN',
         err_order_uncancellable: 'Cannot cancel an order that is not pending',
@@ -58,4 +58,4 @@ export const I18n: AppI18n = {
         validation_format_ISIN:
             'Doit contenir 2 lettres majuscules, suivies de 9 caractères alphanumériques et 1 chiffre',
     },
-};
+} satisfies AppI18n;

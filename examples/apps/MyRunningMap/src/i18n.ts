@@ -1,6 +1,6 @@
 import type { AppI18n } from '../../../../dist/esm/index.js';
 
-export const I18n: AppI18n = {
+export const I18n = {
     en: {
         err_url_code_mandatory: 'The URL must contain a code query param',
         uc_AuthenticateToStravaStep1_desc:
@@ -19,4 +19,4 @@ export const I18n: AppI18n = {
             'Activities are retrieved by most recent first. So if you set 10 here, you will get the last 10 activities. This value will determine the shape of the Map since it is centered according to the data points.',
         ucif_clientId_label: 'Client ID',
     },
-};
+} satisfies AppI18n;

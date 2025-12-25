@@ -1,6 +1,6 @@
 import type { AppI18n } from '../../../../dist/esm/index.js';
 
-export const I18n: AppI18n = {
+export const I18n = {
     de: {
         uc_SignIn_desc: 'Melden Sie sich bei Ihrem Konto an, um zu beginnen',
         uc_SignIn_i_submit_idle: 'Anmelden',
@@ -49,4 +49,4 @@ export const I18n: AppI18n = {
         ucof_id_label: 'Identifiant',
         ucof_jwt_label: 'JWT',
     },
-};
+} satisfies AppI18n;

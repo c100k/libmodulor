@@ -1,6 +1,6 @@
 import type { AppI18n } from '../../../../dist/esm/index.js';
 
-export const I18n: AppI18n = {
+export const I18n = {
     en: {
         err_from_before_to:
             'The check-in date must be before the check-out date',
@@ -15,4 +15,4 @@ export const I18n: AppI18n = {
         ucif_roomsCount_label: 'Nb of rooms',
         ucif_to_label: 'To when ?',
     },
-};
+} satisfies AppI18n;

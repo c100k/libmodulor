@@ -37,7 +37,7 @@ const appManifest = {
     },
 } satisfies AppManifest;
 
-const appI18n: AppI18n = {
+const appI18n = {
     en: {
         ucif_email_label: 'Your email address',
         ucif_firstname_label: 'Your firstname',
@@ -52,7 +52,7 @@ const appI18n: AppI18n = {
         ucof_id_label: "Votre # d'inscription",
         ucof_ticketNumber_label: 'Votre # de ticket',
     },
-};
+} satisfies AppI18n;
 ```
 
 ### Use Case
@@ -141,12 +141,12 @@ const RegisterUCD: UCDef<RegisterInput, RegisterOPI0> = {
 ### Product
 
 ```ts
-const productManifest: ProductManifest = {
+const productManifest = {
     appReg: [{ name: 'Event' }],
     name: 'Eventer',
-};
+} satisfies ProductManifest;
 
-const productI18n: ProductI18n = {
+const productI18n = {
     en: {
         ...I18nEN,
         ...appI18n.en,
@@ -155,7 +155,7 @@ const productI18n: ProductI18n = {
         ...I18nFR,
         ...appI18n.fr,
     },
-};
+} satisfies ProductI18n;
 ```
 
 ### Target

@@ -8,7 +8,7 @@ import { I18n as SpotifyI18n } from '../../apps/Spotify/index.js';
 import { I18n as StravaI18n } from '../../apps/Strava/index.js';
 import { I18n as TradingI18n } from '../../apps/Trading/index.js';
 
-export const I18n: ProductI18n = {
+export const I18n = {
     de: {
         ...I18nDE,
         ...AuthI18n.de,
@@ -41,4 +41,4 @@ export const I18n: ProductI18n = {
         sse_unavailable: "SSE n'est pas encore disponible sur RN",
         total: 'Total',
     },
-};
+} satisfies ProductI18n;

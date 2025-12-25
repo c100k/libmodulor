@@ -1,6 +1,6 @@
 import type { AppI18n } from '../../../../dist/esm/index.js';
 
-export const I18n: AppI18n = {
+export const I18n = {
     en: {
         uc_DecodeJWT_desc: 'Decode a JWT safely client side.',
         uc_DecodeJWT_i_submit_idle: 'Decode',
@@ -25,4 +25,4 @@ export const I18n: AppI18n = {
         ucif_jwt_label: 'JWT',
         ucif_uuidCount_label: 'UUID count',
     },
-};
+} satisfies AppI18n;
