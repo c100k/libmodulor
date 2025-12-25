@@ -15,6 +15,9 @@ let FakeFSManager = class FakeFSManager {
     constructor() {
         this.entries = new Map();
     }
+    async clear() {
+        this.entries = new Map();
+    }
     async canHandleFiles() {
         return true;
     }

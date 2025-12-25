@@ -65,7 +65,6 @@ CreateAppClientMain = __decorate([
     __param(3, inject(SrcFilesGenerator)),
     __metadata("design:paramtypes", [Object, Object, Object, SrcFilesGenerator])
 ], CreateAppClientMain);
-export { CreateAppClientMain };
 export const CreateAppUCD = {
     ext: {
         cmd: {

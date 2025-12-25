@@ -13,7 +13,7 @@ export interface ShellCommandExecutorInput {
         cwd?: FilePath;
         env?: ShellCommandExecutorEnv;
         streamData?: boolean;
-    };
+    } | undefined;
 }
 export type ShellCommandExecutorOutput = string;
 export interface ShellCommandExecutor extends Worker<ShellCommandExecutorInput, Promise<ShellCommandExecutorOutput>> {

@@ -131,7 +131,6 @@ CreateProjectClientMain = __decorate([
     __param(3, inject(SrcFilesGenerator)),
     __metadata("design:paramtypes", [Object, Object, Object, SrcFilesGenerator])
 ], CreateProjectClientMain);
-export { CreateProjectClientMain };
 export const CreateProjectUCD = {
     ext: {
         cmd: {

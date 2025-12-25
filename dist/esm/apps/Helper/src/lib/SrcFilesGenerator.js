@@ -25,7 +25,7 @@ let SrcFilesGenerator = class SrcFilesGenerator {
             const rest = filePath.slice(0, -1);
             const path = this.fsManager.path(rootPath, ...rest);
             await this.fsManager.mkdir(path, { recursive: true });
-            await this.fsManager.touch(this.fsManager.path(...filePath), content);
+            await this.fsManager.touch(this.fsManager.path(rootPath, ...filePath), content);
         }
     }
 };

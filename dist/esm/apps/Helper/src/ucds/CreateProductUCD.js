@@ -65,7 +65,6 @@ CreateProductClientMain = __decorate([
     __param(3, inject(SrcFilesGenerator)),
     __metadata("design:paramtypes", [Object, Object, Object, SrcFilesGenerator])
 ], CreateProductClientMain);
-export { CreateProductClientMain };
 export const CreateProductUCD = {
     ext: {
         cmd: {

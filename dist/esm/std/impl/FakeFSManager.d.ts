@@ -1,11 +1,13 @@
 import type { DirPath, File, FileExtension, FileName, FilePath } from '../../dt/index.js';
+import type { Clearable } from '../../utils/index.js';
 import { type FSManager, type FSManagerCatOpts, type FSManagerChmodMode, type FSManagerItemInfo, type FSManagerLsItem, type FSManagerLsOpts, type Pathname } from '../FSManager.js';
-export declare class FakeFSManager implements FSManager {
+export declare class FakeFSManager implements Clearable, FSManager {
     entries: Map<FilePath, {
         content: ArrayBuffer | string;
         mode: FSManagerChmodMode;
     }>;
     constructor();
+    clear(): Promise<void>;
     canHandleFiles(): Promise<boolean>;
     cat<T extends string>(path: FilePath, _opts?: FSManagerCatOpts): Promise<T>;
     chmod(path: Pathname, mode: FSManagerChmodMode): Promise<void>;
