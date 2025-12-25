@@ -4,13 +4,11 @@ import {
     type AppTesterConfiguratorSpecificAssertions,
     type AppTesterCtx,
     type AppTesterFlow,
-    type CryptoManager,
     FakeLLMManager,
     type LLMManager,
     type UCExecutorAssertion,
     type UCExecutorExecOutput,
 } from '../../../../dist/esm/index.js';
-import { NodeDeterministicCryptoManager } from '../../../../dist/esm/index.node.js';
 import { ExampleAppTesterConfigurator } from '../../../ExampleAppTesterConfigurator.js';
 import type { AssetPriceStreamerSettings } from '../src/lib/AssetPriceStreamer.js';
 import type {
@@ -32,9 +30,6 @@ export class Configurator extends ExampleAppTesterConfigurator {
 
         const { container } = ctx;
 
-        (await container.rebind<CryptoManager>('CryptoManager')).to(
-            NodeDeterministicCryptoManager,
-        );
         container.bind<LLMManager>('LLMManager').to(FakeLLMManager);
     }
 
