@@ -50,7 +50,7 @@ exports[`Run > Use Cases > 'CreateAlbum' > should execute with auth 'ADMIN' and 
               {
                 "artist": "Daft Punk",
                 "description": "Alive 2007 is the second live album by the French electronic music duo Daft Punk, released on 19 November 2007",
-                "id": "b1d57811-11d8-4f7b-bfe4-5a0852e59758",
+                "id": "77de68da-ecd8-43ba-bbb5-8edb1c8e14d7",
                 "isPrivate": true,
                 "language": "en",
                 "name": "Alive 2007",
@@ -110,7 +110,7 @@ exports[`Run > Use Cases > 'CreateAlbum' > should execute with auth 'ADMIN' and 
               {
                 "artist": "Daft Punk",
                 "description": null,
-                "id": "7b52009b-64fd-4a2a-89e6-d8a939753077",
+                "id": "356a192b-7913-404c-9457-4d18c28d46e6",
                 "isPrivate": true,
                 "language": null,
                 "name": "Alive 2007",
@@ -208,7 +208,7 @@ exports[`Run > Use Cases > 'CreateAlbum' > should execute with auth 'ANONYMOUS' 
               {
                 "artist": "Daft Punk",
                 "description": "Alive 2007 is the second live album by the French electronic music duo Daft Punk, released on 19 November 2007",
-                "id": "1574bddb-75c7-4a6f-9225-1d61e2993b51",
+                "id": "77de68da-ecd8-43ba-bbb5-8edb1c8e14d7",
                 "isPrivate": true,
                 "language": "en",
                 "name": "Alive 2007",
@@ -258,7 +258,7 @@ exports[`Run > Use Cases > 'CreateAlbum' > should execute with auth 'ANONYMOUS' 
               {
                 "artist": "Daft Punk",
                 "description": null,
-                "id": "9e6a55b6-b456-4e65-aa23-be9d623ca505",
+                "id": "356a192b-7913-404c-9457-4d18c28d46e6",
                 "isPrivate": true,
                 "language": null,
                 "name": "Alive 2007",
@@ -356,7 +356,7 @@ exports[`Run > Use Cases > 'CreateAlbum' > should execute with auth 'REGULAR' an
               {
                 "artist": "Daft Punk",
                 "description": "Alive 2007 is the second live album by the French electronic music duo Daft Punk, released on 19 November 2007",
-                "id": "12c6fc06-c99a-4623-b5ee-b3f43dfd832b",
+                "id": "77de68da-ecd8-43ba-bbb5-8edb1c8e14d7",
                 "isPrivate": true,
                 "language": "en",
                 "name": "Alive 2007",
@@ -416,7 +416,7 @@ exports[`Run > Use Cases > 'CreateAlbum' > should execute with auth 'REGULAR' an
               {
                 "artist": "Daft Punk",
                 "description": null,
-                "id": "4d134bc0-7221-4ace-adf3-85dae143139d",
+                "id": "356a192b-7913-404c-9457-4d18c28d46e6",
                 "isPrivate": true,
                 "language": null,
                 "name": "Alive 2007",

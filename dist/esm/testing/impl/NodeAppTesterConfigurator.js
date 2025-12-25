@@ -34,6 +34,7 @@ export class NodeAppTesterConfigurator {
     }
     async clearExecution(ctx) {
         const { container } = ctx;
+        await container.get('CryptoManager').clear();
         await container.get('EmailManager').clear();
         await container.get('JobManager').clear();
         await container.get('UCDataStore').clear();
