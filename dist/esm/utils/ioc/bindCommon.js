@@ -17,15 +17,12 @@ import { SimpleUCManager } from '../../uc/impl/SimpleUCManager.js';
 import { StaticUCClientConfirmManager } from '../../uc/impl/StaticUCClientConfirmManager.js';
 import { UC_DEFAULT_SETTINGS, } from '../../uc/index.js';
 import { bindProvider } from './bindProvider.js';
-export function bindCommon(container, settingsFunc) {
-    const commonSettings = {
+export function bindCommon(container) {
+    // settings
+    container.bind('Settings').toConstantValue({
         ...STD_DEFAULT_LOGGER_SETTINGS,
         ...UC_DEFAULT_SETTINGS,
-    };
-    const settings = {
-        ...commonSettings,
-        ...settingsFunc?.(commonSettings),
-    };
+    });
     // product
     container.bind('ProductManifest').toConstantValue({
         appReg: [{ name: APP_NAME_PLACEHOLDER }],
@@ -49,7 +46,6 @@ export function bindCommon(container, settingsFunc) {
         .inSingletonScope();
     container.bind('I18n').toConstantValue({ en: {} });
     container.bind('Logger').to(ConsoleLogger);
-    container.bind('Settings').toConstantValue(settings);
     container
         .bind('SettingsManager')
         .to(StaticSettingsManager);
@@ -70,4 +66,11 @@ export function bindCommon(container, settingsFunc) {
         .inSingletonScope();
     container.bind('UCManager').to(SimpleUCManager).inRequestScope();
     container.bind('UCTransporter').to(HTTPUCTransporter);
+}
+export function updateSettings(container, settings) {
+    const current = container.get('Settings');
+    container.rebindSync('Settings').toConstantValue({
+        ...current,
+        ...settings,
+    });
 }

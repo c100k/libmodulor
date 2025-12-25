@@ -1,5 +1,4 @@
 import { Container } from 'inversify';
-import { Platform } from 'react-native';
 
 import {
     bindCommon,
@@ -9,8 +8,7 @@ import {
     type FSManager,
     type JWTManager,
     type ServerClientManager,
-    type ServerClientManagerSettings,
-    TARGET_DEFAULT_SERVER_CLIENT_MANAGER_SETTINGS,
+    updateSettings,
 } from '../../../../dist/esm/index.js';
 import { bindRN } from '../../../../dist/esm/index.rn.js';
 import { I18n } from '../i18n.js';
@@ -21,18 +19,12 @@ import { RNJWTManager } from './lib/std/RNJWTManager.js';
 import { RNServerClientManager } from './lib/std/RNServerClientManager.js';
 import type { AuthDataStore } from './lib/uc/AuthDataStore.js';
 import { InMemoryAuthDataStore } from './lib/uc/InMemoryAuthDataStore.js';
-
-type S = ServerClientManagerSettings;
+import { type S, settings } from './settings.js';
 
 const container = new Container(CONTAINER_OPTS);
 
-bindCommon<S>(container, () => ({
-    ...TARGET_DEFAULT_SERVER_CLIENT_MANAGER_SETTINGS,
-    server_public_url:
-        Platform.OS === 'android'
-            ? 'http://10.0.2.2:7443'
-            : 'http://localhost:7443',
-}));
+bindCommon(container);
+updateSettings<S>(container, settings);
 bindRN(container);
 bindProduct(container, Manifest, I18n);
 

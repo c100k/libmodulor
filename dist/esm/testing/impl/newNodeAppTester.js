@@ -5,7 +5,7 @@ import { TARGET_DEFAULT_SERVER_MANAGER_SETTINGS } from '../../target/lib/server/
 import { NodeExpressServerManager } from '../../target/node-express-server/NodeExpressServerManager.js';
 import { FAKE_USER_ADMIN, FAKE_USER_REGULAR } from '../../uc/index.js';
 import { CONTAINER_OPTS } from '../../utils/index.js';
-import { bindCommon } from '../../utils/ioc/bindCommon.js';
+import { bindCommon, updateSettings } from '../../utils/ioc/bindCommon.js';
 import { bindNodeCore } from '../../utils/ioc/bindNodeCore.js';
 import { bindServer } from '../../utils/ioc/bindServer.js';
 import { AppTester } from '../AppTester.js';
@@ -31,7 +31,8 @@ export async function newNodeAppTester(serverPortRangeStart, idx, args) {
         server_stop_mode: 'aggressive',
     };
     const container = new Container(CONTAINER_OPTS);
-    bindCommon(container, () => settings);
+    bindCommon(container);
+    updateSettings(container, settings);
     bindNodeCore(container);
     bindServer(container);
     container.bind('AppDocsEmitter').to(SimpleAppDocsEmitter);
