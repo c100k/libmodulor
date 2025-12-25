@@ -2,6 +2,16 @@ export declare const Manifest: {
     languageCodes: "en"[];
     name: "Helper";
     ucReg: {
+        CreateApp: {
+            action: "Create";
+            icon: string;
+            name: "CreateApp";
+        };
+        CreateProduct: {
+            action: "Create";
+            icon: string;
+            name: "CreateProduct";
+        };
         CreateProject: {
             action: "Create";
             icon: string;

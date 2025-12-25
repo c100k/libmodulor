@@ -1,6 +1,7 @@
 import { type DirPath, type FileName, type FreeTextShort, type Slug } from '../../../../dt/index.js';
 import type { FSManager, Logger, ShellCommandExecutor } from '../../../../std/index.js';
 import { type UCDef, type UCInput, type UCInputFieldValue, type UCMain, type UCMainInput } from '../../../../uc/index.js';
+import { SrcFilesGenerator } from '../lib/SrcFilesGenerator.js';
 export interface CreateProjectInput extends UCInput {
     initialCommit: UCInputFieldValue<FreeTextShort>;
     outPath: UCInputFieldValue<DirPath>;
@@ -13,11 +14,12 @@ export declare class CreateProjectClientMain implements UCMain<CreateProjectInpu
     private fsManager;
     private logger;
     private shellCommandExecutor;
-    constructor(fsManager: FSManager, logger: Logger, shellCommandExecutor: ShellCommandExecutor);
+    private srcFilesGenerator;
+    private rootPath;
+    constructor(fsManager: FSManager, logger: Logger, shellCommandExecutor: ShellCommandExecutor, srcFilesGenerator: SrcFilesGenerator);
     exec({ uc }: UCMainInput<CreateProjectInput>): Promise<void>;
     private assertBinPresence;
     private commit;
-    private createConfigFiles;
     private createDirs;
     private createRootDir;
     private initRepository;

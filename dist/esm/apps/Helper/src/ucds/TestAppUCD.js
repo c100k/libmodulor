@@ -16,7 +16,7 @@ import { TBoolean, TString } from '../../../../dt/index.js';
 import { IllegalArgumentError } from '../../../../error/index.js';
 import { SimpleHTMLAppTestReportEmitter } from '../../../../testing/impl/SimpleHTMLAppTestReportEmitter.js';
 import { EverybodyUCPolicy, } from '../../../../uc/index.js';
-import { AppInputFieldsDef } from '../lib/app.js';
+import { AppInputFieldsDef } from '../lib/io.js';
 import { Manifest } from '../manifest.js';
 let TestAppClientMain = class TestAppClientMain {
     appTestSuiteRunner;

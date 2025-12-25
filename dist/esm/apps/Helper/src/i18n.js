@@ -1,6 +1,8 @@
 export const I18n = {
     en: {
-        err_unknown_app: 'Unknown app : {{appPath}}',
+        err_existing_app: 'App "{{appPath}}" already exists',
+        err_existing_product: 'Product "{{productPath}}" already exists',
+        err_unknown_app: 'App "{{appPath}}" does not exist',
         uc_CreateProject_desc: 'Create a project by initializing a git repo, creating basic config files and installing the required dependencies',
         uc_CreateProject_label: 'Create a project',
         uc_DeleteGeneratedAppsTests_desc: 'Delete the automated test suite generated for each app',
@@ -9,6 +11,7 @@ export const I18n = {
         uc_GenerateAppsTests_label: 'Generate apps tests',
         uc_TestApp_desc: 'Test an app and generate coverage report',
         uc_TestApp_label: 'Test app',
+        ucif_appName_desc: 'Name of the app conforming to the spec (i.e. PascalCase : A-Z, 0-9)',
         ucif_appPath_desc: 'The path of the app',
         ucif_appsPath_desc: 'The path to the directory containing all the apps',
         ucif_depsMapping_desc: 'The mapping of dependencies in case some of them need a specific pattern (e.g. one directory above the default)',
@@ -16,6 +19,7 @@ export const I18n = {
         ucif_monkeyTestingTimeoutInMs_desc: 'These tests can take longer than the usual default of 5000ms because they try lots of possibilities',
         ucif_outPath_desc: 'Path to a directory where to create the project. Do not include the project name in it. It is created recursively if missing.',
         ucif_pkgManagerBin_desc: "The package manager to use to install the deps and run the dev commands (must conform to npm's API)",
+        ucif_productName_desc: 'Name of the product conforming to the spec (i.e. PascalCase : A-Z, 0-9)',
         ucif_projectName_desc: "Name of the project conforming to the package.json's spec (i.e. a-z, 0-9, -)",
         ucif_scmBin_desc: "The source control manager to use to init and commit (must conform to git's API)",
         ucif_serverPortRangeStart_desc: 'The port number to start with when generating the server to test (incremented by 1) for each app',

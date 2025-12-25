@@ -15,16 +15,20 @@ import { APPS_ROOT_PATH, PRODUCTS_ROOT_PATH } from '../../../../convention.js';
 import { TBoolean, TDirPath, TFileName, TFreeTextShort, TSlug, } from '../../../../dt/index.js';
 import { IllegalArgumentError } from '../../../../error/index.js';
 import { EverybodyUCPolicy, } from '../../../../uc/index.js';
-import { projectFiles } from '../lib/project.js';
+import { files } from '../lib/layers/project.js';
+import { SrcFilesGenerator } from '../lib/SrcFilesGenerator.js';
 import { Manifest } from '../manifest.js';
 let CreateProjectClientMain = class CreateProjectClientMain {
     fsManager;
     logger;
     shellCommandExecutor;
-    constructor(fsManager, logger, shellCommandExecutor) {
+    srcFilesGenerator;
+    rootPath;
+    constructor(fsManager, logger, shellCommandExecutor, srcFilesGenerator) {
         this.fsManager = fsManager;
         this.logger = logger;
         this.shellCommandExecutor = shellCommandExecutor;
+        this.srcFilesGenerator = srcFilesGenerator;
     }
     async exec({ uc }) {
         const initialCommit = uc.reqVal0('initialCommit');
@@ -35,15 +39,18 @@ let CreateProjectClientMain = class CreateProjectClientMain {
         const verbose = uc.reqVal0('verbose');
         await this.assertBinPresence(pkgManagerBin);
         await this.assertBinPresence(scmBin);
-        const cwd = this.fsManager.path(outPath, projectName);
+        this.rootPath = this.fsManager.path(outPath, projectName);
         // TODO : Rollback the whole thing in case of failure
-        await this.createRootDir(cwd);
-        await this.initRepository(scmBin, cwd, verbose);
-        await this.createConfigFiles(projectName, cwd);
-        await this.createDirs(cwd);
-        await this.installDeps(pkgManagerBin, cwd, verbose);
-        await this.commit(scmBin, initialCommit, cwd, verbose);
-        await this.runDevCmds(pkgManagerBin, cwd, verbose);
+        await this.createRootDir();
+        await this.initRepository(scmBin, verbose);
+        await this.srcFilesGenerator.exec({
+            files: files(projectName),
+            rootPath: this.rootPath,
+        });
+        await this.createDirs();
+        await this.installDeps(pkgManagerBin, verbose);
+        await this.commit(scmBin, initialCommit, verbose);
+        await this.runDevCmds(pkgManagerBin, verbose);
         this.logger.info('Done ! Project ready ! ✅ 🚀');
     }
     async assertBinPresence(bin) {
@@ -57,7 +64,7 @@ let CreateProjectClientMain = class CreateProjectClientMain {
             throw new IllegalArgumentError(`'${bin}' seems missing. Is it installed on your machine ?`);
         }
     }
-    async commit(scmBin, initialCommit, cwd, verbose) {
+    async commit(scmBin, initialCommit, verbose) {
         this.logger.info('Committing');
         const cmdArgs = [
             ['branch', '-M', 'master'],
@@ -67,54 +74,51 @@ let CreateProjectClientMain = class CreateProjectClientMain {
         for await (const args of cmdArgs) {
             await this.shellCommandExecutor.exec({
                 bin: scmBin,
-                opts: { args, cwd, streamData: verbose },
+                opts: { args, cwd: this.rootPath, streamData: verbose },
             });
         }
     }
-    async createConfigFiles(projectName, cwd) {
-        const files = projectFiles(projectName);
-        for await (const [fileName, content] of files) {
-            const path = this.fsManager.path(cwd, fileName);
-            await this.fsManager.touch(path, content);
-        }
-    }
-    async createDirs(cwd) {
+    async createDirs() {
         this.logger.info('Creating apps and products directories');
         const dirs = [APPS_ROOT_PATH, PRODUCTS_ROOT_PATH];
         for await (const dirPath of dirs) {
-            const path = this.fsManager.path(cwd, ...dirPath);
+            const path = this.fsManager.path(this.rootPath, ...dirPath);
             await this.fsManager.mkdir(path, { recursive: true });
             await this.fsManager.touch(this.fsManager.path(path, '.gitkeep'), '');
         }
     }
-    async createRootDir(cwd) {
-        this.logger.info('Creating root dir : %s', cwd);
-        await this.fsManager.mkdir(cwd, { recursive: true });
+    async createRootDir() {
+        this.logger.info('Creating root dir : %s', this.rootPath);
+        await this.fsManager.mkdir(this.rootPath, { recursive: true });
     }
-    async initRepository(scmBin, cwd, verbose) {
+    async initRepository(scmBin, verbose) {
         const cmd = 'init';
         this.logger.info('Initializing repository : %s %s', scmBin, cmd);
         await this.shellCommandExecutor.exec({
             bin: scmBin,
-            opts: { args: [cmd], cwd, streamData: verbose },
+            opts: { args: [cmd], cwd: this.rootPath, streamData: verbose },
         });
     }
-    async installDeps(pkgManagerBin, cwd, verbose) {
+    async installDeps(pkgManagerBin, verbose) {
         const cmd = 'install';
         this.logger.info('Installing dependencies : %s %s', pkgManagerBin, cmd);
         await this.shellCommandExecutor.exec({
             bin: pkgManagerBin,
-            opts: { args: [cmd], cwd, streamData: verbose },
+            opts: { args: [cmd], cwd: this.rootPath, streamData: verbose },
         });
     }
-    async runDevCmds(pkgManagerBin, cwd, verbose) {
+    async runDevCmds(pkgManagerBin, verbose) {
         const cmd = 'run';
         const scripts = ['lint', 'test'];
         for await (const script of scripts) {
             this.logger.info('Running dev command : %s %s %s', pkgManagerBin, cmd, script);
             await this.shellCommandExecutor.exec({
                 bin: pkgManagerBin,
-                opts: { args: [cmd, script], cwd, streamData: verbose },
+                opts: {
+                    args: [cmd, script],
+                    cwd: this.rootPath,
+                    streamData: verbose,
+                },
             });
         }
     }
@@ -124,7 +128,8 @@ CreateProjectClientMain = __decorate([
     __param(0, inject('FSManager')),
     __param(1, inject('Logger')),
     __param(2, inject('ShellCommandExecutor')),
-    __metadata("design:paramtypes", [Object, Object, Object])
+    __param(3, inject(SrcFilesGenerator)),
+    __metadata("design:paramtypes", [Object, Object, Object, SrcFilesGenerator])
 ], CreateProjectClientMain);
 export { CreateProjectClientMain };
 export const CreateProjectUCD = {

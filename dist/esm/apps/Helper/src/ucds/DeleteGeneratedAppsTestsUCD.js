@@ -14,7 +14,7 @@ import { inject, injectable } from 'inversify';
 import { AppSrcBrowser } from '../../../../app/index.js';
 import { APP_TEST_DIR_NAME, APP_TEST_MAIN_FILE_NAME, } from '../../../../convention.js';
 import { EverybodyUCPolicy, } from '../../../../uc/index.js';
-import { AppInputFieldsDef } from '../lib/app.js';
+import { AppInputFieldsDef } from '../lib/io.js';
 import { Manifest } from '../manifest.js';
 let DeleteGeneratedAppsTestsClientMain = class DeleteGeneratedAppsTestsClientMain {
     appSrcBrowser;

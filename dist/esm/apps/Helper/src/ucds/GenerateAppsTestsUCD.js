@@ -14,7 +14,7 @@ import { inject, injectable } from 'inversify';
 import { AppSrcBrowser } from '../../../../app/index.js';
 import { THostPort, TString, TUIntDuration, } from '../../../../dt/index.js';
 import { EverybodyUCPolicy, } from '../../../../uc/index.js';
-import { AppInputFieldsDef } from '../lib/app.js';
+import { AppInputFieldsDef } from '../lib/io.js';
 import { Manifest } from '../manifest.js';
 const DEP_MAPPING_SEP = '::';
 class TDepMapping extends TString {

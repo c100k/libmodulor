@@ -2,6 +2,16 @@ export const Manifest = {
     languageCodes: ['en'],
     name: 'Helper',
     ucReg: {
+        CreateApp: {
+            action: 'Create',
+            icon: 'plus',
+            name: 'CreateApp',
+        },
+        CreateProduct: {
+            action: 'Create',
+            icon: 'plus',
+            name: 'CreateProduct',
+        },
         CreateProject: {
             action: 'Create',
             icon: 'plus',
