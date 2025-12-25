@@ -27,12 +27,10 @@ export function bindCommon(container, settingsFunc) {
         ...settingsFunc?.(commonSettings),
     };
     // product
-    if (!container.isBound('ProductManifest')) {
-        container.bind('ProductManifest').toConstantValue({
-            appReg: [{ name: APP_NAME_PLACEHOLDER }],
-            name: PRODUCT_NAME_PLACEHOLDER,
-        });
-    }
+    container.bind('ProductManifest').toConstantValue({
+        appReg: [{ name: APP_NAME_PLACEHOLDER }],
+        name: PRODUCT_NAME_PLACEHOLDER,
+    });
     // std
     container.bind('ClockManager').to(StdDateClockManager);
     container

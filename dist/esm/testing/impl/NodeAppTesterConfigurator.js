@@ -13,13 +13,13 @@ export class NodeAppTesterConfigurator {
     }
     async bindImplementations(ctx) {
         const { container } = ctx;
-        container.bind('ProductManifest').toConstantValue({
-            appReg: [{ name: ctx.appManifest.name }],
-            name: PRODUCT_NAME_PLACEHOLDER,
-        });
         bindCommon(container);
         bindNodeCore(container);
         bindServer(container);
+        (await container.rebind('ProductManifest')).toConstantValue({
+            appReg: [{ name: ctx.appManifest.name }],
+            name: PRODUCT_NAME_PLACEHOLDER,
+        });
         (await container.rebind('ClockManager')).to(FakeClockManager);
         (await container.rebind('CryptoManager')).to(NodeDeterministicCryptoManager);
         (await container.rebind('FSManager')).to(FakeFSManager);
