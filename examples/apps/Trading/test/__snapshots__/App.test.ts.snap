@@ -30,7 +30,7 @@ exports[`Run > Use Cases > 'AskQuestion' > should execute with auth 'ADMIN' and 
           "_0": {
             "items": [
               {
-                "id": "356a192b-7913-404c-9457-4d18c28d46e6",
+                "id": "fe5dbbce-a5ce-4e29-88b8-c69bcfdfde89",
                 "res": "I'm not able to process your request : {"messages":[{"content":"You are an expert in stock investment. Only reply to questions asking you to recommend stocks to buy","role":"system"},{"content":"What stock to buy ?","role":"user"}],"model":"mistral-large-latest","stream":true}",
               },
             ],
@@ -74,7 +74,7 @@ exports[`Run > Use Cases > 'AskQuestion' > should execute with auth 'ADMIN' and 
           "_0": {
             "items": [
               {
-                "id": "356a192b-7913-404c-9457-4d18c28d46e6",
+                "id": "7b52009b-64fd-4a2a-89e6-d8a939753077",
                 "res": "I'm not able to process your request : {"messages":[{"content":"You are an expert in stock investment. Only reply to questions asking you to recommend stocks to buy","role":"system"},{"content":"What stock to buy ?","role":"user"}],"model":"mistral-large-latest","stream":true}",
               },
             ],
@@ -216,7 +216,7 @@ exports[`Run > Use Cases > 'AskQuestion' > should execute with auth 'REGULAR' an
           "_0": {
             "items": [
               {
-                "id": "356a192b-7913-404c-9457-4d18c28d46e6",
+                "id": "1574bddb-75c7-4a6f-9225-1d61e2993b51",
                 "res": "I'm not able to process your request : {"messages":[{"content":"You are an expert in stock investment. Only reply to questions asking you to recommend stocks to buy","role":"system"},{"content":"What stock to buy ?","role":"user"}],"model":"mistral-large-latest","stream":true}",
               },
             ],
@@ -260,7 +260,7 @@ exports[`Run > Use Cases > 'AskQuestion' > should execute with auth 'REGULAR' an
           "_0": {
             "items": [
               {
-                "id": "356a192b-7913-404c-9457-4d18c28d46e6",
+                "id": "91032ad7-bbcb-4cf7-a875-e8e8207dcfba",
                 "res": "I'm not able to process your request : {"messages":[{"content":"You are an expert in stock investment. Only reply to questions asking you to recommend stocks to buy","role":"system"},{"content":"What stock to buy ?","role":"user"}],"model":"mistral-large-latest","stream":true}",
               },
             ],
@@ -338,7 +338,7 @@ exports[`Run > Use Cases > 'BuyAsset' > should execute with auth 'ADMIN' and inp
           "_0": {
             "items": [
               {
-                "id": "356a192b-7913-404c-9457-4d18c28d46e6",
+                "id": "4d134bc0-7221-4ace-adf3-85dae143139d",
                 "isin": "US02079K3059",
                 "limit": 999.99,
                 "qty": 10,
@@ -387,7 +387,7 @@ exports[`Run > Use Cases > 'BuyAsset' > should execute with auth 'ADMIN' and inp
           "_0": {
             "items": [
               {
-                "id": "356a192b-7913-404c-9457-4d18c28d46e6",
+                "id": "887309d0-48be-4f83-ad3e-abf2a79a64a3",
                 "isin": "US02079K3059",
                 "limit": 999.99,
                 "qty": 10,
@@ -542,7 +542,7 @@ exports[`Run > Use Cases > 'BuyAsset' > should execute with auth 'REGULAR' and i
           "_0": {
             "items": [
               {
-                "id": "356a192b-7913-404c-9457-4d18c28d46e6",
+                "id": "0a57cb53-ba59-446f-84b6-92527a38a87c",
                 "isin": "US02079K3059",
                 "limit": 999.99,
                 "qty": 10,
@@ -591,7 +591,7 @@ exports[`Run > Use Cases > 'BuyAsset' > should execute with auth 'REGULAR' and i
           "_0": {
             "items": [
               {
-                "id": "356a192b-7913-404c-9457-4d18c28d46e6",
+                "id": "22d200f8-670d-4db3-a253-a90eee509847",
                 "isin": "US02079K3059",
                 "limit": 999.99,
                 "qty": 10,

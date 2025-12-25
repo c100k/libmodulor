@@ -21,10 +21,16 @@ export class NodeAppTesterConfigurator {
             name: PRODUCT_NAME_PLACEHOLDER,
         });
         (await container.rebind('ClockManager')).to(FakeClockManager);
-        (await container.rebind('CryptoManager')).to(NodeDeterministicCryptoManager);
-        (await container.rebind('FSManager')).to(FakeFSManager);
+        (await container.rebind('CryptoManager'))
+            .to(NodeDeterministicCryptoManager)
+            .inSingletonScope();
+        (await container.rebind('FSManager'))
+            .to(FakeFSManager)
+            .inSingletonScope();
         (await container.rebind('FormDataBuilder')).to(SimpleFormDataBuilder);
-        (await container.rebind('HTTPAPICallExecutor')).to(FakeHTTPAPICallExecutor);
+        (await container.rebind('HTTPAPICallExecutor'))
+            .to(FakeHTTPAPICallExecutor)
+            .inSingletonScope();
     }
     async clearExecution(ctx) {
         const { container } = ctx;
