@@ -13,6 +13,7 @@ export * from './std/impl/FakeFSManager.js';
 export * from './std/impl/FakeHTTPAPICallExecutor.js';
 export * from './std/impl/FakeJobManager.js';
 export * from './std/impl/FakeLLMManager.js';
+export * from './std/impl/FakeShellCommandExecutor.js';
 export * from './std/impl/FetchHTTPAPICallExecutor.js';
 export * from './std/impl/MistralAILLMManager.js';
 export * from './std/impl/NoopHTTPAPICallExecutorAgentBuilder.js';
