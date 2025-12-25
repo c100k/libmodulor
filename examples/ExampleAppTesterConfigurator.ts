@@ -15,16 +15,4 @@ export class ExampleAppTesterConfigurator extends NodeAppTesterConfigurator {
             },
         };
     }
-
-    public async updateSettings<S>(
-        ctx: AppTesterCtx,
-        settings: S,
-    ): Promise<void> {
-        const { container } = ctx;
-        const current = container.get<S>('Settings');
-        (await container.rebind<S>('Settings')).toConstantValue({
-            ...current,
-            ...settings,
-        });
-    }
 }

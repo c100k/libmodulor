@@ -11,4 +11,5 @@ export declare class NodeAppTesterConfigurator implements AppTesterConfigurator 
     seed(_ctx: AppTesterCtx): Promise<void>;
     sideEffects(_ctx: AppTesterCtx): Promise<AppTesterConfiguratorSideEffects | undefined>;
     specificAssertions(): Promise<AppTesterConfiguratorSpecificAssertions | undefined>;
+    updateSettings<S>(ctx: AppTesterCtx, settings: S): Promise<void>;
 }

@@ -50,4 +50,12 @@ export class NodeAppTesterConfigurator {
     async specificAssertions() {
         return undefined;
     }
+    async updateSettings(ctx, settings) {
+        const { container } = ctx;
+        const current = container.get('Settings');
+        (await container.rebind('Settings')).toConstantValue({
+            ...current,
+            ...settings,
+        });
+    }
 }
