@@ -17,6 +17,11 @@ export const Manifest = {
             icon: 'plus',
             name: 'CreateProject',
         },
+        CreateUC: {
+            action: 'Create',
+            icon: 'plus',
+            name: 'CreateUC',
+        },
         DeleteGeneratedAppsTests: {
             action: 'Delete',
             icon: 'trash-can',

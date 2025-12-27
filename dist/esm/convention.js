@@ -40,8 +40,7 @@ export const PRODUCT_NAME_PLACEHOLDER = 'ProductX';
  * Use Case
  */
 export const UC_DEF_SUFFIX = 'UCD';
-export const UC_DEF_FILE_NAME_EXT = '.ts';
-export const UC_DEF_FILE_NAME_SUFFIX = `${UC_DEF_SUFFIX}${UC_DEF_FILE_NAME_EXT}`;
+export const UC_DEF_FILE_NAME_SUFFIX = `${UC_DEF_SUFFIX}.ts`;
 export const UC_DEF_TYPE = 'UCDef';
 export const UC_INPUT_BASE = 'UCInput';
 export const UC_INPUT_FIELD_PATTERN = '^UCInputFieldValue<(.*)>$';
@@ -52,10 +51,13 @@ export const UC_LIFECYCLE_SERVER_PROP_NAME = 'server';
 export const UC_MAIN_SUFFIX = 'Main';
 export const UC_MAIN_CLIENT_SUFFIX = `Client${UC_MAIN_SUFFIX}`;
 export const UC_MAIN_SERVER_SUFFIX = `Server${UC_MAIN_SUFFIX}`;
+export const UC_MAIN_SERVER_FILE_NAME_SUFFIX = `${UC_MAIN_SERVER_SUFFIX}.ts`;
 export const UC_MAIN_STEP_PREFIX_REGULAR = '// >=>';
+export const UC_NAME_PLACEHOLDER = 'CreateX';
 export const UC_OPI_BASE = 'UCOPIBase';
 export const UC_OPI_SUFFIX = 'OPI';
+export const UC_OPI0_SUFFIX = `${UC_OPI_SUFFIX}0`;
+export const UC_OPI1_SUFFIX = `${UC_OPI_SUFFIX}1`;
 export const UC_POLICY_SUFFIX = 'Policy';
 export const UC_POLICY_SUFFIX_FULL = `UC${UC_POLICY_SUFFIX}`;
-export const UC_POLICY_FILE_NAME_EXT = '.ts';
-export const UC_POLICY_FILE_NAME_SUFFIX = `${UC_POLICY_SUFFIX_FULL}${UC_POLICY_FILE_NAME_EXT}`;
+export const UC_POLICY_FILE_NAME_SUFFIX = `${UC_POLICY_SUFFIX_FULL}.ts`;

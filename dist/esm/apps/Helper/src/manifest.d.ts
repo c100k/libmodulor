@@ -17,6 +17,11 @@ export declare const Manifest: {
             icon: string;
             name: "CreateProject";
         };
+        CreateUC: {
+            action: "Create";
+            icon: string;
+            name: "CreateUC";
+        };
         DeleteGeneratedAppsTests: {
             action: "Delete";
             icon: string;

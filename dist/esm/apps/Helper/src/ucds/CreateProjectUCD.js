@@ -15,6 +15,7 @@ import { APPS_ROOT_PATH, PRODUCTS_ROOT_PATH } from '../../../../convention.js';
 import { TBoolean, TDirPath, TFileName, TFreeTextShort, TSlug, } from '../../../../dt/index.js';
 import { IllegalArgumentError } from '../../../../error/index.js';
 import { EverybodyUCPolicy, } from '../../../../uc/index.js';
+import { successMessage } from '../lib/funcs.js';
 import { files } from '../lib/layers/project.js';
 import { SrcFilesGenerator } from '../lib/SrcFilesGenerator.js';
 import { Manifest } from '../manifest.js';
@@ -51,7 +52,7 @@ let CreateProjectClientMain = class CreateProjectClientMain {
         await this.installDeps(pkgManagerBin, verbose);
         await this.commit(scmBin, initialCommit, verbose);
         await this.runDevCmds(pkgManagerBin, verbose);
-        this.logger.info('Done ! Project ready ! ✅ 🚀');
+        this.logger.info(successMessage('Project'));
     }
     async assertBinPresence(bin) {
         try {

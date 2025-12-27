@@ -11,82 +11,77 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
 import { inject, injectable } from 'inversify';
-import { PRODUCT_NAME_PLACEHOLDER } from '../../../../convention.js';
+import { APP_NAME_PLACEHOLDER, APP_SRC_DIR_NAME, APP_SRC_UCDS_DIR_NAME, UC_NAME_PLACEHOLDER, } from '../../../../convention.js';
 import { TString } from '../../../../dt/index.js';
-import { IllegalArgumentError } from '../../../../error/index.js';
 import { EverybodyUCPolicy, } from '../../../../uc/index.js';
 import { successMessage } from '../lib/funcs.js';
-import { ProductInputFieldsDef } from '../lib/io.js';
-import { files } from '../lib/layers/product.js';
+import { AppInputFieldsDef } from '../lib/io.js';
+import { files } from '../lib/layers/uc.js';
 import { SrcFilesGenerator } from '../lib/SrcFilesGenerator.js';
 import { Manifest } from '../manifest.js';
-let CreateProductClientMain = class CreateProductClientMain {
+let CreateUCClientMain = class CreateUCClientMain {
     fsManager;
-    i18nManager;
     logger;
     srcFilesGenerator;
     rootPath;
-    constructor(fsManager, i18nManager, logger, srcFilesGenerator) {
+    constructor(fsManager, logger, srcFilesGenerator) {
         this.fsManager = fsManager;
-        this.i18nManager = i18nManager;
         this.logger = logger;
         this.srcFilesGenerator = srcFilesGenerator;
     }
     async exec({ uc }) {
-        const productsPath = uc.reqVal0('productsPath');
-        const productName = uc.reqVal0('productName');
-        this.rootPath = this.fsManager.path(productsPath, productName);
+        const appsPath = uc.reqVal0('appsPath');
+        const appName = uc.reqVal0('appName');
+        const ucName = uc.reqVal0('ucName');
+        this.rootPath = this.fsManager.path(appsPath, appName, APP_SRC_DIR_NAME, APP_SRC_UCDS_DIR_NAME);
         // TODO : Rollback the whole thing in case of failure
-        await this.assertNotExisting();
         await this.createRootDir();
         await this.srcFilesGenerator.exec({
-            files: files(productName),
+            files: files(ucName),
             rootPath: this.rootPath,
         });
-        this.logger.info(successMessage('Product'));
-    }
-    async assertNotExisting() {
-        if (!(await this.fsManager.exists(this.rootPath))) {
-            return;
-        }
-        throw new IllegalArgumentError(this.i18nManager.t('err_existing_product', {
-            vars: { productPath: this.rootPath },
-        }));
+        this.logger.info(successMessage('Use case'));
+        this.logger.info('You can now register the use case in the App Manifest');
     }
     async createRootDir() {
         this.logger.info('Creating root dir : %s', this.rootPath);
+        if (await this.fsManager.exists(this.rootPath)) {
+            return;
+        }
         await this.fsManager.mkdir(this.rootPath, { recursive: true });
     }
 };
-CreateProductClientMain = __decorate([
+CreateUCClientMain = __decorate([
     injectable(),
     __param(0, inject('FSManager')),
-    __param(1, inject('I18nManager')),
-    __param(2, inject('Logger')),
-    __param(3, inject(SrcFilesGenerator)),
-    __metadata("design:paramtypes", [Object, Object, Object, SrcFilesGenerator])
-], CreateProductClientMain);
-export const CreateProductUCD = {
+    __param(1, inject('Logger')),
+    __param(2, inject(SrcFilesGenerator)),
+    __metadata("design:paramtypes", [Object, Object, SrcFilesGenerator])
+], CreateUCClientMain);
+export const CreateUCUCD = {
     ext: {
         cmd: {
-            mountAt: 'CreateProduct',
+            mountAt: 'CreateUC',
         },
     },
     io: {
         i: {
             fields: {
-                ...ProductInputFieldsDef,
-                productName: {
-                    type: new TString().setExamples([PRODUCT_NAME_PLACEHOLDER]),
+                ...AppInputFieldsDef,
+                appName: {
+                    type: new TString().setExamples([APP_NAME_PLACEHOLDER]),
+                },
+                ucName: {
+                    type: new TString().setExamples([UC_NAME_PLACEHOLDER]),
                 },
             },
         },
     },
     lifecycle: {
         client: {
-            main: CreateProductClientMain,
+            main: CreateUCClientMain,
             policy: EverybodyUCPolicy,
         },
     },
-    metadata: Manifest.ucReg.CreateProduct,
+    metadata: Manifest.ucReg.CreateUC,
 };

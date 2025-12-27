@@ -19,8 +19,8 @@ export const settings: S = {
     ...TARGET_DEFAULT_SERVER_MANAGER_SETTINGS,
     ...STD_DEFAULT_JWT_MANAGER_SETTINGS,
     asset_price_streamer_speed: 1,
-    jwt_manager_audience: 'fik-sdk-playground',
-    jwt_manager_issuer: 'fik-sdk-playground',
+    jwt_manager_audience: 'libmodulor-playground',
+    jwt_manager_issuer: 'libmodulor-playground',
     jwt_manager_secret: new TPassword().example(), // DO NOT USE THIS IN PRODUCTION !!!
     sewhsm_bindings_uc_data_store: 'UCDataStore',
     song_player_speed: 1,

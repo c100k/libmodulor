@@ -15,6 +15,7 @@ import { APP_NAME_PLACEHOLDER } from '../../../../convention.js';
 import { TString } from '../../../../dt/index.js';
 import { IllegalArgumentError } from '../../../../error/index.js';
 import { EverybodyUCPolicy, } from '../../../../uc/index.js';
+import { successMessage } from '../lib/funcs.js';
 import { AppInputFieldsDef } from '../lib/io.js';
 import { files } from '../lib/layers/app.js';
 import { SrcFilesGenerator } from '../lib/SrcFilesGenerator.js';
@@ -42,7 +43,7 @@ let CreateAppClientMain = class CreateAppClientMain {
             files: files(appName),
             rootPath: this.rootPath,
         });
-        this.logger.info('Done ! App ready ! ✅ 🚀');
+        this.logger.info(successMessage('App'));
     }
     async assertNotExisting() {
         if (!(await this.fsManager.exists(this.rootPath))) {

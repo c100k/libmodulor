@@ -43,7 +43,7 @@ export type AppTesterOpts = Partial<Pick<LoggerSettings, 'logger_level'>> & {
                  */
                 aliasPrefix?: AppTesterOptsAliasPrefix;
                 /**
-                 * @defaultValue ['fik-sdk', 'inversify']
+                 * @defaultValue ['libmodulor', 'inversify']
                  */
                 allowed?: AppTesterOptsImportsList;
             };
