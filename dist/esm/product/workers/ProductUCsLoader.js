@@ -12,19 +12,32 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 };
 import { inject, injectable } from 'inversify';
 import { AppUCsLoader, } from '../../app/index.js';
+import { TARGET_APPS_ROOT_PATH } from '../../convention.js';
 let ProductUCsLoader = class ProductUCsLoader {
     appUCsLoader;
+    fsManager;
     productManifest;
-    constructor(appUCsLoader, productManifest) {
+    constructor(appUCsLoader, fsManager, productManifest) {
         this.appUCsLoader = appUCsLoader;
+        this.fsManager = fsManager;
         this.productManifest = productManifest;
     }
-    async exec({ appsRootPath, srcImporter }) {
+    async exec({ appsRootPath, from = 'target', srcImporter, }) {
         const output = [];
+        let actualRootPath = appsRootPath;
+        if (!actualRootPath) {
+            switch (from) {
+                case 'target':
+                    actualRootPath = this.fsManager.path(...TARGET_APPS_ROOT_PATH);
+                    break;
+                default:
+                    from;
+            }
+        }
         for await (const app of this.productManifest.appReg) {
             const ucs = await this.appUCsLoader.exec({
                 app,
-                appsRootPath,
+                appsRootPath: actualRootPath,
                 srcImporter,
             });
             output.push(...ucs);
@@ -35,7 +48,8 @@ let ProductUCsLoader = class ProductUCsLoader {
 ProductUCsLoader = __decorate([
     injectable(),
     __param(0, inject(AppUCsLoader)),
-    __param(1, inject('ProductManifest')),
-    __metadata("design:paramtypes", [AppUCsLoader, Object])
+    __param(1, inject('FSManager')),
+    __param(2, inject('ProductManifest')),
+    __metadata("design:paramtypes", [AppUCsLoader, Object, Object])
 ], ProductUCsLoader);
 export { ProductUCsLoader };

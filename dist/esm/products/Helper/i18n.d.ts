@@ -5,8 +5,14 @@ export declare const I18n: {
         err_existing_app: string;
         err_existing_product: string;
         err_unknown_app: string;
+        uc_CreateApp_desc: string;
+        uc_CreateApp_label: string;
+        uc_CreateProduct_desc: string;
+        uc_CreateProduct_label: string;
         uc_CreateProject_desc: string;
         uc_CreateProject_label: string;
+        uc_CreateUC_desc: string;
+        uc_CreateUC_label: string;
         uc_DeleteGeneratedAppsTests_desc: string;
         uc_DeleteGeneratedAppsTests_label: string;
         uc_GenerateAppsTests_desc: string;

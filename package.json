@@ -90,10 +90,11 @@
             "import": "./dist/esm/index.webpack.js"
         }
     },
-    "bin": "./dist/esm/products/Helper/index.js",
+    "bin": "./dist/esm/products/Helper/cli-node-core/index.js",
     "scripts": {
         "lint": "biome check --write .",
-        "lint:ci": "biome check"
+        "lint:ci": "biome check",
+        "test": "tsc && vitest run"
     },
     "devDependencies": {
         "@biomejs/biome": "^2.3.10",

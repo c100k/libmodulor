@@ -61,3 +61,13 @@ export const UC_OPI1_SUFFIX = `${UC_OPI_SUFFIX}1`;
 export const UC_POLICY_SUFFIX = 'Policy';
 export const UC_POLICY_SUFFIX_FULL = `UC${UC_POLICY_SUFFIX}`;
 export const UC_POLICY_FILE_NAME_SUFFIX = `${UC_POLICY_SUFFIX_FULL}.ts`;
+/*
+ * Target
+ */
+export const TARGET_APPS_ROOT_PATH = [
+    // src/products/${ProductName}/${target-name}
+    '..', // src/products/${ProductName}
+    '..', // src/products
+    '..', // src
+    APPS_ROOT_DIR_NAME, // src/apps
+];

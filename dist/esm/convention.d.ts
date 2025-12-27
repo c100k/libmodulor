@@ -52,3 +52,4 @@ export declare const UC_OPI1_SUFFIX: string;
 export declare const UC_POLICY_SUFFIX: string;
 export declare const UC_POLICY_SUFFIX_FULL: string;
 export declare const UC_POLICY_FILE_NAME_SUFFIX: string;
+export declare const TARGET_APPS_ROOT_PATH: string[];

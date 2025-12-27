@@ -18,16 +18,19 @@ import { ucifHint, ucifIsMandatory, ucifRepeatability, ucMountingPoint, } from '
 import { CommandExecutor } from '../lib/cli/CommandExecutor.js';
 let NodeStricliCLIManager = class NodeStricliCLIManager {
     commandExecutor;
+    i18nManager;
     productManifest;
     productUCsLoader;
     wordingManager;
-    constructor(commandExecutor, productManifest, productUCsLoader, wordingManager) {
+    constructor(commandExecutor, i18nManager, productManifest, productUCsLoader, wordingManager) {
         this.commandExecutor = commandExecutor;
+        this.i18nManager = i18nManager;
         this.productManifest = productManifest;
         this.productUCsLoader = productUCsLoader;
         this.wordingManager = wordingManager;
     }
     async handleCommand({ appsRootPath, srcImporter, }) {
+        await this.i18nManager.init();
         const ucs = await this.productUCsLoader.exec({
             appsRootPath,
             srcImporter,
@@ -109,10 +112,11 @@ let NodeStricliCLIManager = class NodeStricliCLIManager {
 NodeStricliCLIManager = __decorate([
     injectable(),
     __param(0, inject(CommandExecutor)),
-    __param(1, inject('ProductManifest')),
-    __param(2, inject(ProductUCsLoader)),
-    __param(3, inject(WordingManager)),
-    __metadata("design:paramtypes", [CommandExecutor, Object, ProductUCsLoader,
+    __param(1, inject('I18nManager')),
+    __param(2, inject('ProductManifest')),
+    __param(3, inject(ProductUCsLoader)),
+    __param(4, inject(WordingManager)),
+    __metadata("design:paramtypes", [CommandExecutor, Object, Object, ProductUCsLoader,
         WordingManager])
 ], NodeStricliCLIManager);
 export { NodeStricliCLIManager };

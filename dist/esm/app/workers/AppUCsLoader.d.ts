@@ -6,11 +6,10 @@ import type { AppManifestSourceSafe } from '../manifest.js';
 import { AppManifestLoader } from './AppManifestLoader.js';
 import type { Input as AppSrcFilePathBuilderInput } from './AppSrcFilePathBuilder.js';
 import { UCDefLoader } from './UCDefLoader.js';
-export interface Input {
+export type Input = Pick<AppSrcFilePathBuilderInput, 'appsRootPath'> & {
     app: ProductAppReg;
-    appsRootPath?: AppSrcFilePathBuilderInput['appsRootPath'];
     srcImporter: SrcImporter<AppManifestSourceSafe | UCDefSourceSafe>;
-}
+};
 export type Output = UC<any, any, any>[];
 export declare class AppUCsLoader implements Worker<Input, Promise<Output>> {
     private appManifestLoader;
