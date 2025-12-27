@@ -94,6 +94,12 @@ export function mountHandler(contract, express, handler) {
         express[httpMethod](pathAlias, handler);
     }
 }
+export function postInit(app, customerFacingErrorBuilder) {
+    app.use((err, _req, res, _next) => {
+        const { error } = customerFacingErrorBuilder.exec({ error: err });
+        return res.status(error.httpStatus).json(error.toObj());
+    });
+}
 export function toFile(f) {
     return {
         name: f.name,

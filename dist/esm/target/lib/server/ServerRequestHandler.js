@@ -12,6 +12,7 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 };
 var ServerRequestHandler_1;
 import { inject, injectable } from 'inversify';
+import { IllegalArgumentError, isEmptyJSON } from '../../../error/index.js';
 import { UCBuilder, UCOutputReader, UCOutputSideEffectType, } from '../../../uc/index.js';
 import { AuthCookieCreator, } from './AuthCookieCreator.js';
 import { AuthenticationChecker } from './AuthenticationChecker.js';
@@ -119,8 +120,11 @@ let ServerRequestHandler = class ServerRequestHandler {
                 try {
                     uc.fill((await req.bodyFromJSON()));
                 }
-                catch (_err) {
-                    // Ignore any JSON.parse error as everything is validated afterwards
+                catch (err) {
+                    if (isEmptyJSON(err)) {
+                        break;
+                    }
+                    throw new IllegalArgumentError();
                 }
                 break;
             case 'query-params':

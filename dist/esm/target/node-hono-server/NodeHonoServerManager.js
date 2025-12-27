@@ -16,12 +16,14 @@ import { createAdaptorServer } from '@hono/node-server';
 import { serveStatic } from '@hono/node-server/serve-static';
 import { inject, injectable } from 'inversify';
 import { NotCallableError } from '../../error/index.js';
+import { CustomerFacingErrorBuilder } from '../lib/server/CustomerFacingErrorBuilder.js';
 import { EntrypointsBuilder } from '../lib/server/EntrypointsBuilder.js';
 import { ServerRequestHandler } from '../lib/server/ServerRequestHandler.js';
 import { ServerSSLCertLoader } from '../lib/server/ServerSSLCertLoader.js';
 import { buildHandler, init, mountHandler } from '../lib/server-hono/funcs.js';
 import { listen, stop } from '../lib/server-node/funcs.js';
 let NodeHonoServerManager = class NodeHonoServerManager {
+    customerFacingErrorBuilder;
     entrypointsBuilder;
     environmentManager;
     logger;
@@ -31,7 +33,8 @@ let NodeHonoServerManager = class NodeHonoServerManager {
     ucManager;
     runtime;
     server;
-    constructor(entrypointsBuilder, environmentManager, logger, serverRequestHandler, serverSSLCertLoader, settingsManager, ucManager) {
+    constructor(customerFacingErrorBuilder, entrypointsBuilder, environmentManager, logger, serverRequestHandler, serverSSLCertLoader, settingsManager, ucManager) {
+        this.customerFacingErrorBuilder = customerFacingErrorBuilder;
         this.entrypointsBuilder = entrypointsBuilder;
         this.environmentManager = environmentManager;
         this.logger = logger;
@@ -57,7 +60,7 @@ let NodeHonoServerManager = class NodeHonoServerManager {
         this.ucManager = ucManager;
     }
     async init() {
-        this.runtime = init();
+        this.runtime = init(this.customerFacingErrorBuilder);
         await this.createServer();
     }
     initSync() {
@@ -106,14 +109,16 @@ let NodeHonoServerManager = class NodeHonoServerManager {
 };
 NodeHonoServerManager = __decorate([
     injectable(),
-    __param(0, inject(EntrypointsBuilder)),
-    __param(1, inject('EnvironmentManager')),
-    __param(2, inject('Logger')),
-    __param(3, inject(ServerRequestHandler)),
-    __param(4, inject(ServerSSLCertLoader)),
-    __param(5, inject('SettingsManager')),
-    __param(6, inject('UCManager')),
-    __metadata("design:paramtypes", [EntrypointsBuilder, Object, Object, ServerRequestHandler,
+    __param(0, inject(CustomerFacingErrorBuilder)),
+    __param(1, inject(EntrypointsBuilder)),
+    __param(2, inject('EnvironmentManager')),
+    __param(3, inject('Logger')),
+    __param(4, inject(ServerRequestHandler)),
+    __param(5, inject(ServerSSLCertLoader)),
+    __param(6, inject('SettingsManager')),
+    __param(7, inject('UCManager')),
+    __metadata("design:paramtypes", [CustomerFacingErrorBuilder,
+        EntrypointsBuilder, Object, Object, ServerRequestHandler,
         ServerSSLCertLoader, Object, Object])
 ], NodeHonoServerManager);
 export { NodeHonoServerManager };

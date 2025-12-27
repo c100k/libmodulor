@@ -3,6 +3,7 @@ import type { AppManifest } from '../../app/index.js';
 import type { DirPath } from '../../dt/index.js';
 import type { Configurable, EnvironmentManager, Logger, SettingsManager } from '../../std/index.js';
 import type { UCDef, UCHTTPContract, UCInput, UCManager, UCOPIBase } from '../../uc/index.js';
+import { CustomerFacingErrorBuilder } from '../lib/server/CustomerFacingErrorBuilder.js';
 import { EntrypointsBuilder } from '../lib/server/EntrypointsBuilder.js';
 import type { ServerManager } from '../lib/server/ServerManager.js';
 import { ServerRequestHandler } from '../lib/server/ServerRequestHandler.js';
@@ -10,6 +11,7 @@ import { ServerSSLCertLoader } from '../lib/server/ServerSSLCertLoader.js';
 import type { ListenSettings, StopSettings } from '../lib/server-node/types.js';
 type S = ListenSettings & StopSettings;
 export declare class NodeHonoServerManager implements Configurable<S>, ServerManager {
+    private customerFacingErrorBuilder;
     private entrypointsBuilder;
     protected environmentManager: EnvironmentManager;
     private logger;
@@ -19,7 +21,7 @@ export declare class NodeHonoServerManager implements Configurable<S>, ServerMan
     private ucManager;
     protected runtime: Hono;
     private server;
-    constructor(entrypointsBuilder: EntrypointsBuilder, environmentManager: EnvironmentManager, logger: Logger, serverRequestHandler: ServerRequestHandler, serverSSLCertLoader: ServerSSLCertLoader, settingsManager: SettingsManager<S>, ucManager: UCManager);
+    constructor(customerFacingErrorBuilder: CustomerFacingErrorBuilder, entrypointsBuilder: EntrypointsBuilder, environmentManager: EnvironmentManager, logger: Logger, serverRequestHandler: ServerRequestHandler, serverSSLCertLoader: ServerSSLCertLoader, settingsManager: SettingsManager<S>, ucManager: UCManager);
     s(): S;
     getRuntime(): Hono;
     overrideUCManager(ucManager: UCManager): void;

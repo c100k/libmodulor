@@ -12,15 +12,18 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 };
 import { inject, injectable } from 'inversify';
 import { NotAvailableError, NotCallableError } from '../../error/index.js';
+import { CustomerFacingErrorBuilder } from '../lib/server/CustomerFacingErrorBuilder.js';
 import { ServerRequestHandler } from '../lib/server/ServerRequestHandler.js';
 import { buildHandler, init, mountHandler } from '../lib/server-hono/funcs.js';
 let SyncEdgeWorkerHonoServerManager = class SyncEdgeWorkerHonoServerManager {
+    customerFacingErrorBuilder;
     serverRequestHandler;
     settingsManager;
     ucDataStore;
     ucManager;
     runtime;
-    constructor(serverRequestHandler, settingsManager, ucDataStore, ucManager) {
+    constructor(customerFacingErrorBuilder, serverRequestHandler, settingsManager, ucDataStore, ucManager) {
+        this.customerFacingErrorBuilder = customerFacingErrorBuilder;
         this.serverRequestHandler = serverRequestHandler;
         this.settingsManager = settingsManager;
         this.ucDataStore = ucDataStore;
@@ -41,7 +44,7 @@ let SyncEdgeWorkerHonoServerManager = class SyncEdgeWorkerHonoServerManager {
         throw new NotCallableError('init', 'initSync', 'sync-only');
     }
     initSync() {
-        this.runtime = init();
+        this.runtime = init(this.customerFacingErrorBuilder);
     }
     async mount(_appManifest, _ucd, _contract) {
         throw new NotCallableError('mount', 'mountSync', 'sync-only');
@@ -78,10 +81,12 @@ let SyncEdgeWorkerHonoServerManager = class SyncEdgeWorkerHonoServerManager {
 };
 SyncEdgeWorkerHonoServerManager = __decorate([
     injectable(),
-    __param(0, inject(ServerRequestHandler)),
-    __param(1, inject('SettingsManager')),
-    __param(2, inject('UCDataStore')),
-    __param(3, inject('UCManager')),
-    __metadata("design:paramtypes", [ServerRequestHandler, Object, Object, Object])
+    __param(0, inject(CustomerFacingErrorBuilder)),
+    __param(1, inject(ServerRequestHandler)),
+    __param(2, inject('SettingsManager')),
+    __param(3, inject('UCDataStore')),
+    __param(4, inject('UCManager')),
+    __metadata("design:paramtypes", [CustomerFacingErrorBuilder,
+        ServerRequestHandler, Object, Object, Object])
 ], SyncEdgeWorkerHonoServerManager);
 export { SyncEdgeWorkerHonoServerManager };

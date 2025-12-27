@@ -3,6 +3,7 @@ import type { AppManifest } from '../../app/index.js';
 import type { DirPath } from '../../dt/index.js';
 import type { Configurable, EnvironmentManager, Logger, LoggerSettings, SettingsManager } from '../../std/index.js';
 import type { UCDef, UCHTTPContract, UCInput, UCManager, UCOPIBase } from '../../uc/index.js';
+import { CustomerFacingErrorBuilder } from '../lib/server/CustomerFacingErrorBuilder.js';
 import { EntrypointsBuilder } from '../lib/server/EntrypointsBuilder.js';
 import type { ServerManager, ServerManagerSettings } from '../lib/server/ServerManager.js';
 import { ServerRequestHandler } from '../lib/server/ServerRequestHandler.js';
@@ -11,6 +12,7 @@ import { HelmetMiddlewareBuilder } from '../lib/server-express/HelmetMiddlewareB
 import type { ListenSettings, StopSettings } from '../lib/server-node/types.js';
 type S = ListenSettings & Pick<LoggerSettings, 'logger_level'> & Pick<ServerManagerSettings, 'server_tmp_path'> & StopSettings;
 export declare class NodeExpressServerManager implements Configurable<S>, ServerManager {
+    private customerFacingErrorBuilder;
     private entrypointsBuilder;
     protected environmentManager: EnvironmentManager;
     private helmetMB;
@@ -21,7 +23,7 @@ export declare class NodeExpressServerManager implements Configurable<S>, Server
     private ucManager;
     protected runtime: Express;
     private server;
-    constructor(entrypointsBuilder: EntrypointsBuilder, environmentManager: EnvironmentManager, helmetMB: HelmetMiddlewareBuilder, logger: Logger, serverRequestHandler: ServerRequestHandler, serverSSLCertLoader: ServerSSLCertLoader, settingsManager: SettingsManager<S>, ucManager: UCManager);
+    constructor(customerFacingErrorBuilder: CustomerFacingErrorBuilder, entrypointsBuilder: EntrypointsBuilder, environmentManager: EnvironmentManager, helmetMB: HelmetMiddlewareBuilder, logger: Logger, serverRequestHandler: ServerRequestHandler, serverSSLCertLoader: ServerSSLCertLoader, settingsManager: SettingsManager<S>, ucManager: UCManager);
     s(): S;
     getRuntime(): Express;
     overrideUCManager(ucManager: UCManager): void;

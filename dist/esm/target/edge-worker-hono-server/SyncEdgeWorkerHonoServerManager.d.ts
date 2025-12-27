@@ -3,6 +3,7 @@ import type { AppManifest } from '../../app/index.js';
 import type { DirPath } from '../../dt/index.js';
 import type { Configurable, SettingsManager } from '../../std/index.js';
 import type { UCDataStore, UCDef, UCHTTPContract, UCInput, UCManager, UCOPIBase } from '../../uc/index.js';
+import { CustomerFacingErrorBuilder } from '../lib/server/CustomerFacingErrorBuilder.js';
 import type { ServerManager } from '../lib/server/ServerManager.js';
 import { ServerRequestHandler } from '../lib/server/ServerRequestHandler.js';
 export interface SyncEdgeWorkerHonoServerManagerSettings {
@@ -10,12 +11,13 @@ export interface SyncEdgeWorkerHonoServerManagerSettings {
 }
 type S = SyncEdgeWorkerHonoServerManagerSettings;
 export declare class SyncEdgeWorkerHonoServerManager implements Configurable<S>, ServerManager {
+    private customerFacingErrorBuilder;
     private serverRequestHandler;
     private settingsManager;
     private ucDataStore;
     private ucManager;
     protected runtime: Hono;
-    constructor(serverRequestHandler: ServerRequestHandler, settingsManager: SettingsManager<S>, ucDataStore: UCDataStore, ucManager: UCManager);
+    constructor(customerFacingErrorBuilder: CustomerFacingErrorBuilder, serverRequestHandler: ServerRequestHandler, settingsManager: SettingsManager<S>, ucDataStore: UCDataStore, ucManager: UCManager);
     s(): SyncEdgeWorkerHonoServerManagerSettings;
     getRuntime(): Hono;
     overrideUCManager(ucManager: UCManager): void;

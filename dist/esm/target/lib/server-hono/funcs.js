@@ -86,13 +86,17 @@ export function buildHandler(appManifest, ucd, contract, serverRequestHandler, u
     };
     return handler;
 }
-export function init() {
+export function init(customerFacingErrorBuilder) {
     const app = new Hono();
     app.use(secureHeaders());
     app.use(logger());
     app.notFound((c) => {
-        const err = new NotFoundError();
-        return c.json(err.toObj(), err.httpStatus);
+        const error = new NotFoundError();
+        return c.json(error.toObj(), error.httpStatus);
+    });
+    app.onError((err, c) => {
+        const { error } = customerFacingErrorBuilder.exec({ error: err });
+        return c.json(error.toObj(), error.httpStatus);
     });
     return app;
 }

@@ -15,13 +15,15 @@ import https from 'node:https';
 import express, {} from 'express';
 import { inject, injectable } from 'inversify';
 import { NotCallableError } from '../../error/index.js';
+import { CustomerFacingErrorBuilder } from '../lib/server/CustomerFacingErrorBuilder.js';
 import { EntrypointsBuilder } from '../lib/server/EntrypointsBuilder.js';
 import { ServerRequestHandler } from '../lib/server/ServerRequestHandler.js';
 import { ServerSSLCertLoader } from '../lib/server/ServerSSLCertLoader.js';
-import { buildHandler, init, mountHandler, } from '../lib/server-express/funcs.js';
+import { buildHandler, init, mountHandler, postInit, } from '../lib/server-express/funcs.js';
 import { HelmetMiddlewareBuilder } from '../lib/server-express/HelmetMiddlewareBuilder.js';
 import { listen, stop } from '../lib/server-node/funcs.js';
 let NodeExpressServerManager = class NodeExpressServerManager {
+    customerFacingErrorBuilder;
     entrypointsBuilder;
     environmentManager;
     helmetMB;
@@ -32,7 +34,8 @@ let NodeExpressServerManager = class NodeExpressServerManager {
     ucManager;
     runtime;
     server;
-    constructor(entrypointsBuilder, environmentManager, helmetMB, logger, serverRequestHandler, serverSSLCertLoader, settingsManager, ucManager) {
+    constructor(customerFacingErrorBuilder, entrypointsBuilder, environmentManager, helmetMB, logger, serverRequestHandler, serverSSLCertLoader, settingsManager, ucManager) {
+        this.customerFacingErrorBuilder = customerFacingErrorBuilder;
         this.entrypointsBuilder = entrypointsBuilder;
         this.environmentManager = environmentManager;
         this.helmetMB = helmetMB;
@@ -83,7 +86,7 @@ let NodeExpressServerManager = class NodeExpressServerManager {
         await stop(this.server, this.settingsManager);
     }
     async warmUp() {
-        // Nothing to do
+        postInit(this.runtime, this.customerFacingErrorBuilder);
     }
     async createServer() {
         const port = this.s().server_binding_port;
@@ -102,15 +105,17 @@ let NodeExpressServerManager = class NodeExpressServerManager {
 };
 NodeExpressServerManager = __decorate([
     injectable(),
-    __param(0, inject(EntrypointsBuilder)),
-    __param(1, inject('EnvironmentManager')),
-    __param(2, inject(HelmetMiddlewareBuilder)),
-    __param(3, inject('Logger')),
-    __param(4, inject(ServerRequestHandler)),
-    __param(5, inject(ServerSSLCertLoader)),
-    __param(6, inject('SettingsManager')),
-    __param(7, inject('UCManager')),
-    __metadata("design:paramtypes", [EntrypointsBuilder, Object, HelmetMiddlewareBuilder, Object, ServerRequestHandler,
+    __param(0, inject(CustomerFacingErrorBuilder)),
+    __param(1, inject(EntrypointsBuilder)),
+    __param(2, inject('EnvironmentManager')),
+    __param(3, inject(HelmetMiddlewareBuilder)),
+    __param(4, inject('Logger')),
+    __param(5, inject(ServerRequestHandler)),
+    __param(6, inject(ServerSSLCertLoader)),
+    __param(7, inject('SettingsManager')),
+    __param(8, inject('UCManager')),
+    __metadata("design:paramtypes", [CustomerFacingErrorBuilder,
+        EntrypointsBuilder, Object, HelmetMiddlewareBuilder, Object, ServerRequestHandler,
         ServerSSLCertLoader, Object, Object])
 ], NodeExpressServerManager);
 export { NodeExpressServerManager };

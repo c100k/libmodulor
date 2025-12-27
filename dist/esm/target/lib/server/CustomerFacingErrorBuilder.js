@@ -11,7 +11,7 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
 import { inject, injectable } from 'inversify';
-import { CustomError, InternalServerError } from '../../../error/index.js';
+import { CustomError, IllegalArgumentError, InternalServerError, isInvalidJSON, } from '../../../error/index.js';
 let CustomerFacingErrorBuilder = class CustomerFacingErrorBuilder {
     environmentManager;
     logger;
@@ -24,6 +24,11 @@ let CustomerFacingErrorBuilder = class CustomerFacingErrorBuilder {
             // It's already ready to be sent as is
             return {
                 error,
+            };
+        }
+        if (isInvalidJSON(error)) {
+            return {
+                error: new IllegalArgumentError(),
             };
         }
         this.logger.error(error);
