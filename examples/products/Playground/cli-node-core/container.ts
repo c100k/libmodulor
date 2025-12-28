@@ -4,8 +4,6 @@ import {
     bindCommon,
     bindProduct,
     CONTAINER_OPTS,
-    EnvSettingsManager,
-    type SettingsManager,
     updateSettings,
 } from '../../../../dist/esm/index.js';
 import { bindNodeCLI, bindNodeCore } from '../../../../dist/esm/index.node.js';
@@ -20,9 +18,5 @@ updateSettings<S>(container, settings);
 bindNodeCore(container);
 bindNodeCLI(container);
 bindProduct(container, Manifest, I18n);
-
-(await container.rebind<SettingsManager>('SettingsManager')).to(
-    EnvSettingsManager,
-);
 
 export default container;

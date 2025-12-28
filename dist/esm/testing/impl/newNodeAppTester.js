@@ -18,8 +18,6 @@ export async function newNodeAppTester(serverPortRangeStart, idx, args) {
     const settings = {
         ...STD_DEFAULT_JWT_MANAGER_SETTINGS,
         ...TARGET_DEFAULT_SERVER_MANAGER_SETTINGS,
-        jwt_manager_audience: 'libmodulor-test',
-        jwt_manager_issuer: 'libmodulor-test',
         jwt_manager_secret: new TPassword().example(),
         logger_level,
         server_basic_auth_entries: {

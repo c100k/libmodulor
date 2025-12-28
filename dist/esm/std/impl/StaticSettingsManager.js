@@ -15,6 +15,9 @@ let StaticSettingsManager = class StaticSettingsManager {
     settings;
     constructor(settings) {
         this.settings = settings;
+        // TODO : Find a way to safely enable this
+        // This impl is isually used in clients so we don't necessarily want to log there
+        // checkSettings(settings, false);
     }
     get() {
         return (key) => this.settings[key];

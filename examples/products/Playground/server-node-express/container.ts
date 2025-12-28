@@ -4,11 +4,9 @@ import {
     bindCommon,
     bindProduct,
     CONTAINER_OPTS,
-    EnvSettingsManager,
     type LLMManager,
     MistralAILLMManager,
     type ServerManager,
-    type SettingsManager,
     type UCDataStore,
     updateSettings,
 } from '../../../../dist/esm/index.js';
@@ -30,7 +28,6 @@ bindNodeCore(container);
 bindServer(container);
 bindProduct(container, Manifest, I18n);
 
-container.rebindSync<SettingsManager>('SettingsManager').to(EnvSettingsManager);
 container.rebindSync<UCDataStore>('UCDataStore').to(KnexUCDataStore);
 
 container.bind<LLMManager>('LLMManager').to(MistralAILLMManager);

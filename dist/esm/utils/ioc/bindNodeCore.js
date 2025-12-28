@@ -1,3 +1,4 @@
+import { EnvSettingsManager } from '../../std/impl/EnvSettingsManager.js';
 import { NodeBufferManager } from '../../std/impl/NodeBufferManager.js';
 import { NodeCryptoManager } from '../../std/impl/NodeCryptoManager.js';
 import { NodeEnvironmentManager } from '../../std/impl/NodeEnvironmentManager.js';
@@ -14,4 +15,8 @@ export function bindNodeCore(container) {
     container
         .rebindSync('FormDataBuilder')
         .to(NodeFormDataBuilder);
+    container
+        .rebindSync('SettingsManager')
+        .to(EnvSettingsManager)
+        .inSingletonScope();
 }

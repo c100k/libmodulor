@@ -1,17 +1,4 @@
-/**
- * Placeholder for string settings that must be defined explicitly at runtime (e.g. secrets).
- */
-export declare const SettingsManagerMandatoryPlaceholder = "!<>!";
-/**
- * Placeholder for array settings that must be defined explicitly at runtime (e.g. secrets).
- */
-export declare const SettingsManagerMandatoryPlaceholderForArray: string[];
-/**
- * Placeholder for object settings that must be defined explicitly at runtime (e.g. secrets).
- */
-export declare const SettingsManagerMandatoryPlaceholderForObject: {
-    '0': string;
-};
+import type { StringKeys } from '../utils/index.js';
 /**
  * A group of settings
  *
@@ -27,7 +14,7 @@ export interface Settings {
 export interface Configurable<S> {
     s(): S;
 }
-export type SettingsGetter<S> = <K extends keyof S>(key: K) => S[K];
-export interface SettingsManager<S = Settings> {
+export type SettingsGetter<S extends Settings> = <K extends StringKeys<S>>(key: K) => S[K];
+export interface SettingsManager<S extends Settings = Settings> {
     get(): SettingsGetter<S>;
 }

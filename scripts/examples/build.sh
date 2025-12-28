@@ -25,6 +25,8 @@ productPath=products/Playground
 echo "Creating .env"
 cat > $buildDir/$productPath/.env <<'EOF'
 app_mai_api_key=
+app_server_basic_auth_entries='{"toto":"mdhg6gXJXI6vciD7egak"}'
+app_server_public_api_key_entries='["lMNYGQlK98NB6it80wA5", "UNSAFE_CHANGE_ME"]'
 EOF
 
 # Target > cli-node-core

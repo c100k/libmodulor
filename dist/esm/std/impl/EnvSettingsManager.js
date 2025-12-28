@@ -12,91 +12,69 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 };
 var EnvSettingsManager_1;
 import { inject, injectable } from 'inversify';
-import { SettingsManagerMandatoryPlaceholder, SettingsManagerMandatoryPlaceholderForArray, SettingsManagerMandatoryPlaceholderForObject, } from '../SettingsManager.js';
+import { checkSettings } from '../lib/settings.js';
 let EnvSettingsManager = class EnvSettingsManager {
     static { EnvSettingsManager_1 = this; }
     environmentManager;
     settings;
     static ENV_VAR_PREFIX = 'app_';
+    settingsWithEnv;
     constructor(environmentManager, settings) {
         this.environmentManager = environmentManager;
         this.settings = settings;
-        const initializationErrors = Object.keys(settings)
-            .map((key) => {
-            try {
-                this.get()(key);
-                return null;
+        this.settingsWithEnv = {
+            ...this.settings,
+        };
+        for (const [k, _v] of Object.entries(this.settingsWithEnv)) {
+            const fromEnv = this.loadFromEnv(k, this.settings[k]);
+            if (fromEnv === undefined) {
+                continue;
             }
-            catch (err) {
-                return err.message;
-            }
-        })
-            .filter((message) => !!message);
-        if (initializationErrors.length > 0) {
-            throw new Error(`Initialization failed for the following reasons : ${initializationErrors.join(', ')}`);
+            // @ts-expect-error
+            this.settingsWithEnv[k] = fromEnv;
         }
+        checkSettings(this.settingsWithEnv, this.environmentManager.isProd());
     }
     get() {
-        return (key) => {
-            const envVarName = `${EnvSettingsManager_1.ENV_VAR_PREFIX}${key.toString()}`;
-            const envValue = this.environmentManager.env(envVarName);
-            const defaultValue = this.settings[key];
-            if (this.isMandatoryPlaceholder(defaultValue) &&
-                envValue === undefined) {
-                throw new Error(`Env var ${envVarName} must be defined`);
-            }
-            if (envValue === undefined) {
-                return defaultValue;
-            }
+        return (key) => this.settingsWithEnv[key];
+    }
+    loadFromEnv(key, defaultValue) {
+        const envVarName = `${EnvSettingsManager_1.ENV_VAR_PREFIX}${key}`;
+        const envValue = this.environmentManager.env(envVarName);
+        if (envValue === undefined) {
+            return undefined;
+        }
+        if (typeof envValue === 'string') {
             if (Array.isArray(defaultValue)) {
                 return JSON.parse(envValue);
             }
             if (typeof defaultValue === 'object' && defaultValue !== null) {
                 return JSON.parse(envValue);
             }
-            if (typeof defaultValue === 'number') {
-                if (defaultValue.toString().includes('.')) {
-                    const envValueAsFloat = Number.parseFloat(envValue);
-                    if (Number.isNaN(envValueAsFloat)) {
-                        throw new Error(`Env var ${envVarName} must be a valid decimal number`);
-                    }
-                    return envValueAsFloat;
+        }
+        if (typeof defaultValue === 'number') {
+            if (defaultValue.toString().includes('.')) {
+                const envValueAsFloat = Number.parseFloat(envValue);
+                if (Number.isNaN(envValueAsFloat)) {
+                    throw new Error(`Env var ${envVarName} must be a valid decimal number`);
                 }
-                const envValueAsInt = Number.parseInt(envValue, 10);
-                if (Number.isNaN(envValueAsInt)) {
-                    throw new Error(`Env var ${envVarName} must be a valid integer`);
-                }
-                return envValueAsInt;
+                return envValueAsFloat;
             }
-            if (typeof defaultValue === 'boolean') {
-                if (['0', 'false'].includes(envValue)) {
-                    return false;
-                }
-                if (['1', 'true'].includes(envValue)) {
-                    return true;
-                }
+            const envValueAsInt = Number.parseInt(envValue, 10);
+            if (Number.isNaN(envValueAsInt)) {
+                throw new Error(`Env var ${envVarName} must be a valid integer`);
             }
-            return envValue;
-        };
-    }
-    isMandatoryPlaceholder(value) {
-        const mandatoryPlaceholder = SettingsManagerMandatoryPlaceholder;
-        if (value === null || value === undefined) {
-            return false;
+            return envValueAsInt;
         }
-        const isSimpleString = value === mandatoryPlaceholder;
-        if (isSimpleString) {
-            return true;
+        if (typeof defaultValue === 'boolean') {
+            if (['0', 'false'].includes(envValue)) {
+                return false;
+            }
+            if (['1', 'true'].includes(envValue)) {
+                return true;
+            }
         }
-        const isArray = Array.isArray(value) &&
-            JSON.stringify(value) ===
-                JSON.stringify(SettingsManagerMandatoryPlaceholderForArray);
-        if (isArray) {
-            return true;
-        }
-        return (typeof value === 'object' &&
-            JSON.stringify(value) ===
-                JSON.stringify(SettingsManagerMandatoryPlaceholderForObject));
+        return envValue;
     }
 };
 EnvSettingsManager = EnvSettingsManager_1 = __decorate([

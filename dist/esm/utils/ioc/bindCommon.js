@@ -48,7 +48,8 @@ export function bindCommon(container) {
     container.bind('Logger').to(ConsoleLogger);
     container
         .bind('SettingsManager')
-        .to(StaticSettingsManager);
+        .to(StaticSettingsManager)
+        .inSingletonScope();
     container
         .bind('ServerClientManager')
         .to(SettingsServerClientManager);

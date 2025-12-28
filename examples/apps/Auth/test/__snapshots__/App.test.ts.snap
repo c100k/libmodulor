@@ -96,50 +96,6 @@ exports[`Run > Use Cases > 'SignIn' > should execute with auth 'ADMIN' and input
 }
 `;
 
-exports[`Run > Use Cases > 'SignIn' > should execute with auth 'ANONYMOUS' and input 'ALL_WITH_EXAMPLES' > hash = 44264f8ce4d9668eb7b3cd20ebf624045a88a819327b78b2ccaf03bdfd9e52f6 1`] = `
-{
-  "out": {
-    "args": {
-      "auth": null,
-      "authName": "ANONYMOUS",
-      "inputFiller": [Function],
-      "inputFillerName": "ALL_WITH_EXAMPLES",
-    },
-    "err": [IllegalArgumentError: Invalid credentials],
-    "hash": "44264f8ce4d9668eb7b3cd20ebf624045a88a819327b78b2ccaf03bdfd9e52f6",
-    "io": {
-      "i": {
-        "role": "admin",
-      },
-      "o": null,
-    },
-  },
-  "sideEffects": undefined,
-}
-`;
-
-exports[`Run > Use Cases > 'SignIn' > should execute with auth 'ANONYMOUS' and input 'ONLY_MANDATORY_WITH_EXAMPLES' > hash = 5b6561f93a78241c1a5527825ddfea50348c86bf8743704b7f403673eb571c09 1`] = `
-{
-  "out": {
-    "args": {
-      "auth": null,
-      "authName": "ANONYMOUS",
-      "inputFiller": [Function],
-      "inputFillerName": "ONLY_MANDATORY_WITH_EXAMPLES",
-    },
-    "err": [IllegalArgumentError: Invalid credentials],
-    "hash": "5b6561f93a78241c1a5527825ddfea50348c86bf8743704b7f403673eb571c09",
-    "io": {
-      "i": {
-        "role": "admin",
-      },
-      "o": null,
-    },
-  },
-  "sideEffects": undefined,
-}
-`;
-
 exports[`Run > Use Cases > 'SignIn' > should execute with auth 'ANONYMOUS' and input 'ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPL…' > hash = 788d02c6d2a12dd6f1e0617d82806fb3249c5092a38a30a8b04c6cf5e42899ea 1`] = `
 {
   "out": {

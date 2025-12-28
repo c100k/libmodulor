@@ -1,3 +1,4 @@
+import { unsafeDefaultSetting } from '../../../std/index.js';
 /**
  * @see TARGET_DEFAULT_SERVER_CLIENT_MANAGER_SETTINGS
  */
@@ -13,7 +14,7 @@ export const TARGET_DEFAULT_SERVER_MANAGER_SETTINGS = {
     server_csp_img_src: [],
     server_csp_script_src: [],
     server_private_api_key_entries: [],
-    server_public_api_key_entries: ['PublicApiKeyToBeChangedWhenDeploying'],
+    server_public_api_key_entries: [unsafeDefaultSetting()],
     server_public_api_key_header_name: 'X-API-Key',
     server_public_url: 'http://localhost:7443',
     server_ssl_fullchain_path: null,
