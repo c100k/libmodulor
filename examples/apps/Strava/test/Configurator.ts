@@ -18,6 +18,8 @@ import type {
     CreateActivityOPI0,
 } from '../src/ucds/CreateActivityUCD.js';
 
+const { CreateActivity } = Manifest.ucReg;
+
 export class Configurator extends ExampleAppTesterConfigurator {
     public override async authSettersConfig(): Promise<
         AppTesterConfiguratorAuthSettersConfig | undefined
@@ -51,7 +53,7 @@ export class Configurator extends ExampleAppTesterConfigurator {
     > {
         return new Map([
             [
-                Manifest.ucReg.CreateActivity.name,
+                CreateActivity.name,
                 {
                     ALL_CORRECT_BUT_BAD_TITLE: (
                         uc: UC<CreateActivityInput, CreateActivityOPI0>,

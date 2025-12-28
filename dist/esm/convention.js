@@ -71,3 +71,4 @@ export const TARGET_APPS_ROOT_PATH = [
     '..', // src
     APPS_ROOT_DIR_NAME, // src/apps
 ];
+export const TARGET_NAME_PLACEHOLDER = 'node-express-server';

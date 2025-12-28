@@ -17,6 +17,11 @@ export const Manifest = {
             icon: 'plus',
             name: 'CreateProject',
         },
+        CreateTarget: {
+            action: 'Create',
+            icon: 'plus',
+            name: 'CreateTarget',
+        },
         CreateUC: {
             action: 'Create',
             icon: 'plus',

@@ -2,6 +2,8 @@ export const I18n = {
     en: {
         err_existing_app: 'App "{{appPath}}" already exists',
         err_existing_product: 'Product "{{productPath}}" already exists',
+        err_existing_target: 'Target "{{targetPath}}" already exists',
+        err_target_generator_not_available: 'This target has not been implemented yet via the generator. In the meantime, you can create it manually by following the examples.',
         err_unknown_app: 'App "{{appPath}}" does not exist',
         uc_CreateApp_desc: 'Create the basics of an app (index, i18n, manifest)',
         uc_CreateApp_label: 'Create an app',
@@ -9,6 +11,8 @@ export const I18n = {
         uc_CreateProduct_label: 'Create a product',
         uc_CreateProject_desc: 'Create a project by initializing a git repo, creating basic config files and installing the required dependencies',
         uc_CreateProject_label: 'Create a project',
+        uc_CreateTarget_desc: 'Create a target based on the ones provided by the lib (see https://libmodulor.c100k.eu/docs/references/targets)',
+        uc_CreateTarget_label: 'Create a target',
         uc_CreateUC_desc: 'Create a basic use case',
         uc_CreateUC_label: 'Create a use case',
         uc_DeleteGeneratedAppsTests_desc: 'Delete the automated test suite generated for each app',

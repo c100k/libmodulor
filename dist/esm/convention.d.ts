@@ -1,5 +1,6 @@
 import type { AppName } from './app/index.js';
 import type { ProductName } from './product/index.js';
+import type { TargetName } from './target/index.js';
 import type { UCName } from './uc/index.js';
 export declare const SRC_DIR_NAME: string;
 export declare const APPS_ROOT_DIR_NAME: string;
@@ -53,3 +54,4 @@ export declare const UC_POLICY_SUFFIX: string;
 export declare const UC_POLICY_SUFFIX_FULL: string;
 export declare const UC_POLICY_FILE_NAME_SUFFIX: string;
 export declare const TARGET_APPS_ROOT_PATH: string[];
+export declare const TARGET_NAME_PLACEHOLDER: TargetName;

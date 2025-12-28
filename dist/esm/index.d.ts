@@ -28,6 +28,7 @@ export * from './std/impl/StaticSettingsManager.js';
 export * from './std/impl/StdDateClockManager.js';
 export * from './std/impl/UCDataStoreExternalResourceManager.js';
 export * from './std/index.js';
+export * from './target/index.js';
 export * from './target/lib/cli/CLIManager.js';
 export * from './target/lib/client/consts.js';
 export * from './target/lib/client/ServerClientManager.js';

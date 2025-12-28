@@ -2,6 +2,8 @@ export declare const I18n: {
     en: {
         err_existing_app: string;
         err_existing_product: string;
+        err_existing_target: string;
+        err_target_generator_not_available: string;
         err_unknown_app: string;
         uc_CreateApp_desc: string;
         uc_CreateApp_label: string;
@@ -9,6 +11,8 @@ export declare const I18n: {
         uc_CreateProduct_label: string;
         uc_CreateProject_desc: string;
         uc_CreateProject_label: string;
+        uc_CreateTarget_desc: string;
+        uc_CreateTarget_label: string;
         uc_CreateUC_desc: string;
         uc_CreateUC_label: string;
         uc_DeleteGeneratedAppsTests_desc: string;
