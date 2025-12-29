@@ -55,5 +55,6 @@ export declare const UC_OPI1_SUFFIX: string;
 export declare const UC_POLICY_SUFFIX: string;
 export declare const UC_POLICY_SUFFIX_FULL: string;
 export declare const UC_POLICY_FILE_NAME_SUFFIX: string;
+export declare const PRODUCT_ROOT_FROM_PRODUCT_TARGET_PATH: string[];
 export declare const APPS_PATH_FROM_PRODUCT_TARGET_PATH: string[];
 export declare const TARGET_NAME_PLACEHOLDER: TargetName;

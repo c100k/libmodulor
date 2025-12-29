@@ -1,8 +1,9 @@
-import { PRODUCT_I18N_FILE_NAME, PRODUCT_I18N_NAME, PRODUCT_MANIFEST_FILE_NAME, PRODUCT_MANIFEST_NAME, } from '../../../../../convention.js';
+import { PRODUCT_I18N_FILE_NAME, PRODUCT_I18N_NAME, PRODUCT_MANIFEST_FILE_NAME, PRODUCT_MANIFEST_NAME, PRODUCT_ROOT_FROM_PRODUCT_TARGET_PATH, } from '../../../../../convention.js';
 import { LIB_NAME } from '../consts.js';
 import { fileImportName } from '../funcs.js';
-const COMMON_CONTAINER_IMPORTS = `import { ${PRODUCT_I18N_NAME} } from '../${fileImportName(PRODUCT_I18N_FILE_NAME)}';
-import { ${PRODUCT_MANIFEST_NAME} } from '../${fileImportName(PRODUCT_MANIFEST_FILE_NAME)}';
+const PRODUCT_ROOT = PRODUCT_ROOT_FROM_PRODUCT_TARGET_PATH.join('/');
+const COMMON_CONTAINER_IMPORTS = `import { ${PRODUCT_I18N_NAME} } from '${PRODUCT_ROOT}/${fileImportName(PRODUCT_I18N_FILE_NAME)}';
+import { ${PRODUCT_MANIFEST_NAME} } from '${PRODUCT_ROOT}/${fileImportName(PRODUCT_MANIFEST_FILE_NAME)}';
 import { type S, settings } from './settings.js';`;
 const NODE_CORE_CLI_CONTAINER_TS = `import { Container } from 'inversify';
 import {
@@ -136,14 +137,14 @@ await container.get(MCPServerBooter).exec({
 `;
 const NODE_MCP_SERVER_SETTINGS_TS = `import {
     type LoggerSettings,
-    type ServerManagerSettings,
-    TARGET_DEFAULT_SERVER_MANAGER_SETTINGS,
+    type ServerClientManagerSettings,
+    TARGET_DEFAULT_SERVER_CLIENT_MANAGER_SETTINGS,
 } from '${LIB_NAME}';
 
-export type S = LoggerSettings & ServerManagerSettings;
+export type S = LoggerSettings & ServerClientManagerSettings;
 
 export const settings: S = {
-    ...TARGET_DEFAULT_SERVER_MANAGER_SETTINGS,
+    ...TARGET_DEFAULT_SERVER_CLIENT_MANAGER_SETTINGS,
     logger_level: 'error',
 };
 `;

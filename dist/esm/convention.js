@@ -69,10 +69,13 @@ export const UC_POLICY_FILE_NAME_SUFFIX = `${UC_POLICY_SUFFIX_FULL}.ts`;
 /*
  * Target
  */
-export const APPS_PATH_FROM_PRODUCT_TARGET_PATH = [
+export const PRODUCT_ROOT_FROM_PRODUCT_TARGET_PATH = [
     // src/products/${ProductName}/targets/${target-name}
     '..', // src/products/${ProductName}/targets
     '..', // src/products/${ProductName}
+];
+export const APPS_PATH_FROM_PRODUCT_TARGET_PATH = [
+    ...PRODUCT_ROOT_FROM_PRODUCT_TARGET_PATH,
     '..', // src/products
     '..', // src
     APPS_ROOT_DIR_NAME, // src/apps
