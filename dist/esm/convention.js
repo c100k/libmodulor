@@ -29,13 +29,18 @@ export const APP_TEST_REPORTS_DIR_NAME = 'reports';
 /*
  * Product
  */
+export const PRODUCTS_ROOT_DIR_NAME = 'products';
 export const PRODUCTS_ROOT_ALIAS = '@p';
-export const PRODUCTS_ROOT_PATH = [SRC_DIR_NAME, 'products'];
+export const PRODUCTS_ROOT_PATH = [
+    SRC_DIR_NAME,
+    PRODUCTS_ROOT_DIR_NAME,
+];
 export const PRODUCT_I18N_NAME = 'I18n';
 export const PRODUCT_I18N_FILE_NAME = `${PRODUCT_I18N_NAME.toLowerCase()}.ts`;
 export const PRODUCT_MANIFEST_NAME = 'Manifest';
 export const PRODUCT_MANIFEST_FILE_NAME = `${PRODUCT_MANIFEST_NAME.toLowerCase()}.ts`;
 export const PRODUCT_NAME_PLACEHOLDER = 'ProductX';
+export const PRODUCT_TARGETS_DIR_NAME = 'targets';
 /*
  * Use Case
  */
@@ -64,8 +69,9 @@ export const UC_POLICY_FILE_NAME_SUFFIX = `${UC_POLICY_SUFFIX_FULL}.ts`;
 /*
  * Target
  */
-export const TARGET_APPS_ROOT_PATH = [
-    // src/products/${ProductName}/${target-name}
+export const APPS_PATH_FROM_PRODUCT_TARGET_PATH = [
+    // src/products/${ProductName}/targets/${target-name}
+    '..', // src/products/${ProductName}/targets
     '..', // src/products/${ProductName}
     '..', // src/products
     '..', // src

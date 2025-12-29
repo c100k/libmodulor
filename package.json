@@ -90,7 +90,7 @@
             "import": "./dist/esm/index.webpack.js"
         }
     },
-    "bin": "./dist/esm/products/Helper/cli-node-core/index.js",
+    "bin": "./dist/esm/products/Helper/targets/node-core-cli/index.js",
     "scripts": {
         "lint": "biome check --write .",
         "lint:ci": "biome check",

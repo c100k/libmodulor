@@ -1,0 +1,12 @@
+import {
+    type LoggerSettings,
+    type ServerClientManagerSettings,
+    TARGET_DEFAULT_SERVER_CLIENT_MANAGER_SETTINGS,
+} from '../../../../../dist/esm/index.js';
+
+export type S = LoggerSettings & ServerClientManagerSettings;
+
+export const settings: S = {
+    ...TARGET_DEFAULT_SERVER_CLIENT_MANAGER_SETTINGS,
+    logger_level: 'error',
+};

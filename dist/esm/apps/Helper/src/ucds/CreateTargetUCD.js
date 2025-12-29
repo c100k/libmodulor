@@ -11,7 +11,7 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
 import { inject, injectable } from 'inversify';
-import { PRODUCT_NAME_PLACEHOLDER, TARGET_NAME_PLACEHOLDER, } from '../../../../convention.js';
+import { PRODUCT_NAME_PLACEHOLDER, PRODUCT_TARGETS_DIR_NAME, TARGET_NAME_PLACEHOLDER, } from '../../../../convention.js';
 import { TString } from '../../../../dt/index.js';
 import { IllegalArgumentError } from '../../../../error/index.js';
 import { TARGETS } from '../../../../target/index.js';
@@ -37,7 +37,7 @@ let CreateTargetClientMain = class CreateTargetClientMain {
         const productsPath = uc.reqVal0('productsPath');
         const productName = uc.reqVal0('productName');
         const targetName = uc.reqVal0('targetName');
-        this.rootPath = this.fsManager.path(productsPath, productName, targetName);
+        this.rootPath = this.fsManager.path(productsPath, productName, PRODUCT_TARGETS_DIR_NAME, targetName);
         // TODO : Rollback the whole thing in case of failure
         const filesToGenerate = files(targetName);
         if (filesToGenerate.size === 0) {

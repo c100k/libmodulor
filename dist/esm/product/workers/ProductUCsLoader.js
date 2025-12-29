@@ -12,7 +12,7 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 };
 import { inject, injectable } from 'inversify';
 import { AppUCsLoader, } from '../../app/index.js';
-import { TARGET_APPS_ROOT_PATH } from '../../convention.js';
+import { APPS_PATH_FROM_PRODUCT_TARGET_PATH } from '../../convention.js';
 let ProductUCsLoader = class ProductUCsLoader {
     appUCsLoader;
     fsManager;
@@ -28,7 +28,7 @@ let ProductUCsLoader = class ProductUCsLoader {
         if (!actualRootPath) {
             switch (from) {
                 case 'target':
-                    actualRootPath = this.fsManager.path(...TARGET_APPS_ROOT_PATH);
+                    actualRootPath = this.fsManager.path(...APPS_PATH_FROM_PRODUCT_TARGET_PATH);
                     break;
                 default:
                     from;
