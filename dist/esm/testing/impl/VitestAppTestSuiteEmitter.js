@@ -11,7 +11,7 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
 import { inject, injectable } from 'inversify';
-import { APP_I18N_NAME, APP_INDEX_NAME, APP_MANIFEST_NAME, APP_TEST_DIR_NAME, APP_TEST_MAIN_FILE_NAME, } from '../../convention.js';
+import { APP_I18N_NAME, APP_INDEX_NAME, APP_MANIFEST_NAME, APP_TEST_CONFIGURATOR_FILE_NAME, APP_TEST_CONFIGURATOR_NAME, APP_TEST_DIR_NAME, APP_TEST_MAIN_FILE_NAME, } from '../../convention.js';
 let VitestAppTestSuiteEmitter = class VitestAppTestSuiteEmitter {
     fsManager;
     constructor(fsManager) {
@@ -21,15 +21,28 @@ let VitestAppTestSuiteEmitter = class VitestAppTestSuiteEmitter {
         const testPath = this.fsManager.path(appPath, APP_TEST_DIR_NAME);
         // Since we're using 'recursive: true', there will be no error if the directory already exists
         await this.fsManager.mkdir(testPath, { recursive: true });
-        const outPath = this.fsManager.path(testPath, APP_TEST_MAIN_FILE_NAME);
-        let tpl = template(serverPortRangeStart, idx, monkeyTestingTimeoutInMs);
-        depsMapping?.forEach((to, from) => {
-            tpl = tpl.replaceAll(`from '${from}'`, `from '${to}'`);
-        });
-        await this.fsManager.touch(outPath, tpl);
+        await this.createConfiguratorIfNotExists(testPath, depsMapping);
+        const testFilePath = this.fsManager.path(testPath, APP_TEST_MAIN_FILE_NAME);
+        const tpl = this.mapDeps(depsMapping, template(serverPortRangeStart, idx, monkeyTestingTimeoutInMs));
+        await this.fsManager.touch(testFilePath, tpl);
         return {
-            outPath,
+            outPath: testFilePath,
         };
+    }
+    async createConfiguratorIfNotExists(testPath, depsMapping) {
+        const filePath = this.fsManager.path(testPath, APP_TEST_CONFIGURATOR_FILE_NAME);
+        if (await this.fsManager.exists(filePath)) {
+            return;
+        }
+        const tpl = this.mapDeps(depsMapping, CONFIGURATOR_TS);
+        await this.fsManager.touch(filePath, tpl);
+    }
+    mapDeps(depsMapping, tpl) {
+        let res = tpl;
+        depsMapping?.forEach((to, from) => {
+            res = res.replaceAll(`from '${from}'`, `from '${to}'`);
+        });
+        return res;
     }
 };
 VitestAppTestSuiteEmitter = __decorate([
@@ -38,6 +51,10 @@ VitestAppTestSuiteEmitter = __decorate([
     __metadata("design:paramtypes", [Object])
 ], VitestAppTestSuiteEmitter);
 export { VitestAppTestSuiteEmitter };
+const CONFIGURATOR_TS = `import { NodeAppTesterConfigurator } from 'libmodulor/node-test';
+
+export class ${APP_TEST_CONFIGURATOR_NAME} extends NodeAppTesterConfigurator {}
+`;
 // For now, we can have it here. When it becomes harder to maintain, we can introduce some kind of template engine.
 // Be aware that this will introduce complexities on building the lib.
 // We'll need to include these templates in the build and make them accessible via package.json "exports" or any other mechanism.
@@ -72,10 +89,10 @@ import {
 import { newNodeAppTester } from 'libmodulor/node-test';
 import { afterAll, afterEach, beforeAll, describe, expect, test } from 'vitest';
 
-import { Configurator } from './Configurator.js';
+import { ${APP_TEST_CONFIGURATOR_NAME} } from './${APP_TEST_CONFIGURATOR_NAME}.js';
 
 const appPath = join(import.meta.dirname, '..');
-const configurator = new Configurator();
+const configurator = new ${APP_TEST_CONFIGURATOR_NAME}();
 const runner = await newNodeAppTester(${serverPortRangeStart}, ${idx}, {
     appPath,
     configurator,

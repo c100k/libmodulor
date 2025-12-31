@@ -4,4 +4,6 @@ export declare class VitestAppTestSuiteEmitter implements AppTestSuiteEmitter {
     private fsManager;
     constructor(fsManager: FSManager);
     exec({ appPath, depsMapping, idx, monkeyTestingTimeoutInMs, serverPortRangeStart, }: Input): Promise<Output>;
+    private createConfiguratorIfNotExists;
+    private mapDeps;
 }

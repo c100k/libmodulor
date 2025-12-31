@@ -21,6 +21,8 @@ export declare const APP_SETTINGS_FILE_NAME: string;
 export declare const APP_SRC_DIR_NAME: string;
 export declare const APP_SRC_LIB_DIR_NAME: string;
 export declare const APP_SRC_UCDS_DIR_NAME: string;
+export declare const APP_TEST_CONFIGURATOR_NAME: string;
+export declare const APP_TEST_CONFIGURATOR_FILE_NAME: string;
 export declare const APP_TEST_DIR_NAME: string;
 export declare const APP_TEST_MAIN_FILE_NAME: string;
 export declare const APP_TEST_REPORTS_DIR_NAME: string;
