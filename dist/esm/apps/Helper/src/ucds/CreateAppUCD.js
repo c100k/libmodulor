@@ -15,6 +15,7 @@ import { APP_NAME_PLACEHOLDER } from '../../../../convention.js';
 import { TString } from '../../../../dt/index.js';
 import { IllegalArgumentError } from '../../../../error/index.js';
 import { EverybodyUCPolicy, } from '../../../../uc/index.js';
+import { GIT_KEEP_FILE_NAME } from '../lib/consts.js';
 import { successMessage } from '../lib/funcs.js';
 import { AppInputFieldsDef } from '../lib/io.js';
 import { files } from '../lib/layers/app.js';
@@ -43,6 +44,7 @@ let CreateAppClientMain = class CreateAppClientMain {
             files: files(appName),
             rootPath: this.rootPath,
         });
+        await this.rmGitKeep();
         this.logger.info(successMessage('App'));
     }
     async assertNotExisting() {
@@ -56,6 +58,13 @@ let CreateAppClientMain = class CreateAppClientMain {
     async createRootDir() {
         this.logger.info('Creating root dir : %s', this.rootPath);
         await this.fsManager.mkdir(this.rootPath, { recursive: true });
+    }
+    async rmGitKeep() {
+        const filePath = this.fsManager.path(this.rootPath, '..', GIT_KEEP_FILE_NAME);
+        if (!(await this.fsManager.exists(filePath))) {
+            return;
+        }
+        await this.fsManager.rm(filePath);
     }
 };
 CreateAppClientMain = __decorate([

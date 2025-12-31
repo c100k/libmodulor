@@ -15,6 +15,7 @@ import { APPS_ROOT_PATH, PRODUCTS_ROOT_PATH } from '../../../../convention.js';
 import { TBoolean, TDirPath, TFileName, TFreeTextShort, TSlug, } from '../../../../dt/index.js';
 import { IllegalArgumentError } from '../../../../error/index.js';
 import { EverybodyUCPolicy, } from '../../../../uc/index.js';
+import { GIT_KEEP_FILE_NAME } from '../lib/consts.js';
 import { successMessage } from '../lib/funcs.js';
 import { files } from '../lib/layers/project.js';
 import { SrcFilesGenerator } from '../lib/SrcFilesGenerator.js';
@@ -85,7 +86,7 @@ let CreateProjectClientMain = class CreateProjectClientMain {
         for await (const dirPath of dirs) {
             const path = this.fsManager.path(this.rootPath, ...dirPath);
             await this.fsManager.mkdir(path, { recursive: true });
-            await this.fsManager.touch(this.fsManager.path(path, '.gitkeep'), '');
+            await this.fsManager.touch(this.fsManager.path(path, GIT_KEEP_FILE_NAME), '');
         }
     }
     async createRootDir() {
