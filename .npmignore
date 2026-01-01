@@ -4,3 +4,7 @@ examples
 tmp
 .gitattributes
 biome.json
+pnpm-workspace.yaml
+tsconfig.build.examples.json
+tsconfig.json
+vitest.config.ts

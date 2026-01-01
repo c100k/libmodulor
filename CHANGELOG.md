@@ -1,6 +1,17 @@
 # CHANGELOG
 
-## v0.26.0 (unreleased)
+## v0.26.0 (2026-01-01)
+
+**Highlights**
+
+Added new CLI helper commands to create each element of the `libmodulor` 4-layer architecture faster : `CreateApp`, `CreateUC`, `CreateProduct`, `CreateTarget`.
+Check them out with `npx libmodulor --help` (or `pnpm libmodulor --help` within a project with `libmodulor` installed).
+
+Simplified settings management : moved to more and better defaults so you don't have to provide any settings when creating new product targets (see [Create a target](https://libmodulor.c100k.eu/docs/guides/create-target)).
+
+Simplified testing : replaced `SimpleAppTesterConfigurator` by `NodeAppTesterConfigurator` including the necessary bindings to have tests working out of the box (see [Test an app](https://libmodulor.c100k.eu/docs/guides/test-app)). The `GenerateAppsTests` CLI command now generates a default `Configurator.ts` if it does not exist yet.
+
+Moved all the targets of a product into a dedicated `targets` dir so they are not mixed with other types of directories you might have in a product (e.g. specific utilities, implementations, etc.).
 
 See all the changes here : https://github.com/c100k/libmodulor/compare/v0.25.0...master
 
