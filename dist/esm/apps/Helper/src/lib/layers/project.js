@@ -94,7 +94,7 @@ export const PACKAGE_JSON = (name) => `{
         "cookie-parser": "^1.4.7",
         "express": "^5.2.1",
         "express-fileupload": "^1.5.2",
-        "fast-check": "^4.5.2",
+        "fast-check": "^4.5.3",
         "helmet": "^8.1.0",
         "jose": "^6.1.3",
         "typescript": "^5.9.3",
