@@ -22,12 +22,12 @@ export class BuyAssetServerMain implements UCMain<BuyAssetInput, BuyAssetOPI0> {
         const limit = uc.reqVal0('limit');
         const qty = uc.reqVal0('qty');
 
-        // >=> Persist the order
+        /// Persist the order
         const { aggregateId } = await this.ucManager.persist(uc);
 
-        // >=> TODO : Check the user has enough funds to place the order
+        /// TODO : Check the user has enough funds to place the order
 
-        // >=> TODO : Send the order to a queue for processing
+        /// TODO : Send the order to a queue for processing
 
         return new UCOutputBuilder<BuyAssetOPI0>()
             .add({

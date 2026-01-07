@@ -48,7 +48,7 @@ export declare const UC_MAIN_SUFFIX: string;
 export declare const UC_MAIN_CLIENT_SUFFIX: string;
 export declare const UC_MAIN_SERVER_SUFFIX: string;
 export declare const UC_MAIN_SERVER_FILE_NAME_SUFFIX: string;
-export declare const UC_MAIN_STEP_PREFIX_REGULAR = "// >=>";
+export declare const UC_MAIN_STEP_PREFIX_REGULAR = "///";
 export declare const UC_NAME_PLACEHOLDER: UCName;
 export declare const UC_OPI_BASE: string;
 export declare const UC_OPI_SUFFIX: string;

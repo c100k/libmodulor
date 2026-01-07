@@ -50,12 +50,12 @@ class CreateActivityClientMain
         const input = rInput(uc);
         const title = uc.reqVal0('title');
 
-        // >=> Check that the name is serious (i.e. not 'toto')
+        /// Check that the name is serious (i.e. not 'toto')
         if (title === 'toto') {
             throw new IllegalArgumentError('validation_format_NotSeriousTitle');
         }
 
-        // >=> Dispatch on the queue for async processing
+        /// Dispatch on the queue for async processing
         await this.activityProcessor.dispatch(input);
 
         return new UCOutputBuilder<CreateActivityOPI0>()

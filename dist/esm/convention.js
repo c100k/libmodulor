@@ -59,7 +59,7 @@ export const UC_MAIN_SUFFIX = 'Main';
 export const UC_MAIN_CLIENT_SUFFIX = `Client${UC_MAIN_SUFFIX}`;
 export const UC_MAIN_SERVER_SUFFIX = `Server${UC_MAIN_SUFFIX}`;
 export const UC_MAIN_SERVER_FILE_NAME_SUFFIX = `${UC_MAIN_SERVER_SUFFIX}.ts`;
-export const UC_MAIN_STEP_PREFIX_REGULAR = '// >=>';
+export const UC_MAIN_STEP_PREFIX_REGULAR = '///';
 export const UC_NAME_PLACEHOLDER = 'CreateX';
 export const UC_OPI_BASE = 'UCOPIBase';
 export const UC_OPI_SUFFIX = 'OPI';

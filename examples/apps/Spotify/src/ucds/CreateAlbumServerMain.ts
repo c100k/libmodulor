@@ -34,12 +34,12 @@ export class CreateAlbumServerMain
         const releaseYear = uc.rVal0('releaseYear');
         const tags = uc.rValArr('tags');
 
-        // >=> Log if the album is private
+        /// Log if the album is private
         if (isPrivate) {
             this.logger.debug('Creating private album');
         }
 
-        // >=> Fetch the artist via an LLM
+        /// Fetch the artist via an LLM
         if (!artist) {
             const { choices } = await this.llmManager.send({
                 messages: [
@@ -55,7 +55,7 @@ export class CreateAlbumServerMain
             uc.inputField('artist').setVal(artist);
         }
 
-        // >=> Persist the album
+        /// Persist the album
         const { aggregateId } = await this.ucManager.persist(uc);
 
         return new UCOutputBuilder<CreateAlbumOPI0>()

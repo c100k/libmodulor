@@ -43,7 +43,7 @@ class DecodeJWTClientMain implements UCMain<DecodeJWTInput, DecodeJWTOPI0> {
 
         const id = this.cryptoManager.randomUUID();
 
-        // >=> Decode the JWT
+        /// Decode the JWT
         const payload = await this.jwtManager.decodeUnsafe(jwt);
 
         return new UCOutputBuilder<DecodeJWTOPI0>()

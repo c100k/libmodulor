@@ -37,7 +37,7 @@ export class CancelOrderServerMain
     > {
         const id = uc.reqVal0('id');
 
-        // >=> Check that the order exists
+        /// Check that the order exists
         const { records } = await this.ucDataStore.read<
             BuyAssetInput | CancelOrderInput
         >({
@@ -73,7 +73,7 @@ export class CancelOrderServerMain
             );
         }
 
-        // >=> Cancel the order
+        /// Cancel the order
         await this.ucManager.persist(uc, null, { aggregateId: id });
         order.status = 'cancelled';
 

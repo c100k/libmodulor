@@ -14,9 +14,9 @@ export class DeleteAlbumServerMain implements UCMain<DeleteAlbumInput> {
     public async exec({ uc }: UCMainInput<DeleteAlbumInput>): Promise<void> {
         const id = uc.reqVal0('id');
 
-        // >=> TODO : Check that the album exists
+        /// TODO : Check that the album exists
 
-        // >=> Delete the album if exists
+        /// Delete the album if exists
         await this.ucManager.persist(uc, null, { aggregateId: id });
     }
 }

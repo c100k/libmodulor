@@ -90,7 +90,7 @@ export class ${name}${UC_MAIN_SERVER_SUFFIX}
     > {
         const ${FIELD_NAME} = uc.reqVal0('${FIELD_NAME}');
 
-        // >=> Save in data store
+        /// Save in data store
         const { aggregateId } = await this.ucManager.persist(uc);
 
         return new UCOutputBuilder<${name}${UC_OPI0_SUFFIX}>()

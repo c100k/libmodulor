@@ -26,7 +26,7 @@ export class SignInServerMain implements UCMain<SignInInput, SignInOPI0> {
 
         // DO NOT USE THIS IN PRODUCTION !!!
 
-        // >=> Compute the JWT
+        /// Compute the JWT
         let auth!: UCAuth;
         switch (role) {
             case 'admin':
