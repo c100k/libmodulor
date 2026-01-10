@@ -454,7 +454,7 @@ exports[`Run > Use Cases > 'SignOut' > should execute with auth 'REGULAR' and in
 }
 `;
 
-exports[`Run > Use Cases > 'SignUp' > should execute with auth 'ADMIN' and input 'ALL_WITH_EXAMPLES' > hash = 55d051ec38edd0f2829741d6d093cab16fd3509b94318bf3d5faef96ecfa987a 1`] = `
+exports[`Run > Use Cases > 'SignUp' > should execute with auth 'ADMIN' and input 'ALL_WITH_EXAMPLES' > hash = 5dbf39a3f94274b5cc62c26fc405c32cb434cfc3abcea2794c663aee33b45d7c 1`] = `
 {
   "out": {
     "args": {
@@ -474,12 +474,11 @@ exports[`Run > Use Cases > 'SignUp' > should execute with auth 'ADMIN' and input
       "inputFillerName": "ALL_WITH_EXAMPLES",
     },
     "err": [ForbiddenError: Forbidden],
-    "hash": "55d051ec38edd0f2829741d6d093cab16fd3509b94318bf3d5faef96ecfa987a",
+    "hash": "5dbf39a3f94274b5cc62c26fc405c32cb434cfc3abcea2794c663aee33b45d7c",
     "io": {
       "i": {
         "email": "dexter@caramail.com",
         "password": "fmUUNWXazWH4",
-        "role": "admin",
       },
       "o": null,
     },
@@ -488,7 +487,7 @@ exports[`Run > Use Cases > 'SignUp' > should execute with auth 'ADMIN' and input
 }
 `;
 
-exports[`Run > Use Cases > 'SignUp' > should execute with auth 'ADMIN' and input 'ONLY_MANDATORY_WITH_EXAMPLES' > hash = 315316ff2eaff314d732d78bd54904e755d49d5d44b000834158f2b22cb01adf 1`] = `
+exports[`Run > Use Cases > 'SignUp' > should execute with auth 'ADMIN' and input 'ONLY_MANDATORY_WITH_EXAMPLES' > hash = 90d904a51f4c0248cd4a28f91fdd571756ee60719aacefc3223c3b8df86b4a77 1`] = `
 {
   "out": {
     "args": {
@@ -508,12 +507,11 @@ exports[`Run > Use Cases > 'SignUp' > should execute with auth 'ADMIN' and input
       "inputFillerName": "ONLY_MANDATORY_WITH_EXAMPLES",
     },
     "err": [ForbiddenError: Forbidden],
-    "hash": "315316ff2eaff314d732d78bd54904e755d49d5d44b000834158f2b22cb01adf",
+    "hash": "90d904a51f4c0248cd4a28f91fdd571756ee60719aacefc3223c3b8df86b4a77",
     "io": {
       "i": {
         "email": "dexter@caramail.com",
         "password": "fmUUNWXazWH4",
-        "role": "admin",
       },
       "o": null,
     },
@@ -547,7 +545,6 @@ exports[`Run > Use Cases > 'SignUp' > should execute with auth 'ADMIN' and input
       "i": {
         "email": undefined,
         "password": undefined,
-        "role": undefined,
       },
       "o": null,
     },
@@ -556,7 +553,7 @@ exports[`Run > Use Cases > 'SignUp' > should execute with auth 'ADMIN' and input
 }
 `;
 
-exports[`Run > Use Cases > 'SignUp' > should execute with auth 'ANONYMOUS' and input 'ALL_WITH_EXAMPLES' > hash = 4e8951fd142064c3eb53bdd57a798fe5ebf2f57cc39cb192abd8001b1cd40c06 1`] = `
+exports[`Run > Use Cases > 'SignUp' > should execute with auth 'ANONYMOUS' and input 'ALL_WITH_EXAMPLES' > hash = a9b91b0adfc04784ac4a628471106e5759b8a7bef8e2dbb888f3027b6a7697ef 1`] = `
 {
   "out": {
     "args": {
@@ -566,12 +563,11 @@ exports[`Run > Use Cases > 'SignUp' > should execute with auth 'ANONYMOUS' and i
       "inputFillerName": "ALL_WITH_EXAMPLES",
     },
     "err": null,
-    "hash": "4e8951fd142064c3eb53bdd57a798fe5ebf2f57cc39cb192abd8001b1cd40c06",
+    "hash": "a9b91b0adfc04784ac4a628471106e5759b8a7bef8e2dbb888f3027b6a7697ef",
     "io": {
       "i": {
         "email": "dexter@caramail.com",
         "password": "fmUUNWXazWH4",
-        "role": "admin",
       },
       "o": {
         "parts": {
@@ -579,7 +575,7 @@ exports[`Run > Use Cases > 'SignUp' > should execute with auth 'ANONYMOUS' and i
             "items": [
               {
                 "id": "356a192b-7913-404c-9457-4d18c28d46e6",
-                "jwt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJvcmdhbml6YXRpb24iOnsiaWQiOiJkZDk2NzBlNy0xZGQ1LTQxNTUtODVjMi0zMzU3MTQ3OTlmZjcifSwicm9sZSI6ImFkbWluIiwidXNlciI6eyJmaXJzdG5hbWUiOiJEZXh0ZXIiLCJpZCI6IjM1NmExOTJiLTc5MTMtNDA0Yy05NDU3LTRkMThjMjhkNDZlNiIsImluaXRpYWxzIjoiRE0ifSwiYXVkIjoibGlibW9kdWxvciIsImV4cCI6MTc2ODA1NDY4NCwiaXNzIjoibGlibW9kdWxvciIsImlhdCI6MTc2ODA1MTA4NH0.50t-rDF2Olqd-cJOTuFSvLtw1wUHVoWEj_3PNjmTfxw",
+                "jwt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJvcmdhbml6YXRpb24iOnsiaWQiOiJkZDk2NzBlNy0xZGQ1LTQxNTUtODVjMi0zMzU3MTQ3OTlmZjcifSwicm9sZSI6InJlZ3VsYXIiLCJ1c2VyIjp7ImZpcnN0bmFtZSI6IkRleHRlciIsImlkIjoiMzU2YTE5MmItNzkxMy00MDRjLTk0NTctNGQxOGMyOGQ0NmU2IiwiaW5pdGlhbHMiOiJETSJ9LCJhdWQiOiJsaWJtb2R1bG9yIiwiZXhwIjoxNzY4MDY2NDczLCJpc3MiOiJsaWJtb2R1bG9yIiwiaWF0IjoxNzY4MDYyODczfQ.uJ8iOsCR14GN0vyH-GgG3nR2X98NTwSkwq5UnqdtLi0",
               },
             ],
             "total": 1,
@@ -592,7 +588,7 @@ exports[`Run > Use Cases > 'SignUp' > should execute with auth 'ANONYMOUS' and i
 }
 `;
 
-exports[`Run > Use Cases > 'SignUp' > should execute with auth 'ANONYMOUS' and input 'ONLY_MANDATORY_WITH_EXAMPLES' > hash = 24151ca8f0f48b6e4638775ac133e3aa5fef5a40b7c4696d25bf02519d44ef53 1`] = `
+exports[`Run > Use Cases > 'SignUp' > should execute with auth 'ANONYMOUS' and input 'ONLY_MANDATORY_WITH_EXAMPLES' > hash = 4dfe9a0d4d3ace21d98c3edb45830564554aac3ecc9f808102a4fe6b0d0d498b 1`] = `
 {
   "out": {
     "args": {
@@ -602,12 +598,11 @@ exports[`Run > Use Cases > 'SignUp' > should execute with auth 'ANONYMOUS' and i
       "inputFillerName": "ONLY_MANDATORY_WITH_EXAMPLES",
     },
     "err": null,
-    "hash": "24151ca8f0f48b6e4638775ac133e3aa5fef5a40b7c4696d25bf02519d44ef53",
+    "hash": "4dfe9a0d4d3ace21d98c3edb45830564554aac3ecc9f808102a4fe6b0d0d498b",
     "io": {
       "i": {
         "email": "dexter@caramail.com",
         "password": "fmUUNWXazWH4",
-        "role": "admin",
       },
       "o": {
         "parts": {
@@ -615,7 +610,7 @@ exports[`Run > Use Cases > 'SignUp' > should execute with auth 'ANONYMOUS' and i
             "items": [
               {
                 "id": "356a192b-7913-404c-9457-4d18c28d46e6",
-                "jwt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJvcmdhbml6YXRpb24iOnsiaWQiOiJkZDk2NzBlNy0xZGQ1LTQxNTUtODVjMi0zMzU3MTQ3OTlmZjcifSwicm9sZSI6ImFkbWluIiwidXNlciI6eyJmaXJzdG5hbWUiOiJEZXh0ZXIiLCJpZCI6IjM1NmExOTJiLTc5MTMtNDA0Yy05NDU3LTRkMThjMjhkNDZlNiIsImluaXRpYWxzIjoiRE0ifSwiYXVkIjoibGlibW9kdWxvciIsImV4cCI6MTc2ODA1NDY4NCwiaXNzIjoibGlibW9kdWxvciIsImlhdCI6MTc2ODA1MTA4NH0.50t-rDF2Olqd-cJOTuFSvLtw1wUHVoWEj_3PNjmTfxw",
+                "jwt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJvcmdhbml6YXRpb24iOnsiaWQiOiJkZDk2NzBlNy0xZGQ1LTQxNTUtODVjMi0zMzU3MTQ3OTlmZjcifSwicm9sZSI6InJlZ3VsYXIiLCJ1c2VyIjp7ImZpcnN0bmFtZSI6IkRleHRlciIsImlkIjoiMzU2YTE5MmItNzkxMy00MDRjLTk0NTctNGQxOGMyOGQ0NmU2IiwiaW5pdGlhbHMiOiJETSJ9LCJhdWQiOiJsaWJtb2R1bG9yIiwiZXhwIjoxNzY4MDY2NDczLCJpc3MiOiJsaWJtb2R1bG9yIiwiaWF0IjoxNzY4MDYyODczfQ.uJ8iOsCR14GN0vyH-GgG3nR2X98NTwSkwq5UnqdtLi0",
               },
             ],
             "total": 1,
@@ -643,7 +638,6 @@ exports[`Run > Use Cases > 'SignUp' > should execute with auth 'ANONYMOUS' and i
       "i": {
         "email": undefined,
         "password": undefined,
-        "role": undefined,
       },
       "o": null,
     },
@@ -652,7 +646,7 @@ exports[`Run > Use Cases > 'SignUp' > should execute with auth 'ANONYMOUS' and i
 }
 `;
 
-exports[`Run > Use Cases > 'SignUp' > should execute with auth 'REGULAR' and input 'ALL_WITH_EXAMPLES' > hash = 1f6d8d558b4d2f4dd3b73f1cb5fcbfe50be733480f13941cf7da17898331bde2 1`] = `
+exports[`Run > Use Cases > 'SignUp' > should execute with auth 'REGULAR' and input 'ALL_WITH_EXAMPLES' > hash = 765330b1703e4a1b1b53f308b592e21970ca086c905dc37aef8664a599b7f307 1`] = `
 {
   "out": {
     "args": {
@@ -672,12 +666,11 @@ exports[`Run > Use Cases > 'SignUp' > should execute with auth 'REGULAR' and inp
       "inputFillerName": "ALL_WITH_EXAMPLES",
     },
     "err": [ForbiddenError: Forbidden],
-    "hash": "1f6d8d558b4d2f4dd3b73f1cb5fcbfe50be733480f13941cf7da17898331bde2",
+    "hash": "765330b1703e4a1b1b53f308b592e21970ca086c905dc37aef8664a599b7f307",
     "io": {
       "i": {
         "email": "dexter@caramail.com",
         "password": "fmUUNWXazWH4",
-        "role": "admin",
       },
       "o": null,
     },
@@ -686,7 +679,7 @@ exports[`Run > Use Cases > 'SignUp' > should execute with auth 'REGULAR' and inp
 }
 `;
 
-exports[`Run > Use Cases > 'SignUp' > should execute with auth 'REGULAR' and input 'ONLY_MANDATORY_WITH_EXAMPLES' > hash = 1f1d9709da3d1a85bc371526fb2c7f13efc5df3cce88b08ffa609a3cd16feaef 1`] = `
+exports[`Run > Use Cases > 'SignUp' > should execute with auth 'REGULAR' and input 'ONLY_MANDATORY_WITH_EXAMPLES' > hash = aed9326e12337387670c4886d1fe6e375a8c5997f24cea7fff5d47713cbbf56e 1`] = `
 {
   "out": {
     "args": {
@@ -706,12 +699,11 @@ exports[`Run > Use Cases > 'SignUp' > should execute with auth 'REGULAR' and inp
       "inputFillerName": "ONLY_MANDATORY_WITH_EXAMPLES",
     },
     "err": [ForbiddenError: Forbidden],
-    "hash": "1f1d9709da3d1a85bc371526fb2c7f13efc5df3cce88b08ffa609a3cd16feaef",
+    "hash": "aed9326e12337387670c4886d1fe6e375a8c5997f24cea7fff5d47713cbbf56e",
     "io": {
       "i": {
         "email": "dexter@caramail.com",
         "password": "fmUUNWXazWH4",
-        "role": "admin",
       },
       "o": null,
     },
@@ -745,7 +737,6 @@ exports[`Run > Use Cases > 'SignUp' > should execute with auth 'REGULAR' and inp
       "i": {
         "email": undefined,
         "password": undefined,
-        "role": undefined,
       },
       "o": null,
     },

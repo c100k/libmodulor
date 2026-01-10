@@ -11,14 +11,12 @@ import {
     type UCOPIBase,
     UCOutputSideEffectType,
 } from '../../../../../dist/esm/index.js';
-import { type Role, TRole } from '../lib/TRole.js';
 import { Manifest } from '../manifest.js';
 import { SignUpServerMain } from './SignUpServerMain.js';
 
 export interface SignUpInput extends UCInput {
     email: UCInputFieldValue<string>;
     password: UCInputFieldValue<string>;
-    role: UCInputFieldValue<Role>;
 }
 
 export interface SignUpOPI0 extends UCOPIBase {
@@ -34,9 +32,6 @@ export const SignUpUCD: UCDef<SignUpInput, SignUpOPI0> = {
                 },
                 password: {
                     type: new TPassword(),
-                },
-                role: {
-                    type: new TRole(),
                 },
             },
         },

@@ -1,7 +1,6 @@
 import { inject, injectable } from 'inversify';
 
 import {
-    FAKE_USER_ADMIN,
     FAKE_USER_REGULAR,
     type JWTManager,
     type UCAuth,
@@ -25,8 +24,6 @@ export class SignUpServerMain implements UCMain<SignUpInput, SignUpOPI0> {
     public async exec({
         uc,
     }: UCMainInput<SignUpInput, SignUpOPI0>): Promise<UCOutput<SignUpOPI0>> {
-        const role = uc.reqVal0('role');
-
         // DO NOT USE THIS IN PRODUCTION !!!
         // TODO: In production, validate email format and password strength
         // TODO: Check if email already exists in database
@@ -35,31 +32,15 @@ export class SignUpServerMain implements UCMain<SignUpInput, SignUpOPI0> {
         /// Persist the use case first to get aggregateId
         const { aggregateId } = await this.ucManager.persist(uc);
 
-        // For this demo, we'll just create a JWT based on role
-        // but use the aggregateId as the user ID
-        let auth!: UCAuth;
-        switch (role) {
-            case 'admin':
-                auth = {
-                    ...FAKE_USER_ADMIN,
-                    user: {
-                        ...FAKE_USER_ADMIN.user,
-                        id: aggregateId,
-                    },
-                };
-                break;
-            case 'regular':
-                auth = {
-                    ...FAKE_USER_REGULAR,
-                    user: {
-                        ...FAKE_USER_REGULAR.user,
-                        id: aggregateId,
-                    },
-                };
-                break;
-            default:
-                role satisfies never;
-        }
+        // Always create a regular user for signup (no role selection)
+        const auth: UCAuth = {
+            ...FAKE_USER_REGULAR,
+            user: {
+                ...FAKE_USER_REGULAR.user,
+                id: aggregateId,
+            },
+        };
+
         const jwt = await this.jwtManager.encode(auth);
 
         return new UCOutputBuilder<SignUpOPI0>()
