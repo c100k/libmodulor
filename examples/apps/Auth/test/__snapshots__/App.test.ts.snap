@@ -453,3 +453,303 @@ exports[`Run > Use Cases > 'SignOut' > should execute with auth 'REGULAR' and in
   "sideEffects": undefined,
 }
 `;
+
+exports[`Run > Use Cases > 'SignUp' > should execute with auth 'ADMIN' and input 'ALL_WITH_EXAMPLES' > hash = 55d051ec38edd0f2829741d6d093cab16fd3509b94318bf3d5faef96ecfa987a 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "admin",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "ADMIN",
+      "inputFiller": [Function],
+      "inputFillerName": "ALL_WITH_EXAMPLES",
+    },
+    "err": [ForbiddenError: Forbidden],
+    "hash": "55d051ec38edd0f2829741d6d093cab16fd3509b94318bf3d5faef96ecfa987a",
+    "io": {
+      "i": {
+        "email": "dexter@caramail.com",
+        "password": "fmUUNWXazWH4",
+        "role": "admin",
+      },
+      "o": null,
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'SignUp' > should execute with auth 'ADMIN' and input 'ONLY_MANDATORY_WITH_EXAMPLES' > hash = 315316ff2eaff314d732d78bd54904e755d49d5d44b000834158f2b22cb01adf 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "admin",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "ADMIN",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_MANDATORY_WITH_EXAMPLES",
+    },
+    "err": [ForbiddenError: Forbidden],
+    "hash": "315316ff2eaff314d732d78bd54904e755d49d5d44b000834158f2b22cb01adf",
+    "io": {
+      "i": {
+        "email": "dexter@caramail.com",
+        "password": "fmUUNWXazWH4",
+        "role": "admin",
+      },
+      "o": null,
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'SignUp' > should execute with auth 'ADMIN' and input 'ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPL…' > hash = eeb998439877d31e8e0fec2dd8d34d710c93424a153245743d722fcb0047ee19 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "admin",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "ADMIN",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPLES",
+    },
+    "err": [ForbiddenError: Forbidden],
+    "hash": "eeb998439877d31e8e0fec2dd8d34d710c93424a153245743d722fcb0047ee19",
+    "io": {
+      "i": {
+        "email": undefined,
+        "password": undefined,
+        "role": undefined,
+      },
+      "o": null,
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'SignUp' > should execute with auth 'ANONYMOUS' and input 'ALL_WITH_EXAMPLES' > hash = 4e8951fd142064c3eb53bdd57a798fe5ebf2f57cc39cb192abd8001b1cd40c06 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": null,
+      "authName": "ANONYMOUS",
+      "inputFiller": [Function],
+      "inputFillerName": "ALL_WITH_EXAMPLES",
+    },
+    "err": null,
+    "hash": "4e8951fd142064c3eb53bdd57a798fe5ebf2f57cc39cb192abd8001b1cd40c06",
+    "io": {
+      "i": {
+        "email": "dexter@caramail.com",
+        "password": "fmUUNWXazWH4",
+        "role": "admin",
+      },
+      "o": {
+        "parts": {
+          "_0": {
+            "items": [
+              {
+                "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+                "jwt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJvcmdhbml6YXRpb24iOnsiaWQiOiJkZDk2NzBlNy0xZGQ1LTQxNTUtODVjMi0zMzU3MTQ3OTlmZjcifSwicm9sZSI6ImFkbWluIiwidXNlciI6eyJmaXJzdG5hbWUiOiJEZXh0ZXIiLCJpZCI6ImRkOTY3MGU3LTFkZDUtNDE1NS04NWMyLTMzNTcxNDc5OWZmNyIsImluaXRpYWxzIjoiRE0ifSwiYXVkIjoibGlibW9kdWxvciIsImV4cCI6MTc2ODA1Mzg5OCwiaXNzIjoibGlibW9kdWxvciIsImlhdCI6MTc2ODA1MDI5OH0.G6s7J-OgcZNjS_mL1_C0f6E7N40XMGAhgxqQjHHIECY",
+              },
+            ],
+            "total": 1,
+          },
+        },
+      },
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'SignUp' > should execute with auth 'ANONYMOUS' and input 'ONLY_MANDATORY_WITH_EXAMPLES' > hash = 24151ca8f0f48b6e4638775ac133e3aa5fef5a40b7c4696d25bf02519d44ef53 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": null,
+      "authName": "ANONYMOUS",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_MANDATORY_WITH_EXAMPLES",
+    },
+    "err": null,
+    "hash": "24151ca8f0f48b6e4638775ac133e3aa5fef5a40b7c4696d25bf02519d44ef53",
+    "io": {
+      "i": {
+        "email": "dexter@caramail.com",
+        "password": "fmUUNWXazWH4",
+        "role": "admin",
+      },
+      "o": {
+        "parts": {
+          "_0": {
+            "items": [
+              {
+                "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+                "jwt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJvcmdhbml6YXRpb24iOnsiaWQiOiJkZDk2NzBlNy0xZGQ1LTQxNTUtODVjMi0zMzU3MTQ3OTlmZjcifSwicm9sZSI6ImFkbWluIiwidXNlciI6eyJmaXJzdG5hbWUiOiJEZXh0ZXIiLCJpZCI6ImRkOTY3MGU3LTFkZDUtNDE1NS04NWMyLTMzNTcxNDc5OWZmNyIsImluaXRpYWxzIjoiRE0ifSwiYXVkIjoibGlibW9kdWxvciIsImV4cCI6MTc2ODA1Mzg5OCwiaXNzIjoibGlibW9kdWxvciIsImlhdCI6MTc2ODA1MDI5OH0.G6s7J-OgcZNjS_mL1_C0f6E7N40XMGAhgxqQjHHIECY",
+              },
+            ],
+            "total": 1,
+          },
+        },
+      },
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'SignUp' > should execute with auth 'ANONYMOUS' and input 'ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPL…' > hash = 6835cd897388aceb9a52651a220bf9b0e028b2435b7b6b666ce312ee36d1ffd9 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": null,
+      "authName": "ANONYMOUS",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPLES",
+    },
+    "err": [IllegalArgumentError: Email must be filled],
+    "hash": "6835cd897388aceb9a52651a220bf9b0e028b2435b7b6b666ce312ee36d1ffd9",
+    "io": {
+      "i": {
+        "email": undefined,
+        "password": undefined,
+        "role": undefined,
+      },
+      "o": null,
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'SignUp' > should execute with auth 'REGULAR' and input 'ALL_WITH_EXAMPLES' > hash = 1f6d8d558b4d2f4dd3b73f1cb5fcbfe50be733480f13941cf7da17898331bde2 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "regular",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "REGULAR",
+      "inputFiller": [Function],
+      "inputFillerName": "ALL_WITH_EXAMPLES",
+    },
+    "err": [ForbiddenError: Forbidden],
+    "hash": "1f6d8d558b4d2f4dd3b73f1cb5fcbfe50be733480f13941cf7da17898331bde2",
+    "io": {
+      "i": {
+        "email": "dexter@caramail.com",
+        "password": "fmUUNWXazWH4",
+        "role": "admin",
+      },
+      "o": null,
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'SignUp' > should execute with auth 'REGULAR' and input 'ONLY_MANDATORY_WITH_EXAMPLES' > hash = 1f1d9709da3d1a85bc371526fb2c7f13efc5df3cce88b08ffa609a3cd16feaef 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "regular",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "REGULAR",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_MANDATORY_WITH_EXAMPLES",
+    },
+    "err": [ForbiddenError: Forbidden],
+    "hash": "1f1d9709da3d1a85bc371526fb2c7f13efc5df3cce88b08ffa609a3cd16feaef",
+    "io": {
+      "i": {
+        "email": "dexter@caramail.com",
+        "password": "fmUUNWXazWH4",
+        "role": "admin",
+      },
+      "o": null,
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'SignUp' > should execute with auth 'REGULAR' and input 'ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPL…' > hash = 60dd77bbc1b44ba6a92203a8c7d8745329f954102d578562d77d914abd842d46 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "regular",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "REGULAR",
+      "inputFiller": [Function],
+      "inputFillerName": "ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPLES",
+    },
+    "err": [ForbiddenError: Forbidden],
+    "hash": "60dd77bbc1b44ba6a92203a8c7d8745329f954102d578562d77d914abd842d46",
+    "io": {
+      "i": {
+        "email": undefined,
+        "password": undefined,
+        "role": undefined,
+      },
+      "o": null,
+    },
+  },
+  "sideEffects": undefined,
+}
+`;

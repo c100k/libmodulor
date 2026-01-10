@@ -15,5 +15,10 @@ export const Manifest = {
             name: 'SignOut',
             sensitive: true,
         },
+        SignUp: {
+            action: 'Create',
+            icon: 'user-plus',
+            name: 'SignUp',
+        },
     },
 } satisfies AppManifest;
