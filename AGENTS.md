@@ -105,7 +105,7 @@ import { Logger } from '../types/Logger.js';
 - **Interfaces/Types**: PascalCase with descriptive prefixes (`TOrderStatus`, `UCInput`)
 - **Functions/Methods**: camelCase (`getUserById`, `processOrder`)
 - **Constants**: UPPER_SNAKE_CASE (`MAX_RETRY_COUNT`, `DEFAULT_TIMEOUT`)
-- **Files**: PascalCase for classes (`UserManager.ts`), camelCase for utilities (`fileUtils.ts`)
+- **Files**: PascalCase for classes (`UserManager.ts`), kebab-case for utilities (`file-utils.ts`)
 
 ### Error Handling
 - Use `CustomError` class from libmodulor for all business logic errors
@@ -171,19 +171,20 @@ examples/
 
 ### Platform Support
 The library supports 25+ platform exports including:
-- Node.js (Express, Hono, MCP, CLI)
-- React (Web, Native)
+- Node.js (Express, Hono, MCP, CLI, Test)
+- React (Web, Native, Pure)
 - Next.js
 - Cloudflare Workers
 - Vite
 - Webpack
 - Babel
+- Web
 
 Import the appropriate platform-specific entry point:
 ```typescript
-import { newNodeApp } from 'libmodulor/node';
-import { newReactApp } from 'libmodulor/react';
-import { newNextjsApp } from 'libmodulor/nextjs';
+import { newNodeAppTester } from 'libmodulor/node-test';
+import { I18nEN } from 'libmodulor/locales/en';
+import { NodeAppTesterConfigurator } from 'libmodulor/node-test';
 ```
 
 ## Important Notes
