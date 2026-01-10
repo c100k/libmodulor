@@ -7,6 +7,7 @@ import {
     type UCAuth,
     type UCMain,
     type UCMainInput,
+    type UCManager,
     type UCOutput,
     UCOutputBuilder,
 } from '../../../../../dist/esm/index.js';
@@ -17,6 +18,8 @@ export class SignUpServerMain implements UCMain<SignUpInput, SignUpOPI0> {
     constructor(
         @inject('JWTManager')
         private jwtManager: JWTManager,
+        @inject('UCManager')
+        private ucManager: UCManager,
     ) {}
 
     public async exec({
@@ -28,21 +31,31 @@ export class SignUpServerMain implements UCMain<SignUpInput, SignUpOPI0> {
         // TODO: In production, validate email format and password strength
         // TODO: Check if email already exists in database
         // TODO: Hash password before storing
-        // In a real implementation, you would:
-        // 1. Validate email format and password strength
-        // 2. Check if email already exists
-        // 3. Hash the password before storing
-        // 4. Store user data in a database
-        // 5. Return appropriate error messages
 
-        // For this demo, we'll just create a JWT based on the role
+        /// Persist the use case first to get aggregateId
+        const { aggregateId } = await this.ucManager.persist(uc);
+
+        // For this demo, we'll just create a JWT based on role
+        // but use the aggregateId as the user ID
         let auth!: UCAuth;
         switch (role) {
             case 'admin':
-                auth = FAKE_USER_ADMIN;
+                auth = {
+                    ...FAKE_USER_ADMIN,
+                    user: {
+                        ...FAKE_USER_ADMIN.user,
+                        id: aggregateId,
+                    },
+                };
                 break;
             case 'regular':
-                auth = FAKE_USER_REGULAR;
+                auth = {
+                    ...FAKE_USER_REGULAR,
+                    user: {
+                        ...FAKE_USER_REGULAR.user,
+                        id: aggregateId,
+                    },
+                };
                 break;
             default:
                 role satisfies never;
@@ -50,7 +63,10 @@ export class SignUpServerMain implements UCMain<SignUpInput, SignUpOPI0> {
         const jwt = await this.jwtManager.encode(auth);
 
         return new UCOutputBuilder<SignUpOPI0>()
-            .add({ id: auth.user.id, jwt })
+            .add({
+                id: aggregateId,
+                jwt,
+            })
             .get();
     }
 }

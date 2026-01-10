@@ -142,6 +142,7 @@ sequenceDiagram
     break when any validation fails
         Server-->User: show failure
     end
+    Server->>Server: Persist the use case first to get aggregateId
     Server-->>-Client: 👍 OK<br/>jwt: JWT<br/>id: UUID
     Client-->>-User: 👍 OK
 ```
