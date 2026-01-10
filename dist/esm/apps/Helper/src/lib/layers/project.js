@@ -87,7 +87,7 @@ export const PACKAGE_JSON = (name) => `{
         "reflect-metadata": "^0.2.2"
     },
     "devDependencies": {
-        "@biomejs/biome": "^2.3.10",
+        "@biomejs/biome": "^2.3.11",
         "@types/node": "^25.0.3",
         "@vitest/coverage-v8": "^3.2.4",
         "buffer": "^6.0.3",
