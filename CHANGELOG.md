@@ -1,6 +1,10 @@
 # CHANGELOG
 
-## v0.27.0 (unreleased)
+## v0.27.0 (2026-02-09)
+
+**Highlights**
+
+Use triple slash `///` as doc comment in use cases to be more aligned with the standards. Using this comment makes it appear in the sequence diagrams automatically generated for each use case.
 
 See all the changes here : https://github.com/c100k/libmodulor/compare/v0.26.0...master
 
