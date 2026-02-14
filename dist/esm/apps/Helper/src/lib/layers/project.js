@@ -88,7 +88,7 @@ export const PACKAGE_JSON = (name) => `{
     },
     "devDependencies": {
         "@biomejs/biome": "^2.3.14",
-        "@types/node": "^25.2.0",
+        "@types/node": "^25.2.3",
         "@vitest/coverage-v8": "^3.2.4",
         "buffer": "^6.0.3",
         "cookie-parser": "^1.4.7",
