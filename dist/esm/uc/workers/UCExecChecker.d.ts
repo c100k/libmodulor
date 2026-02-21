@@ -1,4 +1,4 @@
-import { type Provider } from 'inversify';
+import { type Factory } from 'inversify';
 import type { ProductManifest } from '../../product/index.js';
 import type { Configurable, SettingsManager, Worker } from '../../std/index.js';
 import type { UCDefLifecycle } from '../def.js';
@@ -16,8 +16,8 @@ type S = Pick<UCSettings, 'uc_disabled_use_cases'>;
 export declare class UCExecChecker implements Configurable<S>, Worker<Input, Promise<Output>> {
     private productManifest;
     private settingsManager;
-    private ucPolicyProvider;
-    constructor(productManifest: ProductManifest, settingsManager: SettingsManager<S>, ucPolicyProvider: Provider<UCPolicy>);
+    private ucPolicyFactory;
+    constructor(productManifest: ProductManifest, settingsManager: SettingsManager<S>, ucPolicyFactory: Factory<UCPolicy>);
     s(): S;
     exec<I extends UCInput | undefined = undefined, OPI0 extends UCOPIBase | undefined = undefined, OPI1 extends UCOPIBase | undefined = undefined>({ lifecycle, uc }: Input<I, OPI0, OPI1>): Promise<Output>;
 }

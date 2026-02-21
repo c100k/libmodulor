@@ -1,4 +1,4 @@
-import { type Provider } from 'inversify';
+import { type Factory } from 'inversify';
 import type { ClockManager, CryptoManager, Logger } from '../../std/index.js';
 import type { UCClientConfirmManager } from '../client.js';
 import type { UCData } from '../data.js';
@@ -23,10 +23,10 @@ export declare class SimpleUCManager implements UCManager {
     private ucExecChecker;
     private ucInputFilesProcessor;
     private ucInputValidator;
-    private ucInitProvider;
-    private ucMainProvider;
+    private ucInitFactory;
+    private ucMainFactory;
     private tx?;
-    constructor(ucClientConfirmManager: UCClientConfirmManager, clockManager: ClockManager, cryptoManager: CryptoManager, logger: Logger, ucDataStore: UCDataStore, ucExecChecker: UCExecChecker, ucInputFilesProcessor: UCInputFilesProcessor, ucInputValidator: UCInputValidator, ucInitProvider: Provider<UCInit>, ucMainProvider: Provider<UCMain>);
+    constructor(ucClientConfirmManager: UCClientConfirmManager, clockManager: ClockManager, cryptoManager: CryptoManager, logger: Logger, ucDataStore: UCDataStore, ucExecChecker: UCExecChecker, ucInputFilesProcessor: UCInputFilesProcessor, ucInputValidator: UCInputValidator, ucInitFactory: Factory<UCInit>, ucMainFactory: Factory<UCMain>);
     commitTx(): Promise<void>;
     confirmClient<I extends UCInput | undefined = undefined, OPI0 extends UCOPIBase | undefined = undefined, OPI1 extends UCOPIBase | undefined = undefined>(uc: UC<I, OPI0, OPI1>): Promise<boolean>;
     execClient<I extends UCInput | undefined = undefined, OPI0 extends UCOPIBase | undefined = undefined, OPI1 extends UCOPIBase | undefined = undefined>(uc: UC<I, OPI0, OPI1>, opts?: UCManagerExecClientOpts<I, OPI0, OPI1>): Promise<UCOutputReader<I, OPI0, OPI1>>;

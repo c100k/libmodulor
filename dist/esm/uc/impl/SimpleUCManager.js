@@ -27,11 +27,11 @@ let SimpleUCManager = class SimpleUCManager {
     ucExecChecker;
     ucInputFilesProcessor;
     ucInputValidator;
-    ucInitProvider;
-    ucMainProvider;
+    ucInitFactory;
+    ucMainFactory;
     // WARNING : This property makes this class "thread unsafe". Be careful how you inject it into your components.
     tx;
-    constructor(ucClientConfirmManager, clockManager, cryptoManager, logger, ucDataStore, ucExecChecker, ucInputFilesProcessor, ucInputValidator, ucInitProvider, ucMainProvider) {
+    constructor(ucClientConfirmManager, clockManager, cryptoManager, logger, ucDataStore, ucExecChecker, ucInputFilesProcessor, ucInputValidator, ucInitFactory, ucMainFactory) {
         this.ucClientConfirmManager = ucClientConfirmManager;
         this.clockManager = clockManager;
         this.cryptoManager = cryptoManager;
@@ -40,8 +40,8 @@ let SimpleUCManager = class SimpleUCManager {
         this.ucExecChecker = ucExecChecker;
         this.ucInputFilesProcessor = ucInputFilesProcessor;
         this.ucInputValidator = ucInputValidator;
-        this.ucInitProvider = ucInitProvider;
-        this.ucMainProvider = ucMainProvider;
+        this.ucInitFactory = ucInitFactory;
+        this.ucMainFactory = ucMainFactory;
         this.tx = undefined;
     }
     async commitTx() {
@@ -80,7 +80,7 @@ let SimpleUCManager = class SimpleUCManager {
         if (server === undefined) {
             await this.ucInputFilesProcessor.exec({ uc });
         }
-        const main = (await this.ucMainProvider(client.main));
+        const main = (await this.ucMainFactory(client.main));
         const streamOpts = opts?.stream;
         const output = await main.exec({
             opts: {
@@ -113,7 +113,7 @@ let SimpleUCManager = class SimpleUCManager {
         }
         this.ucInputValidator.exec({ uc });
         await this.ucInputFilesProcessor.exec({ uc });
-        const main = (await this.ucMainProvider(server.main));
+        const main = (await this.ucMainFactory(server.main));
         const output = main.exec({
             opts: {
                 stream: opts?.stream,
@@ -132,7 +132,7 @@ let SimpleUCManager = class SimpleUCManager {
             return;
         }
         this.logger.info('Initializing ucd', { name: metadata.name });
-        const init = (await this.ucInitProvider(server.init));
+        const init = (await this.ucInitFactory(server.init));
         await init.exec();
     }
     async startTx() {
@@ -179,8 +179,8 @@ SimpleUCManager = __decorate([
     __param(5, inject(UCExecChecker)),
     __param(6, inject(UCInputFilesProcessor)),
     __param(7, inject(UCInputValidator)),
-    __param(8, inject('Provider<UCInit>')),
-    __param(9, inject('Provider<UCMain>')),
+    __param(8, inject('Factory<UCInit>')),
+    __param(9, inject('Factory<UCMain>')),
     __metadata("design:paramtypes", [Object, Object, Object, Object, Object, UCExecChecker,
         UCInputFilesProcessor,
         UCInputValidator, Function, Function])

@@ -21,13 +21,13 @@ let AuthenticationChecker = class AuthenticationChecker {
     jwtAuthenticationChecker;
     privateApiKeyAuthenticationChecker;
     logger;
-    ucPolicyProvider;
-    constructor(basicAuthenticationChecker, jwtAuthenticationChecker, privateApiKeyAuthenticationChecker, logger, ucPolicyProvider) {
+    ucPolicyFactory;
+    constructor(basicAuthenticationChecker, jwtAuthenticationChecker, privateApiKeyAuthenticationChecker, logger, ucPolicyFactory) {
         this.basicAuthenticationChecker = basicAuthenticationChecker;
         this.jwtAuthenticationChecker = jwtAuthenticationChecker;
         this.privateApiKeyAuthenticationChecker = privateApiKeyAuthenticationChecker;
         this.logger = logger;
-        this.ucPolicyProvider = ucPolicyProvider;
+        this.ucPolicyFactory = ucPolicyFactory;
     }
     async exec({ authCookie, authorizationHeader, uc, }) {
         this.logger.trace('Checking auth', {
@@ -43,7 +43,7 @@ let AuthenticationChecker = class AuthenticationChecker {
             return output;
         }
         const authType = sec?.authType ?? DEFAULT_UC_SEC_AT;
-        const policy = (await this.ucPolicyProvider(server.policy));
+        const policy = (await this.ucPolicyFactory(server.policy));
         const canBeExecutedPreAuth = await policy.canBeExecutedPreAuth();
         if (canBeExecutedPreAuth) {
             const { allowed } = await policy.exec({
@@ -101,7 +101,7 @@ AuthenticationChecker = __decorate([
     __param(1, inject(JWTAuthenticationChecker)),
     __param(2, inject(PrivateApiKeyAuthenticationChecker)),
     __param(3, inject('Logger')),
-    __param(4, inject('Provider<UCPolicy>')),
+    __param(4, inject('Factory<UCPolicy>')),
     __metadata("design:paramtypes", [BasicAuthenticationChecker,
         JWTAuthenticationChecker,
         PrivateApiKeyAuthenticationChecker, Object, Function])

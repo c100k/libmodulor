@@ -7,7 +7,7 @@ export { fromQueryParams, toQueryParams } from './http/query-params.js';
 export { SSEStreamManager } from './http/SSEStreamManager.js';
 export { fmtSingleDataMsg, fmtSSEError, isSSEError, parseDataLine, SSE_HEADERS, } from './http/sse.js';
 export { isClientError, isError, isServerError } from './http/status.js';
-export { bindProvider } from './ioc/bindProvider.js';
+export { bindFactory } from './ioc/bindFactory.js';
 export { CONTAINER_OPTS } from './ioc/container.js';
 export { fmt as fmtNumber } from './numbers/fmt.js';
 export { baseFromSquareUnit, isSquareUnit, } from './numbers/units.js';

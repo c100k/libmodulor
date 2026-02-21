@@ -14,11 +14,11 @@ import { inject, injectable } from 'inversify';
 let UCExecChecker = class UCExecChecker {
     productManifest;
     settingsManager;
-    ucPolicyProvider;
-    constructor(productManifest, settingsManager, ucPolicyProvider) {
+    ucPolicyFactory;
+    constructor(productManifest, settingsManager, ucPolicyFactory) {
         this.productManifest = productManifest;
         this.settingsManager = settingsManager;
-        this.ucPolicyProvider = ucPolicyProvider;
+        this.ucPolicyFactory = ucPolicyFactory;
     }
     s() {
         return {
@@ -47,7 +47,7 @@ let UCExecChecker = class UCExecChecker {
                 const ucds = app.ucds?.exclude ?? [];
                 output.allowed = !ucds.includes(metadata.name);
                 if (output.allowed) {
-                    const policy = (await this.ucPolicyProvider(client.policy));
+                    const policy = (await this.ucPolicyFactory(client.policy));
                     const { allowed } = await policy.exec({ uc });
                     output.allowed = allowed;
                 }
@@ -68,7 +68,7 @@ UCExecChecker = __decorate([
     injectable(),
     __param(0, inject('ProductManifest')),
     __param(1, inject('SettingsManager')),
-    __param(2, inject('Provider<UCPolicy>')),
+    __param(2, inject('Factory<UCPolicy>')),
     __metadata("design:paramtypes", [Object, Object, Function])
 ], UCExecChecker);
 export { UCExecChecker };

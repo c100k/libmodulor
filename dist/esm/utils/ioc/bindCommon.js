@@ -16,7 +16,7 @@ import { InMemoryUCDataStore } from '../../uc/impl/InMemoryUCDataStore.js';
 import { SimpleUCManager } from '../../uc/impl/SimpleUCManager.js';
 import { StaticUCClientConfirmManager } from '../../uc/impl/StaticUCClientConfirmManager.js';
 import { UC_DEFAULT_SETTINGS, } from '../../uc/index.js';
-import { bindProvider } from './bindProvider.js';
+import { bindFactory } from './bindFactory.js';
 export function bindCommon(container) {
     // settings
     container.bind('Settings').toConstantValue({
@@ -55,9 +55,9 @@ export function bindCommon(container) {
         .to(SettingsServerClientManager);
     container.bind('XMLManager').to(NoopXMLManager);
     // uc
-    bindProvider(container, 'UCInit');
-    bindProvider(container, 'UCMain');
-    bindProvider(container, 'UCPolicy');
+    bindFactory(container, 'UCInit');
+    bindFactory(container, 'UCMain');
+    bindFactory(container, 'UCPolicy');
     container
         .bind('UCClientConfirmManager')
         .to(StaticUCClientConfirmManager);
