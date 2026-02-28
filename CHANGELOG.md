@@ -4,6 +4,8 @@
 
 Replace `Provider` by `Factory` in Dependency Injection (`inversify`). If you're using `bindProvider`, simply replace it by `bindFactory`.
 
+Allow '...' at the end of a uc label. Although a label ending with '.' is odd, one ending with '...' is not (e.g. "Connect...").
+
 See all the changes here : https://github.com/c100k/libmodulor/compare/v0.27.0...master
 
 ## v0.27.0 (2026-02-09)

@@ -41,7 +41,9 @@ let AppI18nChecker = class AppI18nChecker {
                 if (!matches) {
                     this.output.errors.push(ERR_I18N_KEY_INVALID(key));
                 }
-                if (key.endsWith('_label') && translation.endsWith('.')) {
+                if (key.endsWith('_label') &&
+                    translation.endsWith('.') &&
+                    !translation.endsWith('...')) {
                     this.output.errors.push(ERR_I18N_LABEL_NO_DOT(key));
                 }
             }
