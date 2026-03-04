@@ -106,6 +106,7 @@
         "expo": "55.0.0-preview.9",
         "expo-document-picker": "~14.0.8",
         "expo-image-picker": "^17.0.10",
+        "react-native-safe-area-context": "^5.7.0",
         "wrangler": "^4.69.0"
     },
     "peerDependencies": {
