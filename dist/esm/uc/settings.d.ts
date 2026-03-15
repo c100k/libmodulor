@@ -1,9 +1,15 @@
 import type { FilePath } from '../dt/index.js';
 import type { Settings } from '../std/index.js';
-import type { UCDataStoreDatasetName } from './data-store.js';
+import type { UCDataStoreDatasetName, UCDataStoreMode } from './data-store.js';
 import type { UCFileInputFieldRefPrefix } from './file.js';
 import type { UCName } from './metadata.js';
 export interface UCSettings extends Settings {
+    /**
+     * The mode of the data store.
+     *
+     * @default UC_DEFAULT_SETTINGS.uc_data_store_mode
+     */
+    uc_data_store_mode: UCDataStoreMode;
     /**
      * The name of the collection/table storing the persisted use cases in the data store
      *
@@ -22,6 +28,7 @@ export interface UCSettings extends Settings {
     uc_disabled_use_cases: UCName[];
     /**
      * The prefix of the file path when the use case has been processed, before storing
+     *
      * @default UC_DEFAULT_SETTINGS.uc_file_ref_prefix
      */
     uc_file_ref_prefix: UCFileInputFieldRefPrefix;

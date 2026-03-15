@@ -1,11 +1,18 @@
 import type { AppName } from '../app/index.js';
 import type { UIntQuantity, UUID } from '../dt/index.js';
-import type { Clearable, Initializable, StringKeys } from '../utils/index.js';
+import type { Clearable, EnumOf, Initializable, StringKeys } from '../utils/index.js';
 import type { UCData } from './data.js';
 import type { UCExecMode } from './exec.js';
 import type { UCInput } from './input.js';
 import type { UCName } from './metadata.js';
 export type UCDataStoreDatasetName = string;
+export declare const UCDataStoreMode: {
+    readonly NONE: "NONE";
+    readonly READ: "READ";
+    readonly READ_WRITE: "READ_WRITE";
+    readonly WRITE: "WRITE";
+};
+export type UCDataStoreMode = EnumOf<typeof UCDataStoreMode>;
 interface UCDataStoreQueryOpts {
 }
 export type UCDataStoreReadFilter<T> = T | T[];
@@ -67,4 +74,5 @@ export interface UCDataStore extends Clearable, Initializable {
     writeBulk<I extends UCInput | undefined = undefined, D extends UCData | null = null>(records: UCDataStoreRecord<I, D>[], opts?: UCDataStoreWriteOpts): Promise<void>;
     writeProjection<T extends object>(name: string, data: T, opts?: UCDataStoreWriteProjectionOpts): Promise<void>;
 }
+export declare function assertCan(op: 'read' | 'write', mode: UCDataStoreMode): void;
 export {};

@@ -9,6 +9,8 @@ export const I18nES = {
     dt_YesNo_N_label: 'No',
     dt_YesNo_Y_desc: '',
     dt_YesNo_Y_label: 'Sí',
+    err_uc_data_store_not_readable: 'Los datos no se pueden leer',
+    err_uc_data_store_not_writable: 'Los datos no se pueden escribir',
     uc_client_confirm_cancel: 'Cancelar',
     uc_client_confirm_confirm: 'Sí',
     uc_client_confirm_message: '',

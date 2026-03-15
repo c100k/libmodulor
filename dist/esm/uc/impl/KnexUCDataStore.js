@@ -13,6 +13,7 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 import { inject, injectable } from 'inversify';
 import knex, {} from 'knex';
 import { NotAvailableError, NotCallableError } from '../../error/index.js';
+import { assertCan, } from '../data-store.js';
 const FILTERS_MAPPING = new Map([
     ['aggregateId', 'aggregate_id'],
     ['appName', 'app_name'],
@@ -37,6 +38,7 @@ let KnexUCDataStore = class KnexUCDataStore {
             knex_uc_data_store_pool_max: this.settingsManager.get()('knex_uc_data_store_pool_max'),
             knex_uc_data_store_pool_min: this.settingsManager.get()('knex_uc_data_store_pool_min'),
             knex_uc_data_store_type: this.settingsManager.get()('knex_uc_data_store_type'),
+            uc_data_store_mode: this.settingsManager.get()('uc_data_store_mode'),
             uc_data_store_ucs_dataset_name: this.settingsManager.get()('uc_data_store_ucs_dataset_name'),
         };
     }
@@ -58,6 +60,7 @@ let KnexUCDataStore = class KnexUCDataStore {
         throw new NotCallableError('initSync', 'init', 'async-only');
     }
     async read(opts) {
+        assertCan('read', this.s().uc_data_store_mode);
         const query = this.client(this.s().uc_data_store_ucs_dataset_name);
         // Filter
         if (opts?.filters) {
@@ -87,6 +90,7 @@ let KnexUCDataStore = class KnexUCDataStore {
         };
     }
     async readProjection(name, opts) {
+        assertCan('read', this.s().uc_data_store_mode);
         const query = this.client(name);
         // Sort
         if (opts?.orderBy) {
@@ -123,6 +127,7 @@ let KnexUCDataStore = class KnexUCDataStore {
         await this.writeBulk([record], opts);
     }
     async writeBulk(records, opts) {
+        assertCan('write', this.s().uc_data_store_mode);
         const query = this.client(this.s().uc_data_store_ucs_dataset_name).insert(records.map((r) => this.mapRecordToRow(r)));
         if (opts?.tx) {
             query.transacting(opts.tx.ref);
@@ -130,6 +135,7 @@ let KnexUCDataStore = class KnexUCDataStore {
         await query;
     }
     async writeProjection(name, data, opts) {
+        assertCan('write', this.s().uc_data_store_mode);
         const dataToInsert = {};
         for (const [k, v] of Object.entries(data)) {
             const specificBinding = opts?.specificBindings?.[k];

@@ -97,5 +97,7 @@ export declare const I18n: {
         uc_i_submit_idle: string;
         uc_i_submit_initializing: string;
         uc_i_submit_submitting: string;
+        err_uc_data_store_not_readable: string;
+        err_uc_data_store_not_writable: string;
     };
 };

@@ -2,7 +2,7 @@ import { type Knex } from 'knex';
 import type { FilePath, UIntQuantity } from '../../dt/index.js';
 import type { Configurable, Settings, SettingsManager } from '../../std/index.js';
 import type { UCData } from '../data.js';
-import type { UCDataStore, UCDataStoreReadOpts, UCDataStoreReadProjectionOpts, UCDataStoreReadResponse, UCDataStoreRecord, UCDataStoreTx, UCDataStoreWriteOpts, UCDataStoreWriteProjectionOpts, UCDataStoreWriteProjectionSpecificBinding } from '../data-store.js';
+import { type UCDataStore, type UCDataStoreReadOpts, type UCDataStoreReadProjectionOpts, type UCDataStoreReadResponse, type UCDataStoreRecord, type UCDataStoreTx, type UCDataStoreWriteOpts, type UCDataStoreWriteProjectionOpts, type UCDataStoreWriteProjectionSpecificBinding } from '../data-store.js';
 import type { UCInput } from '../input.js';
 import type { UCSettings } from '../settings.js';
 /**
@@ -16,7 +16,7 @@ export interface KnexUCDataStoreSettings extends Settings {
     knex_uc_data_store_pool_min: UIntQuantity;
     knex_uc_data_store_type: 'pg' | 'sqlite3';
 }
-type S = KnexUCDataStoreSettings & Pick<UCSettings, 'uc_data_store_ucs_dataset_name'>;
+type S = KnexUCDataStoreSettings & Pick<UCSettings, 'uc_data_store_mode' | 'uc_data_store_ucs_dataset_name'>;
 export declare class KnexUCDataStore implements Configurable<S>, UCDataStore {
     protected settingsManager: SettingsManager<S>;
     protected config: Knex.Config;

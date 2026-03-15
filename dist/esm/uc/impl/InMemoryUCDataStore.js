@@ -7,8 +7,12 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { injectable } from 'inversify';
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
+import { inject, injectable } from 'inversify';
 import { NotImplementedError } from '../../error/index.js';
+import { assertCan, } from '../data-store.js';
 function predicate(key, filter) {
     if (filter === null) {
         return (r) => r[key] === null;
@@ -19,11 +23,18 @@ function predicate(key, filter) {
     return (r) => r[key] === filter;
 }
 let InMemoryUCDataStore = class InMemoryUCDataStore {
+    settingsManager;
     // biome-ignore lint/suspicious/noExplicitAny: can be anything
     entries;
     tx;
-    constructor() {
+    constructor(settingsManager) {
+        this.settingsManager = settingsManager;
         this.entries = [];
+    }
+    s() {
+        return {
+            uc_data_store_mode: this.settingsManager.get()('uc_data_store_mode'),
+        };
     }
     async clear() {
         this.entries = [];
@@ -41,6 +52,7 @@ let InMemoryUCDataStore = class InMemoryUCDataStore {
         // Nothing to do
     }
     async read(opts) {
+        assertCan('read', this.s().uc_data_store_mode);
         let items = this
             .entries;
         // Filter
@@ -70,6 +82,7 @@ let InMemoryUCDataStore = class InMemoryUCDataStore {
         };
     }
     async readProjection() {
+        assertCan('read', this.s().uc_data_store_mode);
         return [];
     }
     async startTx() {
@@ -94,14 +107,17 @@ let InMemoryUCDataStore = class InMemoryUCDataStore {
         this.writeBulk([record]);
     }
     async writeBulk(records) {
+        assertCan('write', this.s().uc_data_store_mode);
         this.entries.push(...records);
     }
     async writeProjection() {
+        assertCan('write', this.s().uc_data_store_mode);
         throw new NotImplementedError('writeProjection');
     }
 };
 InMemoryUCDataStore = __decorate([
     injectable(),
-    __metadata("design:paramtypes", [])
+    __param(0, inject('SettingsManager')),
+    __metadata("design:paramtypes", [Object])
 ], InMemoryUCDataStore);
 export { InMemoryUCDataStore };

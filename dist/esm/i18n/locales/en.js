@@ -9,6 +9,8 @@ export const I18nEN = {
     dt_YesNo_N_label: 'No',
     dt_YesNo_Y_desc: '',
     dt_YesNo_Y_label: 'Yes',
+    err_uc_data_store_not_readable: 'The data is not readable',
+    err_uc_data_store_not_writable: 'The data is not writable',
     uc_client_confirm_cancel: 'Cancel',
     uc_client_confirm_confirm: 'Yes',
     uc_client_confirm_message: '',

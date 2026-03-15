@@ -1,11 +1,16 @@
+import type { Configurable, SettingsManager } from '../../std/index.js';
 import type { UCData } from '../data.js';
-import type { UCDataStore, UCDataStoreReadOpts, UCDataStoreReadResponse, UCDataStoreRecord, UCDataStoreTx, UCDataStoreWriteProjectionSpecificBinding } from '../data-store.js';
+import { type UCDataStore, type UCDataStoreReadOpts, type UCDataStoreReadResponse, type UCDataStoreRecord, type UCDataStoreTx, type UCDataStoreWriteProjectionSpecificBinding } from '../data-store.js';
 import type { UCInput } from '../input.js';
+import type { UCSettings } from '../settings.js';
 type TxState = 'committed' | 'pending' | 'rollbacked';
-export declare class InMemoryUCDataStore implements UCDataStore {
+type S = Pick<UCSettings, 'uc_data_store_mode'>;
+export declare class InMemoryUCDataStore implements Configurable<S>, UCDataStore {
+    protected settingsManager: SettingsManager<S>;
     entries: UCDataStoreRecord<any, any>[];
     tx: TxState | undefined;
-    constructor();
+    constructor(settingsManager: SettingsManager<S>);
+    s(): S;
     clear(): Promise<void>;
     destroy(): Promise<void>;
     exists(): Promise<boolean>;

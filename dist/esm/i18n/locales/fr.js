@@ -9,6 +9,8 @@ export const I18nFR = {
     dt_YesNo_N_label: 'Non',
     dt_YesNo_Y_desc: '',
     dt_YesNo_Y_label: 'Oui',
+    err_uc_data_store_not_readable: 'Les données ne sont pas lisibles',
+    err_uc_data_store_not_writable: 'Les données ne sont pas écrivables',
     uc_client_confirm_cancel: 'Annuler',
     uc_client_confirm_confirm: 'Oui',
     uc_client_confirm_message: '',

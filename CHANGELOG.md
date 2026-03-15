@@ -6,6 +6,10 @@ Replace `Provider` by `Factory` in Dependency Injection (`inversify`). If you're
 
 Allow '...' at the end of a uc label. Although a label ending with '.' is odd, one ending with '...' is not (e.g. "Connect...").
 
+Introduce `UCDataStoreMode` setting. It allows to to set it to `READ_WRITE` (default), `READ`, `WRITE` or `NONE`.
+For instance, it's very useful to set it to `READ` when planning a migration with different DB enfines.
+In addition to that, `NONE` is convenient to prevent all reads and writes when there is an issue.
+
 See all the changes here : https://github.com/c100k/libmodulor/compare/v0.27.0...master
 
 ## v0.27.0 (2026-02-09)

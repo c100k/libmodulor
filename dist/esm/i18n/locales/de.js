@@ -9,6 +9,8 @@ export const I18nDE = {
     dt_YesNo_N_label: 'Nein',
     dt_YesNo_Y_desc: '',
     dt_YesNo_Y_label: 'Ja',
+    err_uc_data_store_not_readable: 'Die Daten sind nicht lesbar',
+    err_uc_data_store_not_writable: 'Die Daten sind nicht schreibbar',
     uc_client_confirm_cancel: 'Abbrechen',
     uc_client_confirm_confirm: 'Ja',
     uc_client_confirm_message: '',

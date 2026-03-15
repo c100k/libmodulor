@@ -1,10 +1,10 @@
 import type { D1Database } from '@cloudflare/workers-types';
 import type { Configurable, SettingsManager } from '../../std/index.js';
 import type { UCData } from '../data.js';
-import type { UCDataStore, UCDataStoreReadOpts, UCDataStoreReadProjectionOpts, UCDataStoreReadResponse, UCDataStoreRecord, UCDataStoreTx, UCDataStoreWriteOpts, UCDataStoreWriteProjectionOpts, UCDataStoreWriteProjectionSpecificBinding } from '../data-store.js';
+import { type UCDataStore, type UCDataStoreReadOpts, type UCDataStoreReadProjectionOpts, type UCDataStoreReadResponse, type UCDataStoreRecord, type UCDataStoreTx, type UCDataStoreWriteOpts, type UCDataStoreWriteProjectionOpts, type UCDataStoreWriteProjectionSpecificBinding } from '../data-store.js';
 import type { UCInput } from '../input.js';
 import type { UCSettings } from '../settings.js';
-type S = Pick<UCSettings, 'uc_data_store_ucs_dataset_name'>;
+type S = Pick<UCSettings, 'uc_data_store_mode' | 'uc_data_store_ucs_dataset_name'>;
 export declare const ROW_COLS: (keyof UCDataStoreRecord)[];
 /**
  * @alpha This implementation is still a WIP and needs improvement

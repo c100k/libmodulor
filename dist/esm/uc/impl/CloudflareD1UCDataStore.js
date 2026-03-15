@@ -12,6 +12,7 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 };
 import { inject, injectable } from 'inversify';
 import { NotAvailableError, NotImplementedError } from '../../error/index.js';
+import { assertCan, } from '../data-store.js';
 export const ROW_COLS = [
     'aggregateId',
     'appName',
@@ -38,6 +39,7 @@ let CloudflareD1UCDataStore = class CloudflareD1UCDataStore {
     }
     s() {
         return {
+            uc_data_store_mode: this.settingsManager.get()('uc_data_store_mode'),
             uc_data_store_ucs_dataset_name: this.settingsManager.get()('uc_data_store_ucs_dataset_name'),
         };
     }
@@ -92,6 +94,7 @@ CREATE INDEX IF NOT EXISTS uc_executions_user_id_index ON uc_executions (userId)
     }
     async read(opts) {
         this.assertClient();
+        assertCan('read', this.s().uc_data_store_mode);
         // TODO : Consider using a query builder (or Google's pipe operator ?) when it gets too complicated or dangerous
         const query = [
             `select * from ${this.s().uc_data_store_ucs_dataset_name}`,
@@ -131,6 +134,7 @@ CREATE INDEX IF NOT EXISTS uc_executions_user_id_index ON uc_executions (userId)
         };
     }
     async readProjection(_name, _opts) {
+        assertCan('read', this.s().uc_data_store_mode);
         throw new NotImplementedError('readProjection');
     }
     async startTx() {
@@ -144,6 +148,7 @@ CREATE INDEX IF NOT EXISTS uc_executions_user_id_index ON uc_executions (userId)
     }
     async write(record, _opts) {
         this.assertClient();
+        assertCan('write', this.s().uc_data_store_mode);
         const cols = ROW_COLS.join(', ');
         const placeholders = ROW_COLS.map(() => '?').join(', ');
         // Use variables only for variables declared here => never for data coming from outside this method !
@@ -166,9 +171,11 @@ CREATE INDEX IF NOT EXISTS uc_executions_user_id_index ON uc_executions (userId)
             .run();
     }
     async writeBulk(_records, _opts) {
+        assertCan('write', this.s().uc_data_store_mode);
         throw new NotImplementedError('writeBulk');
     }
     async writeProjection(_name, _data, _opts) {
+        assertCan('write', this.s().uc_data_store_mode);
         throw new NotImplementedError('writeProjection');
     }
     setClient(client) {
