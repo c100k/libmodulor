@@ -1,5 +1,6 @@
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 import { useRef } from 'react';
+import { UCExecRes } from '../../uc/index.js';
 import { useStyleContext } from '../lib/react/StyleContextProvider.js';
 import { UCFormField } from './UCFormField.js';
 import { UCFormSubmitControl } from './UCFormSubmitControl.js';
@@ -8,8 +9,8 @@ export function UCForm({ clearAfterExec, disabled, execState, onSubmit: onSubmit
     const formRef = useRef(null);
     const onSubmit = async (e) => {
         e.preventDefault();
-        const succeeded = await onSubmitBase();
-        if (succeeded && clearAfterExec) {
+        const res = await onSubmitBase();
+        if (res === UCExecRes.SUCCEEDED && clearAfterExec) {
             formRef.current?.reset();
         }
     };

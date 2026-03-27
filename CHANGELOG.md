@@ -10,6 +10,8 @@ Introduce `UCDataStoreMode` setting. It allows to to set it to `READ_WRITE` (def
 For instance, it's very useful to set it to `READ` when planning a migration with different DB enfines.
 In addition to that, `NONE` is convenient to prevent all reads and writes when there is an issue.
 
+Fix an issue where the form would reset even when not success on the react target.
+
 See all the changes here : https://github.com/c100k/libmodulor/compare/v0.27.0...master
 
 ## v0.27.0 (2026-02-09)
