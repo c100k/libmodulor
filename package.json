@@ -97,7 +97,7 @@
         "test": "tsc && vitest run"
     },
     "devDependencies": {
-        "@biomejs/biome": "^2.4.6",
+        "@biomejs/biome": "^2.4.10",
         "@react-native-community/slider": "^4.5.7",
         "@types/react": "^19.2.14",
         "@types/react-dom": "^19.2.3",
@@ -107,11 +107,11 @@
         "expo-document-picker": "~14.0.8",
         "expo-image-picker": "^17.0.10",
         "react-native-safe-area-context": "^5.7.0",
-        "wrangler": "^4.73.0"
+        "wrangler": "^4.80.0"
     },
     "peerDependencies": {
-        "@hono/node-server": "^1.19.11",
-        "@modelcontextprotocol/sdk": "^1.27.1",
+        "@hono/node-server": "^1.19.12",
+        "@modelcontextprotocol/sdk": "^1.29.0",
         "@stricli/core": "^1.2.6",
         "buffer": "^6.0.3",
         "cookie-parser": "^1.4.7",
@@ -119,11 +119,11 @@
         "express-fileupload": "^1.5.2",
         "fast-check": "^4.6.0",
         "helmet": "^8.1.0",
-        "hono": "^4.12.7",
+        "hono": "^4.12.10",
         "inversify": "^7.11.0",
-        "jose": "^6.2.1",
-        "knex": "^3.1.0",
-        "next": "^15.5.12",
+        "jose": "^6.2.2",
+        "knex": "^3.2.8",
+        "next": "^15.5.14",
         "pg": "^8.20.0",
         "react": "^19.2.4",
         "react-dom": "^19.2.4",

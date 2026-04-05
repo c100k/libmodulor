@@ -41,7 +41,7 @@ let NodeCoreCLIManager = class NodeCoreCLIManager {
             uc.def.ext?.cmd?.mountAt ?? ucMountingPoint(uc),
             uc,
         ]));
-        if (!command || !command.trim() || command === '--help') {
+        if (!command?.trim() || command === '--help') {
             showHelp(ucs, this.wordingManager);
         }
         else if (command === '--version') {

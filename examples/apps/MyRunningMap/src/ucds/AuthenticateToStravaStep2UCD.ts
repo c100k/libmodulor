@@ -59,7 +59,7 @@ class AuthenticateToStravaStep2ClientMain
         const parsedURL = new URL(url);
         const code = parsedURL.searchParams.get('code');
 
-        if (!code || !code.trim()) {
+        if (!code?.trim()) {
             throw new IllegalArgumentError(
                 this.i18nManager.t('err_url_code_mandatory'),
             );

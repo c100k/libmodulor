@@ -189,8 +189,10 @@ let KnexUCDataStore = class KnexUCDataStore {
             return;
         }
         Array.isArray(value)
-            ? query.whereIn(col, value)
-            : query.where(col, value);
+            ? // @ts-expect-error : https://github.com/knex/knex/pull/6428
+                query.whereIn(col, value)
+            : // @ts-expect-error : https://github.com/knex/knex/pull/6428
+                query.where(col, value);
     }
     mapRecordToRow(record) {
         return {
