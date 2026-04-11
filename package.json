@@ -130,7 +130,7 @@
         "react-native": "^0.84.1",
         "reflect-metadata": "^0.2.2",
         "sqlite3": "^5.1.7",
-        "typescript": "^5.9.3",
+        "typescript": "^6.0.2",
         "vite": "^6.4.2",
         "vitest": "^3.2.4"
     },

@@ -97,7 +97,7 @@ export const PACKAGE_JSON = (name) => `{
         "fast-check": "^4.6.0",
         "helmet": "^8.1.0",
         "jose": "^6.2.2",
-        "typescript": "^5.9.3",
+        "typescript": "^6.0.2",
         "vite": "^6.4.2",
         "vitest": "^3.2.4"
     }
