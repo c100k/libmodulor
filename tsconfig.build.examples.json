@@ -1,7 +1,8 @@
 {
     "compilerOptions": {
         "noEmit": false,
-        "outDir": "dist-examples"
+        "outDir": "dist-examples",
+        "rootDir": "./examples"
     },
     "extends": "./tsconfig.json",
     "include": ["examples"]

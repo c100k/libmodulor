@@ -12,6 +12,8 @@ In addition to that, `NONE` is convenient to prevent all reads and writes when t
 
 Fix an issue where the form would reset even when not success on the react target.
 
+Bumped `typescript` to 6.0.x.
+
 See all the changes here : https://github.com/c100k/libmodulor/compare/v0.27.0...master
 
 ## v0.27.0 (2026-02-09)
