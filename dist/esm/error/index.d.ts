@@ -9,3 +9,4 @@ export { NotCallableError, type NotCallableErrorReason, } from './internal/NotCa
 export { NotImplementedError } from './internal/NotImplementedError.js';
 export { NotFoundError } from './NotFoundError.js';
 export { UnauthorizedError } from './UnauthorizedError.js';
+export { UnavailableError } from './UnavailableError.js';

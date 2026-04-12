@@ -79,6 +79,8 @@ export declare const I18n: {
         validation_type_array: string;
         validation_type_int: string;
         validation_type_scalar: string;
+        err_uc_data_store_not_readable: string;
+        err_uc_data_store_not_writable: string;
         dt_FreeTextShort_constr_format: string;
         dt_FreeTextShort_constr_maxLength: string;
         dt_FreeTextShort_constr_minLength: string;
@@ -97,7 +99,5 @@ export declare const I18n: {
         uc_i_submit_idle: string;
         uc_i_submit_initializing: string;
         uc_i_submit_submitting: string;
-        err_uc_data_store_not_readable: string;
-        err_uc_data_store_not_writable: string;
     };
 };
