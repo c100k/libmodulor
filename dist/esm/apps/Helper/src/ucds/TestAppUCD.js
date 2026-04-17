@@ -21,13 +21,11 @@ import { Manifest } from '../manifest.js';
 let TestAppClientMain = class TestAppClientMain {
     appTestSuiteRunner;
     fsManager;
-    i18nManager;
     logger;
     simpleHTMLAppTestReportEmitter;
-    constructor(appTestSuiteRunner, fsManager, i18nManager, logger, simpleHTMLAppTestReportEmitter) {
+    constructor(appTestSuiteRunner, fsManager, logger, simpleHTMLAppTestReportEmitter) {
         this.appTestSuiteRunner = appTestSuiteRunner;
         this.fsManager = fsManager;
-        this.i18nManager = i18nManager;
         this.logger = logger;
         this.simpleHTMLAppTestReportEmitter = simpleHTMLAppTestReportEmitter;
     }
@@ -39,7 +37,7 @@ let TestAppClientMain = class TestAppClientMain {
         const updateSnapshots = uc.reqVal0('updateSnapshots');
         const appPath = this.fsManager.path(appsPath, appName);
         if (!(await this.fsManager.exists(appPath))) {
-            throw new IllegalArgumentError(this.i18nManager.t('err_unknown_app', { vars: { appPath } }));
+            throw new IllegalArgumentError('err_unknown_app');
         }
         await this.appTestSuiteRunner.exec({
             appPath,
@@ -68,10 +66,9 @@ TestAppClientMain = __decorate([
     injectable(),
     __param(0, inject('AppTestSuiteRunner')),
     __param(1, inject('FSManager')),
-    __param(2, inject('I18nManager')),
-    __param(3, inject('Logger')),
-    __param(4, inject(SimpleHTMLAppTestReportEmitter)),
-    __metadata("design:paramtypes", [Object, Object, Object, Object, SimpleHTMLAppTestReportEmitter])
+    __param(2, inject('Logger')),
+    __param(3, inject(SimpleHTMLAppTestReportEmitter)),
+    __metadata("design:paramtypes", [Object, Object, Object, SimpleHTMLAppTestReportEmitter])
 ], TestAppClientMain);
 export const TestAppUCD = {
     ext: {

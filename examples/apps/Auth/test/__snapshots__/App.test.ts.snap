@@ -19,7 +19,7 @@ exports[`Run > Use Cases > 'SignIn' > should execute with auth 'ADMIN' and input
       "inputFiller": [Function],
       "inputFillerName": "ALL_WITH_EXAMPLES",
     },
-    "err": [ForbiddenError: Forbidden],
+    "err": [ForbiddenError: err_forbidden],
     "hash": "51c300ed4b9089e7fbee998f77e93ff9d9a1b45bcb4e648ba651a3f63cdc231d",
     "io": {
       "i": {
@@ -51,7 +51,7 @@ exports[`Run > Use Cases > 'SignIn' > should execute with auth 'ADMIN' and input
       "inputFiller": [Function],
       "inputFillerName": "ONLY_MANDATORY_WITH_EXAMPLES",
     },
-    "err": [ForbiddenError: Forbidden],
+    "err": [ForbiddenError: err_forbidden],
     "hash": "225ff6d19b801218b8ad806739fb406f1f790cb92fb3abfe2603853b2b2a57f5",
     "io": {
       "i": {
@@ -83,7 +83,7 @@ exports[`Run > Use Cases > 'SignIn' > should execute with auth 'ADMIN' and input
       "inputFiller": [Function],
       "inputFillerName": "ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPLES",
     },
-    "err": [ForbiddenError: Forbidden],
+    "err": [ForbiddenError: err_forbidden],
     "hash": "12d94087f04193817346b0c06de251b89f21931786a455467fee47a4e58ed08d",
     "io": {
       "i": {
@@ -137,7 +137,7 @@ exports[`Run > Use Cases > 'SignIn' > should execute with auth 'REGULAR' and inp
       "inputFiller": [Function],
       "inputFillerName": "ALL_WITH_EXAMPLES",
     },
-    "err": [ForbiddenError: Forbidden],
+    "err": [ForbiddenError: err_forbidden],
     "hash": "671c3056399af88cfe427875f7886307561173d7778353bf4770219286f634dd",
     "io": {
       "i": {
@@ -169,7 +169,7 @@ exports[`Run > Use Cases > 'SignIn' > should execute with auth 'REGULAR' and inp
       "inputFiller": [Function],
       "inputFillerName": "ONLY_MANDATORY_WITH_EXAMPLES",
     },
-    "err": [ForbiddenError: Forbidden],
+    "err": [ForbiddenError: err_forbidden],
     "hash": "d78587a4501264865216ea8b79796e2d7fa66124de993ed04891aae1d75786f3",
     "io": {
       "i": {
@@ -201,7 +201,7 @@ exports[`Run > Use Cases > 'SignIn' > should execute with auth 'REGULAR' and inp
       "inputFiller": [Function],
       "inputFillerName": "ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPLES",
     },
-    "err": [ForbiddenError: Forbidden],
+    "err": [ForbiddenError: err_forbidden],
     "hash": "a066bcfd3047241dcd2f24a7181d2a1180e4844f6b2e5998800b6f36fe7f706e",
     "io": {
       "i": {
@@ -313,7 +313,7 @@ exports[`Run > Use Cases > 'SignOut' > should execute with auth 'ANONYMOUS' and 
       "inputFiller": [Function],
       "inputFillerName": "ALL_WITH_EXAMPLES",
     },
-    "err": [ForbiddenError: Forbidden],
+    "err": [ForbiddenError: err_forbidden],
     "hash": "5c8729f9b83cc6433d1980fa4401dcae0ff79e263ea407272cc124dc47fac010",
     "io": {
       "i": {},
@@ -333,7 +333,7 @@ exports[`Run > Use Cases > 'SignOut' > should execute with auth 'ANONYMOUS' and 
       "inputFiller": [Function],
       "inputFillerName": "ONLY_MANDATORY_WITH_EXAMPLES",
     },
-    "err": [ForbiddenError: Forbidden],
+    "err": [ForbiddenError: err_forbidden],
     "hash": "17b47d4c70e815737356a01fae9f02b0807e789a3c2ea0ac69d8365c560405b8",
     "io": {
       "i": {},
@@ -353,7 +353,7 @@ exports[`Run > Use Cases > 'SignOut' > should execute with auth 'ANONYMOUS' and 
       "inputFiller": [Function],
       "inputFillerName": "ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPLES",
     },
-    "err": [ForbiddenError: Forbidden],
+    "err": [ForbiddenError: err_forbidden],
     "hash": "76a8a49495667566d3b6a2e7549e3cb02ff293d187966806d7b16d384d1b3f26",
     "io": {
       "i": {},

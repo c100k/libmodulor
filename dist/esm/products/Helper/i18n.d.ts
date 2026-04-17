@@ -37,6 +37,12 @@ export declare const I18n: {
         ucif_serverPortRangeStart_desc: string;
         ucif_skipCoverage_desc: string;
         ucif_updateSnapshots_desc: string;
+        err_unexpected: string;
+        err_not_found: string;
+        err_forbidden: string;
+        err_illegal_argument: string;
+        err_unauthorized: string;
+        err_unavailable: string;
         validation_max: string;
         validation_min: string;
         validation_fieldsOr: string;

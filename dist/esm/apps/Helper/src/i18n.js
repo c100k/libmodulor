@@ -1,10 +1,10 @@
 export const I18n = {
     en: {
-        err_existing_app: 'App "{{appPath}}" already exists',
-        err_existing_product: 'Product "{{productPath}}" already exists',
-        err_existing_target: 'Target "{{targetPath}}" already exists',
+        err_existing_app: 'App already exists',
+        err_existing_product: 'Product already exists',
+        err_existing_target: 'Target already exists',
         err_target_generator_not_available: 'This target has not been implemented yet via the generator. In the meantime, you can create it manually by following the examples.',
-        err_unknown_app: 'App "{{appPath}}" does not exist',
+        err_unknown_app: 'App does not exist',
         uc_CreateApp_desc: 'Create the basics of an app (index, i18n, manifest)',
         uc_CreateApp_label: 'Create an app',
         uc_CreateProduct_desc: 'Create the basics of a product (i18n, manifest)',

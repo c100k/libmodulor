@@ -56,7 +56,7 @@ let CommandExecutor = class CommandExecutor {
             }
         }
         catch (err) {
-            printError(err);
+            printError(this.i18nManager, err);
         }
     }
     fieldsForFlags(uc) {
@@ -107,7 +107,7 @@ let CommandExecutor = class CommandExecutor {
                     const message = this.i18nManager.t(key, {
                         vars: { expected },
                     });
-                    printError(message);
+                    printError(this.i18nManager, message);
                     return false;
                 },
             });

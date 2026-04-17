@@ -7,7 +7,6 @@ import {
     EverybodyUCPolicy,
     type ExternalServiceId,
     type HTTPAPICaller,
-    type I18nManager,
     IllegalArgumentError,
     TApiKey,
     TExternalServiceId,
@@ -42,7 +41,6 @@ class AuthenticateToStravaStep2ClientMain
 {
     constructor(
         @inject('CryptoManager') private cryptoManager: CryptoManager,
-        @inject('I18nManager') private i18nManager: I18nManager,
         @inject('HTTPAPICaller') private httpAPICaller: HTTPAPICaller,
     ) {}
 
@@ -60,9 +58,7 @@ class AuthenticateToStravaStep2ClientMain
         const code = parsedURL.searchParams.get('code');
 
         if (!code?.trim()) {
-            throw new IllegalArgumentError(
-                this.i18nManager.t('err_url_code_mandatory'),
-            );
+            throw new IllegalArgumentError('err_url_code_mandatory');
         }
 
         const response = await this.httpAPICaller.exec<

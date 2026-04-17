@@ -1,7 +1,6 @@
 import { inject, injectable } from 'inversify';
 
 import {
-    type I18nManager,
     IllegalArgumentError,
     NotFoundError,
     recIs,
@@ -25,7 +24,6 @@ export class CancelOrderServerMain
     implements UCMain<CancelOrderInput, CancelOrderOPI0>
 {
     constructor(
-        @inject('I18nManager') private i18nManager: I18nManager,
         @inject('UCDataStore') private ucDataStore: UCDataStore,
         @inject('UCManager') private ucManager: UCManager,
     ) {}
@@ -68,9 +66,7 @@ export class CancelOrderServerMain
             throw new NotFoundError();
         }
         if (order.status !== 'pending') {
-            throw new IllegalArgumentError(
-                this.i18nManager.t('err_order_uncancellable'),
-            );
+            throw new IllegalArgumentError('err_order_uncancellable');
         }
 
         /// Cancel the order

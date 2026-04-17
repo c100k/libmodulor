@@ -3,18 +3,17 @@ export function print(line) {
     // biome-ignore lint/suspicious/noConsole: we want it
     console.info(line);
 }
-export function printError(err) {
-    let message = '';
-    if (err instanceof Error) {
-        message = err.message;
-        if (!(err instanceof CustomError)) {
-            // biome-ignore lint/suspicious/noConsole: we want it
-            console.error(err);
-        }
+export function printError(i18nManager, err) {
+    if (typeof err === 'string') {
+        // biome-ignore lint/suspicious/noConsole: we want it
+        console.error(err);
+        return;
     }
-    else if (typeof err === 'string') {
-        message = err;
+    if (!(err instanceof CustomError)) {
+        // biome-ignore lint/suspicious/noConsole: we want it
+        console.error(err);
+        return;
     }
     // biome-ignore lint/suspicious/noConsole: we want it
-    console.error(message);
+    console.error(i18nManager.t(err.message));
 }

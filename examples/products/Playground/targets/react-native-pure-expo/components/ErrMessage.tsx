@@ -1,12 +1,15 @@
 import type { ReactElement } from 'react';
 import { Text } from 'react-native';
 
-import type { ErrorMessage } from '../../../../../../dist/esm/index.js';
+import type { ErrorCode } from '../../../../../../dist/esm/index.js';
+import { useDIContext } from '../../../../../../dist/esm/index.react.js';
 
 interface Props {
-    errMsg: ErrorMessage;
+    errCode: ErrorCode;
 }
 
-export default function ErrMessage({ errMsg }: Props): ReactElement {
-    return <Text style={{ color: 'red' }}>{errMsg}</Text>;
+export default function ErrMessage({ errCode }: Props): ReactElement {
+    const { i18nManager } = useDIContext();
+
+    return <Text style={{ color: 'red' }}>{i18nManager.t(errCode)}</Text>;
 }

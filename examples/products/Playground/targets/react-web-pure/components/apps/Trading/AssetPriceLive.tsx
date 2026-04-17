@@ -1,7 +1,7 @@
 import type { ReactElement } from 'react';
 
 import type {
-    ErrorMessage,
+    ErrorCode,
     UCOutputField,
 } from '../../../../../../../../dist/esm/index.js';
 import type {
@@ -12,7 +12,7 @@ import ErrMessage from '../../ErrMessage.js';
 import UCOutputFieldValue from '../../UCOutputFieldValue.js';
 
 export interface AssetPriceLiveValue {
-    errMsg: ErrorMessage | null;
+    errCode: ErrorCode | null;
     opi: ViewAssetPriceOPI0 | null;
 }
 
@@ -31,9 +31,9 @@ export default function AssetPriceLive({
         return null;
     }
 
-    const { errMsg, opi } = value;
-    if (errMsg) {
-        return <ErrMessage errMsg={errMsg} />;
+    const { errCode, opi } = value;
+    if (errCode) {
+        return <ErrMessage errCode={errCode} />;
     }
 
     if (!opi) {

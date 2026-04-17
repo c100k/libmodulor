@@ -2,6 +2,8 @@ import type { AppI18n } from '../../../../dist/esm/index.js';
 
 export const I18n = {
     en: {
+        dt_ISIN_constr_format:
+            '2 uppercase letters, followed by 9 alphanumeric characters and 1 digit',
         err_isin_price_not_found: 'Cannot find the price of this ISIN',
         err_order_uncancellable: 'Cannot cancel an order that is not pending',
         uc_AskQuestion_i_submit_idle: 'Ask',
@@ -24,6 +26,8 @@ export const I18n = {
             'Must be 2 uppercase letters, followed by 9 alphanumeric characters and 1 digit',
     },
     fr: {
+        dt_ISIN_constr_format:
+            '2 lettres majuscules, suivies de 9 caractères alphanumériques et 1 chiffre',
         err_isin_price_not_found: 'Impossible de trouver le prix de cet ISIN',
         err_order_uncancellable:
             "Impossible d'annuler un ordre qui n'est pas en attente",

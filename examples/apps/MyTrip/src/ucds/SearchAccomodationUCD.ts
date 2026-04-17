@@ -7,7 +7,6 @@ import {
     type DateISO8601,
     EverybodyUCPolicy,
     type FreeTextShort,
-    type I18nManager,
     IllegalArgumentError,
     TAmount,
     TCompanyName,
@@ -55,7 +54,6 @@ class SearchAccomodationClientMain
     constructor(
         @inject(AccomodationSearcher)
         private accomodationSearcher: AccomodationSearcher,
-        @inject('I18nManager') private i18nManager: I18nManager,
     ) {}
 
     public async exec({
@@ -71,9 +69,7 @@ class SearchAccomodationClientMain
         const to = uc.reqVal0('to');
 
         if (from.localeCompare(to) >= 0) {
-            throw new IllegalArgumentError(
-                this.i18nManager.t('err_from_before_to'),
-            );
+            throw new IllegalArgumentError('err_from_before_to');
         }
 
         const items = await this.accomodationSearcher.exec({

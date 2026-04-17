@@ -23,13 +23,11 @@ import { SrcFilesGenerator } from '../lib/SrcFilesGenerator.js';
 import { Manifest } from '../manifest.js';
 let CreateAppClientMain = class CreateAppClientMain {
     fsManager;
-    i18nManager;
     logger;
     srcFilesGenerator;
     rootPath;
-    constructor(fsManager, i18nManager, logger, srcFilesGenerator) {
+    constructor(fsManager, logger, srcFilesGenerator) {
         this.fsManager = fsManager;
-        this.i18nManager = i18nManager;
         this.logger = logger;
         this.srcFilesGenerator = srcFilesGenerator;
     }
@@ -51,9 +49,7 @@ let CreateAppClientMain = class CreateAppClientMain {
         if (!(await this.fsManager.exists(this.rootPath))) {
             return;
         }
-        throw new IllegalArgumentError(this.i18nManager.t('err_existing_app', {
-            vars: { appPath: this.rootPath },
-        }));
+        throw new IllegalArgumentError('err_existing_app');
     }
     async createRootDir() {
         this.logger.info('Creating root dir : %s', this.rootPath);
@@ -70,10 +66,9 @@ let CreateAppClientMain = class CreateAppClientMain {
 CreateAppClientMain = __decorate([
     injectable(),
     __param(0, inject('FSManager')),
-    __param(1, inject('I18nManager')),
-    __param(2, inject('Logger')),
-    __param(3, inject(SrcFilesGenerator)),
-    __metadata("design:paramtypes", [Object, Object, Object, SrcFilesGenerator])
+    __param(1, inject('Logger')),
+    __param(2, inject(SrcFilesGenerator)),
+    __metadata("design:paramtypes", [Object, Object, SrcFilesGenerator])
 ], CreateAppClientMain);
 export const CreateAppUCD = {
     ext: {

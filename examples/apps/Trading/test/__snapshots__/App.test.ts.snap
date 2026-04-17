@@ -129,7 +129,7 @@ exports[`Run > Use Cases > 'AskQuestion' > should execute with auth 'ANONYMOUS' 
       "inputFiller": [Function],
       "inputFillerName": "ALL_WITH_EXAMPLES",
     },
-    "err": [ForbiddenError: Forbidden],
+    "err": [ForbiddenError: err_forbidden],
     "hash": "d19a69ba5d8aaad37dc7b277f20a995c866b348f5544a22934444034d08548eb",
     "io": {
       "i": {
@@ -151,7 +151,7 @@ exports[`Run > Use Cases > 'AskQuestion' > should execute with auth 'ANONYMOUS' 
       "inputFiller": [Function],
       "inputFillerName": "ONLY_MANDATORY_WITH_EXAMPLES",
     },
-    "err": [ForbiddenError: Forbidden],
+    "err": [ForbiddenError: err_forbidden],
     "hash": "eb8b4cd8476af82c749b2058ccaee773ea518755351b7eec2e1d2cdeb9351927",
     "io": {
       "i": {
@@ -173,7 +173,7 @@ exports[`Run > Use Cases > 'AskQuestion' > should execute with auth 'ANONYMOUS' 
       "inputFiller": [Function],
       "inputFillerName": "ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPLES",
     },
-    "err": [ForbiddenError: Forbidden],
+    "err": [ForbiddenError: err_forbidden],
     "hash": "8b3c6446917c39afad46d0c60c6a1e933dfe6d6c526f9f9e36d3afa2d073725d",
     "io": {
       "i": {
@@ -447,7 +447,7 @@ exports[`Run > Use Cases > 'BuyAsset' > should execute with auth 'ANONYMOUS' and
       "inputFiller": [Function],
       "inputFillerName": "ALL_WITH_EXAMPLES",
     },
-    "err": [ForbiddenError: Forbidden],
+    "err": [ForbiddenError: err_forbidden],
     "hash": "2b81275f63642328148b6a0eeac158efe8706c0a61bee2be4d5082b8897326ef",
     "io": {
       "i": {
@@ -471,7 +471,7 @@ exports[`Run > Use Cases > 'BuyAsset' > should execute with auth 'ANONYMOUS' and
       "inputFiller": [Function],
       "inputFillerName": "ONLY_MANDATORY_WITH_EXAMPLES",
     },
-    "err": [ForbiddenError: Forbidden],
+    "err": [ForbiddenError: err_forbidden],
     "hash": "2fb4944c258f3a46fbe6b87cf346534be2ce850a2deec284ba92db32c215c59d",
     "io": {
       "i": {
@@ -495,7 +495,7 @@ exports[`Run > Use Cases > 'BuyAsset' > should execute with auth 'ANONYMOUS' and
       "inputFiller": [Function],
       "inputFillerName": "ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPLES",
     },
-    "err": [ForbiddenError: Forbidden],
+    "err": [ForbiddenError: err_forbidden],
     "hash": "943483adb253253c88caf18ae5726e037ad07245147dd0f25f438b33431b7db2",
     "io": {
       "i": {
@@ -661,7 +661,7 @@ exports[`Run > Use Cases > 'CancelOrder' > should execute with auth 'ADMIN' and 
       "inputFiller": [Function],
       "inputFillerName": "ALL_WITH_EXAMPLES",
     },
-    "err": [IllegalArgumentError: Not found],
+    "err": [IllegalArgumentError: err_not_found],
     "hash": "e6080f5fa9361719c8cac8b39029d49f1ed267e8e4890c29c1f3bfd71d24630a",
     "io": {
       "i": {
@@ -693,7 +693,7 @@ exports[`Run > Use Cases > 'CancelOrder' > should execute with auth 'ADMIN' and 
       "inputFiller": [Function],
       "inputFillerName": "ONLY_MANDATORY_WITH_EXAMPLES",
     },
-    "err": [IllegalArgumentError: Not found],
+    "err": [IllegalArgumentError: err_not_found],
     "hash": "edd2c62f1bcf301f535f9537bfc059a889f07f9a38837f61b6f276375707f729",
     "io": {
       "i": {
@@ -725,7 +725,7 @@ exports[`Run > Use Cases > 'CancelOrder' > should execute with auth 'ADMIN' and 
       "inputFiller": [Function],
       "inputFillerName": "ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPLES",
     },
-    "err": [IllegalArgumentError: Not found],
+    "err": [IllegalArgumentError: err_not_found],
     "hash": "29c5864283bf8f4633435538848915ea7ed907404c452fd3c12d5f917251921f",
     "io": {
       "i": {
@@ -747,7 +747,7 @@ exports[`Run > Use Cases > 'CancelOrder' > should execute with auth 'ANONYMOUS' 
       "inputFiller": [Function],
       "inputFillerName": "ALL_WITH_EXAMPLES",
     },
-    "err": [ForbiddenError: Forbidden],
+    "err": [ForbiddenError: err_forbidden],
     "hash": "d80d322c9733342b0a3f7ed4991b7ef363c899904efab1a0850f0151fbb82ad7",
     "io": {
       "i": {
@@ -769,7 +769,7 @@ exports[`Run > Use Cases > 'CancelOrder' > should execute with auth 'ANONYMOUS' 
       "inputFiller": [Function],
       "inputFillerName": "ONLY_MANDATORY_WITH_EXAMPLES",
     },
-    "err": [ForbiddenError: Forbidden],
+    "err": [ForbiddenError: err_forbidden],
     "hash": "ada4bd9c38b5446e1380bbf8c2f61f344e3c6c26cf3be9fc9c216a57df1d2243",
     "io": {
       "i": {
@@ -791,7 +791,7 @@ exports[`Run > Use Cases > 'CancelOrder' > should execute with auth 'ANONYMOUS' 
       "inputFiller": [Function],
       "inputFillerName": "ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPLES",
     },
-    "err": [ForbiddenError: Forbidden],
+    "err": [ForbiddenError: err_forbidden],
     "hash": "f1ce550c727350b18204d9cec7b0b0a20f368f391a626fbc2f090f480f79b3b2",
     "io": {
       "i": {
@@ -823,7 +823,7 @@ exports[`Run > Use Cases > 'CancelOrder' > should execute with auth 'REGULAR' an
       "inputFiller": [Function],
       "inputFillerName": "ALL_WITH_EXAMPLES",
     },
-    "err": [ForbiddenError: Forbidden],
+    "err": [ForbiddenError: err_forbidden],
     "hash": "a92e8c81bbc93b85569ff4168bc45d9e5e82929e89c13ebfe27401f1ecbfc5c5",
     "io": {
       "i": {
@@ -855,7 +855,7 @@ exports[`Run > Use Cases > 'CancelOrder' > should execute with auth 'REGULAR' an
       "inputFiller": [Function],
       "inputFillerName": "ONLY_MANDATORY_WITH_EXAMPLES",
     },
-    "err": [ForbiddenError: Forbidden],
+    "err": [ForbiddenError: err_forbidden],
     "hash": "a2b4d17375aeb2e4c3d16171814e541d80968a364be1fbc461dc2685aeb765bb",
     "io": {
       "i": {
@@ -887,7 +887,7 @@ exports[`Run > Use Cases > 'CancelOrder' > should execute with auth 'REGULAR' an
       "inputFiller": [Function],
       "inputFillerName": "ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPLES",
     },
-    "err": [ForbiddenError: Forbidden],
+    "err": [ForbiddenError: err_forbidden],
     "hash": "8ea60e27fbf532e1467925bfca670ba427136842647492c97cdc5b1c3e0a99c1",
     "io": {
       "i": {

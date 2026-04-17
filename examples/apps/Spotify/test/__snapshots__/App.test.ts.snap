@@ -1464,7 +1464,7 @@ exports[`Run > Use Cases > 'ListStats' > should execute with auth 'ANONYMOUS' an
       "inputFiller": [Function],
       "inputFillerName": "ALL_WITH_EXAMPLES",
     },
-    "err": [ForbiddenError: Forbidden],
+    "err": [ForbiddenError: err_forbidden],
     "hash": "9690a948b8aa24af1c412ba8be547654c1a73e87d7bce03ce5ee0a680604b19d",
     "io": {
       "i": {},
@@ -1484,7 +1484,7 @@ exports[`Run > Use Cases > 'ListStats' > should execute with auth 'ANONYMOUS' an
       "inputFiller": [Function],
       "inputFillerName": "ONLY_MANDATORY_WITH_EXAMPLES",
     },
-    "err": [ForbiddenError: Forbidden],
+    "err": [ForbiddenError: err_forbidden],
     "hash": "90cfb624ccf998ca7e88f575f7ede71f2b6f2d130ac6cf85990fbdb3d294c0b7",
     "io": {
       "i": {},
@@ -1504,7 +1504,7 @@ exports[`Run > Use Cases > 'ListStats' > should execute with auth 'ANONYMOUS' an
       "inputFiller": [Function],
       "inputFillerName": "ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPLES",
     },
-    "err": [ForbiddenError: Forbidden],
+    "err": [ForbiddenError: err_forbidden],
     "hash": "6cd325fc1bb61a4b72544af7d40a0f8a83026937617e95628d4b7ca823e1ab82",
     "io": {
       "i": {},

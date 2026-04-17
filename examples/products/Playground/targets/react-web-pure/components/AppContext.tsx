@@ -7,7 +7,7 @@ import {
 
 import type {
     AppManifest,
-    ErrorMessage,
+    ErrorCode,
     UC,
 } from '../../../../../../dist/esm/index.js';
 import {
@@ -19,7 +19,7 @@ import { UCEntrypointTouchable } from '../../../../../../dist/esm/index.react-we
 import ErrMessage from './ErrMessage.js';
 
 export interface AppContextT {
-    errMsg: ErrorMessage | null;
+    errCode: ErrorCode | null;
     onError: UCPanelOnError;
     onStartSubmitting: UCPanelOnStartSubmitting;
 }
@@ -44,15 +44,15 @@ export function AppContextProvider({
     manifest,
     menu,
 }: PropsWithChildren<Props>) {
-    const [errMsg, setErrMsg] = useState<AppContextT['errMsg']>(null);
+    const [errCode, setErrCode] = useState<AppContextT['errCode']>(null);
 
     const onError: UCPanelOnError = async (err) =>
-        setErrMsg((err as Error).message);
+        setErrCode((err as Error).message as ErrorCode);
     const onStartSubmitting: UCPanelOnStartSubmitting = async () =>
-        setErrMsg(null);
+        setErrCode(null);
 
     return (
-        <AppContext.Provider value={{ errMsg, onError, onStartSubmitting }}>
+        <AppContext.Provider value={{ errCode, onError, onStartSubmitting }}>
             <div
                 style={{
                     alignItems: 'flex-start',
@@ -77,7 +77,7 @@ export function AppContextProvider({
                     </div>
                 )}
 
-                {errMsg && <ErrMessage errMsg={errMsg} />}
+                {errCode && <ErrMessage errCode={errCode} />}
 
                 {children}
             </div>

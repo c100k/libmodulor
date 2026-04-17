@@ -1,11 +1,14 @@
 import type { ReactElement } from 'react';
 
-import type { ErrorMessage } from '../../../../../../dist/esm/index.js';
+import type { ErrorCode } from '../../../../../../dist/esm/index.js';
+import { useDIContext } from '../../../../../../dist/esm/index.react.js';
 
 interface Props {
-    errMsg: ErrorMessage;
+    errCode: ErrorCode;
 }
 
-export default function ErrMessage({ errMsg }: Props): ReactElement {
-    return <span style={{ color: 'red' }}>{errMsg}</span>;
+export default function ErrMessage({ errCode }: Props): ReactElement {
+    const { i18nManager } = useDIContext();
+
+    return <span style={{ color: 'red' }}>{i18nManager.t(errCode)}</span>;
 }

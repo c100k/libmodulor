@@ -19,7 +19,7 @@ exports[`Run > Use Cases > 'SearchAccomodation' > should execute with auth 'ADMI
       "inputFiller": [Function],
       "inputFillerName": "ALL_CORRECT_BUT_TO_BEFORE_FROM",
     },
-    "err": [IllegalArgumentError: The check-in date must be before the check-out date],
+    "err": [IllegalArgumentError: err_from_before_to],
     "hash": "77471e0f68dc3a2c9ff75d2f38bde768441c738104cc1fbbb380f17b528d4fe7",
     "io": {
       "i": {
@@ -187,7 +187,7 @@ exports[`Run > Use Cases > 'SearchAccomodation' > should execute with auth 'ANON
       "inputFiller": [Function],
       "inputFillerName": "ALL_CORRECT_BUT_TO_BEFORE_FROM",
     },
-    "err": [IllegalArgumentError: The check-in date must be before the check-out date],
+    "err": [IllegalArgumentError: err_from_before_to],
     "hash": "76d58732b09f928d5f4bd9e0d0882707e7417d33010d2d83e6e665d9156db34a",
     "io": {
       "i": {
@@ -335,7 +335,7 @@ exports[`Run > Use Cases > 'SearchAccomodation' > should execute with auth 'REGU
       "inputFiller": [Function],
       "inputFillerName": "ALL_CORRECT_BUT_TO_BEFORE_FROM",
     },
-    "err": [IllegalArgumentError: The check-in date must be before the check-out date],
+    "err": [IllegalArgumentError: err_from_before_to],
     "hash": "1e8b5b95a5e1e33b19c740978823f9b41992ac7d8de89058ef29879ea0e45937",
     "io": {
       "i": {

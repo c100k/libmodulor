@@ -25,6 +25,7 @@ export { type Email, TEmail } from './final/TEmail.js';
 export { type EmbeddedObject, TEmbeddedObject, } from './final/TEmbeddedObject.js';
 export { type Emoji, TEmoji } from './final/TEmoji.js';
 export { type EncryptionKey, TEncryptionKey } from './final/TEncryptionKey.js';
+export { type ErrorCode, TErrorCode } from './final/TErrorCode.js';
 export { type ErrorMessage, TErrorMessage } from './final/TErrorMessage.js';
 export { type ExternalServiceId, TExternalServiceId, } from './final/TExternalServiceId.js';
 export { type File, TFile, type TFileConstraints } from './final/TFile.js';

@@ -17,6 +17,7 @@ export const DataTypes = [
     'EmbeddedObject',
     'Emoji',
     'EncryptionKey',
+    'ErrorCode',
     'ErrorMessage',
     'ExternalServiceId',
     'File',

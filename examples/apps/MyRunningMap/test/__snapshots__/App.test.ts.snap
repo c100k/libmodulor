@@ -286,7 +286,7 @@ exports[`Run > Use Cases > 'AuthenticateToStravaStep2' > should execute with aut
       "inputFiller": [Function],
       "inputFillerName": "ALL_WITH_EXAMPLES",
     },
-    "err": [IllegalArgumentError: The URL must contain a code query param],
+    "err": [IllegalArgumentError: err_url_code_mandatory],
     "hash": "1aae6a1e71c3b7b79703a3f1cc95dd45c594116f58c2b02adcd4efc0f79f9417",
     "io": {
       "i": {
@@ -320,7 +320,7 @@ exports[`Run > Use Cases > 'AuthenticateToStravaStep2' > should execute with aut
       "inputFiller": [Function],
       "inputFillerName": "ONLY_MANDATORY_WITH_EXAMPLES",
     },
-    "err": [IllegalArgumentError: The URL must contain a code query param],
+    "err": [IllegalArgumentError: err_url_code_mandatory],
     "hash": "3a64b923a620cfb212d58cc677a398221b2e31e73f02faff3bc9ea3105b10f38",
     "io": {
       "i": {
@@ -378,7 +378,7 @@ exports[`Run > Use Cases > 'AuthenticateToStravaStep2' > should execute with aut
       "inputFiller": [Function],
       "inputFillerName": "ALL_WITH_EXAMPLES",
     },
-    "err": [IllegalArgumentError: The URL must contain a code query param],
+    "err": [IllegalArgumentError: err_url_code_mandatory],
     "hash": "b65f185c4d0166992d12c3330997076cec08d287efd3b2521f4d46062cec75d9",
     "io": {
       "i": {
@@ -402,7 +402,7 @@ exports[`Run > Use Cases > 'AuthenticateToStravaStep2' > should execute with aut
       "inputFiller": [Function],
       "inputFillerName": "ONLY_MANDATORY_WITH_EXAMPLES",
     },
-    "err": [IllegalArgumentError: The URL must contain a code query param],
+    "err": [IllegalArgumentError: err_url_code_mandatory],
     "hash": "311e29e1488b4362f7f0b1cb5cdcd742bf0fa141118fd43d7adba2f8b763f013",
     "io": {
       "i": {
@@ -460,7 +460,7 @@ exports[`Run > Use Cases > 'AuthenticateToStravaStep2' > should execute with aut
       "inputFiller": [Function],
       "inputFillerName": "ALL_WITH_EXAMPLES",
     },
-    "err": [IllegalArgumentError: The URL must contain a code query param],
+    "err": [IllegalArgumentError: err_url_code_mandatory],
     "hash": "1c1ff8269ef286b7730df90dc8494d232e6a2f0218bd88052aa36adcea8dde85",
     "io": {
       "i": {
@@ -494,7 +494,7 @@ exports[`Run > Use Cases > 'AuthenticateToStravaStep2' > should execute with aut
       "inputFiller": [Function],
       "inputFillerName": "ONLY_MANDATORY_WITH_EXAMPLES",
     },
-    "err": [IllegalArgumentError: The URL must contain a code query param],
+    "err": [IllegalArgumentError: err_url_code_mandatory],
     "hash": "d121818049177acbf5bc61182983dc5d6e4aa07ace2a216d15c507101d832395",
     "io": {
       "i": {

@@ -1,7 +1,7 @@
 export class CustomError extends Error {
-    static ERROR_UNKNOWN = 'An unexpected error occurred';
+    static UNEXPECTED = 'err_unexpected';
     constructor(message) {
-        super(message ?? CustomError.ERROR_UNKNOWN);
+        super(message ?? CustomError.UNEXPECTED);
         this.name = 'CustomError';
         Object.setPrototypeOf(this, CustomError.prototype);
     }

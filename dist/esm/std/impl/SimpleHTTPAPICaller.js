@@ -33,7 +33,7 @@ let SimpleHTTPAPICaller = class SimpleHTTPAPICaller {
         this.sseStreamManager = sseStreamManager;
         this.xmlManager = xmlManager;
     }
-    async exec({ additionalHeadersBuilder, authorizationHeader, basicAuth, contentType = 'application/json', errBuilder, method, opts, outputBuilder, registerAbort, req, stream, urlBuilder, unknownErrorMessage = CustomError.ERROR_UNKNOWN, }) {
+    async exec({ additionalHeadersBuilder, authorizationHeader, basicAuth, contentType = 'application/json', errBuilder, method, opts, outputBuilder, registerAbort, req, stream, urlBuilder, unknownErrorMessage = CustomError.UNEXPECTED, }) {
         const baseURL = await urlBuilder();
         const data = (await req?.builder?.()) || {};
         const { body, url } = await this.httpRequestBuilder.exec({

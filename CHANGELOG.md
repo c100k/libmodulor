@@ -14,6 +14,8 @@ Fix an issue where the form would reset even when not success on the react targe
 
 Bumped `typescript` to 6.0.x.
 
+**BREAKING** : Handle errors i18n client side. From now on, the server returns error codes (e.g. `err_forbidden`) and all translations must happen client side.
+
 See all the changes here : https://github.com/c100k/libmodulor/compare/v0.27.0...master
 
 ## v0.27.0 (2026-02-09)

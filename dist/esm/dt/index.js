@@ -24,6 +24,7 @@ export { TEmail } from './final/TEmail.js';
 export { TEmbeddedObject, } from './final/TEmbeddedObject.js';
 export { TEmoji } from './final/TEmoji.js';
 export { TEncryptionKey } from './final/TEncryptionKey.js';
+export { TErrorCode } from './final/TErrorCode.js';
 export { TErrorMessage } from './final/TErrorMessage.js';
 export { TExternalServiceId, } from './final/TExternalServiceId.js';
 export { TFile } from './final/TFile.js';

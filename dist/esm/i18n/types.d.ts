@@ -8,7 +8,7 @@ export type I18nLanguageCode = 'de' | 'en' | 'es' | 'fr';
  */
 export type I18nTranslation = string;
 export type I18nTranslationKey = string;
-export type I18nCoreKey = ViolationI18nable | `dt_FreeTextShort_constr_${keyof TStringConstraints}` | `dt_File_constr_${keyof TFileConstraints}` | `dt_YesNo_${YesNo}_${keyof UCWording}` | 'err_uc_data_store_not_readable' | 'err_uc_data_store_not_writable' | `uc_client_confirm_${keyof UCClientConfirmConfig}` | `uc_i_submit_${UCExecState}`;
+export type I18nCoreKey = ViolationI18nable | `dt_FreeTextShort_constr_${keyof TStringConstraints}` | `dt_File_constr_${keyof TFileConstraints}` | `dt_YesNo_${YesNo}_${keyof UCWording}` | 'err_forbidden' | 'err_illegal_argument' | 'err_not_found' | 'err_uc_data_store_not_readable' | 'err_uc_data_store_not_writable' | 'err_unauthorized' | 'err_unavailable' | 'err_unexpected' | `uc_client_confirm_${keyof UCClientConfirmConfig}` | `uc_i_submit_${UCExecState}`;
 export type I18nCoreTranslations = Record<I18nCoreKey, I18nTranslation>;
 export type I18nSource = any;
 export type I18nSourceSafe = {

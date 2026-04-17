@@ -4,6 +4,7 @@ import {
     type ServerManagerSettings,
     STD_DEFAULT_JWT_MANAGER_SETTINGS,
     TARGET_DEFAULT_SERVER_MANAGER_SETTINGS,
+    type UCSettings,
     unsafeDefaultSetting,
 } from '../../../../../dist/esm/index.js';
 import type { KnexUCDataStoreSettings } from '../../../../../dist/esm/index.uc-data-store-knex.js';
@@ -15,7 +16,8 @@ export type S = AssetPriceStreamerSettings &
     KnexUCDataStoreSettings &
     MistralAILLMManagerSettings &
     ServerManagerSettings &
-    SongPlayerSettings;
+    SongPlayerSettings &
+    Pick<UCSettings, 'uc_data_store_mode'>;
 
 export const settings: S = {
     ...TARGET_DEFAULT_SERVER_MANAGER_SETTINGS,
@@ -29,4 +31,5 @@ export const settings: S = {
     mai_api_key: unsafeDefaultSetting(),
     server_static_dir_path: 'public',
     song_player_speed: 1,
+    uc_data_store_mode: 'READ_WRITE',
 };

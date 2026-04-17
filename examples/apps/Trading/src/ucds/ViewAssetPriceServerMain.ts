@@ -3,7 +3,6 @@ import { inject, injectable } from 'inversify';
 import {
     type Amount,
     type CryptoManager,
-    type I18nManager,
     IllegalArgumentError,
     type UCMain,
     type UCMainInput,
@@ -31,7 +30,6 @@ export class ViewAssetPriceServerMain
         @inject(AssetPriceStreamer)
         private assetPriceStreamer: AssetPriceStreamer,
         @inject('CryptoManager') private cryptoManager: CryptoManager,
-        @inject('I18nManager') private i18nManager: I18nManager,
     ) {}
 
     public async exec({
@@ -44,9 +42,7 @@ export class ViewAssetPriceServerMain
 
         const initialPrice = ViewAssetPriceServerMain.PRICES.get(isin);
         if (!initialPrice) {
-            throw new IllegalArgumentError(
-                this.i18nManager.t('err_isin_price_not_found'),
-            );
+            throw new IllegalArgumentError('err_isin_price_not_found');
         }
 
         const id = this.cryptoManager.randomUUID();
