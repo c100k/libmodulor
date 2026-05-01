@@ -1,20 +1,24 @@
 # CHANGELOG
 
-## v0.28.0 (unreleased)
+## v0.28.0 (2026-05-01)
 
 Replace `Provider` by `Factory` in Dependency Injection (`inversify`). If you're using `bindProvider`, simply replace it by `bindFactory`.
 
 Allow '...' at the end of a uc label. Although a label ending with '.' is odd, one ending with '...' is not (e.g. "Connect...").
 
 Introduce `UCDataStoreMode` setting. It allows to to set it to `READ_WRITE` (default), `READ`, `WRITE` or `NONE`.
-For instance, it's very useful to set it to `READ` when planning a migration with different DB enfines.
+For instance, it's very useful to set it to `READ` when planning a migration with different DB engines.
 In addition to that, `NONE` is convenient to prevent all reads and writes when there is an issue.
+In these cases, the users receive a clear and proper error.
 
 Fix an issue where the form would reset even when not success on the react target.
 
 Bumped `typescript` to 6.0.x.
 
-**BREAKING** : Handle errors i18n client side. From now on, the server returns error codes (e.g. `err_forbidden`) and all translations must happen client side.
+**BREAKING** : Handle errors i18n client side.
+From now on, the server returns error codes (e.g. `err_forbidden` instead of `Forbidden`) and all translations must happen client side.
+We recommend replacing all the instances of translated errors in all server code like so `throw new IllegalArgumentError(this.i18nManager.t('err_some_error'))` by `throw new IllegalArgumentError('err_some_error')`.
+It's now up to the client to translate according to the current locale.
 
 See all the changes here : https://github.com/c100k/libmodulor/compare/v0.27.0...master
 
