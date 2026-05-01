@@ -27,7 +27,7 @@ Here is how to easily create all of them, in a brand new project :
 
 ```sh
 # Create a project
-npx libmodulor CreateProject --projectName my-super-project
+pnpx libmodulor CreateProject --projectName my-super-project
 cd my-super-project
 
 # Create an app
