@@ -105,9 +105,9 @@
         "babel-plugin-transform-typescript-metadata": "^0.3.2",
         "expo": "55.0.11",
         "expo-document-picker": "~14.0.8",
-        "expo-image-picker": "^17.0.10",
+        "expo-image-picker": "^17.0.11",
         "react-native-safe-area-context": "^5.7.0",
-        "wrangler": "^4.84.1"
+        "wrangler": "^4.86.0"
     },
     "peerDependencies": {
         "@hono/node-server": "^1.19.14",
@@ -121,7 +121,7 @@
         "helmet": "^8.1.0",
         "hono": "^4.12.15",
         "inversify": "^7.11.0",
-        "jose": "^6.2.2",
+        "jose": "^6.2.3",
         "knex": "^3.2.9",
         "next": "^15.5.15",
         "pg": "^8.20.0",
