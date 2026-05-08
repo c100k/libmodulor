@@ -53,6 +53,9 @@ export class TFile extends TObject {
     htmlInputType() {
         return 'file';
     }
+    jsonSchemaType() {
+        return { format: 'binary', type: 'string' };
+    }
     validate() {
         const validation = super.validate();
         if (!validation.isOK()) {

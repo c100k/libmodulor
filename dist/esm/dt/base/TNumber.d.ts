@@ -1,5 +1,6 @@
 import { type Unit } from '../../utils/index.js';
 import type { UIntQuantity } from '../final/TUIntQuantity.js';
+import type { JSONSchemaType } from '../targets/json-schema.js';
 import type { RNInputMode } from '../targets/rn.js';
 import type { HTMLInputType } from '../targets/web.js';
 import type { Validation } from '../Validation.js';
@@ -24,6 +25,7 @@ export declare class TNumber<T extends number = number> extends TBase<T> {
     getDecimalsCount(): UIntQuantity | undefined;
     getStep(): T | undefined;
     htmlInputType(): HTMLInputType;
+    jsonSchemaType(): JSONSchemaType;
     max(): NonNullable<TNumberConstraints<number>['max']>;
     min(): NonNullable<TNumberConstraints<number>['min']>;
     rnInputMode(): RNInputMode;

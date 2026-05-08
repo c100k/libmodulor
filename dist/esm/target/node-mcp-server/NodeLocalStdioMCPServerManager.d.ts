@@ -1,10 +1,11 @@
 import { Server } from '@modelcontextprotocol/sdk/server/index.js';
 import type { AppManifest } from '../../app/index.js';
-import type { DirPath } from '../../dt/index.js';
+import type { DirPath, URLPath } from '../../dt/index.js';
 import { WordingManager } from '../../i18n/index.js';
 import type { ProductManifest } from '../../product/index.js';
 import type { Configurable, LoggerSettings, SettingsManager } from '../../std/index.js';
 import { UCBuilder, type UCDef, type UCHTTPContract, type UCInput, type UCManager, type UCOPIBase } from '../../uc/index.js';
+import type { OpenAPISpec } from '../lib/openapi/types.js';
 import type { ServerManager } from '../lib/server/ServerManager.js';
 type S = Pick<LoggerSettings, 'logger_level'>;
 /**
@@ -34,6 +35,7 @@ export declare class NodeLocalStdioMCPServerManager implements Configurable<S>, 
     initSync(): void;
     mount<I extends UCInput | undefined = undefined, OPI0 extends UCOPIBase | undefined = undefined, OPI1 extends UCOPIBase | undefined = undefined>(appManifest: AppManifest, ucd: UCDef<I, OPI0, OPI1>, contract: UCHTTPContract): Promise<void>;
     mountSync<I extends UCInput | undefined = undefined, OPI0 extends UCOPIBase | undefined = undefined, OPI1 extends UCOPIBase | undefined = undefined>(appManifest: AppManifest, ucd: UCDef<I, OPI0, OPI1>, contract: UCHTTPContract): void;
+    mountOpenAPISpec(_spec: OpenAPISpec, _at: URLPath): Promise<void>;
     mountStaticDir(_dirPath: DirPath): Promise<void>;
     start(): Promise<void>;
     stop(): Promise<void>;

@@ -16,6 +16,9 @@ export class TDomainName extends TString {
     htmlInputType() {
         return 'url';
     }
+    jsonSchemaType() {
+        return { format: 'hostname', type: 'string' };
+    }
     rnInputMode() {
         return 'url';
     }

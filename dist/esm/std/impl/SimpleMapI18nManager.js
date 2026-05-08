@@ -12,6 +12,7 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 };
 var SimpleMapI18nManager_1;
 import { inject, injectable } from 'inversify';
+import { I18N_DEFAULT_LANG, } from '../../i18n/index.js';
 let SimpleMapI18nManager = class SimpleMapI18nManager {
     static { SimpleMapI18nManager_1 = this; }
     i18n;
@@ -28,8 +29,9 @@ let SimpleMapI18nManager = class SimpleMapI18nManager {
             throw new Error('I18n must define at least one lang');
         }
         this.entries = new Map();
-        // biome-ignore lint/style/noNonNullAssertion: we want it
-        this.currentLang = this.langs[0];
+        this.currentLang =
+            // biome-ignore lint/style/noNonNullAssertion: we want it
+            this.langs.find((l) => l === I18N_DEFAULT_LANG) ?? this.langs[0];
     }
     async add(key, value) {
         this.current().set(key, value);

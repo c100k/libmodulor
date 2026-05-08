@@ -49,6 +49,9 @@ export class TNumber extends TBase {
     htmlInputType() {
         return 'number';
     }
+    jsonSchemaType() {
+        return { type: 'number' };
+    }
     max() {
         return this.constraints?.max ?? TNumber.DEFAULT_MAX;
     }

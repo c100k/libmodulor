@@ -27,6 +27,7 @@ export const settings: S = {
     knex_uc_data_store_pool_min: 0,
     knex_uc_data_store_type: 'sqlite3',
     mai_api_key: unsafeDefaultSetting(),
+    server_expose_openapi_spec: true,
     server_static_dir_path: 'public',
     song_player_speed: 1,
 };

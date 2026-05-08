@@ -17,6 +17,7 @@ import { inject, injectable } from 'inversify';
 import { NotAvailableError } from '../../error/index.js';
 import { WordingManager } from '../../i18n/index.js';
 import { UCBuilder, ucifIsMandatory, ucMountingPoint, } from '../../uc/index.js';
+import { DEFAULT_VERSION } from '../lib/shared.js';
 import { propertyType, resError, resObj } from './funcs.js';
 /**
  * A simple MCP Server implementation
@@ -67,6 +68,9 @@ let NodeLocalStdioMCPServerManager = class NodeLocalStdioMCPServerManager {
     mountSync(appManifest, ucd, contract) {
         this.mountCommon(appManifest, ucd, contract);
     }
+    async mountOpenAPISpec(_spec, _at) {
+        // Nothing to do
+    }
     async mountStaticDir(_dirPath) {
         throw new NotAvailableError('mountStaticDir');
     }
@@ -90,18 +94,18 @@ let NodeLocalStdioMCPServerManager = class NodeLocalStdioMCPServerManager {
         const res = {
             type: 'object',
         };
-        if (uc.inputFields.length > 0) {
-            const properties = {};
-            for (const f of uc.inputFields) {
-                const { def, key } = f;
-                const { desc } = this.wordingManager.ucif(f);
-                properties[key] = {
-                    ...propertyType(def),
-                    description: desc,
-                    required: ucifIsMandatory(def),
-                };
-            }
-            res.properties = properties;
+        if (!uc.hasInput()) {
+            return res;
+        }
+        res.properties = {};
+        for (const f of uc.inputFields) {
+            const { def, key } = f;
+            const { desc } = this.wordingManager.ucif(f);
+            res.properties[key] = {
+                ...propertyType(def),
+                description: desc,
+                required: ucifIsMandatory(def),
+            };
         }
         return res;
     }
@@ -140,9 +144,10 @@ let NodeLocalStdioMCPServerManager = class NodeLocalStdioMCPServerManager {
         }
     }
     initCommon() {
+        const { name, version } = this.productManifest;
         this.runtime = new Server({
-            name: this.productManifest.name,
-            version: '0.1.0',
+            name: name,
+            version: version ?? DEFAULT_VERSION,
         }, {
             capabilities: {
                 tools: {},

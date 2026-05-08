@@ -11,7 +11,7 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
 import { inject, injectable } from 'inversify';
-import { NotAvailableError, NotCallableError } from '../../error/index.js';
+import { NotAvailableError, NotCallableError, NotImplementedError, } from '../../error/index.js';
 import { CustomerFacingErrorBuilder } from '../lib/server/CustomerFacingErrorBuilder.js';
 import { ServerRequestHandler } from '../lib/server/ServerRequestHandler.js';
 import { buildHandler, init, mountHandler } from '../lib/server-hono/funcs.js';
@@ -51,6 +51,9 @@ let SyncEdgeWorkerHonoServerManager = class SyncEdgeWorkerHonoServerManager {
     }
     mountSync(appManifest, ucd, contract) {
         mountHandler(contract, this.runtime, buildHandler(appManifest, ucd, contract, this.serverRequestHandler, this.ucManager, (c) => this.beforeExec(c)));
+    }
+    async mountOpenAPISpec(_spec, _at) {
+        throw new NotImplementedError('mountOpenAPISpec');
     }
     async mountStaticDir(_dirPath) {
         throw new NotAvailableError('mountStaticDir');

@@ -34,6 +34,9 @@ export class TInt extends TNumber {
     getConstraints() {
         return this.constraints;
     }
+    jsonSchemaType() {
+        return { type: 'integer' };
+    }
     max() {
         return this.constraints?.max ?? TInt.DEFAULT_MAX;
     }

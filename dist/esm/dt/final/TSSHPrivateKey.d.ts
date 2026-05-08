@@ -1,5 +1,6 @@
 import type { TName } from '../base/TBase.js';
 import { TString, type TStringConstraints } from '../base/TString.js';
+import type { JSONSchemaType } from '../targets/json-schema.js';
 import type { HTMLInputType } from '../targets/web.js';
 type Type = 'OPENSSH' | 'RSA';
 export declare const SSHPrivatekKeyTypes: Type[];
@@ -10,6 +11,7 @@ export declare class TSSHPrivateKey extends TString<SSHPrivateKey> {
     tName(): TName;
     example(): SSHPrivateKey;
     htmlInputType(): HTMLInputType;
+    jsonSchemaType(): JSONSchemaType;
     isPotentiallyLong(): boolean;
     isSensitive(): boolean;
 }

@@ -9,6 +9,9 @@ export class TJWT extends TString {
     htmlInputType() {
         return 'password';
     }
+    jsonSchemaType() {
+        return { format: 'password', type: 'string' };
+    }
     isSensitive() {
         return true;
     }

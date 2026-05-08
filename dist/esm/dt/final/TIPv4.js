@@ -13,4 +13,7 @@ export class TIPv4 extends TString {
     example() {
         return '255.255.255.255';
     }
+    jsonSchemaType() {
+        return { format: 'ipv4', type: 'string' };
+    }
 }

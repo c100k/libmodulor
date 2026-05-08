@@ -58,28 +58,36 @@ export function AppContextProvider({
                     alignItems: 'flex-start',
                     display: 'flex',
                     flexDirection: 'column',
-                    gap: 16,
-                    padding: 8,
+                    gap: 8,
                 }}
             >
                 <h2>{manifest.name}</h2>
 
-                {menu.length > 0 && (
-                    <div style={{ display: 'inline-flex', gap: 8 }}>
-                        {menu.map((uc) => (
-                            <UCEntrypoint
-                                key={uc.def.metadata.name}
-                                path={`#${uc.def.metadata.name}`}
-                                renderTouchable={UCEntrypointTouchable}
-                                uc={uc}
-                            />
-                        ))}
-                    </div>
-                )}
+                <div
+                    style={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        gap: 8,
+                        paddingLeft: 48,
+                    }}
+                >
+                    {menu.length > 0 && (
+                        <div style={{ display: 'inline-flex', gap: 8 }}>
+                            {menu.map((uc) => (
+                                <UCEntrypoint
+                                    key={uc.def.metadata.name}
+                                    path={`#${uc.def.metadata.name}`}
+                                    renderTouchable={UCEntrypointTouchable}
+                                    uc={uc}
+                                />
+                            ))}
+                        </div>
+                    )}
 
-                {errCode && <ErrMessage errCode={errCode} />}
+                    {errCode && <ErrMessage errCode={errCode} />}
 
-                {children}
+                    {children}
+                </div>
             </div>
         </AppContext.Provider>
     );

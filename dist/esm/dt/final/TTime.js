@@ -16,6 +16,9 @@ export class TTime extends TString {
     htmlInputType() {
         return 'time';
     }
+    jsonSchemaType() {
+        return { format: 'time', type: 'string' };
+    }
     rnInputMode() {
         return 'numeric';
     }

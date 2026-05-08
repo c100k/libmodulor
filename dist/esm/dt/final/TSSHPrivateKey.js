@@ -17,6 +17,9 @@ export class TSSHPrivateKey extends TString {
     htmlInputType() {
         return 'password';
     }
+    jsonSchemaType() {
+        return { format: 'password', type: 'string' };
+    }
     isPotentiallyLong() {
         return true;
     }

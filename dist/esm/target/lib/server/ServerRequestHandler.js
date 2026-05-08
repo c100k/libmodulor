@@ -14,6 +14,7 @@ var ServerRequestHandler_1;
 import { inject, injectable } from 'inversify';
 import { IllegalArgumentError, isEmptyJSON } from '../../../error/index.js';
 import { UCBuilder, UCOutputReader, UCOutputSideEffectType, } from '../../../uc/index.js';
+import { AUTHORIZATION_HEADER_NAME } from '../shared.js';
 import { AuthCookieCreator, } from './AuthCookieCreator.js';
 import { AuthenticationChecker } from './AuthenticationChecker.js';
 import { CustomerFacingErrorBuilder } from './CustomerFacingErrorBuilder.js';
@@ -30,7 +31,6 @@ let ServerRequestHandler = class ServerRequestHandler {
     requestLogger;
     settingsManager;
     ucBuilder;
-    static AUTHORIZATION_HEADER_NAME = 'Authorization';
     static X_FORWARDED_PROTO_HEADER_NAME = 'X-Forwarded-Proto';
     constructor(authCookieCreator, authenticationChecker, customerFacingErrorBuilder, publicApiKeyChecker, requestChecker, requestLogger, settingsManager, ucBuilder) {
         this.authCookieCreator = authCookieCreator;
@@ -73,7 +73,7 @@ let ServerRequestHandler = class ServerRequestHandler {
             });
             const { auth } = await this.authenticationChecker.exec({
                 authCookie: await cookie(this.s().server_cookies_name_auth),
-                authorizationHeader: await header(ServerRequestHandler_1.AUTHORIZATION_HEADER_NAME),
+                authorizationHeader: await header(AUTHORIZATION_HEADER_NAME),
                 uc,
             });
             if (auth) {

@@ -11,8 +11,9 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
 import { inject, injectable } from 'inversify';
-import { ProductUCsLoader } from '../../../product/index.js';
+import { ProductUCsLoader, } from '../../../product/index.js';
 import { ucHTTPContract, } from '../../../uc/index.js';
+import { OpenAPISpecBuilder } from '../openapi/OpenAPISpecBuilder.js';
 import { shouldMountUC } from './funcs.js';
 import { ServerInstaller } from './ServerInstaller.js';
 let ServerBooter = class ServerBooter {
@@ -20,17 +21,19 @@ let ServerBooter = class ServerBooter {
     fsManager;
     i18nManager;
     jobManager;
+    openAPISpecBuilder;
     logger;
     productUCsLoader;
     serverManager;
     serverInstaller;
     settingsManager;
     ucManager;
-    constructor(emailManager, fsManager, i18nManager, jobManager, logger, productUCsLoader, serverManager, serverInstaller, settingsManager, ucManager) {
+    constructor(emailManager, fsManager, i18nManager, jobManager, openAPISpecBuilder, logger, productUCsLoader, serverManager, serverInstaller, settingsManager, ucManager) {
         this.emailManager = emailManager;
         this.fsManager = fsManager;
         this.i18nManager = i18nManager;
         this.jobManager = jobManager;
+        this.openAPISpecBuilder = openAPISpecBuilder;
         this.logger = logger;
         this.productUCsLoader = productUCsLoader;
         this.serverManager = serverManager;
@@ -40,6 +43,8 @@ let ServerBooter = class ServerBooter {
     }
     s() {
         return {
+            server_expose_openapi_spec: this.settingsManager.get()('server_expose_openapi_spec'),
+            server_expose_openapi_spec_at: this.settingsManager.get()('server_expose_openapi_spec_at'),
             server_static_dir_path: this.settingsManager.get()('server_static_dir_path'),
             server_tmp_path: this.settingsManager.get()('server_tmp_path'),
         };
@@ -55,13 +60,18 @@ let ServerBooter = class ServerBooter {
         await this.emailManager.verify();
         this.logger.info('Initializing server manager');
         await this.serverManager.init();
+        const mountedUCs = [];
         if (autoMountUCs) {
             const ucs = await this.productUCsLoader.exec({
                 appsRootPath,
                 srcImporter,
             });
             for await (const uc of ucs) {
-                await this.mountUC(uc);
+                const mounted = await this.mountUC(uc);
+                if (!mounted) {
+                    continue;
+                }
+                mountedUCs.push(uc);
             }
         }
         const staticDirPath = this.s().server_static_dir_path;
@@ -76,6 +86,17 @@ let ServerBooter = class ServerBooter {
         if (!(await this.fsManager.exists(tmpDirPath))) {
             await this.fsManager.mkdir(tmpDirPath);
         }
+        if (this.s().server_expose_openapi_spec) {
+            const at = this.s().server_expose_openapi_spec_at;
+            this.logger.info('Mounting OpenAPI spec', {
+                at,
+                mountedUCs: mountedUCs.length,
+            });
+            const { spec } = await this.openAPISpecBuilder.exec({
+                ucs: mountedUCs,
+            });
+            await this.serverManager.mountOpenAPISpec(spec, at);
+        }
         await this.serverManager.warmUp();
         await this.serverManager.start();
     }
@@ -88,7 +109,7 @@ let ServerBooter = class ServerBooter {
             this.logger.debug(`Not mounting ${mountingPoint}`, {
                 reason: shouldNotMountReason,
             });
-            return;
+            return false;
         }
         this.logger.info(`Mounting ${mountingPoint}`, {
             contract,
@@ -96,6 +117,7 @@ let ServerBooter = class ServerBooter {
         });
         await this.ucManager.initServer(uc);
         await this.serverManager.mount(uc.appManifest, uc.def, contract);
+        return true;
     }
 };
 ServerBooter = __decorate([
@@ -104,12 +126,13 @@ ServerBooter = __decorate([
     __param(1, inject('FSManager')),
     __param(2, inject('I18nManager')),
     __param(3, inject('JobManager')),
-    __param(4, inject('Logger')),
-    __param(5, inject(ProductUCsLoader)),
-    __param(6, inject('ServerManager')),
-    __param(7, inject(ServerInstaller)),
-    __param(8, inject('SettingsManager')),
-    __param(9, inject('UCManager')),
-    __metadata("design:paramtypes", [Object, Object, Object, Object, Object, ProductUCsLoader, Object, ServerInstaller, Object, Object])
+    __param(4, inject(OpenAPISpecBuilder)),
+    __param(5, inject('Logger')),
+    __param(6, inject(ProductUCsLoader)),
+    __param(7, inject('ServerManager')),
+    __param(8, inject(ServerInstaller)),
+    __param(9, inject('SettingsManager')),
+    __param(10, inject('UCManager')),
+    __metadata("design:paramtypes", [Object, Object, Object, Object, OpenAPISpecBuilder, Object, ProductUCsLoader, Object, ServerInstaller, Object, Object])
 ], ServerBooter);
 export { ServerBooter };

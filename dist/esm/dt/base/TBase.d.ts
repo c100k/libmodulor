@@ -1,6 +1,7 @@
 import type { IconCode } from '../../icon/index.js';
 import type { DataType } from '../DataType.js';
 import type { Color } from '../final/TColor.js';
+import type { JSONSchemaType } from '../targets/json-schema.js';
 import type { RNInputMode } from '../targets/rn.js';
 import type { HTMLInputType } from '../targets/web.js';
 import { Validation } from '../Validation.js';
@@ -54,6 +55,7 @@ export declare abstract class TBase<T extends DataType> {
     hasStrictOptions(): boolean;
     htmlInputType(): HTMLInputType;
     isSensitive(): boolean;
+    jsonSchemaType(): JSONSchemaType;
     rnInputMode(): RNInputMode;
     setDefaultValue(defaultValue: T): this;
     setExamples(examples: T[]): this;

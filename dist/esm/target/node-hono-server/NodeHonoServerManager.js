@@ -72,6 +72,11 @@ let NodeHonoServerManager = class NodeHonoServerManager {
     mountSync(appManifest, ucd, contract) {
         this.mountCommon(appManifest, ucd, contract);
     }
+    async mountOpenAPISpec(spec, at) {
+        this.runtime.get(at, (c) => {
+            return c.json(spec);
+        });
+    }
     async mountStaticDir(dirPath) {
         this.runtime.use(serveStatic({ root: dirPath }));
     }

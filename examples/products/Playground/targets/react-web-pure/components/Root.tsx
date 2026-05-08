@@ -6,8 +6,8 @@ import AuthApp from './apps/Auth/AuthApp.js';
 import SpotifyApp from './apps/Spotify/SpotifyApp.js';
 import TradingApp from './apps/Trading/TradingApp.js';
 import { GlobalContextProvider } from './GlobalContext.js';
-import Header from './Header.js';
 import Loader from './Loader.js';
+import Menu from './Menu.js';
 
 export default function Root(): ReactElement {
     const { container, i18nManager } = useDIContext();
@@ -27,22 +27,29 @@ export default function Root(): ReactElement {
     }, [i18nManager, logger]);
 
     return (
-        <div id="container">
-            <div id="content">
-                {initializing && <Loader />}
+        <GlobalContextProvider>
+            {initializing && <Loader />}
 
-                {!initializing && (
-                    <GlobalContextProvider>
-                        <Header />
-                        <hr />
-                        <AuthApp />
-                        <hr />
-                        <SpotifyApp />
-                        <hr />
-                        <TradingApp />
-                    </GlobalContextProvider>
-                )}
-            </div>
-        </div>
+            {!initializing && (
+                <div id="container">
+                    <div id="toc">
+                        <Menu />
+                    </div>
+                    <div id="content">
+                        <div
+                            style={{
+                                display: 'flex',
+                                flexDirection: 'column',
+                                gap: 16,
+                            }}
+                        >
+                            <AuthApp />
+                            <SpotifyApp />
+                            <TradingApp />
+                        </div>
+                    </div>
+                </div>
+            )}
+        </GlobalContextProvider>
     );
 }

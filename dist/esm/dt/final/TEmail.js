@@ -18,6 +18,9 @@ export class TEmail extends TString {
     htmlInputType() {
         return 'email';
     }
+    jsonSchemaType() {
+        return { format: 'email', type: 'string' };
+    }
     rnInputMode() {
         return 'email';
     }

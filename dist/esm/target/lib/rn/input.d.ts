@@ -2,6 +2,9 @@ import type { TextInputProps } from 'react-native';
 import { type DataType, type ErrorMessage } from '../../../dt/index.js';
 import { type UCInputField } from '../../../uc/index.js';
 export interface RNInputDef {
+    /**
+     * Internal types that are not part of the spec
+     */
     internal?: undefined;
     /**
      * Fields that are part of {@link TextInputProps}

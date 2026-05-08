@@ -58,7 +58,6 @@ export declare class ServerRequestHandler implements Worker<Input, Promise<Outpu
     private requestLogger;
     private settingsManager;
     private ucBuilder;
-    private static AUTHORIZATION_HEADER_NAME;
     private static X_FORWARDED_PROTO_HEADER_NAME;
     constructor(authCookieCreator: AuthCookieCreator, authenticationChecker: AuthenticationChecker, customerFacingErrorBuilder: CustomerFacingErrorBuilder, publicApiKeyChecker: PublicApiKeyChecker, requestChecker: RequestChecker, requestLogger: RequestLogger, settingsManager: SettingsManager<S>, ucBuilder: UCBuilder);
     s(): S;

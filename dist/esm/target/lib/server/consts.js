@@ -13,6 +13,8 @@ export const TARGET_DEFAULT_SERVER_MANAGER_SETTINGS = {
     server_csp_default_src: [],
     server_csp_img_src: [],
     server_csp_script_src: [],
+    server_expose_openapi_spec: false,
+    server_expose_openapi_spec_at: '/api/openapi.json',
     server_private_api_key_entries: [],
     server_public_api_key_entries: [unsafeDefaultSetting()],
     server_public_api_key_header_name: 'X-API-Key',

@@ -12,8 +12,4 @@ export type PropertyArrayType<T extends PropertyPrimitiveType> = {
 export type PropertyType<T extends PropertyPrimitiveType = PropertyPrimitiveType> = {
     type: T;
 } | PropertyArrayType<T>;
-export type Property<T extends PropertyPrimitiveType = PropertyPrimitiveType> = PropertyType<T> & {
-    description: string | null;
-    required: boolean;
-};
 export type Tool = ListToolsResult['tools'][0];

@@ -15,3 +15,4 @@ export interface UCOutputFieldDef<OPI extends UCOPIBase, T extends DataType> {
     totalType?: 'sum';
     type: TBase<T>;
 }
+export declare function ucofExamples<OPI extends UCOPIBase, T extends DataType>(def: UCOutputFieldDef<OPI, T>): T[] | undefined;

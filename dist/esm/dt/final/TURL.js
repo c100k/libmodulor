@@ -17,6 +17,9 @@ export class TURL extends TString {
     htmlInputType() {
         return 'url';
     }
+    jsonSchemaType() {
+        return { format: 'uri', type: 'string' };
+    }
     rnInputMode() {
         return 'url';
     }

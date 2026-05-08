@@ -2,9 +2,10 @@ import { ProductUCsLoader } from '../../../product/index.js';
 import type { Configurable, EmailManager, FSManager, I18nManager, JobManager, Logger, SettingsManager, Worker } from '../../../std/index.js';
 import { type UCManager } from '../../../uc/index.js';
 import type { TargetEntrypointInput } from '../entrypoint.js';
+import { OpenAPISpecBuilder } from '../openapi/OpenAPISpecBuilder.js';
 import { ServerInstaller } from './ServerInstaller.js';
 import type { ServerManager, ServerManagerSettings } from './ServerManager.js';
-type S = Pick<ServerManagerSettings, 'server_static_dir_path' | 'server_tmp_path'>;
+type S = Pick<ServerManagerSettings, 'server_expose_openapi_spec' | 'server_expose_openapi_spec_at' | 'server_static_dir_path' | 'server_tmp_path'>;
 type Input = TargetEntrypointInput & {
     autoMountUCs?: boolean;
 };
@@ -13,13 +14,14 @@ export declare class ServerBooter implements Configurable<S>, Worker<Input, Prom
     private fsManager;
     private i18nManager;
     private jobManager;
+    private openAPISpecBuilder;
     private logger;
     private productUCsLoader;
     private serverManager;
     private serverInstaller;
     private settingsManager;
     private ucManager;
-    constructor(emailManager: EmailManager, fsManager: FSManager, i18nManager: I18nManager, jobManager: JobManager, logger: Logger, productUCsLoader: ProductUCsLoader, serverManager: ServerManager, serverInstaller: ServerInstaller, settingsManager: SettingsManager<S>, ucManager: UCManager);
+    constructor(emailManager: EmailManager, fsManager: FSManager, i18nManager: I18nManager, jobManager: JobManager, openAPISpecBuilder: OpenAPISpecBuilder, logger: Logger, productUCsLoader: ProductUCsLoader, serverManager: ServerManager, serverInstaller: ServerInstaller, settingsManager: SettingsManager<S>, ucManager: UCManager);
     s(): S;
     exec({ appsRootPath, autoMountUCs, srcImporter, }: Input): Promise<void>;
     private mountUC;

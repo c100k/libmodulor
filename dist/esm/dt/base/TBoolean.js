@@ -36,6 +36,9 @@ export class TBoolean extends TBase {
     htmlInputType() {
         return 'checkbox';
     }
+    jsonSchemaType() {
+        return { type: 'boolean' };
+    }
     validate() {
         const validation = super.validate();
         if (!validation.isOK()) {

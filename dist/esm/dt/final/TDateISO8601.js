@@ -15,6 +15,9 @@ export class TDateISO8601 extends TString {
     htmlInputType() {
         return 'date';
     }
+    jsonSchemaType() {
+        return { format: 'date', type: 'string' };
+    }
     validate() {
         const validation = super.validate();
         if (!validation.isOK()) {

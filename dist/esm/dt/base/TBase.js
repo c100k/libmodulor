@@ -66,6 +66,11 @@ export class TBase {
     isSensitive() {
         return false;
     }
+    jsonSchemaType() {
+        return {
+            type: 'string',
+        };
+    }
     rnInputMode() {
         return 'text';
     }

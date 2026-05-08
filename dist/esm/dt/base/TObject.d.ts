@@ -1,4 +1,5 @@
 import type { EnumOf } from '../../utils/index.js';
+import type { JSONSchemaType } from '../targets/json-schema.js';
 import type { Validation } from '../Validation.js';
 import { TBase, type TName } from './TBase.js';
 export declare const TObjectShapeValidationStrategy: {
@@ -30,6 +31,7 @@ export declare class TObject<T extends object> extends TBase<T> {
     tName(): TName;
     example(): T;
     fmt(ifNullOrUndefined?: string | undefined): string;
+    jsonSchemaType(): JSONSchemaType;
     validate(): Validation;
     private valueAndExampleHaveSameKeys;
 }

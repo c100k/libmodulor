@@ -21,6 +21,7 @@ export declare class UC<I extends UCInput | undefined = undefined, OPI0 extends 
     clear(): void;
     clearSensitiveInputFields(): void;
     fill(input: UCInputPartial<I>): this;
+    hasInput(): boolean;
     hasInputField(key: UCFieldKey): boolean;
     hasMediaInInput(): boolean;
     hasOutputParts(): boolean;
@@ -29,6 +30,7 @@ export declare class UC<I extends UCInput | undefined = undefined, OPI0 extends 
     inputFieldsOrdered(): UCInputField<any>[];
     inputFieldsInsensitive(): UCInputField<any>[];
     inputFieldsSensitive(): UCInputField<any>[];
+    inputFieldsRepeatable(): UCInputField<any>[];
     needsInputFilling(): boolean;
     needsOutputDisplay(): boolean;
     operatesOnAggregate(): boolean;

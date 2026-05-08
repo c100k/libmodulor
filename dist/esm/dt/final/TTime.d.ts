@@ -1,5 +1,6 @@
 import type { TName } from '../base/TBase.js';
 import { TString, type TStringConstraints } from '../base/TString.js';
+import type { JSONSchemaType } from '../targets/json-schema.js';
 import type { RNInputMode } from '../targets/rn.js';
 import type { HTMLInputType } from '../targets/web.js';
 export type Time = `${number}${number}:${number}${number}` | `${number}${number}:${number}${number}:${number}${number}`;
@@ -9,5 +10,6 @@ export declare class TTime extends TString<Time> {
     tName(): TName;
     example(): Time;
     htmlInputType(): HTMLInputType;
+    jsonSchemaType(): JSONSchemaType;
     rnInputMode(): RNInputMode;
 }

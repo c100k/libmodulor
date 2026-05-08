@@ -1,8 +1,9 @@
 import type { AppManifest } from '../../../app/index.js';
-import type { ApiKey, DirPath, FilePath, HostPort, Password, URL, Username } from '../../../dt/index.js';
+import type { ApiKey, DirPath, FilePath, HostPort, Password, URL, URLPath, Username } from '../../../dt/index.js';
 import type { Settings } from '../../../std/index.js';
 import type { UCDef, UCHTTPContract, UCInput, UCManager, UCOPIBase } from '../../../uc/index.js';
 import type { Initializable } from '../../../utils/index.js';
+import type { OpenAPISpec } from '../openapi/types.js';
 import type { AuthCookieName, PublicApiKeyHeaderName } from '../shared.js';
 export type ServerManagerCSPDefType = 'defaultSrc' | 'imgSrc' | 'scriptSrc';
 export type ServerManagerCSPDefValue = URL[];
@@ -22,6 +23,8 @@ export interface ServerManagerSettings extends ServerManagerAuthSettings, Settin
     server_csp_default_src: ServerManagerCSPDefValue;
     server_csp_img_src: ServerManagerCSPDefValue;
     server_csp_script_src: ServerManagerCSPDefValue;
+    server_expose_openapi_spec: boolean;
+    server_expose_openapi_spec_at: URLPath;
     server_public_api_key_header_name: PublicApiKeyHeaderName;
     server_public_url: URL;
     server_ssl_fullchain_path: FilePath | null;
@@ -46,6 +49,11 @@ export interface ServerManager extends Initializable {
      * @param contract
      */
     mountSync<I extends UCInput | undefined = undefined, OPI0 extends UCOPIBase | undefined = undefined, OPI1 extends UCOPIBase | undefined = undefined>(appManifest: AppManifest, ucd: UCDef<I, OPI0, OPI1>, contract: UCHTTPContract): void;
+    /**
+     * Mount the OpenAPI spec
+     * @param spec
+     */
+    mountOpenAPISpec(spec: OpenAPISpec, at: URLPath): Promise<void>;
     /**
      * Mount the static directory at `/`
      * @param dirPath

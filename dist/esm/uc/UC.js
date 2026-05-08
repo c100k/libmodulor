@@ -1,6 +1,6 @@
 import { TFile, Validation } from '../dt/index.js';
 import { isBlank } from '../utils/index.js';
-import { ucifIsMandatory, ucifIsSensitive, ucifMustBeFilledManually, } from './input-field.js';
+import { ucifIsMandatory, ucifIsSensitive, ucifMustBeFilledManually, ucifRepeatability, } from './input-field.js';
 import { AggregateInputDef } from './io/input/AggregateInput.js';
 import { ListInputDef } from './io/input/ListInput.js';
 import { UCInputField } from './UCInputField.js';
@@ -43,6 +43,9 @@ export class UC {
             f.setVal(val);
         }
         return this;
+    }
+    hasInput() {
+        return this.inputFields.length > 0;
     }
     hasInputField(key) {
         return this.inputFields.find((f) => f.key === key) !== undefined;
@@ -103,6 +106,18 @@ export class UC {
     // biome-ignore lint/suspicious/noExplicitAny: can be anything
     inputFieldsSensitive() {
         return this.inputFields.filter((f) => ucifIsSensitive(f.def));
+    }
+    // biome-ignore lint/suspicious/noExplicitAny: can be anything
+    inputFieldsRepeatable() {
+        const res = [];
+        for (const f of this.inputFields) {
+            const [isRepeatable] = ucifRepeatability(f.def);
+            if (!isRepeatable) {
+                continue;
+            }
+            res.push(f);
+        }
+        return res;
     }
     needsInputFilling() {
         const fields = this.inputFields;

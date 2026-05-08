@@ -1,5 +1,6 @@
 import type { TName } from '../base/TBase.js';
 import { TString, type TStringConstraints } from '../base/TString.js';
+import type { JSONSchemaType } from '../targets/json-schema.js';
 import type { RNInputMode } from '../targets/rn.js';
 import type { HTMLInputType } from '../targets/web.js';
 export type DomainName = string;
@@ -9,5 +10,6 @@ export declare class TDomainName extends TString<DomainName> {
     tName(): TName;
     example(): DomainName;
     htmlInputType(): HTMLInputType;
+    jsonSchemaType(): JSONSchemaType;
     rnInputMode(): RNInputMode;
 }

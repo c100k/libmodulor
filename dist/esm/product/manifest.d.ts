@@ -1,4 +1,5 @@
 import type { AppName } from '../app/index.js';
+import type { SemVerVersion } from '../dt/index.js';
 import type { UCName } from '../uc/index.js';
 export interface ProductAppReg {
     /**
@@ -25,6 +26,7 @@ export type ProductName = string;
 export interface ProductManifest {
     appReg: ProductAppReg[];
     name: ProductName;
+    version?: SemVerVersion;
 }
 export interface ProductWording {
     desc: string | null;

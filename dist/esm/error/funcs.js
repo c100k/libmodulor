@@ -4,7 +4,7 @@ import { InternalServerError } from './InternalServerError.js';
 import { NotFoundError } from './NotFoundError.js';
 import { UnauthorizedError } from './UnauthorizedError.js';
 import { UnavailableError } from './UnavailableError.js';
-const ERROR_HTTP_STATUS_MAP = new Map([
+export const ERROR_HTTP_STATUS_MAP = new Map([
     [400, IllegalArgumentError],
     [401, UnauthorizedError],
     [403, ForbiddenError],

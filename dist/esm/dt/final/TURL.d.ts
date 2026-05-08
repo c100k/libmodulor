@@ -1,5 +1,6 @@
 import type { TName } from '../base/TBase.js';
 import { TString, type TStringConstraints } from '../base/TString.js';
+import type { JSONSchemaType } from '../targets/json-schema.js';
 import type { RNInputMode } from '../targets/rn.js';
 import type { HTMLInputType } from '../targets/web.js';
 import type { Validation } from '../Validation.js';
@@ -10,6 +11,7 @@ export declare class TURL extends TString<URL> {
     tName(): TName;
     example(): URL;
     htmlInputType(): HTMLInputType;
+    jsonSchemaType(): JSONSchemaType;
     rnInputMode(): RNInputMode;
     validate(): Validation;
     private isLocalhost;

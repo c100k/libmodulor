@@ -1,5 +1,6 @@
 import type { ConstraintsForHuman, TName } from '../base/TBase.js';
 import { TObject } from '../base/TObject.js';
+import type { JSONSchemaType } from '../targets/json-schema.js';
 import type { HTMLInputType } from '../targets/web.js';
 import type { Validation } from '../Validation.js';
 import { type FileMimeType } from './TFileMimeType.js';
@@ -25,6 +26,7 @@ export declare class TFile extends TObject<File> {
     example(): File;
     getConstraintsForHuman(): ConstraintsForHuman | null;
     htmlInputType(): HTMLInputType;
+    jsonSchemaType(): JSONSchemaType;
     validate(): Validation;
     getFileConstraints(): TFileConstraints;
     fmtBytes(bytes: number, decimals?: number): string;

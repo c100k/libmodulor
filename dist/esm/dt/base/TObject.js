@@ -36,6 +36,35 @@ export class TObject extends TBase {
         }
         return JSON.stringify(this.raw);
     }
+    jsonSchemaType() {
+        const example = this.example();
+        const properties = Object.entries(example).reduce((acc, [k, v]) => {
+            const typeofv = typeof v;
+            // TODO : Make this work recursively
+            switch (typeofv) {
+                case 'boolean':
+                    acc[k] = { type: 'boolean' };
+                    break;
+                case 'bigint':
+                case 'number':
+                    acc[k] = { type: 'number' };
+                    break;
+                case 'function':
+                case 'object':
+                case 'symbol':
+                case 'undefined':
+                    acc[k] = { type: 'object' };
+                    break;
+                case 'string':
+                    acc[k] = { type: 'string' };
+                    break;
+                default:
+                    typeofv;
+            }
+            return acc;
+        }, {});
+        return { properties, type: 'object' };
+    }
     validate() {
         const validation = super.validate();
         if (!validation.isOK()) {

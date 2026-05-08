@@ -1,4 +1,4 @@
-import type { I18n, I18nLanguageCode, I18nTranslationKey } from '../../i18n/index.js';
+import { type I18n, type I18nLanguageCode, type I18nTranslationKey } from '../../i18n/index.js';
 import type { I18nManager, I18nManagerTOpts } from '../I18nManager.js';
 import type { Logger } from '../Logger.js';
 export declare class SimpleMapI18nManager implements I18nManager {

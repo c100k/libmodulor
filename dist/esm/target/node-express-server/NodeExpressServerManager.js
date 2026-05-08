@@ -76,6 +76,11 @@ let NodeExpressServerManager = class NodeExpressServerManager {
     mountSync(appManifest, ucd, contract) {
         this.mountCommon(appManifest, ucd, contract);
     }
+    async mountOpenAPISpec(spec, at) {
+        this.runtime.get(at, (_req, res) => {
+            res.send(spec);
+        });
+    }
     async mountStaticDir(dirPath) {
         this.runtime.use(express.static(dirPath));
     }
