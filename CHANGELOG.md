@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v0.29.0 (unreleased)
+
+Report an error when the `onClose` handler of SSE has been missed only when it has streamed once.
+
 ## v0.28.0 (2026-05-01)
 
 Replace `Provider` by `Factory` in Dependency Injection (`inversify`). If you're using `bindProvider`, simply replace it by `bindFactory`.

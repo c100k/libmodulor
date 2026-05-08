@@ -12,12 +12,16 @@ export function buildHandler(appManifest, ucd, contract, serverRequestHandler, u
                 // Nothing to do
                 break;
             case 'stream': {
+                let streamedOnce = false;
                 execOpts = {
                     stream: {
                         onClose: async () => {
-                            throw new Error('execOpts.stream.onClose needs to be set in the UC ServerMain');
+                            if (streamedOnce) {
+                                throw new Error('execOpts.stream.onClose needs to be set in the UC ServerMain');
+                            }
                         },
                         onData: async (output) => {
+                            streamedOnce = true;
                             if (!output) {
                                 return;
                             }
