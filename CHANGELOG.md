@@ -15,6 +15,8 @@ Introduce [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CORS) 
 Disabled by default (of course).
 Settings available : `server_cors_credentials`, `server_cors_headers`, `server_cors_methods`, `server_cors_origins`.
 
+See all the changes here : https://github.com/c100k/libmodulor/compare/v0.28.0...master
+
 ## v0.28.0 (2026-05-01)
 
 Replace `Provider` by `Factory` in Dependency Injection (`inversify`). If you're using `bindProvider`, simply replace it by `bindFactory`.
