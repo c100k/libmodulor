@@ -10,6 +10,7 @@ import {
 import type { KnexUCDataStoreSettings } from '../../../../../dist/esm/index.uc-data-store-knex.js';
 import type { SongPlayerSettings } from '../../../../apps/Spotify/index.js';
 import type { AssetPriceStreamerSettings } from '../../../../apps/Trading/index.js';
+import { DEFAULT_SERVER_SETTINGS } from '../../lib/server-shared.js';
 
 export type S = AssetPriceStreamerSettings &
     JWTManagerSettings &
@@ -22,6 +23,7 @@ export type S = AssetPriceStreamerSettings &
 export const settings: S = {
     ...TARGET_DEFAULT_SERVER_MANAGER_SETTINGS,
     ...STD_DEFAULT_JWT_MANAGER_SETTINGS,
+    ...DEFAULT_SERVER_SETTINGS,
     asset_price_streamer_speed: 1,
     knex_uc_data_store_conn_string: 'postgresql://toto',
     knex_uc_data_store_file_path: '../uc-data-store.sqlite',
@@ -29,7 +31,6 @@ export const settings: S = {
     knex_uc_data_store_pool_min: 0,
     knex_uc_data_store_type: 'sqlite3',
     mai_api_key: unsafeDefaultSetting(),
-    server_expose_openapi_spec: true,
     server_static_dir_path: 'public',
     song_player_speed: 1,
     uc_data_store_mode: 'READ_WRITE',

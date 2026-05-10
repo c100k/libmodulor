@@ -219,23 +219,20 @@ export function openAPISecuritySchemes(authCookieName, publicApiKeyHeaderName) {
     };
 }
 export function openAPISecurity(sec) {
-    const res = [];
+    const item = {};
+    const res = [item];
     const publicApiCheckType = sec?.publicApiKeyCheckType ?? DEFAULT_UC_SEC_PAKCT;
     switch (publicApiCheckType) {
         case 'off':
             break;
         case 'on':
-            res.push({
-                publicApiKey: [],
-            });
+            item.publicApiKey = [];
             break;
         default:
             publicApiCheckType;
     }
     const authType = sec?.authType ?? DEFAULT_UC_SEC_AT;
-    res.push({
-        [authType]: [],
-    });
+    item[authType] = [];
     return res;
 }
 export function openAPISuccess(uc) {

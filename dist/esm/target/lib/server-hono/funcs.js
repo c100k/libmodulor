@@ -86,9 +86,10 @@ export function buildHandler(appManifest, ucd, contract, serverRequestHandler, u
     };
     return handler;
 }
-export function init(customerFacingErrorBuilder) {
+export function init(corsMB, customerFacingErrorBuilder) {
     const app = new Hono();
     app.use(secureHeaders());
+    app.use(corsMB.exec({}));
     app.use(logger());
     app.notFound((c) => {
         const error = new NotFoundError();

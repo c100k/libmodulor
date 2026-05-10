@@ -10,6 +10,10 @@ export const TARGET_DEFAULT_SERVER_MANAGER_SETTINGS = {
     server_cookies_name_auth: 'auth',
     server_cookies_same_site: 'strict',
     server_cookies_secure: true,
+    server_cors_credentials: false,
+    server_cors_headers: [],
+    server_cors_methods: [],
+    server_cors_origins: [],
     server_csp_default_src: [],
     server_csp_img_src: [],
     server_csp_script_src: [],
@@ -25,3 +29,19 @@ export const TARGET_DEFAULT_SERVER_MANAGER_SETTINGS = {
     server_stop_mode: 'patient',
     server_tmp_path: 'tmp',
 };
+export const TARGET_USUAL_SERVER_MANAGER_CORS_HEADERS = [
+    'Accept',
+    'Authorization',
+    'Content-Type',
+    'Cookie',
+    'Origin',
+    'X-Requested-With',
+];
+export const TARGET_USUAL_SERVER_MANAGER_CORS_METHODS = [
+    'DELETE',
+    'GET',
+    'HEAD',
+    'OPTIONS',
+    'POST',
+    'PUT',
+];

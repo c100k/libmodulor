@@ -7,18 +7,20 @@ import type { OpenAPISpec } from '../lib/openapi/types.js';
 import { CustomerFacingErrorBuilder } from '../lib/server/CustomerFacingErrorBuilder.js';
 import type { ServerManager } from '../lib/server/ServerManager.js';
 import { ServerRequestHandler } from '../lib/server/ServerRequestHandler.js';
+import { CORSMiddlewareBuilder } from '../lib/server-hono/CORSMiddlewareBuilder.js';
 export interface SyncEdgeWorkerHonoServerManagerSettings {
     sewhsm_bindings_uc_data_store: string | null;
 }
 type S = SyncEdgeWorkerHonoServerManagerSettings;
 export declare class SyncEdgeWorkerHonoServerManager implements Configurable<S>, ServerManager {
+    private corsMiddlewareBuilder;
     private customerFacingErrorBuilder;
     private serverRequestHandler;
     private settingsManager;
     private ucDataStore;
     private ucManager;
     protected runtime: Hono;
-    constructor(customerFacingErrorBuilder: CustomerFacingErrorBuilder, serverRequestHandler: ServerRequestHandler, settingsManager: SettingsManager<S>, ucDataStore: UCDataStore, ucManager: UCManager);
+    constructor(corsMiddlewareBuilder: CORSMiddlewareBuilder, customerFacingErrorBuilder: CustomerFacingErrorBuilder, serverRequestHandler: ServerRequestHandler, settingsManager: SettingsManager<S>, ucDataStore: UCDataStore, ucManager: UCManager);
     s(): SyncEdgeWorkerHonoServerManagerSettings;
     getRuntime(): Hono;
     overrideUCManager(ucManager: UCManager): void;

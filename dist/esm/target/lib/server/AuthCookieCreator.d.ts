@@ -1,10 +1,11 @@
 import type { JWT, Timestamp } from '../../../dt/index.js';
 import type { JWTManager, SettingsManager, Worker } from '../../../std/index.js';
+import type { HTTPCookieSameSite } from '../../../utils/index.js';
 import type { ServerManagerSettings } from '../../lib/server/ServerManager.js';
 export interface CookieOpts {
     expires: Date;
     httpOnly: boolean;
-    sameSite: 'strict';
+    sameSite: HTTPCookieSameSite;
     secure: boolean;
     signed: boolean;
 }

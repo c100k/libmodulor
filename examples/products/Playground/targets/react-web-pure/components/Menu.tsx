@@ -4,6 +4,7 @@ import type { ProductManifest } from '../../../../../../dist/esm/index.js';
 import { useDIContext } from '../../../../../../dist/esm/index.react.js';
 import { useGlobalContext } from './GlobalContext.js';
 import LangSelector from './LangSelector.js';
+import OpenAPICard from './OpenAPICard.js';
 
 export default function Menu(): ReactElement {
     const { container, wordingManager } = useDIContext();
@@ -37,24 +38,7 @@ export default function Menu(): ReactElement {
 
                 {desc && <p>{desc}</p>}
 
-                <div
-                    style={{ display: 'flex', flexDirection: 'column', gap: 8 }}
-                >
-                    <a
-                        href="/api/openapi.json"
-                        rel="noopener noreferrer"
-                        target="_blank"
-                    >
-                        OpenAPI Spec
-                    </a>
-                    <a
-                        href="https://editor.swagger.io"
-                        rel="noopener noreferrer"
-                        target="_blank"
-                    >
-                        Swagger Editor
-                    </a>
-                </div>
+                <OpenAPICard />
             </div>
         </div>
     );

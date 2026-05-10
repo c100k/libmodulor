@@ -20,9 +20,11 @@ import { CustomerFacingErrorBuilder } from '../lib/server/CustomerFacingErrorBui
 import { EntrypointsBuilder } from '../lib/server/EntrypointsBuilder.js';
 import { ServerRequestHandler } from '../lib/server/ServerRequestHandler.js';
 import { ServerSSLCertLoader } from '../lib/server/ServerSSLCertLoader.js';
+import { CORSMiddlewareBuilder } from '../lib/server-hono/CORSMiddlewareBuilder.js';
 import { buildHandler, init, mountHandler } from '../lib/server-hono/funcs.js';
 import { listen, stop } from '../lib/server-node/funcs.js';
 let NodeHonoServerManager = class NodeHonoServerManager {
+    corsMiddlewareBuilder;
     customerFacingErrorBuilder;
     entrypointsBuilder;
     environmentManager;
@@ -33,7 +35,8 @@ let NodeHonoServerManager = class NodeHonoServerManager {
     ucManager;
     runtime;
     server;
-    constructor(customerFacingErrorBuilder, entrypointsBuilder, environmentManager, logger, serverRequestHandler, serverSSLCertLoader, settingsManager, ucManager) {
+    constructor(corsMiddlewareBuilder, customerFacingErrorBuilder, entrypointsBuilder, environmentManager, logger, serverRequestHandler, serverSSLCertLoader, settingsManager, ucManager) {
+        this.corsMiddlewareBuilder = corsMiddlewareBuilder;
         this.customerFacingErrorBuilder = customerFacingErrorBuilder;
         this.entrypointsBuilder = entrypointsBuilder;
         this.environmentManager = environmentManager;
@@ -60,7 +63,7 @@ let NodeHonoServerManager = class NodeHonoServerManager {
         this.ucManager = ucManager;
     }
     async init() {
-        this.runtime = init(this.customerFacingErrorBuilder);
+        this.runtime = init(this.corsMiddlewareBuilder, this.customerFacingErrorBuilder);
         await this.createServer();
     }
     initSync() {
@@ -114,15 +117,17 @@ let NodeHonoServerManager = class NodeHonoServerManager {
 };
 NodeHonoServerManager = __decorate([
     injectable(),
-    __param(0, inject(CustomerFacingErrorBuilder)),
-    __param(1, inject(EntrypointsBuilder)),
-    __param(2, inject('EnvironmentManager')),
-    __param(3, inject('Logger')),
-    __param(4, inject(ServerRequestHandler)),
-    __param(5, inject(ServerSSLCertLoader)),
-    __param(6, inject('SettingsManager')),
-    __param(7, inject('UCManager')),
-    __metadata("design:paramtypes", [CustomerFacingErrorBuilder,
+    __param(0, inject(CORSMiddlewareBuilder)),
+    __param(1, inject(CustomerFacingErrorBuilder)),
+    __param(2, inject(EntrypointsBuilder)),
+    __param(3, inject('EnvironmentManager')),
+    __param(4, inject('Logger')),
+    __param(5, inject(ServerRequestHandler)),
+    __param(6, inject(ServerSSLCertLoader)),
+    __param(7, inject('SettingsManager')),
+    __param(8, inject('UCManager')),
+    __metadata("design:paramtypes", [CORSMiddlewareBuilder,
+        CustomerFacingErrorBuilder,
         EntrypointsBuilder, Object, Object, ServerRequestHandler,
         ServerSSLCertLoader, Object, Object])
 ], NodeHonoServerManager);

@@ -2,6 +2,8 @@
 
 ## v0.29.0 (unreleased)
 
+Report an error when the `onClose` handler of SSE has been missed only when it has streamed once.
+
 Introduce the automatic generation of [OpenAPI](https://www.openapis.org) specs for server targets.
 It is disabled by default.
 To opt-in, simply open the server's `settings.ts` and set `server_expose_openapi_spec: true`.
@@ -9,7 +11,9 @@ When the server starts, the spec is generated on the fly and made available at `
 This path is customizable by setting `server_expose_openapi_spec_at`.
 See it in action in the [Playground](https://libmodulor.c100k.eu/docs/examples/Playground).
 
-Report an error when the `onClose` handler of SSE has been missed only when it has streamed once.
+Introduce [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CORS) settings for server targets.
+Disabled by default (of course).
+Settings available : `server_cors_credentials`, `server_cors_headers`, `server_cors_methods`, `server_cors_origins`.
 
 ## v0.28.0 (2026-05-01)
 

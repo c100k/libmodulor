@@ -76,9 +76,10 @@ export function buildHandler(appManifest, ucd, contract, serverRequestHandler, u
     };
     return handler;
 }
-export function init(helmetMB, loggerLevel, serverTmpPath) {
+export function init(corsMB, helmetMB, loggerLevel, serverTmpPath) {
     const app = express();
     app.use(helmetMB.exec({}));
+    app.use(corsMB.exec({}));
     app.use(fileUpload({
         createParentPath: true,
         debug: loggerLevel === 'trace',

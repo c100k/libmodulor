@@ -7,9 +7,10 @@ import type { UCDef, UCHTTPContract, UCInput, UCManager, UCOPIBase } from '../..
 import type { CustomerFacingErrorBuilder } from '../server/CustomerFacingErrorBuilder.js';
 import type { ServerManagerSettings } from '../server/ServerManager.js';
 import type { ServerRequestHandler, ServerRequestHandlerReq, ServerRequestHandlerRes } from '../server/ServerRequestHandler.js';
+import type { CORSMiddlewareBuilder } from './CORSMiddlewareBuilder.js';
 import type { HelmetMiddlewareBuilder } from './HelmetMiddlewareBuilder.js';
 export declare function buildHandler<I extends UCInput | undefined = undefined, OPI0 extends UCOPIBase | undefined = undefined, OPI1 extends UCOPIBase | undefined = undefined>(appManifest: AppManifest, ucd: UCDef<I, OPI0, OPI1>, contract: UCHTTPContract, serverRequestHandler: ServerRequestHandler, ucManager: UCManager): RequestHandler;
-export declare function init(helmetMB: HelmetMiddlewareBuilder, loggerLevel: LoggerLevel, serverTmpPath: ServerManagerSettings['server_tmp_path']): Express;
+export declare function init(corsMB: CORSMiddlewareBuilder, helmetMB: HelmetMiddlewareBuilder, loggerLevel: LoggerLevel, serverTmpPath: ServerManagerSettings['server_tmp_path']): Express;
 export declare function mountHandler(contract: UCHTTPContract, express: Express, handler: RequestHandler): void;
 export declare function postInit(app: Express, customerFacingErrorBuilder: CustomerFacingErrorBuilder): void;
 export declare function toFile(f: fileUpload.UploadedFile): File;

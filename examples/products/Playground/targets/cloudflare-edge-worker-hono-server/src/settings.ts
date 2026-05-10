@@ -7,6 +7,7 @@ import {
 } from '../../../../../../dist/esm/index.js';
 import type { SongPlayerSettings } from '../../../../../apps/Spotify/index.js';
 import type { AssetPriceStreamerSettings } from '../../../../../apps/Trading/index.js';
+import { DEFAULT_SERVER_SETTINGS } from '../../../lib/server-shared.js';
 
 export type S = AssetPriceStreamerSettings &
     JWTManagerSettings &
@@ -17,6 +18,7 @@ export type S = AssetPriceStreamerSettings &
 export const settings: S = {
     ...TARGET_DEFAULT_SERVER_MANAGER_SETTINGS,
     ...STD_DEFAULT_JWT_MANAGER_SETTINGS,
+    ...DEFAULT_SERVER_SETTINGS,
     asset_price_streamer_speed: 1,
     sewhsm_bindings_uc_data_store: 'UCDataStore',
     song_player_speed: 1,

@@ -19,14 +19,16 @@ import { CustomerFacingErrorBuilder } from '../lib/server/CustomerFacingErrorBui
 import { EntrypointsBuilder } from '../lib/server/EntrypointsBuilder.js';
 import { ServerRequestHandler } from '../lib/server/ServerRequestHandler.js';
 import { ServerSSLCertLoader } from '../lib/server/ServerSSLCertLoader.js';
+import { CORSMiddlewareBuilder } from '../lib/server-express/CORSMiddlewareBuilder.js';
 import { buildHandler, init, mountHandler, postInit, } from '../lib/server-express/funcs.js';
 import { HelmetMiddlewareBuilder } from '../lib/server-express/HelmetMiddlewareBuilder.js';
 import { listen, stop } from '../lib/server-node/funcs.js';
 let NodeExpressServerManager = class NodeExpressServerManager {
+    corsMiddlewareBuilder;
     customerFacingErrorBuilder;
     entrypointsBuilder;
     environmentManager;
-    helmetMB;
+    helmetMiddlewareBuilder;
     logger;
     serverRequestHandler;
     serverSSLCertLoader;
@@ -34,11 +36,12 @@ let NodeExpressServerManager = class NodeExpressServerManager {
     ucManager;
     runtime;
     server;
-    constructor(customerFacingErrorBuilder, entrypointsBuilder, environmentManager, helmetMB, logger, serverRequestHandler, serverSSLCertLoader, settingsManager, ucManager) {
+    constructor(corsMiddlewareBuilder, customerFacingErrorBuilder, entrypointsBuilder, environmentManager, helmetMiddlewareBuilder, logger, serverRequestHandler, serverSSLCertLoader, settingsManager, ucManager) {
+        this.corsMiddlewareBuilder = corsMiddlewareBuilder;
         this.customerFacingErrorBuilder = customerFacingErrorBuilder;
         this.entrypointsBuilder = entrypointsBuilder;
         this.environmentManager = environmentManager;
-        this.helmetMB = helmetMB;
+        this.helmetMiddlewareBuilder = helmetMiddlewareBuilder;
         this.logger = logger;
         this.serverRequestHandler = serverRequestHandler;
         this.serverSSLCertLoader = serverSSLCertLoader;
@@ -64,7 +67,7 @@ let NodeExpressServerManager = class NodeExpressServerManager {
         this.ucManager = ucManager;
     }
     async init() {
-        this.runtime = init(this.helmetMB, this.s().logger_level, this.s().server_tmp_path);
+        this.runtime = init(this.corsMiddlewareBuilder, this.helmetMiddlewareBuilder, this.s().logger_level, this.s().server_tmp_path);
         await this.createServer();
     }
     initSync() {
@@ -110,16 +113,18 @@ let NodeExpressServerManager = class NodeExpressServerManager {
 };
 NodeExpressServerManager = __decorate([
     injectable(),
-    __param(0, inject(CustomerFacingErrorBuilder)),
-    __param(1, inject(EntrypointsBuilder)),
-    __param(2, inject('EnvironmentManager')),
-    __param(3, inject(HelmetMiddlewareBuilder)),
-    __param(4, inject('Logger')),
-    __param(5, inject(ServerRequestHandler)),
-    __param(6, inject(ServerSSLCertLoader)),
-    __param(7, inject('SettingsManager')),
-    __param(8, inject('UCManager')),
-    __metadata("design:paramtypes", [CustomerFacingErrorBuilder,
+    __param(0, inject(CORSMiddlewareBuilder)),
+    __param(1, inject(CustomerFacingErrorBuilder)),
+    __param(2, inject(EntrypointsBuilder)),
+    __param(3, inject('EnvironmentManager')),
+    __param(4, inject(HelmetMiddlewareBuilder)),
+    __param(5, inject('Logger')),
+    __param(6, inject(ServerRequestHandler)),
+    __param(7, inject(ServerSSLCertLoader)),
+    __param(8, inject('SettingsManager')),
+    __param(9, inject('UCManager')),
+    __metadata("design:paramtypes", [CORSMiddlewareBuilder,
+        CustomerFacingErrorBuilder,
         EntrypointsBuilder, Object, HelmetMiddlewareBuilder, Object, ServerRequestHandler,
         ServerSSLCertLoader, Object, Object])
 ], NodeExpressServerManager);

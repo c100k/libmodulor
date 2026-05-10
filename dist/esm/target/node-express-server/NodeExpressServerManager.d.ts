@@ -9,14 +9,16 @@ import { EntrypointsBuilder } from '../lib/server/EntrypointsBuilder.js';
 import type { ServerManager, ServerManagerSettings } from '../lib/server/ServerManager.js';
 import { ServerRequestHandler } from '../lib/server/ServerRequestHandler.js';
 import { ServerSSLCertLoader } from '../lib/server/ServerSSLCertLoader.js';
+import { CORSMiddlewareBuilder } from '../lib/server-express/CORSMiddlewareBuilder.js';
 import { HelmetMiddlewareBuilder } from '../lib/server-express/HelmetMiddlewareBuilder.js';
 import type { ListenSettings, StopSettings } from '../lib/server-node/types.js';
 type S = ListenSettings & Pick<LoggerSettings, 'logger_level'> & Pick<ServerManagerSettings, 'server_tmp_path'> & StopSettings;
 export declare class NodeExpressServerManager implements Configurable<S>, ServerManager {
+    private corsMiddlewareBuilder;
     private customerFacingErrorBuilder;
     private entrypointsBuilder;
     protected environmentManager: EnvironmentManager;
-    private helmetMB;
+    private helmetMiddlewareBuilder;
     protected logger: Logger;
     private serverRequestHandler;
     private serverSSLCertLoader;
@@ -24,7 +26,7 @@ export declare class NodeExpressServerManager implements Configurable<S>, Server
     private ucManager;
     protected runtime: Express;
     private server;
-    constructor(customerFacingErrorBuilder: CustomerFacingErrorBuilder, entrypointsBuilder: EntrypointsBuilder, environmentManager: EnvironmentManager, helmetMB: HelmetMiddlewareBuilder, logger: Logger, serverRequestHandler: ServerRequestHandler, serverSSLCertLoader: ServerSSLCertLoader, settingsManager: SettingsManager<S>, ucManager: UCManager);
+    constructor(corsMiddlewareBuilder: CORSMiddlewareBuilder, customerFacingErrorBuilder: CustomerFacingErrorBuilder, entrypointsBuilder: EntrypointsBuilder, environmentManager: EnvironmentManager, helmetMiddlewareBuilder: HelmetMiddlewareBuilder, logger: Logger, serverRequestHandler: ServerRequestHandler, serverSSLCertLoader: ServerSSLCertLoader, settingsManager: SettingsManager<S>, ucManager: UCManager);
     s(): S;
     getRuntime(): Express;
     overrideUCManager(ucManager: UCManager): void;

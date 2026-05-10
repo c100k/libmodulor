@@ -11,7 +11,7 @@ export { fromQueryParams, toQueryParams } from './http/query-params.js';
 export { SSEStreamManager } from './http/SSEStreamManager.js';
 export { fmtSingleDataMsg, fmtSSEError, isSSEError, parseDataLine, SSE_HEADERS, } from './http/sse.js';
 export { isClientError, isError, isServerError } from './http/status.js';
-export type { HTTPDataEnvelope, HTTPReqData } from './http/types.js';
+export type { HTTPCookieSameSite, HTTPCSPType, HTTPCSPValue, HTTPDataEnvelope, HTTPHeaderName, HTTPReqData, } from './http/types.js';
 export { bindFactory } from './ioc/bindFactory.js';
 export { CONTAINER_OPTS } from './ioc/container.js';
 export type { Class } from './ioc/types.js';
