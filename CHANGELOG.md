@@ -1,6 +1,6 @@
 # CHANGELOG
 
-## v0.29.0 (unreleased)
+## v0.29.0 (2026-05-10)
 
 Report an error when the `onClose` handler of SSE has been missed only when it has streamed once.
 
@@ -12,7 +12,7 @@ This path is customizable by setting `server_expose_openapi_spec_at`.
 See it in action in the [Playground](https://libmodulor.c100k.eu/docs/examples/Playground).
 
 Introduce [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CORS) settings for server targets.
-Disabled by default (of course).
+It is disabled by default.
 Settings available : `server_cors_credentials`, `server_cors_headers`, `server_cors_methods`, `server_cors_origins`.
 
 See all the changes here : https://github.com/c100k/libmodulor/compare/v0.28.0...master
