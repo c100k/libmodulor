@@ -4,6 +4,8 @@
 
 Add cardinality to UC output field (so it is available in the OpenAPI output schema, and therefore MCP Tool).
 
+Handle null schema in OpenAPI spec.
+
 ## v0.29.0 (2026-05-10)
 
 Report an error when the `onClose` handler of SSE has been missed only when it has streamed once.

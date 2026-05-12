@@ -2,23 +2,23 @@ export type JSONSchemaNumberFormat = 'double' | 'float' | 'int32' | 'int64';
 export type JSONSchemaStringFormat = 'binary' | 'byte' | 'date' | 'date-time' | 'email' | 'hostname' | 'ipv4' | 'ipv6' | 'password' | 'time' | 'uuid' | 'uri';
 export type JSONSchemaObjectProperties = Record<string, JSONSchemaType>;
 export type JSONSchemaType = {
-    type: 'array';
+    type: 'array' | ['array', 'null'];
     items: JSONSchemaType;
-    maxItems?: number | undefined;
-    minItems?: number | undefined;
-    uniqueItems?: boolean | undefined;
+    maxItems?: number;
+    minItems?: number;
+    uniqueItems?: boolean;
 } | {
-    type: 'boolean';
+    type: 'boolean' | ['boolean', 'null'];
 } | {
-    type: 'integer';
+    type: 'integer' | ['integer', 'null'];
 } | {
-    type: 'number';
+    type: 'number' | ['number', 'null'];
     format?: JSONSchemaNumberFormat;
 } | {
-    type: 'object';
+    type: 'object' | ['object', 'null'];
     properties?: JSONSchemaObjectProperties;
     required?: string[];
 } | {
-    type: 'string';
+    type: 'string' | ['string', 'null'];
     format?: JSONSchemaStringFormat;
 };

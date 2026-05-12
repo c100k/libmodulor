@@ -12,6 +12,9 @@ export function openAPIOutputDef(field) {
     const { type: fType } = fDef;
     def.internal.required = ucofIsMandatory(fDef);
     def.spec = fType.jsonSchemaType();
+    if (!def.internal.required && !Array.isArray(def.spec.type)) {
+        def.spec.type = [def.spec.type, 'null'];
+    }
     const examples = ucofExamples(fDef);
     if (examples) {
         def.spec.examples = examples;
