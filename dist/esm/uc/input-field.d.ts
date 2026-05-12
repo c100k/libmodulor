@@ -1,5 +1,6 @@
 import type { DataType, TBase, UIntQuantity } from '../dt/index.js';
 import type { EnumOf } from '../utils/index.js';
+import { type UCFieldDefCardinality } from './cardinality.js';
 import type { UCFieldKey } from './def.js';
 import type { Value } from './value.js';
 export declare const UCInputFieldFillingMode: {
@@ -13,23 +14,19 @@ export declare const UCInputFieldFillingMode: {
     readonly MANUAL: "MANUAL";
 };
 export type UCInputFieldFillingMode = EnumOf<typeof UCInputFieldFillingMode>;
-export interface UCInputFieldDefCardinality {
-    max?: UIntQuantity;
-    min?: UIntQuantity;
-}
 /**
  * Definition of a use case input field
  */
 export interface UCInputFieldDef<T extends DataType> {
     /**
-     * A field can have 0, 1 or n values. This field defines the rules.
+     * A field can have 0, 1 or n values.
      *
      * @defaultValue { max: 1, min: 1 } => the user must absolutely provide one value only
      *
      * @example { max: 5, min: 0 } => the user must provide at most 5 values or none
      * @example { min: 0 } => the user must provide 0 values or none
      */
-    cardinality?: UCInputFieldDefCardinality;
+    cardinality?: UCFieldDefCardinality;
     /**
      * @defaultValue {@link UCInputFieldFillingMode.MANUAL}
      */

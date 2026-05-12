@@ -1,9 +1,10 @@
 import { ERROR_HTTP_STATUS_MAP, IllegalArgumentError, } from '../../../error/index.js';
-import { DEFAULT_UC_SEC_AT, DEFAULT_UC_SEC_PAKCT, UCOutputReader, ucofExamples, } from '../../../uc/index.js';
+import { DEFAULT_UC_SEC_AT, DEFAULT_UC_SEC_PAKCT, UCOutputReader, } from '../../../uc/index.js';
 import { isBlank } from '../../../utils/index.js';
 import { AUTHORIZATION_HEADER_NAME, } from '../shared.js';
 import { SUCCESS_DESCRIPTION } from './consts.js';
 import { openAPIInputDef } from './input.js';
+import { openAPIOutputDef } from './output.js';
 export function openAPIErrorSchema() {
     return {
         additionalProperties: false,
@@ -71,14 +72,20 @@ export function openAPIOPISchema(part) {
         type: 'object',
     };
     for (const f of part.fields) {
-        const { def, key } = f;
-        const { type } = def;
-        const k = key;
-        res.properties[k] = type.jsonSchemaType();
-        const examples = ucofExamples(def);
-        if (examples) {
-            res.properties[k].examples = examples;
+        const { key } = f;
+        const { internal, spec } = openAPIOutputDef(f);
+        if (!spec) {
+            continue;
         }
+        const k = key;
+        res.properties[k] = spec;
+        if (!internal?.required) {
+            continue;
+        }
+        if (!res.required) {
+            res.required = [];
+        }
+        res.required.push(k);
     }
     return res;
 }

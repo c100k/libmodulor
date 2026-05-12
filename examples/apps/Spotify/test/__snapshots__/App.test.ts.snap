@@ -70,7 +70,7 @@ exports[`Run > Use Cases > 'CreateAlbum' > should execute with auth 'ADMIN' and 
 }
 `;
 
-exports[`Run > Use Cases > 'CreateAlbum' > should execute with auth 'ADMIN' and input 'ONLY_MANDATORY_WITH_EXAMPLES' > hash = 8ed980118ea0b5ff83ea5acf582247aad960a7f2e32fdfd651318ea05eab836a 1`] = `
+exports[`Run > Use Cases > 'CreateAlbum' > should execute with auth 'ADMIN' and input 'ONLY_MANDATORY_WITH_EXAMPLES' > hash = 2d18fe540252b1aede73d5a8bc3bcbccbc13f01c4f5b7579c46a26dc20c6a358 1`] = `
 {
   "out": {
     "args": {
@@ -90,7 +90,7 @@ exports[`Run > Use Cases > 'CreateAlbum' > should execute with auth 'ADMIN' and 
       "inputFillerName": "ONLY_MANDATORY_WITH_EXAMPLES",
     },
     "err": null,
-    "hash": "8ed980118ea0b5ff83ea5acf582247aad960a7f2e32fdfd651318ea05eab836a",
+    "hash": "2d18fe540252b1aede73d5a8bc3bcbccbc13f01c4f5b7579c46a26dc20c6a358",
     "io": {
       "i": {
         "artist": "Daft Punk",
@@ -100,7 +100,7 @@ exports[`Run > Use Cases > 'CreateAlbum' > should execute with auth 'ADMIN' and 
         "isPrivate": true,
         "language": undefined,
         "name": "Alive 2007",
-        "releaseYear": 2012,
+        "releaseYear": 2007,
         "tags": undefined,
       },
       "o": {
@@ -114,7 +114,7 @@ exports[`Run > Use Cases > 'CreateAlbum' > should execute with auth 'ADMIN' and 
                 "isPrivate": true,
                 "language": null,
                 "name": "Alive 2007",
-                "releaseYear": 2012,
+                "releaseYear": 2007,
                 "tags": [],
               },
             ],
@@ -128,7 +128,7 @@ exports[`Run > Use Cases > 'CreateAlbum' > should execute with auth 'ADMIN' and 
 }
 `;
 
-exports[`Run > Use Cases > 'CreateAlbum' > should execute with auth 'ADMIN' and input 'ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPL…' > hash = 2c833cf16b356dbbb3b17f88102f96ad082b63b746add459fa278180c6cfd263 1`] = `
+exports[`Run > Use Cases > 'CreateAlbum' > should execute with auth 'ADMIN' and input 'ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPL…' > hash = 4255fdc37028f2f774d590d5321bf64983a647bc89ad2cc145fed9ab90bc2ff3 1`] = `
 {
   "out": {
     "args": {
@@ -148,7 +148,7 @@ exports[`Run > Use Cases > 'CreateAlbum' > should execute with auth 'ADMIN' and 
       "inputFillerName": "ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPLES",
     },
     "err": [IllegalArgumentError: Name must be filled],
-    "hash": "2c833cf16b356dbbb3b17f88102f96ad082b63b746add459fa278180c6cfd263",
+    "hash": "4255fdc37028f2f774d590d5321bf64983a647bc89ad2cc145fed9ab90bc2ff3",
     "io": {
       "i": {
         "artist": "Daft Punk",
@@ -158,7 +158,7 @@ exports[`Run > Use Cases > 'CreateAlbum' > should execute with auth 'ADMIN' and 
         "isPrivate": true,
         "language": undefined,
         "name": undefined,
-        "releaseYear": 2012,
+        "releaseYear": 2007,
         "tags": undefined,
       },
       "o": null,
@@ -228,7 +228,7 @@ exports[`Run > Use Cases > 'CreateAlbum' > should execute with auth 'ANONYMOUS' 
 }
 `;
 
-exports[`Run > Use Cases > 'CreateAlbum' > should execute with auth 'ANONYMOUS' and input 'ONLY_MANDATORY_WITH_EXAMPLES' > hash = fcb7964470f3ec1f9b85f838d9f0a4c4808b683b45a9bf6b7bec263a9d126110 1`] = `
+exports[`Run > Use Cases > 'CreateAlbum' > should execute with auth 'ANONYMOUS' and input 'ONLY_MANDATORY_WITH_EXAMPLES' > hash = 9901dea44cc82554533d74690f65bba94663c8ac14daa0dbae9d680653f6ceb9 1`] = `
 {
   "out": {
     "args": {
@@ -238,7 +238,7 @@ exports[`Run > Use Cases > 'CreateAlbum' > should execute with auth 'ANONYMOUS' 
       "inputFillerName": "ONLY_MANDATORY_WITH_EXAMPLES",
     },
     "err": null,
-    "hash": "fcb7964470f3ec1f9b85f838d9f0a4c4808b683b45a9bf6b7bec263a9d126110",
+    "hash": "9901dea44cc82554533d74690f65bba94663c8ac14daa0dbae9d680653f6ceb9",
     "io": {
       "i": {
         "artist": "Daft Punk",
@@ -248,7 +248,7 @@ exports[`Run > Use Cases > 'CreateAlbum' > should execute with auth 'ANONYMOUS' 
         "isPrivate": true,
         "language": undefined,
         "name": "Alive 2007",
-        "releaseYear": 2012,
+        "releaseYear": 2007,
         "tags": undefined,
       },
       "o": {
@@ -262,7 +262,7 @@ exports[`Run > Use Cases > 'CreateAlbum' > should execute with auth 'ANONYMOUS' 
                 "isPrivate": true,
                 "language": null,
                 "name": "Alive 2007",
-                "releaseYear": 2012,
+                "releaseYear": 2007,
                 "tags": [],
               },
             ],
@@ -276,7 +276,7 @@ exports[`Run > Use Cases > 'CreateAlbum' > should execute with auth 'ANONYMOUS' 
 }
 `;
 
-exports[`Run > Use Cases > 'CreateAlbum' > should execute with auth 'ANONYMOUS' and input 'ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPL…' > hash = 51ea6ef23106ad152ed42a1f39f4c07d41db2e3d7b2ce139cf7c34e91a8dac72 1`] = `
+exports[`Run > Use Cases > 'CreateAlbum' > should execute with auth 'ANONYMOUS' and input 'ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPL…' > hash = e4020a2032189dd948c9f70ec32133a1895b3b088bb319b44062775c8025447d 1`] = `
 {
   "out": {
     "args": {
@@ -286,7 +286,7 @@ exports[`Run > Use Cases > 'CreateAlbum' > should execute with auth 'ANONYMOUS' 
       "inputFillerName": "ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPLES",
     },
     "err": [IllegalArgumentError: Name must be filled],
-    "hash": "51ea6ef23106ad152ed42a1f39f4c07d41db2e3d7b2ce139cf7c34e91a8dac72",
+    "hash": "e4020a2032189dd948c9f70ec32133a1895b3b088bb319b44062775c8025447d",
     "io": {
       "i": {
         "artist": "Daft Punk",
@@ -296,7 +296,7 @@ exports[`Run > Use Cases > 'CreateAlbum' > should execute with auth 'ANONYMOUS' 
         "isPrivate": true,
         "language": undefined,
         "name": undefined,
-        "releaseYear": 2012,
+        "releaseYear": 2007,
         "tags": undefined,
       },
       "o": null,
@@ -376,7 +376,7 @@ exports[`Run > Use Cases > 'CreateAlbum' > should execute with auth 'REGULAR' an
 }
 `;
 
-exports[`Run > Use Cases > 'CreateAlbum' > should execute with auth 'REGULAR' and input 'ONLY_MANDATORY_WITH_EXAMPLES' > hash = 11ab6a26a577005e156a404afd33c2ae3404e4795db91031b5086eb2a5cf63fb 1`] = `
+exports[`Run > Use Cases > 'CreateAlbum' > should execute with auth 'REGULAR' and input 'ONLY_MANDATORY_WITH_EXAMPLES' > hash = 5bcf48b3054d4f917e475bccbb70fbb7b91dd2014a16fa9576ac78cab2ed15dd 1`] = `
 {
   "out": {
     "args": {
@@ -396,7 +396,7 @@ exports[`Run > Use Cases > 'CreateAlbum' > should execute with auth 'REGULAR' an
       "inputFillerName": "ONLY_MANDATORY_WITH_EXAMPLES",
     },
     "err": null,
-    "hash": "11ab6a26a577005e156a404afd33c2ae3404e4795db91031b5086eb2a5cf63fb",
+    "hash": "5bcf48b3054d4f917e475bccbb70fbb7b91dd2014a16fa9576ac78cab2ed15dd",
     "io": {
       "i": {
         "artist": "Daft Punk",
@@ -406,7 +406,7 @@ exports[`Run > Use Cases > 'CreateAlbum' > should execute with auth 'REGULAR' an
         "isPrivate": true,
         "language": undefined,
         "name": "Alive 2007",
-        "releaseYear": 2012,
+        "releaseYear": 2007,
         "tags": undefined,
       },
       "o": {
@@ -420,7 +420,7 @@ exports[`Run > Use Cases > 'CreateAlbum' > should execute with auth 'REGULAR' an
                 "isPrivate": true,
                 "language": null,
                 "name": "Alive 2007",
-                "releaseYear": 2012,
+                "releaseYear": 2007,
                 "tags": [],
               },
             ],
@@ -434,7 +434,7 @@ exports[`Run > Use Cases > 'CreateAlbum' > should execute with auth 'REGULAR' an
 }
 `;
 
-exports[`Run > Use Cases > 'CreateAlbum' > should execute with auth 'REGULAR' and input 'ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPL…' > hash = 26f83649ed0d5b851e58909462ac3d129a11380b16ce49a2b487293e9e2bea8b 1`] = `
+exports[`Run > Use Cases > 'CreateAlbum' > should execute with auth 'REGULAR' and input 'ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPL…' > hash = 18ba6c7eadcadbe0896a17d47dcf343eacc629fc084a246f4b88db994981eb6a 1`] = `
 {
   "out": {
     "args": {
@@ -454,7 +454,7 @@ exports[`Run > Use Cases > 'CreateAlbum' > should execute with auth 'REGULAR' an
       "inputFillerName": "ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPLES",
     },
     "err": [IllegalArgumentError: Name must be filled],
-    "hash": "26f83649ed0d5b851e58909462ac3d129a11380b16ce49a2b487293e9e2bea8b",
+    "hash": "18ba6c7eadcadbe0896a17d47dcf343eacc629fc084a246f4b88db994981eb6a",
     "io": {
       "i": {
         "artist": "Daft Punk",
@@ -464,7 +464,7 @@ exports[`Run > Use Cases > 'CreateAlbum' > should execute with auth 'REGULAR' an
         "isPrivate": true,
         "language": undefined,
         "name": undefined,
-        "releaseYear": 2012,
+        "releaseYear": 2007,
         "tags": undefined,
       },
       "o": null,

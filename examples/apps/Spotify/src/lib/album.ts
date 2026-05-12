@@ -1,23 +1,27 @@
 import {
-    type FreeTextLong,
-    type FreeTextShort,
     TBoolean,
-    TFreeTextShort,
-    TYear,
     type UCOPIBase,
     type UCOPIValue,
     type UCOutputDef,
-    type Year,
 } from '../../../../../dist/esm/index.js';
+import { type AlbumDesc, TAlbumDesc } from './TAlbumDesc.js';
+import { type AlbumName, TAlbumName } from './TAlbumName.js';
+import {
+    type AlbumReleaseYear,
+    TAlbumReleaseYear,
+} from './TAlbumReleaseYear.js';
+import { type Artist, TArtist } from './TArtist.js';
+import { type Language, TLanguage } from './TLanguage.js';
+import { type Tag, TTag } from './TTag.js';
 
 export interface AlbumOPI0 extends UCOPIBase {
-    artist: UCOPIValue<FreeTextShort>;
-    description: UCOPIValue<FreeTextLong>;
+    artist: UCOPIValue<Artist>;
+    description: UCOPIValue<AlbumDesc>;
     isPrivate: UCOPIValue<boolean>;
-    language: UCOPIValue<FreeTextShort>;
-    name: UCOPIValue<FreeTextShort>;
-    releaseYear: UCOPIValue<Year>;
-    tags: UCOPIValue<FreeTextShort>;
+    language: UCOPIValue<Language>;
+    name: UCOPIValue<AlbumName>;
+    releaseYear: UCOPIValue<AlbumReleaseYear>;
+    tags: UCOPIValue<Tag>;
 }
 
 export const AlbumOPIDef: UCOutputDef<AlbumOPI0> = {
@@ -25,25 +29,44 @@ export const AlbumOPIDef: UCOutputDef<AlbumOPI0> = {
         _0: {
             fields: {
                 artist: {
-                    type: new TFreeTextShort(),
+                    cardinality: {
+                        min: 0,
+                    },
+                    type: new TArtist(),
                 },
                 description: {
-                    type: new TFreeTextShort(),
+                    cardinality: {
+                        min: 0,
+                    },
+                    type: new TAlbumDesc(),
                 },
                 isPrivate: {
+                    cardinality: {
+                        min: 0,
+                    },
                     type: new TBoolean(),
                 },
                 language: {
-                    type: new TFreeTextShort(),
+                    cardinality: {
+                        min: 0,
+                    },
+                    type: new TLanguage(),
                 },
                 name: {
-                    type: new TFreeTextShort(),
+                    type: new TAlbumName(),
                 },
                 releaseYear: {
-                    type: new TYear(),
+                    cardinality: {
+                        min: 0,
+                    },
+                    type: new TAlbumReleaseYear(),
                 },
                 tags: {
-                    type: new TFreeTextShort(),
+                    cardinality: {
+                        max: 5,
+                        min: 0,
+                    },
+                    type: new TTag(),
                 },
             },
         },

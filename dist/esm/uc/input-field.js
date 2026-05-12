@@ -1,3 +1,5 @@
+import { ucfIsMandatory, ucfRepeatability, } from './cardinality.js';
+import { ucfExamples } from './examples.js';
 export const UCInputFieldFillingMode = {
     /**
      * Set programmatically on behalf of the user (e.g. a foreign key id for a given object)
@@ -9,17 +11,7 @@ export const UCInputFieldFillingMode = {
     MANUAL: 'MANUAL',
 };
 export function ucifExamples(def) {
-    const { type } = def;
-    const examples = type.getExamples();
-    // Leaving the value `undefined` means you want the default value
-    if (examples === undefined) {
-        return [type.example()];
-    }
-    // Setting the examples to `[]` means you don't want them
-    if (examples.length === 0) {
-        return undefined;
-    }
-    return examples;
+    return ucfExamples(def.type);
 }
 export function ucifHint(def) {
     if (ucifIsSensitive(def)) {
@@ -52,18 +44,10 @@ export function ucifId(key, prefix = 'inputfield', separator = '-') {
     return `${prefix}${separator}${key}`;
 }
 export function ucifIsMandatory(def) {
-    const min = def.cardinality?.min;
-    if (min === undefined) {
-        return true;
-    }
-    return min > 0;
+    return ucfIsMandatory(def.cardinality);
 }
 export function ucifRepeatability(def) {
-    const max = def.cardinality?.max;
-    if (max === undefined) {
-        return [false, 0];
-    }
-    return [max > 1, max];
+    return ucfRepeatability(def.cardinality);
 }
 export function ucifIsSensitive(def) {
     const { sensitive, type } = def;

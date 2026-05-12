@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v0.30.0 (unreleased)
+
+Add cardinality to UC output field (so it is available in the OpenAPI output schema, and therefore MCP Tool).
+
 ## v0.29.0 (2026-05-10)
 
 Report an error when the `onClose` handler of SSE has been missed only when it has streamed once.

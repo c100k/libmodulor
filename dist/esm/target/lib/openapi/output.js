@@ -1,5 +1,5 @@
-import { ucifExamples, ucifIsMandatory, ucifRepeatability, } from '../../../uc/index.js';
-export function openAPIInputDef(field) {
+import { ucofExamples, ucofIsMandatory, ucofRepeatability, } from '../../../uc/index.js';
+export function openAPIOutputDef(field) {
     const def = {
         internal: {},
         spec: { type: 'string' },
@@ -10,9 +10,9 @@ export function openAPIInputDef(field) {
     }
     const { def: fDef } = field;
     const { type: fType } = fDef;
-    def.internal.required = ucifIsMandatory(fDef);
+    def.internal.required = ucofIsMandatory(fDef);
     def.spec = fType.jsonSchemaType();
-    const examples = ucifExamples(fDef);
+    const examples = ucofExamples(fDef);
     if (examples) {
         def.spec.examples = examples;
     }
@@ -20,7 +20,7 @@ export function openAPIInputDef(field) {
     if (options) {
         def.spec.enum = options.map((o) => o.value);
     }
-    const [isRepeatable] = ucifRepeatability(fDef);
+    const [isRepeatable] = ucofRepeatability(fDef);
     if (isRepeatable) {
         def.spec = {
             items: def.spec,
