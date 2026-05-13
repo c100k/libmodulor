@@ -94,7 +94,7 @@ echo "(cd ${buildDir}/${targetsPath}/node-core-cli && node index.js)"
 echo "(cd ${buildDir}/${targetsPath}/node-express-server && node --env-file .env index.js)"
 echo "(cd ${buildDir}/${targetsPath}/node-hono-server && node --env-file .env index.js)"
 echo "nano ~/Library/Application\ Support/Claude/claude_desktop_config.json"
-echo "{
+echo '{
     "mcpServers": {
         "Playground": {
             "command": "node",
@@ -103,7 +103,8 @@ echo "{
             ]
         }
     }
-}"
+}'
+echo "tail -f ~/Library/Logs/Claude/mcp-server-Playground.log"
 echo "(cd ${buildDir}/${targetsPath}/node-stricli-cli && node index.js)"
 echo "pnpm expo start --android ${buildDir}/${targetsPath}/react-native-pure-expo"
 echo "pnpm expo start --ios ${buildDir}/${targetsPath}/react-native-pure-expo"

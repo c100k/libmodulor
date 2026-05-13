@@ -1,12 +1,12 @@
 import { type ReactElement, useState } from 'react';
 
+import type { AuthDataStore } from '../../../../../../../../dist/esm/index.js';
 import {
     type UCPanelOnDone,
     useDIContext,
     useUC,
 } from '../../../../../../../../dist/esm/index.react.js';
 import { Manifest, SignOutUCD } from '../../../../../../../apps/Auth/index.js';
-import type { AuthDataStore } from '../../../lib/uc/AuthDataStore.js';
 import { useGlobalContext } from '../../GlobalContext.jsx';
 import UCPanel from '../../UCPanel.jsx';
 

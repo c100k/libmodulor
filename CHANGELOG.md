@@ -6,6 +6,8 @@ Add cardinality to UC output field (so it is available in the OpenAPI output sch
 
 Handle null schema in OpenAPI spec.
 
+Fully implement `NodeLocalStdioMCPServerManager`. It is now ready to be used to expose apps and use cases in clients like Claude.
+
 ## v0.29.0 (2026-05-10)
 
 Report an error when the `onClose` handler of SSE has been missed only when it has streamed once.

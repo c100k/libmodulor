@@ -1,6 +1,7 @@
 import { type ReactElement, useState } from 'react';
 
 import type {
+    AuthDataStore,
     JWTManager,
     JWTManagerPayload,
     UCAuth,
@@ -16,7 +17,6 @@ import {
     type SignInOPI0,
     SignInUCD,
 } from '../../../../../../../apps/Auth/index.js';
-import type { AuthDataStore } from '../../../lib/uc/AuthDataStore.js';
 import { useGlobalContext } from '../../GlobalContext.jsx';
 import UCPanel from '../../UCPanel.jsx';
 
