@@ -24,7 +24,7 @@ export default function OpenAPICard(): ReactElement {
             <code>
                 docker run -p 8082:8080 -e
                 SWAGGER_JSON_URL=http://localhost:7443/api/openapi.json
-                swaggerapi/swagger-ui:v5.32.5
+                WITH_CREDENTIALS=true swaggerapi/swagger-ui:v5.32.5
             </code>
             <a
                 href="https://editor.swagger.io"
