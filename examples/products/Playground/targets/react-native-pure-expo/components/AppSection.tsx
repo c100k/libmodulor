@@ -6,7 +6,7 @@ import type {
     UCInput,
     UCOPIBase,
 } from '../../../../../../dist/esm/index.js';
-import UCTitle from './UCTitle.jsx';
+import UCTitle from './UCTitle.js';
 
 interface Props<
     I extends UCInput | undefined = undefined,

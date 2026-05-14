@@ -9,8 +9,8 @@ import {
     UCExecTouchable,
     UCForm,
 } from '../../../../../../dist/esm/index.react-native-pure.js';
-import { useAppContext } from './AppContext.jsx';
-import UCAutoExecLoader from './UCAutoExecLoader.jsx';
+import { useAppContext } from './AppContext.js';
+import UCAutoExecLoader from './UCAutoExecLoader.js';
 
 type Props<
     I extends UCInput | undefined = undefined,

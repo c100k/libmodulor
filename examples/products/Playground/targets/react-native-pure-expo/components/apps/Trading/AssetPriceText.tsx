@@ -6,7 +6,7 @@ import type {
     SemanticsVariant,
 } from '../../../../../../../../dist/esm/index.js';
 import type { TAssetPrice } from '../../../../../../../apps/Trading/index.js';
-import { style } from '../../../style.jsx';
+import { style } from '../../../style.js';
 
 interface Props {
     type: TAssetPrice;

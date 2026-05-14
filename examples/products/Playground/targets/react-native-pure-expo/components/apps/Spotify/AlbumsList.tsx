@@ -14,8 +14,8 @@ import {
     Manifest,
     PlaySongUCD,
 } from '../../../../../../../apps/Spotify/index.js';
-import UCOPICard from '../../UCOPICard.jsx';
-import UCPanel from '../../UCPanel.jsx';
+import UCOPICard from '../../UCOPICard.js';
+import UCPanel from '../../UCPanel.js';
 
 interface Props {
     listAlbumsPart0: UCOutputReaderPart<AlbumOPI0>;

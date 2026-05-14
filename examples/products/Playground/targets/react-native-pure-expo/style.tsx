@@ -1,7 +1,7 @@
 import { StyleSheet } from 'react-native';
 
 import type { StyleContextT } from '../../../../../dist/esm/index.react.js';
-import UCFormFieldControl from './components/UCFormFieldControl.jsx';
+import UCFormFieldControl from './components/UCFormFieldControl.js';
 
 const PRIMARY = '#3478f7';
 const ON_PRIMARY = '#ffffff';

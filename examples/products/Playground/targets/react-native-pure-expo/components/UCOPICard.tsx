@@ -7,7 +7,7 @@ import type {
     UCOutputReaderPart,
 } from '../../../../../../dist/esm/index.js';
 import { useDIContext } from '../../../../../../dist/esm/index.react.js';
-import UCOutputFieldValue from './UCOutputFieldValue.jsx';
+import UCOutputFieldValue from './UCOutputFieldValue.js';
 
 interface Props<OPI extends UCOPIBase> {
     fields: UCOutputReaderPart<OPI>['fields'];

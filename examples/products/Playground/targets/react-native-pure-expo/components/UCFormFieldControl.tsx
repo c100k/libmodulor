@@ -7,8 +7,8 @@ import {
     type Year,
 } from '../../../../../../dist/esm/index.js';
 import type { UCFormFieldControlProps } from '../../../../../../dist/esm/index.react.js';
-import FilePicker from './FilePicker.jsx';
-import Slider from './Slider.jsx';
+import FilePicker from './FilePicker.js';
+import Slider from './Slider.js';
 
 export default function UCFormFieldControl<T extends DataType>(
     props: UCFormFieldControlProps<T>,

@@ -4,13 +4,13 @@ import { ScrollView, View } from 'react-native';
 
 import type { Logger } from '../../../../../../dist/esm/index.js';
 import { useDIContext } from '../../../../../../dist/esm/index.react.js';
-import AuthApp from './apps/Auth/AuthApp.jsx';
-import SpotifyApp from './apps/Spotify/SpotifyApp.jsx';
-import TradingApp from './apps/Trading/TradingApp.jsx';
-import Hr from './base/Hr.jsx';
-import { GlobalContextProvider } from './GlobalContext.jsx';
-import Header from './Header.jsx';
-import Loader from './Loader.jsx';
+import AuthApp from './apps/Auth/AuthApp.js';
+import SpotifyApp from './apps/Spotify/SpotifyApp.js';
+import TradingApp from './apps/Trading/TradingApp.js';
+import Hr from './base/Hr.js';
+import { GlobalContextProvider } from './GlobalContext.js';
+import Header from './Header.js';
+import Loader from './Loader.js';
 
 export default function Root(): ReactElement {
     const { container, i18nManager } = useDIContext();

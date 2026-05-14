@@ -12,9 +12,9 @@ import {
     ListOrdersUCD,
     Manifest,
 } from '../../../../../../../apps/Trading/index.js';
-import { useGlobalContext } from '../../GlobalContext.jsx';
-import UCPanel from '../../UCPanel.jsx';
-import OrdersList from './OrdersList.jsx';
+import { useGlobalContext } from '../../GlobalContext.js';
+import UCPanel from '../../UCPanel.js';
+import OrdersList from './OrdersList.js';
 
 interface Props {
     append0: AppendFunc<ListOrdersOPI0>;

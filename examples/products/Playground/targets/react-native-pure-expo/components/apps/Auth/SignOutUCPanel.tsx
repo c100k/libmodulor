@@ -7,8 +7,8 @@ import {
     useUC,
 } from '../../../../../../../../dist/esm/index.react.js';
 import { Manifest, SignOutUCD } from '../../../../../../../apps/Auth/index.js';
-import { useGlobalContext } from '../../GlobalContext.jsx';
-import UCPanel from '../../UCPanel.jsx';
+import { useGlobalContext } from '../../GlobalContext.js';
+import UCPanel from '../../UCPanel.js';
 
 export default function SignOutUCPanel(): ReactElement {
     const { container } = useDIContext();

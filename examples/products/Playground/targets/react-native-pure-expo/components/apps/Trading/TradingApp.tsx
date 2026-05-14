@@ -11,12 +11,12 @@ import {
     ListOrdersUCD,
     Manifest,
 } from '../../../../../../../apps/Trading/index.js';
-import { AppContextProvider } from '../../AppContext.jsx';
-import AppSection from '../../AppSection.jsx';
-import { useGlobalContext } from '../../GlobalContext.jsx';
-import AskQuestionUCPanel from './AskQuestionUCPanel.jsx';
-import BuyAssetUCPanel from './BuyAssetUCPanel.jsx';
-import ListOrdersUCPanel from './ListOrdersUCPanel.jsx';
+import { AppContextProvider } from '../../AppContext.js';
+import AppSection from '../../AppSection.js';
+import { useGlobalContext } from '../../GlobalContext.js';
+import AskQuestionUCPanel from './AskQuestionUCPanel.js';
+import BuyAssetUCPanel from './BuyAssetUCPanel.js';
+import ListOrdersUCPanel from './ListOrdersUCPanel.js';
 
 export default function TradingApp(): ReactElement {
     const { auth } = useGlobalContext();

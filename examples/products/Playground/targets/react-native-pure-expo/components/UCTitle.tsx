@@ -9,7 +9,7 @@ import {
     UCContainer,
     useDIContext,
 } from '../../../../../../dist/esm/index.react.js';
-import H3 from './base/H3.jsx';
+import H3 from './base/H3.js';
 
 interface Props<
     I extends UCInput | undefined = undefined,

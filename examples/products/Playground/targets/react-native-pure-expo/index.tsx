@@ -6,9 +6,9 @@ import {
     DIContextProvider,
     StyleContextProvider,
 } from '../../../../../dist/esm/index.react.js';
-import Root from './components/Root.jsx';
+import Root from './components/Root.js';
 import container from './container.js';
-import { style } from './style.jsx';
+import { style } from './style.js';
 
 function Index(): ReactElement {
     return (

@@ -9,8 +9,8 @@ import {
     type ListOrdersOPI0,
     Manifest,
 } from '../../../../../../../apps/Trading/index.js';
-import { useGlobalContext } from '../../GlobalContext.jsx';
-import UCPanel from '../../UCPanel.jsx';
+import { useGlobalContext } from '../../GlobalContext.js';
+import UCPanel from '../../UCPanel.js';
 
 interface Props {
     append0: AppendFunc<ListOrdersOPI0>;

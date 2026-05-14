@@ -11,11 +11,11 @@ import {
     ListAlbumsUCD,
     Manifest,
 } from '../../../../../../../apps/Spotify/index.js';
-import { AppContextProvider } from '../../AppContext.jsx';
-import AppSection from '../../AppSection.jsx';
-import { useGlobalContext } from '../../GlobalContext.jsx';
-import UCPanel from '../../UCPanel.jsx';
-import AlbumsList from './AlbumsList.jsx';
+import { AppContextProvider } from '../../AppContext.js';
+import AppSection from '../../AppSection.js';
+import { useGlobalContext } from '../../GlobalContext.js';
+import UCPanel from '../../UCPanel.js';
+import AlbumsList from './AlbumsList.js';
 
 export default function SpotifyApp(): ReactElement {
     const { auth } = useGlobalContext();

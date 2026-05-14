@@ -14,10 +14,10 @@ import {
     ListOrdersUCD,
     ViewAssetPriceUCD,
 } from '../../../../../../../apps/Trading/index.js';
-import UCOPICard from '../../UCOPICard.jsx';
-import CancelOrderUCPanel from './CancelOrderUCPanel.jsx';
-import type { Prices } from './ViewAssetPriceUCPanel.jsx';
-import ViewAssetPriceUCPanel from './ViewAssetPriceUCPanel.jsx';
+import UCOPICard from '../../UCOPICard.js';
+import CancelOrderUCPanel from './CancelOrderUCPanel.js';
+import type { Prices } from './ViewAssetPriceUCPanel.js';
+import ViewAssetPriceUCPanel from './ViewAssetPriceUCPanel.js';
 
 interface Props {
     listOrdersPart0: UCOutputReaderPart<ListOrdersOPI0>;

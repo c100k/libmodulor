@@ -3,10 +3,10 @@ import { Text, View } from 'react-native';
 
 import type { ProductManifest } from '../../../../../../dist/esm/index.js';
 import { useDIContext } from '../../../../../../dist/esm/index.react.js';
-import H1 from './base/H1.jsx';
-import H2 from './base/H2.jsx';
-import { useGlobalContext } from './GlobalContext.jsx';
-import LangSelector from './LangSelector.jsx';
+import H1 from './base/H1.js';
+import H2 from './base/H2.js';
+import { useGlobalContext } from './GlobalContext.js';
+import LangSelector from './LangSelector.js';
 
 export default function Header(): ReactElement {
     const { container, wordingManager } = useDIContext();

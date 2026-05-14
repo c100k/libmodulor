@@ -17,8 +17,8 @@ import {
     type SignInOPI0,
     SignInUCD,
 } from '../../../../../../../apps/Auth/index.js';
-import { useGlobalContext } from '../../GlobalContext.jsx';
-import UCPanel from '../../UCPanel.jsx';
+import { useGlobalContext } from '../../GlobalContext.js';
+import UCPanel from '../../UCPanel.js';
 
 export default function SignInUCPanel(): ReactElement {
     const { container } = useDIContext();

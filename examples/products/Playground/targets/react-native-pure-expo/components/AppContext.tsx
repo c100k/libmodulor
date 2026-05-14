@@ -17,8 +17,8 @@ import {
     type UCPanelOnStartSubmitting,
 } from '../../../../../../dist/esm/index.react.js';
 import { UCEntrypointTouchable } from '../../../../../../dist/esm/index.react-native-pure.js';
-import H2 from './base/H2.jsx';
-import ErrMessage from './ErrMessage.jsx';
+import H2 from './base/H2.js';
+import ErrMessage from './ErrMessage.js';
 
 export interface AppContextT {
     errCode: ErrorCode | null;

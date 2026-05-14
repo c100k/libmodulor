@@ -9,8 +9,8 @@ import type {
     AssetPrice,
     ViewAssetPriceOPI0,
 } from '../../../../../../../apps/Trading/index.js';
-import ErrMessage from '../../ErrMessage.jsx';
-import UCOutputFieldValue from '../../UCOutputFieldValue.jsx';
+import ErrMessage from '../../ErrMessage.js';
+import UCOutputFieldValue from '../../UCOutputFieldValue.js';
 
 export interface AssetPriceLiveValue {
     errCode: ErrorCode | null;

@@ -14,8 +14,8 @@ import {
     type ViewAssetPriceOPI0,
     ViewAssetPriceUCD,
 } from '../../../../../../../apps/Trading/index.js';
-import UCPanel from '../../UCPanel.jsx';
-import AssetPriceLive, { type AssetPriceLiveValue } from './AssetPriceLive.jsx';
+import UCPanel from '../../UCPanel.js';
+import AssetPriceLive, { type AssetPriceLiveValue } from './AssetPriceLive.js';
 
 export type Prices = Record<ISIN, AssetPriceLiveValue>;
 

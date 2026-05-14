@@ -6,8 +6,8 @@ import type {
     I18nLanguageCode,
 } from '../../../../../../dist/esm/index.js';
 import { useDIContext } from '../../../../../../dist/esm/index.react.js';
-import { style } from '../style.jsx';
-import { useGlobalContext } from './GlobalContext.jsx';
+import { style } from '../style.js';
+import { useGlobalContext } from './GlobalContext.js';
 
 const FLAGS: Record<I18nLanguageCode, Emoji> = {
     de: '🇩🇪',
