@@ -17,6 +17,8 @@ export const I18nDE = {
     err_unauthorized: 'Nicht autorisiert',
     err_unavailable: 'Nicht verfügbar',
     err_unexpected: 'Unerwarteter Fehler',
+    res_200: 'OK',
+    res_204: 'Kein Inhalt',
     uc_client_confirm_cancel: 'Abbrechen',
     uc_client_confirm_confirm: 'Ja',
     uc_client_confirm_message: '',

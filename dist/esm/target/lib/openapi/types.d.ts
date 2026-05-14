@@ -87,7 +87,7 @@ export interface OpenAPIRequestBody {
 }
 export type OpenAPIPaths = Record<OpenAPIPathName, Partial<Record<Lowercase<HTTPMethod>, OpenAPIPath>>>;
 export interface OpenAPIResponse {
-    content: OpenAPIContent;
+    content?: OpenAPIContent;
     description: OpenAPIDescription;
 }
 export type OpenAPIResponses = Partial<Record<HTTPStatusNumber, OpenAPIResponse>>;

@@ -17,6 +17,8 @@ export const I18nFR = {
     err_unauthorized: 'Non autorisé',
     err_unavailable: 'Non disponible',
     err_unexpected: 'Erreur inattendue',
+    res_200: 'OK',
+    res_204: 'Aucun contenu',
     uc_client_confirm_cancel: 'Annuler',
     uc_client_confirm_confirm: 'Oui',
     uc_client_confirm_message: '',

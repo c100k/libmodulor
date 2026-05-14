@@ -93,9 +93,11 @@ let OpenAPISpecBuilder = class OpenAPISpecBuilder {
     // biome-ignore lint/suspicious/noExplicitAny: can be anything
     uc, envelope, fqUCInputName) {
         const { desc, label } = this.wordingManager.uc(uc.def);
+        const res_200 = this.i18nManager.t('res_200');
+        const res_204 = this.i18nManager.t('res_204');
         const path = {
             responses: {
-                ...openAPISuccess(uc),
+                ...openAPISuccess(uc, { 200: res_200, 204: res_204 }),
                 ...errors,
                 // TODO : Infer errors that can be sent within ServerMain
             },

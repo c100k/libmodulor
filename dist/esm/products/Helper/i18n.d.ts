@@ -105,5 +105,7 @@ export declare const I18n: {
         uc_i_submit_idle: string;
         uc_i_submit_initializing: string;
         uc_i_submit_submitting: string;
+        res_200: string;
+        res_204: string;
     };
 };

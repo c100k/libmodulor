@@ -2,7 +2,6 @@ import { ERROR_HTTP_STATUS_MAP, IllegalArgumentError, } from '../../../error/ind
 import { DEFAULT_UC_SEC_AT, DEFAULT_UC_SEC_PAKCT, UCOutputReader, } from '../../../uc/index.js';
 import { isBlank } from '../../../utils/index.js';
 import { AUTHORIZATION_HEADER_NAME, } from '../shared.js';
-import { SUCCESS_DESCRIPTION } from './consts.js';
 import { openAPIInputDef } from './input.js';
 import { openAPIOutputDef } from './output.js';
 export function openAPIErrorSchema() {
@@ -113,14 +112,14 @@ export function openAPIOutputPartSchema(part) {
     };
 }
 export function openAPIOutputSchema(uc) {
+    if (!uc.hasOutputParts()) {
+        return null;
+    }
     const res = {
         additionalProperties: false,
         properties: {},
         type: 'object',
     };
-    if (!uc.hasOutputParts()) {
-        return res;
-    }
     const ucor = new UCOutputReader(uc.def, undefined);
     const [part0, part1] = ucor.parts();
     res.properties.parts = {
@@ -242,15 +241,23 @@ export function openAPISecurity(sec) {
     item[authType] = [];
     return res;
 }
-export function openAPISuccess(uc) {
+export function openAPISuccess(uc, descriptions) {
+    const schema = openAPIOutputSchema(uc);
+    if (!schema) {
+        return {
+            '204': {
+                description: descriptions[204],
+            },
+        };
+    }
     return {
         '200': {
             content: {
                 'application/json': {
-                    schema: openAPIOutputSchema(uc),
+                    schema,
                 },
             },
-            description: SUCCESS_DESCRIPTION,
+            description: descriptions[200],
         },
     };
 }
