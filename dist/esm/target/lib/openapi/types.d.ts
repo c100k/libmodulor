@@ -9,7 +9,7 @@ export type OpenAPISchemaName = FQUCInputName | FQUCOPI0Name | FQUCOPI1Name | `E
 export type OpenAPISchemaRef = `#/components/schemas/${OpenAPISchemaName}`;
 export type OpenAPISummary = FreeTextShort;
 export type OpenAPIProperty<T extends DataType> = JSONSchemaType & {
-    enum?: T[];
+    enum?: (T | null)[];
     examples?: T[];
 };
 export interface OpenAPISchema<T extends object> {

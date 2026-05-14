@@ -22,12 +22,15 @@ export function openAPIOutputDef(field) {
     const options = fType.getOptions();
     if (options) {
         def.spec.enum = options.map((o) => o.value);
+        if (!def.internal.required) {
+            def.spec.enum.push(null);
+        }
     }
     const [isRepeatable] = ucofRepeatability(fDef);
     if (isRepeatable) {
         def.spec = {
             items: def.spec,
-            type: 'array',
+            type: def.internal.required ? 'array' : ['array', 'null'],
         };
         if (fDef.cardinality?.max !== undefined) {
             def.spec.maxItems = fDef.cardinality?.max;
