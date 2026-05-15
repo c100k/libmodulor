@@ -107,10 +107,14 @@ import {
     bindProduct,
     CONTAINER_OPTS,
     type ServerManager,
+    type UCClientConfirmManager,
     updateSettings,
 } from '${LIB_NAME}';
 import { bindNodeCore } from '${LIB_NAME}/node';
-import { NodeLocalStdioMCPServerManager } from '${LIB_NAME}/node-mcp';
+import {
+    MCPStdioUCClientConfirmManager,
+    NodeLocalStdioMCPServerManager,
+} from '${LIB_NAME}/node-mcp';
 
 ${COMMON_CONTAINER_IMPORTS}
 
@@ -120,6 +124,10 @@ bindCommon(container);
 updateSettings<S>(container, settings);
 bindNodeCore(container);
 bindProduct(container, Manifest, I18n);
+
+(await container.rebind<UCClientConfirmManager>('UCClientConfirmManager')).to(
+    MCPStdioUCClientConfirmManager,
+);
 
 container
     .bind<ServerManager>('ServerManager')

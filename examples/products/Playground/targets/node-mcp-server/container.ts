@@ -15,7 +15,7 @@ import {
 } from '../../../../../dist/esm/index.js';
 import { bindNodeCore } from '../../../../../dist/esm/index.node.js';
 import {
-    MCPUCClientConfirmManager,
+    MCPStdioUCClientConfirmManager,
     NodeLocalStdioMCPServerManager,
 } from '../../../../../dist/esm/index.node-mcp.js';
 import { JoseJWTManager } from '../../../../../dist/esm/index.std-jwt-manager-jose.js';
@@ -30,14 +30,15 @@ updateSettings<S>(container, settings);
 bindNodeCore(container);
 bindProduct(container, Manifest, I18n);
 
+(await container.rebind<UCClientConfirmManager>('UCClientConfirmManager')).to(
+    MCPStdioUCClientConfirmManager,
+);
+
 container
     .bind<AuthDataStore>('AuthDataStore')
     .to(InMemoryAuthDataStore)
     .inSingletonScope();
 container.bind<JWTManager>('JWTManager').to(JoseJWTManager);
-(await container.rebind<UCClientConfirmManager>('UCClientConfirmManager')).to(
-    MCPUCClientConfirmManager,
-);
 container
     .bind<ServerManager>('ServerManager')
     .to(NodeLocalStdioMCPServerManager);

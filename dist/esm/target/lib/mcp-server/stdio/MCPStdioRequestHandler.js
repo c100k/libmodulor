@@ -11,18 +11,16 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
 import { inject, injectable } from 'inversify';
-import { UCBuilder, UCOutputSideEffectType, } from '../../uc/index.js';
-import { resAborted, resError, resObj } from './funcs.js';
-let RequestHandler = class RequestHandler {
+import { UCBuilder, UCOutputSideEffectType, } from '../../../../uc/index.js';
+import { resAborted, resError, resObj } from '../funcs.js';
+let MCPStdioRequestHandler = class MCPStdioRequestHandler {
     authDataStore;
     jwtManager;
     ucBuilder;
-    ucManager;
-    constructor(authDataStore, jwtManager, ucBuilder, ucManager) {
+    constructor(authDataStore, jwtManager, ucBuilder) {
         this.authDataStore = authDataStore;
         this.jwtManager = jwtManager;
         this.ucBuilder = ucBuilder;
-        this.ucManager = ucManager;
     }
     async exec({ appManifest, toolInput, ucd, ucManager, }) {
         try {
@@ -43,7 +41,7 @@ let RequestHandler = class RequestHandler {
                     return resAborted();
                 }
             }
-            const ucor = await this.ucManager.execClient(uc);
+            const ucor = await ucManager.execClient(uc);
             await this.applySideEffects(ucor);
             return resObj(ucor.output());
         }
@@ -100,12 +98,11 @@ let RequestHandler = class RequestHandler {
         await this.authDataStore.set(jwt);
     }
 };
-RequestHandler = __decorate([
+MCPStdioRequestHandler = __decorate([
     injectable(),
     __param(0, inject('AuthDataStore')),
     __param(1, inject('JWTManager')),
     __param(2, inject(UCBuilder)),
-    __param(3, inject('UCManager')),
-    __metadata("design:paramtypes", [Object, Object, UCBuilder, Object])
-], RequestHandler);
-export { RequestHandler };
+    __metadata("design:paramtypes", [Object, Object, UCBuilder])
+], MCPStdioRequestHandler);
+export { MCPStdioRequestHandler };

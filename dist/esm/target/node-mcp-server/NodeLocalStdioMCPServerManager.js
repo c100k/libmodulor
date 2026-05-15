@@ -12,19 +12,11 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 };
 import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';
 import { inject, injectable } from 'inversify';
-import { NotAvailableError } from '../../error/index.js';
 import { WordingManager } from '../../i18n/index.js';
-import { UCBuilder, ucMountingPoint, } from '../../uc/index.js';
-import { assertLoggerLevel, buildInputSchema, buildOutputSchema, init, } from './funcs.js';
-import { RequestHandler } from './RequestHandler.js';
-/**
- * A simple MCP Server implementation
- *
- * Although it implements {@link ServerManager}, this implementation is not necessarily a "server".
- * Indeed, it uses a local `Transport` so it must be considered the same as a {@link NodeCoreCLIManager}.
- * Therefore, it calls `execClient` and not `execServer`.
- * This way, Claude AI, or any other client is just a wrapper on top of it.
- */
+import { UCBuilder, } from '../../uc/index.js';
+import { init, toolConfig } from '../lib/mcp-server/funcs.js';
+import { assertLoggerLevel } from '../lib/mcp-server/stdio/funcs.js';
+import { MCPStdioRequestHandler } from '../lib/mcp-server/stdio/MCPStdioRequestHandler.js';
 let NodeLocalStdioMCPServerManager = class NodeLocalStdioMCPServerManager {
     requestHandler;
     productManifest;
@@ -62,14 +54,16 @@ let NodeLocalStdioMCPServerManager = class NodeLocalStdioMCPServerManager {
     mountSync(appManifest, ucd, contract) {
         this.mountCommon(appManifest, ucd, contract);
     }
+    async mountMCP(_ucs, _at) {
+        // Nothing to do
+    }
     async mountOpenAPISpec(_spec, _at) {
         // Nothing to do
     }
     async mountStaticDir(_dirPath) {
-        throw new NotAvailableError('mountStaticDir');
+        // Nothing to do
     }
     async start() {
-        this.transport = new StdioServerTransport();
         await this.runtime.connect(this.transport);
     }
     async stop() {
@@ -79,50 +73,36 @@ let NodeLocalStdioMCPServerManager = class NodeLocalStdioMCPServerManager {
     async warmUp() {
         // Nothing to do
     }
-    async execRequest(appManifest, ucd, toolInput) {
-        return this.requestHandler.exec({
-            appManifest,
-            toolInput,
-            ucd,
-            ucManager: this.ucManager,
-        });
-    }
     initCommon() {
         this.runtime = init(this.productManifest);
         assertLoggerLevel(this.s().logger_level);
+        this.transport = new StdioServerTransport();
     }
-    mountCommon(appManifest, ucd, _contract) {
+    mountCommon(appManifest, ucd, contract) {
         const uc = this.ucBuilder.exec({
             appManifest,
             auth: null,
             def: ucd,
         });
-        const inputSchema = buildInputSchema(uc);
-        const outputSchema = buildOutputSchema(uc);
-        const mountingPoint = uc.def.ext?.cmd?.mountAt ?? ucMountingPoint(uc);
-        const { desc, label } = this.wordingManager.uc(uc.def);
-        const config = {
-            annotations: {
-                destructiveHint: ucd.metadata.sensitive,
-            },
-            inputSchema,
-            outputSchema,
-            title: label,
-        };
-        if (desc) {
-            config.description = desc;
-        }
-        this.runtime.registerTool(mountingPoint, config, (input) => this.execRequest(appManifest, ucd, input));
+        const mountingPoint = uc.def.ext?.cmd?.mountAt ?? contract.mountingPoint;
+        const wording = this.wordingManager.uc(uc.def);
+        const config = toolConfig(uc, 'client', wording);
+        this.runtime.registerTool(mountingPoint, config, (toolInput) => this.requestHandler.exec({
+            appManifest,
+            toolInput,
+            ucd,
+            ucManager: this.ucManager,
+        }));
     }
 };
 NodeLocalStdioMCPServerManager = __decorate([
     injectable(),
-    __param(0, inject(RequestHandler)),
+    __param(0, inject(MCPStdioRequestHandler)),
     __param(1, inject('ProductManifest')),
     __param(2, inject('SettingsManager')),
     __param(3, inject(UCBuilder)),
     __param(4, inject('UCManager')),
     __param(5, inject(WordingManager)),
-    __metadata("design:paramtypes", [RequestHandler, Object, Object, UCBuilder, Object, WordingManager])
+    __metadata("design:paramtypes", [MCPStdioRequestHandler, Object, Object, UCBuilder, Object, WordingManager])
 ], NodeLocalStdioMCPServerManager);
 export { NodeLocalStdioMCPServerManager };

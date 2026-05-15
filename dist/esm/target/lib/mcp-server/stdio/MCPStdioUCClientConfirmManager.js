@@ -11,9 +11,9 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
 import { inject, injectable } from 'inversify';
-import { WordingManager } from '../../i18n/index.js';
+import { WordingManager } from '../../../../i18n/index.js';
 import { UC_CONFIRM_HINT } from './consts.js';
-let MCPUCClientConfirmManager = class MCPUCClientConfirmManager {
+let MCPStdioUCClientConfirmManager = class MCPStdioUCClientConfirmManager {
     wordingManager;
     constructor(wordingManager) {
         this.wordingManager = wordingManager;
@@ -28,9 +28,9 @@ let MCPUCClientConfirmManager = class MCPUCClientConfirmManager {
         throw new Error(m);
     }
 };
-MCPUCClientConfirmManager = __decorate([
+MCPStdioUCClientConfirmManager = __decorate([
     injectable(),
     __param(0, inject(WordingManager)),
     __metadata("design:paramtypes", [WordingManager])
-], MCPUCClientConfirmManager);
-export { MCPUCClientConfirmManager };
+], MCPStdioUCClientConfirmManager);
+export { MCPStdioUCClientConfirmManager };

@@ -2,21 +2,13 @@ import type { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import type { AppManifest } from '../../app/index.js';
 import type { DirPath, URLPath } from '../../dt/index.js';
 import { WordingManager } from '../../i18n/index.js';
-import type { ProductManifest } from '../../product/index.js';
+import type { ProductManifest, ProductUCsLoaderOutput } from '../../product/index.js';
 import type { Configurable, LoggerSettings, SettingsManager } from '../../std/index.js';
 import { UCBuilder, type UCDef, type UCHTTPContract, type UCInput, type UCManager, type UCOPIBase } from '../../uc/index.js';
+import { MCPStdioRequestHandler } from '../lib/mcp-server/stdio/MCPStdioRequestHandler.js';
 import type { OpenAPISpec } from '../lib/openapi/types.js';
 import type { ServerManager } from '../lib/server/ServerManager.js';
-import { RequestHandler } from './RequestHandler.js';
 type S = Pick<LoggerSettings, 'logger_level'>;
-/**
- * A simple MCP Server implementation
- *
- * Although it implements {@link ServerManager}, this implementation is not necessarily a "server".
- * Indeed, it uses a local `Transport` so it must be considered the same as a {@link NodeCoreCLIManager}.
- * Therefore, it calls `execClient` and not `execServer`.
- * This way, Claude AI, or any other client is just a wrapper on top of it.
- */
 export declare class NodeLocalStdioMCPServerManager implements Configurable<S>, ServerManager {
     private requestHandler;
     private productManifest;
@@ -26,19 +18,19 @@ export declare class NodeLocalStdioMCPServerManager implements Configurable<S>, 
     private wordingManager;
     protected runtime: McpServer;
     private transport;
-    constructor(requestHandler: RequestHandler, productManifest: ProductManifest, settingsManager: SettingsManager<S>, ucBuilder: UCBuilder, ucManager: UCManager, wordingManager: WordingManager);
+    constructor(requestHandler: MCPStdioRequestHandler, productManifest: ProductManifest, settingsManager: SettingsManager<S>, ucBuilder: UCBuilder, ucManager: UCManager, wordingManager: WordingManager);
     s(): S;
     overrideUCManager(ucManager: UCManager): void;
     init(): Promise<void>;
     initSync(): void;
     mount<I extends UCInput | undefined = undefined, OPI0 extends UCOPIBase | undefined = undefined, OPI1 extends UCOPIBase | undefined = undefined>(appManifest: AppManifest, ucd: UCDef<I, OPI0, OPI1>, contract: UCHTTPContract): Promise<void>;
     mountSync<I extends UCInput | undefined = undefined, OPI0 extends UCOPIBase | undefined = undefined, OPI1 extends UCOPIBase | undefined = undefined>(appManifest: AppManifest, ucd: UCDef<I, OPI0, OPI1>, contract: UCHTTPContract): void;
+    mountMCP(_ucs: ProductUCsLoaderOutput, _at: URLPath): Promise<void>;
     mountOpenAPISpec(_spec: OpenAPISpec, _at: URLPath): Promise<void>;
     mountStaticDir(_dirPath: DirPath): Promise<void>;
     start(): Promise<void>;
     stop(): Promise<void>;
     warmUp(): Promise<void>;
-    private execRequest;
     private initCommon;
     private mountCommon;
 }

@@ -1,0 +1,13 @@
+import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
+import type { AnySchema } from '@modelcontextprotocol/sdk/server/zod-compat.js';
+import type { CallToolResult } from '@modelcontextprotocol/sdk/types.js';
+import type { ProductManifest } from '../../../product/index.js';
+import type { UC, UCDefLifecycle, UCInput, UCOPIBase, UCWording } from '../../../uc/index.js';
+import type { RegisterToolConfig } from './types.js';
+export declare function buildInputSchema<I extends UCInput | undefined = undefined, OPI0 extends UCOPIBase | undefined = undefined, OPI1 extends UCOPIBase | undefined = undefined>(uc: UC<I, OPI0, OPI1>, lifecycle: UCDefLifecycle): AnySchema;
+export declare function buildOutputSchema<I extends UCInput | undefined = undefined, OPI0 extends UCOPIBase | undefined = undefined, OPI1 extends UCOPIBase | undefined = undefined>(uc: UC<I, OPI0, OPI1>): AnySchema | undefined;
+export declare function init(productManifest: ProductManifest): McpServer;
+export declare function resAborted(): CallToolResult;
+export declare function resError(err: Error): CallToolResult;
+export declare function resObj<T>(obj: T): CallToolResult;
+export declare function toolConfig<I extends UCInput | undefined = undefined, OPI0 extends UCOPIBase | undefined = undefined, OPI1 extends UCOPIBase | undefined = undefined>(uc: UC<I, OPI0, OPI1>, lifecycle: UCDefLifecycle, wording: UCWording): RegisterToolConfig;
