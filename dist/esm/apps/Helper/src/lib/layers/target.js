@@ -101,7 +101,7 @@ container.bind<ServerManager>('ServerManager').to(NodeHonoServerManager);
 
 export default container;
 `;
-const NODE_MCP_SERVER_CONTAINER_TS = `import { Container } from 'inversify';
+const NODE_MCP_SERVER_STDIO_CONTAINER_TS = `import { Container } from 'inversify';
 import {
     bindCommon,
     bindProduct,
@@ -113,7 +113,7 @@ import {
 import { bindNodeCore } from '${LIB_NAME}/node';
 import {
     MCPStdioUCClientConfirmManager,
-    NodeLocalStdioMCPServerManager,
+    NodeMCPStdioServerManager,
 } from '${LIB_NAME}/node-mcp';
 
 ${COMMON_CONTAINER_IMPORTS}
@@ -129,13 +129,11 @@ bindProduct(container, Manifest, I18n);
     MCPStdioUCClientConfirmManager,
 );
 
-container
-    .bind<ServerManager>('ServerManager')
-    .to(NodeLocalStdioMCPServerManager);
+container.bind<ServerManager>('ServerManager').to(NodeMCPStdioServerManager);
 
 export default container;
 `;
-const NODE_MCP_SERVER_INDEX_TS = `import { MCPServerBooter } from '${LIB_NAME}/node-mcp';
+const NODE_MCP_SERVER_STDIO_INDEX_TS = `import { MCPServerBooter } from '${LIB_NAME}/node-mcp';
 
 import container from './container.js';
 
@@ -143,7 +141,7 @@ await container.get(MCPServerBooter).exec({
     srcImporter: (path) => import(path),
 });
 `;
-const NODE_MCP_SERVER_SETTINGS_TS = `import {
+const NODE_MCP_SERVER_STDIO_SETTINGS_TS = `import {
     type LoggerSettings,
     type ServerClientManagerSettings,
     TARGET_DEFAULT_SERVER_CLIENT_MANAGER_SETTINGS,
@@ -196,10 +194,10 @@ const MAPPING = {
         [['.', 'index.ts'], SERVER_INDEX_TS],
         [['.', 'settings.ts'], SERVER_SETTINGS_TS],
     ]),
-    'node-mcp-server': new Map([
-        [['.', 'container.ts'], NODE_MCP_SERVER_CONTAINER_TS],
-        [['.', 'index.ts'], NODE_MCP_SERVER_INDEX_TS],
-        [['.', 'settings.ts'], NODE_MCP_SERVER_SETTINGS_TS],
+    'node-mcp-server-stdio': new Map([
+        [['.', 'container.ts'], NODE_MCP_SERVER_STDIO_CONTAINER_TS],
+        [['.', 'index.ts'], NODE_MCP_SERVER_STDIO_INDEX_TS],
+        [['.', 'settings.ts'], NODE_MCP_SERVER_STDIO_SETTINGS_TS],
     ]),
     'node-stricli-cli': new Map(),
     'react-native-pure': new Map(),

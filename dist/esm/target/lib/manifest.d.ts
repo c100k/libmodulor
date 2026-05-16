@@ -5,7 +5,7 @@ export declare const TARGETS: {
     readonly 'node-core-cli': "node-core-cli";
     readonly 'node-express-server': "node-express-server";
     readonly 'node-hono-server': "node-hono-server";
-    readonly 'node-mcp-server': "node-mcp-server";
+    readonly 'node-mcp-server-stdio': "node-mcp-server-stdio";
     readonly 'node-stricli-cli': "node-stricli-cli";
     readonly 'react-native-pure': "react-native-pure";
     readonly 'react-web-pure': "react-web-pure";

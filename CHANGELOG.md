@@ -6,7 +6,12 @@ Add cardinality to UC output field (so it is available in the OpenAPI output sch
 
 Handle null schema in OpenAPI spec.
 
-Fully implement `NodeLocalStdioMCPServerManager`. It is now ready to be used to expose apps and use cases in clients like Claude.
+Improve the MCP Server stdio implementation :
+- Better error handling
+- Handling of sensitive use cases with a new `UCClientConfirmManager` implementation (Claude or any client now asks you to confirm before executing a sensitive use case, like a `confirm` in `web` or `Alert` in `rn`) : Rebind `UCClientConfirmManager` to `MCPStdioUCClientConfirmManager` in your target container to include it
+- **BREAKING** :
+    - Rename `NodeLocalStdioMCPServerManager` to `NodeMCPStdioServerManager`
+    - Rename `node-mcp-server` to `node-mcp-server-stdio` in the `pnpm libmodulor CreateTarget` command
 
 ## v0.29.0 (2026-05-10)
 

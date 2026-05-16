@@ -9,7 +9,7 @@ import { MCPStdioRequestHandler } from '../lib/mcp-server/stdio/MCPStdioRequestH
 import type { OpenAPISpec } from '../lib/openapi/types.js';
 import type { ServerManager } from '../lib/server/ServerManager.js';
 type S = Pick<LoggerSettings, 'logger_level'>;
-export declare class NodeLocalStdioMCPServerManager implements Configurable<S>, ServerManager {
+export declare class NodeMCPStdioServerManager implements Configurable<S>, ServerManager {
     private requestHandler;
     private productManifest;
     private settingsManager;

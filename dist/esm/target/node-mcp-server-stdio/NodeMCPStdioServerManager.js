@@ -17,7 +17,7 @@ import { UCBuilder, } from '../../uc/index.js';
 import { init, toolConfig } from '../lib/mcp-server/funcs.js';
 import { assertLoggerLevel } from '../lib/mcp-server/stdio/funcs.js';
 import { MCPStdioRequestHandler } from '../lib/mcp-server/stdio/MCPStdioRequestHandler.js';
-let NodeLocalStdioMCPServerManager = class NodeLocalStdioMCPServerManager {
+let NodeMCPStdioServerManager = class NodeMCPStdioServerManager {
     requestHandler;
     productManifest;
     settingsManager;
@@ -95,7 +95,7 @@ let NodeLocalStdioMCPServerManager = class NodeLocalStdioMCPServerManager {
         }));
     }
 };
-NodeLocalStdioMCPServerManager = __decorate([
+NodeMCPStdioServerManager = __decorate([
     injectable(),
     __param(0, inject(MCPStdioRequestHandler)),
     __param(1, inject('ProductManifest')),
@@ -104,5 +104,5 @@ NodeLocalStdioMCPServerManager = __decorate([
     __param(4, inject('UCManager')),
     __param(5, inject(WordingManager)),
     __metadata("design:paramtypes", [MCPStdioRequestHandler, Object, Object, UCBuilder, Object, WordingManager])
-], NodeLocalStdioMCPServerManager);
-export { NodeLocalStdioMCPServerManager };
+], NodeMCPStdioServerManager);
+export { NodeMCPStdioServerManager };

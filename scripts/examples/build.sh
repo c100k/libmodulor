@@ -57,7 +57,7 @@ targetName=node-hono-server
 echo "Adapting $targetName"
 cp $buildDir/$productPath/.env $buildDir/$targetsPath/$targetName/
 
-# Target > node-mcp-server
+# Target > node-mcp-server-stdio
 # noop
 
 # Target > node-stricli-cli
@@ -99,7 +99,7 @@ echo '{
         "Playground": {
             "command": "node",
             "args": [
-                "/ABS_PATH_TO/examples/products/Playground/targets/node-mcp-server/index.js"
+                "/ABS_PATH_TO/examples/products/Playground/targets/node-mcp-server-stdio/index.js"
             ]
         }
     }

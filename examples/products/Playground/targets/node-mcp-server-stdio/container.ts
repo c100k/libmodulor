@@ -16,7 +16,7 @@ import {
 import { bindNodeCore } from '../../../../../dist/esm/index.node.js';
 import {
     MCPStdioUCClientConfirmManager,
-    NodeLocalStdioMCPServerManager,
+    NodeMCPStdioServerManager,
 } from '../../../../../dist/esm/index.node-mcp.js';
 import { JoseJWTManager } from '../../../../../dist/esm/index.std-jwt-manager-jose.js';
 import { I18n } from '../../i18n.js';
@@ -39,9 +39,7 @@ container
     .to(InMemoryAuthDataStore)
     .inSingletonScope();
 container.bind<JWTManager>('JWTManager').to(JoseJWTManager);
-container
-    .bind<ServerManager>('ServerManager')
-    .to(NodeLocalStdioMCPServerManager);
+container.bind<ServerManager>('ServerManager').to(NodeMCPStdioServerManager);
 container
     .rebindSync<ServerClientManager>('ServerClientManager')
     .to(MixedServerClientManager);
