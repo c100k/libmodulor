@@ -43,7 +43,7 @@ pnpm libmodulor CreateProduct --productName CustomerPortal
 pnpm libmodulor CreateTarget --productName CustomerPortal --targetName node-express-server
 pnpm libmodulor CreateTarget --productName CustomerPortal --targetName node-hono-server
 pnpm libmodulor CreateTarget --productName CustomerPortal --targetName node-core-cli
-pnpm libmodulor CreateTarget --productName CustomerPortal --targetName node-mcp-server
+pnpm libmodulor CreateTarget --productName CustomerPortal --targetName node-mcp-server-stdio
 ```
 
 For more params, checkout the help section : `pnpm libmodulor --help`.
