@@ -1,21 +1,10 @@
-import { ERROR_HTTP_STATUS_MAP, IllegalArgumentError, } from '../../../error/index.js';
-import { DEFAULT_UC_SEC_AT, DEFAULT_UC_SEC_PAKCT, UCOutputReader, } from '../../../uc/index.js';
+import { ERROR_HTTP_STATUS_MAP } from '../../../error/index.js';
+import { DEFAULT_UC_SEC_AT, DEFAULT_UC_SEC_PAKCT, } from '../../../uc/index.js';
 import { isBlank } from '../../../utils/index.js';
+import { serverErrorJsonSchema } from '../json-schema/error.js';
+import { ucifJsonSchemaDef } from '../json-schema/input.js';
+import { ucOutputJsonSchema } from '../json-schema/output.js';
 import { AUTHORIZATION_HEADER_NAME, } from '../shared.js';
-import { openAPIInputDef } from './input.js';
-import { openAPIOutputDef } from './output.js';
-export function openAPIErrorSchema() {
-    return {
-        additionalProperties: false,
-        properties: {
-            message: {
-                examples: [new IllegalArgumentError().message],
-                type: 'string',
-            },
-        },
-        type: 'object',
-    };
-}
 export function openAPIErrors() {
     return ERROR_HTTP_STATUS_MAP.entries().reduce((acc, cur) => {
         const [status, clazz] = cur;
@@ -23,117 +12,13 @@ export function openAPIErrors() {
         acc[status] = {
             content: {
                 'application/json': {
-                    schema: {
-                        additionalProperties: false,
-                        properties: {
-                            message: {
-                                examples: [message],
-                                type: 'string',
-                            },
-                        },
-                        type: 'object',
-                    },
+                    schema: serverErrorJsonSchema(message),
                 },
             },
             description: message,
         };
         return acc;
     }, {});
-}
-export function openAPIInputSchema(uc) {
-    const res = {
-        additionalProperties: false,
-        properties: {},
-        type: 'object',
-    };
-    for (const f of uc.inputFields) {
-        const { key } = f;
-        const { internal, spec } = openAPIInputDef(f);
-        if (!spec) {
-            continue;
-        }
-        const k = key;
-        res.properties[k] = spec;
-        if (!internal?.required) {
-            continue;
-        }
-        if (!res.required) {
-            res.required = [];
-        }
-        res.required.push(k);
-    }
-    return res;
-}
-export function openAPIOPISchema(part) {
-    const res = {
-        additionalProperties: false,
-        properties: {},
-        type: 'object',
-    };
-    for (const f of part.fields) {
-        const { key } = f;
-        const { internal, spec } = openAPIOutputDef(f);
-        if (!spec) {
-            continue;
-        }
-        const k = key;
-        res.properties[k] = spec;
-        if (!internal?.required) {
-            continue;
-        }
-        if (!res.required) {
-            res.required = [];
-        }
-        res.required.push(k);
-    }
-    return res;
-}
-export function openAPIOutputPartSchema(part) {
-    return {
-        additionalProperties: false,
-        properties: {
-            items: {
-                items: openAPIOPISchema(part),
-                type: 'array',
-            },
-            pagination: {
-                properties: {
-                    id: { format: 'uuid', type: 'string' },
-                    limit: { type: 'integer' },
-                    offset: { type: 'integer' },
-                    q: { type: 'string' },
-                },
-                type: 'object',
-            },
-            total: { examples: [1], type: 'integer' },
-        },
-        required: ['items', 'total'],
-        type: 'object',
-    };
-}
-export function openAPIOutputSchema(uc) {
-    if (!uc.hasOutputParts()) {
-        return null;
-    }
-    const res = {
-        additionalProperties: false,
-        properties: {},
-        type: 'object',
-    };
-    const ucor = new UCOutputReader(uc.def, undefined);
-    const [part0, part1] = ucor.parts();
-    res.properties.parts = {
-        properties: {
-            _0: openAPIOutputPartSchema(part0),
-        },
-        type: 'object',
-    };
-    if (part1) {
-        res.properties.parts.properties = {
-            _1: openAPIOutputPartSchema(part1),
-        };
-    }
-    return res;
 }
 export function openAPIParameters(uc, envelope) {
     const res = [];
@@ -142,7 +27,7 @@ export function openAPIParameters(uc, envelope) {
             {
                 for (const f of uc.inputFields) {
                     const { key } = f;
-                    const { internal, spec } = openAPIInputDef(f);
+                    const { internal, spec } = ucifJsonSchemaDef(f);
                     if (!spec) {
                         continue;
                     }
@@ -242,7 +127,7 @@ export function openAPISecurity(sec) {
     return res;
 }
 export function openAPISuccess(uc, descriptions) {
-    const schema = openAPIOutputSchema(uc);
+    const schema = ucOutputJsonSchema(uc);
     if (!schema) {
         return {
             '204': {

@@ -4,7 +4,7 @@
 
 Add cardinality to UC output field (so it is available in the OpenAPI output schema, and therefore MCP Tool).
 
-Handle null schema in OpenAPI spec.
+Improve and separate the JSONSchema/OpenAPI targets
 
 Improve the MCP Server stdio implementation :
 - Better error handling

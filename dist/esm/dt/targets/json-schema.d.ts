@@ -1,6 +1,7 @@
+import type { StringKeys } from '../../utils/index.js';
+import type { DataType } from '../DataType.js';
 export type JSONSchemaNumberFormat = 'double' | 'float' | 'int32' | 'int64';
 export type JSONSchemaStringFormat = 'binary' | 'byte' | 'date' | 'date-time' | 'email' | 'hostname' | 'ipv4' | 'ipv6' | 'password' | 'time' | 'uuid' | 'uri';
-export type JSONSchemaObjectProperties = Record<string, JSONSchemaType>;
 export type JSONSchemaType = {
     type: 'array' | ['array', 'null'];
     items: JSONSchemaType;
@@ -15,10 +16,21 @@ export type JSONSchemaType = {
     type: 'number' | ['number', 'null'];
     format?: JSONSchemaNumberFormat;
 } | {
-    type: 'object' | ['object', 'null'];
-    properties?: JSONSchemaObjectProperties;
+    additionalProperties: false;
+    properties: Record<string, JSONSchemaType>;
     required?: string[];
+    type: 'object' | ['object', 'null'];
 } | {
     type: 'string' | ['string', 'null'];
     format?: JSONSchemaStringFormat;
 };
+export type JSONSchemaProperty<T extends DataType> = JSONSchemaType & {
+    enum?: (T | null)[];
+    examples?: T[];
+};
+export interface JSONSchemaObject<T extends object> {
+    additionalProperties: false;
+    properties: Record<StringKeys<T>, JSONSchemaProperty<any>>;
+    required?: StringKeys<T>[];
+    type: 'object' | ['object', 'null'];
+}

@@ -1,5 +1,5 @@
 import { ucifExamples, ucifIsMandatory, ucifRepeatability, } from '../../../uc/index.js';
-export function openAPIInputDef(field) {
+export function ucifJsonSchemaDef(field) {
     const def = {
         internal: {},
         spec: { type: 'string' },
@@ -40,4 +40,28 @@ export function openAPIInputDef(field) {
         }
     }
     return def;
+}
+export function ucInputJsonSchema(uc) {
+    const res = {
+        additionalProperties: false,
+        properties: {},
+        type: 'object',
+    };
+    for (const f of uc.inputFields) {
+        const { key } = f;
+        const { internal, spec } = ucifJsonSchemaDef(f);
+        if (!spec) {
+            continue;
+        }
+        const k = key;
+        res.properties[k] = spec;
+        if (!internal?.required) {
+            continue;
+        }
+        if (!res.required) {
+            res.required = [];
+        }
+        res.required.push(k);
+    }
+    return res;
 }

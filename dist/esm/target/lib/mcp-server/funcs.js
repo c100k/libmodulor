@@ -1,35 +1,10 @@
 import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { fromJSONSchema } from 'zod';
-import { openAPIInputSchema, openAPIOutputSchema } from '../openapi/funcs.js';
+import { ucInputJsonSchema } from '../json-schema/input.js';
+import { ucOutputJsonSchema } from '../json-schema/output.js';
 import { DEFAULT_VERSION } from '../shared.js';
 import { ABORTED_RES } from './consts.js';
 import { stdioToolInputSchema } from './stdio/input.js';
-export function buildInputSchema(uc, lifecycle) {
-    const jsonSchema = openAPIInputSchema(uc);
-    switch (lifecycle) {
-        case 'client':
-            jsonSchema.properties = {
-                ...jsonSchema.properties,
-                ...stdioToolInputSchema(),
-            };
-            break;
-        case 'server':
-            // Nothing to do
-            break;
-        default:
-            lifecycle;
-    }
-    // @ts-expect-error : Index signature for type 'string' is missing in type 'OpenAPISchema<UCInputUnwrapped<I>>'
-    return fromJSONSchema(jsonSchema);
-}
-export function buildOutputSchema(uc) {
-    const jsonSchema = openAPIOutputSchema(uc);
-    if (!jsonSchema) {
-        return;
-    }
-    // @ts-expect-error : Index signature for type 'string' is missing in type 'OpenAPISchema<UCInputUnwrapped<I>>'
-    return fromJSONSchema(jsonSchema);
-}
 export function init(productManifest) {
     const { name, version } = productManifest;
     return new McpServer({
@@ -65,8 +40,8 @@ export function resObj(obj) {
     };
 }
 export function toolConfig(uc, lifecycle, wording) {
-    const inputSchema = buildInputSchema(uc, lifecycle);
-    const outputSchema = buildOutputSchema(uc);
+    const inputSchema = ucInputMCPSchema(uc, lifecycle);
+    const outputSchema = ucOutputMCPSchema(uc);
     const { desc, label } = wording;
     const config = {
         annotations: {
@@ -82,4 +57,28 @@ export function toolConfig(uc, lifecycle, wording) {
         config.description = desc;
     }
     return config;
+}
+export function ucInputMCPSchema(uc, lifecycle) {
+    const jsonSchema = ucInputJsonSchema(uc);
+    switch (lifecycle) {
+        case 'client':
+            jsonSchema.properties = {
+                ...jsonSchema.properties,
+                ...stdioToolInputSchema(),
+            };
+            break;
+        case 'server':
+            // Nothing to do
+            break;
+        default:
+            lifecycle;
+    }
+    return fromJSONSchema(jsonSchema);
+}
+export function ucOutputMCPSchema(uc) {
+    const jsonSchema = ucOutputJsonSchema(uc);
+    if (!jsonSchema) {
+        return;
+    }
+    return fromJSONSchema(jsonSchema);
 }

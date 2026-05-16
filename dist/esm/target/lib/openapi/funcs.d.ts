@@ -1,15 +1,9 @@
 import type { HTTPStatusNumber } from '../../../dt/index.js';
-import { type ServerError } from '../../../error/index.js';
-import { type FQUCInputName, type UC, type UCInput, type UCInputUnwrapped, type UCOPIBase, type UCOutput, type UCOutputPart, type UCOutputReaderPart, type UCSec } from '../../../uc/index.js';
+import { type FQUCInputName, type UC, type UCInput, type UCOPIBase, type UCSec } from '../../../uc/index.js';
 import { type HTTPDataEnvelope } from '../../../utils/index.js';
 import { type AuthCookieName, type PublicApiKeyHeaderName } from '../shared.js';
-import type { OpenAPIParameter, OpenAPIRequestBody, OpenAPIResponses, OpenAPISchema, OpenAPISecurity, OpenAPISecuritySchemes } from './types.js';
-export declare function openAPIErrorSchema(): OpenAPISchema<ServerError>;
+import type { OpenAPIParameter, OpenAPIRequestBody, OpenAPIResponses, OpenAPISecurity, OpenAPISecuritySchemes } from './types.js';
 export declare function openAPIErrors(): OpenAPIResponses;
-export declare function openAPIInputSchema<I extends UCInput | undefined = undefined, OPI0 extends UCOPIBase | undefined = undefined, OPI1 extends UCOPIBase | undefined = undefined>(uc: UC<I, OPI0, OPI1>): OpenAPISchema<UCInputUnwrapped<I>>;
-export declare function openAPIOPISchema<OPI extends UCOPIBase>(part: UCOutputReaderPart<NonNullable<OPI>>): OpenAPISchema<OPI>;
-export declare function openAPIOutputPartSchema<OPI extends UCOPIBase>(part: UCOutputReaderPart<NonNullable<OPI>>): OpenAPISchema<UCOutputPart<OPI>>;
-export declare function openAPIOutputSchema<I extends UCInput | undefined = undefined, OPI0 extends UCOPIBase | undefined = undefined, OPI1 extends UCOPIBase | undefined = undefined>(uc: UC<I, OPI0, OPI1>): OpenAPISchema<UCOutput<OPI0, OPI1>> | null;
 export declare function openAPIParameters<I extends UCInput | undefined = undefined, OPI0 extends UCOPIBase | undefined = undefined, OPI1 extends UCOPIBase | undefined = undefined>(uc: UC<I, OPI0, OPI1>, envelope: Extract<HTTPDataEnvelope, 'query-params'>): OpenAPIParameter[];
 export declare function openAPIRequestBody<I extends UCInput | undefined = undefined, OPI0 extends UCOPIBase | undefined = undefined, OPI1 extends UCOPIBase | undefined = undefined>(uc: UC<I, OPI0, OPI1>, envelope: Extract<HTTPDataEnvelope, 'form-data' | 'json'>, fqUCInputName: FQUCInputName): OpenAPIRequestBody;
 export declare function openAPISecuritySchemes(authCookieName: AuthCookieName, publicApiKeyHeaderName: PublicApiKeyHeaderName): OpenAPISecuritySchemes;

@@ -1,23 +1,12 @@
-import type { DataType, FreeTextLong, FreeTextShort, HTTPMethod, HTTPStatusNumber, JSONSchemaType, SemVerVersion, URL } from '../../../dt/index.js';
+import type { FreeTextLong, FreeTextShort, HTTPMethod, HTTPStatusNumber, JSONSchemaObject, JSONSchemaProperty, SemVerVersion, URL } from '../../../dt/index.js';
 import type { ProductName } from '../../../product/index.js';
 import type { FQUCInputName, FQUCOPI0Name, FQUCOPI1Name, UCFieldKey } from '../../../uc/index.js';
-import type { StringKeys } from '../../../utils/index.js';
 import type { AUTHORIZATION_HEADER_NAME, AuthCookieName, PublicApiKeyHeaderName } from '../shared.js';
 export type OpenAPIPathName = string;
 export type OpenAPIDescription = FreeTextLong;
 export type OpenAPISchemaName = FQUCInputName | FQUCOPI0Name | FQUCOPI1Name | `Error`;
 export type OpenAPISchemaRef = `#/components/schemas/${OpenAPISchemaName}`;
 export type OpenAPISummary = FreeTextShort;
-export type OpenAPIProperty<T extends DataType> = JSONSchemaType & {
-    enum?: (T | null)[];
-    examples?: T[];
-};
-export interface OpenAPISchema<T extends object> {
-    additionalProperties: false;
-    properties: Record<StringKeys<T>, OpenAPIProperty<any>>;
-    required?: StringKeys<T>[];
-    type: 'object';
-}
 export type OpenAPISecurityItem = Partial<Record<keyof OpenAPISecuritySchemes, []>>;
 export type OpenAPISecurity = OpenAPISecurityItem[];
 export interface OpenAPISecurityScheme {
@@ -47,14 +36,14 @@ export interface OpenAPISecuritySchemes {
 }
 export interface OpenAPIComponents {
     securitySchemes: OpenAPISecuritySchemes;
-    schemas: Record<OpenAPISchemaName, OpenAPISchema<any>>;
+    schemas: Record<OpenAPISchemaName, JSONSchemaObject<any>>;
 }
 export interface OpenAPIParameter {
     description?: OpenAPIDescription;
     in: 'path' | 'query';
     name: UCFieldKey;
     required: boolean;
-    schema: OpenAPIProperty<any>;
+    schema: JSONSchemaProperty<any>;
 }
 export interface OpenAPIPath {
     description?: OpenAPIDescription;
@@ -68,7 +57,7 @@ export interface OpenAPIPath {
 export interface OpenAPIInnerContent {
     schema: {
         $ref: OpenAPISchemaRef;
-    } | OpenAPISchema<any>;
+    } | JSONSchemaObject<any>;
 }
 export type OpenAPIContent = {
     'application/json': OpenAPIInnerContent;

@@ -76,7 +76,7 @@ export { TUsername, type Username } from './final/TUsername.js';
 export { TUUID, type UUID } from './final/TUUID.js';
 export { TYear, type Year } from './final/TYear.js';
 export { TYesNo, type YesNo } from './final/TYesNo.js';
-export type { JSONSchemaNumberFormat, JSONSchemaObjectProperties, JSONSchemaStringFormat, JSONSchemaType, } from './targets/json-schema.js';
+export type { JSONSchemaNumberFormat, JSONSchemaObject, JSONSchemaProperty, JSONSchemaStringFormat, JSONSchemaType, } from './targets/json-schema.js';
 export type { RNInputMode } from './targets/rn.js';
 export type { HTMLInputType } from './targets/web.js';
 export { Validation, type Violation, type ViolationFormat, type ViolationI18n, type ViolationI18nable, type ViolationType, } from './Validation.js';

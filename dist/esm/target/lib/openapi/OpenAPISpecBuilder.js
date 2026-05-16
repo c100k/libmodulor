@@ -13,8 +13,10 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 import { inject, injectable } from 'inversify';
 import { WordingManager } from '../../../i18n/index.js';
 import { formatFQUCInputName, formatFQUCName, ucHTTPContract, } from '../../../uc/index.js';
+import { serverErrorJsonSchema } from '../json-schema/error.js';
+import { ucInputJsonSchema } from '../json-schema/input.js';
 import { DEFAULT_VERSION } from '../shared.js';
-import { openAPIErrorSchema, openAPIErrors, openAPIInputSchema, openAPIParameters, openAPIRequestBody, openAPISecurity, openAPISecuritySchemes, openAPISuccess, } from './funcs.js';
+import { openAPIErrors, openAPIParameters, openAPIRequestBody, openAPISecurity, openAPISecuritySchemes, openAPISuccess, } from './funcs.js';
 let OpenAPISpecBuilder = class OpenAPISpecBuilder {
     i18nManager;
     productManifest;
@@ -49,7 +51,7 @@ let OpenAPISpecBuilder = class OpenAPISpecBuilder {
             const fqUCName = formatFQUCName(uc.appManifest.name, uc.def.metadata.name);
             const fqUCInputName = formatFQUCInputName(fqUCName);
             output.spec.components.schemas[fqUCInputName] =
-                openAPIInputSchema(uc);
+                ucInputJsonSchema(uc);
             for (const p of [path, ...pathAliases]) {
                 output.spec.paths[p] = {
                     ...output.spec.paths[p],
@@ -71,7 +73,7 @@ let OpenAPISpecBuilder = class OpenAPISpecBuilder {
             spec: {
                 components: {
                     schemas: {
-                        Error: openAPIErrorSchema(),
+                        Error: serverErrorJsonSchema(),
                     },
                     securitySchemes: openAPISecuritySchemes(this.s().server_cookies_name_auth, this.s().server_public_api_key_header_name),
                 },
