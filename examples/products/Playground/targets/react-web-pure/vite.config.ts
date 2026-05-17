@@ -4,11 +4,15 @@ import { join } from 'node:path';
 
 import { defineConfig, type PluginOption } from 'vite';
 
+// With vite 8, the config loader pipeline does not rely on esbuild anymore.
+// It relies on oxc instead. But decorators are not implemented yet (see https://github.com/oxc-project/oxc/issues/9170).
+// Therefore, loading code from src/index.js triggers a `SyntaxError: Invalid or unexpected token`.
+// Hence the loading of constants directly from src/convention.js to avoid having to parse decorators to load this config.
 import {
     PRODUCT_TARGETS_DIR_NAME,
     PRODUCTS_ROOT_DIR_NAME,
-    type TargetName,
-} from '../../../../../dist/esm/index.js';
+} from '../../../../../dist/esm/convention.js';
+import type { TargetName } from '../../../../../dist/esm/index.js';
 import { Plugin } from '../../../../../dist/esm/index.vite.js';
 
 const projectRoot = process.cwd();

@@ -9,9 +9,12 @@ Improve and separate the JSONSchema/OpenAPI targets
 Improve the MCP Server stdio implementation :
 - Better error handling
 - Handling of sensitive use cases with a new `UCClientConfirmManager` implementation (Claude or any client now asks you to confirm before executing a sensitive use case, like a `confirm` in `web` or `Alert` in `rn`) : Rebind `UCClientConfirmManager` to `MCPStdioUCClientConfirmManager` in your target container to include it
-- **BREAKING** :
-    - Rename `NodeLocalStdioMCPServerManager` to `NodeMCPStdioServerManager`
-    - Rename `node-mcp-server` to `node-mcp-server-stdio` in the `pnpm libmodulor CreateTarget` command
+- **BREAKING** : Rename `NodeLocalStdioMCPServerManager` to `NodeMCPStdioServerManager`
+- **BREAKING** : Rename `node-mcp-server` to `node-mcp-server-stdio` in the `pnpm libmodulor CreateTarget` command
+
+Bump `vite` to `8.x` and `vitest` to `4.x`.
+
+See all the changes here : https://github.com/c100k/libmodulor/compare/v0.29.0...master
 
 ## v0.29.0 (2026-05-10)
 

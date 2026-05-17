@@ -103,8 +103,8 @@
         "@types/react-dom": "^19.2.3",
         "babel-plugin-parameter-decorator": "^1.0.16",
         "babel-plugin-transform-typescript-metadata": "^0.3.2",
-        "expo": "55.0.11",
-        "expo-document-picker": "~14.0.8",
+        "expo": "^55.0.24",
+        "expo-document-picker": "^14.0.8",
         "expo-image-picker": "^17.0.11",
         "react-native-safe-area-context": "^5.7.0",
         "wrangler": "^4.91.0",
@@ -132,8 +132,8 @@
         "reflect-metadata": "^0.2.2",
         "sqlite3": "^5.1.7",
         "typescript": "^6.0.3",
-        "vite": "^6.4.2",
-        "vitest": "^3.2.4",
+        "vite": "^8.0.13",
+        "vitest": "^4.1.6",
         "zod": "^4.4.3"
     },
     "peerDependenciesMeta": {
