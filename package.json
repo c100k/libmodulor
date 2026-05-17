@@ -97,7 +97,7 @@
         "test": "tsc && vitest run"
     },
     "devDependencies": {
-        "@biomejs/biome": "^2.4.14",
+        "@biomejs/biome": "^2.4.15",
         "@react-native-community/slider": "^4.5.7",
         "@types/react": "^19.2.14",
         "@types/react-dom": "^19.2.3",
@@ -107,18 +107,18 @@
         "expo-document-picker": "~14.0.8",
         "expo-image-picker": "^17.0.11",
         "react-native-safe-area-context": "^5.7.0",
-        "wrangler": "^4.90.0",
+        "wrangler": "^4.91.0",
         "zod": "^4.4.3"
     },
     "peerDependencies": {
         "@hono/node-server": "^1.19.14",
         "@modelcontextprotocol/sdk": "^1.29.0",
-        "@stricli/core": "^1.2.6",
+        "@stricli/core": "^1.2.7",
         "buffer": "^6.0.3",
         "cookie-parser": "^1.4.7",
         "express": "^5.2.1",
         "express-fileupload": "^1.5.2",
-        "fast-check": "^4.7.0",
+        "fast-check": "^4.8.0",
         "helmet": "^8.1.0",
         "hono": "^4.12.18",
         "inversify": "^7.11.0",
