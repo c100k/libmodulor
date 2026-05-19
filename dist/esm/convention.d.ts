@@ -1,4 +1,5 @@
 import type { AppName } from './app/index.js';
+import type { FileName } from './dt/index.js';
 import type { ProductName } from './product/index.js';
 import type { TargetName } from './target/index.js';
 import type { UCName } from './uc/index.js';
@@ -60,3 +61,4 @@ export declare const UC_POLICY_FILE_NAME_SUFFIX: string;
 export declare const PRODUCT_ROOT_FROM_PRODUCT_TARGET_PATH: string[];
 export declare const APPS_PATH_FROM_PRODUCT_TARGET_PATH: string[];
 export declare const TARGET_NAME_PLACEHOLDER: TargetName;
+export declare const TARGET_DEF_FILE_NAME: FileName;

@@ -1,3 +1,4 @@
+import type { UCDefLifecycle } from '../../uc/index.js';
 import type { EnumOf } from '../../utils/index.js';
 export declare const TARGETS: {
     readonly 'edge-worker-hono-server': "edge-worker-hono-server";
@@ -11,3 +12,32 @@ export declare const TARGETS: {
     readonly 'react-web-pure': "react-web-pure";
 };
 export type TargetName = EnumOf<typeof TARGETS>;
+export declare const TargetCapability: {
+    readonly FULL: "FULL";
+    readonly NOT_APPLICABLE: "NOT_APPLICABLE";
+    readonly PARTIAL: "PARTIAL";
+    readonly TODO: "TODO";
+};
+export type TargetCapability = EnumOf<typeof TargetCapability>;
+export interface TargetCapabilities {
+    authBasic: TargetCapability;
+    authJWT: TargetCapability;
+    authPrivKey: TargetCapability;
+    authPubKey: TargetCapability;
+    i18n: TargetCapability;
+    mcp: TargetCapability;
+    openapiSpec: TargetCapability;
+    streaming: TargetCapability;
+    ucAutoMounting: TargetCapability;
+    ucClientConfirm: TargetCapability;
+    ucInputFile: TargetCapability;
+    ucValidation: TargetCapability;
+}
+export declare const TARGET_CAPABILITIES_SAMPLE: TargetCapabilities;
+export interface TargetDef {
+    lifecycle: UCDefLifecycle;
+    capabilities: TargetCapabilities;
+}
+export interface TargetDefSrc {
+    DEF: TargetDef;
+}

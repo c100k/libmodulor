@@ -83,3 +83,4 @@ export const APPS_PATH_FROM_PRODUCT_TARGET_PATH = [
     APPS_ROOT_DIR_NAME, // src/apps
 ];
 export const TARGET_NAME_PLACEHOLDER = 'node-express-server';
+export const TARGET_DEF_FILE_NAME = 'def.ts';

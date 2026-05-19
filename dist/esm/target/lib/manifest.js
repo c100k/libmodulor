@@ -9,3 +9,23 @@ export const TARGETS = {
     'react-native-pure': 'react-native-pure',
     'react-web-pure': 'react-web-pure',
 };
+export const TargetCapability = {
+    FULL: 'FULL',
+    NOT_APPLICABLE: 'NOT_APPLICABLE',
+    PARTIAL: 'PARTIAL',
+    TODO: 'TODO',
+};
+export const TARGET_CAPABILITIES_SAMPLE = {
+    authBasic: TargetCapability.FULL,
+    authJWT: TargetCapability.FULL,
+    authPrivKey: TargetCapability.FULL,
+    authPubKey: TargetCapability.FULL,
+    i18n: TargetCapability.FULL,
+    mcp: TargetCapability.FULL,
+    openapiSpec: TargetCapability.FULL,
+    streaming: TargetCapability.FULL,
+    ucAutoMounting: TargetCapability.FULL,
+    ucClientConfirm: TargetCapability.FULL,
+    ucInputFile: TargetCapability.FULL,
+    ucValidation: TargetCapability.FULL,
+};
