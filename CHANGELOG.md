@@ -14,6 +14,8 @@ Improve the MCP Server stdio implementation :
 
 Bump `vite` to `8.x` and `vitest` to `4.x`.
 
+Add capabilities table for targets : https://libmodulor.c100k.eu/docs/references/targets.
+
 See all the changes here : https://github.com/c100k/libmodulor/compare/v0.29.0...master
 
 ## v0.29.0 (2026-05-10)
