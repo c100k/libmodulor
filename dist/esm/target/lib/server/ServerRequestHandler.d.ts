@@ -26,7 +26,7 @@ export interface ServerRequestHandlerRes {
     redirect: (location: URL | URLPath) => Promise<void>;
     setCookie: (info: AuthCookieCreatorOutput) => Promise<void>;
 }
-interface Input<I extends UCInput | undefined = undefined, OPI0 extends UCOPIBase | undefined = undefined, OPI1 extends UCOPIBase | undefined = undefined> {
+export interface ServerRequestHandlerInput<I extends UCInput | undefined = undefined, OPI0 extends UCOPIBase | undefined = undefined, OPI1 extends UCOPIBase | undefined = undefined> {
     appManifest: AppManifest;
     envelope: HTTPDataEnvelope;
     execOpts?: UCManagerExecServerOpts<OPI0, OPI1> | undefined;
@@ -41,15 +41,18 @@ interface Input<I extends UCInput | undefined = undefined, OPI0 extends UCOPIBas
     ucManager: UCManager;
 }
 type BodylessStatus = 204 | 302;
-type Output<OPI0 extends UCOPIBase | undefined = undefined, OPI1 extends UCOPIBase | undefined = undefined> = {
+type Output<OPI0 extends UCOPIBase | undefined = undefined, OPI1 extends UCOPIBase | undefined = undefined> = ({
     body: undefined;
     status: BodylessStatus;
 } | {
     body: UCOutput<OPI0, OPI1> | object;
+    rawErr?: Error;
     status: Exclude<HTTPStatusNumber, BodylessStatus>;
+}) & {
+    rawErr?: Error;
 };
 type S = Pick<ServerManagerSettings, 'server_cookies_name_auth' | 'server_public_api_key_header_name'>;
-export declare class ServerRequestHandler implements Worker<Input, Promise<Output>> {
+export declare class ServerRequestHandler implements Worker<ServerRequestHandlerInput, Promise<Output>> {
     private authCookieCreator;
     private authenticationChecker;
     private customerFacingErrorBuilder;
@@ -58,10 +61,9 @@ export declare class ServerRequestHandler implements Worker<Input, Promise<Outpu
     private requestLogger;
     private settingsManager;
     private ucBuilder;
-    private static X_FORWARDED_PROTO_HEADER_NAME;
     constructor(authCookieCreator: AuthCookieCreator, authenticationChecker: AuthenticationChecker, customerFacingErrorBuilder: CustomerFacingErrorBuilder, publicApiKeyChecker: PublicApiKeyChecker, requestChecker: RequestChecker, requestLogger: RequestLogger, settingsManager: SettingsManager<S>, ucBuilder: UCBuilder);
     s(): S;
-    exec<I extends UCInput | undefined = undefined, OPI0 extends UCOPIBase | undefined = undefined, OPI1 extends UCOPIBase | undefined = undefined>({ appManifest, envelope, execOpts, req, res, ucd, ucManager, }: Input<I, OPI0, OPI1>): Promise<Output<OPI0, OPI1>>;
+    exec<I extends UCInput | undefined = undefined, OPI0 extends UCOPIBase | undefined = undefined, OPI1 extends UCOPIBase | undefined = undefined>({ appManifest, envelope, execOpts, req, res, ucd, ucManager, }: ServerRequestHandlerInput<I, OPI0, OPI1>): Promise<Output<OPI0, OPI1>>;
     private fill;
     private applySideEffects;
     private applyClearAuthSideEffect;

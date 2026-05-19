@@ -10,11 +10,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
-var ServerRequestHandler_1;
 import { inject, injectable } from 'inversify';
 import { IllegalArgumentError, isEmptyJSON } from '../../../error/index.js';
 import { UCBuilder, UCOutputReader, UCOutputSideEffectType, } from '../../../uc/index.js';
-import { AUTHORIZATION_HEADER_NAME } from '../shared.js';
+import { AUTHORIZATION_HEADER_NAME, X_FORWARDED_PROTO_HEADER_NAME, } from '../shared.js';
 import { AuthCookieCreator, } from './AuthCookieCreator.js';
 import { AuthenticationChecker } from './AuthenticationChecker.js';
 import { CustomerFacingErrorBuilder } from './CustomerFacingErrorBuilder.js';
@@ -22,7 +21,6 @@ import { PublicApiKeyChecker } from './PublicApiKeyChecker.js';
 import { RequestChecker } from './RequestChecker.js';
 import { RequestLogger } from './RequestLogger.js';
 let ServerRequestHandler = class ServerRequestHandler {
-    static { ServerRequestHandler_1 = this; }
     authCookieCreator;
     authenticationChecker;
     customerFacingErrorBuilder;
@@ -31,7 +29,6 @@ let ServerRequestHandler = class ServerRequestHandler {
     requestLogger;
     settingsManager;
     ucBuilder;
-    static X_FORWARDED_PROTO_HEADER_NAME = 'X-Forwarded-Proto';
     constructor(authCookieCreator, authenticationChecker, customerFacingErrorBuilder, publicApiKeyChecker, requestChecker, requestLogger, settingsManager, ucBuilder) {
         this.authCookieCreator = authCookieCreator;
         this.authenticationChecker = authenticationChecker;
@@ -59,7 +56,7 @@ let ServerRequestHandler = class ServerRequestHandler {
             this.requestChecker.exec({
                 secure,
                 url,
-                xForwardedProtoHeader: await header(ServerRequestHandler_1.X_FORWARDED_PROTO_HEADER_NAME),
+                xForwardedProtoHeader: await header(X_FORWARDED_PROTO_HEADER_NAME),
             });
             const { ext, sec } = ucd;
             await this.publicApiKeyChecker.exec({
@@ -106,6 +103,7 @@ let ServerRequestHandler = class ServerRequestHandler {
             });
             return {
                 body: error.toObj(),
+                rawErr: err,
                 status: error.httpStatus,
             };
         }
@@ -186,7 +184,7 @@ let ServerRequestHandler = class ServerRequestHandler {
         res.setCookie(output);
     }
 };
-ServerRequestHandler = ServerRequestHandler_1 = __decorate([
+ServerRequestHandler = __decorate([
     injectable(),
     __param(0, inject(AuthCookieCreator)),
     __param(1, inject(AuthenticationChecker)),
