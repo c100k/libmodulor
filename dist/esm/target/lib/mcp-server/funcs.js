@@ -10,7 +10,7 @@ export function init(productManifest) {
     return new McpServer({
         name: name,
         version: version ?? DEFAULT_VERSION,
-    });
+    }, { capabilities: { logging: {} } });
 }
 export function resAborted() {
     return {

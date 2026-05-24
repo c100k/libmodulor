@@ -53,6 +53,12 @@
         "./node-mcp": {
             "import": "./dist/esm/index.node-mcp.js"
         },
+        "./node-mcp-express": {
+            "import": "./dist/esm/index.node-mcp-express.js"
+        },
+        "./node-mcp-hono": {
+            "import": "./dist/esm/index.node-mcp-hono.js"
+        },
         "./node-stricli-cli": {
             "import": "./dist/esm/index.node-stricli-cli.js"
         },

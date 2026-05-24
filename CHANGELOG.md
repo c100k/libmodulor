@@ -12,6 +12,16 @@ Improve the MCP Server stdio implementation :
 - **BREAKING** : Rename `NodeLocalStdioMCPServerManager` to `NodeMCPStdioServerManager`
 - **BREAKING** : Rename `node-mcp-server` to `node-mcp-server-stdio` in the `pnpm libmodulor CreateTarget` command
 
+Introduce the MCP Server HTTP Streamable implementation.
+It is disabled by default.
+To opt-in, simply open the server's `settings.ts` and set `server_expose_mcp: true`.
+When the server starts, the MCP tools are exposed on the fly and made available at `/mcp`.
+This path is customizable by setting `server_expose_mcp_at`.
+See it in action in the [Playground](https://libmodulor.c100k.eu/docs/examples/Playground) with [Claude](https://claude.com/download).
+**BREAKING** : Although it's not enabled, you must inject a `MCPHTTPRequestHandlerBuilder` alongside the binding of `ServerManager`.
+You can use `MCPHTTPExpressFakeRequestHandlerBuilder` or `MCPHTTPHonoFakeRequestHandlerBuilder` if you don't want to expose a MPC server.
+Otherwise, you can use their actual implementation counterpart : `MCPHTTPExpressProtocolRequestHandlerBuilder` or `MCPHTTPHonoProtocolRequestHandlerBuilder`.
+
 Bump `vite` to `8.x` and `vitest` to `4.x`.
 
 Add capabilities table for targets : https://libmodulor.c100k.eu/docs/references/targets.

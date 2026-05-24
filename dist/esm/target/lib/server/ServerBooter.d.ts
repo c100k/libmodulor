@@ -5,7 +5,7 @@ import type { TargetEntrypointInput } from '../entrypoint.js';
 import { OpenAPISpecBuilder } from '../openapi/OpenAPISpecBuilder.js';
 import { ServerInstaller } from './ServerInstaller.js';
 import type { ServerManager, ServerManagerSettings } from './ServerManager.js';
-type S = Pick<ServerManagerSettings, 'server_expose_openapi_spec' | 'server_expose_openapi_spec_at' | 'server_static_dir_path' | 'server_tmp_path'>;
+type S = Pick<ServerManagerSettings, 'server_expose_mcp' | 'server_expose_mcp_at' | 'server_expose_openapi_spec' | 'server_expose_openapi_spec_at' | 'server_static_dir_path' | 'server_tmp_path'>;
 type Input = TargetEntrypointInput & {
     autoMountUCs?: boolean;
 };

@@ -30,19 +30,21 @@ let NodeExpressServerManager = class NodeExpressServerManager {
     environmentManager;
     helmetMiddlewareBuilder;
     logger;
+    mcpHTTPRequestHandlerBuilder;
     serverRequestHandler;
     serverSSLCertLoader;
     settingsManager;
     ucManager;
     runtime;
     server;
-    constructor(corsMiddlewareBuilder, customerFacingErrorBuilder, entrypointsBuilder, environmentManager, helmetMiddlewareBuilder, logger, serverRequestHandler, serverSSLCertLoader, settingsManager, ucManager) {
+    constructor(corsMiddlewareBuilder, customerFacingErrorBuilder, entrypointsBuilder, environmentManager, helmetMiddlewareBuilder, logger, mcpHTTPRequestHandlerBuilder, serverRequestHandler, serverSSLCertLoader, settingsManager, ucManager) {
         this.corsMiddlewareBuilder = corsMiddlewareBuilder;
         this.customerFacingErrorBuilder = customerFacingErrorBuilder;
         this.entrypointsBuilder = entrypointsBuilder;
         this.environmentManager = environmentManager;
         this.helmetMiddlewareBuilder = helmetMiddlewareBuilder;
         this.logger = logger;
+        this.mcpHTTPRequestHandlerBuilder = mcpHTTPRequestHandlerBuilder;
         this.serverRequestHandler = serverRequestHandler;
         this.serverSSLCertLoader = serverSSLCertLoader;
         this.settingsManager = settingsManager;
@@ -78,6 +80,12 @@ let NodeExpressServerManager = class NodeExpressServerManager {
     }
     mountSync(appManifest, ucd, contract) {
         this.mountCommon(appManifest, ucd, contract);
+    }
+    async mountMCP(ucs, at) {
+        this.runtime.post(at, this.mcpHTTPRequestHandlerBuilder.exec({
+            ucManager: this.ucManager,
+            ucs,
+        }));
     }
     async mountOpenAPISpec(spec, at) {
         this.runtime.get(at, (_req, res) => {
@@ -119,13 +127,14 @@ NodeExpressServerManager = __decorate([
     __param(3, inject('EnvironmentManager')),
     __param(4, inject(HelmetMiddlewareBuilder)),
     __param(5, inject('Logger')),
-    __param(6, inject(ServerRequestHandler)),
-    __param(7, inject(ServerSSLCertLoader)),
-    __param(8, inject('SettingsManager')),
-    __param(9, inject('UCManager')),
+    __param(6, inject('MCPHTTPRequestHandlerBuilder')),
+    __param(7, inject(ServerRequestHandler)),
+    __param(8, inject(ServerSSLCertLoader)),
+    __param(9, inject('SettingsManager')),
+    __param(10, inject('UCManager')),
     __metadata("design:paramtypes", [CORSMiddlewareBuilder,
         CustomerFacingErrorBuilder,
-        EntrypointsBuilder, Object, HelmetMiddlewareBuilder, Object, ServerRequestHandler,
+        EntrypointsBuilder, Object, HelmetMiddlewareBuilder, Object, Object, ServerRequestHandler,
         ServerSSLCertLoader, Object, Object])
 ], NodeExpressServerManager);
 export { NodeExpressServerManager };

@@ -17,6 +17,7 @@ export { CONTAINER_OPTS } from './ioc/container.js';
 export type { Class } from './ioc/types.js';
 export { fmt as fmtNumber } from './numbers/fmt.js';
 export { baseFromSquareUnit, type CoreUnit, isSquareUnit, type SquareableUnit, type SquareUnit, type Unit, } from './numbers/units.js';
+export { defaultStreamOnClose } from './streams/funcs.js';
 export type { StreamConfig, StreamOnClose, StreamOnData, StreamOnDone, } from './streams/types.js';
 export { capitalize, isCapitalized } from './strings/capitalize.js';
 export { humanize } from './strings/humanize.js';

@@ -29,18 +29,20 @@ let NodeHonoServerManager = class NodeHonoServerManager {
     entrypointsBuilder;
     environmentManager;
     logger;
+    mcpHTTPRequestHandlerBuilder;
     serverRequestHandler;
     serverSSLCertLoader;
     settingsManager;
     ucManager;
     runtime;
     server;
-    constructor(corsMiddlewareBuilder, customerFacingErrorBuilder, entrypointsBuilder, environmentManager, logger, serverRequestHandler, serverSSLCertLoader, settingsManager, ucManager) {
+    constructor(corsMiddlewareBuilder, customerFacingErrorBuilder, entrypointsBuilder, environmentManager, logger, mcpHTTPRequestHandlerBuilder, serverRequestHandler, serverSSLCertLoader, settingsManager, ucManager) {
         this.corsMiddlewareBuilder = corsMiddlewareBuilder;
         this.customerFacingErrorBuilder = customerFacingErrorBuilder;
         this.entrypointsBuilder = entrypointsBuilder;
         this.environmentManager = environmentManager;
         this.logger = logger;
+        this.mcpHTTPRequestHandlerBuilder = mcpHTTPRequestHandlerBuilder;
         this.serverRequestHandler = serverRequestHandler;
         this.serverSSLCertLoader = serverSSLCertLoader;
         this.settingsManager = settingsManager;
@@ -74,6 +76,12 @@ let NodeHonoServerManager = class NodeHonoServerManager {
     }
     mountSync(appManifest, ucd, contract) {
         this.mountCommon(appManifest, ucd, contract);
+    }
+    async mountMCP(ucs, at) {
+        this.runtime.post(at, this.mcpHTTPRequestHandlerBuilder.exec({
+            ucManager: this.ucManager,
+            ucs,
+        }));
     }
     async mountOpenAPISpec(spec, at) {
         this.runtime.get(at, (c) => {
@@ -122,13 +130,14 @@ NodeHonoServerManager = __decorate([
     __param(2, inject(EntrypointsBuilder)),
     __param(3, inject('EnvironmentManager')),
     __param(4, inject('Logger')),
-    __param(5, inject(ServerRequestHandler)),
-    __param(6, inject(ServerSSLCertLoader)),
-    __param(7, inject('SettingsManager')),
-    __param(8, inject('UCManager')),
+    __param(5, inject('MCPHTTPRequestHandlerBuilder')),
+    __param(6, inject(ServerRequestHandler)),
+    __param(7, inject(ServerSSLCertLoader)),
+    __param(8, inject('SettingsManager')),
+    __param(9, inject('UCManager')),
     __metadata("design:paramtypes", [CORSMiddlewareBuilder,
         CustomerFacingErrorBuilder,
-        EntrypointsBuilder, Object, Object, ServerRequestHandler,
+        EntrypointsBuilder, Object, Object, Object, ServerRequestHandler,
         ServerSSLCertLoader, Object, Object])
 ], NodeHonoServerManager);
 export { NodeHonoServerManager };

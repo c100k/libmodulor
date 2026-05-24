@@ -1,8 +1,10 @@
-import type { Hono } from 'hono';
+import type { Hono, MiddlewareHandler } from 'hono';
 import type { AppManifest } from '../../app/index.js';
 import type { DirPath, URLPath } from '../../dt/index.js';
+import type { ProductUCsLoaderOutput } from '../../product/index.js';
 import type { Configurable, EnvironmentManager, Logger, SettingsManager } from '../../std/index.js';
 import type { UCDef, UCHTTPContract, UCInput, UCManager, UCOPIBase } from '../../uc/index.js';
+import type { MCPHTTPRequestHandlerBuilder } from '../lib/mcp-server/http/MCPHTTPRequestHandlerBuilder.js';
 import type { OpenAPISpec } from '../lib/openapi/types.js';
 import { CustomerFacingErrorBuilder } from '../lib/server/CustomerFacingErrorBuilder.js';
 import { EntrypointsBuilder } from '../lib/server/EntrypointsBuilder.js';
@@ -18,13 +20,14 @@ export declare class NodeHonoServerManager implements Configurable<S>, ServerMan
     private entrypointsBuilder;
     protected environmentManager: EnvironmentManager;
     private logger;
+    private mcpHTTPRequestHandlerBuilder;
     private serverRequestHandler;
     private serverSSLCertLoader;
     private settingsManager;
     private ucManager;
     protected runtime: Hono;
     private server;
-    constructor(corsMiddlewareBuilder: CORSMiddlewareBuilder, customerFacingErrorBuilder: CustomerFacingErrorBuilder, entrypointsBuilder: EntrypointsBuilder, environmentManager: EnvironmentManager, logger: Logger, serverRequestHandler: ServerRequestHandler, serverSSLCertLoader: ServerSSLCertLoader, settingsManager: SettingsManager<S>, ucManager: UCManager);
+    constructor(corsMiddlewareBuilder: CORSMiddlewareBuilder, customerFacingErrorBuilder: CustomerFacingErrorBuilder, entrypointsBuilder: EntrypointsBuilder, environmentManager: EnvironmentManager, logger: Logger, mcpHTTPRequestHandlerBuilder: MCPHTTPRequestHandlerBuilder<MiddlewareHandler>, serverRequestHandler: ServerRequestHandler, serverSSLCertLoader: ServerSSLCertLoader, settingsManager: SettingsManager<S>, ucManager: UCManager);
     s(): S;
     getRuntime(): Hono;
     overrideUCManager(ucManager: UCManager): void;
@@ -32,6 +35,7 @@ export declare class NodeHonoServerManager implements Configurable<S>, ServerMan
     initSync(): void;
     mount<I extends UCInput | undefined = undefined, OPI0 extends UCOPIBase | undefined = undefined, OPI1 extends UCOPIBase | undefined = undefined>(appManifest: AppManifest, ucd: UCDef<I, OPI0, OPI1>, contract: UCHTTPContract): Promise<void>;
     mountSync<I extends UCInput | undefined = undefined, OPI0 extends UCOPIBase | undefined = undefined, OPI1 extends UCOPIBase | undefined = undefined>(appManifest: AppManifest, ucd: UCDef<I, OPI0, OPI1>, contract: UCHTTPContract): void;
+    mountMCP(ucs: ProductUCsLoaderOutput, at: URLPath): Promise<void>;
     mountOpenAPISpec(spec: OpenAPISpec, at: URLPath): Promise<void>;
     mountStaticDir(dirPath: DirPath): Promise<void>;
     start(): Promise<void>;

@@ -1,5 +1,6 @@
 import type { AppManifest } from '../../../app/index.js';
 import type { ApiKey, DirPath, FilePath, HostPort, HTTPMethod, Password, URL, URLPath, Username } from '../../../dt/index.js';
+import type { ProductUCsLoaderOutput } from '../../../product/index.js';
 import type { Settings } from '../../../std/index.js';
 import type { UCDef, UCHTTPContract, UCInput, UCManager, UCOPIBase } from '../../../uc/index.js';
 import type { HTTPCSPValue } from '../../../utils/http/types.js';
@@ -25,6 +26,8 @@ export interface ServerManagerSettings extends ServerManagerAuthSettings, Settin
     server_cors_headers: HTTPHeaderName[];
     server_cors_methods: HTTPMethod[];
     server_cors_origins: URL[];
+    server_expose_mcp: boolean;
+    server_expose_mcp_at: URLPath;
     server_expose_openapi_spec: boolean;
     server_expose_openapi_spec_at: URLPath;
     server_public_api_key_header_name: PublicApiKeyHeaderName;
@@ -51,6 +54,11 @@ export interface ServerManager extends Initializable {
      * @param contract
      */
     mountSync<I extends UCInput | undefined = undefined, OPI0 extends UCOPIBase | undefined = undefined, OPI1 extends UCOPIBase | undefined = undefined>(appManifest: AppManifest, ucd: UCDef<I, OPI0, OPI1>, contract: UCHTTPContract): void;
+    /**
+     * Mount the MCP endpoint
+     * @param spec
+     */
+    mountMCP(ucs: ProductUCsLoaderOutput, at: URLPath): Promise<void>;
     /**
      * Mount the OpenAPI spec
      * @param spec

@@ -55,6 +55,9 @@ let SyncEdgeWorkerHonoServerManager = class SyncEdgeWorkerHonoServerManager {
     mountSync(appManifest, ucd, contract) {
         mountHandler(contract, this.runtime, buildHandler(appManifest, ucd, contract, this.serverRequestHandler, this.ucManager, (c) => this.beforeExec(c)));
     }
+    async mountMCP(_ucs, _at) {
+        throw new NotImplementedError('mountMCP');
+    }
     async mountOpenAPISpec(_spec, _at) {
         throw new NotImplementedError('mountOpenAPISpec');
     }

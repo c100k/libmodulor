@@ -21,6 +21,9 @@ let NextJSServerManager = class NextJSServerManager {
     mountSync(_appManifest, _ucd, _contract) {
         // Nothing to do
     }
+    async mountMCP(_ucs, _at) {
+        // Nothing to do
+    }
     async mountOpenAPISpec(_spec, _at) {
         // Nothing to do
     }

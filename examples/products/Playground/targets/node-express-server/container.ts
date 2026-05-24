@@ -15,6 +15,10 @@ import {
     bindServer,
     NodeExpressServerManager,
 } from '../../../../../dist/esm/index.node-express.js';
+import {
+    MCPHTTPExpressProtocolRequestHandlerBuilder,
+    type MCPHTTPExpressRequestHandlerBuilder,
+} from '../../../../../dist/esm/index.node-mcp-express.js';
 import { KnexUCDataStore } from '../../../../../dist/esm/index.uc-data-store-knex.js';
 import { I18n } from '../../i18n.js';
 import { Manifest } from '../../manifest.js';
@@ -31,6 +35,9 @@ bindProduct(container, Manifest, I18n);
 container.rebindSync<UCDataStore>('UCDataStore').to(KnexUCDataStore);
 
 container.bind<LLMManager>('LLMManager').to(MistralAILLMManager);
+container
+    .bind<MCPHTTPExpressRequestHandlerBuilder>('MCPHTTPRequestHandlerBuilder')
+    .to(MCPHTTPExpressProtocolRequestHandlerBuilder);
 container.bind<ServerManager>('ServerManager').to(NodeExpressServerManager);
 
 export default container;

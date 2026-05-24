@@ -15,6 +15,10 @@ import {
     bindServer,
     NodeHonoServerManager,
 } from '../../../../../dist/esm/index.node-hono.js';
+import {
+    MCPHTTPHonoProtocolRequestHandlerBuilder,
+    type MCPHTTPHonoRequestHandlerBuilder,
+} from '../../../../../dist/esm/index.node-mcp-hono.js';
 import { KnexUCDataStore } from '../../../../../dist/esm/index.uc-data-store-knex.js';
 import { I18n } from '../../i18n.js';
 import { Manifest } from '../../manifest.js';
@@ -31,6 +35,9 @@ bindProduct(container, Manifest, I18n);
 container.rebindSync<UCDataStore>('UCDataStore').to(KnexUCDataStore);
 
 container.bind<LLMManager>('LLMManager').to(MistralAILLMManager);
+container
+    .bind<MCPHTTPHonoRequestHandlerBuilder>('MCPHTTPRequestHandlerBuilder')
+    .to(MCPHTTPHonoProtocolRequestHandlerBuilder);
 container.bind<ServerManager>('ServerManager').to(NodeHonoServerManager);
 
 export default container;

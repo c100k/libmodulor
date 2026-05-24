@@ -26,6 +26,7 @@ export interface TargetCapabilities {
     authPubKey: TargetCapability;
     i18n: TargetCapability;
     mcp: TargetCapability;
+    mcpOAuth: TargetCapability;
     openapiSpec: TargetCapability;
     streaming: TargetCapability;
     ucAutoMounting: TargetCapability;

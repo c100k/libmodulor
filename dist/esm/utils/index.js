@@ -11,6 +11,7 @@ export { bindFactory } from './ioc/bindFactory.js';
 export { CONTAINER_OPTS } from './ioc/container.js';
 export { fmt as fmtNumber } from './numbers/fmt.js';
 export { baseFromSquareUnit, isSquareUnit, } from './numbers/units.js';
+export { defaultStreamOnClose } from './streams/funcs.js';
 export { capitalize, isCapitalized } from './strings/capitalize.js';
 export { humanize } from './strings/humanize.js';
 export { truncate } from './strings/truncate.js';

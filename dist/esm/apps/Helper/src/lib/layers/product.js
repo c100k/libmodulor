@@ -2,7 +2,7 @@ import { PRODUCT_I18N_FILE_NAME, PRODUCT_I18N_NAME, PRODUCT_MANIFEST_FILE_NAME, 
 import { I18N_DEFAULT_LANG } from '../../../../../i18n/index.js';
 import { LIB_NAME } from '../consts.js';
 const I18N_TS = `import type { ProductI18n } from '${LIB_NAME}';
-import { I18n${I18N_DEFAULT_LANG.toLocaleUpperCase()} } from 'libmodulor/locales/${I18N_DEFAULT_LANG}';
+import { I18n${I18N_DEFAULT_LANG.toLocaleUpperCase()} } from '${LIB_NAME}/locales/${I18N_DEFAULT_LANG}';
 
 export const ${PRODUCT_I18N_NAME} = {
     ${I18N_DEFAULT_LANG}: {

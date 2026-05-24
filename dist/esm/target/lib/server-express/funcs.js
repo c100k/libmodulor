@@ -1,7 +1,7 @@
 import cookieParser from 'cookie-parser';
 import express, {} from 'express';
 import fileUpload from 'express-fileupload';
-import { fmtSingleDataMsg, fmtSSEError, isError, SSE_HEADERS, } from '../../../utils/index.js';
+import { defaultStreamOnClose, fmtSingleDataMsg, fmtSSEError, isError, SSE_HEADERS, } from '../../../utils/index.js';
 export function buildHandler(appManifest, ucd, contract, serverRequestHandler, ucManager) {
     const { envelope } = contract;
     const handler = async (req, res) => {
@@ -15,11 +15,7 @@ export function buildHandler(appManifest, ucd, contract, serverRequestHandler, u
                 let streamedOnce = false;
                 execOpts = {
                     stream: {
-                        onClose: async () => {
-                            if (streamedOnce) {
-                                throw new Error('execOpts.stream.onClose needs to be set in the UC ServerMain');
-                            }
-                        },
+                        onClose: defaultStreamOnClose(streamedOnce),
                         onData: async (output) => {
                             streamedOnce = true;
                             if (!output) {

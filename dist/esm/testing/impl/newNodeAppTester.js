@@ -1,6 +1,7 @@
 import { Container } from 'inversify';
 import { TApiKey, TPassword, TUsername, } from '../../dt/index.js';
 import { STD_DEFAULT_JWT_MANAGER_SETTINGS, } from '../../std/index.js';
+import { MCPHTTPExpressFakeRequestHandlerBuilder } from '../../target/lib/mcp-server/http/express/MCPHTTPExpressFakeRequestHandlerBuilder.js';
 import { TARGET_DEFAULT_SERVER_MANAGER_SETTINGS } from '../../target/lib/server/consts.js';
 import { NodeExpressServerManager } from '../../target/node-express-server/NodeExpressServerManager.js';
 import { FAKE_USER_ADMIN, FAKE_USER_REGULAR } from '../../uc/index.js';
@@ -37,6 +38,10 @@ export async function newNodeAppTester(serverPortRangeStart, idx, args) {
     container
         .bind('ServerManager')
         .to(NodeExpressServerManager)
+        .inSingletonScope();
+    container
+        .bind('MCPHTTPRequestHandlerBuilder')
+        .to(MCPHTTPExpressFakeRequestHandlerBuilder)
         .inSingletonScope();
     container
         .bind('UCDefASTParser')

@@ -1,3 +1,4 @@
+export { MCPHTTPExpressFakeRequestHandlerBuilder } from './target/lib/mcp-server/http/express/MCPHTTPExpressFakeRequestHandlerBuilder.js';
 export { buildHandler, init, mountHandler, toFile, toReq, toRes, } from './target/lib/server-express/funcs.js';
 export { HelmetMiddlewareBuilder } from './target/lib/server-express/HelmetMiddlewareBuilder.js';
 export { NodeExpressServerManager } from './target/node-express-server/NodeExpressServerManager.js';

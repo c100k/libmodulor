@@ -22,6 +22,7 @@ export const TARGET_CAPABILITIES_SAMPLE = {
     authPubKey: TargetCapability.FULL,
     i18n: TargetCapability.FULL,
     mcp: TargetCapability.FULL,
+    mcpOAuth: TargetCapability.FULL,
     openapiSpec: TargetCapability.FULL,
     streaming: TargetCapability.FULL,
     ucAutoMounting: TargetCapability.FULL,

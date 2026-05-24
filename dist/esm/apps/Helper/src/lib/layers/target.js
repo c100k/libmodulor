@@ -56,6 +56,8 @@ import {
 import { bindNodeCore } from '${LIB_NAME}/node';
 import {
     bindServer,
+    type MCPHTTPExpressRequestHandlerBuilder,
+    MCPHTTPExpressFakeRequestHandlerBuilder,
     NodeExpressServerManager,
 } from '${LIB_NAME}/node-express';
 
@@ -69,6 +71,9 @@ bindNodeCore(container);
 bindServer(container);
 bindProduct(container, ${PRODUCT_MANIFEST_NAME}, ${PRODUCT_I18N_NAME});
 
+container
+    .bind<MCPHTTPExpressRequestHandlerBuilder>('MCPHTTPRequestHandlerBuilder')
+    .to(MCPHTTPExpressFakeRequestHandlerBuilder);
 container.bind<ServerManager>('ServerManager').to(NodeExpressServerManager);
 
 export default container;
@@ -84,6 +89,8 @@ import {
 import { bindNodeCore } from '${LIB_NAME}/node';
 import {
     bindServer,
+    type MCPHTTPHonoRequestHandlerBuilder,
+    MCPHTTPHonoFakeRequestHandlerBuilder,
     NodeHonoServerManager,
 } from '${LIB_NAME}/node-hono';
 
@@ -97,6 +104,9 @@ bindNodeCore(container);
 bindServer(container);
 bindProduct(container, ${PRODUCT_MANIFEST_NAME}, ${PRODUCT_I18N_NAME});
 
+container
+    .bind<MCPHTTPHonoRequestHandlerBuilder>('MCPHTTPRequestHandlerBuilder')
+    .to(MCPHTTPHonoFakeRequestHandlerBuilder);
 container.bind<ServerManager>('ServerManager').to(NodeHonoServerManager);
 
 export default container;

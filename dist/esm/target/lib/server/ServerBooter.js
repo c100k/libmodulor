@@ -43,6 +43,8 @@ let ServerBooter = class ServerBooter {
     }
     s() {
         return {
+            server_expose_mcp: this.settingsManager.get()('server_expose_mcp'),
+            server_expose_mcp_at: this.settingsManager.get()('server_expose_mcp_at'),
             server_expose_openapi_spec: this.settingsManager.get()('server_expose_openapi_spec'),
             server_expose_openapi_spec_at: this.settingsManager.get()('server_expose_openapi_spec_at'),
             server_static_dir_path: this.settingsManager.get()('server_static_dir_path'),
@@ -96,6 +98,14 @@ let ServerBooter = class ServerBooter {
                 ucs: mountedUCs,
             });
             await this.serverManager.mountOpenAPISpec(spec, at);
+        }
+        if (this.s().server_expose_mcp) {
+            const at = this.s().server_expose_mcp_at;
+            this.logger.info('Mounting MCP', {
+                at,
+                mountedUCs: mountedUCs.length,
+            });
+            await this.serverManager.mountMCP(mountedUCs, at);
         }
         await this.serverManager.warmUp();
         await this.serverManager.start();

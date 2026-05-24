@@ -1,6 +1,7 @@
 import type { Hono } from 'hono';
 import type { AppManifest } from '../../app/index.js';
 import type { DirPath, URLPath } from '../../dt/index.js';
+import type { ProductUCsLoaderOutput } from '../../product/index.js';
 import type { Configurable, SettingsManager } from '../../std/index.js';
 import type { UCDataStore, UCDef, UCHTTPContract, UCInput, UCManager, UCOPIBase } from '../../uc/index.js';
 import type { OpenAPISpec } from '../lib/openapi/types.js';
@@ -28,6 +29,7 @@ export declare class SyncEdgeWorkerHonoServerManager implements Configurable<S>,
     initSync(): void;
     mount<I extends UCInput | undefined = undefined, OPI0 extends UCOPIBase | undefined = undefined, OPI1 extends UCOPIBase | undefined = undefined>(_appManifest: AppManifest, _ucd: UCDef<I, OPI0, OPI1>, _contract: UCHTTPContract): Promise<void>;
     mountSync<I extends UCInput | undefined = undefined, OPI0 extends UCOPIBase | undefined = undefined, OPI1 extends UCOPIBase | undefined = undefined>(appManifest: AppManifest, ucd: UCDef<I, OPI0, OPI1>, contract: UCHTTPContract): void;
+    mountMCP(_ucs: ProductUCsLoaderOutput, _at: URLPath): Promise<void>;
     mountOpenAPISpec(_spec: OpenAPISpec, _at: URLPath): Promise<void>;
     mountStaticDir(_dirPath: DirPath): Promise<void>;
     start(): Promise<void>;

@@ -45,7 +45,7 @@ let ServerRequestHandler = class ServerRequestHandler {
             server_public_api_key_header_name: this.settingsManager.get()('server_public_api_key_header_name'),
         };
     }
-    async exec({ appManifest, envelope, execOpts, req, res, ucd, ucManager, }) {
+    async exec({ appManifest, envelope, execOpts, req, res, skipSideEffects = false, ucd, ucManager, }) {
         try {
             const { bodyRaw, cookie, header, method, secure, url } = req;
             this.requestLogger.exec({
@@ -78,12 +78,14 @@ let ServerRequestHandler = class ServerRequestHandler {
             }
             await this.fill(req, envelope, uc);
             const output = await ucManager.execServer(uc, execOpts);
-            const { status } = await this.applySideEffects(res, ucd, output);
-            if (status !== undefined) {
-                return {
-                    body: undefined,
-                    status,
-                };
+            if (!skipSideEffects) {
+                const { status } = await this.applySideEffects(res, ucd, output);
+                if (status !== undefined) {
+                    return {
+                        body: undefined,
+                        status,
+                    };
+                }
             }
             if (!output) {
                 return {

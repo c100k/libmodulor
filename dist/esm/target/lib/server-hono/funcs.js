@@ -3,7 +3,7 @@ import { deleteCookie, getCookie, setCookie } from 'hono/cookie';
 import { logger } from 'hono/logger';
 import { secureHeaders } from 'hono/secure-headers';
 import { NotFoundError } from '../../../error/index.js';
-import { fmtSingleDataMsg, fmtSSEError, fromFormData, isError, SSE_HEADERS, } from '../../../utils/index.js';
+import { defaultStreamOnClose, fmtSingleDataMsg, fmtSSEError, fromFormData, isError, SSE_HEADERS, } from '../../../utils/index.js';
 export function buildHandler(appManifest, ucd, contract, serverRequestHandler, ucManager, beforeExec) {
     const { envelope } = contract;
     const handler = async (c) => {
@@ -28,10 +28,12 @@ export function buildHandler(appManifest, ucd, contract, serverRequestHandler, u
                             ctrl.close();
                             closed = true;
                         };
+                        let streamedOnce = false;
                         execOpts = {
                             stream: {
-                                onClose: async () => { },
+                                onClose: defaultStreamOnClose(streamedOnce),
                                 onData: async (output) => {
+                                    streamedOnce = true;
                                     if (!output || closed) {
                                         return;
                                     }

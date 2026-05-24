@@ -10,6 +10,7 @@ type S = Pick<
     | 'server_cors_headers'
     | 'server_cors_methods'
     | 'server_cors_origins'
+    | 'server_expose_mcp'
     | 'server_expose_openapi_spec'
 >;
 
@@ -25,5 +26,8 @@ export const DEFAULT_SERVER_SETTINGS: S = {
         // Redoc online
         'https://redocly.github.io',
     ],
+    // It must be accessed via https in some clients (e.g. Claude)
+    // For that, you can use ngrok : ngrok http 7443 => https://d3b8-2a01-cb15-44c-d600-dc0a-de7d-3444-36f5.ngrok-free.app/mcp
+    server_expose_mcp: true,
     server_expose_openapi_spec: true,
 };
