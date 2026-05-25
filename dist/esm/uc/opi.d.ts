@@ -1,4 +1,5 @@
-import type { DataType, UUID } from '../dt/index.js';
+import { type DataType, type UUID } from '../dt/index.js';
+import type { UCOutputPartDefFields } from './output-part.js';
 import type { Value } from './value.js';
 /**
  * Base interface all the use case OPI interfaces must extend
@@ -6,6 +7,7 @@ import type { Value } from './value.js';
 export interface UCOPIBase {
     id: UUID;
 }
+export declare const UCOPIBaseDefFields: UCOutputPartDefFields<UCOPIBase>;
 /**
  * A value returned as part of an OPI
  *

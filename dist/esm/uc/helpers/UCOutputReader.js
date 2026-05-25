@@ -1,4 +1,4 @@
-import { TUUID } from '../../dt/index.js';
+import { UCOPIBaseDefFields } from '../opi.js';
 import { UCOutputField } from '../UCOutputField.js';
 const ERR_NO_FIELD = (key) => `No field ${key} is defined for this use case`;
 const ERR_NO_IO_OUTPUT = 'No output is defined for this use case';
@@ -65,7 +65,7 @@ export class UCOutputReader {
             return undefined;
         }
         const { fields, layout, order, related } = partDef;
-        const allFields = { id: { type: new TUUID() }, ...fields };
+        const allFields = { ...UCOPIBaseDefFields, ...fields };
         const allFieldsKeys = order ?? Object.keys(allFields);
         let items = [];
         let total = 0;

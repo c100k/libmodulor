@@ -1,4 +1,4 @@
-import { UCOutputReader, ucofExamples, ucofIsMandatory, ucofRepeatability, } from '../../../uc/index.js';
+import { UCOPIBaseDefFields, UCOutputField, ucofExamples, ucofIsMandatory, ucofRepeatability, } from '../../../uc/index.js';
 export function ucofJsonSchemaDef(field) {
     const def = {
         internal: {},
@@ -47,8 +47,11 @@ export function ucOPIJsonSchema(part) {
         properties: {},
         type: 'object',
     };
-    for (const f of part.fields) {
-        const { key } = f;
+    const allFields = { ...UCOPIBaseDefFields, ...part.fields };
+    for (const entry of Object.entries(allFields)) {
+        const key = entry[0];
+        const fDef = entry[1];
+        const f = new UCOutputField(key, fDef);
         const { internal, spec } = ucofJsonSchemaDef(f);
         if (!spec) {
             continue;
@@ -101,8 +104,10 @@ export function ucOutputJsonSchema(uc) {
         properties: {},
         type: 'object',
     };
-    const ucor = new UCOutputReader(uc.def, undefined);
-    const [part0, part1] = ucor.parts();
+    const part0 = uc.def.io.o?.parts?._0;
+    if (!part0) {
+        return null;
+    }
     res.properties.parts = {
         additionalProperties: false,
         properties: {
@@ -111,11 +116,13 @@ export function ucOutputJsonSchema(uc) {
         required: ['_0'],
         type: 'object',
     };
-    if (part1) {
-        res.properties.parts.properties = {
-            _1: ucOutputPartJsonSchema(part1),
-        };
-        res.properties.parts.required?.push('_1');
+    const part1 = uc.def.io.o?.parts?._1;
+    if (!part1) {
+        return res;
     }
+    res.properties.parts.properties = {
+        _1: ucOutputPartJsonSchema(part1),
+    };
+    res.properties.parts.required?.push('_1');
     return res;
 }

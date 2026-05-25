@@ -1,8 +1,8 @@
-import { type DataType } from '../../dt/index.js';
+import type { DataType } from '../../dt/index.js';
 import type { StringKeys } from '../../utils/index.js';
 import type { UCDef } from '../def.js';
 import type { UCInput } from '../input.js';
-import type { UCOPIBase } from '../opi.js';
+import { type UCOPIBase } from '../opi.js';
 import type { UCOutput, UCOutputPartIdx, UCOutputPartKey } from '../output.js';
 import type { UCOutputPart, UCOutputPartDef } from '../output-part.js';
 import type { UC } from '../UC.js';
