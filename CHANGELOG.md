@@ -1,30 +1,42 @@
 # CHANGELOG
 
-## v0.30.0 (unreleased)
+## v0.30.0 (2026-05-25)
 
-Add cardinality to UC output field (so it is available in the OpenAPI output schema, and therefore MCP Tool).
+### ✨ Features
 
-Improve and separate the JSONSchema/OpenAPI targets
+- Added cardinality support for use case output fields.
+- Introduced target capability definitions to expose target features programmatically (see it in action here https://libmodulor.c100k.eu/docs/references/targets).
+- Added a fully local MCP stdio server implementation.
+- Added streamable HTTP support for MCP targets on Express and Hono.
+- Added an option to dangerously skip public API key and auth checks for MCP targets.
 
-Improve the MCP Server stdio implementation :
-- Better error handling
-- Handling of sensitive use cases with a new `UCClientConfirmManager` implementation (Claude or any client now asks you to confirm before executing a sensitive use case, like a `confirm` in `web` or `Alert` in `rn`) : Rebind `UCClientConfirmManager` to `MCPStdioUCClientConfirmManager` in your target container to include it
-- **BREAKING** : Rename `NodeLocalStdioMCPServerManager` to `NodeMCPStdioServerManager`
-- **BREAKING** : Rename `node-mcp-server` to `node-mcp-server-stdio` in the `pnpm libmodulor CreateTarget` command
+### 🛠 OpenAPI & JSON Schema
 
-Introduce the MCP Server HTTP Streamable implementation.
-It is disabled by default.
-To opt-in, simply open the server's `settings.ts` and set `server_expose_mcp: true`.
-When the server starts, the MCP tools are exposed on the fly and made available at `/mcp`.
-This path is customizable by setting `server_expose_mcp_at`.
-See it in action in the [Playground](https://libmodulor.c100k.eu/docs/examples/Playground) with [Claude](https://claude.com/download).
-**BREAKING** : Although it's not enabled, you must inject a `MCPHTTPRequestHandlerBuilder` alongside the binding of `ServerManager`.
-You can use `MCPHTTPExpressFakeRequestHandlerBuilder` or `MCPHTTPHonoFakeRequestHandlerBuilder` if you don't want to expose a MPC server.
-Otherwise, you can use their actual implementation counterpart : `MCPHTTPExpressProtocolRequestHandlerBuilder` or `MCPHTTPHonoProtocolRequestHandlerBuilder`.
+- Fixed OpenAPI target handling for:
+  - `null` schemas
+  - nullable schemas
+  - empty `204` responses
+  - missing `additionalProperties`
+  - missing required fields
+- Fixed JSON schema output generation to build schemas directly from definitions.
 
-Bump `vite` to `8.x` and `vitest` to `4.x`.
+### ♻️ Refactors
 
-Add capabilities table for targets : https://libmodulor.c100k.eu/docs/references/targets.
+- Renamed the MCP target to `node-mcp-server-stdio` (**breaking change**).
+- Exposed `rawErr` in `ServerRequestHandler`.
+- Harmonized import extensions across examples.
+
+### 📦 Dependencies
+
+- Bumped various minor and patch dependencies.
+- Upgraded:
+  - Vite → 8.x
+  - Vitest → 4.x
+
+### 📚 Documentation & Examples
+
+- Updated changelog and command documentation.
+- Adjusted Swagger example configuration to work correctly with CORS.
 
 See all the changes here : https://github.com/c100k/libmodulor/compare/v0.29.0...master
 
