@@ -15,12 +15,22 @@ import { ServerRequestHandler, } from '../server/ServerRequestHandler.js';
 import { resError, resObj } from './funcs.js';
 let MCPServerRequestHandler = class MCPServerRequestHandler {
     serverRequestHandler;
-    constructor(serverRequestHandler) {
+    settingsManager;
+    constructor(serverRequestHandler, settingsManager) {
         this.serverRequestHandler = serverRequestHandler;
+        this.settingsManager = settingsManager;
+    }
+    s() {
+        return {
+            server_mcp_dangerously_skip_auth_check: this.settingsManager.get()('server_mcp_dangerously_skip_auth_check'),
+            server_mcp_dangerously_skip_pub_api_key_check: this.settingsManager.get()('server_mcp_dangerously_skip_pub_api_key_check'),
+        };
     }
     async exec({ appManifest, envelope, execOpts, req, res, ucd, ucManager, }) {
         const { body, rawErr } = await this.serverRequestHandler.exec({
             appManifest,
+            dangerouslySkipAuthCheck: this.s().server_mcp_dangerously_skip_auth_check,
+            dangerouslySkipPubApiKeyCheck: this.s().server_mcp_dangerously_skip_pub_api_key_check,
             envelope,
             execOpts,
             req,
@@ -38,6 +48,7 @@ let MCPServerRequestHandler = class MCPServerRequestHandler {
 MCPServerRequestHandler = __decorate([
     injectable(),
     __param(0, inject(ServerRequestHandler)),
-    __metadata("design:paramtypes", [ServerRequestHandler])
+    __param(1, inject('SettingsManager')),
+    __metadata("design:paramtypes", [ServerRequestHandler, Object])
 ], MCPServerRequestHandler);
 export { MCPServerRequestHandler };

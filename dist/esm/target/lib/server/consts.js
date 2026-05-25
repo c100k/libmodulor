@@ -21,6 +21,8 @@ export const TARGET_DEFAULT_SERVER_MANAGER_SETTINGS = {
     server_expose_mcp_at: '/mcp',
     server_expose_openapi_spec: false,
     server_expose_openapi_spec_at: '/api/openapi.json',
+    server_mcp_dangerously_skip_auth_check: false,
+    server_mcp_dangerously_skip_pub_api_key_check: false,
     server_private_api_key_entries: [],
     server_public_api_key_entries: [unsafeDefaultSetting()],
     server_public_api_key_header_name: 'X-API-Key',

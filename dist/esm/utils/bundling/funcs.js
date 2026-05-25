@@ -15,6 +15,6 @@ export function assertTransformedCorrectly(transformed, fileName) {
     if (match !== null) {
         // biome-ignore lint/suspicious/noConsole: we want it
         console.warn(transformed);
-        throw new Error(`[WARNING] The following file might not have been transformed correctly : ${fileName} (see transformed above)`);
+        throw new Error(`The following file might not have been transformed correctly : ${fileName} (see transformed above)`);
     }
 }

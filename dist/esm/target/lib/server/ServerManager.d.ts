@@ -30,6 +30,8 @@ export interface ServerManagerSettings extends ServerManagerAuthSettings, Settin
     server_expose_mcp_at: URLPath;
     server_expose_openapi_spec: boolean;
     server_expose_openapi_spec_at: URLPath;
+    server_mcp_dangerously_skip_pub_api_key_check: boolean;
+    server_mcp_dangerously_skip_auth_check: boolean;
     server_public_api_key_header_name: PublicApiKeyHeaderName;
     server_public_url: URL;
     server_ssl_fullchain_path: FilePath | null;

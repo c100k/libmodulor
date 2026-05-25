@@ -12,6 +12,8 @@ type S = Pick<
     | 'server_cors_origins'
     | 'server_expose_mcp'
     | 'server_expose_openapi_spec'
+    | 'server_mcp_dangerously_skip_auth_check'
+    | 'server_mcp_dangerously_skip_pub_api_key_check'
 >;
 
 export const DEFAULT_SERVER_SETTINGS: S = {
@@ -30,4 +32,6 @@ export const DEFAULT_SERVER_SETTINGS: S = {
     // For that, you can use ngrok : ngrok http 7443 => https://d3b8-2a01-cb15-44c-d600-dc0a-de7d-3444-36f5.ngrok-free.app/mcp
     server_expose_mcp: true,
     server_expose_openapi_spec: true,
+    server_mcp_dangerously_skip_auth_check: true,
+    server_mcp_dangerously_skip_pub_api_key_check: true,
 };

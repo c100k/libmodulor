@@ -11,7 +11,7 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
 import { inject, injectable } from 'inversify';
-import { IllegalArgumentError, isEmptyJSON } from '../../../error/index.js';
+import { IllegalArgumentError, isEmptyJSON, logDevWarning, } from '../../../error/index.js';
 import { UCBuilder, UCOutputReader, UCOutputSideEffectType, } from '../../../uc/index.js';
 import { AUTHORIZATION_HEADER_NAME, X_FORWARDED_PROTO_HEADER_NAME, } from '../shared.js';
 import { AuthCookieCreator, } from './AuthCookieCreator.js';
@@ -45,7 +45,7 @@ let ServerRequestHandler = class ServerRequestHandler {
             server_public_api_key_header_name: this.settingsManager.get()('server_public_api_key_header_name'),
         };
     }
-    async exec({ appManifest, envelope, execOpts, req, res, skipSideEffects = false, ucd, ucManager, }) {
+    async exec({ appManifest, dangerouslySkipAuthCheck = false, dangerouslySkipPubApiKeyCheck = false, envelope, execOpts, req, res, skipSideEffects = false, ucd, ucManager, }) {
         try {
             const { bodyRaw, cookie, header, method, secure, url } = req;
             this.requestLogger.exec({
@@ -59,22 +59,32 @@ let ServerRequestHandler = class ServerRequestHandler {
                 xForwardedProtoHeader: await header(X_FORWARDED_PROTO_HEADER_NAME),
             });
             const { ext, sec } = ucd;
-            await this.publicApiKeyChecker.exec({
-                checkType: sec?.publicApiKeyCheckType,
-                value: await header(this.s().server_public_api_key_header_name),
-            });
+            if (dangerouslySkipPubApiKeyCheck) {
+                logDevWarning('Skipping pub api key check');
+            }
+            else {
+                await this.publicApiKeyChecker.exec({
+                    checkType: sec?.publicApiKeyCheckType,
+                    value: await header(this.s().server_public_api_key_header_name),
+                });
+            }
             const uc = this.ucBuilder.exec({
                 appManifest,
                 auth: null,
                 def: ucd,
             });
-            const { auth } = await this.authenticationChecker.exec({
-                authCookie: await cookie(this.s().server_cookies_name_auth),
-                authorizationHeader: await header(AUTHORIZATION_HEADER_NAME),
-                uc,
-            });
-            if (auth) {
-                uc.auth = auth;
+            if (dangerouslySkipAuthCheck) {
+                logDevWarning('Skipping auth check');
+            }
+            else {
+                const { auth } = await this.authenticationChecker.exec({
+                    authCookie: await cookie(this.s().server_cookies_name_auth),
+                    authorizationHeader: await header(AUTHORIZATION_HEADER_NAME),
+                    uc,
+                });
+                if (auth) {
+                    uc.auth = auth;
+                }
             }
             await this.fill(req, envelope, uc);
             const output = await ucManager.execServer(uc, execOpts);

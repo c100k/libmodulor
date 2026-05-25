@@ -28,6 +28,8 @@ export interface ServerRequestHandlerRes {
 }
 export interface ServerRequestHandlerInput<I extends UCInput | undefined = undefined, OPI0 extends UCOPIBase | undefined = undefined, OPI1 extends UCOPIBase | undefined = undefined> {
     appManifest: AppManifest;
+    dangerouslySkipAuthCheck?: boolean | undefined;
+    dangerouslySkipPubApiKeyCheck?: boolean | undefined;
     envelope: HTTPDataEnvelope;
     execOpts?: UCManagerExecServerOpts<OPI0, OPI1> | undefined;
     req: ServerRequestHandlerReq;
@@ -64,7 +66,7 @@ export declare class ServerRequestHandler implements Worker<ServerRequestHandler
     private ucBuilder;
     constructor(authCookieCreator: AuthCookieCreator, authenticationChecker: AuthenticationChecker, customerFacingErrorBuilder: CustomerFacingErrorBuilder, publicApiKeyChecker: PublicApiKeyChecker, requestChecker: RequestChecker, requestLogger: RequestLogger, settingsManager: SettingsManager<S>, ucBuilder: UCBuilder);
     s(): S;
-    exec<I extends UCInput | undefined = undefined, OPI0 extends UCOPIBase | undefined = undefined, OPI1 extends UCOPIBase | undefined = undefined>({ appManifest, envelope, execOpts, req, res, skipSideEffects, ucd, ucManager, }: ServerRequestHandlerInput<I, OPI0, OPI1>): Promise<Output<OPI0, OPI1>>;
+    exec<I extends UCInput | undefined = undefined, OPI0 extends UCOPIBase | undefined = undefined, OPI1 extends UCOPIBase | undefined = undefined>({ appManifest, dangerouslySkipAuthCheck, dangerouslySkipPubApiKeyCheck, envelope, execOpts, req, res, skipSideEffects, ucd, ucManager, }: ServerRequestHandlerInput<I, OPI0, OPI1>): Promise<Output<OPI0, OPI1>>;
     private fill;
     private applySideEffects;
     private applyClearAuthSideEffect;

@@ -12,6 +12,10 @@ export const ERROR_HTTP_STATUS_MAP = new Map([
     [500, InternalServerError],
     [503, UnavailableError],
 ]);
+export function logDevWarning(message) {
+    // biome-ignore lint/suspicious/noConsole: we want it
+    console.warn(`\x1b[1m\x1b[33m[WARNING] ${message}\x1b[0m`);
+}
 export function isEmptyJSON(err) {
     return (err instanceof Error &&
         err.message.toLowerCase().includes('unexpected end of json input'));
