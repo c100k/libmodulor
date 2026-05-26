@@ -21,7 +21,7 @@ export const DEFAULT_SERVER_SETTINGS: S = {
     server_cors_headers: TARGET_USUAL_SERVER_MANAGER_CORS_HEADERS,
     server_cors_methods: TARGET_USUAL_SERVER_MANAGER_CORS_METHODS,
     server_cors_origins: [
-        // SwaggerUI local with : docker run -p 8082:8080 -e SWAGGER_JSON_URL=http://localhost:7443/api/openapi.json WITH_CREDENTIALS=true swaggerapi/swagger-ui:v5.32.5
+        // SwaggerUI local with : docker run -p 8082:8080 -e SWAGGER_JSON_URL=http://localhost:7443/api/openapi.json -e WITH_CREDENTIALS=true swaggerapi/swagger-ui:v5.32.5
         'http://localhost:8082',
         // SwaggerUI online
         'https://editor.swagger.io',
