@@ -30,19 +30,20 @@ let AuthenticationChecker = class AuthenticationChecker {
         this.ucPolicyFactory = ucPolicyFactory;
     }
     async exec({ authCookie, authorizationHeader, uc, }) {
+        const { lifecycle: { server }, sec, } = uc.def;
+        const authType = sec?.authType ?? DEFAULT_UC_SEC_AT;
         this.logger.trace('Checking auth', {
             authCookie,
             authorizationHeader,
+            authType,
         });
         const output = {
             allowed: false, // By default it's not allowed
             auth: null,
         };
-        const { lifecycle: { server }, sec, } = uc.def;
         if (typeof server !== 'object') {
             return output;
         }
-        const authType = sec?.authType ?? DEFAULT_UC_SEC_AT;
         const policy = (await this.ucPolicyFactory(server.policy));
         const canBeExecutedPreAuth = await policy.canBeExecutedPreAuth();
         if (canBeExecutedPreAuth) {
@@ -53,29 +54,33 @@ let AuthenticationChecker = class AuthenticationChecker {
         }
         else {
             // Follows the OpenAPI spec : https://swagger.io/docs/specification/authentication
+            const fromAuthHeader = authorizationHeader && !Array.isArray(authorizationHeader)
+                ? authorizationHeader
+                : undefined;
+            const fromCookie = authCookie && !Array.isArray(authCookie)
+                ? authCookie
+                : undefined;
             switch (authType) {
                 case 'apiKey':
-                    if (authorizationHeader &&
-                        !Array.isArray(authorizationHeader)) {
+                    if (fromAuthHeader) {
                         output.auth =
                             await this.privateApiKeyAuthenticationChecker.exec({
-                                rawValue: authorizationHeader,
+                                rawValue: fromAuthHeader,
                             });
                     }
                     break;
                 case 'basic':
-                    if (authorizationHeader &&
-                        !Array.isArray(authorizationHeader)) {
+                    if (fromAuthHeader) {
                         output.auth =
                             await this.basicAuthenticationChecker.exec({
-                                rawValue: authorizationHeader,
+                                rawValue: fromAuthHeader,
                             });
                     }
                     break;
                 case 'jwt':
-                    if (authCookie && !Array.isArray(authCookie)) {
+                    if (fromCookie || fromAuthHeader) {
                         output.auth = await this.jwtAuthenticationChecker.exec({
-                            rawValue: authCookie,
+                            rawValue: fromCookie ?? fromAuthHeader,
                         });
                     }
                     break;

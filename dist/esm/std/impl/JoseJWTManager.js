@@ -34,10 +34,10 @@ let JoseJWTManager = class JoseJWTManager {
         };
     }
     async decode(value, opts) {
-        const { alg } = decodeProtectedHeader(value);
-        assertIsDefined(alg, 'alg');
-        const secret = opts?.secret || this.s().jwt_manager_secret;
         try {
+            const { alg } = decodeProtectedHeader(value);
+            assertIsDefined(alg, 'alg');
+            const secret = opts?.secret || this.s().jwt_manager_secret;
             if (alg.startsWith('HS')) {
                 return (await jwtVerify(value, new TextEncoder().encode(secret))).payload;
             }
@@ -51,8 +51,13 @@ let JoseJWTManager = class JoseJWTManager {
             if (err instanceof JWSSignatureVerificationFailed) {
                 throw new UnauthorizedError();
             }
+            // See node_modules/jose/dist/webapi/util/decode_protected_header.js
+            if (err instanceof TypeError &&
+                err.message.toLowerCase().includes('invalid token')) {
+                throw new UnauthorizedError();
+            }
         }
-        throw new Error(`Unsupported alg ${alg}`);
+        throw new UnauthorizedError();
     }
     async decodeUnsafe(value) {
         const decoded = decodeJwt(value);

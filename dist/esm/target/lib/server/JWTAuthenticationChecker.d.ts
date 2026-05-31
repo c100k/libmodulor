@@ -9,6 +9,7 @@ export declare class JWTAuthenticationChecker implements Configurable<S>, Worker
     private jwtManager;
     private logger;
     private settingsManager;
+    private static PREFIXES;
     constructor(jwtManager: JWTManager, logger: Logger, settingsManager: SettingsManager<S>);
     s(): S;
     exec({ rawValue }: Input): Promise<Output | null>;

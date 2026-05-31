@@ -10,12 +10,18 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
+var JWTAuthenticationChecker_1;
 import { inject, injectable } from 'inversify';
 import { UnauthorizedError } from '../../../error/index.js';
 let JWTAuthenticationChecker = class JWTAuthenticationChecker {
+    static { JWTAuthenticationChecker_1 = this; }
     jwtManager;
     logger;
     settingsManager;
+    static PREFIXES = [
+        'Bearer',
+        'JWT',
+    ];
     constructor(jwtManager, logger, settingsManager) {
         this.jwtManager = jwtManager;
         this.logger = logger;
@@ -27,7 +33,10 @@ let JWTAuthenticationChecker = class JWTAuthenticationChecker {
         };
     }
     async exec({ rawValue }) {
-        const value = rawValue?.replace('JWT ', '');
+        let value = rawValue;
+        for (const p of JWTAuthenticationChecker_1.PREFIXES) {
+            value = value?.replaceAll(`${p} `, '');
+        }
         if (!value) {
             return null;
         }
@@ -68,7 +77,7 @@ let JWTAuthenticationChecker = class JWTAuthenticationChecker {
         return false;
     }
 };
-JWTAuthenticationChecker = __decorate([
+JWTAuthenticationChecker = JWTAuthenticationChecker_1 = __decorate([
     injectable(),
     __param(0, inject('JWTManager')),
     __param(1, inject('Logger')),

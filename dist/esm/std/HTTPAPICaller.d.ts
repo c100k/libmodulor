@@ -12,8 +12,9 @@ export interface HTTPAPICallerHeaders {
     'Content-Type'?: HTTPContentType;
     Cookie?: string;
 }
+export type HTTPAPICallerAuthorizationHeaderPrefix = 'AWS4-HMAC-SHA256' | 'Basic' | 'Bearer' | 'JWT' | 'OAuth';
 export interface HTTPAPICallerAuthorizationHeader {
-    prefix?: 'AWS4-HMAC-SHA256' | 'Basic' | 'Bearer' | 'JWT' | 'OAuth';
+    prefix?: HTTPAPICallerAuthorizationHeaderPrefix;
     value: ApiKey | JWT | Password;
 }
 export interface HTTPAPICallerBasicAuth {
