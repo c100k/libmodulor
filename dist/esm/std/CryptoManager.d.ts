@@ -1,7 +1,7 @@
 import type { Password, UIntQuantity, UUID } from '../dt/index.js';
 import type { Clearable } from '../utils/index.js';
 import type { BufferManagerBase64String } from './BufferManager.js';
-export type CryptoManagerBinaryToTextEncoding = 'hex';
+export type CryptoManagerBinaryToTextEncoding = 'base64' | 'base64url' | 'hex';
 export type CryptoManagerHash = string;
 export type CryptoManagerHashAlgorithm = 'sha1' | 'sha256' | 'sha512';
 export type CryptoManagerHMACKey = string;
