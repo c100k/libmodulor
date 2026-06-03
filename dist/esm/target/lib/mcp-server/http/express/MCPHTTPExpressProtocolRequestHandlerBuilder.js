@@ -16,21 +16,31 @@ import { WordingManager } from '../../../../../i18n/index.js';
 import { ucMountingPoint, } from '../../../../../uc/index.js';
 import { toReq, toRes } from '../../../server-express/funcs.js';
 import { init, toolConfig } from '../../funcs.js';
+import { MCPServerRequestChecker } from '../../MCPServerRequestChecker.js';
 import { MCPServerRequestHandler } from '../../MCPServerRequestHandler.js';
 import { ucStreamExecOpts } from '../funcs.js';
 let MCPHTTPExpressProtocolRequestHandlerBuilder = class MCPHTTPExpressProtocolRequestHandlerBuilder {
     logger;
     productManifest;
+    serverRequestChecker;
     serverRequestHandler;
     wordingManager;
-    constructor(logger, productManifest, serverRequestHandler, wordingManager) {
+    constructor(logger, productManifest, serverRequestChecker, serverRequestHandler, wordingManager) {
         this.logger = logger;
         this.productManifest = productManifest;
+        this.serverRequestChecker = serverRequestChecker;
         this.serverRequestHandler = serverRequestHandler;
         this.wordingManager = wordingManager;
     }
     exec({ ucs, ucManager, }) {
         return async (req, res) => {
+            const { status } = await this.serverRequestChecker.exec({
+                req: toReq(req),
+            });
+            if (status) {
+                res.status(status).json({});
+                return;
+            }
             const server = init(this.productManifest);
             const transport = new StreamableHTTPServerTransport();
             // In Streamable HTTP, there is usually one request => one transport => one server.
@@ -80,9 +90,11 @@ MCPHTTPExpressProtocolRequestHandlerBuilder = __decorate([
     injectable(),
     __param(0, inject('Logger')),
     __param(1, inject('ProductManifest')),
-    __param(2, inject(MCPServerRequestHandler)),
-    __param(3, inject(WordingManager)),
-    __metadata("design:paramtypes", [Object, Object, MCPServerRequestHandler,
+    __param(2, inject(MCPServerRequestChecker)),
+    __param(3, inject(MCPServerRequestHandler)),
+    __param(4, inject(WordingManager)),
+    __metadata("design:paramtypes", [Object, Object, MCPServerRequestChecker,
+        MCPServerRequestHandler,
         WordingManager])
 ], MCPHTTPExpressProtocolRequestHandlerBuilder);
 export { MCPHTTPExpressProtocolRequestHandlerBuilder };
