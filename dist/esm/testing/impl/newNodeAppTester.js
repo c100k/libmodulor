@@ -1,5 +1,6 @@
 import { Container } from 'inversify';
 import { TApiKey, TPassword, TUsername, } from '../../dt/index.js';
+import { StaticSettingsManager } from '../../std/impl/StaticSettingsManager.js';
 import { STD_DEFAULT_JWT_MANAGER_SETTINGS, } from '../../std/index.js';
 import { MCPHTTPExpressFakeRequestHandlerBuilder } from '../../target/lib/mcp-server/http/express/MCPHTTPExpressFakeRequestHandlerBuilder.js';
 import { TARGET_DEFAULT_SERVER_MANAGER_SETTINGS } from '../../target/lib/server/consts.js';
@@ -34,6 +35,12 @@ export async function newNodeAppTester(serverPortRangeStart, idx, args) {
     updateSettings(container, settings);
     bindNodeCore(container);
     bindServer(container);
+    // bindCommon binds it to StaticSettingsManager.
+    // But bindNodeCore binds it to EnvSettingsManager.
+    // Tests must be env-agnostic and run with static settings.
+    (await container.rebind('SettingsManager'))
+        .to(StaticSettingsManager)
+        .inSingletonScope();
     container.bind('AppDocsEmitter').to(SimpleAppDocsEmitter);
     container
         .bind('ServerManager')

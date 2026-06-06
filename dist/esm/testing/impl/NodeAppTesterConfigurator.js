@@ -4,6 +4,7 @@ import { FakeFSManager } from '../../std/impl/FakeFSManager.js';
 import { FakeHTTPAPICallExecutor } from '../../std/impl/FakeHTTPAPICallExecutor.js';
 import { NodeDeterministicCryptoManager } from '../../std/impl/NodeDeterministicCryptoManager.js';
 import { SimpleFormDataBuilder } from '../../std/impl/SimpleFormDataBuilder.js';
+import { StaticSettingsManager } from '../../std/impl/StaticSettingsManager.js';
 import { bindCommon } from '../../utils/ioc/bindCommon.js';
 import { bindNodeCore } from '../../utils/ioc/bindNodeCore.js';
 import { bindServer } from '../../utils/ioc/bindServer.js';
@@ -16,6 +17,12 @@ export class NodeAppTesterConfigurator {
         bindCommon(container);
         bindNodeCore(container);
         bindServer(container);
+        // bindCommon binds it to StaticSettingsManager.
+        // But bindNodeCore binds it to EnvSettingsManager.
+        // Tests must be env-agnostic and run with static settings.
+        (await container.rebind('SettingsManager'))
+            .to(StaticSettingsManager)
+            .inSingletonScope();
         (await container.rebind('ProductManifest')).toConstantValue({
             appReg: [{ name: ctx.appManifest.name }],
             name: PRODUCT_NAME_PLACEHOLDER,
