@@ -55,13 +55,19 @@ let SimpleHTTPAPICaller = class SimpleHTTPAPICaller {
         registerAbort?.(() => {
             abortController.abort();
         });
-        const response = await this.httpAPICallExecutor.fn()(url, {
-            agent,
-            body,
-            headers: reqHeaders,
-            method,
-            signal: abortController.signal,
-        });
+        let response;
+        try {
+            response = await this.httpAPICallExecutor.fn()(url, {
+                agent,
+                body,
+                headers: reqHeaders,
+                method,
+                signal: abortController.signal,
+            });
+        }
+        catch (err) {
+            throw new Error('err_unreachable', { cause: err });
+        }
         const { headers, status } = response;
         this.logger.trace('HTTPAPICaller', {
             body,
