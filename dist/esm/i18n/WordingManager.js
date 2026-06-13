@@ -50,10 +50,16 @@ let WordingManager = class WordingManager {
         }
         const parts = [];
         for (const [k, v] of Object.entries(constraints)) {
-            parts.push(
             // TODO : Consider moving up the type hierarchy to fetch the constr of the parent when missing
             // e.g. TFreeTextShort > TString
-            this.t(`dt_${type.tName()}_constr_${k}`, undefined, v));
+            const val = this.tOrNull(`dt_${type.tName()}_constr_${k}`, v);
+            if (!val) {
+                continue;
+            }
+            parts.push(val);
+        }
+        if (parts.length === 0) {
+            return null;
         }
         return parts;
     }
@@ -118,8 +124,10 @@ let WordingManager = class WordingManager {
         }
         return val;
     }
-    tOrNull(key) {
-        return this.i18nManager.tOrNull(key);
+    tOrNull(key, expected = undefined) {
+        return this.i18nManager.tOrNull(key, {
+            vars: expected ? { expected } : {},
+        });
     }
 };
 WordingManager = __decorate([
