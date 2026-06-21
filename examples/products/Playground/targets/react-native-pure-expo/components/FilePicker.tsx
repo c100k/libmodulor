@@ -16,7 +16,6 @@ export default function FilePicker({
 }: UCFormFieldControlProps<File>): ReactElement | null {
     const [internalValue, setInternalValue] = useState(f.getValue());
 
-    // biome-ignore lint/correctness/useExhaustiveDependencies: It is actually necessary because only `f` or `f.getValue` does not trigger the effect
     useEffect(() => {
         setInternalValue(f.getValue());
     }, [f.getValue()]);

@@ -5,7 +5,6 @@ export function useAction({ action, autoExec = false, confirm, onError, onInit, 
     const [errMsg, setErrMsg] = useState(null);
     const [execRes, setExecRes] = useState(null);
     const [execState, setExecState] = useState(onInit ? UCExecState.INITIALIZING : UCExecState.IDLE);
-    // biome-ignore lint/correctness/useExhaustiveDependencies : must run only once
     useEffect(() => {
         (async () => {
             if (execState === UCExecState.INITIALIZING) {

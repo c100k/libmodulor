@@ -21,9 +21,6 @@ export function useUC(appManifest, def, auth, opts) {
         }
         return v;
     });
-    // biome-ignore lint/correctness/useExhaustiveDependencies(appManifest): avoid infinite re-rendering
-    // biome-ignore lint/correctness/useExhaustiveDependencies(def): avoid infinite re-rendering
-    // biome-ignore lint/correctness/useExhaustiveDependencies(opts?.fillWith): avoid infinite re-rendering
     useEffect(() => {
         const v = new UC(appManifest, def, auth);
         if (opts?.fillWith) {

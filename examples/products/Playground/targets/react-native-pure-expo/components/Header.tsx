@@ -18,7 +18,6 @@ export default function Header(): ReactElement {
 
     const [{ desc, slogan }, setInfo] = useState(wordingManager.p());
 
-    // biome-ignore lint/correctness/useExhaustiveDependencies(lang): actually used in wordingManager
     useEffect(() => {
         setInfo(wordingManager.p());
     }, [lang, wordingManager]);
