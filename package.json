@@ -29,6 +29,9 @@
         "./cloudflare-worker-hono": {
             "import": "./dist/esm/index.cloudflare-worker-hono.js"
         },
+        "./instrumentation-otl": {
+            "import": "./dist/esm/index.instrumentation-otl.js"
+        },
         "./locales/de": {
             "import": "./dist/esm/i18n/locales/de.js"
         },
@@ -105,6 +108,11 @@
     "devDependencies": {
         "@babel/core": "^7.29.7",
         "@biomejs/biome": "^2.5.1",
+        "@opentelemetry/auto-instrumentations-node": "^0.77.0",
+        "@opentelemetry/exporter-trace-otlp-http": "^0.220.0",
+        "@opentelemetry/resources": "^2.8.0",
+        "@opentelemetry/sdk-node": "^0.220.0",
+        "@opentelemetry/semantic-conventions": "^1.41.1",
         "@react-native-community/slider": "^4.5.7",
         "@types/react": "^19.2.17",
         "@types/react-dom": "^19.2.3",
@@ -119,6 +127,8 @@
     "peerDependencies": {
         "@hono/node-server": "^1.19.14",
         "@modelcontextprotocol/sdk": "^1.29.0",
+        "@opentelemetry/api": "^1.9.1",
+        "@opentelemetry/instrumentation": "^0.220.0",
         "@stricli/core": "^1.2.8",
         "buffer": "^6.0.3",
         "cookie-parser": "^1.4.7",
@@ -143,6 +153,12 @@
         "zod": "^4.4.3"
     },
     "peerDependenciesMeta": {
+        "@opentelemetry/api": {
+            "optional": true
+        },
+        "@opentelemetry/instrumentation": {
+            "optional": true
+        },
         "@hono/node-server": {
             "optional": true
         },

@@ -1,3 +1,5 @@
+import '../../lib/instrumentation.js';
+
 import { ServerBooter } from '../../../../../dist/esm/index.js';
 import container from './container.js';
 

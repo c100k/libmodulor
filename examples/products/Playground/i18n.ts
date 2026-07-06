@@ -16,6 +16,7 @@ export const I18n = {
         // Voluntarily omitting some translations
         // ...StravaI18n.de,
         // ...TradingI18n.de,
+        jaeger_docker: 'Jaeger (Docker)',
         openapi_redoc_online: 'Redoc (Online)',
         openapi_spec: 'OpenAPI-Spezifikation',
         openapi_swagger_docker: 'Swagger UI (Docker)',
@@ -31,6 +32,7 @@ export const I18n = {
         ...SpotifyI18n.en,
         ...StravaI18n.en,
         ...TradingI18n.en,
+        jaeger_docker: 'Jaeger (Docker)',
         openapi_redoc_online: 'Redoc (Online)',
         openapi_spec: 'OpenAPI Spec',
         openapi_swagger_docker: 'Swagger UI (Docker)',
@@ -47,6 +49,7 @@ export const I18n = {
         // Voluntarily omitting some translations
         // ...StravaI18n.de,
         // ...TradingI18n.de,
+        jaeger_docker: 'Jaeger (Docker)',
         openapi_redoc_online: 'Redoc (En línea)',
         openapi_spec: 'Especificación OpenAPI',
         openapi_swagger_docker: 'Swagger UI (Docker)',
@@ -62,6 +65,7 @@ export const I18n = {
         ...SpotifyI18n.fr,
         ...StravaI18n.fr,
         ...TradingI18n.fr,
+        jaeger_docker: 'Jaeger (Docker)',
         openapi_redoc_online: 'Redoc (En ligne)',
         openapi_spec: 'Spec OpenAPI',
         openapi_swagger_docker: 'Swagger UI (Docker)',
