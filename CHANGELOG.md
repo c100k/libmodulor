@@ -1,6 +1,28 @@
 # CHANGELOG
 
-## v0.31.0 (unreleased)
+## v0.31.0 (2026-07-08)
+
+### 🔭 OpenTelemetry support
+
+libmodulor now includes first-class OpenTelemetry instrumentation, making it easier to trace application behavior and integrate with existing observability platforms.
+
+### 🔐 Authentication improvements
+
+- Added JWT support from `Authorization` headers for target servers.
+- Improved MCP target security with API public key validation.
+
+### 🛠 Developer experience
+
+- Added Base64 and Base64URL hash encodings.
+- Added helpers for human-readable `snake_case` formatting.
+- Improved network error handling and translation robustness.
+
+### 📱 Platform updates
+
+- Updated React Native to 0.86 and Expo to 57.0.
+- Refreshed dependencies and documentation.
+
+This release improves observability, security, and overall developer experience.
 
 See all the changes here : https://github.com/c100k/libmodulor/compare/v0.30.0...master
 
