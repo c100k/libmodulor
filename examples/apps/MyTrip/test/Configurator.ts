@@ -4,18 +4,13 @@ import {
     type AppTesterConfiguratorInputFillers,
     type AppTesterCtx,
     allWithExamples,
-    type UC,
+    allWithExamplesAnd,
+    inputFillersForUC,
 } from '../../../../dist/esm/index.js';
 import { ExampleAppTesterConfigurator } from '../../../ExampleAppTesterConfigurator.js';
 import type { AccomodationRepository } from '../src/lib/AccomodationRepository.js';
 import { InMemoryAccomodationRepository } from '../src/lib/InMemoryAccomodationRepository.js';
-import { Manifest } from '../src/manifest.js';
-import type {
-    SearchAccomodationInput,
-    SearchAccomodationOPI0,
-} from '../src/ucds/SearchAccomodationUCD.js';
-
-const { SearchAccomodation } = Manifest.ucReg;
+import { SearchAccomodationUCD } from '../src/ucds/SearchAccomodationUCD.js';
 
 @injectable()
 export class Configurator extends ExampleAppTesterConfigurator {
@@ -39,28 +34,18 @@ export class Configurator extends ExampleAppTesterConfigurator {
         AppTesterConfiguratorInputFillers | undefined
     > {
         return new Map([
-            [
-                SearchAccomodation.name,
-                {
-                    ALL_CORRECT_BUT_SAME_FROM_AND_TO: (
-                        uc: UC<SearchAccomodationInput, SearchAccomodationOPI0>,
-                    ): void => {
-                        allWithExamples(uc);
-                        uc.inputField('to').setVal(uc.reqVal0('from'));
-                    },
+            inputFillersForUC(SearchAccomodationUCD, {
+                ALL_CORRECT_BUT_NEGATIVE_ADULTS_COUNT: allWithExamplesAnd({
+                    adultsCount: -10,
+                }),
+                ALL_CORRECT_BUT_SAME_FROM_AND_TO: (uc) => {
+                    allWithExamples(uc);
+                    uc.inputField('to').setVal(uc.reqVal0('from'));
                 },
-            ],
-            [
-                SearchAccomodation.name,
-                {
-                    ALL_CORRECT_BUT_TO_BEFORE_FROM: (
-                        uc: UC<SearchAccomodationInput, SearchAccomodationOPI0>,
-                    ): void => {
-                        allWithExamples(uc);
-                        uc.inputField('to').setVal('2022-07-12');
-                    },
-                },
-            ],
+                ALL_CORRECT_BUT_TO_BEFORE_FROM: allWithExamplesAnd({
+                    to: '2022-07-12',
+                }),
+            }),
         ]);
     }
 }

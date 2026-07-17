@@ -1,5 +1,79 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
+exports[`Run > Use Cases > 'SearchAccomodation' > should execute with auth 'ADMIN' and input 'ALL_CORRECT_BUT_NEGATIVE_ADULTS_COUNT' > hash = 2fdc7ffb90563a5ae55b73291d3539d48251b0b458806217b3453f51b458157b 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "admin",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "ADMIN",
+      "inputFiller": [Function],
+      "inputFillerName": "ALL_CORRECT_BUT_NEGATIVE_ADULTS_COUNT",
+    },
+    "err": [IllegalArgumentError: Nb of adults must be greater than or equal to 1],
+    "hash": "2fdc7ffb90563a5ae55b73291d3539d48251b0b458806217b3453f51b458157b",
+    "io": {
+      "i": {
+        "adultsCount": -10,
+        "childrenCount": 0,
+        "country": "FR",
+        "from": "2022-07-14",
+        "roomsCount": 1,
+        "to": "2022-07-20",
+      },
+      "o": null,
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'SearchAccomodation' > should execute with auth 'ADMIN' and input 'ALL_CORRECT_BUT_SAME_FROM_AND_TO' > hash = 8429ae44098930ef6c8ad68dad41afd33475a0931491a161344b38c3d0e8cb1a 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "admin",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "ADMIN",
+      "inputFiller": [Function],
+      "inputFillerName": "ALL_CORRECT_BUT_SAME_FROM_AND_TO",
+    },
+    "err": [IllegalArgumentError: err_from_before_to],
+    "hash": "8429ae44098930ef6c8ad68dad41afd33475a0931491a161344b38c3d0e8cb1a",
+    "io": {
+      "i": {
+        "adultsCount": 2,
+        "childrenCount": 0,
+        "country": "FR",
+        "from": "2022-07-14",
+        "roomsCount": 1,
+        "to": "2022-07-14",
+      },
+      "o": null,
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
 exports[`Run > Use Cases > 'SearchAccomodation' > should execute with auth 'ADMIN' and input 'ALL_CORRECT_BUT_TO_BEFORE_FROM' > hash = 77471e0f68dc3a2c9ff75d2f38bde768441c738104cc1fbbb380f17b528d4fe7 1`] = `
 {
   "out": {
@@ -178,6 +252,60 @@ exports[`Run > Use Cases > 'SearchAccomodation' > should execute with auth 'ADMI
 }
 `;
 
+exports[`Run > Use Cases > 'SearchAccomodation' > should execute with auth 'ANONYMOUS' and input 'ALL_CORRECT_BUT_NEGATIVE_ADULTS_COUNT' > hash = 7079a378a57276298287f71ca6002833d7a3909fc1d85025c3d9353240318992 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": null,
+      "authName": "ANONYMOUS",
+      "inputFiller": [Function],
+      "inputFillerName": "ALL_CORRECT_BUT_NEGATIVE_ADULTS_COUNT",
+    },
+    "err": [IllegalArgumentError: Nb of adults must be greater than or equal to 1],
+    "hash": "7079a378a57276298287f71ca6002833d7a3909fc1d85025c3d9353240318992",
+    "io": {
+      "i": {
+        "adultsCount": -10,
+        "childrenCount": 0,
+        "country": "FR",
+        "from": "2022-07-14",
+        "roomsCount": 1,
+        "to": "2022-07-20",
+      },
+      "o": null,
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'SearchAccomodation' > should execute with auth 'ANONYMOUS' and input 'ALL_CORRECT_BUT_SAME_FROM_AND_TO' > hash = d17bf7258ff658dacbf909b222f4c04ec96b501494f51ce871c6376891fc9ba5 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": null,
+      "authName": "ANONYMOUS",
+      "inputFiller": [Function],
+      "inputFillerName": "ALL_CORRECT_BUT_SAME_FROM_AND_TO",
+    },
+    "err": [IllegalArgumentError: err_from_before_to],
+    "hash": "d17bf7258ff658dacbf909b222f4c04ec96b501494f51ce871c6376891fc9ba5",
+    "io": {
+      "i": {
+        "adultsCount": 2,
+        "childrenCount": 0,
+        "country": "FR",
+        "from": "2022-07-14",
+        "roomsCount": 1,
+        "to": "2022-07-14",
+      },
+      "o": null,
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
 exports[`Run > Use Cases > 'SearchAccomodation' > should execute with auth 'ANONYMOUS' and input 'ALL_CORRECT_BUT_TO_BEFORE_FROM' > hash = 76d58732b09f928d5f4bd9e0d0882707e7417d33010d2d83e6e665d9156db34a 1`] = `
 {
   "out": {
@@ -308,6 +436,80 @@ exports[`Run > Use Cases > 'SearchAccomodation' > should execute with auth 'ANON
         "from": undefined,
         "roomsCount": 1,
         "to": undefined,
+      },
+      "o": null,
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'SearchAccomodation' > should execute with auth 'REGULAR' and input 'ALL_CORRECT_BUT_NEGATIVE_ADULTS_COUNT' > hash = 28b058e7ac9755ead92cd6d4f43516134bb217925c7ab21da0a2f295965d0414 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "regular",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "REGULAR",
+      "inputFiller": [Function],
+      "inputFillerName": "ALL_CORRECT_BUT_NEGATIVE_ADULTS_COUNT",
+    },
+    "err": [IllegalArgumentError: Nb of adults must be greater than or equal to 1],
+    "hash": "28b058e7ac9755ead92cd6d4f43516134bb217925c7ab21da0a2f295965d0414",
+    "io": {
+      "i": {
+        "adultsCount": -10,
+        "childrenCount": 0,
+        "country": "FR",
+        "from": "2022-07-14",
+        "roomsCount": 1,
+        "to": "2022-07-20",
+      },
+      "o": null,
+    },
+  },
+  "sideEffects": undefined,
+}
+`;
+
+exports[`Run > Use Cases > 'SearchAccomodation' > should execute with auth 'REGULAR' and input 'ALL_CORRECT_BUT_SAME_FROM_AND_TO' > hash = 8103306695c975ce130faef0fd0ded08a6b5c258fbe267301b3b092646d61a93 1`] = `
+{
+  "out": {
+    "args": {
+      "auth": {
+        "organization": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        },
+        "role": "regular",
+        "user": {
+          "firstname": "Dexter",
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "initials": "DM",
+        },
+      },
+      "authName": "REGULAR",
+      "inputFiller": [Function],
+      "inputFillerName": "ALL_CORRECT_BUT_SAME_FROM_AND_TO",
+    },
+    "err": [IllegalArgumentError: err_from_before_to],
+    "hash": "8103306695c975ce130faef0fd0ded08a6b5c258fbe267301b3b092646d61a93",
+    "io": {
+      "i": {
+        "adultsCount": 2,
+        "childrenCount": 0,
+        "country": "FR",
+        "from": "2022-07-14",
+        "roomsCount": 1,
+        "to": "2022-07-14",
       },
       "o": null,
     },

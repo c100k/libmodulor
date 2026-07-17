@@ -13,10 +13,21 @@ export function defaultUCInputFillers() {
         ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPLES: onlySetProgrammaticallyWithExamples,
     };
 }
+export function inputFillersForUC(ucd, fillers) {
+    return [ucd.metadata.name, fillers];
+}
 export function allWithExamples(uc) {
     for (const f of uc.inputFieldsOrdered()) {
         fillWithExample(f);
     }
+}
+export function allWithExamplesAnd(i) {
+    return (uc) => {
+        allWithExamples(uc);
+        for (const [k, v] of Object.entries(i)) {
+            uc.inputField(k).setVal(v);
+        }
+    };
 }
 export function onlyMandatoryWithExamples(uc) {
     for (const f of uc.inputFieldsOrdered()) {

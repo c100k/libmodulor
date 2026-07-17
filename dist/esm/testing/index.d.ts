@@ -5,7 +5,7 @@ export { type AppTesterOpts, type AppTesterOptsAllSet, type AppTesterTypeScriptO
 export { UCDataStoreTester } from './UCDataStoreTester.js';
 export type { UCDefASTParser } from './UCDefASTParser.js';
 export { type CustomUCAuthSetter, DEFAULT_UC_AUTH_SETTERS, type DefaultUCAuthSetter, defaultUCAuthSetters, type UCAuthSetterName, type UCAuthSetterSet, } from './uc-auth.js';
-export { allWithExamples, type CustomUCInputFiller, DEFAULT_UC_INPUT_FILLERS, type DefaultUCInputFiller, defaultUCInputFillers, onlyMandatoryWithExamples, onlySetProgrammaticallyWithExamples, type UCInputFiller, type UCInputFillerName, type UCInputFillerSet, } from './uc-input.js';
+export { allWithExamples, allWithExamplesAnd, type CustomUCInputFiller, DEFAULT_UC_INPUT_FILLERS, type DefaultUCInputFiller, defaultUCInputFillers, inputFillersForUC, onlyMandatoryWithExamples, onlySetProgrammaticallyWithExamples, type UCInputFiller, type UCInputFillerName, type UCInputFillerSet, } from './uc-input.js';
 export { awaitForSrcImport, type TestData } from './utils.js';
 export type { AppDocsEmitter } from './workers/AppDocsEmitter.js';
 export type { AppTestSuiteEmitter } from './workers/AppTestSuiteEmitter.js';
