@@ -1,6 +1,27 @@
 # CHANGELOG
 
-## v0.32.0 (unreleased)
+## v0.32.0 (2026-07-18)
+
+### 🧪 Better testing experience
+
+#### ✨ New Node Core HTTP server for app testing
+
+Tests now run using a native Node.js HTTP server instead of relying on the Express-based implementation.
+This means you can now test applications without installing Express or Express-related dependencies, making the test setup lighter, faster, and easier to adopt.
+
+#### 🧩 Cleaner test helpers
+
+Test utilities have been improved with a simpler API for defining input fillers, making test scenarios easier to write and maintain.
+Typically, the quantity of code required to write an input filler had been divided by 2 with better TypeScript inference.
+
+#### 📊 Simplified coverage configuration
+
+Removed the skipCoverage option from TestApp, reducing configuration complexity and encouraging a more consistent testing workflow.
+Now the coverage config fully depends on `vitest.config.ts`. No more inconsistences.
+
+#### 🔍 Instrumentation fixes
+
+Improved instrumentation patching so both synchronous and asynchronous functions are handled correctly, ensuring more accurate tracing and monitoring.
 
 See all the changes here : https://github.com/c100k/libmodulor/compare/v0.31.0...master
 
