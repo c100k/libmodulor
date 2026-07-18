@@ -28,6 +28,7 @@ const distPath = existsSync(join(distPathRoot, 'examples'))
     ? join(distPathRoot, 'examples', productPath)
     : join(distPathRoot, productPath);
 const serverTargetsNames = [
+    'node-core-http-server',
     'node-express-server',
     'node-hono-server',
 ] satisfies TargetName[];

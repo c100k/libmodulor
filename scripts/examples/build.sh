@@ -47,6 +47,11 @@ echo '{"name":"nextjs-server","type":"module"}' > $buildDir/$targetsPath/$target
 # Target > node-core-cli
 # noop
 
+# Target > node-core-http-server
+targetName=node-core-http-server
+echo "Adapting $targetName"
+cp $buildDir/$productPath/.env $buildDir/$targetsPath/$targetName/
+
 # Target > node-express-server
 targetName=node-express-server
 echo "Adapting $targetName"
@@ -91,6 +96,7 @@ targetsPath=${productPath}/targets
 echo "pnpm wrangler dev --cwd ${buildDir}/${targetsPath}/cloudflare-edge-worker-hono-server"
 echo "(cd ${buildDir}/${targetsPath}/nextjs-server && pnpm next dev)"
 echo "(cd ${buildDir}/${targetsPath}/node-core-cli && node index.js)"
+echo "(cd ${buildDir}/${targetsPath}/node-core-http-server && node --env-file .env --import 'data:text/javascript,import { register } from \"node:module\"; import { pathToFileURL } from \"node:url\"; register(\"%40opentelemetry/instrumentation/hook.mjs\", pathToFileURL(\"./\"));' index.js)"
 echo "(cd ${buildDir}/${targetsPath}/node-express-server && node --env-file .env --import 'data:text/javascript,import { register } from \"node:module\"; import { pathToFileURL } from \"node:url\"; register(\"%40opentelemetry/instrumentation/hook.mjs\", pathToFileURL(\"./\"));' index.js)"
 echo "(cd ${buildDir}/${targetsPath}/node-hono-server && node --env-file .env --import 'data:text/javascript,import { register } from \"node:module\"; import { pathToFileURL } from \"node:url\"; register(\"%40opentelemetry/instrumentation/hook.mjs\", pathToFileURL(\"./\"));' index.js)"
 echo "nano ~/Library/Application\ Support/Claude/claude_desktop_config.json"

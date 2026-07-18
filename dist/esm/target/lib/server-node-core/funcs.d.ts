@@ -1,22 +1,23 @@
 import type { IncomingMessage, RequestListener, ServerResponse } from 'node:http';
 import type { AppManifest } from '../../../app/index.js';
-import type { JSONString } from '../../../dt/index.js';
+import type { FilePath, JSONString } from '../../../dt/index.js';
 import { CustomError } from '../../../error/index.js';
 import type { UCDef, UCHTTPContract, UCInput, UCManager, UCOPIBase } from '../../../uc/index.js';
 import type { ServerRequestHandler, ServerRequestHandlerReq, ServerRequestHandlerRes } from '../server/ServerRequestHandler.js';
 import type { RouteKey, Router } from './types.js';
 export type IncomingMessageEnhanced = IncomingMessage & {
-    bodyRaw?: Buffer;
+    bodyRaw?: string;
     fullURL?: URL;
     secure?: boolean;
 };
+export declare function assertIncomingMessageEnhanced(req: IncomingMessage): asserts req is IncomingMessageEnhanced;
 export declare function buildHandler<I extends UCInput | undefined = undefined, OPI0 extends UCOPIBase | undefined = undefined, OPI1 extends UCOPIBase | undefined = undefined>(appManifest: AppManifest, ucd: UCDef<I, OPI0, OPI1>, contract: UCHTTPContract, serverRequestHandler: ServerRequestHandler, ucManager: UCManager): RequestListener;
-export declare function buildRes(obj: object | CustomError): JSONString;
+export declare function buildRes(res: object | string | CustomError): JSONString;
+export declare function enhanceIncomingMessage(req: IncomingMessage): Promise<void>;
 export declare function init(): void;
 export declare function mountHandler(contract: UCHTTPContract, router: Router, handler: RequestListener): void;
+export declare function mountStaticDir(dirPath: FilePath, router: Router): Promise<void>;
 export declare function routeKey(method: string, path: string): RouteKey;
 export declare function routeKeys(method: UCHTTPContract['method'], paths: UCHTTPContract['path'][]): RouteKey[];
 export declare function toReq(req: IncomingMessageEnhanced): ServerRequestHandlerReq;
 export declare function toRes(res: ServerResponse): ServerRequestHandlerRes;
-export declare function enhanceIncomingMessage(req: IncomingMessage): Promise<void>;
-export declare function assertIncomingMessageEnhanced(req: IncomingMessage): asserts req is IncomingMessageEnhanced;

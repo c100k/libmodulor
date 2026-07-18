@@ -1,6 +1,13 @@
+import { readdir, readFile } from 'node:fs/promises';
+import { join } from 'node:path';
 import { CustomError } from '../../../error/index.js';
 import { defaultStreamOnClose, fmtSingleDataMsg, fmtSSEError, isError, SSE_HEADERS, } from '../../../utils/index.js';
 import { DEFAULT_RES_HEADERS } from './consts.js';
+export function assertIncomingMessageEnhanced(req) {
+    if (!('bodyRaw' in req)) {
+        throw new Error('IncomingMessage not enhanced');
+    }
+}
 export function buildHandler(appManifest, ucd, contract, serverRequestHandler, ucManager) {
     const { envelope } = contract;
     const handler = async (req, res) => {
@@ -71,11 +78,27 @@ export function buildHandler(appManifest, ucd, contract, serverRequestHandler, u
     };
     return handler;
 }
-export function buildRes(obj) {
-    if (obj instanceof CustomError) {
-        return JSON.stringify(obj.toObj());
+export function buildRes(res) {
+    if (res instanceof CustomError) {
+        return JSON.stringify(res.toObj());
     }
-    return JSON.stringify(obj);
+    if (typeof res === 'string') {
+        return res;
+    }
+    return JSON.stringify(res);
+}
+export async function enhanceIncomingMessage(req) {
+    const chunks = [];
+    for await (const chunk of req) {
+        chunks.push(Buffer.from(chunk));
+    }
+    req.bodyRaw =
+        Buffer.concat(chunks).toString('utf-8');
+    // @ts-expect-error : not typed correctly (the field is present only when https, but https doesn't expose a dedicated IncomingRequest)
+    const secure = req.socket.encrypted !== undefined;
+    const protocol = secure ? 'https' : 'http';
+    req.fullURL = new URL(`${protocol}://${req.headers.host ?? 'localhost'}${req.url}`);
+    req.secure = secure;
 }
 export function init() {
     // TODO : Setup some middlewares if possible
@@ -85,6 +108,31 @@ export function mountHandler(contract, router, handler) {
     const keys = routeKeys(method, [path, ...pathAliases]);
     for (const routeKey of keys) {
         router[routeKey] = handler;
+    }
+}
+export async function mountStaticDir(dirPath, router) {
+    // This is obviously very hacky.
+    // TODO : Improve static dir mounting
+    const publicFiles = await readPublicFiles(dirPath);
+    for (const f of publicFiles) {
+        const handler = async (_req, res) => {
+            let contentType = 'text/html';
+            if (f.endsWith('.js')) {
+                contentType = 'text/javascript';
+            }
+            else if (f.endsWith('.png')) {
+                contentType = 'image/png';
+            }
+            res.writeHead(200, {
+                ...DEFAULT_RES_HEADERS,
+                'Content-Type': contentType,
+            }).end(await readFile(f));
+        };
+        const path = f.replace(dirPath, '');
+        router[`GET_${path}`] = handler;
+        if (path === '/index.html') {
+            router['GET_/'] = handler;
+        }
     }
 }
 export function routeKey(method, path) {
@@ -97,8 +145,7 @@ export function toReq(req) {
     const cookies = readCookies(req);
     return {
         bodyFromFormData: async () => readFormData(req),
-        // @ts-expect-error : JSON.parse works with a Buffer but it's not reflected in the types
-        bodyFromJSON: async () => JSON.parse(req.bodyRaw),
+        bodyFromJSON: async () => (req.bodyRaw ? JSON.parse(req.bodyRaw) : {}),
         bodyFromQueryParams: async () => readQueryParams(req),
         bodyRaw: req.bodyRaw ?? null,
         cookie: async (name) => cookies[name],
@@ -129,23 +176,6 @@ export function toRes(res) {
         },
     };
 }
-export async function enhanceIncomingMessage(req) {
-    const chunks = [];
-    for await (const chunk of req) {
-        chunks.push(Buffer.from(chunk));
-    }
-    req.bodyRaw = Buffer.concat(chunks);
-    // @ts-expect-error : not typed correctly (the field is present only when https, but https doesn't expose a dedicated IncomingRequest)
-    const secure = req.socket.encrypted !== undefined;
-    const protocol = secure ? 'https' : 'http';
-    req.fullURL = new URL(`${protocol}://${req.headers.host ?? 'localhost'}${req.url}`);
-    req.secure = secure;
-}
-export function assertIncomingMessageEnhanced(req) {
-    if (!('bodyRaw' in req)) {
-        throw new Error('IncomingMessage not enhanced');
-    }
-}
 function readCookies(req) {
     const header = req.headers.cookie;
     const cookies = {};
@@ -166,11 +196,10 @@ async function readFormData(req) {
     if (!bodyRaw) {
         return {};
     }
-    const body = bodyRaw.toString('utf-8');
     const type = req.headers['content-type'] ?? '';
     const boundary = `--${type.split('boundary=')[1]}`;
     const result = {};
-    for (const part of body.split(boundary).slice(1, -1)) {
+    for (const part of bodyRaw.split(boundary).slice(1, -1)) {
         const [head, value] = part.split('\r\n\r\n');
         if (!head || !value) {
             continue;
@@ -206,6 +235,16 @@ async function readFormData(req) {
         }
     }
     return result;
+}
+async function readPublicFiles(dirPath) {
+    const entries = await readdir(dirPath, {
+        withFileTypes: true,
+    });
+    const files = await Promise.all(entries.map((entry) => {
+        const fullPath = join(dirPath, entry.name);
+        return entry.isDirectory() ? readPublicFiles(fullPath) : fullPath;
+    }));
+    return files.flat();
 }
 function readQueryParams(req) {
     if (!req.fullURL) {

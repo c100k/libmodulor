@@ -11,30 +11,38 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
 import { inject, injectable } from 'inversify';
-import { NotCallableError, NotFoundError, NotImplementedError, } from '../../error/index.js';
+import { NotCallableError, NotFoundError } from '../../error/index.js';
 import { CustomerFacingErrorBuilder } from '../lib/server/CustomerFacingErrorBuilder.js';
 import { EntrypointsBuilder } from '../lib/server/EntrypointsBuilder.js';
 import { ServerRequestHandler } from '../lib/server/ServerRequestHandler.js';
 import { listen, stop } from '../lib/server-node/funcs.js';
 import { NodeHTTPServerCreator } from '../lib/server-node/NodeHTTPServerCreator.js';
 import { DEFAULT_RES_HEADERS } from '../lib/server-node-core/consts.js';
-import { assertIncomingMessageEnhanced, buildHandler, buildRes, enhanceIncomingMessage, init, mountHandler, routeKey, } from '../lib/server-node-core/funcs.js';
+import { assertIncomingMessageEnhanced, buildHandler, buildRes, enhanceIncomingMessage, init, mountHandler, mountStaticDir, routeKey, } from '../lib/server-node-core/funcs.js';
+/**
+ * This server must not be used in production.
+ * It's not fully safe.
+ *
+ * @alpha
+ */
 let NodeCoreHTTPServerManager = class NodeCoreHTTPServerManager {
     customerFacingErrorBuilder;
     entrypointsBuilder;
     environmentManager;
     logger;
+    mcpHTTPRequestHandlerBuilder;
     nodeHTTPServerCreator;
     serverRequestHandler;
     settingsManager;
     ucManager;
     runtime;
     router;
-    constructor(customerFacingErrorBuilder, entrypointsBuilder, environmentManager, logger, nodeHTTPServerCreator, serverRequestHandler, settingsManager, ucManager) {
+    constructor(customerFacingErrorBuilder, entrypointsBuilder, environmentManager, logger, mcpHTTPRequestHandlerBuilder, nodeHTTPServerCreator, serverRequestHandler, settingsManager, ucManager) {
         this.customerFacingErrorBuilder = customerFacingErrorBuilder;
         this.entrypointsBuilder = entrypointsBuilder;
         this.environmentManager = environmentManager;
         this.logger = logger;
+        this.mcpHTTPRequestHandlerBuilder = mcpHTTPRequestHandlerBuilder;
         this.nodeHTTPServerCreator = nodeHTTPServerCreator;
         this.serverRequestHandler = serverRequestHandler;
         this.settingsManager = settingsManager;
@@ -73,14 +81,21 @@ let NodeCoreHTTPServerManager = class NodeCoreHTTPServerManager {
     mountSync(appManifest, ucd, contract) {
         this.mountCommon(appManifest, ucd, contract);
     }
-    async mountMCP(_ucs, _at) {
-        throw new NotImplementedError('mountMCP');
+    async mountMCP(ucs, at) {
+        const handler = this.mcpHTTPRequestHandlerBuilder.exec({
+            ucManager: this.ucManager,
+            ucs,
+        });
+        this.router[`POST_${at}`] = handler;
     }
-    async mountOpenAPISpec(_spec, _at) {
-        throw new NotImplementedError('mountOpenAPISpec');
+    async mountOpenAPISpec(spec, at) {
+        const handler = (_req, res) => {
+            res.writeHead(200, DEFAULT_RES_HEADERS).end(buildRes(spec));
+        };
+        this.router[`GET_${at}`] = handler;
     }
-    async mountStaticDir(_dirPath) {
-        throw new NotImplementedError('mountStaticDir');
+    async mountStaticDir(dirPath) {
+        mountStaticDir(dirPath, this.router);
     }
     async start() {
         listen(this.runtime, this.entrypointsBuilder, this.logger, this.settingsManager);
@@ -128,12 +143,13 @@ NodeCoreHTTPServerManager = __decorate([
     __param(1, inject(EntrypointsBuilder)),
     __param(2, inject('EnvironmentManager')),
     __param(3, inject('Logger')),
-    __param(4, inject(NodeHTTPServerCreator)),
-    __param(5, inject(ServerRequestHandler)),
-    __param(6, inject('SettingsManager')),
-    __param(7, inject('UCManager')),
+    __param(4, inject('MCPHTTPRequestHandlerBuilder')),
+    __param(5, inject(NodeHTTPServerCreator)),
+    __param(6, inject(ServerRequestHandler)),
+    __param(7, inject('SettingsManager')),
+    __param(8, inject('UCManager')),
     __metadata("design:paramtypes", [CustomerFacingErrorBuilder,
-        EntrypointsBuilder, Object, Object, NodeHTTPServerCreator,
+        EntrypointsBuilder, Object, Object, Object, NodeHTTPServerCreator,
         ServerRequestHandler, Object, Object])
 ], NodeCoreHTTPServerManager);
 export { NodeCoreHTTPServerManager };

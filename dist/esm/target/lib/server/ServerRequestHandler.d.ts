@@ -15,7 +15,7 @@ export interface ServerRequestHandlerReq {
     bodyFromFormData: () => Promise<HTTPReqData>;
     bodyFromJSON: () => Promise<HTTPReqData>;
     bodyFromQueryParams: () => Promise<HTTPReqData>;
-    bodyRaw: object | null;
+    bodyRaw: string | object | null;
     method: HTTPMethod;
     header: (name: string) => Promise<string | undefined>;
     secure: boolean;
