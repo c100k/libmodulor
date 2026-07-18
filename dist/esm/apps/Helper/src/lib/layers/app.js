@@ -1,6 +1,5 @@
-import { APP_I18N_FILE_NAME, APP_I18N_NAME, APP_INDEX_FILE_NAME, APP_MANIFEST_FILE_NAME, APP_MANIFEST_NAME, APP_SRC_DIR_NAME, } from '../../../../../convention.js';
+import { APP_I18N_FILE_NAME, APP_I18N_NAME, APP_INDEX_FILE_NAME, APP_MANIFEST_FILE_NAME, APP_MANIFEST_NAME, APP_SRC_DIR_NAME, LIB_NAME, } from '../../../../../convention.js';
 import { I18N_DEFAULT_LANG } from '../../../../../i18n/index.js';
-import { LIB_NAME } from '../consts.js';
 import { fileImportName } from '../funcs.js';
 const INDEX_TS = `// Expose only what's necessary
 

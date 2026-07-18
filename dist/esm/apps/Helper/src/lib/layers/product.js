@@ -1,6 +1,5 @@
-import { PRODUCT_I18N_FILE_NAME, PRODUCT_I18N_NAME, PRODUCT_MANIFEST_FILE_NAME, PRODUCT_MANIFEST_NAME, } from '../../../../../convention.js';
+import { LIB_NAME, PRODUCT_I18N_FILE_NAME, PRODUCT_I18N_NAME, PRODUCT_MANIFEST_FILE_NAME, PRODUCT_MANIFEST_NAME, } from '../../../../../convention.js';
 import { I18N_DEFAULT_LANG } from '../../../../../i18n/index.js';
-import { LIB_NAME } from '../consts.js';
 const I18N_TS = `import type { ProductI18n } from '${LIB_NAME}';
 import { I18n${I18N_DEFAULT_LANG.toLocaleUpperCase()} } from '${LIB_NAME}/locales/${I18N_DEFAULT_LANG}';
 

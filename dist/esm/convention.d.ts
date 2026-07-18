@@ -3,6 +3,7 @@ import type { FileName } from './dt/index.js';
 import type { ProductName } from './product/index.js';
 import type { TargetName } from './target/index.js';
 import type { UCName } from './uc/index.js';
+export declare const LIB_NAME = "libmodulor";
 export declare const SRC_DIR_NAME: string;
 export declare const APPS_ROOT_DIR_NAME: string;
 export declare const APPS_ROOT_ALIAS: string;

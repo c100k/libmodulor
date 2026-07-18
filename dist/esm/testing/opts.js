@@ -1,10 +1,11 @@
+import { LIB_NAME } from '../convention.js';
 export const DEFAULT_APP_TESTER_OPTS = {
     logger_level: 'error', // Having 'debug' makes the test output bloated so it's opt-in
     source: {
         imports: {
             external: {
                 aliasPrefix: '@',
-                allowed: ['libmodulor', 'inversify'],
+                allowed: [LIB_NAME, 'inversify'],
             },
             internal: {
                 maxDepth: '../../',

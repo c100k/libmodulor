@@ -1,6 +1,6 @@
 import { context, SpanStatusCode, trace } from '@opentelemetry/api';
 import { InstrumentationBase, InstrumentationNodeModuleDefinition, } from '@opentelemetry/instrumentation';
-const LIB_NAME = 'libmodulor';
+import { LIB_NAME } from '../convention.js';
 const LIB_VERSION = '';
 const LIB_MIN_VERSION = '*';
 const NAME = `instrumentation-${LIB_NAME}`;
@@ -50,7 +50,7 @@ export class InstrumentationOTL extends InstrumentationBase {
     }
     moduleName(namespace, libPath) {
         if (!libPath) {
-            return namespace; // e.g. libmodulor, libmodulor/uc-data-store-knex
+            return namespace; // e.g. LIB_NAME, LIB_NAME/uc-data-store-knex
         }
         if (!namespace.includes('/')) {
             return libPath; // ../../../index.js

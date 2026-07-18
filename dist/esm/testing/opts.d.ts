@@ -43,7 +43,7 @@ export type AppTesterOpts = Partial<Pick<LoggerSettings, 'logger_level'>> & {
                  */
                 aliasPrefix?: AppTesterOptsAliasPrefix;
                 /**
-                 * @defaultValue ['libmodulor', 'inversify']
+                 * @defaultValue ['LIB_NAME', 'inversify']
                  */
                 allowed?: AppTesterOptsImportsList;
             };

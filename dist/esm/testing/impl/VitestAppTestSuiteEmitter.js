@@ -11,7 +11,7 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
 import { inject, injectable } from 'inversify';
-import { APP_I18N_NAME, APP_INDEX_NAME, APP_MANIFEST_NAME, APP_TEST_CONFIGURATOR_FILE_NAME, APP_TEST_CONFIGURATOR_NAME, APP_TEST_DIR_NAME, APP_TEST_MAIN_FILE_NAME, } from '../../convention.js';
+import { APP_I18N_NAME, APP_INDEX_NAME, APP_MANIFEST_NAME, APP_TEST_CONFIGURATOR_FILE_NAME, APP_TEST_CONFIGURATOR_NAME, APP_TEST_DIR_NAME, APP_TEST_MAIN_FILE_NAME, LIB_NAME, } from '../../convention.js';
 let VitestAppTestSuiteEmitter = class VitestAppTestSuiteEmitter {
     fsManager;
     constructor(fsManager) {
@@ -51,7 +51,7 @@ VitestAppTestSuiteEmitter = __decorate([
     __metadata("design:paramtypes", [Object])
 ], VitestAppTestSuiteEmitter);
 export { VitestAppTestSuiteEmitter };
-const CONFIGURATOR_TS = `import { NodeAppTesterConfigurator } from 'libmodulor/node-test';
+const CONFIGURATOR_TS = `import { NodeAppTesterConfigurator } from '${LIB_NAME}/node-test';
 
 export class ${APP_TEST_CONFIGURATOR_NAME} extends NodeAppTesterConfigurator {}
 `;
@@ -85,8 +85,8 @@ import {
     type UCAuthSetterName,
     type UCDef,
     type UCInput,
-} from 'libmodulor';
-import { newNodeAppTester } from 'libmodulor/node-test';
+} from '${LIB_NAME}';
+import { newNodeAppTester } from '${LIB_NAME}/node-test';
 import { afterAll, afterEach, beforeAll, describe, expect, test } from 'vitest';
 
 import { ${APP_TEST_CONFIGURATOR_NAME} } from './${APP_TEST_CONFIGURATOR_NAME}.js';

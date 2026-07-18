@@ -1,5 +1,4 @@
-import { APP_MANIFEST_FILE_NAME, APP_MANIFEST_NAME, UC_DEF_FILE_NAME_SUFFIX, UC_DEF_SUFFIX, UC_DEF_TYPE, UC_INPUT_SUFFIX, UC_MAIN_SERVER_FILE_NAME_SUFFIX, UC_MAIN_SERVER_SUFFIX, UC_OPI0_SUFFIX, } from '../../../../../convention.js';
-import { LIB_NAME } from '../consts.js';
+import { APP_MANIFEST_FILE_NAME, APP_MANIFEST_NAME, LIB_NAME, UC_DEF_FILE_NAME_SUFFIX, UC_DEF_SUFFIX, UC_DEF_TYPE, UC_INPUT_SUFFIX, UC_MAIN_SERVER_FILE_NAME_SUFFIX, UC_MAIN_SERVER_SUFFIX, UC_OPI0_SUFFIX, } from '../../../../../convention.js';
 import { fileImportName } from '../funcs.js';
 const TODO = '// TODO : Replace me';
 const FIELD_NAME = 'foo';

@@ -1,4 +1,8 @@
 /*
+ * Metadata
+ */
+export const LIB_NAME = 'libmodulor';
+/*
  * Common
  */
 export const SRC_DIR_NAME = 'src';
