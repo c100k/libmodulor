@@ -116,7 +116,7 @@ let NodeHonoServerManager = class NodeHonoServerManager {
         }
         this.logger.info('Creating HTTPS server', { port });
         opts.createServer = https.createServer;
-        opts.serverOptions = await this.serverSSLCertLoader.exec(undefined);
+        opts.serverOptions = await this.serverSSLCertLoader.exec({});
         this.server = createAdaptorServer(opts);
     }
     mountCommon(appManifest, ucd, contract) {

@@ -1,6 +1,6 @@
 import type { Configurable, FSManager, SettingsManager, Worker } from '../../../std/index.js';
 import type { ServerManagerSettings } from './ServerManager.js';
-type Input = undefined;
+type Input = {};
 type Cert = string;
 type Key = string;
 interface Output {

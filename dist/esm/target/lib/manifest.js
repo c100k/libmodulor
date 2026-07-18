@@ -2,6 +2,7 @@ export const TARGETS = {
     'edge-worker-hono-server': 'edge-worker-hono-server',
     'nextjs-server': 'nextjs-server',
     'node-core-cli': 'node-core-cli',
+    'node-core-http-server': 'node-core-http-server',
     'node-express-server': 'node-express-server',
     'node-hono-server': 'node-hono-server',
     'node-mcp-server-stdio': 'node-mcp-server-stdio',

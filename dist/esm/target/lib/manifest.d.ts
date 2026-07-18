@@ -4,6 +4,7 @@ export declare const TARGETS: {
     readonly 'edge-worker-hono-server': "edge-worker-hono-server";
     readonly 'nextjs-server': "nextjs-server";
     readonly 'node-core-cli': "node-core-cli";
+    readonly 'node-core-http-server': "node-core-http-server";
     readonly 'node-express-server': "node-express-server";
     readonly 'node-hono-server': "node-hono-server";
     readonly 'node-mcp-server-stdio': "node-mcp-server-stdio";

@@ -10,43 +10,36 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
-import express, {} from 'express';
 import { inject, injectable } from 'inversify';
-import { NotCallableError } from '../../error/index.js';
+import { NotCallableError, NotFoundError, NotImplementedError, } from '../../error/index.js';
 import { CustomerFacingErrorBuilder } from '../lib/server/CustomerFacingErrorBuilder.js';
 import { EntrypointsBuilder } from '../lib/server/EntrypointsBuilder.js';
 import { ServerRequestHandler } from '../lib/server/ServerRequestHandler.js';
-import { CORSMiddlewareBuilder } from '../lib/server-express/CORSMiddlewareBuilder.js';
-import { buildHandler, init, mountHandler, postInit, } from '../lib/server-express/funcs.js';
-import { HelmetMiddlewareBuilder } from '../lib/server-express/HelmetMiddlewareBuilder.js';
 import { listen, stop } from '../lib/server-node/funcs.js';
 import { NodeHTTPServerCreator } from '../lib/server-node/NodeHTTPServerCreator.js';
-let NodeExpressServerManager = class NodeExpressServerManager {
-    corsMiddlewareBuilder;
+import { DEFAULT_RES_HEADERS } from '../lib/server-node-core/consts.js';
+import { assertIncomingMessageEnhanced, buildHandler, buildRes, enhanceIncomingMessage, init, mountHandler, routeKey, } from '../lib/server-node-core/funcs.js';
+let NodeCoreHTTPServerManager = class NodeCoreHTTPServerManager {
     customerFacingErrorBuilder;
     entrypointsBuilder;
     environmentManager;
-    helmetMiddlewareBuilder;
     logger;
     nodeHTTPServerCreator;
-    mcpHTTPRequestHandlerBuilder;
     serverRequestHandler;
     settingsManager;
     ucManager;
     runtime;
-    server;
-    constructor(corsMiddlewareBuilder, customerFacingErrorBuilder, entrypointsBuilder, environmentManager, helmetMiddlewareBuilder, logger, nodeHTTPServerCreator, mcpHTTPRequestHandlerBuilder, serverRequestHandler, settingsManager, ucManager) {
-        this.corsMiddlewareBuilder = corsMiddlewareBuilder;
+    router;
+    constructor(customerFacingErrorBuilder, entrypointsBuilder, environmentManager, logger, nodeHTTPServerCreator, serverRequestHandler, settingsManager, ucManager) {
         this.customerFacingErrorBuilder = customerFacingErrorBuilder;
         this.entrypointsBuilder = entrypointsBuilder;
         this.environmentManager = environmentManager;
-        this.helmetMiddlewareBuilder = helmetMiddlewareBuilder;
         this.logger = logger;
         this.nodeHTTPServerCreator = nodeHTTPServerCreator;
-        this.mcpHTTPRequestHandlerBuilder = mcpHTTPRequestHandlerBuilder;
         this.serverRequestHandler = serverRequestHandler;
         this.settingsManager = settingsManager;
         this.ucManager = ucManager;
+        this.router = {};
     }
     s() {
         return {
@@ -67,11 +60,9 @@ let NodeExpressServerManager = class NodeExpressServerManager {
         this.ucManager = ucManager;
     }
     async init() {
-        this.runtime = init(this.corsMiddlewareBuilder, this.helmetMiddlewareBuilder, this.s().logger_level, this.s().server_tmp_path);
-        const { server } = await this.nodeHTTPServerCreator.exec({
-            listener: this.runtime,
-        });
-        this.server = server;
+        init();
+        const { server } = await this.nodeHTTPServerCreator.exec({});
+        this.runtime = server;
     }
     initSync() {
         throw new NotCallableError('initSync', 'init', 'async-only');
@@ -82,48 +73,67 @@ let NodeExpressServerManager = class NodeExpressServerManager {
     mountSync(appManifest, ucd, contract) {
         this.mountCommon(appManifest, ucd, contract);
     }
-    async mountMCP(ucs, at) {
-        this.runtime.post(at, this.mcpHTTPRequestHandlerBuilder.exec({
-            ucManager: this.ucManager,
-            ucs,
-        }));
+    async mountMCP(_ucs, _at) {
+        throw new NotImplementedError('mountMCP');
     }
-    async mountOpenAPISpec(spec, at) {
-        this.runtime.get(at, (_req, res) => {
-            res.send(spec);
-        });
+    async mountOpenAPISpec(_spec, _at) {
+        throw new NotImplementedError('mountOpenAPISpec');
     }
-    async mountStaticDir(dirPath) {
-        this.runtime.use(express.static(dirPath));
+    async mountStaticDir(_dirPath) {
+        throw new NotImplementedError('mountStaticDir');
     }
     async start() {
-        listen(this.server, this.entrypointsBuilder, this.logger, this.settingsManager);
+        listen(this.runtime, this.entrypointsBuilder, this.logger, this.settingsManager);
     }
     async stop() {
-        await stop(this.server, this.settingsManager);
+        await stop(this.runtime, this.settingsManager);
     }
     async warmUp() {
-        postInit(this.runtime, this.customerFacingErrorBuilder);
+        this.runtime.on('request', this.mainListener());
+    }
+    mainListener() {
+        return async (req, res) => {
+            try {
+                await enhanceIncomingMessage(req);
+                assertIncomingMessageEnhanced(req);
+                const method = req.method;
+                const path = req.fullURL?.pathname;
+                if (!method || !path) {
+                    res.writeHead(404, DEFAULT_RES_HEADERS).end(buildRes(new NotFoundError()));
+                    return;
+                }
+                const key = routeKey(method.toLocaleUpperCase(), path);
+                const route = this.router[key];
+                if (!route) {
+                    res.writeHead(404, DEFAULT_RES_HEADERS).end(buildRes(new NotFoundError()));
+                    return;
+                }
+                route(req, res);
+            }
+            catch (err) {
+                const { error } = this.customerFacingErrorBuilder.exec({
+                    error: err,
+                });
+                res.writeHead(error.httpStatus, DEFAULT_RES_HEADERS).end(buildRes(error));
+            }
+        };
     }
     mountCommon(appManifest, ucd, contract) {
-        mountHandler(contract, this.runtime, buildHandler(appManifest, ucd, contract, this.serverRequestHandler, this.ucManager));
+        mountHandler(contract, this.router, buildHandler(appManifest, ucd, contract, this.serverRequestHandler, this.ucManager));
     }
 };
-NodeExpressServerManager = __decorate([
+NodeCoreHTTPServerManager = __decorate([
     injectable(),
-    __param(0, inject(CORSMiddlewareBuilder)),
-    __param(1, inject(CustomerFacingErrorBuilder)),
-    __param(2, inject(EntrypointsBuilder)),
-    __param(3, inject('EnvironmentManager')),
-    __param(4, inject(HelmetMiddlewareBuilder)),
-    __param(5, inject('Logger')),
-    __param(6, inject(NodeHTTPServerCreator)),
-    __param(7, inject('MCPHTTPRequestHandlerBuilder')),
-    __param(8, inject(ServerRequestHandler)),
-    __param(9, inject('SettingsManager')),
-    __param(10, inject('UCManager')),
-    __metadata("design:paramtypes", [CORSMiddlewareBuilder,
-        CustomerFacingErrorBuilder,
-        EntrypointsBuilder, Object, HelmetMiddlewareBuilder, Object, NodeHTTPServerCreator, Object, ServerRequestHandler, Object, Object])
-], NodeExpressServerManager);
-export { NodeExpressServerManager };
+    __param(0, inject(CustomerFacingErrorBuilder)),
+    __param(1, inject(EntrypointsBuilder)),
+    __param(2, inject('EnvironmentManager')),
+    __param(3, inject('Logger')),
+    __param(4, inject(NodeHTTPServerCreator)),
+    __param(5, inject(ServerRequestHandler)),
+    __param(6, inject('SettingsManager')),
+    __param(7, inject('UCManager')),
+    __metadata("design:paramtypes", [CustomerFacingErrorBuilder,
+        EntrypointsBuilder, Object, Object, NodeHTTPServerCreator,
+        ServerRequestHandler, Object, Object])
+], NodeCoreHTTPServerManager);
+export { NodeCoreHTTPServerManager };

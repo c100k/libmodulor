@@ -45,6 +45,39 @@ export const settings: S = {
     ...TARGET_DEFAULT_SERVER_CLIENT_MANAGER_SETTINGS,
 };
 `;
+const NODE_CORE_HTTP_SERVER_CONTAINER_TS = `import { Container } from 'inversify';
+import {
+    bindCommon,
+    bindProduct,
+    CONTAINER_OPTS,
+    type ServerManager,
+    updateSettings,
+} from '${LIB_NAME}';
+import { bindNodeCore } from '${LIB_NAME}/node';
+import {
+    bindServer,
+    type MCPHTTPNodeCoreRequestHandlerBuilder,
+    MCPHTTPNodeCoreFakeRequestHandlerBuilder,
+    NodeCoreHTTPServerManager,
+} from '${LIB_NAME}/node-core-server';
+
+${COMMON_CONTAINER_IMPORTS}
+
+const container = new Container(CONTAINER_OPTS);
+
+bindCommon(container);
+updateSettings<S>(container, settings);
+bindNodeCore(container);
+bindServer(container);
+bindProduct(container, ${PRODUCT_MANIFEST_NAME}, ${PRODUCT_I18N_NAME});
+
+container
+    .bind<MCPHTTPNodeCoreRequestHandlerBuilder>('MCPHTTPRequestHandlerBuilder')
+    .to(MCPHTTPNodeCoreFakeRequestHandlerBuilder);
+container.bind<ServerManager>('ServerManager').to(NodeCoreHTTPServerManager);
+
+export default container;
+`;
 const NODE_EXPRESS_SERVER_CONTAINER_TS = `import { Container } from 'inversify';
 import {
     bindCommon,
@@ -193,6 +226,11 @@ const MAPPING = {
         [['.', 'container.ts'], NODE_CORE_CLI_CONTAINER_TS],
         [['.', 'index.ts'], NODE_CORE_CLI_INDEX_TS],
         [['.', 'settings.ts'], NODE_CORE_CLI_SETTINGS_TS],
+    ]),
+    'node-core-http-server': new Map([
+        [['.', 'container.ts'], NODE_CORE_HTTP_SERVER_CONTAINER_TS],
+        [['.', 'index.ts'], SERVER_INDEX_TS],
+        [['.', 'settings.ts'], SERVER_SETTINGS_TS],
     ]),
     'node-express-server': new Map([
         [['.', 'container.ts'], NODE_EXPRESS_SERVER_CONTAINER_TS],

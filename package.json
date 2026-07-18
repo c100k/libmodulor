@@ -47,6 +47,9 @@
         "./nextjs": {
             "import": "./dist/esm/index.nextjs.js"
         },
+        "./node-core-server": {
+            "import": "./dist/esm/index.node-core-server.js"
+        },
         "./node-express": {
             "import": "./dist/esm/index.node-express.js"
         },
