@@ -33,7 +33,6 @@ export const I18n = {
         ucif_projectName_desc: "Name of the project conforming to the package.json's spec (i.e. a-z, 0-9, -)",
         ucif_scmBin_desc: "The source control manager to use to init and commit (must conform to git's API)",
         ucif_serverPortRangeStart_desc: 'The port number to start with when generating the server to test (incremented by 1) for each app',
-        ucif_skipCoverage_desc: 'Whether to skip coverage or not',
         ucif_updateSnapshots_desc: "Whether to update the snapshots or not. Typically, update them if the tests fail because the snapshots don't match, the reason being that you changed the implementation",
     },
 };

@@ -33,7 +33,6 @@ export declare const I18n: {
         ucif_projectName_desc: string;
         ucif_scmBin_desc: string;
         ucif_serverPortRangeStart_desc: string;
-        ucif_skipCoverage_desc: string;
         ucif_updateSnapshots_desc: string;
     };
 };

@@ -33,7 +33,6 @@ let TestAppClientMain = class TestAppClientMain {
         const appsPath = uc.reqVal0('appsPath');
         const appName = uc.reqVal0('appName');
         const only = uc.rVal0('only');
-        const skipCoverage = uc.reqVal0('skipCoverage');
         const updateSnapshots = uc.reqVal0('updateSnapshots');
         const appPath = this.fsManager.path(appsPath, appName);
         if (!(await this.fsManager.exists(appPath))) {
@@ -42,7 +41,6 @@ let TestAppClientMain = class TestAppClientMain {
         await this.appTestSuiteRunner.exec({
             appPath,
             only,
-            skipCoverage,
             updateSnapshots,
         });
         const reports = [
@@ -88,9 +86,6 @@ export const TestAppUCD = {
                         min: 0,
                     },
                     type: new TString().setExamples(['CreatePost']),
-                },
-                skipCoverage: {
-                    type: new TBoolean().setDefaultValue(false),
                 },
                 updateSnapshots: {
                     type: new TBoolean().setDefaultValue(false),

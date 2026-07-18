@@ -143,7 +143,12 @@ export default defineConfig({
     test: {
         coverage: {
             enabled: true,
-            exclude: ['src/apps/**/test', 'src/**/*.test.ts'],
+            exclude: [
+                '/**/*.md',
+                '/**/*.test.ts',
+                '/**/*/.gitkeep',
+                '/**/test',
+            ],
             include: ['src'],
             reporter: ['html', 'lcov', 'text'],
         },
