@@ -70,12 +70,29 @@ export class InstrumentationOTL extends InstrumentationBase {
                     },
                 });
                 const ctx = trace.setSpan(context.active(), span);
-                return context.with(ctx, async () => {
+                return context.with(ctx, () => {
                     try {
-                        const res = await original.apply(this, args);
-                        span.setStatus({
-                            code: SpanStatusCode.OK,
-                        });
+                        const res = original.apply(this, args);
+                        if (res instanceof Promise) {
+                            return res
+                                .then((value) => {
+                                span.setStatus({ code: SpanStatusCode.OK });
+                                return value;
+                            })
+                                .catch((err) => {
+                                span.recordException(err);
+                                span.setStatus({
+                                    code: SpanStatusCode.ERROR,
+                                    message: err.message,
+                                });
+                                throw err;
+                            })
+                                .finally(() => {
+                                span.end();
+                            });
+                        }
+                        span.setStatus({ code: SpanStatusCode.OK });
+                        span.end();
                         return res;
                     }
                     catch (err) {
@@ -84,10 +101,8 @@ export class InstrumentationOTL extends InstrumentationBase {
                             code: SpanStatusCode.ERROR,
                             message: err.message,
                         });
-                        throw err;
-                    }
-                    finally {
                         span.end();
+                        throw err;
                     }
                 });
             };
