@@ -8,10 +8,7 @@ import {
 } from '../../../../dist/esm/index.js';
 import { ExampleAppTesterConfigurator } from '../../../ExampleAppTesterConfigurator.js';
 import type { SongPlayerSettings } from '../src/lib/SongPlayer.js';
-import {
-    type CreateAlbumOPI0,
-    CreateAlbumUCD,
-} from '../src/ucds/CreateAlbumUCD.js';
+import { CreateAlbumUCD } from '../src/ucds/CreateAlbumUCD.js';
 import { DeleteAlbumUCD } from '../src/ucds/DeleteAlbumUCD.js';
 import { LikeAlbumUCD } from '../src/ucds/LikeAlbumUCD.js';
 import { ListAlbumsUCD } from '../src/ucds/ListAlbumsUCD.js';
@@ -53,17 +50,13 @@ export class Configurator extends ExampleAppTesterConfigurator {
                 [
                     LikeAlbumUCD,
                     (data) => ({
-                        id: (
-                            data[0]?.io.o?.parts._0.items[0] as CreateAlbumOPI0
-                        ).id,
+                        id: data[0]?.io.o?.parts._0.items[0].id,
                     }),
                 ],
                 [
                     DeleteAlbumUCD,
                     (data) => ({
-                        id: (
-                            data[0]?.io.o?.parts._0.items[0] as CreateAlbumOPI0
-                        ).id,
+                        id: data[0]?.io.o?.parts._0.items[0].id,
                     }),
                 ],
             ],

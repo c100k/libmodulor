@@ -1,5 +1,5 @@
 import type { AppTesterFlow } from '../../../../../dist/esm/index.js';
-import { type BuyAssetOPI0, BuyAssetUCD } from '../../src/ucds/BuyAssetUCD.js';
+import { BuyAssetUCD } from '../../src/ucds/BuyAssetUCD.js';
 import {
     type CancelOrderInput,
     CancelOrderUCD,
@@ -16,7 +16,7 @@ export const flow1: AppTesterFlow = {
         [
             CancelOrderUCD,
             (data): Partial<CancelOrderInput> => ({
-                id: (data[0]?.io.o?.parts._0.items[0] as BuyAssetOPI0).id,
+                id: data[0]?.io.o?.parts._0.items[0].id,
             }),
         ],
         [ListOrdersUCD, null],
