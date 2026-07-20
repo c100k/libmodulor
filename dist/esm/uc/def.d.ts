@@ -33,6 +33,7 @@ export interface UCDef<I extends UCInput | undefined = undefined, OPI0 extends U
     metadata: UCMetadata;
     sec?: UCSec;
 }
+export type AnyUCDef = UCDef<any, any, any>;
 export interface UCWording {
     desc: string | null;
     label: string;

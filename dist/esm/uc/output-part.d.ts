@@ -1,6 +1,6 @@
 import type { UIntQuantity } from '../dt/index.js';
 import type { StringKeys } from '../utils/index.js';
-import type { UCDef } from './def.js';
+import type { AnyUCDef } from './def.js';
 import type { ListInput } from './io/input/ListInput.js';
 import type { UCOPIBase } from './opi.js';
 import type { UCOPILayout } from './opi-layout.js';
@@ -38,8 +38,8 @@ export interface UCOutputPartDef<OPI extends UCOPIBase> {
      */
     order?: StringKeys<OPI>[];
     related?: {
-        global: UCDef<any, any, any>[];
-        perItem: UCDef<any, any, any>[];
+        global: AnyUCDef[];
+        perItem: AnyUCDef[];
     };
 }
 export interface UCOutputPartWording {

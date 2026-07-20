@@ -81,9 +81,9 @@ import {
 } from 'fast-check';
 import {
     CustomError,
+    type AnyUCDef,
     type Logger,
     type UCAuthSetterName,
-    type UCDef,
     type UCInput,
 } from '${LIB_NAME}';
 import { newNodeAppTester } from '${LIB_NAME}/node-test';
@@ -167,8 +167,7 @@ describe('Run', async () => {
                 await configurator.clearExecution(ctx);
             });
 
-            // biome-ignore lint/suspicious/noExplicitAny: can be anything
-            let ucd: UCDef<any, any, any>;
+            let ucd: AnyUCDef;
 
             beforeAll(() => {
                 // biome-ignore lint/suspicious/noExplicitAny: can be anything

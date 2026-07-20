@@ -1,9 +1,9 @@
 import type { AppManifest, AppUCsLoaderOutput } from '../../app/index.js';
 import type { Logger, Worker } from '../../std/index.js';
-import { UCBuilder, type UCDef } from '../../uc/index.js';
+import { type AnyUCDef, UCBuilder } from '../../uc/index.js';
 import type { ProductManifest } from '../manifest.js';
 export interface Input {
-    defs: Map<AppManifest, UCDef<any, any, any>[]>;
+    defs: Map<AppManifest, AnyUCDef[]>;
 }
 export type Output = AppUCsLoaderOutput;
 export declare class SyncProductUCsLoader implements Worker<Input, Output> {
