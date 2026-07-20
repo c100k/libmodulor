@@ -49,7 +49,6 @@ let AppTester = class AppTester {
      * This can happen in case of circular dependencies for example.
      */
     safeSrcImporter;
-    // biome-ignore lint/suspicious/noExplicitAny: can be anything
     ucds;
     // biome-ignore lint/suspicious/noExplicitAny: can be anything
     testResults;

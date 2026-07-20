@@ -1,11 +1,11 @@
 import type { SyncEdgeWorkerHonoServerManager } from '../../../../../../dist/esm/index.cloudflare-worker-hono.js';
 import {
+    type AnyUCDef,
     type AppManifest,
     type ServerManager,
     SyncEdgeWorkerInitializer,
     SyncProductUCsLoader,
     type SyncProductUCsLoaderInput,
-    type UCDef,
 } from '../../../../../../dist/esm/index.js';
 import {
     CreateAlbumUCD,
@@ -29,8 +29,7 @@ const serverManager = container.get<ServerManager>(
 
 const defs: SyncProductUCsLoaderInput['defs'] = new Map<
     AppManifest,
-    // biome-ignore lint/suspicious/noExplicitAny: can be anything
-    UCDef<any, any, any>[]
+    AnyUCDef[]
 >([
     [
         SpotifyManifest,
