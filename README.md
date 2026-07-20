@@ -40,6 +40,7 @@ pnpm libmodulor CreateUC --appName Banking --ucName CreateAccount
 pnpm libmodulor CreateProduct --productName CustomerPortal
 
 # Create a target
+pnpm libmodulor CreateTarget --productName CustomerPortal --targetName node-core-http-server
 pnpm libmodulor CreateTarget --productName CustomerPortal --targetName node-express-server
 pnpm libmodulor CreateTarget --productName CustomerPortal --targetName node-hono-server
 pnpm libmodulor CreateTarget --productName CustomerPortal --targetName node-core-cli
