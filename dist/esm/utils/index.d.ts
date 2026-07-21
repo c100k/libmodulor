@@ -24,4 +24,4 @@ export { humanize } from './strings/humanize.js';
 export { truncate } from './strings/truncate.js';
 export { fmtBold, fmtCommand, fmtPadEndFor, fmtSection, } from './terminal/fmt.js';
 export { assertIsDefined, isBlank, range, sample, tupleOf, } from './types/funcs.js';
-export type { EnumOf, ExtractStrict, RecursiveNonNullable, StringKeys, } from './types/utility-types.js';
+export type { EnumOf, ExtractStrict, FirstNElements, RecursiveNonNullable, StringKeys, } from './types/utility-types.js';

@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v0.33.0 (unreleased)
+
+See all the changes here : https://github.com/c100k/libmodulor/compare/v0.32.0...master
+
 ## v0.32.0 (2026-07-18)
 
 ### 🧪 Better testing experience

@@ -1,6 +1,8 @@
 import {
+    type AnyAppTesterFlow,
     type AppTesterCtx,
-    type AppTesterFlow,
+    appTesterFlow,
+    appTesterFlowRead00,
     type LLMManager,
     MistralAILLMManager,
     UCBuilder,
@@ -28,8 +30,8 @@ export class Configurator extends ExampleAppTesterConfigurator {
         container.bind<LLMManager>('LLMManager').to(MistralAILLMManager);
     }
 
-    public override async flows(): Promise<AppTesterFlow[]> {
-        const flow1: AppTesterFlow = {
+    public override async flows(): Promise<AnyAppTesterFlow[]> {
+        const flow1 = appTesterFlow({
             name: 'Create album, list, like and delete it',
             setup: async (ctx) => {
                 const { appManifest, container } = ctx;
@@ -45,22 +47,22 @@ export class Configurator extends ExampleAppTesterConfigurator {
                 await ucm.persist(uc);
             },
             steps: [
-                [CreateAlbumUCD, null],
-                [ListAlbumsUCD, null],
+                [CreateAlbumUCD],
+                [ListAlbumsUCD],
                 [
                     LikeAlbumUCD,
                     (data) => ({
-                        id: data[0]?.io.o?.parts._0.items[0].id,
+                        id: appTesterFlowRead00(data[0]).id,
                     }),
                 ],
                 [
                     DeleteAlbumUCD,
                     (data) => ({
-                        id: data[0]?.io.o?.parts._0.items[0].id,
+                        id: appTesterFlowRead00(data[0]).id,
                     }),
                 ],
             ],
-        };
+        });
 
         return [flow1];
     }

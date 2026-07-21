@@ -1,7 +1,7 @@
 import type { CryptoManagerHash } from '../std/index.js';
 import type { UCInput, UCOPIBase } from '../uc/index.js';
 import type { AppTesterCtx } from './ctx.js';
-import type { AppTesterFlow } from './flow.js';
+import type { AnyAppTesterFlow } from './flow.js';
 import type { DefaultUCAuthSetter, UCAuthSetterSet } from './uc-auth.js';
 import type { UCInputFillerTuple } from './uc-input.js';
 import type { UCExecutorAssertion } from './workers/UCExecutor.js';
@@ -50,7 +50,7 @@ export interface AppTesterConfigurator {
      *
      * For example : SignUp > SignIn > SignOut > ResetPassword, etc.
      */
-    flows(): Promise<AppTesterFlow[]>;
+    flows(): Promise<AnyAppTesterFlow[]>;
     /**
      * Define specific input fillers, per use case, in addition to the default ones
      *

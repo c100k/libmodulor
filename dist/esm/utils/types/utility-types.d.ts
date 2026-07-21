@@ -24,3 +24,7 @@ export type RecursiveNonNullable<T> = {
  * Extract the string keys of T
  */
 export type StringKeys<T extends object> = Extract<keyof T, string>;
+/**
+ * Extract the first N elements of a tuple
+ */
+export type FirstNElements<T extends readonly unknown[], N extends number, Acc extends unknown[] = []> = Acc['length'] extends N ? Acc : T extends readonly [infer H, ...infer R] ? FirstNElements<R, N, [...Acc, H]> : Acc;

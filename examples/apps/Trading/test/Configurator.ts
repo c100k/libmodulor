@@ -1,9 +1,9 @@
 import { injectable } from 'inversify';
 
 import {
+    type AnyAppTesterFlow,
     type AppTesterConfiguratorSpecificAssertions,
     type AppTesterCtx,
-    type AppTesterFlow,
     FakeLLMManager,
     type LLMManager,
     type UCExecutorAssertion,
@@ -33,7 +33,7 @@ export class Configurator extends ExampleAppTesterConfigurator {
         container.bind<LLMManager>('LLMManager').to(FakeLLMManager);
     }
 
-    public override async flows(): Promise<AppTesterFlow[]> {
+    public override async flows(): Promise<AnyAppTesterFlow[]> {
         return [flow1];
     }
 

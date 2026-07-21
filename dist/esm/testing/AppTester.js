@@ -133,13 +133,14 @@ let AppTester = class AppTester {
         const output = [];
         const { auth, authName, setup, steps } = flow;
         await setup?.(this.ctx);
+        // @ts-expect-error
         for await (const [ucd, inputOverride] of steps) {
+            // biome-ignore lint/suspicious/noExplicitAny: can be anything
             const inputFiller = (uc) => {
                 allWithExamples(uc);
-                if (inputOverride) {
-                    const inputOverrides = inputOverride(output);
+                const inputOverrides = inputOverride?.(output);
+                if (inputOverrides) {
                     for (const [k, v] of Object.entries(inputOverrides)) {
-                        // @ts-expect-error
                         uc.inputField(k).setVal(v);
                     }
                 }

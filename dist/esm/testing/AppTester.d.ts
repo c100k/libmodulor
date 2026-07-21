@@ -5,7 +5,7 @@ import { type UCAuth, UCBuilder, type UCDef, type UCInput, type UCName, type UCO
 import type { SrcImporter } from '../utils/index.js';
 import type { AppTesterConfigurator } from './AppTesterConfigurator.js';
 import type { AppTesterCtx, AppTesterUCDRef } from './ctx.js';
-import type { AppTesterFlow, AppTesterFlowExecOutput } from './flow.js';
+import type { AnyAppTesterFlow, AppTesterFlowExecOutput } from './flow.js';
 import { SimpleHTMLAppTestReportEmitter } from './impl/SimpleHTMLAppTestReportEmitter.js';
 import { type UCInputFiller } from './uc-input.js';
 import type { AppDocsEmitter } from './workers/AppDocsEmitter.js';
@@ -61,9 +61,9 @@ export declare class AppTester {
     checkAppManifest(): Promise<void>;
     checkUCDSources(): Promise<void>;
     checkUC(ucdRef: AppTesterUCDRef): Promise<void>;
-    execFlow(flow: AppTesterFlow): Promise<AppTesterFlowExecOutput>;
+    execFlow(flow: AnyAppTesterFlow): Promise<AppTesterFlowExecOutput>;
     execMonkeyTest<I extends UCInput | undefined = undefined, OPI0 extends UCOPIBase | undefined = undefined, OPI1 extends UCOPIBase | undefined = undefined>(ucd: UCDef<I, OPI0, OPI1>, input: NonNullable<I>): Promise<UCExecutorExecOutput<I, OPI0, OPI1>>;
-    execUC<I extends UCInput | undefined = undefined, OPI0 extends UCOPIBase | undefined = undefined, OPI1 extends UCOPIBase | undefined = undefined>(input: Omit<UCExecutorInput<I, OPI0, OPI1>, 'appManifest'>, flow?: AppTesterFlow): Promise<AppTestSuiteTestResult<I, OPI0, OPI1>>;
+    execUC<I extends UCInput | undefined = undefined, OPI0 extends UCOPIBase | undefined = undefined, OPI1 extends UCOPIBase | undefined = undefined>(input: Omit<UCExecutorInput<I, OPI0, OPI1>, 'appManifest'>, flow?: AnyAppTesterFlow): Promise<AppTestSuiteTestResult<I, OPI0, OPI1>>;
     finalize(): Promise<void>;
     getCtx(): AppTesterCtx;
     getUCD<I extends UCInput | undefined = undefined, OPI0 extends UCOPIBase | undefined = undefined, OPI1 extends UCOPIBase | undefined = undefined>(ucName: UCName): UCDef<I, OPI0, OPI1>;
