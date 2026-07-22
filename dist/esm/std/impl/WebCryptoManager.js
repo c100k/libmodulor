@@ -4,12 +4,22 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-import { injectable } from 'inversify';
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
+import { inject, injectable } from 'inversify';
 import { NotAvailableError, NotImplementedError } from '../../error/index.js';
 const DIGEST_MAPPING = new Map([
     ['sha512', 'SHA-512'],
 ]);
 let WebCryptoManager = class WebCryptoManager {
+    randManager;
+    constructor(randManager) {
+        this.randManager = randManager;
+    }
     async clear() {
         // Nothing to do
     }
@@ -42,10 +52,10 @@ let WebCryptoManager = class WebCryptoManager {
         return new Uint8Array(result);
     }
     async randomString(length) {
-        // Not perfect in terms of randomness (because of Math.random() but pretty fine for now)
+        // Not perfect in terms of randomness (because of Math.random() used in StdRandManager but pretty fine for now)
         let res = '';
         while (res.length < length) {
-            const next = Math.random().toString(36).slice(2, 3);
+            const next = this.randManager.number().toString(36).slice(2, 3);
             // For now, we want only chars at the beginning, so it can be used as an identifier (i.e. in a database)
             if (res.length === 0 &&
                 Number.isInteger(Number.parseInt(next, 10))) {
@@ -65,6 +75,8 @@ let WebCryptoManager = class WebCryptoManager {
     }
 };
 WebCryptoManager = __decorate([
-    injectable()
+    injectable(),
+    __param(0, inject('RandManager')),
+    __metadata("design:paramtypes", [Object])
 ], WebCryptoManager);
 export { WebCryptoManager };

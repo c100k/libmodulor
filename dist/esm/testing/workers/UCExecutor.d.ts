@@ -4,7 +4,6 @@ import type { CryptoManager, CryptoManagerHash, Worker } from '../../std/index.j
 import { type UCAuth, UCBuilder, type UCDef, type UCInput, type UCManager, type UCOPIBase, type UCOutput } from '../../uc/index.js';
 import type { UCAuthSetterName } from '../uc-auth.js';
 import type { UCInputFiller, UCInputFillerName } from '../uc-input.js';
-export type UCExecutorAssertion<I extends UCInput | undefined = undefined, OPI0 extends UCOPIBase | undefined = undefined, OPI1 extends UCOPIBase | undefined = undefined> = (exec: UCExecutorExecOutput<I, OPI0, OPI1>) => boolean;
 export interface UCExecutorExecOutput<I extends UCInput | undefined = undefined, OPI0 extends UCOPIBase | undefined = undefined, OPI1 extends UCOPIBase | undefined = undefined> {
     args: Pick<Input<I, OPI0, OPI1>, 'auth' | 'authName' | 'inputFiller' | 'inputFillerName'>;
     err: Error | null;

@@ -1,7 +1,10 @@
 import type { Password, UIntQuantity, UUID } from '../../dt/index.js';
 import type { BufferManagerBase64String } from '../BufferManager.js';
 import type { CryptoManager, CryptoManagerHash, CryptoManagerHashAlgorithm, CryptoManagerHMACKey, CryptoManagerHMACKeyEncoding, CryptoManagerRandomString, CryptoManagerSalt, CryptoManagerSaltedScrypt } from '../CryptoManager.js';
+import type { RandManager } from '../RandManager.js';
 export declare class WebCryptoManager implements CryptoManager {
+    private randManager;
+    constructor(randManager: RandManager);
     clear(): Promise<void>;
     hash(_algorithm: CryptoManagerHashAlgorithm, _base: string): CryptoManagerHash;
     hmacToBase64(_algorithm: CryptoManagerHashAlgorithm, _base: string, _key: CryptoManagerHMACKey, _keyEncoding: CryptoManagerHMACKeyEncoding): BufferManagerBase64String;

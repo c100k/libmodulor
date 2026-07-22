@@ -4,14 +4,24 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
 import crypto from 'node:crypto';
 import { promisify } from 'node:util';
-import { injectable } from 'inversify';
+import { inject, injectable } from 'inversify';
 // https://nodejs.org/api/crypto.html#cryptopbkdf2password-salt-iterations-keylen-digest-callback
 const pbkdf2 = promisify(crypto.pbkdf2);
 // https://nodejs.org/api/crypto.html#cryptoscryptpassword-salt-keylen-options-callback
 const scrypt = promisify(crypto.scrypt);
 let NodeCryptoManager = class NodeCryptoManager {
+    randManager;
+    constructor(randManager) {
+        this.randManager = randManager;
+    }
     async clear() {
         // Nothing to do
     }
@@ -38,10 +48,10 @@ let NodeCryptoManager = class NodeCryptoManager {
         return Uint8Array.from(result);
     }
     async randomString(length) {
-        // Not perfect in terms of randomness (because of Math.random() but pretty fine for now)
+        // Not perfect in terms of randomness (because of Math.random() used in StdRandManager but pretty fine for now)
         let res = '';
         while (res.length < length) {
-            const next = Math.random().toString(36).slice(2, 3);
+            const next = this.randManager.number().toString(36).slice(2, 3);
             // For now, we want only chars at the beginning, so it can be used as an identifier (i.e. in a database)
             if (res.length === 0 &&
                 Number.isInteger(Number.parseInt(next, 10))) {
@@ -60,6 +70,8 @@ let NodeCryptoManager = class NodeCryptoManager {
     }
 };
 NodeCryptoManager = __decorate([
-    injectable()
+    injectable(),
+    __param(0, inject('RandManager')),
+    __metadata("design:paramtypes", [Object])
 ], NodeCryptoManager);
 export { NodeCryptoManager };

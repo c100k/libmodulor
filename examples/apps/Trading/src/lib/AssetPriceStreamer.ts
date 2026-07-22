@@ -3,6 +3,7 @@ import { inject, injectable } from 'inversify';
 import type {
     Amount,
     Configurable,
+    RandManager,
     Settings,
     SettingsManager,
     Worker,
@@ -28,6 +29,7 @@ export class AssetPriceStreamer
     implements Configurable<S>, Worker<I, Promise<O>>
 {
     constructor(
+        @inject('RandManager') private randManager: RandManager,
         @inject('SettingsManager') private settingsManager: SettingsManager<S>,
     ) {}
 
@@ -43,7 +45,7 @@ export class AssetPriceStreamer
         let price = initialPrice;
 
         const intervalID = setInterval(() => {
-            const rand = Math.random();
+            const rand = this.randManager.number();
             const way = rand < 0.5 ? -1 : 1;
             const evol = way * rand;
             price = price + evol;

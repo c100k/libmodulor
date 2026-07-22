@@ -10,6 +10,7 @@ import { SimpleHTTPAPICaller } from '../../std/impl/SimpleHTTPAPICaller.js';
 import { SimpleMapI18nManager } from '../../std/impl/SimpleMapI18nManager.js';
 import { StaticSettingsManager } from '../../std/impl/StaticSettingsManager.js';
 import { StdDateClockManager } from '../../std/impl/StdDateClockManager.js';
+import { StdRandManager } from '../../std/impl/StdRandManager.js';
 import { STD_DEFAULT_LOGGER_SETTINGS, } from '../../std/index.js';
 import { HTTPUCTransporter } from '../../uc/impl/HTTPUCTransporter.js';
 import { InMemoryUCDataStore } from '../../uc/impl/InMemoryUCDataStore.js';
@@ -46,6 +47,7 @@ export function bindCommon(container) {
         .inSingletonScope();
     container.bind('I18n').toConstantValue({ en: {} });
     container.bind('Logger').to(ConsoleLogger);
+    container.bind('RandManager').to(StdRandManager);
     container
         .bind('SettingsManager')
         .to(StaticSettingsManager)

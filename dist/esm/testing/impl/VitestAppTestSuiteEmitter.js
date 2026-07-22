@@ -195,16 +195,9 @@ describe('Run', async () => {
                     }
 
                     const { hash } = out;
-                    const assertion = hash
-                        ? (await configurator.specificAssertions())?.get(hash)
-                        : undefined;
-                    if (assertion) {
-                        expect(out).toSatisfy(assertion);
-                    } else {
-                        expect({ out, sideEffects }).toMatchSnapshot(
-                            \`hash = \${hash}\`,
-                        );
-                    }
+                    expect({ out, sideEffects }).toMatchSnapshot(
+                        \`hash = \${hash}\`,
+                    );
                 },
             );
 

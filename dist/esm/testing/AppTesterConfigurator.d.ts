@@ -1,10 +1,8 @@
-import type { CryptoManagerHash } from '../std/index.js';
 import type { UCInput, UCOPIBase } from '../uc/index.js';
 import type { AppTesterCtx } from './ctx.js';
 import type { AnyAppTesterFlow } from './flow.js';
 import type { DefaultUCAuthSetter, UCAuthSetterSet } from './uc-auth.js';
 import type { UCInputFillerTuple } from './uc-input.js';
-import type { UCExecutorAssertion } from './workers/UCExecutor.js';
 export type AppTesterConfiguratorAuthSettersConfig = {
     /**
      * Specific auth setters to add to the default ones
@@ -20,7 +18,6 @@ export type AppTesterConfiguratorAuthSettersConfig = {
 export type AppTesterConfiguratorInputFillers<I extends UCInput = any, OPI0 extends UCOPIBase = any, OPI1 extends UCOPIBase = any> = Map<UCInputFillerTuple<I, OPI0, OPI1>[0], UCInputFillerTuple<I, OPI0, OPI1>[1]>;
 export type AppTesterConfiguratorSideEffects = Map<string, any>;
 export type AppTesterConfiguratorSideEffectsSerialized = [string, any][];
-export type AppTesterConfiguratorSpecificAssertions<I extends UCInput | undefined = undefined, OPI0 extends UCOPIBase | undefined = undefined, OPI1 extends UCOPIBase | undefined = undefined> = Map<CryptoManagerHash, UCExecutorAssertion<I, OPI0, OPI1>>;
 /**
  * Configure the tester for a specific app
  *
@@ -74,21 +71,7 @@ export interface AppTesterConfigurator {
      *
      * Or it can also be the entries of some fake job processor to check the jobs dispatched by use cases.
      *
-     * Note that it works only if there are no `specificAssertions` for the given use case.
-     *
-     * Otherwise, you need to assert side effects manually.
-     *
      * @param ctx
      */
     sideEffects(ctx: AppTesterCtx): Promise<AppTesterConfiguratorSideEffects | undefined>;
-    /**
-     * Define specific assertions for a specific use case
-     *
-     * Otherwise, it matches the snapshot.
-     *
-     * For instance, you can use this if a specific use case performs some random processing (e.g. generating random data).
-     *
-     * Generally speaking, it's always better to have deterministic tests, so it's usually better to bind deterministic implementations in the tests.
-     */
-    specificAssertions(): Promise<AppTesterConfiguratorSpecificAssertions | undefined>;
 }

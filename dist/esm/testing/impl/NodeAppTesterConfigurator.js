@@ -2,6 +2,7 @@ import { PRODUCT_NAME_PLACEHOLDER } from '../../convention.js';
 import { FakeClockManager } from '../../std/impl/FakeClockManager.js';
 import { FakeFSManager } from '../../std/impl/FakeFSManager.js';
 import { FakeHTTPAPICallExecutor } from '../../std/impl/FakeHTTPAPICallExecutor.js';
+import { FakeRandManager } from '../../std/impl/FakeRandManager.js';
 import { NodeDeterministicCryptoManager } from '../../std/impl/NodeDeterministicCryptoManager.js';
 import { SimpleFormDataBuilder } from '../../std/impl/SimpleFormDataBuilder.js';
 import { StaticSettingsManager } from '../../std/impl/StaticSettingsManager.js';
@@ -38,6 +39,7 @@ export class NodeAppTesterConfigurator {
         (await container.rebind('HTTPAPICallExecutor'))
             .to(FakeHTTPAPICallExecutor)
             .inSingletonScope();
+        (await container.rebind('RandManager')).to(FakeRandManager);
     }
     async clearExecution(ctx) {
         const { container } = ctx;
@@ -59,9 +61,6 @@ export class NodeAppTesterConfigurator {
         // Nothing to do
     }
     async sideEffects(_ctx) {
-        return undefined;
-    }
-    async specificAssertions() {
         return undefined;
     }
     async updateSettings(ctx, settings) {
