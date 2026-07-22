@@ -26,7 +26,7 @@ let JoseJWTManager = class JoseJWTManager {
         return {
             jwt_manager_algorithm: this.settingsManager.get()('jwt_manager_algorithm'),
             jwt_manager_audience: this.settingsManager.get()('jwt_manager_audience'),
-            jwt_manager_expires_in: this.settingsManager.get()('jwt_manager_expires_in'),
+            jwt_manager_expires_in_s: this.settingsManager.get()('jwt_manager_expires_in_s'),
             jwt_manager_issuer: this.settingsManager.get()('jwt_manager_issuer'),
             jwt_manager_key_id: this.settingsManager.get()('jwt_manager_key_id'),
             jwt_manager_secret: this.settingsManager.get()('jwt_manager_secret'),
@@ -66,7 +66,7 @@ let JoseJWTManager = class JoseJWTManager {
     async encode(payload, opts) {
         const alg = opts?.alg ?? this.s().jwt_manager_algorithm;
         const aud = opts?.aud ?? this.s().jwt_manager_audience;
-        const exp = opts?.exp ?? this.s().jwt_manager_expires_in;
+        const exp = opts?.exp ?? this.s().jwt_manager_expires_in_s;
         const iss = opts?.iss ?? this.s().jwt_manager_issuer;
         const kid = opts?.kid ?? this.s().jwt_manager_key_id;
         const secret = opts?.secret ?? this.s().jwt_manager_secret;
@@ -76,11 +76,13 @@ let JoseJWTManager = class JoseJWTManager {
         if (kid) {
             header.kid = kid;
         }
+        const issuedAt = this.clockManager.time();
+        const expiresAt = issuedAt + exp;
         const builder = new SignJWT(payload)
             .setAudience(aud)
-            .setExpirationTime(exp)
+            .setExpirationTime(expiresAt)
             .setIssuer(iss)
-            .setIssuedAt()
+            .setIssuedAt(issuedAt)
             .setProtectedHeader(header);
         if (subject) {
             builder.setSubject(subject);
