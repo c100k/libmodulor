@@ -1,5 +1,191 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
+exports[`Run > Flows > should execute flow 'Create album, list, like and delete it' 1`] = `
+{
+  "name": "Create album, list, like and delete it",
+  "output": [
+    {
+      "args": {
+        "auth": {
+          "organization": {
+            "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          },
+          "role": "admin",
+          "user": {
+            "firstname": "Dexter",
+            "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+            "initials": "DM",
+          },
+        },
+        "authName": "ADMIN",
+        "inputFiller": [Function],
+        "inputFillerName": "FLOW",
+      },
+      "err": null,
+      "hash": "c1ed2d7a2a7dd6c7521a128d0cba24e1c89ff8ab8558943e00ccae919666c3b7",
+      "io": {
+        "i": {
+          "artist": "Daft Punk",
+          "book": {
+            "name": "/Users/dexter/Desktop/book.pdf",
+            "size": 32,
+            "type": "application/pdf",
+          },
+          "cover": {
+            "name": "/Users/dexter/Desktop/picture.png",
+            "size": 32,
+            "type": "image/png",
+          },
+          "description": "Alive 2007 is the second live album by the French electronic music duo Daft Punk, released on 19 November 2007",
+          "isPrivate": true,
+          "language": "en",
+          "name": "Alive 2007",
+          "releaseYear": 2025,
+          "tags": [
+            "Electronic",
+          ],
+        },
+        "o": {
+          "parts": {
+            "_0": {
+              "items": [
+                {
+                  "artist": "Daft Punk",
+                  "description": "Alive 2007 is the second live album by the French electronic music duo Daft Punk, released on 19 November 2007",
+                  "id": "ac3478d6-9a3c-41fa-a2e6-0f5c3696165a",
+                  "isPrivate": true,
+                  "language": "en",
+                  "name": "Alive 2007",
+                  "releaseYear": 2025,
+                  "tags": [
+                    "Electronic",
+                  ],
+                },
+              ],
+              "total": 1,
+            },
+          },
+        },
+      },
+    },
+    {
+      "args": {
+        "auth": {
+          "organization": {
+            "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          },
+          "role": "admin",
+          "user": {
+            "firstname": "Dexter",
+            "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+            "initials": "DM",
+          },
+        },
+        "authName": "ADMIN",
+        "inputFiller": [Function],
+        "inputFillerName": "FLOW",
+      },
+      "err": null,
+      "hash": "1e9284160d4e3139728f6abc45c51ee7e664ee40a7354265da76a03318de0a27",
+      "io": {
+        "i": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "limit": 10,
+          "offset": 0,
+          "q": "Nike Streakfly",
+        },
+        "o": {
+          "parts": {
+            "_0": {
+              "items": [
+                {
+                  "artist": "Daft Punk",
+                  "description": null,
+                  "id": "356a192b-7913-404c-9457-4d18c28d46e6",
+                  "isPrivate": true,
+                  "language": null,
+                  "name": "Random Access Memories",
+                  "releaseYear": 2007,
+                  "tags": [
+                    "Electronic",
+                    "French Touch",
+                  ],
+                },
+                {
+                  "artist": "Daft Punk",
+                  "description": "Alive 2007 is the second live album by the French electronic music duo Daft Punk, released on 19 November 2007",
+                  "id": "ac3478d6-9a3c-41fa-a2e6-0f5c3696165a",
+                  "isPrivate": true,
+                  "language": "en",
+                  "name": "Alive 2007",
+                  "releaseYear": 2025,
+                  "tags": [
+                    "Electronic",
+                  ],
+                },
+              ],
+              "total": 2,
+            },
+          },
+        },
+      },
+    },
+    {
+      "args": {
+        "auth": {
+          "organization": {
+            "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          },
+          "role": "admin",
+          "user": {
+            "firstname": "Dexter",
+            "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+            "initials": "DM",
+          },
+        },
+        "authName": "ADMIN",
+        "inputFiller": [Function],
+        "inputFillerName": "FLOW",
+      },
+      "err": null,
+      "hash": "f8362f99a7a5f861ab56244ddbd897172a62196fbb2e71f6cc9a1ba3e4ef42b0",
+      "io": {
+        "i": {
+          "id": "ac3478d6-9a3c-41fa-a2e6-0f5c3696165a",
+        },
+        "o": null,
+      },
+    },
+    {
+      "args": {
+        "auth": {
+          "organization": {
+            "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          },
+          "role": "admin",
+          "user": {
+            "firstname": "Dexter",
+            "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+            "initials": "DM",
+          },
+        },
+        "authName": "ADMIN",
+        "inputFiller": [Function],
+        "inputFillerName": "FLOW",
+      },
+      "err": null,
+      "hash": "d6a563aea8f9a6004d1d8ffa3b5fccc745a1757192636c7827144d60c93416fa",
+      "io": {
+        "i": {
+          "id": "ac3478d6-9a3c-41fa-a2e6-0f5c3696165a",
+        },
+        "o": null,
+      },
+    },
+  ],
+}
+`;
+
 exports[`Run > Use Cases > 'CreateAlbum' > should execute with auth 'ADMIN' and input 'ALL_WITH_EXAMPLES' > hash = b85e1284dc61d392b82fdfc001e28cebd781c2b8b4dfacc9192ed6c525ecb631 1`] = `
 {
   "out": {

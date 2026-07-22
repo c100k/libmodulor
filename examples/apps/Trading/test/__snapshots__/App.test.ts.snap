@@ -1,5 +1,299 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
+exports[`Run > Flows > should execute flow 'Buy, List, Cancel' 1`] = `
+{
+  "name": "Buy, List, Cancel",
+  "output": [
+    {
+      "args": {
+        "auth": {
+          "organization": {
+            "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          },
+          "role": "admin",
+          "user": {
+            "firstname": "Dexter",
+            "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+            "initials": "DM",
+          },
+        },
+        "authName": "ADMIN",
+        "inputFiller": [Function],
+        "inputFillerName": "FLOW",
+      },
+      "err": null,
+      "hash": "8444e5c3211d5ad714e172831a92993509764b6857cabd6c742c6f3b34b0b113",
+      "io": {
+        "i": {
+          "isin": "US02079K3059",
+          "limit": 999.99,
+          "qty": 10,
+        },
+        "o": {
+          "parts": {
+            "_0": {
+              "items": [
+                {
+                  "id": "356a192b-7913-404c-9457-4d18c28d46e6",
+                  "isin": "US02079K3059",
+                  "limit": 999.99,
+                  "qty": 10,
+                  "status": "pending",
+                },
+              ],
+              "total": 1,
+            },
+          },
+        },
+      },
+    },
+    {
+      "args": {
+        "auth": {
+          "organization": {
+            "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          },
+          "role": "admin",
+          "user": {
+            "firstname": "Dexter",
+            "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+            "initials": "DM",
+          },
+        },
+        "authName": "ADMIN",
+        "inputFiller": [Function],
+        "inputFillerName": "FLOW",
+      },
+      "err": null,
+      "hash": "8444e5c3211d5ad714e172831a92993509764b6857cabd6c742c6f3b34b0b113",
+      "io": {
+        "i": {
+          "isin": "US02079K3059",
+          "limit": 999.99,
+          "qty": 10,
+        },
+        "o": {
+          "parts": {
+            "_0": {
+              "items": [
+                {
+                  "id": "77de68da-ecd8-43ba-bbb5-8edb1c8e14d7",
+                  "isin": "US02079K3059",
+                  "limit": 999.99,
+                  "qty": 10,
+                  "status": "pending",
+                },
+              ],
+              "total": 1,
+            },
+          },
+        },
+      },
+    },
+    {
+      "args": {
+        "auth": {
+          "organization": {
+            "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          },
+          "role": "admin",
+          "user": {
+            "firstname": "Dexter",
+            "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+            "initials": "DM",
+          },
+        },
+        "authName": "ADMIN",
+        "inputFiller": [Function],
+        "inputFillerName": "FLOW",
+      },
+      "err": null,
+      "hash": "8444e5c3211d5ad714e172831a92993509764b6857cabd6c742c6f3b34b0b113",
+      "io": {
+        "i": {
+          "isin": "US02079K3059",
+          "limit": 999.99,
+          "qty": 10,
+        },
+        "o": {
+          "parts": {
+            "_0": {
+              "items": [
+                {
+                  "id": "ac3478d6-9a3c-41fa-a2e6-0f5c3696165a",
+                  "isin": "US02079K3059",
+                  "limit": 999.99,
+                  "qty": 10,
+                  "status": "pending",
+                },
+              ],
+              "total": 1,
+            },
+          },
+        },
+      },
+    },
+    {
+      "args": {
+        "auth": {
+          "organization": {
+            "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          },
+          "role": "admin",
+          "user": {
+            "firstname": "Dexter",
+            "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+            "initials": "DM",
+          },
+        },
+        "authName": "ADMIN",
+        "inputFiller": [Function],
+        "inputFillerName": "FLOW",
+      },
+      "err": null,
+      "hash": "90ba8b433a29609c8816973a3d7d636bcedfaccf9518b4f256349602034a7fd8",
+      "io": {
+        "i": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "limit": 10,
+          "offset": 0,
+          "q": "Nike Streakfly",
+        },
+        "o": {
+          "parts": {
+            "_0": {
+              "items": [
+                {
+                  "id": "356a192b-7913-404c-9457-4d18c28d46e6",
+                  "isin": "US02079K3059",
+                  "limit": 999.99,
+                  "qty": 10,
+                  "status": "pending",
+                },
+                {
+                  "id": "77de68da-ecd8-43ba-bbb5-8edb1c8e14d7",
+                  "isin": "US02079K3059",
+                  "limit": 999.99,
+                  "qty": 10,
+                  "status": "pending",
+                },
+                {
+                  "id": "ac3478d6-9a3c-41fa-a2e6-0f5c3696165a",
+                  "isin": "US02079K3059",
+                  "limit": 999.99,
+                  "qty": 10,
+                  "status": "pending",
+                },
+              ],
+              "total": 3,
+            },
+          },
+        },
+      },
+    },
+    {
+      "args": {
+        "auth": {
+          "organization": {
+            "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          },
+          "role": "admin",
+          "user": {
+            "firstname": "Dexter",
+            "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+            "initials": "DM",
+          },
+        },
+        "authName": "ADMIN",
+        "inputFiller": [Function],
+        "inputFillerName": "FLOW",
+      },
+      "err": null,
+      "hash": "1367b7397421184efa491e84c07f761800d912120da9e3b0f2e8edeeaf850557",
+      "io": {
+        "i": {
+          "id": "356a192b-7913-404c-9457-4d18c28d46e6",
+        },
+        "o": {
+          "parts": {
+            "_0": {
+              "items": [
+                {
+                  "id": "356a192b-7913-404c-9457-4d18c28d46e6",
+                  "isin": "US02079K3059",
+                  "limit": 999.99,
+                  "qty": 10,
+                  "status": "cancelled",
+                },
+              ],
+              "total": 1,
+            },
+          },
+        },
+      },
+    },
+    {
+      "args": {
+        "auth": {
+          "organization": {
+            "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          },
+          "role": "admin",
+          "user": {
+            "firstname": "Dexter",
+            "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+            "initials": "DM",
+          },
+        },
+        "authName": "ADMIN",
+        "inputFiller": [Function],
+        "inputFillerName": "FLOW",
+      },
+      "err": null,
+      "hash": "90ba8b433a29609c8816973a3d7d636bcedfaccf9518b4f256349602034a7fd8",
+      "io": {
+        "i": {
+          "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+          "limit": 10,
+          "offset": 0,
+          "q": "Nike Streakfly",
+        },
+        "o": {
+          "parts": {
+            "_0": {
+              "items": [
+                {
+                  "id": "356a192b-7913-404c-9457-4d18c28d46e6",
+                  "isin": "US02079K3059",
+                  "limit": 999.99,
+                  "qty": 10,
+                  "status": "cancelled",
+                },
+                {
+                  "id": "77de68da-ecd8-43ba-bbb5-8edb1c8e14d7",
+                  "isin": "US02079K3059",
+                  "limit": 999.99,
+                  "qty": 10,
+                  "status": "pending",
+                },
+                {
+                  "id": "ac3478d6-9a3c-41fa-a2e6-0f5c3696165a",
+                  "isin": "US02079K3059",
+                  "limit": 999.99,
+                  "qty": 10,
+                  "status": "pending",
+                },
+              ],
+              "total": 3,
+            },
+          },
+        },
+      },
+    },
+  ],
+}
+`;
+
 exports[`Run > Use Cases > 'AskQuestion' > should execute with auth 'ADMIN' and input 'ALL_WITH_EXAMPLES' > hash = 89519e3cec165cc516047a0a2903f5c54aca5d6cc415dea58dc3a3cddcda1fdf 1`] = `
 {
   "out": {

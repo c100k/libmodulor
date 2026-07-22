@@ -158,6 +158,8 @@ describe('Run', async () => {
                     expect(out.err).toBeInstanceOf(CustomError);
                 }
             }
+
+            expect({ name: flow.name, output }).toMatchSnapshot();
         });
     });
 
