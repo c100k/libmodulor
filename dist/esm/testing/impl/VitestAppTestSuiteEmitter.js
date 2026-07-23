@@ -83,7 +83,6 @@ import {
     CustomError,
     type AnyUCDef,
     type Logger,
-    type UCAuthSetterName,
     type UCInput,
 } from '${LIB_NAME}';
 import { newNodeAppTester } from '${LIB_NAME}/node-test';
@@ -150,16 +149,15 @@ describe('Run', async () => {
         test.each(flows)('should execute flow $name', async (flow) => {
             const output = await runner.execFlow(flow);
 
-            for (const out of output) {
-                if (out.err !== null) {
-                    if (!(out.err instanceof CustomError)) {
-                        logger.error(out.err);
-                    }
-                    expect(out.err).toBeInstanceOf(CustomError);
+            for (const { out } of output) {
+                const { err, status } = out;
+                if (err) {
+                    expect(err).toBeInstanceOf(CustomError);
                 }
+                expect(status).not.toBe('danger');
             }
 
-            expect({ name: flow.name, output }).toMatchSnapshot();
+            expect(output).toMatchSnapshot();
         });
     });
 
@@ -176,28 +174,25 @@ describe('Run', async () => {
                 ucd = runner.getUCD<any, any, any>(ucdRef.name);
             });
 
-            const data = await runner.ucTestData(ucdRef);
+            const args = await runner.execArgs(ucdRef);
 
-            test.each(data)(
+            test.each(args)(
                 'should execute with auth $authName and input $inputFillerName',
                 async ({ auth, authName, inputFiller, inputFillerName }) => {
-                    const { out, sideEffects } = await runner.execUC({
+                    const { out } = await runner.execUC({
                         auth,
-                        authName: authName as UCAuthSetterName,
+                        authName,
                         inputFiller,
                         inputFillerName,
                         ucd,
                     });
 
-                    if (out.err !== null) {
-                        if (!(out.err instanceof CustomError)) {
-                            logger.error(out.err);
-                        }
-                        expect(out.err).toBeInstanceOf(CustomError);
+                    const { err, hash, status } = out;
+                    if (err) {
+                        expect(err).toBeInstanceOf(CustomError);
                     }
-
-                    const { hash } = out;
-                    expect({ out, sideEffects }).toMatchSnapshot(
+                    expect(status).not.toBe('danger');
+                    expect(out).toMatchSnapshot(
                         \`hash = \${hash}\`,
                     );
                 },

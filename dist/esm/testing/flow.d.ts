@@ -1,14 +1,14 @@
 import type { AnyUCDef, UCDef, UCInput, UCOPIBase } from '../uc/index.js';
-import type { FirstNElements } from '../utils/index.js';
+import type { AnySideEffect, FirstNElements } from '../utils/index.js';
 import type { AppTesterCtx } from './ctx.js';
-import type { UCExecutorExecOutput, Input as UCExecutorInput } from './workers/UCExecutor.js';
-export type AppTesterFlowExecOutput = UCExecutorExecOutput<any, any, any>[];
-export type AppTesterFlowBase = Partial<Pick<UCExecutorInput, 'auth' | 'authName'>> & {
-    name: string;
+import type { AnyAppTesterExec, AppTesterExec, AppTesterExecArgs, AppTesterExecName } from './exec.js';
+export type AppTesterFlowExec = AnyAppTesterExec[];
+export type AppTesterFlowBase = Pick<AppTesterExecArgs, 'auth' | 'authName'> & {
+    name: AppTesterExecName;
     setup?: (ctx: AppTesterCtx) => Promise<void>;
 };
 export type AppTesterFlowStepInput<S> = S extends UCDef<infer I, any, any> ? Partial<I> : never;
-export type AppTesterFlowStepOutput<S> = S extends UCDef<infer I, infer OPI0, infer OPI1> ? UCExecutorExecOutput<I, OPI0, OPI1> : never;
+export type AppTesterFlowStepOutput<S> = S extends UCDef<infer I, infer OPI0, infer OPI1> ? AppTesterExec<I, OPI0, OPI1> : never;
 export type AppTesterFlowStepInputOverrideData<Steps extends readonly AnyUCDef[]> = {
     [K in keyof Steps]: AppTesterFlowStepOutput<Steps[K]>;
 };
@@ -28,4 +28,5 @@ export type AnyAppTesterFlow = AppTesterFlowBase & {
     steps: readonly unknown[];
 };
 export declare function appTesterFlow<const Steps extends readonly AnyUCDef[]>(args: AppTesterFlow<Steps>): AppTesterFlow<Steps>;
-export declare function appTesterFlowRead00<I extends UCInput | undefined = undefined, OPI0 extends UCOPIBase | undefined = undefined, OPI1 extends UCOPIBase | undefined = undefined>(output: UCExecutorExecOutput<I, OPI0, OPI1>): OPI0;
+export declare function appTesterFlowRead00<I extends UCInput | undefined = undefined, OPI0 extends UCOPIBase | undefined = undefined, OPI1 extends UCOPIBase | undefined = undefined>(output: AppTesterExec<I, OPI0, OPI1>): OPI0;
+export declare function appTesterFlowReadSideEffect<I extends UCInput | undefined = undefined, OPI0 extends UCOPIBase | undefined = undefined, OPI1 extends UCOPIBase | undefined = undefined>(output: AppTesterExec<I, OPI0, OPI1>, key: string): AnySideEffect[] | null;

@@ -1,6 +1,7 @@
 import { inject, injectable } from 'inversify';
 
 import {
+    type JobManager,
     type LLMManager,
     type Logger,
     type UCMain,
@@ -16,6 +17,7 @@ export class CreateAlbumServerMain
     implements UCMain<CreateAlbumInput, CreateAlbumOPI0>
 {
     constructor(
+        @inject('JobManager') private jobManager: JobManager,
         @inject('LLMManager') private llmManager: LLMManager,
         @inject('Logger') private logger: Logger,
         @inject('UCManager') private ucManager: UCManager,
@@ -57,6 +59,11 @@ export class CreateAlbumServerMain
 
         /// Persist the album
         const { aggregateId } = await this.ucManager.persist(uc);
+
+        /// Dispatch job to process the assets
+        await this.jobManager.dispatch('albums', 'process-assets', {
+            id: aggregateId,
+        });
 
         return new UCOutputBuilder<CreateAlbumOPI0>()
             .add({

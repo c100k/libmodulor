@@ -158,7 +158,7 @@ function statusStyles() {
         .join('\n            ');
 }
 function fmtTestResult(item, idx) {
-    const { name, out: { args: { auth, authName, inputFillerName }, err, io: { i, o }, }, sideEffects, status, } = item;
+    const { name, out: { args: { auth, authName, inputFillerName }, err, io: { i, o }, sideEffects, status, }, } = item;
     return `
                 <tr class="${status}">
                     <td>${idx + 1}</td>

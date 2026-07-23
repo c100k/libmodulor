@@ -1,4 +1,4 @@
-export { appTesterFlow, appTesterFlowRead00, } from './flow.js';
+export { appTesterFlow, appTesterFlowRead00, appTesterFlowReadSideEffect, } from './flow.js';
 export { DEFAULT_APP_TESTER_OPTS, } from './opts.js';
 export { UCDataStoreTester } from './UCDataStoreTester.js';
 export { DEFAULT_UC_AUTH_SETTERS, defaultUCAuthSetters, } from './uc-auth.js';

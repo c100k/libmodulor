@@ -66,6 +66,7 @@ sequenceDiagram
     Server->>Server: Log if the album is private
     Server->>Server: Fetch the artist via an LLM
     Server->>Server: Persist the album
+    Server->>Server: Dispatch job to process the assets
     Server-->>-Client: 👍 OK<br/>artist: Artist<br/>description: AlbumDesc<br/>isPrivate: boolean<br/>language: Language<br/>name: AlbumName<br/>releaseYear: AlbumReleaseYear<br/>tags: Tag<br/>id: UUID
     Client-->>-User: 👍 OK
 ```

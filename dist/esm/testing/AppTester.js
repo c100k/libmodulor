@@ -27,7 +27,7 @@ import { AppIndexChecker } from './workers/checkers/AppIndexChecker.js';
 import { AppManifestChecker } from './workers/checkers/AppManifestChecker.js';
 import { UCDefChecker } from './workers/checkers/UCDefChecker.js';
 import { UCDefSourcesChecker, } from './workers/checkers/UCDefSourcesChecker.js';
-import { UCExecutor, } from './workers/UCExecutor.js';
+import { UCExecutor } from './workers/UCExecutor.js';
 const ERR_UCD_NOT_FOUND = (ucName) => `Could not find a ucd for ${ucName}`;
 let AppTester = class AppTester {
     appDocsEmitter;
@@ -129,30 +129,69 @@ let AppTester = class AppTester {
             this.ucds.set(ucdRef.name, ucd);
         }
     }
+    async execArgs(ucdRef) {
+        // Auth setters
+        const defaultASs = defaultUCAuthSetters();
+        let asEntries = Object.entries(defaultASs);
+        const asConfig = await this.configurator.authSettersConfig();
+        if (asConfig) {
+            const { add, exclude } = asConfig;
+            if (exclude) {
+                for (const asName of exclude) {
+                    asEntries = asEntries.filter(([name]) => name !== asName);
+                }
+            }
+            if (add) {
+                asEntries.push(...Object.entries(add));
+            }
+        }
+        // Input fillers
+        const defaultIFs = defaultUCInputFillers();
+        const ifEntries = Object.entries(defaultIFs);
+        const specificIFs = await this.configurator.inputFillers();
+        const specificIFsForUC = specificIFs?.get(ucdRef.name);
+        if (specificIFsForUC) {
+            ifEntries.push(...Object.entries(specificIFsForUC));
+        }
+        const data = [];
+        for (const [authName, auth] of asEntries) {
+            for (const [inputFillerName, inputFiller] of ifEntries) {
+                data.push({
+                    auth,
+                    authName: authName,
+                    inputFiller,
+                    inputFillerName,
+                });
+            }
+        }
+        return data;
+    }
     async execFlow(flow) {
         const output = [];
         const { auth, authName, setup, steps } = flow;
         await setup?.(this.ctx);
         // @ts-expect-error
         for await (const [ucd, inputOverride] of steps) {
+            const inputOverrides = inputOverride?.(output);
             // biome-ignore lint/suspicious/noExplicitAny: can be anything
             const inputFiller = (uc) => {
                 allWithExamples(uc);
-                const inputOverrides = inputOverride?.(output);
                 if (inputOverrides) {
                     for (const [k, v] of Object.entries(inputOverrides)) {
                         uc.inputField(k).setVal(v);
                     }
                 }
             };
-            const { out } = await this.execUC({
-                auth: auth ?? FAKE_USER_ADMIN,
-                authName: authName ?? 'ADMIN',
+            const res = await this.execUC({
+                auth,
+                authName,
                 inputFiller,
-                inputFillerName: 'FLOW',
+                inputFillerName: inputOverrides
+                    ? 'ALL_WITH_EXAMPLES_WITH_OVERRIDES'
+                    : 'ALL_WITH_EXAMPLES',
                 ucd,
             }, flow);
-            output.push(out);
+            output.push(res);
         }
         return output;
     }
@@ -176,24 +215,6 @@ let AppTester = class AppTester {
             ...input,
             appManifest: this.ctx.appManifest,
         });
-        // TODO : Add errors mapping to configurator so the developer can override this default behavior
-        let status = 'warning';
-        if (!out.err) {
-            status = 'success';
-        }
-        else {
-            const { name } = out.err;
-            switch (name) {
-                case 'CustomError':
-                    break;
-                case 'Error':
-                case 'TypeError':
-                    status = 'danger';
-                    break;
-                default:
-                    break;
-            }
-        }
         let name = input.ucd.metadata.name;
         let sideEffects = await this.configurator.sideEffects(this.ctx);
         if (flow) {
@@ -206,15 +227,16 @@ let AppTester = class AppTester {
                 sideEffects = new Map(snapshot);
             }
         }
-        const testResult = {
+        if (sideEffects) {
+            out.sideEffects = sideEffects;
+        }
+        const res = {
             name,
             out,
-            sideEffects,
-            status,
         };
-        this.testResults.push(testResult);
-        this.testSummary.counts[status] += 1;
-        return testResult;
+        this.testResults.push(res);
+        this.testSummary.counts[out.status] += 1;
+        return res;
     }
     async finalize() {
         await this.serverManager.stop();
@@ -262,43 +284,6 @@ let AppTester = class AppTester {
     async initForUCExec() {
         await this.initI18n();
         await this.initServer();
-    }
-    async ucTestData(ucdRef) {
-        // Auth setters
-        const defaultASs = defaultUCAuthSetters();
-        let asEntries = Object.entries(defaultASs);
-        const asConfig = await this.configurator.authSettersConfig();
-        if (asConfig) {
-            const { add, exclude } = asConfig;
-            if (exclude) {
-                for (const asName of exclude) {
-                    asEntries = asEntries.filter(([name]) => name !== asName);
-                }
-            }
-            if (add) {
-                asEntries.push(...Object.entries(add));
-            }
-        }
-        // Input fillers
-        const defaultIFs = defaultUCInputFillers();
-        const ifEntries = Object.entries(defaultIFs);
-        const specificIFs = await this.configurator.inputFillers();
-        const specificIFsForUC = specificIFs?.get(ucdRef.name);
-        if (specificIFsForUC) {
-            ifEntries.push(...Object.entries(specificIFsForUC));
-        }
-        const data = [];
-        for (const [authName, auth] of asEntries) {
-            for (const [inputFillerName, inputFiller] of ifEntries) {
-                data.push({
-                    auth,
-                    authName,
-                    inputFiller,
-                    inputFillerName,
-                });
-            }
-        }
-        return data;
     }
     async bindI18n() {
         const { appI18n, container } = this.ctx;

@@ -1,6 +1,7 @@
 export type { AppTesterConfigurator, AppTesterConfiguratorAuthSettersConfig, AppTesterConfiguratorInputFillers, AppTesterConfiguratorSideEffects, AppTesterConfiguratorSideEffectsSerialized, } from './AppTesterConfigurator.js';
 export type { AppTesterCtx, AppTesterUCDRef } from './ctx.js';
-export { type AnyAppTesterFlow, type AppTesterFlow, appTesterFlow, appTesterFlowRead00, } from './flow.js';
+export type { AnyAppTesterExec, AppTesterExec, AppTesterExecArgs, AppTesterExecInput, AppTesterExecName, AppTesterExecOutput, AppTesterExecOutputSerialized, AppTesterExecStatus, } from './exec.js';
+export { type AnyAppTesterFlow, type AppTesterFlow, appTesterFlow, appTesterFlowRead00, appTesterFlowReadSideEffect, } from './flow.js';
 export { type AppTesterOpts, type AppTesterOptsAllSet, type AppTesterTypeScriptOpts, DEFAULT_APP_TESTER_OPTS, } from './opts.js';
 export { UCDataStoreTester } from './UCDataStoreTester.js';
 export type { UCDefASTParser } from './UCDefASTParser.js';
@@ -10,4 +11,4 @@ export { awaitForSrcImport, type TestData } from './utils.js';
 export type { AppDocsEmitter } from './workers/AppDocsEmitter.js';
 export type { AppTestSuiteEmitter } from './workers/AppTestSuiteEmitter.js';
 export type { AppTestSuiteRunner } from './workers/AppTestSuiteRunner.js';
-export type { UCExecutor, UCExecutorExecOutput, } from './workers/UCExecutor.js';
+export type { UCExecutor } from './workers/UCExecutor.js';

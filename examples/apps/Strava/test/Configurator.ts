@@ -61,15 +61,14 @@ export class Configurator extends ExampleAppTesterConfigurator {
     public override async sideEffects(
         ctx: AppTesterCtx,
     ): Promise<AppTesterConfiguratorSideEffects | undefined> {
-        return new Map([
-            [
-                'ActivityProcessor.entries',
-                (
-                    ctx.container.get<ActivityProcessor>(
-                        'ActivityProcessor',
-                    ) as FakeActivityProcessor
-                ).entries,
-            ],
-        ]);
+        await super.sideEffects(ctx);
+
+        const { container } = ctx;
+
+        const activitiesDispatched = await container
+            .get<ActivityProcessor>('ActivityProcessor')
+            .sideEffects();
+
+        return new Map([['acitivtiesDispatched', activitiesDispatched]]);
     }
 }

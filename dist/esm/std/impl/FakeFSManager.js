@@ -100,6 +100,12 @@ let FakeFSManager = class FakeFSManager {
     async touch(path, content) {
         this.entries.set(path, { content, mode: 0o755 });
     }
+    async sideEffects() {
+        return [...this.entries.entries()].map((e) => ({
+            i: e,
+            o: undefined,
+        }));
+    }
 };
 FakeFSManager = __decorate([
     injectable(),

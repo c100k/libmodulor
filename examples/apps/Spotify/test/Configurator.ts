@@ -1,19 +1,14 @@
 import {
     type AnyAppTesterFlow,
+    type AppTesterConfiguratorSideEffects,
     type AppTesterCtx,
-    appTesterFlow,
-    appTesterFlowRead00,
+    type JobManager,
     type LLMManager,
     MistralAILLMManager,
-    UCBuilder,
-    type UCManager,
 } from '../../../../dist/esm/index.js';
 import { ExampleAppTesterConfigurator } from '../../../ExampleAppTesterConfigurator.js';
 import type { SongPlayerSettings } from '../src/lib/SongPlayer.js';
-import { CreateAlbumUCD } from '../src/ucds/CreateAlbumUCD.js';
-import { DeleteAlbumUCD } from '../src/ucds/DeleteAlbumUCD.js';
-import { LikeAlbumUCD } from '../src/ucds/LikeAlbumUCD.js';
-import { ListAlbumsUCD } from '../src/ucds/ListAlbumsUCD.js';
+import { flow1 } from './flows/flow1.js';
 
 export class Configurator extends ExampleAppTesterConfigurator {
     public override async bindImplementations(
@@ -31,39 +26,20 @@ export class Configurator extends ExampleAppTesterConfigurator {
     }
 
     public override async flows(): Promise<AnyAppTesterFlow[]> {
-        const flow1 = appTesterFlow({
-            name: 'Create album, list, like and delete it',
-            setup: async (ctx) => {
-                const { appManifest, container } = ctx;
-
-                const ucb = container.get(UCBuilder);
-                const ucm = container.get<UCManager>('UCManager');
-                const uc = ucb
-                    .exec({ appManifest, auth: null, def: CreateAlbumUCD })
-                    .fill({
-                        name: 'Random Access Memories',
-                        tags: ['Electronic', 'French Touch'],
-                    });
-                await ucm.persist(uc);
-            },
-            steps: [
-                [CreateAlbumUCD],
-                [ListAlbumsUCD],
-                [
-                    LikeAlbumUCD,
-                    (data) => ({
-                        id: appTesterFlowRead00(data[0]).id,
-                    }),
-                ],
-                [
-                    DeleteAlbumUCD,
-                    (data) => ({
-                        id: appTesterFlowRead00(data[0]).id,
-                    }),
-                ],
-            ],
-        });
-
         return [flow1];
+    }
+
+    public override async sideEffects(
+        ctx: AppTesterCtx,
+    ): Promise<AppTesterConfiguratorSideEffects | undefined> {
+        await super.sideEffects(ctx);
+
+        const { container } = ctx;
+
+        const jobsDispatched = await container
+            .get<JobManager>('JobManager')
+            .sideEffects();
+
+        return new Map([['jobsDispatched', jobsDispatched]]);
     }
 }

@@ -1,4 +1,5 @@
 import type { UCInput, UCOPIBase } from '../uc/index.js';
+import type { AnySideEffect } from '../utils/index.js';
 import type { AppTesterCtx } from './ctx.js';
 import type { AnyAppTesterFlow } from './flow.js';
 import type { DefaultUCAuthSetter, UCAuthSetterSet } from './uc-auth.js';
@@ -16,8 +17,11 @@ export type AppTesterConfiguratorAuthSettersConfig = {
     exclude?: Set<DefaultUCAuthSetter>;
 };
 export type AppTesterConfiguratorInputFillers<I extends UCInput = any, OPI0 extends UCOPIBase = any, OPI1 extends UCOPIBase = any> = Map<UCInputFillerTuple<I, OPI0, OPI1>[0], UCInputFillerTuple<I, OPI0, OPI1>[1]>;
-export type AppTesterConfiguratorSideEffects = Map<string, any>;
-export type AppTesterConfiguratorSideEffectsSerialized = [string, any][];
+export type AppTesterConfiguratorSideEffects = Map<string, AnySideEffect[]>;
+export type AppTesterConfiguratorSideEffectsSerialized = [
+    string,
+    AnySideEffect[]
+][];
 /**
  * Configure the tester for a specific app
  *

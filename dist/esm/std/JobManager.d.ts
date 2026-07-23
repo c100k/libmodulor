@@ -1,4 +1,4 @@
-import type { Clearable, Initializable } from '../utils/index.js';
+import type { Clearable, Initializable, SideEffectable } from '../utils/index.js';
 import type { Settings } from './SettingsManager.js';
 import type { Worker } from './Worker.js';
 export type JobManagerJobName = string;
@@ -12,7 +12,7 @@ export interface JobManagerSettings extends Settings {
         };
     }[];
 }
-export interface JobManager extends Clearable, Initializable {
+export interface JobManager extends Clearable, Initializable, SideEffectable {
     /**
      * Send a new job on the queue for processing
      * @param queueName

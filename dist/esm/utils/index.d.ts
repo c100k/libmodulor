@@ -2,6 +2,7 @@ export { sleep } from './async/sleep.js';
 export type { AbortFunc, RegisterAbortFunc } from './async/types.js';
 export type { Clearable } from './concerns/Clearable.js';
 export type { Initializable } from './concerns/Initializable.js';
+export type { AnySideEffect, SideEffect, SideEffectable, } from './concerns/SideEffectable.js';
 export type { SrcImporter } from './esm/srcImporter.js';
 export { fromFormData, toFormData } from './http/form-data.js';
 export { HTTPRequestBuilder } from './http/HTTPRequestBuilder.js';

@@ -19,6 +19,12 @@ let FakeJobManager = class FakeJobManager {
     async dispatch(queueName, jobName, input) {
         this.entries.push({ input, jobName, queueName });
     }
+    async sideEffects() {
+        return this.entries.map((e) => ({
+            i: e,
+            o: undefined,
+        }));
+    }
     async init() {
         // Nothing to do
     }

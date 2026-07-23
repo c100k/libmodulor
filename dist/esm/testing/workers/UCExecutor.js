@@ -12,6 +12,7 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 };
 var UCExecutor_1;
 import { inject, injectable } from 'inversify';
+import { CustomError } from '../../error/index.js';
 import { rInput, UCBuilder, } from '../../uc/index.js';
 const ERR_CLIENT_EXPECTED_UCOR = (name) => `${name} client is expected to return an ucor`;
 const ERR_CLIENT_EXPECTED_OUTPUT = (name) => `${name} client is expected to return an output but returned nothing`;
@@ -43,6 +44,8 @@ let UCExecutor = class UCExecutor {
                 i: null,
                 o: null,
             },
+            sideEffects: null,
+            status: 'warning',
         };
         // In a typical scenario, client calls the server so only the client actually needs to be called here
         await this.execClient(appManifest, ucd, out);
@@ -123,6 +126,7 @@ let UCExecutor = class UCExecutor {
         }
         finally {
             this.derandomizeInput(out.io.i);
+            out.status = this.determineStatus(out);
         }
     }
     derandomizeInput(input) {
@@ -151,6 +155,16 @@ let UCExecutor = class UCExecutor {
             size: file.size,
             type: file.type,
         };
+    }
+    determineStatus(out) {
+        const { err } = out;
+        if (!err) {
+            return 'success';
+        }
+        if (err instanceof CustomError) {
+            return 'warning';
+        }
+        return 'danger';
     }
 };
 UCExecutor = UCExecutor_1 = __decorate([

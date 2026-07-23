@@ -1,7 +1,7 @@
 import type { DirPath, File, FileExtension, FileName, FilePath } from '../../dt/index.js';
-import type { Clearable } from '../../utils/index.js';
+import type { AnySideEffect, Clearable, SideEffectable } from '../../utils/index.js';
 import { type FSManager, type FSManagerCatOpts, type FSManagerChmodMode, type FSManagerItemInfo, type FSManagerLsItem, type FSManagerLsOpts, type Pathname } from '../FSManager.js';
-export declare class FakeFSManager implements Clearable, FSManager {
+export declare class FakeFSManager implements Clearable, FSManager, SideEffectable {
     entries: Map<FilePath, {
         content: ArrayBuffer | string;
         mode: FSManagerChmodMode;
@@ -22,4 +22,5 @@ export declare class FakeFSManager implements Clearable, FSManager {
     pickFiles(): Promise<File[]>;
     rm(path: Pathname): Promise<void>;
     touch<T extends ArrayBuffer | string>(path: FilePath, content: T): Promise<void>;
+    sideEffects(): Promise<AnySideEffect[]>;
 }

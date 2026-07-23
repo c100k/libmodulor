@@ -27,7 +27,10 @@ let AuthCookieCreator = class AuthCookieCreator {
         };
     }
     async exec({ jwt }) {
-        const { exp } = await this.jwtManager.decode(jwt);
+        // For any reason, the JWT can already be expired.
+        // This shouldn't prevent the cookie creation.
+        // Hence the usage of decodeUnsafe instead of decode.
+        const { exp } = await this.jwtManager.decodeUnsafe(jwt);
         return {
             name: this.s().server_cookies_name_auth,
             opts: this.opts(exp),
