@@ -1,13 +1,12 @@
-import type { Email } from '../../dt/index.js';
-import type { EmailManager, EmailManagerEmailDef, EmailManagerEmailDefInputBase } from '../EmailManager.js';
+import type { AnySideEffect } from '../../utils/index.js';
+import type { EmailManager, EmailManagerSendInput } from '../EmailManager.js';
 export declare class FakeEmailManager implements EmailManager {
     entries: {
-        def: EmailManagerEmailDef<any>;
-        replyTo?: Email | undefined;
-        to: Email[];
+        input: EmailManagerSendInput;
     }[];
     constructor();
     clear(): Promise<void>;
-    send<I extends EmailManagerEmailDefInputBase>(def: EmailManagerEmailDef<I>, to: Email[], replyTo?: Email | undefined): Promise<void>;
+    sideEffects(): Promise<AnySideEffect[]>;
+    send(input: EmailManagerSendInput): Promise<void>;
     verify(): Promise<void>;
 }

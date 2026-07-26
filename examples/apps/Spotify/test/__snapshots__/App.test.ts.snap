@@ -58,6 +58,30 @@ exports[`Run > Flows > should execute flow 'Create album, list, like and delete 
         },
       },
       "sideEffects": Map {
+        "emailsSent" => [
+          {
+            "i": {
+              "input": {
+                "content": {
+                  "html": "<p>Hello,</p>
+<p>A new album has been created : Alive 2007 (ac3478d6-9a3c-41fa-a2e6-0f5c3696165a).</p>
+<p>Best,</p>
+",
+                  "subject": "🎶 New Album Created !",
+                  "text": "Hello,
+A new album has been created : Alive 2007 (ac3478d6-9a3c-41fa-a2e6-0f5c3696165a).
+Best,
+",
+                },
+                "metadata": {
+                  "to": [
+                    "dexter@caramail.com",
+                  ],
+                },
+              },
+            },
+          },
+        ],
         "jobsDispatched" => [
           {
             "i": {
@@ -129,6 +153,52 @@ exports[`Run > Flows > should execute flow 'Create album, list, like and delete 
         },
       },
       "sideEffects": Map {
+        "emailsSent" => [
+          {
+            "i": {
+              "input": {
+                "content": {
+                  "html": "<p>Hello,</p>
+<p>A new album has been created : Alive 2007 (ac3478d6-9a3c-41fa-a2e6-0f5c3696165a).</p>
+<p>Best,</p>
+",
+                  "subject": "🎶 New Album Created !",
+                  "text": "Hello,
+A new album has been created : Alive 2007 (ac3478d6-9a3c-41fa-a2e6-0f5c3696165a).
+Best,
+",
+                },
+                "metadata": {
+                  "to": [
+                    "dexter@caramail.com",
+                  ],
+                },
+              },
+            },
+          },
+          {
+            "i": {
+              "input": {
+                "content": {
+                  "html": "<p>Hello,</p>
+<p>A new album has been created : Alive 2007 process-assets (0ade7c2c-f97f-45d0-8997-5f4d720d1fa6).</p>
+<p>Best,</p>
+",
+                  "subject": "🎶 New Album Created !",
+                  "text": "Hello,
+A new album has been created : Alive 2007 process-assets (0ade7c2c-f97f-45d0-8997-5f4d720d1fa6).
+Best,
+",
+                },
+                "metadata": {
+                  "to": [
+                    "dexter@caramail.com",
+                  ],
+                },
+              },
+            },
+          },
+        ],
         "jobsDispatched" => [
           {
             "i": {
@@ -219,6 +289,52 @@ exports[`Run > Flows > should execute flow 'Create album, list, like and delete 
         },
       },
       "sideEffects": Map {
+        "emailsSent" => [
+          {
+            "i": {
+              "input": {
+                "content": {
+                  "html": "<p>Hello,</p>
+<p>A new album has been created : Alive 2007 (ac3478d6-9a3c-41fa-a2e6-0f5c3696165a).</p>
+<p>Best,</p>
+",
+                  "subject": "🎶 New Album Created !",
+                  "text": "Hello,
+A new album has been created : Alive 2007 (ac3478d6-9a3c-41fa-a2e6-0f5c3696165a).
+Best,
+",
+                },
+                "metadata": {
+                  "to": [
+                    "dexter@caramail.com",
+                  ],
+                },
+              },
+            },
+          },
+          {
+            "i": {
+              "input": {
+                "content": {
+                  "html": "<p>Hello,</p>
+<p>A new album has been created : Alive 2007 process-assets (0ade7c2c-f97f-45d0-8997-5f4d720d1fa6).</p>
+<p>Best,</p>
+",
+                  "subject": "🎶 New Album Created !",
+                  "text": "Hello,
+A new album has been created : Alive 2007 process-assets (0ade7c2c-f97f-45d0-8997-5f4d720d1fa6).
+Best,
+",
+                },
+                "metadata": {
+                  "to": [
+                    "dexter@caramail.com",
+                  ],
+                },
+              },
+            },
+          },
+        ],
         "jobsDispatched" => [
           {
             "i": {
@@ -261,6 +377,52 @@ exports[`Run > Flows > should execute flow 'Create album, list, like and delete 
         "o": null,
       },
       "sideEffects": Map {
+        "emailsSent" => [
+          {
+            "i": {
+              "input": {
+                "content": {
+                  "html": "<p>Hello,</p>
+<p>A new album has been created : Alive 2007 (ac3478d6-9a3c-41fa-a2e6-0f5c3696165a).</p>
+<p>Best,</p>
+",
+                  "subject": "🎶 New Album Created !",
+                  "text": "Hello,
+A new album has been created : Alive 2007 (ac3478d6-9a3c-41fa-a2e6-0f5c3696165a).
+Best,
+",
+                },
+                "metadata": {
+                  "to": [
+                    "dexter@caramail.com",
+                  ],
+                },
+              },
+            },
+          },
+          {
+            "i": {
+              "input": {
+                "content": {
+                  "html": "<p>Hello,</p>
+<p>A new album has been created : Alive 2007 process-assets (0ade7c2c-f97f-45d0-8997-5f4d720d1fa6).</p>
+<p>Best,</p>
+",
+                  "subject": "🎶 New Album Created !",
+                  "text": "Hello,
+A new album has been created : Alive 2007 process-assets (0ade7c2c-f97f-45d0-8997-5f4d720d1fa6).
+Best,
+",
+                },
+                "metadata": {
+                  "to": [
+                    "dexter@caramail.com",
+                  ],
+                },
+              },
+            },
+          },
+        ],
         "jobsDispatched" => [
           {
             "i": {
@@ -303,6 +465,52 @@ exports[`Run > Flows > should execute flow 'Create album, list, like and delete 
         "o": null,
       },
       "sideEffects": Map {
+        "emailsSent" => [
+          {
+            "i": {
+              "input": {
+                "content": {
+                  "html": "<p>Hello,</p>
+<p>A new album has been created : Alive 2007 (ac3478d6-9a3c-41fa-a2e6-0f5c3696165a).</p>
+<p>Best,</p>
+",
+                  "subject": "🎶 New Album Created !",
+                  "text": "Hello,
+A new album has been created : Alive 2007 (ac3478d6-9a3c-41fa-a2e6-0f5c3696165a).
+Best,
+",
+                },
+                "metadata": {
+                  "to": [
+                    "dexter@caramail.com",
+                  ],
+                },
+              },
+            },
+          },
+          {
+            "i": {
+              "input": {
+                "content": {
+                  "html": "<p>Hello,</p>
+<p>A new album has been created : Alive 2007 process-assets (0ade7c2c-f97f-45d0-8997-5f4d720d1fa6).</p>
+<p>Best,</p>
+",
+                  "subject": "🎶 New Album Created !",
+                  "text": "Hello,
+A new album has been created : Alive 2007 process-assets (0ade7c2c-f97f-45d0-8997-5f4d720d1fa6).
+Best,
+",
+                },
+                "metadata": {
+                  "to": [
+                    "dexter@caramail.com",
+                  ],
+                },
+              },
+            },
+          },
+        ],
         "jobsDispatched" => [
           {
             "i": {
@@ -395,6 +603,31 @@ exports[`Run > Use Cases > 'CreateAlbum' > should execute with auth 'ADMIN' and 
     },
   },
   "sideEffects": Map {
+    "emailsSent" => [
+      {
+        "i": {
+          "input": {
+            "content": {
+              "html": "<p>Hello,</p>
+<p>A new album has been created : Alive 2007 (77de68da-ecd8-43ba-bbb5-8edb1c8e14d7).</p>
+<p>Best,</p>
+",
+              "subject": "🎶 New Album Created !",
+              "text": "Hello,
+A new album has been created : Alive 2007 (77de68da-ecd8-43ba-bbb5-8edb1c8e14d7).
+Best,
+",
+            },
+            "metadata": {
+              "to": [
+                "dexter@caramail.com",
+              ],
+            },
+          },
+        },
+        "o": undefined,
+      },
+    ],
     "jobsDispatched" => [
       {
         "i": {
@@ -465,6 +698,31 @@ exports[`Run > Use Cases > 'CreateAlbum' > should execute with auth 'ADMIN' and 
     },
   },
   "sideEffects": Map {
+    "emailsSent" => [
+      {
+        "i": {
+          "input": {
+            "content": {
+              "html": "<p>Hello,</p>
+<p>A new album has been created : Alive 2007 (356a192b-7913-404c-9457-4d18c28d46e6).</p>
+<p>Best,</p>
+",
+              "subject": "🎶 New Album Created !",
+              "text": "Hello,
+A new album has been created : Alive 2007 (356a192b-7913-404c-9457-4d18c28d46e6).
+Best,
+",
+            },
+            "metadata": {
+              "to": [
+                "dexter@caramail.com",
+              ],
+            },
+          },
+        },
+        "o": undefined,
+      },
+    ],
     "jobsDispatched" => [
       {
         "i": {
@@ -517,6 +775,7 @@ exports[`Run > Use Cases > 'CreateAlbum' > should execute with auth 'ADMIN' and 
     "o": null,
   },
   "sideEffects": Map {
+    "emailsSent" => [],
     "jobsDispatched" => [],
   },
   "status": "warning",
@@ -578,6 +837,31 @@ exports[`Run > Use Cases > 'CreateAlbum' > should execute with auth 'ANONYMOUS' 
     },
   },
   "sideEffects": Map {
+    "emailsSent" => [
+      {
+        "i": {
+          "input": {
+            "content": {
+              "html": "<p>Hello,</p>
+<p>A new album has been created : Alive 2007 (77de68da-ecd8-43ba-bbb5-8edb1c8e14d7).</p>
+<p>Best,</p>
+",
+              "subject": "🎶 New Album Created !",
+              "text": "Hello,
+A new album has been created : Alive 2007 (77de68da-ecd8-43ba-bbb5-8edb1c8e14d7).
+Best,
+",
+            },
+            "metadata": {
+              "to": [
+                "dexter@caramail.com",
+              ],
+            },
+          },
+        },
+        "o": undefined,
+      },
+    ],
     "jobsDispatched" => [
       {
         "i": {
@@ -638,6 +922,31 @@ exports[`Run > Use Cases > 'CreateAlbum' > should execute with auth 'ANONYMOUS' 
     },
   },
   "sideEffects": Map {
+    "emailsSent" => [
+      {
+        "i": {
+          "input": {
+            "content": {
+              "html": "<p>Hello,</p>
+<p>A new album has been created : Alive 2007 (356a192b-7913-404c-9457-4d18c28d46e6).</p>
+<p>Best,</p>
+",
+              "subject": "🎶 New Album Created !",
+              "text": "Hello,
+A new album has been created : Alive 2007 (356a192b-7913-404c-9457-4d18c28d46e6).
+Best,
+",
+            },
+            "metadata": {
+              "to": [
+                "dexter@caramail.com",
+              ],
+            },
+          },
+        },
+        "o": undefined,
+      },
+    ],
     "jobsDispatched" => [
       {
         "i": {
@@ -680,6 +989,7 @@ exports[`Run > Use Cases > 'CreateAlbum' > should execute with auth 'ANONYMOUS' 
     "o": null,
   },
   "sideEffects": Map {
+    "emailsSent" => [],
     "jobsDispatched" => [],
   },
   "status": "warning",
@@ -751,6 +1061,31 @@ exports[`Run > Use Cases > 'CreateAlbum' > should execute with auth 'REGULAR' an
     },
   },
   "sideEffects": Map {
+    "emailsSent" => [
+      {
+        "i": {
+          "input": {
+            "content": {
+              "html": "<p>Hello,</p>
+<p>A new album has been created : Alive 2007 (77de68da-ecd8-43ba-bbb5-8edb1c8e14d7).</p>
+<p>Best,</p>
+",
+              "subject": "🎶 New Album Created !",
+              "text": "Hello,
+A new album has been created : Alive 2007 (77de68da-ecd8-43ba-bbb5-8edb1c8e14d7).
+Best,
+",
+            },
+            "metadata": {
+              "to": [
+                "dexter@caramail.com",
+              ],
+            },
+          },
+        },
+        "o": undefined,
+      },
+    ],
     "jobsDispatched" => [
       {
         "i": {
@@ -821,6 +1156,31 @@ exports[`Run > Use Cases > 'CreateAlbum' > should execute with auth 'REGULAR' an
     },
   },
   "sideEffects": Map {
+    "emailsSent" => [
+      {
+        "i": {
+          "input": {
+            "content": {
+              "html": "<p>Hello,</p>
+<p>A new album has been created : Alive 2007 (356a192b-7913-404c-9457-4d18c28d46e6).</p>
+<p>Best,</p>
+",
+              "subject": "🎶 New Album Created !",
+              "text": "Hello,
+A new album has been created : Alive 2007 (356a192b-7913-404c-9457-4d18c28d46e6).
+Best,
+",
+            },
+            "metadata": {
+              "to": [
+                "dexter@caramail.com",
+              ],
+            },
+          },
+        },
+        "o": undefined,
+      },
+    ],
     "jobsDispatched" => [
       {
         "i": {
@@ -873,6 +1233,7 @@ exports[`Run > Use Cases > 'CreateAlbum' > should execute with auth 'REGULAR' an
     "o": null,
   },
   "sideEffects": Map {
+    "emailsSent" => [],
     "jobsDispatched" => [],
   },
   "status": "warning",
@@ -906,6 +1267,7 @@ exports[`Run > Use Cases > 'DeleteAlbum' > should execute with auth 'ADMIN' and 
     "o": null,
   },
   "sideEffects": Map {
+    "emailsSent" => [],
     "jobsDispatched" => [],
   },
   "status": "success",
@@ -939,6 +1301,7 @@ exports[`Run > Use Cases > 'DeleteAlbum' > should execute with auth 'ADMIN' and 
     "o": null,
   },
   "sideEffects": Map {
+    "emailsSent" => [],
     "jobsDispatched" => [],
   },
   "status": "success",
@@ -972,6 +1335,7 @@ exports[`Run > Use Cases > 'DeleteAlbum' > should execute with auth 'ADMIN' and 
     "o": null,
   },
   "sideEffects": Map {
+    "emailsSent" => [],
     "jobsDispatched" => [],
   },
   "status": "success",
@@ -995,6 +1359,7 @@ exports[`Run > Use Cases > 'DeleteAlbum' > should execute with auth 'ANONYMOUS' 
     "o": null,
   },
   "sideEffects": Map {
+    "emailsSent" => [],
     "jobsDispatched" => [],
   },
   "status": "success",
@@ -1018,6 +1383,7 @@ exports[`Run > Use Cases > 'DeleteAlbum' > should execute with auth 'ANONYMOUS' 
     "o": null,
   },
   "sideEffects": Map {
+    "emailsSent" => [],
     "jobsDispatched" => [],
   },
   "status": "success",
@@ -1041,6 +1407,7 @@ exports[`Run > Use Cases > 'DeleteAlbum' > should execute with auth 'ANONYMOUS' 
     "o": null,
   },
   "sideEffects": Map {
+    "emailsSent" => [],
     "jobsDispatched" => [],
   },
   "status": "success",
@@ -1074,6 +1441,7 @@ exports[`Run > Use Cases > 'DeleteAlbum' > should execute with auth 'REGULAR' an
     "o": null,
   },
   "sideEffects": Map {
+    "emailsSent" => [],
     "jobsDispatched" => [],
   },
   "status": "success",
@@ -1107,6 +1475,7 @@ exports[`Run > Use Cases > 'DeleteAlbum' > should execute with auth 'REGULAR' an
     "o": null,
   },
   "sideEffects": Map {
+    "emailsSent" => [],
     "jobsDispatched" => [],
   },
   "status": "success",
@@ -1140,6 +1509,7 @@ exports[`Run > Use Cases > 'DeleteAlbum' > should execute with auth 'REGULAR' an
     "o": null,
   },
   "sideEffects": Map {
+    "emailsSent" => [],
     "jobsDispatched" => [],
   },
   "status": "success",
@@ -1173,6 +1543,7 @@ exports[`Run > Use Cases > 'LikeAlbum' > should execute with auth 'ADMIN' and in
     "o": null,
   },
   "sideEffects": Map {
+    "emailsSent" => [],
     "jobsDispatched" => [],
   },
   "status": "success",
@@ -1206,6 +1577,7 @@ exports[`Run > Use Cases > 'LikeAlbum' > should execute with auth 'ADMIN' and in
     "o": null,
   },
   "sideEffects": Map {
+    "emailsSent" => [],
     "jobsDispatched" => [],
   },
   "status": "success",
@@ -1239,6 +1611,7 @@ exports[`Run > Use Cases > 'LikeAlbum' > should execute with auth 'ADMIN' and in
     "o": null,
   },
   "sideEffects": Map {
+    "emailsSent" => [],
     "jobsDispatched" => [],
   },
   "status": "success",
@@ -1262,6 +1635,7 @@ exports[`Run > Use Cases > 'LikeAlbum' > should execute with auth 'ANONYMOUS' an
     "o": null,
   },
   "sideEffects": Map {
+    "emailsSent" => [],
     "jobsDispatched" => [],
   },
   "status": "success",
@@ -1285,6 +1659,7 @@ exports[`Run > Use Cases > 'LikeAlbum' > should execute with auth 'ANONYMOUS' an
     "o": null,
   },
   "sideEffects": Map {
+    "emailsSent" => [],
     "jobsDispatched" => [],
   },
   "status": "success",
@@ -1308,6 +1683,7 @@ exports[`Run > Use Cases > 'LikeAlbum' > should execute with auth 'ANONYMOUS' an
     "o": null,
   },
   "sideEffects": Map {
+    "emailsSent" => [],
     "jobsDispatched" => [],
   },
   "status": "success",
@@ -1341,6 +1717,7 @@ exports[`Run > Use Cases > 'LikeAlbum' > should execute with auth 'REGULAR' and 
     "o": null,
   },
   "sideEffects": Map {
+    "emailsSent" => [],
     "jobsDispatched" => [],
   },
   "status": "success",
@@ -1374,6 +1751,7 @@ exports[`Run > Use Cases > 'LikeAlbum' > should execute with auth 'REGULAR' and 
     "o": null,
   },
   "sideEffects": Map {
+    "emailsSent" => [],
     "jobsDispatched" => [],
   },
   "status": "success",
@@ -1407,6 +1785,7 @@ exports[`Run > Use Cases > 'LikeAlbum' > should execute with auth 'REGULAR' and 
     "o": null,
   },
   "sideEffects": Map {
+    "emailsSent" => [],
     "jobsDispatched" => [],
   },
   "status": "success",
@@ -1450,6 +1829,7 @@ exports[`Run > Use Cases > 'ListAlbums' > should execute with auth 'ADMIN' and i
     },
   },
   "sideEffects": Map {
+    "emailsSent" => [],
     "jobsDispatched" => [],
   },
   "status": "success",
@@ -1493,6 +1873,7 @@ exports[`Run > Use Cases > 'ListAlbums' > should execute with auth 'ADMIN' and i
     },
   },
   "sideEffects": Map {
+    "emailsSent" => [],
     "jobsDispatched" => [],
   },
   "status": "success",
@@ -1536,6 +1917,7 @@ exports[`Run > Use Cases > 'ListAlbums' > should execute with auth 'ADMIN' and i
     },
   },
   "sideEffects": Map {
+    "emailsSent" => [],
     "jobsDispatched" => [],
   },
   "status": "success",
@@ -1569,6 +1951,7 @@ exports[`Run > Use Cases > 'ListAlbums' > should execute with auth 'ANONYMOUS' a
     },
   },
   "sideEffects": Map {
+    "emailsSent" => [],
     "jobsDispatched" => [],
   },
   "status": "success",
@@ -1602,6 +1985,7 @@ exports[`Run > Use Cases > 'ListAlbums' > should execute with auth 'ANONYMOUS' a
     },
   },
   "sideEffects": Map {
+    "emailsSent" => [],
     "jobsDispatched" => [],
   },
   "status": "success",
@@ -1635,6 +2019,7 @@ exports[`Run > Use Cases > 'ListAlbums' > should execute with auth 'ANONYMOUS' a
     },
   },
   "sideEffects": Map {
+    "emailsSent" => [],
     "jobsDispatched" => [],
   },
   "status": "success",
@@ -1678,6 +2063,7 @@ exports[`Run > Use Cases > 'ListAlbums' > should execute with auth 'REGULAR' and
     },
   },
   "sideEffects": Map {
+    "emailsSent" => [],
     "jobsDispatched" => [],
   },
   "status": "success",
@@ -1721,6 +2107,7 @@ exports[`Run > Use Cases > 'ListAlbums' > should execute with auth 'REGULAR' and
     },
   },
   "sideEffects": Map {
+    "emailsSent" => [],
     "jobsDispatched" => [],
   },
   "status": "success",
@@ -1764,6 +2151,7 @@ exports[`Run > Use Cases > 'ListAlbums' > should execute with auth 'REGULAR' and
     },
   },
   "sideEffects": Map {
+    "emailsSent" => [],
     "jobsDispatched" => [],
   },
   "status": "success",
@@ -1804,6 +2192,7 @@ exports[`Run > Use Cases > 'ListStats' > should execute with auth 'ADMIN' and in
     },
   },
   "sideEffects": Map {
+    "emailsSent" => [],
     "jobsDispatched" => [],
   },
   "status": "success",
@@ -1844,6 +2233,7 @@ exports[`Run > Use Cases > 'ListStats' > should execute with auth 'ADMIN' and in
     },
   },
   "sideEffects": Map {
+    "emailsSent" => [],
     "jobsDispatched" => [],
   },
   "status": "success",
@@ -1884,6 +2274,7 @@ exports[`Run > Use Cases > 'ListStats' > should execute with auth 'ADMIN' and in
     },
   },
   "sideEffects": Map {
+    "emailsSent" => [],
     "jobsDispatched" => [],
   },
   "status": "success",
@@ -1905,6 +2296,7 @@ exports[`Run > Use Cases > 'ListStats' > should execute with auth 'ANONYMOUS' an
     "o": null,
   },
   "sideEffects": Map {
+    "emailsSent" => [],
     "jobsDispatched" => [],
   },
   "status": "warning",
@@ -1926,6 +2318,7 @@ exports[`Run > Use Cases > 'ListStats' > should execute with auth 'ANONYMOUS' an
     "o": null,
   },
   "sideEffects": Map {
+    "emailsSent" => [],
     "jobsDispatched" => [],
   },
   "status": "warning",
@@ -1947,6 +2340,7 @@ exports[`Run > Use Cases > 'ListStats' > should execute with auth 'ANONYMOUS' an
     "o": null,
   },
   "sideEffects": Map {
+    "emailsSent" => [],
     "jobsDispatched" => [],
   },
   "status": "warning",
@@ -1987,6 +2381,7 @@ exports[`Run > Use Cases > 'ListStats' > should execute with auth 'REGULAR' and 
     },
   },
   "sideEffects": Map {
+    "emailsSent" => [],
     "jobsDispatched" => [],
   },
   "status": "success",
@@ -2027,6 +2422,7 @@ exports[`Run > Use Cases > 'ListStats' > should execute with auth 'REGULAR' and 
     },
   },
   "sideEffects": Map {
+    "emailsSent" => [],
     "jobsDispatched" => [],
   },
   "status": "success",
@@ -2067,6 +2463,7 @@ exports[`Run > Use Cases > 'ListStats' > should execute with auth 'REGULAR' and 
     },
   },
   "sideEffects": Map {
+    "emailsSent" => [],
     "jobsDispatched" => [],
   },
   "status": "success",
@@ -2116,6 +2513,7 @@ exports[`Run > Use Cases > 'PlaySong' > should execute with auth 'ADMIN' and inp
     },
   },
   "sideEffects": Map {
+    "emailsSent" => [],
     "jobsDispatched" => [],
   },
   "status": "success",
@@ -2165,6 +2563,7 @@ exports[`Run > Use Cases > 'PlaySong' > should execute with auth 'ADMIN' and inp
     },
   },
   "sideEffects": Map {
+    "emailsSent" => [],
     "jobsDispatched" => [],
   },
   "status": "success",
@@ -2214,6 +2613,7 @@ exports[`Run > Use Cases > 'PlaySong' > should execute with auth 'ADMIN' and inp
     },
   },
   "sideEffects": Map {
+    "emailsSent" => [],
     "jobsDispatched" => [],
   },
   "status": "success",
@@ -2253,6 +2653,7 @@ exports[`Run > Use Cases > 'PlaySong' > should execute with auth 'ANONYMOUS' and
     },
   },
   "sideEffects": Map {
+    "emailsSent" => [],
     "jobsDispatched" => [],
   },
   "status": "success",
@@ -2292,6 +2693,7 @@ exports[`Run > Use Cases > 'PlaySong' > should execute with auth 'ANONYMOUS' and
     },
   },
   "sideEffects": Map {
+    "emailsSent" => [],
     "jobsDispatched" => [],
   },
   "status": "success",
@@ -2331,6 +2733,7 @@ exports[`Run > Use Cases > 'PlaySong' > should execute with auth 'ANONYMOUS' and
     },
   },
   "sideEffects": Map {
+    "emailsSent" => [],
     "jobsDispatched" => [],
   },
   "status": "success",
@@ -2380,6 +2783,7 @@ exports[`Run > Use Cases > 'PlaySong' > should execute with auth 'REGULAR' and i
     },
   },
   "sideEffects": Map {
+    "emailsSent" => [],
     "jobsDispatched" => [],
   },
   "status": "success",
@@ -2429,6 +2833,7 @@ exports[`Run > Use Cases > 'PlaySong' > should execute with auth 'REGULAR' and i
     },
   },
   "sideEffects": Map {
+    "emailsSent" => [],
     "jobsDispatched" => [],
   },
   "status": "success",
@@ -2478,6 +2883,7 @@ exports[`Run > Use Cases > 'PlaySong' > should execute with auth 'REGULAR' and i
     },
   },
   "sideEffects": Map {
+    "emailsSent" => [],
     "jobsDispatched" => [],
   },
   "status": "success",

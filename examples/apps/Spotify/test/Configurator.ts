@@ -2,12 +2,13 @@ import {
     type AnyAppTesterFlow,
     type AppTesterConfiguratorSideEffects,
     type AppTesterCtx,
+    type EmailManager,
     type JobManager,
     type LLMManager,
     MistralAILLMManager,
 } from '../../../../dist/esm/index.js';
 import { ExampleAppTesterConfigurator } from '../../../ExampleAppTesterConfigurator.js';
-import type { SongPlayerSettings } from '../src/lib/SongPlayer.js';
+import type { Settings } from '../src/settings.js';
 import { flow1 } from './flows/flow1.js';
 
 export class Configurator extends ExampleAppTesterConfigurator {
@@ -16,8 +17,9 @@ export class Configurator extends ExampleAppTesterConfigurator {
     ): Promise<void> {
         await super.bindImplementations(ctx);
 
-        await this.updateSettings<SongPlayerSettings>(ctx, {
-            song_player_speed: 100,
+        await this.updateSettings<Settings>(ctx, {
+            spotify_admin_email: 'dexter@caramail.com',
+            spotify_song_player_speed: 100,
         });
 
         const { container } = ctx;
@@ -36,10 +38,16 @@ export class Configurator extends ExampleAppTesterConfigurator {
 
         const { container } = ctx;
 
+        const emailsSent = await container
+            .get<EmailManager>('EmailManager')
+            .sideEffects();
         const jobsDispatched = await container
             .get<JobManager>('JobManager')
             .sideEffects();
 
-        return new Map([['jobsDispatched', jobsDispatched]]);
+        return new Map([
+            ['emailsSent', emailsSent],
+            ['jobsDispatched', jobsDispatched],
+        ]);
     }
 }

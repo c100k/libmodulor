@@ -5,7 +5,7 @@ import {
     TARGET_DEFAULT_SERVER_MANAGER_SETTINGS,
 } from '../../../../../../dist/esm/index.js';
 import type { KnexUCDataStoreSettings } from '../../../../../../dist/esm/index.uc-data-store-knex.js';
-import type { SongPlayerSettings } from '../../../../../apps/Spotify/index.js';
+import type { Settings as SpotifySettings } from '../../../../../apps/Spotify/index.js';
 import type { AssetPriceStreamerSettings } from '../../../../../apps/Trading/index.js';
 import { DEFAULT_SERVER_SETTINGS } from '../../../lib/server-shared.js';
 
@@ -13,7 +13,7 @@ export type S = AssetPriceStreamerSettings &
     JWTManagerSettings &
     KnexUCDataStoreSettings &
     ServerManagerSettings &
-    SongPlayerSettings;
+    SpotifySettings;
 
 export const settings: S = {
     ...TARGET_DEFAULT_SERVER_MANAGER_SETTINGS,
@@ -25,5 +25,6 @@ export const settings: S = {
     knex_uc_data_store_pool_max: 5,
     knex_uc_data_store_pool_min: 0,
     knex_uc_data_store_type: 'sqlite3',
-    song_player_speed: 1,
+    spotify_admin_email: 'dexter@caramail.com',
+    spotify_song_player_speed: 1,
 };

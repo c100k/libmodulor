@@ -1,27 +1,46 @@
 import { inject, injectable } from 'inversify';
 
 import {
+    type Configurable,
+    type EmailManager,
     type JobManager,
     type LLMManager,
     type Logger,
+    type SettingsManager,
     type UCMain,
     type UCMainInput,
     type UCManager,
     type UCOutput,
     UCOutputBuilder,
 } from '../../../../../dist/esm/index.js';
+import { NotifyAlbumCreationEmailRenderer } from '../lib/emails/NotifyAlbumCreationEmailRenderer.js';
+import type { Settings } from '../settings.js';
 import type { CreateAlbumInput, CreateAlbumOPI0 } from './CreateAlbumUCD.js';
+
+type S = Pick<Settings, 'spotify_admin_email'>;
 
 @injectable()
 export class CreateAlbumServerMain
-    implements UCMain<CreateAlbumInput, CreateAlbumOPI0>
+    implements Configurable<S>, UCMain<CreateAlbumInput, CreateAlbumOPI0>
 {
     constructor(
+        @inject('EmailManager') private emailManager: EmailManager,
         @inject('JobManager') private jobManager: JobManager,
         @inject('LLMManager') private llmManager: LLMManager,
+        @inject(NotifyAlbumCreationEmailRenderer)
+        private notifyAlbumCreationEmailRenderer: NotifyAlbumCreationEmailRenderer,
+        @inject('SettingsManager') private settingsManager: SettingsManager<S>,
         @inject('Logger') private logger: Logger,
         @inject('UCManager') private ucManager: UCManager,
     ) {}
+
+    public s(): S {
+        return {
+            spotify_admin_email: this.settingsManager.get()(
+                'spotify_admin_email',
+            ),
+        };
+    }
 
     public async exec({
         uc,
@@ -63,6 +82,16 @@ export class CreateAlbumServerMain
         /// Dispatch job to process the assets
         await this.jobManager.dispatch('albums', 'process-assets', {
             id: aggregateId,
+        });
+
+        /// Notify admin
+        await this.emailManager.send({
+            content: await this.notifyAlbumCreationEmailRenderer.exec({
+                data: { id: aggregateId, name },
+            }),
+            metadata: {
+                to: [this.s().spotify_admin_email],
+            },
         });
 
         return new UCOutputBuilder<CreateAlbumOPI0>()

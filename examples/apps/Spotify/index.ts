@@ -2,8 +2,8 @@
 
 export { I18n } from './src/i18n.js';
 export type { AlbumOPI0 } from './src/lib/album.js';
-export type { SongPlayerSettings } from './src/lib/SongPlayer.js';
 export { Manifest } from './src/manifest.js';
+export type { Settings } from './src/settings.js';
 export {
     type CreateAlbumInput,
     type CreateAlbumOPI0,

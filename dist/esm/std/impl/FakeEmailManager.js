@@ -16,8 +16,14 @@ let FakeEmailManager = class FakeEmailManager {
     async clear() {
         this.entries = [];
     }
-    async send(def, to, replyTo) {
-        this.entries.push({ def, replyTo, to });
+    async sideEffects() {
+        return this.entries.map((e) => ({
+            i: e,
+            o: undefined,
+        }));
+    }
+    async send(input) {
+        this.entries.push({ input });
     }
     async verify() {
         // Nothing to do

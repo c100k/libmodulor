@@ -3,11 +3,11 @@ import { inject, injectable } from 'inversify';
 import type {
     Configurable,
     Logger,
-    Settings,
     SettingsManager,
     UIntDuration,
     Worker,
 } from '../../../../../dist/esm/index.js';
+import type { Settings } from '../settings.js';
 
 interface I {
     durationInS: UIntDuration;
@@ -19,11 +19,7 @@ interface O {
     stop: () => void;
 }
 
-export interface SongPlayerSettings extends Settings {
-    song_player_speed: 1 | 100;
-}
-
-type S = SongPlayerSettings;
+type S = Pick<Settings, 'spotify_song_player_speed'>;
 
 @injectable()
 export class SongPlayer implements Configurable<S>, Worker<I, Promise<O>> {
@@ -32,9 +28,11 @@ export class SongPlayer implements Configurable<S>, Worker<I, Promise<O>> {
         @inject('SettingsManager') private settingsManager: SettingsManager<S>,
     ) {}
 
-    public s(): SongPlayerSettings {
+    public s(): S {
         return {
-            song_player_speed: this.settingsManager.get()('song_player_speed'),
+            spotify_song_player_speed: this.settingsManager.get()(
+                'spotify_song_player_speed',
+            ),
         };
     }
 
@@ -52,7 +50,7 @@ export class SongPlayer implements Configurable<S>, Worker<I, Promise<O>> {
             onProgress(seconds);
 
             seconds += 1;
-        }, 1000 / this.s().song_player_speed);
+        }, 1000 / this.s().spotify_song_player_speed);
 
         return {
             stop: () => clearInterval(intervalID),

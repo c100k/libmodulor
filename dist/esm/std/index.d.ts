@@ -3,6 +3,7 @@ export * from './ClockManager.js';
 export * from './CryptoManager.js';
 export * from './consts.js';
 export * from './EmailManager.js';
+export * from './EmailRenderer.js';
 export * from './EnvironmentManager.js';
 export * from './ExternalResourceInstaller.js';
 export * from './ExternalResourceManager.js';
