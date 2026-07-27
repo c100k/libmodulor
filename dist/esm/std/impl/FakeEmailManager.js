@@ -9,6 +9,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 import { injectable } from 'inversify';
 let FakeEmailManager = class FakeEmailManager {
+    // biome-ignore lint/suspicious/noExplicitAny: can be anything
     entries;
     constructor() {
         this.entries = [];
@@ -22,8 +23,8 @@ let FakeEmailManager = class FakeEmailManager {
             o: undefined,
         }));
     }
-    async send(input) {
-        this.entries.push({ i: input });
+    async send(args) {
+        this.entries.push(args);
     }
     async verify() {
         // Nothing to do

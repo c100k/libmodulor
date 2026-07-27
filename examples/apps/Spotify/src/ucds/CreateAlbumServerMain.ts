@@ -2,7 +2,7 @@ import { inject, injectable } from 'inversify';
 
 import {
     type Configurable,
-    type EmailManager,
+    EmailSender,
     type JobManager,
     type LLMManager,
     type Logger,
@@ -24,7 +24,7 @@ export class CreateAlbumServerMain
     implements Configurable<S>, UCMain<CreateAlbumInput, CreateAlbumOPI0>
 {
     constructor(
-        @inject('EmailManager') private emailManager: EmailManager,
+        @inject(EmailSender) private emailSender: EmailSender,
         @inject('JobManager') private jobManager: JobManager,
         @inject('LLMManager') private llmManager: LLMManager,
         @inject(NotifyAlbumCreationEmailBuilder)
@@ -85,10 +85,10 @@ export class CreateAlbumServerMain
         });
 
         /// Notify admin
-        await this.emailManager.send({
+        await this.emailSender.exec({
             builder: this.notifyAlbumCreationEmailBuilder,
-            input: { id: aggregateId, name },
             to: [this.s().spotify_admin_email],
+            vars: { id: aggregateId, name },
         });
 
         return new UCOutputBuilder<CreateAlbumOPI0>()

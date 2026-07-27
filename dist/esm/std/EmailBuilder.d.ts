@@ -1,15 +1,11 @@
-import type { FreeTextLong, FreeTextShort, HTML } from '../dt/index.js';
-import type { I18nLanguageCode } from '../i18n/index.js';
+import type { EmailContent, EmailSubject, EmailVars } from './lib/emails.js';
 import type { Worker } from './Worker.js';
-export interface EmailBuilderInput {
-    languageCode?: I18nLanguageCode | undefined;
+export interface EmailBuilderInput<V extends EmailVars> {
+    vars: V;
 }
-export type EmailBuilderOutput = {
-    subject: FreeTextShort;
-} & ({
-    html: HTML;
-} | {
-    text: FreeTextLong;
-});
-export interface EmailBuilder<I extends EmailBuilderInput | undefined = undefined> extends Worker<I, Promise<EmailBuilderOutput>> {
+export interface EmailBuilderOutput {
+    content: EmailContent;
+    subject: EmailSubject;
+}
+export interface EmailBuilder<V extends EmailVars> extends Worker<EmailBuilderInput<V>, Promise<EmailBuilderOutput>> {
 }

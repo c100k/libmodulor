@@ -61,15 +61,31 @@ exports[`Run > Flows > should execute flow 'Create album, list, like and delete 
         "emailsSent" => [
           {
             "i": {
-              "i": {
-                "builder": {},
-                "input": {
-                  "id": "ac3478d6-9a3c-41fa-a2e6-0f5c3696165a",
-                  "name": "Alive 2007",
-                },
-                "to": [
-                  "dexter@caramail.com",
-                ],
+              "html": "<p>Hello,</p>
+
+<p>A new album has been created : Alive 2007 (ac3478d6-9a3c-41fa-a2e6-0f5c3696165a).</p>
+
+<p>Best,</p>
+
+<em>Notification generated at : Sun May 15 2022 22:23:30 GMT+0200 (Central European Summer Time)</em>
+",
+              "metadata": {
+                "from": "ProductX <me@example.com>",
+              },
+              "subject": "🎶 New Album Created !",
+              "text": "Hello,
+
+A new album has been created : Alive 2007 (ac3478d6-9a3c-41fa-a2e6-0f5c3696165a).
+
+Best,
+
+Notification generated at : Sun May 15 2022 22:23:30 GMT+0200 (Central European Summer Time)",
+              "to": [
+                "dexter@caramail.com",
+              ],
+              "vars": {
+                "id": "ac3478d6-9a3c-41fa-a2e6-0f5c3696165a",
+                "name": "Alive 2007",
               },
             },
           },
@@ -148,29 +164,61 @@ exports[`Run > Flows > should execute flow 'Create album, list, like and delete 
         "emailsSent" => [
           {
             "i": {
-              "i": {
-                "builder": {},
-                "input": {
-                  "id": "ac3478d6-9a3c-41fa-a2e6-0f5c3696165a",
-                  "name": "Alive 2007",
-                },
-                "to": [
-                  "dexter@caramail.com",
-                ],
+              "html": "<p>Hello,</p>
+
+<p>A new album has been created : Alive 2007 (ac3478d6-9a3c-41fa-a2e6-0f5c3696165a).</p>
+
+<p>Best,</p>
+
+<em>Notification generated at : Sun May 15 2022 22:23:30 GMT+0200 (Central European Summer Time)</em>
+",
+              "metadata": {
+                "from": "ProductX <me@example.com>",
+              },
+              "subject": "🎶 New Album Created !",
+              "text": "Hello,
+
+A new album has been created : Alive 2007 (ac3478d6-9a3c-41fa-a2e6-0f5c3696165a).
+
+Best,
+
+Notification generated at : Sun May 15 2022 22:23:30 GMT+0200 (Central European Summer Time)",
+              "to": [
+                "dexter@caramail.com",
+              ],
+              "vars": {
+                "id": "ac3478d6-9a3c-41fa-a2e6-0f5c3696165a",
+                "name": "Alive 2007",
               },
             },
           },
           {
             "i": {
-              "i": {
-                "builder": {},
-                "input": {
-                  "id": "0ade7c2c-f97f-45d0-8997-5f4d720d1fa6",
-                  "name": "Alive 2007 process-assets",
-                },
-                "to": [
-                  "dexter@caramail.com",
-                ],
+              "html": "<p>Hello,</p>
+
+<p>A new album has been created : Alive 2007 process-assets (0ade7c2c-f97f-45d0-8997-5f4d720d1fa6).</p>
+
+<p>Best,</p>
+
+<em>Notification generated at : Sun May 15 2022 22:23:30 GMT+0200 (Central European Summer Time)</em>
+",
+              "metadata": {
+                "from": "ProductX <me@example.com>",
+              },
+              "subject": "🎶 New Album Created !",
+              "text": "Hello,
+
+A new album has been created : Alive 2007 process-assets (0ade7c2c-f97f-45d0-8997-5f4d720d1fa6).
+
+Best,
+
+Notification generated at : Sun May 15 2022 22:23:30 GMT+0200 (Central European Summer Time)",
+              "to": [
+                "dexter@caramail.com",
+              ],
+              "vars": {
+                "id": "0ade7c2c-f97f-45d0-8997-5f4d720d1fa6",
+                "name": "Alive 2007 process-assets",
               },
             },
           },
@@ -268,29 +316,61 @@ exports[`Run > Flows > should execute flow 'Create album, list, like and delete 
         "emailsSent" => [
           {
             "i": {
-              "i": {
-                "builder": {},
-                "input": {
-                  "id": "ac3478d6-9a3c-41fa-a2e6-0f5c3696165a",
-                  "name": "Alive 2007",
-                },
-                "to": [
-                  "dexter@caramail.com",
-                ],
+              "html": "<p>Hello,</p>
+
+<p>A new album has been created : Alive 2007 (ac3478d6-9a3c-41fa-a2e6-0f5c3696165a).</p>
+
+<p>Best,</p>
+
+<em>Notification generated at : Sun May 15 2022 22:23:30 GMT+0200 (Central European Summer Time)</em>
+",
+              "metadata": {
+                "from": "ProductX <me@example.com>",
+              },
+              "subject": "🎶 New Album Created !",
+              "text": "Hello,
+
+A new album has been created : Alive 2007 (ac3478d6-9a3c-41fa-a2e6-0f5c3696165a).
+
+Best,
+
+Notification generated at : Sun May 15 2022 22:23:30 GMT+0200 (Central European Summer Time)",
+              "to": [
+                "dexter@caramail.com",
+              ],
+              "vars": {
+                "id": "ac3478d6-9a3c-41fa-a2e6-0f5c3696165a",
+                "name": "Alive 2007",
               },
             },
           },
           {
             "i": {
-              "i": {
-                "builder": {},
-                "input": {
-                  "id": "0ade7c2c-f97f-45d0-8997-5f4d720d1fa6",
-                  "name": "Alive 2007 process-assets",
-                },
-                "to": [
-                  "dexter@caramail.com",
-                ],
+              "html": "<p>Hello,</p>
+
+<p>A new album has been created : Alive 2007 process-assets (0ade7c2c-f97f-45d0-8997-5f4d720d1fa6).</p>
+
+<p>Best,</p>
+
+<em>Notification generated at : Sun May 15 2022 22:23:30 GMT+0200 (Central European Summer Time)</em>
+",
+              "metadata": {
+                "from": "ProductX <me@example.com>",
+              },
+              "subject": "🎶 New Album Created !",
+              "text": "Hello,
+
+A new album has been created : Alive 2007 process-assets (0ade7c2c-f97f-45d0-8997-5f4d720d1fa6).
+
+Best,
+
+Notification generated at : Sun May 15 2022 22:23:30 GMT+0200 (Central European Summer Time)",
+              "to": [
+                "dexter@caramail.com",
+              ],
+              "vars": {
+                "id": "0ade7c2c-f97f-45d0-8997-5f4d720d1fa6",
+                "name": "Alive 2007 process-assets",
               },
             },
           },
@@ -340,29 +420,61 @@ exports[`Run > Flows > should execute flow 'Create album, list, like and delete 
         "emailsSent" => [
           {
             "i": {
-              "i": {
-                "builder": {},
-                "input": {
-                  "id": "ac3478d6-9a3c-41fa-a2e6-0f5c3696165a",
-                  "name": "Alive 2007",
-                },
-                "to": [
-                  "dexter@caramail.com",
-                ],
+              "html": "<p>Hello,</p>
+
+<p>A new album has been created : Alive 2007 (ac3478d6-9a3c-41fa-a2e6-0f5c3696165a).</p>
+
+<p>Best,</p>
+
+<em>Notification generated at : Sun May 15 2022 22:23:30 GMT+0200 (Central European Summer Time)</em>
+",
+              "metadata": {
+                "from": "ProductX <me@example.com>",
+              },
+              "subject": "🎶 New Album Created !",
+              "text": "Hello,
+
+A new album has been created : Alive 2007 (ac3478d6-9a3c-41fa-a2e6-0f5c3696165a).
+
+Best,
+
+Notification generated at : Sun May 15 2022 22:23:30 GMT+0200 (Central European Summer Time)",
+              "to": [
+                "dexter@caramail.com",
+              ],
+              "vars": {
+                "id": "ac3478d6-9a3c-41fa-a2e6-0f5c3696165a",
+                "name": "Alive 2007",
               },
             },
           },
           {
             "i": {
-              "i": {
-                "builder": {},
-                "input": {
-                  "id": "0ade7c2c-f97f-45d0-8997-5f4d720d1fa6",
-                  "name": "Alive 2007 process-assets",
-                },
-                "to": [
-                  "dexter@caramail.com",
-                ],
+              "html": "<p>Hello,</p>
+
+<p>A new album has been created : Alive 2007 process-assets (0ade7c2c-f97f-45d0-8997-5f4d720d1fa6).</p>
+
+<p>Best,</p>
+
+<em>Notification generated at : Sun May 15 2022 22:23:30 GMT+0200 (Central European Summer Time)</em>
+",
+              "metadata": {
+                "from": "ProductX <me@example.com>",
+              },
+              "subject": "🎶 New Album Created !",
+              "text": "Hello,
+
+A new album has been created : Alive 2007 process-assets (0ade7c2c-f97f-45d0-8997-5f4d720d1fa6).
+
+Best,
+
+Notification generated at : Sun May 15 2022 22:23:30 GMT+0200 (Central European Summer Time)",
+              "to": [
+                "dexter@caramail.com",
+              ],
+              "vars": {
+                "id": "0ade7c2c-f97f-45d0-8997-5f4d720d1fa6",
+                "name": "Alive 2007 process-assets",
               },
             },
           },
@@ -412,29 +524,61 @@ exports[`Run > Flows > should execute flow 'Create album, list, like and delete 
         "emailsSent" => [
           {
             "i": {
-              "i": {
-                "builder": {},
-                "input": {
-                  "id": "ac3478d6-9a3c-41fa-a2e6-0f5c3696165a",
-                  "name": "Alive 2007",
-                },
-                "to": [
-                  "dexter@caramail.com",
-                ],
+              "html": "<p>Hello,</p>
+
+<p>A new album has been created : Alive 2007 (ac3478d6-9a3c-41fa-a2e6-0f5c3696165a).</p>
+
+<p>Best,</p>
+
+<em>Notification generated at : Sun May 15 2022 22:23:30 GMT+0200 (Central European Summer Time)</em>
+",
+              "metadata": {
+                "from": "ProductX <me@example.com>",
+              },
+              "subject": "🎶 New Album Created !",
+              "text": "Hello,
+
+A new album has been created : Alive 2007 (ac3478d6-9a3c-41fa-a2e6-0f5c3696165a).
+
+Best,
+
+Notification generated at : Sun May 15 2022 22:23:30 GMT+0200 (Central European Summer Time)",
+              "to": [
+                "dexter@caramail.com",
+              ],
+              "vars": {
+                "id": "ac3478d6-9a3c-41fa-a2e6-0f5c3696165a",
+                "name": "Alive 2007",
               },
             },
           },
           {
             "i": {
-              "i": {
-                "builder": {},
-                "input": {
-                  "id": "0ade7c2c-f97f-45d0-8997-5f4d720d1fa6",
-                  "name": "Alive 2007 process-assets",
-                },
-                "to": [
-                  "dexter@caramail.com",
-                ],
+              "html": "<p>Hello,</p>
+
+<p>A new album has been created : Alive 2007 process-assets (0ade7c2c-f97f-45d0-8997-5f4d720d1fa6).</p>
+
+<p>Best,</p>
+
+<em>Notification generated at : Sun May 15 2022 22:23:30 GMT+0200 (Central European Summer Time)</em>
+",
+              "metadata": {
+                "from": "ProductX <me@example.com>",
+              },
+              "subject": "🎶 New Album Created !",
+              "text": "Hello,
+
+A new album has been created : Alive 2007 process-assets (0ade7c2c-f97f-45d0-8997-5f4d720d1fa6).
+
+Best,
+
+Notification generated at : Sun May 15 2022 22:23:30 GMT+0200 (Central European Summer Time)",
+              "to": [
+                "dexter@caramail.com",
+              ],
+              "vars": {
+                "id": "0ade7c2c-f97f-45d0-8997-5f4d720d1fa6",
+                "name": "Alive 2007 process-assets",
               },
             },
           },
@@ -534,15 +678,32 @@ exports[`Run > Use Cases > 'CreateAlbum' > should execute with auth 'ADMIN' and 
     "emailsSent" => [
       {
         "i": {
-          "i": {
-            "builder": NotifyAlbumCreationEmailBuilder {},
-            "input": {
-              "id": "77de68da-ecd8-43ba-bbb5-8edb1c8e14d7",
-              "name": "Alive 2007",
-            },
-            "to": [
-              "dexter@caramail.com",
-            ],
+          "html": "<p>Hello,</p>
+
+<p>A new album has been created : Alive 2007 (77de68da-ecd8-43ba-bbb5-8edb1c8e14d7).</p>
+
+<p>Best,</p>
+
+<em>Notification generated at : Sun May 15 2022 22:23:30 GMT+0200 (Central European Summer Time)</em>
+",
+          "metadata": {
+            "from": "ProductX <me@example.com>",
+            "replyTo": undefined,
+          },
+          "subject": "🎶 New Album Created !",
+          "text": "Hello,
+
+A new album has been created : Alive 2007 (77de68da-ecd8-43ba-bbb5-8edb1c8e14d7).
+
+Best,
+
+Notification generated at : Sun May 15 2022 22:23:30 GMT+0200 (Central European Summer Time)",
+          "to": [
+            "dexter@caramail.com",
+          ],
+          "vars": {
+            "id": "77de68da-ecd8-43ba-bbb5-8edb1c8e14d7",
+            "name": "Alive 2007",
           },
         },
         "o": undefined,
@@ -621,15 +782,32 @@ exports[`Run > Use Cases > 'CreateAlbum' > should execute with auth 'ADMIN' and 
     "emailsSent" => [
       {
         "i": {
-          "i": {
-            "builder": NotifyAlbumCreationEmailBuilder {},
-            "input": {
-              "id": "356a192b-7913-404c-9457-4d18c28d46e6",
-              "name": "Alive 2007",
-            },
-            "to": [
-              "dexter@caramail.com",
-            ],
+          "html": "<p>Hello,</p>
+
+<p>A new album has been created : Alive 2007 (356a192b-7913-404c-9457-4d18c28d46e6).</p>
+
+<p>Best,</p>
+
+<em>Notification generated at : Sun May 15 2022 22:23:30 GMT+0200 (Central European Summer Time)</em>
+",
+          "metadata": {
+            "from": "ProductX <me@example.com>",
+            "replyTo": undefined,
+          },
+          "subject": "🎶 New Album Created !",
+          "text": "Hello,
+
+A new album has been created : Alive 2007 (356a192b-7913-404c-9457-4d18c28d46e6).
+
+Best,
+
+Notification generated at : Sun May 15 2022 22:23:30 GMT+0200 (Central European Summer Time)",
+          "to": [
+            "dexter@caramail.com",
+          ],
+          "vars": {
+            "id": "356a192b-7913-404c-9457-4d18c28d46e6",
+            "name": "Alive 2007",
           },
         },
         "o": undefined,
@@ -752,15 +930,32 @@ exports[`Run > Use Cases > 'CreateAlbum' > should execute with auth 'ANONYMOUS' 
     "emailsSent" => [
       {
         "i": {
-          "i": {
-            "builder": NotifyAlbumCreationEmailBuilder {},
-            "input": {
-              "id": "77de68da-ecd8-43ba-bbb5-8edb1c8e14d7",
-              "name": "Alive 2007",
-            },
-            "to": [
-              "dexter@caramail.com",
-            ],
+          "html": "<p>Hello,</p>
+
+<p>A new album has been created : Alive 2007 (77de68da-ecd8-43ba-bbb5-8edb1c8e14d7).</p>
+
+<p>Best,</p>
+
+<em>Notification generated at : Sun May 15 2022 22:23:30 GMT+0200 (Central European Summer Time)</em>
+",
+          "metadata": {
+            "from": "ProductX <me@example.com>",
+            "replyTo": undefined,
+          },
+          "subject": "🎶 New Album Created !",
+          "text": "Hello,
+
+A new album has been created : Alive 2007 (77de68da-ecd8-43ba-bbb5-8edb1c8e14d7).
+
+Best,
+
+Notification generated at : Sun May 15 2022 22:23:30 GMT+0200 (Central European Summer Time)",
+          "to": [
+            "dexter@caramail.com",
+          ],
+          "vars": {
+            "id": "77de68da-ecd8-43ba-bbb5-8edb1c8e14d7",
+            "name": "Alive 2007",
           },
         },
         "o": undefined,
@@ -829,15 +1024,32 @@ exports[`Run > Use Cases > 'CreateAlbum' > should execute with auth 'ANONYMOUS' 
     "emailsSent" => [
       {
         "i": {
-          "i": {
-            "builder": NotifyAlbumCreationEmailBuilder {},
-            "input": {
-              "id": "356a192b-7913-404c-9457-4d18c28d46e6",
-              "name": "Alive 2007",
-            },
-            "to": [
-              "dexter@caramail.com",
-            ],
+          "html": "<p>Hello,</p>
+
+<p>A new album has been created : Alive 2007 (356a192b-7913-404c-9457-4d18c28d46e6).</p>
+
+<p>Best,</p>
+
+<em>Notification generated at : Sun May 15 2022 22:23:30 GMT+0200 (Central European Summer Time)</em>
+",
+          "metadata": {
+            "from": "ProductX <me@example.com>",
+            "replyTo": undefined,
+          },
+          "subject": "🎶 New Album Created !",
+          "text": "Hello,
+
+A new album has been created : Alive 2007 (356a192b-7913-404c-9457-4d18c28d46e6).
+
+Best,
+
+Notification generated at : Sun May 15 2022 22:23:30 GMT+0200 (Central European Summer Time)",
+          "to": [
+            "dexter@caramail.com",
+          ],
+          "vars": {
+            "id": "356a192b-7913-404c-9457-4d18c28d46e6",
+            "name": "Alive 2007",
           },
         },
         "o": undefined,
@@ -960,15 +1172,32 @@ exports[`Run > Use Cases > 'CreateAlbum' > should execute with auth 'REGULAR' an
     "emailsSent" => [
       {
         "i": {
-          "i": {
-            "builder": NotifyAlbumCreationEmailBuilder {},
-            "input": {
-              "id": "77de68da-ecd8-43ba-bbb5-8edb1c8e14d7",
-              "name": "Alive 2007",
-            },
-            "to": [
-              "dexter@caramail.com",
-            ],
+          "html": "<p>Hello,</p>
+
+<p>A new album has been created : Alive 2007 (77de68da-ecd8-43ba-bbb5-8edb1c8e14d7).</p>
+
+<p>Best,</p>
+
+<em>Notification generated at : Sun May 15 2022 22:23:30 GMT+0200 (Central European Summer Time)</em>
+",
+          "metadata": {
+            "from": "ProductX <me@example.com>",
+            "replyTo": undefined,
+          },
+          "subject": "🎶 New Album Created !",
+          "text": "Hello,
+
+A new album has been created : Alive 2007 (77de68da-ecd8-43ba-bbb5-8edb1c8e14d7).
+
+Best,
+
+Notification generated at : Sun May 15 2022 22:23:30 GMT+0200 (Central European Summer Time)",
+          "to": [
+            "dexter@caramail.com",
+          ],
+          "vars": {
+            "id": "77de68da-ecd8-43ba-bbb5-8edb1c8e14d7",
+            "name": "Alive 2007",
           },
         },
         "o": undefined,
@@ -1047,15 +1276,32 @@ exports[`Run > Use Cases > 'CreateAlbum' > should execute with auth 'REGULAR' an
     "emailsSent" => [
       {
         "i": {
-          "i": {
-            "builder": NotifyAlbumCreationEmailBuilder {},
-            "input": {
-              "id": "356a192b-7913-404c-9457-4d18c28d46e6",
-              "name": "Alive 2007",
-            },
-            "to": [
-              "dexter@caramail.com",
-            ],
+          "html": "<p>Hello,</p>
+
+<p>A new album has been created : Alive 2007 (356a192b-7913-404c-9457-4d18c28d46e6).</p>
+
+<p>Best,</p>
+
+<em>Notification generated at : Sun May 15 2022 22:23:30 GMT+0200 (Central European Summer Time)</em>
+",
+          "metadata": {
+            "from": "ProductX <me@example.com>",
+            "replyTo": undefined,
+          },
+          "subject": "🎶 New Album Created !",
+          "text": "Hello,
+
+A new album has been created : Alive 2007 (356a192b-7913-404c-9457-4d18c28d46e6).
+
+Best,
+
+Notification generated at : Sun May 15 2022 22:23:30 GMT+0200 (Central European Summer Time)",
+          "to": [
+            "dexter@caramail.com",
+          ],
+          "vars": {
+            "id": "356a192b-7913-404c-9457-4d18c28d46e6",
+            "name": "Alive 2007",
           },
         },
         "o": undefined,

@@ -6,6 +6,7 @@ import { FakeRandManager } from '../../std/impl/FakeRandManager.js';
 import { NodeDeterministicCryptoManager } from '../../std/impl/NodeDeterministicCryptoManager.js';
 import { SimpleFormDataBuilder } from '../../std/impl/SimpleFormDataBuilder.js';
 import { StaticSettingsManager } from '../../std/impl/StaticSettingsManager.js';
+import { STD_DEFAULT_EMAIL_MANAGER_SETTINGS, STD_DEFAULT_JOB_MANAGER_SETTINGS, STD_DEFAULT_JWT_MANAGER_SETTINGS, STD_DEFAULT_LOGGER_SETTINGS, } from '../../std/index.js';
 import { bindCommon } from '../../utils/ioc/bindCommon.js';
 import { bindNodeCore } from '../../utils/ioc/bindNodeCore.js';
 import { bindServer } from '../../utils/ioc/bindServer.js';
@@ -40,6 +41,12 @@ export class NodeAppTesterConfigurator {
             .to(FakeHTTPAPICallExecutor)
             .inSingletonScope();
         (await container.rebind('RandManager')).to(FakeRandManager);
+        await this.updateSettings(ctx, {
+            ...STD_DEFAULT_EMAIL_MANAGER_SETTINGS,
+            ...STD_DEFAULT_JOB_MANAGER_SETTINGS,
+            ...STD_DEFAULT_JWT_MANAGER_SETTINGS,
+            ...STD_DEFAULT_LOGGER_SETTINGS,
+        });
     }
     async clearExecution(ctx) {
         const { container } = ctx;
