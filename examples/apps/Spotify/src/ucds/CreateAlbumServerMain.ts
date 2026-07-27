@@ -13,7 +13,7 @@ import {
     type UCOutput,
     UCOutputBuilder,
 } from '../../../../../dist/esm/index.js';
-import { NotifyAlbumCreationEmailRenderer } from '../lib/emails/NotifyAlbumCreationEmailRenderer.js';
+import { NotifyAlbumCreationEmailBuilder } from '../lib/emails/NotifyAlbumCreationEmailBuilder.js';
 import type { Settings } from '../settings.js';
 import type { CreateAlbumInput, CreateAlbumOPI0 } from './CreateAlbumUCD.js';
 
@@ -27,8 +27,8 @@ export class CreateAlbumServerMain
         @inject('EmailManager') private emailManager: EmailManager,
         @inject('JobManager') private jobManager: JobManager,
         @inject('LLMManager') private llmManager: LLMManager,
-        @inject(NotifyAlbumCreationEmailRenderer)
-        private notifyAlbumCreationEmailRenderer: NotifyAlbumCreationEmailRenderer,
+        @inject(NotifyAlbumCreationEmailBuilder)
+        private notifyAlbumCreationEmailBuilder: NotifyAlbumCreationEmailBuilder,
         @inject('SettingsManager') private settingsManager: SettingsManager<S>,
         @inject('Logger') private logger: Logger,
         @inject('UCManager') private ucManager: UCManager,
@@ -86,12 +86,9 @@ export class CreateAlbumServerMain
 
         /// Notify admin
         await this.emailManager.send({
-            content: await this.notifyAlbumCreationEmailRenderer.exec({
-                data: { id: aggregateId, name },
-            }),
-            metadata: {
-                to: [this.s().spotify_admin_email],
-            },
+            builder: this.notifyAlbumCreationEmailBuilder,
+            input: { id: aggregateId, name },
+            to: [this.s().spotify_admin_email],
         });
 
         return new UCOutputBuilder<CreateAlbumOPI0>()

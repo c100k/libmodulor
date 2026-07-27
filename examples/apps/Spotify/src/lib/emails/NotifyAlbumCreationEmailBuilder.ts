@@ -1,25 +1,21 @@
 import { injectable } from 'inversify';
 
 import type {
-    EmailRenderer,
-    EmailRendererInput,
-    EmailRendererOutput,
+    EmailBuilder,
+    EmailBuilderInput,
+    EmailBuilderOutput,
     UUID,
 } from '../../../../../../dist/esm/index.js';
 import type { AlbumName } from '../TAlbumName.js';
 
-interface Data {
+interface Input extends EmailBuilderInput {
     id: UUID;
     name: AlbumName;
 }
 
 @injectable()
-export class NotifyAlbumCreationEmailRenderer implements EmailRenderer<Data> {
-    public async exec({
-        data,
-    }: EmailRendererInput<Data>): Promise<EmailRendererOutput> {
-        const { id, name } = data;
-
+export class NotifyAlbumCreationEmailBuilder implements EmailBuilder<Input> {
+    public async exec({ id, name }: Input): Promise<EmailBuilderOutput> {
         return {
             html: `<p>Hello,</p>
 <p>A new album has been created : ${name} (${id}).</p>

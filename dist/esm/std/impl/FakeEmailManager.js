@@ -23,7 +23,7 @@ let FakeEmailManager = class FakeEmailManager {
         }));
     }
     async send(input) {
-        this.entries.push({ input });
+        this.entries.push({ i: input });
     }
     async verify() {
         // Nothing to do
