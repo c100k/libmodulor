@@ -43,6 +43,9 @@ export class TInt extends TNumber {
     min() {
         return this.constraints?.min ?? TInt.DEFAULT_MIN;
     }
+    protobufType() {
+        return 'int64';
+    }
     rnInputMode() {
         return 'numeric';
     }

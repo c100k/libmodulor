@@ -1,4 +1,4 @@
-import { UCOPIBaseDefFields, UCOutputField, ucofExamples, ucofIsMandatory, ucofRepeatability, } from '../../../uc/index.js';
+import { UC_OUTPUT_PARTS_FIELD_0, UC_OUTPUT_PARTS_FIELD_1, UCOPIBaseDefFields, UCOutputField, ucofExamples, ucofIsMandatory, ucofRepeatability, } from '../../../uc/index.js';
 export function ucofJsonSchemaDef(field) {
     const def = {
         internal: {},
@@ -113,7 +113,7 @@ export function ucOutputJsonSchema(uc) {
         properties: {
             _0: ucOutputPartJsonSchema(part0),
         },
-        required: ['_0'],
+        required: [UC_OUTPUT_PARTS_FIELD_0],
         type: 'object',
     };
     const part1 = uc.def.io.o?.parts?._1;
@@ -123,6 +123,6 @@ export function ucOutputJsonSchema(uc) {
     res.properties.parts.properties = {
         _1: ucOutputPartJsonSchema(part1),
     };
-    res.properties.parts.required?.push('_1');
+    res.properties.parts.required?.push(UC_OUTPUT_PARTS_FIELD_1);
     return res;
 }

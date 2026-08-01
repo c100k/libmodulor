@@ -1,6 +1,9 @@
 import type { UCOPIBase } from './opi.js';
 import type { UCOutputPart, UCOutputPartDef } from './output-part.js';
 import type { UCOutputSideEffect } from './side-effect.js';
+export declare const UC_OUTPUT_PARTS_FIELD = "parts";
+export declare const UC_OUTPUT_PARTS_FIELD_0 = "_0";
+export declare const UC_OUTPUT_PARTS_FIELD_1 = "_1";
 export type UCOutputPartIdx = 0 | 1;
 export type UCOutputPartKey<OPI0 extends UCOPIBase | undefined = undefined, OPI1 extends UCOPIBase | undefined = undefined> = keyof UCOutput<OPI0, OPI1>['parts'];
 export interface UCOutput<OPI0 extends UCOPIBase | undefined = undefined, OPI1 extends UCOPIBase | undefined = undefined> {

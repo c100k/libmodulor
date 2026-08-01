@@ -14,7 +14,7 @@ export declare class NodeHTTPServerCreator implements Configurable<S>, Worker<In
     private serverSSLCertLoader;
     private settingsManager;
     constructor(logger: Logger, serverSSLCertLoader: ServerSSLCertLoader, settingsManager: SettingsManager<S>);
-    s(): CreateSettings;
+    s(): S;
     exec({ listener }: Input): Promise<Output>;
 }
 export {};

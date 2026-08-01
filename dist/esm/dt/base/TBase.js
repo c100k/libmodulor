@@ -71,6 +71,9 @@ export class TBase {
             type: 'string',
         };
     }
+    protobufType() {
+        return 'string';
+    }
     rnInputMode() {
         return 'text';
     }

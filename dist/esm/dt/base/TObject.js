@@ -73,6 +73,10 @@ export class TObject extends TBase {
         }, {});
         return { additionalProperties: false, properties, type: 'object' };
     }
+    protobufType() {
+        // TODO: Define a proper embedded type
+        return 'bytes';
+    }
     validate() {
         const validation = super.validate();
         if (!validation.isOK()) {

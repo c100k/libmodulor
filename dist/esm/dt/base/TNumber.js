@@ -58,6 +58,9 @@ export class TNumber extends TBase {
     min() {
         return this.constraints?.min ?? TNumber.DEFAULT_MIN;
     }
+    protobufType() {
+        return 'double';
+    }
     rnInputMode() {
         return 'decimal';
     }

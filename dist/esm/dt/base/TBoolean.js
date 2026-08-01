@@ -39,6 +39,9 @@ export class TBoolean extends TBase {
     jsonSchemaType() {
         return { type: 'boolean' };
     }
+    protobufType() {
+        return 'bool';
+    }
     validate() {
         const validation = super.validate();
         if (!validation.isOK()) {

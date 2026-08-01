@@ -103,6 +103,7 @@ let ServerRequestHandler = class ServerRequestHandler {
                     status: 204,
                 };
             }
+            // TODO : Make this respect the contract defined in the OpenAPI spec
             const transform = ext?.http?.transform;
             return {
                 body: transform ? transform(output) : output,
@@ -174,7 +175,7 @@ let ServerRequestHandler = class ServerRequestHandler {
         return { status: undefined };
     }
     async applyClearAuthSideEffect(res) {
-        res.clearCookie(this.s().server_cookies_name_auth);
+        await res.clearCookie(this.s().server_cookies_name_auth);
     }
     async applyRedirectSideEffect(res, item) {
         if (!item ||
@@ -183,7 +184,7 @@ let ServerRequestHandler = class ServerRequestHandler {
             return;
         }
         const { redirect } = item;
-        res.redirect(redirect);
+        await res.redirect(redirect);
     }
     async applySetAuthSideEffect(res, item) {
         if (!item || !('jwt' in item) || typeof item.jwt !== 'string') {
@@ -193,7 +194,7 @@ let ServerRequestHandler = class ServerRequestHandler {
         const output = await this.authCookieCreator.exec({
             jwt,
         });
-        res.setCookie(output);
+        await res.setCookie(output);
     }
 };
 ServerRequestHandler = __decorate([

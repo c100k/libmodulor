@@ -1,4 +1,5 @@
 import type { Unit } from '../../utils/index.js';
+import type { ProtobufFieldType } from '../targets/protobuf.js';
 import type { TName } from './TBase.js';
 import { TInt } from './TInt.js';
 import type { TNumberConstraints } from './TNumber.js';
@@ -9,4 +10,5 @@ export declare class TUInt<T extends UInt = UInt> extends TInt<T> {
     tName(): TName;
     example(): T;
     min(): NonNullable<TUIntConstraints['min']>;
+    protobufType(): ProtobufFieldType;
 }

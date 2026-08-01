@@ -110,6 +110,34 @@ container.bind<ServerManager>('ServerManager').to(NodeExpressServerManager);
 
 export default container;
 `;
+const NODE_GRPC_SERVER_CONTAINER_TS = `import { Container } from 'inversify';
+import {
+    bindCommon,
+    bindProduct,
+    CONTAINER_OPTS,
+    type ServerManager,
+    updateSettings,
+} from '${LIB_NAME}';
+import { bindNodeCore } from '${LIB_NAME}/node';
+import {
+    bindServer,
+    NodeGRPCServerManager,
+} from '${LIB_NAME}/node-grpc';
+
+${COMMON_CONTAINER_IMPORTS}
+
+const container = new Container(CONTAINER_OPTS);
+
+bindCommon(container);
+updateSettings<S>(container, settings);
+bindNodeCore(container);
+bindServer(container);
+bindProduct(container, ${PRODUCT_MANIFEST_NAME}, ${PRODUCT_I18N_NAME});
+
+container.bind<ServerManager>('ServerManager').to(NodeGRPCServerManager);
+
+export default container;
+`;
 const NODE_HONO_SERVER_CONTAINER_TS = `import { Container } from 'inversify';
 import {
     bindCommon,
@@ -233,6 +261,11 @@ const MAPPING = {
     ]),
     'node-express-server': new Map([
         [['.', 'container.ts'], NODE_EXPRESS_SERVER_CONTAINER_TS],
+        [['.', 'index.ts'], SERVER_INDEX_TS],
+        [['.', 'settings.ts'], SERVER_SETTINGS_TS],
+    ]),
+    'node-grpc-server': new Map([
+        [['.', 'container.ts'], NODE_GRPC_SERVER_CONTAINER_TS],
         [['.', 'index.ts'], SERVER_INDEX_TS],
         [['.', 'settings.ts'], SERVER_SETTINGS_TS],
     ]),

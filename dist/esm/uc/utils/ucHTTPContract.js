@@ -8,7 +8,10 @@ const ACTION_HTTP_METHOD_MAPPING = {
     View: 'GET',
 };
 const METHODS_WITH_NO_BODY = ['DELETE', 'GET', 'HEAD'];
-export function ucHTTPContract(uc, pathPrefix = '/api/v1') {
+export const UC_CONTRACT_DEFAULT_PREFIX = '/api/v1';
+export const UC_CONTRACT_DEFAULT_PREFIX_WITH_DOTS = 'api.v1';
+export const UC_CONTRACT_DEFAULT_PREFIX_WITH_DOTS_PARTS = UC_CONTRACT_DEFAULT_PREFIX_WITH_DOTS.split('.');
+export function ucHTTPContract(uc) {
     const { ext, metadata } = uc.def;
     const { action } = metadata;
     const hasMediaInInput = uc.hasMediaInInput();
@@ -23,11 +26,13 @@ export function ucHTTPContract(uc, pathPrefix = '/api/v1') {
         envelope = 'form-data';
     }
     const mountingPoint = ucMountingPoint(uc);
-    const path = ext?.http?.mountAt ?? `${pathPrefix}/${mountingPoint}`;
+    const path = ext?.http?.mountAt ?? `${UC_CONTRACT_DEFAULT_PREFIX}/${mountingPoint}`;
     const pathAliases = [];
     if (ext?.http?.mountAlsoAt) {
         pathAliases.push(...ext.http.mountAlsoAt);
     }
+    // TODO : Make this in a cleaner way
+    const pathForGRPC = `/${UC_CONTRACT_DEFAULT_PREFIX_WITH_DOTS}.${mountingPoint.replace('_', '/')}`;
     return {
         contentType,
         envelope,
@@ -35,5 +40,6 @@ export function ucHTTPContract(uc, pathPrefix = '/api/v1') {
         mountingPoint,
         path,
         pathAliases,
+        pathForGRPC,
     };
 }

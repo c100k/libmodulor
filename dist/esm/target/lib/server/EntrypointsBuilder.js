@@ -25,14 +25,17 @@ let EntrypointsBuilder = class EntrypointsBuilder {
     exec() {
         const host = this.s().server_binding_host;
         const port = this.s().server_binding_port;
+        const grpc = `${host}:${port}`;
         const tcp = `tcp://${host}:${port}`;
         if (port !== 443) {
             return {
+                grpc,
                 http: `http://${host}${port === 80 ? '' : [':', port].join('')}`,
                 tcp,
             };
         }
         return {
+            grpc,
             http: `https://${host}`,
             tcp,
         };

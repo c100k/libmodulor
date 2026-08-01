@@ -15,4 +15,7 @@ export class TUInt extends TInt {
     min() {
         return this.constraints?.min ?? 0;
     }
+    protobufType() {
+        return 'uint32';
+    }
 }

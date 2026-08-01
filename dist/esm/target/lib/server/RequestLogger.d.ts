@@ -2,7 +2,7 @@ import type { HTTPMethod, URL } from '../../../dt/index.js';
 import type { EnvironmentManager, Logger, Worker } from '../../../std/index.js';
 interface Input {
     body: unknown;
-    method: HTTPMethod;
+    method: HTTPMethod | 'RPC';
     url: URL;
 }
 export declare class RequestLogger implements Worker<Input, void> {

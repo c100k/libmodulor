@@ -1,5 +1,6 @@
 import type { Unit } from '../../utils/index.js';
 import type { JSONSchemaType } from '../targets/json-schema.js';
+import type { ProtobufFieldType } from '../targets/protobuf.js';
 import type { RNInputMode } from '../targets/rn.js';
 import type { Validation } from '../Validation.js';
 import type { TName } from './TBase.js';
@@ -17,6 +18,7 @@ export declare class TInt<T extends Int = Int> extends TNumber<T> {
     jsonSchemaType(): JSONSchemaType;
     max(): NonNullable<TIntConstraints['max']>;
     min(): NonNullable<TIntConstraints['min']>;
+    protobufType(): ProtobufFieldType;
     rnInputMode(): RNInputMode;
     validate(): Validation;
 }

@@ -4,6 +4,7 @@ export const TARGETS = {
     'node-core-cli': 'node-core-cli',
     'node-core-http-server': 'node-core-http-server',
     'node-express-server': 'node-express-server',
+    'node-grpc-server': 'node-grpc-server',
     'node-hono-server': 'node-hono-server',
     'node-mcp-server-stdio': 'node-mcp-server-stdio',
     'node-stricli-cli': 'node-stricli-cli',

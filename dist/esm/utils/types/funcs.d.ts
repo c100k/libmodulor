@@ -33,6 +33,12 @@ export declare function range(n: UIntQuantity): NumIndex[];
  */
 export declare function sample<T>(items: T[]): T | null;
 /**
+ * Get the values of an object with the type inferred correctly, even if there is no index signature (e.g. an interface)
+ * @param obj
+ * @returns
+ */
+export declare function valuesIn<T extends object>(obj: T): Array<T[keyof T]>;
+/**
  * Get an array of size `n` filled with `val`
  * @param val
  * @param n

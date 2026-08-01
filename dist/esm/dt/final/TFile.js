@@ -56,6 +56,9 @@ export class TFile extends TObject {
     jsonSchemaType() {
         return { format: 'binary', type: 'string' };
     }
+    protobufType() {
+        return 'bytes';
+    }
     validate() {
         const validation = super.validate();
         if (!validation.isOK()) {

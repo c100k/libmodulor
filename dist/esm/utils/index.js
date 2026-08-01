@@ -16,4 +16,4 @@ export { capitalize, isCapitalized } from './strings/capitalize.js';
 export { humanize } from './strings/humanize.js';
 export { truncate } from './strings/truncate.js';
 export { fmtBold, fmtCommand, fmtPadEndFor, fmtSection, } from './terminal/fmt.js';
-export { assertIsDefined, isBlank, range, sample, tupleOf, } from './types/funcs.js';
+export { assertIsDefined, isBlank, range, sample, tupleOf, valuesIn, } from './types/funcs.js';

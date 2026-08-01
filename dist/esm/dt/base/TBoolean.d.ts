@@ -1,4 +1,5 @@
 import type { JSONSchemaType } from '../targets/json-schema.js';
+import type { ProtobufFieldType } from '../targets/protobuf.js';
 import type { HTMLInputType } from '../targets/web.js';
 import type { Validation } from '../Validation.js';
 import { TBase, type TName } from './TBase.js';
@@ -9,5 +10,6 @@ export declare class TBoolean extends TBase<boolean> {
     fmt(ifNullOrUndefined?: string | undefined): string;
     htmlInputType(): HTMLInputType;
     jsonSchemaType(): JSONSchemaType;
+    protobufType(): ProtobufFieldType;
     validate(): Validation;
 }

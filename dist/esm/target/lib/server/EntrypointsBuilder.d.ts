@@ -2,6 +2,7 @@ import type { URL } from '../../../dt/index.js';
 import type { Configurable, SettingsManager, Worker } from '../../../std/index.js';
 import type { ServerManagerSettings } from './ServerManager.js';
 interface Output {
+    grpc: string;
     http: URL;
     tcp: string;
 }

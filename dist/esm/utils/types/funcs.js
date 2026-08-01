@@ -53,6 +53,14 @@ export function sample(items) {
     return items[Math.floor(Math.random() * items.length)] ?? null;
 }
 /**
+ * Get the values of an object with the type inferred correctly, even if there is no index signature (e.g. an interface)
+ * @param obj
+ * @returns
+ */
+export function valuesIn(obj) {
+    return Object.values(obj);
+}
+/**
  * Get an array of size `n` filled with `val`
  * @param val
  * @param n
