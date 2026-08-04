@@ -7,10 +7,14 @@ import {
     type LLMManager,
     MistralAILLMManager,
     type ServerManager,
+    type ShellCommandExecutor,
     type UCDataStore,
     updateSettings,
 } from '../../../../../dist/esm/index.js';
-import { bindNodeCore } from '../../../../../dist/esm/index.node.js';
+import {
+    bindNodeCore,
+    NodeSpawnShellCommandExecutor,
+} from '../../../../../dist/esm/index.node.js';
 import {
     bindServer,
     NodeGRPCServerManager,
@@ -32,5 +36,9 @@ container.rebindSync<UCDataStore>('UCDataStore').to(KnexUCDataStore);
 
 container.bind<LLMManager>('LLMManager').to(MistralAILLMManager);
 container.bind<ServerManager>('ServerManager').to(NodeGRPCServerManager);
+
+(await container.rebind<ShellCommandExecutor>('ShellCommandExecutor')).to(
+    NodeSpawnShellCommandExecutor,
+);
 
 export default container;
