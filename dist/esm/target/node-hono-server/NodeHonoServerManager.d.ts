@@ -3,7 +3,7 @@ import type { AppManifest } from '../../app/index.js';
 import type { DirPath, URLPath } from '../../dt/index.js';
 import type { ProductUCsLoaderOutput } from '../../product/index.js';
 import type { Configurable, EnvironmentManager, Logger, SettingsManager } from '../../std/index.js';
-import type { UCDef, UCHTTPContract, UCInput, UCManager, UCOPIBase } from '../../uc/index.js';
+import type { UCDef, UCInput, UCManager, UCOPIBase, UCTransportContract } from '../../uc/index.js';
 import type { MCPHTTPRequestHandlerBuilder } from '../lib/mcp-server/http/MCPHTTPRequestHandlerBuilder.js';
 import type { OpenAPISpec } from '../lib/openapi/types.js';
 import { CustomerFacingErrorBuilder } from '../lib/server/CustomerFacingErrorBuilder.js';
@@ -33,8 +33,8 @@ export declare class NodeHonoServerManager implements Configurable<S>, ServerMan
     overrideUCManager(ucManager: UCManager): void;
     init(): Promise<void>;
     initSync(): void;
-    mount<I extends UCInput | undefined = undefined, OPI0 extends UCOPIBase | undefined = undefined, OPI1 extends UCOPIBase | undefined = undefined>(appManifest: AppManifest, ucd: UCDef<I, OPI0, OPI1>, contract: UCHTTPContract): Promise<void>;
-    mountSync<I extends UCInput | undefined = undefined, OPI0 extends UCOPIBase | undefined = undefined, OPI1 extends UCOPIBase | undefined = undefined>(appManifest: AppManifest, ucd: UCDef<I, OPI0, OPI1>, contract: UCHTTPContract): void;
+    mount<I extends UCInput | undefined = undefined, OPI0 extends UCOPIBase | undefined = undefined, OPI1 extends UCOPIBase | undefined = undefined>(appManifest: AppManifest, ucd: UCDef<I, OPI0, OPI1>, contract: UCTransportContract): Promise<void>;
+    mountSync<I extends UCInput | undefined = undefined, OPI0 extends UCOPIBase | undefined = undefined, OPI1 extends UCOPIBase | undefined = undefined>(appManifest: AppManifest, ucd: UCDef<I, OPI0, OPI1>, contract: UCTransportContract): void;
     mountMCP(ucs: ProductUCsLoaderOutput, at: URLPath): Promise<void>;
     mountOpenAPISpec(spec: OpenAPISpec, at: URLPath): Promise<void>;
     mountStaticDir(dirPath: DirPath): Promise<void>;
@@ -42,6 +42,6 @@ export declare class NodeHonoServerManager implements Configurable<S>, ServerMan
     stop(): Promise<void>;
     warmUp(): Promise<void>;
     private createServer;
-    mountCommon<I extends UCInput | undefined = undefined, OPI0 extends UCOPIBase | undefined = undefined, OPI1 extends UCOPIBase | undefined = undefined>(appManifest: AppManifest, ucd: UCDef<I, OPI0, OPI1>, contract: UCHTTPContract): void;
+    mountCommon<I extends UCInput | undefined = undefined, OPI0 extends UCOPIBase | undefined = undefined, OPI1 extends UCOPIBase | undefined = undefined>(appManifest: AppManifest, ucd: UCDef<I, OPI0, OPI1>, contract: UCTransportContract): void;
 }
 export {};

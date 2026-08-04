@@ -3,7 +3,7 @@ import type { ServerClientManager, ServerClientManagerSettings } from '../../tar
 import type { UCInput } from '../input.js';
 import type { UCOPIBase } from '../opi.js';
 import type { UCOutputOrNothing } from '../output.js';
-import type { UCTransporter, UCTransporterOpts } from '../transporter.js';
+import { type UCTransporter, type UCTransporterOpts } from '../transporter.js';
 import type { UC } from '../UC.js';
 type S = Pick<ServerClientManagerSettings, 'server_cookies_name_auth' | 'server_public_api_key_header_name'>;
 export declare class HTTPUCTransporter implements Configurable<S>, UCTransporter {

@@ -5,7 +5,7 @@ import { secureHeaders } from 'hono/secure-headers';
 import { NotFoundError } from '../../../error/index.js';
 import { defaultStreamOnClose, fmtSingleDataMsg, fmtSSEError, fromFormData, isError, SSE_HEADERS, } from '../../../utils/index.js';
 export function buildHandler(appManifest, ucd, contract, serverRequestHandler, ucManager, beforeExec) {
-    const { envelope } = contract;
+    const { envelope } = contract.http;
     const handler = async (c) => {
         await beforeExec?.(c);
         const transportType = ucd.ext?.http?.transportType ?? 'standard';
@@ -104,7 +104,7 @@ export function init(corsMB, customerFacingErrorBuilder) {
     return app;
 }
 export function mountHandler(contract, hono, handler) {
-    const { method, path, pathAliases } = contract;
+    const { method, path, pathAliases } = contract.http;
     const httpMethod = method.toLowerCase();
     if (httpMethod === 'connect' ||
         httpMethod === 'head' ||

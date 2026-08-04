@@ -14,7 +14,7 @@ import { inject, injectable } from 'inversify';
 import { cookies, headers } from 'next/headers.js';
 import { redirect } from 'next/navigation.js';
 import { NextResponse } from 'next/server.js';
-import { UCBuilder, ucHTTPContract, } from '../../uc/index.js';
+import { UCBuilder, ucTransportContract, } from '../../uc/index.js';
 import { fromFormData, fromQueryParams } from '../../utils/index.js';
 import { ServerRequestHandler, } from '../lib/server/ServerRequestHandler.js';
 let NextJSAPIRouteHandler = class NextJSAPIRouteHandler {
@@ -28,7 +28,7 @@ let NextJSAPIRouteHandler = class NextJSAPIRouteHandler {
     }
     async exec({ appManifest, req, ucd }) {
         const uc = this.ucBuilder.exec({ appManifest, auth: null, def: ucd });
-        const { envelope } = ucHTTPContract(uc);
+        const { envelope } = ucTransportContract(uc).http;
         const { body, status } = await this.serverRequestHandler.exec({
             appManifest,
             envelope,

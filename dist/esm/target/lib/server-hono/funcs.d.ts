@@ -1,12 +1,12 @@
 import { type Context, type Handler, Hono } from 'hono';
 import type { BlankEnv, Env } from 'hono/types';
 import type { AppManifest } from '../../../app/index.js';
-import type { UCDef, UCHTTPContract, UCInput, UCManager, UCOPIBase } from '../../../uc/index.js';
+import type { UCDef, UCInput, UCManager, UCOPIBase, UCTransportContract } from '../../../uc/index.js';
 import type { CustomerFacingErrorBuilder } from '../server/CustomerFacingErrorBuilder.js';
 import type { ServerRequestHandler, ServerRequestHandlerReq, ServerRequestHandlerRes } from '../server/ServerRequestHandler.js';
 import type { CORSMiddlewareBuilder } from './CORSMiddlewareBuilder.js';
-export declare function buildHandler<I extends UCInput | undefined = undefined, OPI0 extends UCOPIBase | undefined = undefined, OPI1 extends UCOPIBase | undefined = undefined>(appManifest: AppManifest, ucd: UCDef<I, OPI0, OPI1>, contract: UCHTTPContract, serverRequestHandler: ServerRequestHandler, ucManager: UCManager, beforeExec?: (c: Context) => Promise<void>): Handler;
+export declare function buildHandler<I extends UCInput | undefined = undefined, OPI0 extends UCOPIBase | undefined = undefined, OPI1 extends UCOPIBase | undefined = undefined>(appManifest: AppManifest, ucd: UCDef<I, OPI0, OPI1>, contract: UCTransportContract, serverRequestHandler: ServerRequestHandler, ucManager: UCManager, beforeExec?: (c: Context) => Promise<void>): Handler;
 export declare function init<E extends Env = BlankEnv>(corsMB: CORSMiddlewareBuilder, customerFacingErrorBuilder: CustomerFacingErrorBuilder): Hono<E>;
-export declare function mountHandler(contract: UCHTTPContract, hono: Hono, handler: Handler): void;
+export declare function mountHandler(contract: UCTransportContract, hono: Hono, handler: Handler): void;
 export declare function toReq(c: Context): ServerRequestHandlerReq;
 export declare function toRes(c: Context): ServerRequestHandlerRes;

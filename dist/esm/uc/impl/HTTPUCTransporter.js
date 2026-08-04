@@ -12,8 +12,8 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 };
 import { inject, injectable } from 'inversify';
 import { DEFAULT_UC_SEC_AT, DEFAULT_UC_SEC_PAKCT } from '../sec/consts.js';
+import { ucTransportContract, } from '../transporter.js';
 import { rInput } from '../utils/rInput.js';
-import { ucHTTPContract } from '../utils/ucHTTPContract.js';
 let HTTPUCTransporter = class HTTPUCTransporter {
     httpAPICaller;
     serverClientManager;
@@ -32,7 +32,7 @@ let HTTPUCTransporter = class HTTPUCTransporter {
     async send(uc, opts) {
         const { auth, def: { sec }, } = uc;
         const baseURL = await this.serverClientManager.baseURL({ auth });
-        const { contentType, envelope, method, path } = ucHTTPContract(uc);
+        const { contentType, envelope, method, path } = ucTransportContract(uc).http;
         const additionalHeaders = {};
         let authorizationHeader;
         let basicAuth;

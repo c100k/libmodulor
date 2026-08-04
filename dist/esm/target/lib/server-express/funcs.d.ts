@@ -2,15 +2,15 @@ import { type Express, type Request, type RequestHandler, type Response } from '
 import fileUpload from 'express-fileupload';
 import type { AppManifest } from '../../../app/index.js';
 import type { LoggerLevel } from '../../../std/index.js';
-import type { UCDef, UCHTTPContract, UCInput, UCManager, UCOPIBase } from '../../../uc/index.js';
+import type { UCDef, UCInput, UCManager, UCOPIBase, UCTransportContract } from '../../../uc/index.js';
 import type { CustomerFacingErrorBuilder } from '../server/CustomerFacingErrorBuilder.js';
 import type { ServerManagerSettings } from '../server/ServerManager.js';
 import type { ServerRequestHandler, ServerRequestHandlerReq, ServerRequestHandlerRes } from '../server/ServerRequestHandler.js';
 import type { CORSMiddlewareBuilder } from './CORSMiddlewareBuilder.js';
 import type { HelmetMiddlewareBuilder } from './HelmetMiddlewareBuilder.js';
-export declare function buildHandler<I extends UCInput | undefined = undefined, OPI0 extends UCOPIBase | undefined = undefined, OPI1 extends UCOPIBase | undefined = undefined>(appManifest: AppManifest, ucd: UCDef<I, OPI0, OPI1>, contract: UCHTTPContract, serverRequestHandler: ServerRequestHandler, ucManager: UCManager): RequestHandler;
+export declare function buildHandler<I extends UCInput | undefined = undefined, OPI0 extends UCOPIBase | undefined = undefined, OPI1 extends UCOPIBase | undefined = undefined>(appManifest: AppManifest, ucd: UCDef<I, OPI0, OPI1>, contract: UCTransportContract, serverRequestHandler: ServerRequestHandler, ucManager: UCManager): RequestHandler;
 export declare function init(corsMB: CORSMiddlewareBuilder, helmetMB: HelmetMiddlewareBuilder, loggerLevel: LoggerLevel, serverTmpPath: ServerManagerSettings['server_tmp_path']): Express;
-export declare function mountHandler(contract: UCHTTPContract, express: Express, handler: RequestHandler): void;
+export declare function mountHandler(contract: UCTransportContract, express: Express, handler: RequestHandler): void;
 export declare function postInit(app: Express, customerFacingErrorBuilder: CustomerFacingErrorBuilder): void;
 export declare function toFile(f: fileUpload.UploadedFile): File;
 export declare function toReq(req: Request): ServerRequestHandlerReq;

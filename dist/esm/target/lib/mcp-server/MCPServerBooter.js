@@ -12,7 +12,7 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 };
 import { inject, injectable } from 'inversify';
 import { ProductUCsLoader } from '../../../product/index.js';
-import { ucHTTPContract } from '../../../uc/index.js';
+import { ucTransportContract } from '../../../uc/index.js';
 let MCPServerBooter = class MCPServerBooter {
     i18nManager;
     logger;
@@ -36,7 +36,7 @@ let MCPServerBooter = class MCPServerBooter {
             });
             for await (const uc of ucs) {
                 // Declared only for compatibility with ServerManager's contract but not used
-                const contract = ucHTTPContract(uc);
+                const contract = ucTransportContract(uc);
                 await this.ucManager.initServer(uc);
                 await this.serverManager.mount(uc.appManifest, uc.def, contract);
             }

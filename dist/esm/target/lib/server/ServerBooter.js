@@ -12,7 +12,7 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 };
 import { inject, injectable } from 'inversify';
 import { ProductUCsLoader, } from '../../../product/index.js';
-import { ucHTTPContract, } from '../../../uc/index.js';
+import { ucTransportContract, } from '../../../uc/index.js';
 import { OpenAPISpecBuilder } from '../openapi/OpenAPISpecBuilder.js';
 import { shouldMountUC } from './funcs.js';
 import { ServerInstaller } from './ServerInstaller.js';
@@ -112,7 +112,7 @@ let ServerBooter = class ServerBooter {
     }
     async mountUC(uc) {
         const { sec } = uc.def;
-        const contract = ucHTTPContract(uc);
+        const contract = ucTransportContract(uc);
         const { mountingPoint } = contract;
         const shouldNotMountReason = shouldMountUC(uc.def);
         if (shouldNotMountReason) {

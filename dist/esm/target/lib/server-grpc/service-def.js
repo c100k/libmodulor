@@ -8,11 +8,11 @@ export function serviceDefinition(root, service) {
         if (!options ||
             !('contract' in options) ||
             // biome-ignore lint/complexity/useLiteralKeys: typescript disagrees
-            !('pathForGRPC' in options['contract'])) {
+            !('grpc' in options['contract'])) {
             throw new Error(ERR_PATH_MISSING);
         }
         // biome-ignore lint/complexity/useLiteralKeys: typescript disagrees
-        const path = options['contract'].pathForGRPC;
+        const { path } = options['contract'].grpc;
         // TODO: Support pathAliases
         return [
             method.name,

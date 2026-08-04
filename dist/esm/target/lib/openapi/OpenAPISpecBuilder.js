@@ -12,7 +12,7 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 };
 import { inject, injectable } from 'inversify';
 import { WordingManager } from '../../../i18n/index.js';
-import { formatFQUCInputName, formatFQUCName, ucHTTPContract, } from '../../../uc/index.js';
+import { formatFQUCInputName, formatFQUCName, ucTransportContract, } from '../../../uc/index.js';
 import { serverErrorJsonSchema } from '../json-schema/error.js';
 import { ucInputJsonSchema } from '../json-schema/input.js';
 import { DEFAULT_VERSION } from '../shared.js';
@@ -46,7 +46,7 @@ let OpenAPISpecBuilder = class OpenAPISpecBuilder {
             output.spec.info.summary = slogan;
         }
         for (const uc of ucs) {
-            const { method, path, pathAliases, envelope } = ucHTTPContract(uc);
+            const { method, path, pathAliases, envelope } = ucTransportContract(uc).http;
             const httpMethod = method.toLowerCase();
             const fqUCName = formatFQUCName(uc.appManifest.name, uc.def.metadata.name);
             const fqUCInputName = formatFQUCInputName(fqUCName);

@@ -3,7 +3,7 @@ import express, {} from 'express';
 import fileUpload from 'express-fileupload';
 import { defaultStreamOnClose, fmtSingleDataMsg, fmtSSEError, isError, SSE_HEADERS, } from '../../../utils/index.js';
 export function buildHandler(appManifest, ucd, contract, serverRequestHandler, ucManager) {
-    const { envelope } = contract;
+    const { envelope } = contract.http;
     const handler = async (req, res) => {
         const transportType = ucd.ext?.http?.transportType ?? 'standard';
         let execOpts;
@@ -88,7 +88,7 @@ export function init(corsMB, helmetMB, loggerLevel, serverTmpPath) {
     return app;
 }
 export function mountHandler(contract, express, handler) {
-    const { method, path, pathAliases } = contract;
+    const { method, path, pathAliases } = contract.http;
     const httpMethod = method.toLowerCase();
     express[httpMethod](path, handler);
     for (const pathAlias of pathAliases) {

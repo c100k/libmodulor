@@ -1,7 +1,7 @@
 import type { Server } from '@grpc/grpc-js';
 import type { AppManifest } from '../../../app/index.js';
 import type { Configurable, FileMetadataManager, FSManager, Logger, SettingsManager } from '../../../std/index.js';
-import type { UCDef, UCHTTPContract, UCInput, UCManager, UCOPIBase } from '../../../uc/index.js';
+import type { UCDef, UCInput, UCManager, UCOPIBase, UCTransportContract } from '../../../uc/index.js';
 import type { ServerManagerSettings } from '../server/ServerManager.js';
 import { ServerRequestHandler } from './ServerRequestHandler.js';
 import type { GRPCServerManagerSettings } from './settings.js';
@@ -18,6 +18,6 @@ export declare class ServiceManager implements Configurable<S> {
     s(): S;
     addServices(server: Server): Promise<void>;
     exposeReflection(server: Server): Promise<void>;
-    mount<I extends UCInput | undefined = undefined, OPI0 extends UCOPIBase | undefined = undefined, OPI1 extends UCOPIBase | undefined = undefined>(ucManager: UCManager, appManifest: AppManifest, ucd: UCDef<I, OPI0, OPI1>, contract: UCHTTPContract): void;
+    mount<I extends UCInput | undefined = undefined, OPI0 extends UCOPIBase | undefined = undefined, OPI1 extends UCOPIBase | undefined = undefined>(ucManager: UCManager, appManifest: AppManifest, ucd: UCDef<I, OPI0, OPI1>, contract: UCTransportContract): void;
 }
 export {};

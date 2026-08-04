@@ -2,7 +2,7 @@ import type { AppManifest } from '../../../app/index.js';
 import type { ApiKey, DirPath, FilePath, HostPort, HTTPMethod, Password, URL, URLPath, Username } from '../../../dt/index.js';
 import type { ProductUCsLoaderOutput } from '../../../product/index.js';
 import type { Settings } from '../../../std/index.js';
-import type { UCDef, UCHTTPContract, UCInput, UCManager, UCOPIBase } from '../../../uc/index.js';
+import type { UCDef, UCInput, UCManager, UCOPIBase, UCTransportContract } from '../../../uc/index.js';
 import type { HTTPCSPValue } from '../../../utils/http/types.js';
 import type { HTTPCookieSameSite, HTTPHeaderName, Initializable } from '../../../utils/index.js';
 import type { OpenAPISpec } from '../openapi/types.js';
@@ -48,14 +48,14 @@ export interface ServerManager extends Initializable {
      * @param ucd
      * @param contract
      */
-    mount<I extends UCInput | undefined = undefined, OPI0 extends UCOPIBase | undefined = undefined, OPI1 extends UCOPIBase | undefined = undefined>(appManifest: AppManifest, ucd: UCDef<I, OPI0, OPI1>, contract: UCHTTPContract): Promise<void>;
+    mount<I extends UCInput | undefined = undefined, OPI0 extends UCOPIBase | undefined = undefined, OPI1 extends UCOPIBase | undefined = undefined>(appManifest: AppManifest, ucd: UCDef<I, OPI0, OPI1>, contract: UCTransportContract): Promise<void>;
     /**
      * Mount the use case as an endpoint
      * @param appManifest
      * @param ucd
      * @param contract
      */
-    mountSync<I extends UCInput | undefined = undefined, OPI0 extends UCOPIBase | undefined = undefined, OPI1 extends UCOPIBase | undefined = undefined>(appManifest: AppManifest, ucd: UCDef<I, OPI0, OPI1>, contract: UCHTTPContract): void;
+    mountSync<I extends UCInput | undefined = undefined, OPI0 extends UCOPIBase | undefined = undefined, OPI1 extends UCOPIBase | undefined = undefined>(appManifest: AppManifest, ucd: UCDef<I, OPI0, OPI1>, contract: UCTransportContract): void;
     /**
      * Mount the MCP endpoint
      * @param spec

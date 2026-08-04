@@ -9,7 +9,7 @@ export function assertIncomingMessageEnhanced(req) {
     }
 }
 export function buildHandler(appManifest, ucd, contract, serverRequestHandler, ucManager) {
-    const { envelope } = contract;
+    const { envelope } = contract.http;
     const handler = async (req, res) => {
         const transportType = ucd.ext?.http?.transportType ?? 'standard';
         let execOpts;
@@ -104,7 +104,7 @@ export function init() {
     // TODO : Setup some middlewares if possible
 }
 export function mountHandler(contract, router, handler) {
-    const { method, path, pathAliases } = contract;
+    const { method, path, pathAliases } = contract.http;
     const keys = routeKeys(method, [path, ...pathAliases]);
     for (const routeKey of keys) {
         router[routeKey] = handler;

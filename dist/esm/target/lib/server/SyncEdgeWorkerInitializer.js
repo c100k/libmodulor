@@ -11,7 +11,7 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
 import { inject, injectable } from 'inversify';
-import { ucHTTPContract, } from '../../../uc/index.js';
+import { ucTransportContract, } from '../../../uc/index.js';
 import { shouldMountUC } from './funcs.js';
 let SyncEdgeWorkerInitializer = class SyncEdgeWorkerInitializer {
     i18nManager;
@@ -45,7 +45,7 @@ let SyncEdgeWorkerInitializer = class SyncEdgeWorkerInitializer {
     }
     mountUC(uc) {
         const { lifecycle, sec } = uc.def;
-        const contract = ucHTTPContract(uc);
+        const contract = ucTransportContract(uc);
         const { mountingPoint } = contract;
         const shouldNotMountReason = shouldMountUC(uc.def);
         if (shouldNotMountReason) {

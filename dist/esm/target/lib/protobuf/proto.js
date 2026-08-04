@@ -1,12 +1,12 @@
 import { Namespace, Type, } from 'protobufjs';
-import { UC_CONTRACT_DEFAULT_PREFIX_WITH_DOTS } from '../../../uc/index.js';
+import { UC_TRANSPORT_CONTRACT_DEFAULT_PREFIX_WITH_DOTS } from '../../../uc/index.js';
 const INDENT_L1 = ' '.repeat(4);
 const SYNTAX = 'proto3';
 const ERR_UNSUPPORTED_TYPE = (name) => `The type ${name} is not supported yet`;
 export function protoFile(root, services) {
     const lines = [
         `syntax = "${SYNTAX}";`,
-        `package ${UC_CONTRACT_DEFAULT_PREFIX_WITH_DOTS};`,
+        `package ${UC_TRANSPORT_CONTRACT_DEFAULT_PREFIX_WITH_DOTS};`,
     ];
     for (const [name, { service: s }] of services) {
         lines.push(...service(name, s));
