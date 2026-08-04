@@ -2,7 +2,7 @@ import type { RequestListener } from 'node:http';
 import type { AppManifest } from '../../app/manifest.js';
 import type { DirPath, URLPath } from '../../dt/index.js';
 import type { ProductUCsLoaderOutput } from '../../product/index.js';
-import type { Configurable, EnvironmentManager, Logger, LoggerSettings, SettingsManager } from '../../std/index.js';
+import type { Configurable, Logger, LoggerSettings, SettingsManager } from '../../std/index.js';
 import type { UCDef, UCInput, UCManager, UCOPIBase, UCTransportContract } from '../../uc/index.js';
 import type { MCPHTTPRequestHandlerBuilder } from '../lib/mcp-server/http/MCPHTTPRequestHandlerBuilder.js';
 import type { OpenAPISpec } from '../lib/openapi/types.js';
@@ -12,6 +12,7 @@ import type { ServerManager, ServerManagerSettings } from '../lib/server/ServerM
 import { ServerRequestHandler } from '../lib/server/ServerRequestHandler.js';
 import { NodeHTTPServerCreator } from '../lib/server-node/NodeHTTPServerCreator.js';
 import type { ListenSettings, Server, StopSettings } from '../lib/server-node/types.js';
+import type { Router } from '../lib/server-node-core/types.js';
 type S = ListenSettings & Pick<LoggerSettings, 'logger_level'> & Pick<ServerManagerSettings, 'server_tmp_path'> & StopSettings;
 /**
  * This server must not be used in production.
@@ -22,18 +23,16 @@ type S = ListenSettings & Pick<LoggerSettings, 'logger_level'> & Pick<ServerMana
 export declare class NodeCoreHTTPServerManager implements Configurable<S>, ServerManager {
     private customerFacingErrorBuilder;
     private entrypointsBuilder;
-    protected environmentManager: EnvironmentManager;
-    protected logger: Logger;
+    private logger;
     private mcpHTTPRequestHandlerBuilder;
     private nodeHTTPServerCreator;
     private serverRequestHandler;
     private settingsManager;
     private ucManager;
-    private runtime;
-    private router;
-    constructor(customerFacingErrorBuilder: CustomerFacingErrorBuilder, entrypointsBuilder: EntrypointsBuilder, environmentManager: EnvironmentManager, logger: Logger, mcpHTTPRequestHandlerBuilder: MCPHTTPRequestHandlerBuilder<RequestListener>, nodeHTTPServerCreator: NodeHTTPServerCreator, serverRequestHandler: ServerRequestHandler, settingsManager: SettingsManager<S>, ucManager: UCManager);
+    protected router: Router;
+    protected server: Server;
+    constructor(customerFacingErrorBuilder: CustomerFacingErrorBuilder, entrypointsBuilder: EntrypointsBuilder, logger: Logger, mcpHTTPRequestHandlerBuilder: MCPHTTPRequestHandlerBuilder<RequestListener>, nodeHTTPServerCreator: NodeHTTPServerCreator, serverRequestHandler: ServerRequestHandler, settingsManager: SettingsManager<S>, ucManager: UCManager);
     s(): S;
-    getRuntime(): Server;
     overrideUCManager(ucManager: UCManager): void;
     init(): Promise<void>;
     initSync(): void;

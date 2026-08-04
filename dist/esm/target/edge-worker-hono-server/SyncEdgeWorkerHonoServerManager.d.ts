@@ -20,10 +20,9 @@ export declare class SyncEdgeWorkerHonoServerManager implements Configurable<S>,
     private settingsManager;
     private ucDataStore;
     private ucManager;
-    protected runtime: Hono;
+    protected hono: Hono;
     constructor(corsMiddlewareBuilder: CORSMiddlewareBuilder, customerFacingErrorBuilder: CustomerFacingErrorBuilder, serverRequestHandler: ServerRequestHandler, settingsManager: SettingsManager<S>, ucDataStore: UCDataStore, ucManager: UCManager);
     s(): SyncEdgeWorkerHonoServerManagerSettings;
-    getRuntime(): Hono;
     overrideUCManager(ucManager: UCManager): void;
     init(): Promise<void>;
     initSync(): void;

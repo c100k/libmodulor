@@ -50,4 +50,5 @@ container.get(SyncEdgeWorkerInitializer).exec({
     ucs,
 });
 
-export default (serverManager as SyncEdgeWorkerHonoServerManager).getRuntime();
+// @ts-expect-error
+export default (serverManager as SyncEdgeWorkerHonoServerManager).hono;

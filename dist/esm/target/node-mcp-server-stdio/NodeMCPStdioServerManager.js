@@ -24,7 +24,7 @@ let NodeMCPStdioServerManager = class NodeMCPStdioServerManager {
     ucBuilder;
     ucManager;
     wordingManager;
-    runtime;
+    mcpServer;
     transport;
     constructor(requestHandler, productManifest, settingsManager, ucBuilder, ucManager, wordingManager) {
         this.requestHandler = requestHandler;
@@ -64,17 +64,17 @@ let NodeMCPStdioServerManager = class NodeMCPStdioServerManager {
         // Nothing to do
     }
     async start() {
-        await this.runtime.connect(this.transport);
+        await this.mcpServer.connect(this.transport);
     }
     async stop() {
-        await this.runtime.close();
+        await this.mcpServer.close();
         await this.transport.close();
     }
     async warmUp() {
         // Nothing to do
     }
     initCommon() {
-        this.runtime = init(this.productManifest);
+        this.mcpServer = init(this.productManifest);
         assertLoggerLevel(this.s().logger_level);
         this.transport = new StdioServerTransport();
     }
@@ -87,7 +87,7 @@ let NodeMCPStdioServerManager = class NodeMCPStdioServerManager {
         const mountingPoint = uc.def.ext?.cmd?.mountAt ?? contract.mountingPoint;
         const wording = this.wordingManager.uc(uc.def);
         const config = toolConfig(uc, 'client', wording);
-        this.runtime.registerTool(mountingPoint, config, (toolInput) => this.requestHandler.exec({
+        this.mcpServer.registerTool(mountingPoint, config, (toolInput) => this.requestHandler.exec({
             appManifest,
             toolInput,
             ucd,

@@ -16,18 +16,22 @@ import { EntrypointsBuilder } from '../lib/server/EntrypointsBuilder.js';
 import { init, listen, stop } from '../lib/server-grpc/funcs.js';
 import { ServerCredentialsCreator } from '../lib/server-grpc/ServerCredentialsCreator.js';
 import { ServiceManager } from '../lib/server-grpc/ServiceManager.js';
+/**
+ * This server must not be used in production.
+ * It's not fully safe.
+ *
+ * @alpha
+ */
 let NodeGRPCServerManager = class NodeGRPCServerManager {
     entrypointsBuilder;
-    environmentManager;
     serverCredentialsCreator;
     logger;
     settingsManager;
     ucManager;
     serviceManager;
     server;
-    constructor(entrypointsBuilder, environmentManager, serverCredentialsCreator, logger, settingsManager, ucManager, serviceManager) {
+    constructor(entrypointsBuilder, serverCredentialsCreator, logger, settingsManager, ucManager, serviceManager) {
         this.entrypointsBuilder = entrypointsBuilder;
-        this.environmentManager = environmentManager;
         this.serverCredentialsCreator = serverCredentialsCreator;
         this.logger = logger;
         this.settingsManager = settingsManager;
@@ -40,12 +44,6 @@ let NodeGRPCServerManager = class NodeGRPCServerManager {
             server_binding_port: this.settingsManager.get()('server_binding_port'),
             server_stop_mode: this.settingsManager.get()('server_stop_mode'),
         };
-    }
-    getRuntime() {
-        if (this.environmentManager.isProd()) {
-            throw new Error('Do not use getRuntime() in production !');
-        }
-        return this.server;
     }
     overrideUCManager(ucManager) {
         this.ucManager = ucManager;
@@ -89,12 +87,12 @@ let NodeGRPCServerManager = class NodeGRPCServerManager {
 NodeGRPCServerManager = __decorate([
     injectable(),
     __param(0, inject(EntrypointsBuilder)),
-    __param(1, inject('EnvironmentManager')),
-    __param(2, inject(ServerCredentialsCreator)),
-    __param(3, inject('Logger')),
-    __param(4, inject('SettingsManager')),
-    __param(5, inject('UCManager')),
-    __param(6, inject(ServiceManager)),
-    __metadata("design:paramtypes", [EntrypointsBuilder, Object, ServerCredentialsCreator, Object, Object, Object, ServiceManager])
+    __param(1, inject(ServerCredentialsCreator)),
+    __param(2, inject('Logger')),
+    __param(3, inject('SettingsManager')),
+    __param(4, inject('UCManager')),
+    __param(5, inject(ServiceManager)),
+    __metadata("design:paramtypes", [EntrypointsBuilder,
+        ServerCredentialsCreator, Object, Object, Object, ServiceManager])
 ], NodeGRPCServerManager);
 export { NodeGRPCServerManager };

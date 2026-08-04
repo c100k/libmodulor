@@ -28,19 +28,17 @@ import { assertIncomingMessageEnhanced, buildHandler, buildRes, enhanceIncomingM
 let NodeCoreHTTPServerManager = class NodeCoreHTTPServerManager {
     customerFacingErrorBuilder;
     entrypointsBuilder;
-    environmentManager;
     logger;
     mcpHTTPRequestHandlerBuilder;
     nodeHTTPServerCreator;
     serverRequestHandler;
     settingsManager;
     ucManager;
-    runtime;
     router;
-    constructor(customerFacingErrorBuilder, entrypointsBuilder, environmentManager, logger, mcpHTTPRequestHandlerBuilder, nodeHTTPServerCreator, serverRequestHandler, settingsManager, ucManager) {
+    server;
+    constructor(customerFacingErrorBuilder, entrypointsBuilder, logger, mcpHTTPRequestHandlerBuilder, nodeHTTPServerCreator, serverRequestHandler, settingsManager, ucManager) {
         this.customerFacingErrorBuilder = customerFacingErrorBuilder;
         this.entrypointsBuilder = entrypointsBuilder;
-        this.environmentManager = environmentManager;
         this.logger = logger;
         this.mcpHTTPRequestHandlerBuilder = mcpHTTPRequestHandlerBuilder;
         this.nodeHTTPServerCreator = nodeHTTPServerCreator;
@@ -58,19 +56,13 @@ let NodeCoreHTTPServerManager = class NodeCoreHTTPServerManager {
             server_tmp_path: this.settingsManager.get()('server_tmp_path'),
         };
     }
-    getRuntime() {
-        if (this.environmentManager.isProd()) {
-            throw new Error('Do not use getRuntime() in production !');
-        }
-        return this.runtime;
-    }
     overrideUCManager(ucManager) {
         this.ucManager = ucManager;
     }
     async init() {
         init();
         const { server } = await this.nodeHTTPServerCreator.exec({});
-        this.runtime = server;
+        this.server = server;
     }
     initSync() {
         throw new NotCallableError('initSync', 'init', 'async-only');
@@ -98,13 +90,13 @@ let NodeCoreHTTPServerManager = class NodeCoreHTTPServerManager {
         mountStaticDir(dirPath, this.router);
     }
     async start() {
-        listen(this.runtime, this.entrypointsBuilder, this.logger, this.settingsManager);
+        listen(this.server, this.entrypointsBuilder, this.logger, this.settingsManager);
     }
     async stop() {
-        await stop(this.runtime, this.settingsManager);
+        await stop(this.server, this.settingsManager);
     }
     async warmUp() {
-        this.runtime.on('request', this.mainListener());
+        this.server.on('request', this.mainListener());
     }
     mainListener() {
         return async (req, res) => {
@@ -148,15 +140,14 @@ NodeCoreHTTPServerManager = __decorate([
     injectable(),
     __param(0, inject(CustomerFacingErrorBuilder)),
     __param(1, inject(EntrypointsBuilder)),
-    __param(2, inject('EnvironmentManager')),
-    __param(3, inject('Logger')),
-    __param(4, inject('MCPHTTPRequestHandlerBuilder')),
-    __param(5, inject(NodeHTTPServerCreator)),
-    __param(6, inject(ServerRequestHandler)),
-    __param(7, inject('SettingsManager')),
-    __param(8, inject('UCManager')),
+    __param(2, inject('Logger')),
+    __param(3, inject('MCPHTTPRequestHandlerBuilder')),
+    __param(4, inject(NodeHTTPServerCreator)),
+    __param(5, inject(ServerRequestHandler)),
+    __param(6, inject('SettingsManager')),
+    __param(7, inject('UCManager')),
     __metadata("design:paramtypes", [CustomerFacingErrorBuilder,
-        EntrypointsBuilder, Object, Object, Object, NodeHTTPServerCreator,
+        EntrypointsBuilder, Object, Object, NodeHTTPServerCreator,
         ServerRequestHandler, Object, Object])
 ], NodeCoreHTTPServerManager);
 export { NodeCoreHTTPServerManager };

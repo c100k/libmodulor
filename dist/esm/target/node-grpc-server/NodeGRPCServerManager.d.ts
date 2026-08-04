@@ -2,7 +2,7 @@ import type { Server } from '@grpc/grpc-js';
 import type { AppManifest } from '../../app/index.js';
 import type { DirPath, URLPath } from '../../dt/index.js';
 import type { ProductUCsLoaderOutput } from '../../product/index.js';
-import type { Configurable, EnvironmentManager, Logger, SettingsManager } from '../../std/index.js';
+import type { Configurable, Logger, SettingsManager } from '../../std/index.js';
 import type { UCDef, UCInput, UCManager, UCOPIBase, UCTransportContract } from '../../uc/index.js';
 import type { OpenAPISpec } from '../lib/openapi/types.js';
 import { EntrypointsBuilder } from '../lib/server/EntrypointsBuilder.js';
@@ -11,18 +11,22 @@ import { ServerCredentialsCreator } from '../lib/server-grpc/ServerCredentialsCr
 import { ServiceManager } from '../lib/server-grpc/ServiceManager.js';
 import type { ListenSettings, StopSettings } from '../lib/server-node/types.js';
 type S = ListenSettings & StopSettings;
+/**
+ * This server must not be used in production.
+ * It's not fully safe.
+ *
+ * @alpha
+ */
 export declare class NodeGRPCServerManager implements Configurable<S>, ServerManager {
     private entrypointsBuilder;
-    protected environmentManager: EnvironmentManager;
     private serverCredentialsCreator;
     private logger;
     private settingsManager;
     private ucManager;
     private serviceManager;
     protected server: Server;
-    constructor(entrypointsBuilder: EntrypointsBuilder, environmentManager: EnvironmentManager, serverCredentialsCreator: ServerCredentialsCreator, logger: Logger, settingsManager: SettingsManager<S>, ucManager: UCManager, serviceManager: ServiceManager);
+    constructor(entrypointsBuilder: EntrypointsBuilder, serverCredentialsCreator: ServerCredentialsCreator, logger: Logger, settingsManager: SettingsManager<S>, ucManager: UCManager, serviceManager: ServiceManager);
     s(): S;
-    getRuntime(): Server;
     overrideUCManager(ucManager: UCManager): void;
     init(): Promise<void>;
     initSync(): void;

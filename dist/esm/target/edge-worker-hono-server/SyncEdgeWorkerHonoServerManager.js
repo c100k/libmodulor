@@ -23,7 +23,7 @@ let SyncEdgeWorkerHonoServerManager = class SyncEdgeWorkerHonoServerManager {
     settingsManager;
     ucDataStore;
     ucManager;
-    runtime;
+    hono;
     constructor(corsMiddlewareBuilder, customerFacingErrorBuilder, serverRequestHandler, settingsManager, ucDataStore, ucManager) {
         this.corsMiddlewareBuilder = corsMiddlewareBuilder;
         this.customerFacingErrorBuilder = customerFacingErrorBuilder;
@@ -37,9 +37,6 @@ let SyncEdgeWorkerHonoServerManager = class SyncEdgeWorkerHonoServerManager {
             sewhsm_bindings_uc_data_store: this.settingsManager.get()('sewhsm_bindings_uc_data_store'),
         };
     }
-    getRuntime() {
-        return this.runtime;
-    }
     overrideUCManager(ucManager) {
         this.ucManager = ucManager;
     }
@@ -47,13 +44,13 @@ let SyncEdgeWorkerHonoServerManager = class SyncEdgeWorkerHonoServerManager {
         throw new NotCallableError('init', 'initSync', 'sync-only');
     }
     initSync() {
-        this.runtime = init(this.corsMiddlewareBuilder, this.customerFacingErrorBuilder);
+        this.hono = init(this.corsMiddlewareBuilder, this.customerFacingErrorBuilder);
     }
     async mount(_appManifest, _ucd, _contract) {
         throw new NotCallableError('mount', 'mountSync', 'sync-only');
     }
     mountSync(appManifest, ucd, contract) {
-        mountHandler(contract, this.runtime, buildHandler(appManifest, ucd, contract, this.serverRequestHandler, this.ucManager, (c) => this.beforeExec(c)));
+        mountHandler(contract, this.hono, buildHandler(appManifest, ucd, contract, this.serverRequestHandler, this.ucManager, (c) => this.beforeExec(c)));
     }
     async mountMCP(_ucs, _at) {
         throw new NotImplementedError('mountMCP');

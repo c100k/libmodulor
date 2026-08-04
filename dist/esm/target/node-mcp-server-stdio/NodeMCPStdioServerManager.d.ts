@@ -1,4 +1,5 @@
 import type { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
+import type { Transport } from '@modelcontextprotocol/sdk/shared/transport.js';
 import type { AppManifest } from '../../app/index.js';
 import type { DirPath, URLPath } from '../../dt/index.js';
 import { WordingManager } from '../../i18n/index.js';
@@ -16,8 +17,8 @@ export declare class NodeMCPStdioServerManager implements Configurable<S>, Serve
     private ucBuilder;
     private ucManager;
     private wordingManager;
-    protected runtime: McpServer;
-    private transport;
+    protected mcpServer: McpServer;
+    protected transport: Transport;
     constructor(requestHandler: MCPStdioRequestHandler, productManifest: ProductManifest, settingsManager: SettingsManager<S>, ucBuilder: UCBuilder, ucManager: UCManager, wordingManager: WordingManager);
     s(): S;
     overrideUCManager(ucManager: UCManager): void;
