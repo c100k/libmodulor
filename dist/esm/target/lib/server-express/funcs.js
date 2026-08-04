@@ -1,11 +1,12 @@
 import cookieParser from 'cookie-parser';
 import express, {} from 'express';
 import fileUpload from 'express-fileupload';
+import { ucTransportType, } from '../../../uc/index.js';
 import { defaultStreamOnClose, fmtSingleDataMsg, fmtSSEError, isError, SSE_HEADERS, } from '../../../utils/index.js';
 export function buildHandler(appManifest, ucd, contract, serverRequestHandler, ucManager) {
     const { envelope } = contract.http;
     const handler = async (req, res) => {
-        const transportType = ucd.ext?.http?.transportType ?? 'standard';
+        const transportType = ucTransportType(ucd.ext);
         let execOpts;
         switch (transportType) {
             case 'standard':

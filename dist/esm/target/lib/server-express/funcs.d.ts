@@ -2,7 +2,7 @@ import { type Express, type Request, type RequestHandler, type Response } from '
 import fileUpload from 'express-fileupload';
 import type { AppManifest } from '../../../app/index.js';
 import type { LoggerLevel } from '../../../std/index.js';
-import type { UCDef, UCInput, UCManager, UCOPIBase, UCTransportContract } from '../../../uc/index.js';
+import { type UCDef, type UCInput, type UCManager, type UCOPIBase, type UCTransportContract } from '../../../uc/index.js';
 import type { CustomerFacingErrorBuilder } from '../server/CustomerFacingErrorBuilder.js';
 import type { ServerManagerSettings } from '../server/ServerManager.js';
 import type { ServerRequestHandler, ServerRequestHandlerReq, ServerRequestHandlerRes } from '../server/ServerRequestHandler.js';

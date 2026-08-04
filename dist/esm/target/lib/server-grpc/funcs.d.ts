@@ -1,7 +1,7 @@
 import { type handleServerStreamingCall, type handleUnaryCall, Metadata, Server, type ServerCredentials, type ServerUnaryCall } from '@grpc/grpc-js';
 import type { AppManifest } from '../../../app/index.js';
 import type { FileMetadataManager, Logger, SettingsManager } from '../../../std/index.js';
-import type { UCDef, UCInput, UCManager, UCOPIBase, UCOutputOrNothing } from '../../../uc/index.js';
+import { type UCDef, type UCInput, type UCManager, type UCOPIBase, type UCOutputOrNothing } from '../../../uc/index.js';
 import type { EntrypointsBuilder } from '../server/EntrypointsBuilder.js';
 import type { StopSettings } from '../server-node/types.js';
 import type { ServerRequestHandler, ServerRequestHandlerReq, ServerRequestHandlerRes } from './ServerRequestHandler.js';

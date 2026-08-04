@@ -24,8 +24,8 @@ export interface ViewAssetPriceOPI0 extends UCOPIBase {
 export const ViewAssetPriceUCD: UCDef<ViewAssetPriceInput, ViewAssetPriceOPI0> =
     {
         ext: {
-            http: {
-                transportType: 'stream',
+            transport: {
+                type: 'stream',
             },
         },
         io: {

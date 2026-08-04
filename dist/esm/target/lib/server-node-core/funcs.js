@@ -1,6 +1,7 @@
 import { readdir, readFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import { CustomError } from '../../../error/index.js';
+import { ucTransportType, } from '../../../uc/index.js';
 import { defaultStreamOnClose, fmtSingleDataMsg, fmtSSEError, isError, SSE_HEADERS, } from '../../../utils/index.js';
 import { DEFAULT_RES_HEADERS } from './consts.js';
 export function assertIncomingMessageEnhanced(req) {
@@ -11,7 +12,7 @@ export function assertIncomingMessageEnhanced(req) {
 export function buildHandler(appManifest, ucd, contract, serverRequestHandler, ucManager) {
     const { envelope } = contract.http;
     const handler = async (req, res) => {
-        const transportType = ucd.ext?.http?.transportType ?? 'standard';
+        const transportType = ucTransportType(ucd.ext);
         let execOpts;
         switch (transportType) {
             case 'standard':

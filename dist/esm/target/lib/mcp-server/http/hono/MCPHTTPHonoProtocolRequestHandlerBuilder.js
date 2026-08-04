@@ -13,7 +13,7 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 import { WebStandardStreamableHTTPServerTransport } from '@modelcontextprotocol/sdk/server/webStandardStreamableHttp.js';
 import { inject, injectable } from 'inversify';
 import { WordingManager } from '../../../../../i18n/index.js';
-import { ucMountingPoint, } from '../../../../../uc/index.js';
+import { ucMountingPoint, ucTransportType, } from '../../../../../uc/index.js';
 import { toReq, toRes } from '../../../server-hono/funcs.js';
 import { init, toolConfig } from '../../funcs.js';
 import { MCPServerRequestChecker } from '../../MCPServerRequestChecker.js';
@@ -53,7 +53,7 @@ let MCPHTTPHonoProtocolRequestHandlerBuilder = class MCPHTTPHonoProtocolRequestH
                 const mountingPoint = ext?.cmd?.mountAt ?? ucMountingPoint(uc);
                 const wording = this.wordingManager.uc(uc.def);
                 const config = toolConfig(uc, 'server', wording);
-                const transportType = ext?.http?.transportType ?? 'standard';
+                const transportType = ucTransportType(ext);
                 server.registerTool(mountingPoint, config, (input, extra) => {
                     const execOpts = ucStreamExecOpts(this.logger, transportType, extra);
                     if (execOpts) {

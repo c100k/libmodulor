@@ -3,12 +3,13 @@ import { deleteCookie, getCookie, setCookie } from 'hono/cookie';
 import { logger } from 'hono/logger';
 import { secureHeaders } from 'hono/secure-headers';
 import { NotFoundError } from '../../../error/index.js';
+import { ucTransportType, } from '../../../uc/index.js';
 import { defaultStreamOnClose, fmtSingleDataMsg, fmtSSEError, fromFormData, isError, SSE_HEADERS, } from '../../../utils/index.js';
 export function buildHandler(appManifest, ucd, contract, serverRequestHandler, ucManager, beforeExec) {
     const { envelope } = contract.http;
     const handler = async (c) => {
         await beforeExec?.(c);
-        const transportType = ucd.ext?.http?.transportType ?? 'standard';
+        const transportType = ucTransportType(ucd.ext);
         let execOpts;
         let stream;
         let controller;

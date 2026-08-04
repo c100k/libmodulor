@@ -9,6 +9,7 @@ import {
     type UCManager,
     type UCOutput,
     UCOutputBuilder,
+    ucTransportType,
 } from '../../../../../dist/esm/index.js';
 import type {
     AskQuestionData,
@@ -37,7 +38,7 @@ export class AskQuestionServerMain
     > {
         const prompt = uc.reqVal0('prompt');
 
-        const transportType = uc.def.ext?.http?.transportType ?? 'standard';
+        const transportType = ucTransportType(uc.def.ext);
 
         // We don't destructure `choices` because it can be undefined if `stream` is `true`.
         let fullRes = '';

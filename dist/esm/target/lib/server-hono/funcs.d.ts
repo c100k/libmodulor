@@ -1,7 +1,7 @@
 import { type Context, type Handler, Hono } from 'hono';
 import type { BlankEnv, Env } from 'hono/types';
 import type { AppManifest } from '../../../app/index.js';
-import type { UCDef, UCInput, UCManager, UCOPIBase, UCTransportContract } from '../../../uc/index.js';
+import { type UCDef, type UCInput, type UCManager, type UCOPIBase, type UCTransportContract } from '../../../uc/index.js';
 import type { CustomerFacingErrorBuilder } from '../server/CustomerFacingErrorBuilder.js';
 import type { ServerRequestHandler, ServerRequestHandlerReq, ServerRequestHandlerRes } from '../server/ServerRequestHandler.js';
 import type { CORSMiddlewareBuilder } from './CORSMiddlewareBuilder.js';

@@ -24,8 +24,8 @@ export interface PlaySongOPI0 extends UCOPIBase {
 
 export const PlaySongUCD: UCDef<PlaySongInput, PlaySongOPI0> = {
     ext: {
-        http: {
-            transportType: 'stream',
+        transport: {
+            type: 'stream',
         },
     },
     io: {

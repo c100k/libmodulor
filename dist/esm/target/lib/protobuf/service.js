@@ -1,6 +1,6 @@
 import { Field, Method, Service } from 'protobufjs';
 import { UC_OPI0_SUFFIX, UC_OPI1_SUFFIX, UC_OUTPUT_PART0_SUFFIX, UC_OUTPUT_PART1_SUFFIX, } from '../../../convention.js';
-import { UC_OUTPUT_PARTS_FIELD_1, } from '../../../uc/index.js';
+import { UC_OUTPUT_PARTS_FIELD_1, ucTransportType, } from '../../../uc/index.js';
 import { ucEmptyType } from './field.js';
 import { ucInputType } from './input.js';
 import { ucOPIType, ucOutputPartPaginationType, ucOutputPartsType, ucOutputPartType, ucOutputType, } from './output.js';
@@ -16,7 +16,7 @@ export function serviceMethod(ucd, serviceTypes, contract) {
     });
 }
 export function serviceMethodStream(ucd) {
-    const transportType = ucd.ext?.http?.transportType ?? 'standard';
+    const transportType = ucTransportType(ucd.ext);
     switch (transportType) {
         case 'standard':
             return [false, false];

@@ -26,8 +26,8 @@ export interface AskQuestionOPI0 extends UCOPIBase {
 
 export const AskQuestionUCD: UCDef<AskQuestionInput, AskQuestionOPI0> = {
     ext: {
-        http: {
-            transportType: 'stream',
+        transport: {
+            type: 'stream',
         },
     },
     io: {

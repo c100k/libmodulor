@@ -41,11 +41,14 @@ export interface UCExt<OPI0 extends UCOPIBase | undefined = undefined, OPI1 exte
          * @returns
          */
         transform?: (output: UCOutput<OPI0, OPI1>) => object;
+    };
+    transport?: {
         /**
          * The way the output is transported
          *
          * By default, it's `standard`.
          */
-        transportType?: TransportType;
+        type?: TransportType;
     };
 }
+export declare function ucTransportType<OPI0 extends UCOPIBase | undefined = undefined, OPI1 extends UCOPIBase | undefined = undefined>(ext?: UCExt<OPI0, OPI1> | undefined): TransportType;

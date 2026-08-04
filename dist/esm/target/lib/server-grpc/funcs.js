@@ -1,7 +1,8 @@
 import { Metadata, Server, } from '@grpc/grpc-js';
+import { ucTransportType, } from '../../../uc/index.js';
 import { defaultStreamOnClose, } from '../../../utils/index.js';
 export function buildHandler(appManifest, ucd, fileMetadataManager, serverRequestHandler, ucManager) {
-    const transportType = ucd.ext?.http?.transportType ?? 'standard';
+    const transportType = ucTransportType(ucd.ext);
     switch (transportType) {
         case 'standard': {
             return buildStandardHandler(appManifest, ucd, fileMetadataManager, serverRequestHandler, ucManager);

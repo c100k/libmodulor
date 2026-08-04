@@ -13,7 +13,7 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 import { StreamableHTTPServerTransport } from '@modelcontextprotocol/sdk/server/streamableHttp.js';
 import { inject, injectable } from 'inversify';
 import { WordingManager } from '../../../../../i18n/index.js';
-import { ucMountingPoint, } from '../../../../../uc/index.js';
+import { ucMountingPoint, ucTransportType, } from '../../../../../uc/index.js';
 import { DEFAULT_RES_HEADERS } from '../../../server-node-core/consts.js';
 import { assertIncomingMessageEnhanced, buildRes, enhanceIncomingMessage, toReq, toRes, } from '../../../server-node-core/funcs.js';
 import { init, toolConfig } from '../../funcs.js';
@@ -56,7 +56,7 @@ let MCPHTTPNodeCoreProtocolRequestHandlerBuilder = class MCPHTTPNodeCoreProtocol
                 const mountingPoint = ext?.cmd?.mountAt ?? ucMountingPoint(uc);
                 const wording = this.wordingManager.uc(uc.def);
                 const config = toolConfig(uc, 'server', wording);
-                const transportType = ext?.http?.transportType ?? 'standard';
+                const transportType = ucTransportType(ext);
                 server.registerTool(mountingPoint, config, (input, extra) => {
                     const execOpts = ucStreamExecOpts(this.logger, transportType, extra);
                     if (execOpts) {
