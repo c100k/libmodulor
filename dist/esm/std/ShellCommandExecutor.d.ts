@@ -12,6 +12,7 @@ export interface ShellCommandExecutorInput {
         args?: ShellCommandExecutorCommandArg[];
         cwd?: FilePath;
         env?: ShellCommandExecutorEnv;
+        stdin?: Uint8Array | string;
         streamData?: boolean;
     } | undefined;
 }

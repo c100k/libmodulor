@@ -123,6 +123,13 @@ let NodeCoreHTTPServerManager = class NodeCoreHTTPServerManager {
                     res.writeHead(404, DEFAULT_RES_HEADERS).end(buildRes(new NotFoundError()));
                     return;
                 }
+                // Mimic a json parser middleware
+                if (req.headers['content-type']
+                    ?.toLocaleLowerCase()
+                    .startsWith('application/json') &&
+                    req.bodyRaw) {
+                    JSON.parse(req.bodyRaw);
+                }
                 route(req, res);
             }
             catch (err) {

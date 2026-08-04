@@ -11,6 +11,7 @@ export const I18nFR = {
     dt_YesNo_Y_label: 'Oui',
     err_forbidden: 'Interdit',
     err_illegal_argument: 'Invalide',
+    err_invalid_file: 'Fichier invalide',
     err_not_found: 'Introuvable',
     err_uc_data_store_not_readable: 'Les données ne sont pas lisibles',
     err_uc_data_store_not_writable: 'Les données ne sont pas écrivables',

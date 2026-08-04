@@ -7,6 +7,7 @@ export * from './EmailManager.js';
 export * from './EnvironmentManager.js';
 export * from './ExternalResourceInstaller.js';
 export * from './ExternalResourceManager.js';
+export * from './FileMetadataManager.js';
 export * from './FormDataBuilder.js';
 export * from './FSManager.js';
 export * from './HTTPAPICallExecutor.js';

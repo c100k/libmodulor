@@ -1,25 +1,25 @@
 import { Metadata, Server, } from '@grpc/grpc-js';
 import { defaultStreamOnClose, } from '../../../utils/index.js';
-export function buildHandler(appManifest, ucd, serverRequestHandler, ucManager) {
+export function buildHandler(appManifest, ucd, fileMetadataManager, serverRequestHandler, ucManager) {
     const transportType = ucd.ext?.http?.transportType ?? 'standard';
     switch (transportType) {
         case 'standard': {
-            return buildStandardHandler(appManifest, ucd, serverRequestHandler, ucManager);
+            return buildStandardHandler(appManifest, ucd, fileMetadataManager, serverRequestHandler, ucManager);
         }
         case 'stream': {
-            return buildStreamHandler(appManifest, ucd, serverRequestHandler, ucManager);
+            return buildStreamHandler(appManifest, ucd, fileMetadataManager, serverRequestHandler, ucManager);
         }
         default:
             transportType;
             throw new Error();
     }
 }
-export function buildStandardHandler(appManifest, ucd, serverRequestHandler, ucManager) {
+export function buildStandardHandler(appManifest, ucd, fileMetadataManager, serverRequestHandler, ucManager) {
     return async (call, callback) => {
         const metadata = new Metadata();
         const { body, rawErr, status } = await serverRequestHandler.exec({
             appManifest,
-            req: toReq(call),
+            req: toReq(fileMetadataManager, call),
             res: toRes(metadata),
             ucd,
             ucManager,
@@ -31,7 +31,7 @@ export function buildStandardHandler(appManifest, ucd, serverRequestHandler, ucM
         callback(null, body ? body : {}, metadata);
     };
 }
-export function buildStreamHandler(appManifest, ucd, serverRequestHandler, ucManager) {
+export function buildStreamHandler(appManifest, ucd, fileMetadataManager, serverRequestHandler, ucManager) {
     return async (call) => {
         let streamedOnce = false;
         const execOpts = {
@@ -56,7 +56,7 @@ export function buildStreamHandler(appManifest, ucd, serverRequestHandler, ucMan
         await serverRequestHandler.exec({
             appManifest,
             execOpts,
-            req: toReq(call),
+            req: toReq(fileMetadataManager, call),
             res: toRes(metadata),
             ucd,
             ucManager,
@@ -98,9 +98,9 @@ export async function stop(server, settingsManager) {
         }
     });
 }
-export function toReq(call) {
+export function toReq(fileMetadataManager, call) {
     return {
-        bodyFromRequest: async () => call.request,
+        bodyFromRequest: async () => readBodyFromRequest(fileMetadataManager, call.request),
         bodyRaw: call.request,
         metadata: async (name) => call.metadata.get(name).toString(),
         // TODO : Figure out a way to set this from something else (call does not hold it)
@@ -112,4 +112,20 @@ export function toRes(metadata) {
     return {
         setMetadata: async (name, value) => metadata.set(name, value),
     };
+}
+async function readBodyFromRequest(fileMetadataManager, request) {
+    const input = {};
+    for (const [k, v] of Object.entries(request)) {
+        if (v instanceof Buffer) {
+            const tmpFile = new File([v], '');
+            const { mimeType } = await fileMetadataManager.info(tmpFile);
+            input[k] = new File([v], '', {
+                type: mimeType,
+            });
+        }
+        else {
+            input[k] = v;
+        }
+    }
+    return input;
 }

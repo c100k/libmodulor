@@ -1,6 +1,6 @@
 import { type handleServerStreamingCall, type handleUnaryCall, Metadata, Server, type ServerCredentials, type ServerUnaryCall } from '@grpc/grpc-js';
 import type { AppManifest } from '../../../app/index.js';
-import type { Logger, SettingsManager } from '../../../std/index.js';
+import type { FileMetadataManager, Logger, SettingsManager } from '../../../std/index.js';
 import type { UCDef, UCInput, UCManager, UCOPIBase, UCOutputOrNothing } from '../../../uc/index.js';
 import type { EntrypointsBuilder } from '../server/EntrypointsBuilder.js';
 import type { StopSettings } from '../server-node/types.js';
@@ -8,12 +8,12 @@ import type { ServerRequestHandler, ServerRequestHandlerReq, ServerRequestHandle
 type StandardHandler<I extends UCInput | undefined = undefined, OPI0 extends UCOPIBase | undefined = undefined, OPI1 extends UCOPIBase | undefined = undefined> = handleUnaryCall<I, UCOutputOrNothing<OPI0, OPI1> | object>;
 type StreamHandler<I extends UCInput | undefined = undefined, OPI0 extends UCOPIBase | undefined = undefined, OPI1 extends UCOPIBase | undefined = undefined> = handleServerStreamingCall<I, UCOutputOrNothing<OPI0, OPI1> | object>;
 type Handler<I extends UCInput | undefined = undefined, OPI0 extends UCOPIBase | undefined = undefined, OPI1 extends UCOPIBase | undefined = undefined> = StandardHandler<I, OPI0, OPI1> | StreamHandler<I, OPI0, OPI1>;
-export declare function buildHandler<I extends UCInput | undefined = undefined, OPI0 extends UCOPIBase | undefined = undefined, OPI1 extends UCOPIBase | undefined = undefined>(appManifest: AppManifest, ucd: UCDef<I, OPI0, OPI1>, serverRequestHandler: ServerRequestHandler, ucManager: UCManager): Handler<I, OPI0, OPI1>;
-export declare function buildStandardHandler<I extends UCInput | undefined = undefined, OPI0 extends UCOPIBase | undefined = undefined, OPI1 extends UCOPIBase | undefined = undefined>(appManifest: AppManifest, ucd: UCDef<I, OPI0, OPI1>, serverRequestHandler: ServerRequestHandler, ucManager: UCManager): StandardHandler<I, OPI0, OPI1>;
-export declare function buildStreamHandler<I extends UCInput | undefined = undefined, OPI0 extends UCOPIBase | undefined = undefined, OPI1 extends UCOPIBase | undefined = undefined>(appManifest: AppManifest, ucd: UCDef<I, OPI0, OPI1>, serverRequestHandler: ServerRequestHandler, ucManager: UCManager): StreamHandler<I, OPI0, OPI1>;
+export declare function buildHandler<I extends UCInput | undefined = undefined, OPI0 extends UCOPIBase | undefined = undefined, OPI1 extends UCOPIBase | undefined = undefined>(appManifest: AppManifest, ucd: UCDef<I, OPI0, OPI1>, fileMetadataManager: FileMetadataManager, serverRequestHandler: ServerRequestHandler, ucManager: UCManager): Handler<I, OPI0, OPI1>;
+export declare function buildStandardHandler<I extends UCInput | undefined = undefined, OPI0 extends UCOPIBase | undefined = undefined, OPI1 extends UCOPIBase | undefined = undefined>(appManifest: AppManifest, ucd: UCDef<I, OPI0, OPI1>, fileMetadataManager: FileMetadataManager, serverRequestHandler: ServerRequestHandler, ucManager: UCManager): StandardHandler<I, OPI0, OPI1>;
+export declare function buildStreamHandler<I extends UCInput | undefined = undefined, OPI0 extends UCOPIBase | undefined = undefined, OPI1 extends UCOPIBase | undefined = undefined>(appManifest: AppManifest, ucd: UCDef<I, OPI0, OPI1>, fileMetadataManager: FileMetadataManager, serverRequestHandler: ServerRequestHandler, ucManager: UCManager): StreamHandler<I, OPI0, OPI1>;
 export declare function init(): Server;
 export declare function listen(server: Server, creds: ServerCredentials, entrypointsBuilder: EntrypointsBuilder, logger: Logger): void;
 export declare function stop(server: Server, settingsManager: SettingsManager<StopSettings>): Promise<void>;
-export declare function toReq(call: ServerUnaryCall<unknown, unknown>): ServerRequestHandlerReq;
+export declare function toReq(fileMetadataManager: FileMetadataManager, call: ServerUnaryCall<unknown, unknown>): ServerRequestHandlerReq;
 export declare function toRes(metadata: Metadata): ServerRequestHandlerRes;
 export {};

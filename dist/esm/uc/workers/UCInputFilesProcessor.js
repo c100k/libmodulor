@@ -12,6 +12,7 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 };
 import { inject, injectable } from 'inversify';
 import { TFile } from '../../dt/index.js';
+import { IllegalArgumentError } from '../../error/index.js';
 import { ucifRepeatability } from '../input-field.js';
 import { rVal0, rValArr } from '../utils/rVal.js';
 let UCInputFilesProcessor = class UCInputFilesProcessor {
@@ -57,19 +58,18 @@ let UCInputFilesProcessor = class UCInputFilesProcessor {
         }
     }
     async processFile(file) {
-        const extension = this.fsManager.fileExtension(file.name); // => jpg
+        if (!(file instanceof File)) {
+            throw new IllegalArgumentError('err_invalid_file');
+        }
         const prefix = this.clockManager.nowToKey();
-        const fileName = `${prefix}-${this.cryptoManager.randomUUID()}.${extension}`; // => 20230110143732-155eb8d3-9af5-430e-b856-248007859df1.jpg
+        let fileName = `${prefix}-${this.cryptoManager.randomUUID()}`; // => 20230110143732-155eb8d3-9af5-430e-b856-248007859df1
+        const ext = this.fsManager.fileExtension(file.name);
+        if (ext) {
+            fileName = `${fileName}.${ext}`; // => 20230110143732-155eb8d3-9af5-430e-b856-248007859df1.jpg
+        }
         const fileNameRef = `${this.s().uc_file_ref_prefix}${fileName}`; // => $ref:20230110143732-155eb8d3-9af5-430e-b856-248007859df1.jpg
         const destPath = this.fsManager.path(this.s().uc_files_directory_path, fileName); // => /path/to/files/20230110143732-155eb8d3-9af5-430e-b856-248007859df1.jpg
-        if (file instanceof File) {
-            await this.fsManager.touch(destPath, await file.arrayBuffer());
-        }
-        else {
-            const { uri } = file;
-            await this.fsManager.cp(uri, destPath);
-            await this.fsManager.rm(uri);
-        }
+        await this.fsManager.touch(destPath, await file.arrayBuffer());
         return fileNameRef;
     }
 };

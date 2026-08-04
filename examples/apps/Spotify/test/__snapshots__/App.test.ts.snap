@@ -17,13 +17,13 @@ exports[`Run > Flows > should execute flow 'Create album, list, like and delete 
         "i": {
           "artist": "Daft Punk",
           "book": {
-            "name": "/Users/dexter/Desktop/book.pdf",
-            "size": 32,
+            "name": "book.pdf",
+            "size": 325,
             "type": "application/pdf",
           },
           "cover": {
-            "name": "/Users/dexter/Desktop/picture.png",
-            "size": 32,
+            "name": "picture.png",
+            "size": 68,
             "type": "image/png",
           },
           "description": "Alive 2007 is the second live album by the French electronic music duo Daft Punk, released on 19 November 2007",
@@ -120,13 +120,13 @@ Notification generated at : Sun May 15 2022 22:23:30 GMT+0200 (Central European 
         "i": {
           "artist": "Daft Punk",
           "book": {
-            "name": "/Users/dexter/Desktop/book.pdf",
-            "size": 32,
+            "name": "book.pdf",
+            "size": 325,
             "type": "application/pdf",
           },
           "cover": {
-            "name": "/Users/dexter/Desktop/picture.png",
-            "size": 32,
+            "name": "picture.png",
+            "size": 68,
             "type": "image/png",
           },
           "description": "Alive 2007 is the second live album by the French electronic music duo Daft Punk, released on 19 November 2007",
@@ -634,13 +634,13 @@ exports[`Run > Use Cases > 'CreateAlbum' > should execute with auth 'ADMIN' and 
     "i": {
       "artist": "Daft Punk",
       "book": {
-        "name": "/Users/dexter/Desktop/book.pdf",
-        "size": 32,
+        "name": "book.pdf",
+        "size": 325,
         "type": "application/pdf",
       },
       "cover": {
-        "name": "/Users/dexter/Desktop/picture.png",
-        "size": 32,
+        "name": "picture.png",
+        "size": 68,
         "type": "image/png",
       },
       "description": "Alive 2007 is the second live album by the French electronic music duo Daft Punk, released on 19 November 2007",
@@ -886,13 +886,13 @@ exports[`Run > Use Cases > 'CreateAlbum' > should execute with auth 'ANONYMOUS' 
     "i": {
       "artist": "Daft Punk",
       "book": {
-        "name": "/Users/dexter/Desktop/book.pdf",
-        "size": 32,
+        "name": "book.pdf",
+        "size": 325,
         "type": "application/pdf",
       },
       "cover": {
-        "name": "/Users/dexter/Desktop/picture.png",
-        "size": 32,
+        "name": "picture.png",
+        "size": 68,
         "type": "image/png",
       },
       "description": "Alive 2007 is the second live album by the French electronic music duo Daft Punk, released on 19 November 2007",
@@ -1128,13 +1128,13 @@ exports[`Run > Use Cases > 'CreateAlbum' > should execute with auth 'REGULAR' an
     "i": {
       "artist": "Daft Punk",
       "book": {
-        "name": "/Users/dexter/Desktop/book.pdf",
-        "size": 32,
+        "name": "book.pdf",
+        "size": 325,
         "type": "application/pdf",
       },
       "cover": {
-        "name": "/Users/dexter/Desktop/picture.png",
-        "size": 32,
+        "name": "picture.png",
+        "size": 68,
         "type": "image/png",
       },
       "description": "Alive 2007 is the second live album by the French electronic music duo Daft Punk, released on 19 November 2007",

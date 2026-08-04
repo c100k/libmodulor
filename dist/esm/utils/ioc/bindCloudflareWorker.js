@@ -1,6 +1,7 @@
 import { NodeBufferManager } from '../../std/impl/NodeBufferManager.js';
 import { NodeCryptoManager } from '../../std/impl/NodeCryptoManager.js';
 import { NodeEnvironmentManager } from '../../std/impl/NodeEnvironmentManager.js';
+import { SimpleFileMetadataManager } from '../../std/impl/SimpleFileMetadataManager.js';
 import { WebFSManager } from '../../std/impl/WebFSManager.js';
 export function bindCloudflareWorker(container) {
     // Reusing the Node.js implementations available with the `nodejs_compat` compatibility flag
@@ -12,4 +13,7 @@ export function bindCloudflareWorker(container) {
         .bind('EnvironmentManager')
         .to(NodeEnvironmentManager);
     container.bind('FSManager').to(WebFSManager);
+    container
+        .bind('FileMetadataManager')
+        .to(SimpleFileMetadataManager);
 }

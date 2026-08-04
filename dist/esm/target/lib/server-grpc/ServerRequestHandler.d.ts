@@ -10,7 +10,6 @@ import { PublicApiKeyChecker } from '../server/PublicApiKeyChecker.js';
 import { RequestChecker } from '../server/RequestChecker.js';
 import { RequestLogger } from '../server/RequestLogger.js';
 import type { ServerManagerSettings } from '../server/ServerManager.js';
-import { RequestFileHandler } from './RequestFileHandler.js';
 export interface ServerRequestHandlerReq {
     bodyFromRequest: () => Promise<GRPCReqData>;
     bodyRaw: GRPCReqData | null;
@@ -53,11 +52,10 @@ export declare class ServerRequestHandler implements Worker<ServerRequestHandler
     private customerFacingErrorBuilder;
     private publicApiKeyChecker;
     private requestChecker;
-    private requestFileHandler;
     private requestLogger;
     private settingsManager;
     private ucBuilder;
-    constructor(authenticationChecker: AuthenticationChecker, customerFacingErrorBuilder: CustomerFacingErrorBuilder, publicApiKeyChecker: PublicApiKeyChecker, requestChecker: RequestChecker, requestFileHandler: RequestFileHandler, requestLogger: RequestLogger, settingsManager: SettingsManager<S>, ucBuilder: UCBuilder);
+    constructor(authenticationChecker: AuthenticationChecker, customerFacingErrorBuilder: CustomerFacingErrorBuilder, publicApiKeyChecker: PublicApiKeyChecker, requestChecker: RequestChecker, requestLogger: RequestLogger, settingsManager: SettingsManager<S>, ucBuilder: UCBuilder);
     s(): S;
     exec<I extends UCInput | undefined = undefined, OPI0 extends UCOPIBase | undefined = undefined, OPI1 extends UCOPIBase | undefined = undefined>({ appManifest, dangerouslySkipAuthCheck, dangerouslySkipPubApiKeyCheck, execOpts, req, res, skipSideEffects, ucd, ucManager, }: ServerRequestHandlerInput<I, OPI0, OPI1>): Promise<Output<OPI0, OPI1>>;
     private fill;

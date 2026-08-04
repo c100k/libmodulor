@@ -38,6 +38,9 @@ let NodeSpawnShellCommandExecutor = class NodeSpawnShellCommandExecutor {
                     reject(new Error(`Command failed with exit code (${code}), signal (${signal}), stderr (${stderr}) stdout (${stdout})`));
                 }
             });
+            if (opts?.stdin) {
+                proc.stdin.write(opts.stdin);
+            }
         });
     }
 };

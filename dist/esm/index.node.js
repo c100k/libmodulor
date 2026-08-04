@@ -2,6 +2,7 @@ export { NodeBufferManager } from './std/impl/NodeBufferManager.js';
 export { NodeCryptoManager } from './std/impl/NodeCryptoManager.js';
 export { NodeDeterministicCryptoManager } from './std/impl/NodeDeterministicCryptoManager.js';
 export { NodeEnvironmentManager } from './std/impl/NodeEnvironmentManager.js';
+export { NodeFileBinFileMetadataManager } from './std/impl/NodeFileBinFileMetadataManager.js';
 export { NodeFormDataBuilder } from './std/impl/NodeFormDataBuilder.js';
 export { NodeFSManager } from './std/impl/NodeFSManager.js';
 export { NodeHTTPAPICallExecutorAgentBuilder } from './std/impl/NodeHTTPAPICallExecutorAgentBuilder.js';

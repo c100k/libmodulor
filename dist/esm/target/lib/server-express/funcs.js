@@ -77,10 +77,10 @@ export function init(corsMB, helmetMB, loggerLevel, serverTmpPath) {
     app.use(helmetMB.exec({}));
     app.use(corsMB.exec({}));
     app.use(fileUpload({
-        createParentPath: true,
+        createParentPath: false,
         debug: loggerLevel === 'trace',
         tempFileDir: serverTmpPath,
-        useTempFiles: true,
+        useTempFiles: false,
     }));
     app.use(express.json());
     app.use(express.urlencoded({ extended: true }));
@@ -102,12 +102,9 @@ export function postInit(app, customerFacingErrorBuilder) {
     });
 }
 export function toFile(f) {
-    return {
-        name: f.name,
-        size: f.size,
+    return new File([new Uint8Array(f.data)], f.name, {
         type: f.mimetype,
-        uri: f.tempFilePath,
-    };
+    });
 }
 export function toReq(req) {
     return {

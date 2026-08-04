@@ -32,6 +32,7 @@ let SimpleMapI18nManager = class SimpleMapI18nManager {
         this.currentLang =
             // biome-ignore lint/style/noNonNullAssertion: we want it
             this.langs.find((l) => l === I18N_DEFAULT_LANG) ?? this.langs[0];
+        this.entries.set(this.currentLang, new Map());
     }
     async add(key, value) {
         this.current().set(key, value);

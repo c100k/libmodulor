@@ -1,7 +1,6 @@
 import { type Express, type Request, type RequestHandler, type Response } from 'express';
 import fileUpload from 'express-fileupload';
 import type { AppManifest } from '../../../app/index.js';
-import type { File } from '../../../dt/index.js';
 import type { LoggerLevel } from '../../../std/index.js';
 import type { UCDef, UCHTTPContract, UCInput, UCManager, UCOPIBase } from '../../../uc/index.js';
 import type { CustomerFacingErrorBuilder } from '../server/CustomerFacingErrorBuilder.js';

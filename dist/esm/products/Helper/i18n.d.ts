@@ -44,6 +44,7 @@ export declare const I18n: {
         err_unavailable: string;
         err_uc_data_store_not_readable: string;
         err_uc_data_store_not_writable: string;
+        err_invalid_file: string;
         validation_fieldsOr: string;
         validation_mandatory: string;
         validation_max: string;

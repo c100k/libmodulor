@@ -11,6 +11,7 @@ export const I18nEN = {
     dt_YesNo_Y_label: 'Yes',
     err_forbidden: 'Forbidden',
     err_illegal_argument: 'Invalid',
+    err_invalid_file: 'Invalid file',
     err_not_found: 'Not found',
     err_uc_data_store_not_readable: 'Data is not readable',
     err_uc_data_store_not_writable: 'Data is not writable',

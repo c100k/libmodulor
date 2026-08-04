@@ -21,22 +21,19 @@ import { RequestChecker } from '../server/RequestChecker.js';
 import { RequestLogger } from '../server/RequestLogger.js';
 import { AUTHORIZATION_HEADER_NAME, X_FORWARDED_PROTO_HEADER_NAME, } from '../shared.js';
 import { errToStatus } from './errors.js';
-import { RequestFileHandler } from './RequestFileHandler.js';
 let ServerRequestHandler = class ServerRequestHandler {
     authenticationChecker;
     customerFacingErrorBuilder;
     publicApiKeyChecker;
     requestChecker;
-    requestFileHandler;
     requestLogger;
     settingsManager;
     ucBuilder;
-    constructor(authenticationChecker, customerFacingErrorBuilder, publicApiKeyChecker, requestChecker, requestFileHandler, requestLogger, settingsManager, ucBuilder) {
+    constructor(authenticationChecker, customerFacingErrorBuilder, publicApiKeyChecker, requestChecker, requestLogger, settingsManager, ucBuilder) {
         this.authenticationChecker = authenticationChecker;
         this.customerFacingErrorBuilder = customerFacingErrorBuilder;
         this.publicApiKeyChecker = publicApiKeyChecker;
         this.requestChecker = requestChecker;
-        this.requestFileHandler = requestFileHandler;
         this.requestLogger = requestLogger;
         this.settingsManager = settingsManager;
         this.ucBuilder = ucBuilder;
@@ -123,15 +120,7 @@ let ServerRequestHandler = class ServerRequestHandler {
         if (!body) {
             return;
         }
-        const input = body;
-        for (const [k, v] of Object.entries(input)) {
-            if (!(v instanceof Buffer)) {
-                continue;
-            }
-            const { file } = await this.requestFileHandler.exec({ buffer: v });
-            input[k] = file;
-        }
-        uc.fill(input);
+        uc.fill(body);
     }
     async applySideEffects(res, ucd, output) {
         const { io } = ucd;
@@ -187,15 +176,13 @@ ServerRequestHandler = __decorate([
     __param(1, inject(CustomerFacingErrorBuilder)),
     __param(2, inject(PublicApiKeyChecker)),
     __param(3, inject(RequestChecker)),
-    __param(4, inject(RequestFileHandler)),
-    __param(5, inject(RequestLogger)),
-    __param(6, inject('SettingsManager')),
-    __param(7, inject(UCBuilder)),
+    __param(4, inject(RequestLogger)),
+    __param(5, inject('SettingsManager')),
+    __param(6, inject(UCBuilder)),
     __metadata("design:paramtypes", [AuthenticationChecker,
         CustomerFacingErrorBuilder,
         PublicApiKeyChecker,
         RequestChecker,
-        RequestFileHandler,
         RequestLogger, Object, UCBuilder])
 ], ServerRequestHandler);
 export { ServerRequestHandler };

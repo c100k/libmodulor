@@ -22,6 +22,7 @@ export * from './std/impl/NoopXMLManager.js';
 export * from './std/impl/OllamaLLMManager.js';
 export * from './std/impl/OpenAILLMManager.js';
 export * from './std/impl/SettingsServerClientManager.js';
+export * from './std/impl/SimpleFileMetadataManager.js';
 export * from './std/impl/SimpleFormDataBuilder.js';
 export * from './std/impl/SimpleHTTPAPICaller.js';
 export * from './std/impl/SimpleMapI18nManager.js';

@@ -6,11 +6,13 @@ import {
     bindProduct,
     CONTAINER_OPTS,
     type CryptoManager,
+    type FileMetadataManager,
     type FSManager,
     InMemoryAuthDataStore,
     type JWTManager,
     MixedServerClientManager,
     type ServerClientManager,
+    SimpleFileMetadataManager,
     updateSettings,
 } from '../../../../../dist/esm/index.js';
 import { bindRN } from '../../../../../dist/esm/index.rn.js';
@@ -34,6 +36,9 @@ container
     .inSingletonScope();
 container.bind<CryptoManager>('CryptoManager').to(RNCryptoManager);
 container.bind<FSManager>('FSManager').to(RNFSManager);
+container
+    .bind<FileMetadataManager>('FileMetadataManager')
+    .to(SimpleFileMetadataManager);
 container.bind<JWTManager>('JWTManager').to(RNJWTManager);
 container
     .rebindSync<ServerClientManager>('ServerClientManager')

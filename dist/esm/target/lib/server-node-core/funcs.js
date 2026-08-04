@@ -213,15 +213,15 @@ async function readFormData(req) {
             name = name.slice(0, -2);
         }
         const filename = head.match(/filename="([^"]*)"/)?.[1];
-        const data = filename
-            ? {
-                name: filename,
-                size: Buffer.byteLength(value.slice(0, -2), 'binary'),
-                type: head.match(/Content-Type:\s*(.+)/)?.[1] ??
-                    'application/octet-stream',
-                uri: filename,
-            }
-            : value.slice(0, -2);
+        let file;
+        if (filename) {
+            const type = head.match(/Content-Type:\s*(.+)/)?.[1] ??
+                'application/octet-stream';
+            file = new File([Buffer.from(value.slice(0, -2))], filename, {
+                type,
+            });
+        }
+        const data = file ?? value.slice(0, -2);
         if (multiple) {
             if (Array.isArray(result[name])) {
                 result[name].push(data);

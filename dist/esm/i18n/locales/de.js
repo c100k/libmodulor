@@ -11,6 +11,7 @@ export const I18nDE = {
     dt_YesNo_Y_label: 'Ja',
     err_forbidden: 'Verboten',
     err_illegal_argument: 'Ungültig',
+    err_invalid_file: 'Ungültige Datei',
     err_not_found: 'Nicht gefunden',
     err_uc_data_store_not_readable: 'Die Daten sind nicht lesbar',
     err_uc_data_store_not_writable: 'Die Daten sind nicht beschreibbar',

@@ -11,6 +11,7 @@ export const I18nES = {
     dt_YesNo_Y_label: 'Sí',
     err_forbidden: 'Prohibido',
     err_illegal_argument: 'Inválido',
+    err_invalid_file: 'Archivo no válido',
     err_not_found: 'No encontrado',
     err_uc_data_store_not_readable: 'Los datos no son legibles',
     err_uc_data_store_not_writable: 'Los datos no son escribibles',

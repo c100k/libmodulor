@@ -21,13 +21,15 @@ import { ServerRequestHandler } from './ServerRequestHandler.js';
 import { serviceDefinition } from './service-def.js';
 let ServiceManager = class ServiceManager {
     fsManager;
+    fileMetadataManager;
     logger;
     serverRequestHandler;
     settingsManager;
     root;
     services;
-    constructor(fsManager, logger, serverRequestHandler, settingsManager) {
+    constructor(fsManager, fileMetadataManager, logger, serverRequestHandler, settingsManager) {
         this.fsManager = fsManager;
+        this.fileMetadataManager = fileMetadataManager;
         this.logger = logger;
         this.serverRequestHandler = serverRequestHandler;
         this.settingsManager = settingsManager;
@@ -68,15 +70,16 @@ let ServiceManager = class ServiceManager {
         const method = serviceMethod(ucd, types, contract);
         s.service.add(method);
         addAllTo(this.root, types);
-        s.impl[ucd.metadata.name] = buildHandler(appManifest, ucd, this.serverRequestHandler, ucManager);
+        s.impl[ucd.metadata.name] = buildHandler(appManifest, ucd, this.fileMetadataManager, this.serverRequestHandler, ucManager);
     }
 };
 ServiceManager = __decorate([
     injectable(),
     __param(0, inject('FSManager')),
-    __param(1, inject('Logger')),
-    __param(2, inject(ServerRequestHandler)),
-    __param(3, inject('SettingsManager')),
-    __metadata("design:paramtypes", [Object, Object, ServerRequestHandler, Object])
+    __param(1, inject('FileMetadataManager')),
+    __param(2, inject('Logger')),
+    __param(3, inject(ServerRequestHandler)),
+    __param(4, inject('SettingsManager')),
+    __metadata("design:paramtypes", [Object, Object, Object, ServerRequestHandler, Object])
 ], ServiceManager);
 export { ServiceManager };
