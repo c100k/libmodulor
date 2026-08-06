@@ -1,6 +1,35 @@
 # CHANGELOG
 
-## v0.33.0 (unreleased)
+## v0.33.0 (2026-08-06)
+
+### 🚀 Added gRPC server support
+
+- Introduced a new `node-grpc-server` target to expose use cases through gRPC.
+- Generalized transport abstractions to support multiple transports :
+    - Replaced HTTP-specific contracts with `UCTransportContract`
+    - Decoupled use cases from HTTP-only execution
+
+### 🧪 Improved testing experience
+
+- Simplified use case flow testing
+- Added snapshot-based assertions for more robust tests
+- Improved tester abstractions and side-effect handling
+
+### 🧩 Architecture improvements
+
+- Extracted reusable `AnyUCDef` abstractions
+- Refactored internal server and transport management for better extensibility
+
+### 🔧 Other improvements
+
+- Improved `EmailManager` and file handling APIs
+- Simplified JWT expiration configuration (seconds-based values)
+
+### ⚠️ Breaking changes
+
+- HTTP-specific transport APIs may require migration to the new transport abstractions
+- JWT expiration values now use seconds
+- Some testing APIs have changed
 
 See all the changes here : https://github.com/c100k/libmodulor/compare/v0.32.0...master
 
