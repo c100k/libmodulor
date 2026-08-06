@@ -1,3 +1,4 @@
+import type { URL } from '../../dt/index.js';
 import type { UCDefLifecycle } from '../../uc/index.js';
 import type { EnumOf } from '../../utils/index.js';
 export declare const TARGETS: {
@@ -40,6 +41,7 @@ export declare const TARGET_CAPABILITIES_SAMPLE: TargetCapabilities;
 export interface TargetDef {
     lifecycle: UCDefLifecycle;
     capabilities: TargetCapabilities;
+    website: URL;
 }
 export interface TargetDefSrc {
     DEF: TargetDef;
