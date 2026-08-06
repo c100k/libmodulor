@@ -118,9 +118,11 @@ async function readBodyFromRequest(fileMetadataManager, request) {
     const input = {};
     for (const [k, v] of Object.entries(request)) {
         if (v instanceof Buffer) {
-            const tmpFile = new File([v], '');
-            const { mimeType } = await fileMetadataManager.info(tmpFile);
-            input[k] = new File([v], '', {
+            let name = 'tmp-1'; // Fine if not unique because never saved as is
+            const tmpFile = new File([v], name);
+            const { ext, mimeType } = await fileMetadataManager.info(tmpFile);
+            name = ext ? `${name}.${ext}` : name;
+            input[k] = new File([v], name, {
                 type: mimeType,
             });
         }
