@@ -15,6 +15,16 @@ let NodeSpawnShellCommandExecutor = class NodeSpawnShellCommandExecutor {
                 cwd: opts?.cwd,
                 env: opts?.env,
             });
+            if (opts?.stdin) {
+                proc.stdin.on('error', (err) => {
+                    // Some binaries like `file` can finish before writing is done.
+                    // TODO : Consider adding an option to avoid ignoring this error if need be.
+                    if ('code' in err && err.code !== 'EPIPE') {
+                        reject(err);
+                    }
+                });
+                proc.stdin.end(opts.stdin);
+            }
             proc.stderr.on('data', (chunk) => {
                 stderr += chunk;
                 if (opts?.streamData) {
@@ -38,9 +48,6 @@ let NodeSpawnShellCommandExecutor = class NodeSpawnShellCommandExecutor {
                     reject(new Error(`Command failed with exit code (${code}), signal (${signal}), stderr (${stderr}) stdout (${stdout})`));
                 }
             });
-            if (opts?.stdin) {
-                proc.stdin.write(opts.stdin);
-            }
         });
     }
 };
