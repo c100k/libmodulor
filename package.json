@@ -119,6 +119,7 @@
         "@opentelemetry/resources": "^2.9.0",
         "@opentelemetry/sdk-node": "^0.220.0",
         "@opentelemetry/semantic-conventions": "^1.43.0",
+        "@playwright/test": "^1.61.1",
         "@react-native-community/slider": "^4.5.7",
         "@types/react": "^19.2.17",
         "@types/react-dom": "^19.2.3",
