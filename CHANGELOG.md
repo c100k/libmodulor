@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v0.34.0 (unreleased)
+
+See all the changes here : https://github.com/c100k/libmodulor/compare/v0.33.0...master
+
 ## v0.33.0 (2026-08-06)
 
 ### 🚀 Added gRPC server support

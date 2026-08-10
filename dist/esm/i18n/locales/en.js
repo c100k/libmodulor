@@ -18,6 +18,7 @@ export const I18nEN = {
     err_unauthorized: 'Unauthorized',
     err_unavailable: 'Unavailable',
     err_unexpected: 'Unexpected error',
+    err_unreachable: 'Server unreachable',
     res_200: 'OK',
     res_204: 'No content',
     uc_client_confirm_cancel: 'Cancel',

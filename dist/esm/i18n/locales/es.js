@@ -18,6 +18,7 @@ export const I18nES = {
     err_unauthorized: 'No autorizado',
     err_unavailable: 'No disponible',
     err_unexpected: 'Error inesperado',
+    err_unreachable: 'Servidor inaccesible',
     res_200: 'OK',
     res_204: 'Sin contenido',
     uc_client_confirm_cancel: 'Cancelar',

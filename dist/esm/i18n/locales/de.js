@@ -18,6 +18,7 @@ export const I18nDE = {
     err_unauthorized: 'Nicht autorisiert',
     err_unavailable: 'Nicht verfügbar',
     err_unexpected: 'Unerwarteter Fehler',
+    err_unreachable: 'Server nicht erreichbar',
     res_200: 'OK',
     res_204: 'Kein Inhalt',
     uc_client_confirm_cancel: 'Abbrechen',
