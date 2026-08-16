@@ -52,6 +52,13 @@ let ConsoleLogger = class ConsoleLogger {
         // biome-ignore lint/suspicious/noConsole: we want it
         console.info(`${this.t()} [info] ${message}`, ...meta);
     }
+    table(level, data) {
+        if (!this.shouldLog(level)) {
+            return;
+        }
+        // biome-ignore lint/suspicious/noConsole: we want it
+        console.table(data);
+    }
     trace(message, ...meta) {
         if (!this.shouldLog('trace')) {
             return;
