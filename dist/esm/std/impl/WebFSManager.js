@@ -13,6 +13,9 @@ let WebFSManager = class WebFSManager {
     async cat(_path, _opts) {
         throw new NotAvailableError('cat');
     }
+    async catBytes(_path) {
+        throw new NotAvailableError('catBytes');
+    }
     async chmod(_path, _mode) {
         throw new NotAvailableError('chmod');
     }

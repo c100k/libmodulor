@@ -3,6 +3,7 @@ import { type FSManager, type FSManagerCatOpts, type FSManagerChmodMode, type FS
 export declare class NodeFSManager implements FSManager {
     canHandleFiles(): Promise<boolean>;
     cat<T extends string>(path: FilePath, opts?: FSManagerCatOpts): Promise<T>;
+    catBytes(path: FilePath): Promise<Uint8Array>;
     chmod(path: Pathname, mode: FSManagerChmodMode): Promise<void>;
     cp(src: Pathname, dest: Pathname): Promise<void>;
     echoIn<T extends string>(src: FilePath, content: T): Promise<void>;
@@ -14,6 +15,6 @@ export declare class NodeFSManager implements FSManager {
     path(...parts: Pathname[]): Pathname;
     pickFiles(source: FSManagerFilePickerSource, opts?: FSManagerFilePickerOpts): Promise<File[]>;
     rm(path: Pathname): Promise<void>;
-    touch<T extends ArrayBuffer | string>(path: FilePath, content: T): Promise<void>;
+    touch<T extends Uint8Array | string>(path: FilePath, content: T): Promise<void>;
     private determineType;
 }

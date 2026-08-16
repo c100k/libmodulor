@@ -69,7 +69,7 @@ let UCInputFilesProcessor = class UCInputFilesProcessor {
         }
         const fileNameRef = `${this.s().uc_file_ref_prefix}${fileName}`; // => $ref:20230110143732-155eb8d3-9af5-430e-b856-248007859df1.jpg
         const destPath = this.fsManager.path(this.s().uc_files_directory_path, fileName); // => /path/to/files/20230110143732-155eb8d3-9af5-430e-b856-248007859df1.jpg
-        await this.fsManager.touch(destPath, await file.arrayBuffer());
+        await this.fsManager.touch(destPath, await file.bytes());
         return fileNameRef;
     }
 };

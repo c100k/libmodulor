@@ -13,10 +13,10 @@ let NodeFSManager = class NodeFSManager {
         return true;
     }
     async cat(path, opts) {
-        // Be careful : omitting to pass an encoding makes it return a Buffer and not a string
-        // This can be problematic in some callers, manipulating the file as a string (e.g. startsWith, includes, etc.)
-        // So make sure to fallback on a default encoding
         return readFile(path, opts?.encoding ?? 'utf8');
+    }
+    async catBytes(path) {
+        return readFile(path);
     }
     async chmod(path, mode) {
         return chmod(path, mode);
@@ -119,7 +119,7 @@ let NodeFSManager = class NodeFSManager {
         await rm(path, { recursive: true });
     }
     async touch(path, content) {
-        await writeFile(path, content instanceof ArrayBuffer ? Buffer.from(content) : content);
+        await writeFile(path, content);
     }
     determineType(stats) {
         if (stats.isDirectory()) {

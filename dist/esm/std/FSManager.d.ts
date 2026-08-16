@@ -42,6 +42,7 @@ export type Pathname = DirPath | FilePath;
 export interface FSManager {
     canHandleFiles(): Promise<boolean>;
     cat<T extends string>(path: FilePath, opts?: FSManagerCatOpts): Promise<T>;
+    catBytes(path: FilePath): Promise<Uint8Array>;
     chmod(path: Pathname, mode: FSManagerChmodMode): Promise<void>;
     cp(src: Pathname, dest: Pathname): Promise<void>;
     echoIn<T extends string>(src: FilePath, content: T): Promise<void>;
@@ -53,5 +54,5 @@ export interface FSManager {
     path(...parts: Pathname[]): Pathname;
     pickFiles(source: FSManagerFilePickerSource, opts?: FSManagerFilePickerOpts): Promise<File[]>;
     rm(path: Pathname): Promise<void>;
-    touch<T extends ArrayBuffer | string>(path: FilePath, content: T): Promise<void>;
+    touch<T extends Uint8Array | string>(path: FilePath, content: T): Promise<void>;
 }

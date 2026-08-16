@@ -26,7 +26,17 @@ let FakeFSManager = class FakeFSManager {
         if (value === undefined) {
             throw new Error(`Cannot open file at ${path}`);
         }
-        return value?.content;
+        return value.content;
+    }
+    async catBytes(path) {
+        const value = this.entries.get(path);
+        if (value === undefined) {
+            throw new Error(`Cannot open file at ${path}`);
+        }
+        if (typeof value.content === 'string') {
+            return new TextEncoder().encode(value.content);
+        }
+        return value.content;
     }
     async chmod(path, mode) {
         const value = this.entries.get(path);

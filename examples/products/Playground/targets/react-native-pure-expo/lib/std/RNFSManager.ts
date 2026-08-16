@@ -32,6 +32,10 @@ export class RNFSManager implements FSManager {
         throw new NotImplementedError<this>('cat');
     }
 
+    public async catBytes(_path: FilePath): Promise<Uint8Array> {
+        throw new NotImplementedError<this>('catBytes');
+    }
+
     public async chmod(
         _path: Pathname,
         _mode: FSManagerChmodMode,
@@ -91,7 +95,7 @@ export class RNFSManager implements FSManager {
         throw new NotImplementedError<this>('rm');
     }
 
-    public async touch<T extends ArrayBuffer | string>(
+    public async touch<T extends Uint8Array | string>(
         _path: FilePath,
         _content: T,
     ): Promise<void> {

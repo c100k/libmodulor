@@ -3,13 +3,14 @@ import type { AnySideEffect, Clearable, SideEffectable } from '../../utils/index
 import { type FSManager, type FSManagerCatOpts, type FSManagerChmodMode, type FSManagerItemInfo, type FSManagerLsItem, type FSManagerLsOpts, type Pathname } from '../FSManager.js';
 export declare class FakeFSManager implements Clearable, FSManager, SideEffectable {
     entries: Map<FilePath, {
-        content: ArrayBuffer | string;
+        content: Uint8Array | string;
         mode: FSManagerChmodMode;
     }>;
     constructor();
     clear(): Promise<void>;
     canHandleFiles(): Promise<boolean>;
     cat<T extends string>(path: FilePath, _opts?: FSManagerCatOpts): Promise<T>;
+    catBytes(path: FilePath): Promise<Uint8Array>;
     chmod(path: Pathname, mode: FSManagerChmodMode): Promise<void>;
     cp(src: Pathname, dest: Pathname): Promise<void>;
     echoIn<T extends string>(src: FilePath, content: T): Promise<void>;
@@ -21,6 +22,6 @@ export declare class FakeFSManager implements Clearable, FSManager, SideEffectab
     path(...parts: Pathname[]): Pathname;
     pickFiles(): Promise<File[]>;
     rm(path: Pathname): Promise<void>;
-    touch<T extends ArrayBuffer | string>(path: FilePath, content: T): Promise<void>;
+    touch<T extends Uint8Array | string>(path: FilePath, content: T): Promise<void>;
     sideEffects(): Promise<AnySideEffect[]>;
 }

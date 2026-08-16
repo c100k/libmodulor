@@ -3,6 +3,7 @@ import type { FSManager, FSManagerCatOpts, FSManagerChmodMode, FSManagerFilePick
 export declare class WebFSManager implements FSManager {
     canHandleFiles(): Promise<boolean>;
     cat<T extends string>(_path: FilePath, _opts?: FSManagerCatOpts): Promise<T>;
+    catBytes(_path: FilePath): Promise<Uint8Array>;
     chmod(_path: Pathname, _mode: FSManagerChmodMode): Promise<void>;
     cp(_src: Pathname, _dest: Pathname): Promise<void>;
     echoIn<T extends string>(_src: FilePath, _content: T): Promise<void>;
@@ -14,5 +15,5 @@ export declare class WebFSManager implements FSManager {
     path(..._parts: Pathname[]): Pathname;
     pickFiles(_source: FSManagerFilePickerSource, _opts?: FSManagerFilePickerOpts): Promise<File[]>;
     rm(_path: Pathname): Promise<void>;
-    touch<T extends ArrayBuffer | string>(_path: FilePath, _content: T): Promise<void>;
+    touch<T extends Uint8Array | string>(_path: FilePath, _content: T): Promise<void>;
 }
