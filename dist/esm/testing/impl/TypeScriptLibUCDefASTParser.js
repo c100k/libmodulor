@@ -11,16 +11,12 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
 import { inject, injectable } from 'inversify';
-import typescript, { isClassDeclaration, isObjectLiteralExpression, isPropertyAssignment, SyntaxKind, } from 'typescript';
-// https://ts-ast-viewer.com
-// To avoid the following error when used in a consumer :
-// SyntaxError: Named export 'ModuleKind' not found. The requested module 'typescript' is a CommonJS module, which may not support all module.exports as named exports.
-// CommonJS modules can always be imported via the default export
-const { ModuleKind, ModuleResolutionKind, ScriptTarget, createProgram, flattenDiagnosticMessageText, forEachChild, getPreEmitDiagnostics, isIdentifier, isImportDeclaration, isPropertySignature, isStringLiteral, isTypeReferenceNode, isVariableStatement, } = typescript;
+import { createProgram, flattenDiagnosticMessageText, forEachChild, getPreEmitDiagnostics, isClassDeclaration, isIdentifier, isImportDeclaration, isObjectLiteralExpression, isPropertyAssignment, isPropertySignature, isStringLiteral, isTypeReferenceNode, isVariableStatement, ModuleKind, ModuleResolutionKind, ScriptTarget, SyntaxKind, } from 'typescript';
 import { UC_MAIN_CLIENT_SUFFIX, UC_MAIN_SERVER_SUFFIX, UC_MAIN_STEP_PREFIX_REGULAR, UC_MAIN_SUFFIX, UC_POLICY_SUFFIX, } from '../../convention.js';
 const ERR_TS_CONFIG_INVALID = (configFileName) => `The root ${configFileName} could not be opened or parsed`;
 const ERR_TS_CONFIG_COMP_OPTS = (configFileName) => `The root ${configFileName} must contain compilerOptions`;
 const ERR_UCD_TOO_MANY_GENERICS = () => 'There are more generics than expected in the UCD';
+// https://ts-ast-viewer.com
 let TypeScriptLibUCDefASTParser = class TypeScriptLibUCDefASTParser {
     fsManager;
     logger;
