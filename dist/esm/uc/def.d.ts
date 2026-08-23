@@ -14,7 +14,7 @@ export type UCDefSourceSafe<I extends UCInput | undefined = undefined, OPI0 exte
 };
 export type UCDefLifecycle = 'client' | 'server';
 export interface UCDef<I extends UCInput | undefined = undefined, OPI0 extends UCOPIBase | undefined = undefined, OPI1 extends UCOPIBase | undefined = undefined> {
-    ext?: UCExt<OPI0, OPI1>;
+    ext?: UCExt;
     io: {
         i?: UCInputDef<NonNullable<I>>;
         o?: UCOutputDef<OPI0, OPI1>;

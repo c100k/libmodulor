@@ -2307,14 +2307,18 @@ exports[`Run > Use Cases > 'ListStats' > should execute with auth 'ADMIN' and in
   "io": {
     "i": {},
     "o": {
-      "count": 1,
-      "items": [
-        {
-          "id": "a6b4b3ce-8729-4123-88df-1ede18d1ffc3",
-          "name": "Songs Played",
-          "value": 9837378,
+      "parts": {
+        "_0": {
+          "items": [
+            {
+              "id": "a6b4b3ce-8729-4123-88df-1ede18d1ffc3",
+              "name": "Songs Played",
+              "value": 9837378,
+            },
+          ],
+          "total": 1,
         },
-      ],
+      },
     },
   },
   "sideEffects": Map {
@@ -2348,14 +2352,18 @@ exports[`Run > Use Cases > 'ListStats' > should execute with auth 'ADMIN' and in
   "io": {
     "i": {},
     "o": {
-      "count": 1,
-      "items": [
-        {
-          "id": "a6b4b3ce-8729-4123-88df-1ede18d1ffc3",
-          "name": "Songs Played",
-          "value": 9837378,
+      "parts": {
+        "_0": {
+          "items": [
+            {
+              "id": "a6b4b3ce-8729-4123-88df-1ede18d1ffc3",
+              "name": "Songs Played",
+              "value": 9837378,
+            },
+          ],
+          "total": 1,
         },
-      ],
+      },
     },
   },
   "sideEffects": Map {
@@ -2389,14 +2397,18 @@ exports[`Run > Use Cases > 'ListStats' > should execute with auth 'ADMIN' and in
   "io": {
     "i": {},
     "o": {
-      "count": 1,
-      "items": [
-        {
-          "id": "a6b4b3ce-8729-4123-88df-1ede18d1ffc3",
-          "name": "Songs Played",
-          "value": 9837378,
+      "parts": {
+        "_0": {
+          "items": [
+            {
+              "id": "a6b4b3ce-8729-4123-88df-1ede18d1ffc3",
+              "name": "Songs Played",
+              "value": 9837378,
+            },
+          ],
+          "total": 1,
         },
-      ],
+      },
     },
   },
   "sideEffects": Map {
@@ -2496,14 +2508,18 @@ exports[`Run > Use Cases > 'ListStats' > should execute with auth 'REGULAR' and 
   "io": {
     "i": {},
     "o": {
-      "count": 1,
-      "items": [
-        {
-          "id": "a6b4b3ce-8729-4123-88df-1ede18d1ffc3",
-          "name": "Songs Played",
-          "value": 9837378,
+      "parts": {
+        "_0": {
+          "items": [
+            {
+              "id": "a6b4b3ce-8729-4123-88df-1ede18d1ffc3",
+              "name": "Songs Played",
+              "value": 9837378,
+            },
+          ],
+          "total": 1,
         },
-      ],
+      },
     },
   },
   "sideEffects": Map {
@@ -2537,14 +2553,18 @@ exports[`Run > Use Cases > 'ListStats' > should execute with auth 'REGULAR' and 
   "io": {
     "i": {},
     "o": {
-      "count": 1,
-      "items": [
-        {
-          "id": "a6b4b3ce-8729-4123-88df-1ede18d1ffc3",
-          "name": "Songs Played",
-          "value": 9837378,
+      "parts": {
+        "_0": {
+          "items": [
+            {
+              "id": "a6b4b3ce-8729-4123-88df-1ede18d1ffc3",
+              "name": "Songs Played",
+              "value": 9837378,
+            },
+          ],
+          "total": 1,
         },
-      ],
+      },
     },
   },
   "sideEffects": Map {
@@ -2578,14 +2598,18 @@ exports[`Run > Use Cases > 'ListStats' > should execute with auth 'REGULAR' and 
   "io": {
     "i": {},
     "o": {
-      "count": 1,
-      "items": [
-        {
-          "id": "a6b4b3ce-8729-4123-88df-1ede18d1ffc3",
-          "name": "Songs Played",
-          "value": 9837378,
+      "parts": {
+        "_0": {
+          "items": [
+            {
+              "id": "a6b4b3ce-8729-4123-88df-1ede18d1ffc3",
+              "name": "Songs Played",
+              "value": 9837378,
+            },
+          ],
+          "total": 1,
         },
-      ],
+      },
     },
   },
   "sideEffects": Map {

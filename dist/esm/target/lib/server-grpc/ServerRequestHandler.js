@@ -58,7 +58,7 @@ let ServerRequestHandler = class ServerRequestHandler {
                 url,
                 xForwardedProtoHeader: await metadata(X_FORWARDED_PROTO_HEADER_NAME),
             });
-            const { ext, sec } = ucd;
+            const { sec } = ucd;
             if (dangerouslySkipPubApiKeyCheck) {
                 logDevWarning('Skipping pub api key check');
             }
@@ -97,10 +97,8 @@ let ServerRequestHandler = class ServerRequestHandler {
                     status: status.OK,
                 };
             }
-            // TODO : Make this respect the contract defined in the GRPC type
-            const transform = ext?.http?.transform;
             return {
-                body: transform ? transform(output) : output,
+                body: output,
                 status: status.OK,
             };
         }

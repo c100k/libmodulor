@@ -1,9 +1,7 @@
 import type { HTTPMethod, TransportType, URLPath } from '../dt/index.js';
-import type { UCOPIBase } from './opi.js';
-import type { UCOutput } from './output.js';
 import type { UCMountingPoint } from './utils/ucMountingPoint.js';
 export type UCHTTPMountingPoint = `/${URLPath}`;
-export interface UCExt<OPI0 extends UCOPIBase | undefined = undefined, OPI1 extends UCOPIBase | undefined = undefined> {
+export interface UCExt {
     cmd?: {
         /**
          * The command on which the use case is mounted at
@@ -35,12 +33,6 @@ export interface UCExt<OPI0 extends UCOPIBase | undefined = undefined, OPI1 exte
          * a different release cycle than the server (e.g. a mobile app), who are still calling the old endpoint.
          */
         mountAlsoAt?: UCHTTPMountingPoint[];
-        /**
-         * Transform the output received to fit with some specific cases where the endpoint is expected to respect a certain contract
-         * @param output
-         * @returns
-         */
-        transform?: (output: UCOutput<OPI0, OPI1>) => object;
     };
     transport?: {
         /**
@@ -51,4 +43,4 @@ export interface UCExt<OPI0 extends UCOPIBase | undefined = undefined, OPI1 exte
         type?: TransportType;
     };
 }
-export declare function ucTransportType<OPI0 extends UCOPIBase | undefined = undefined, OPI1 extends UCOPIBase | undefined = undefined>(ext?: UCExt<OPI0, OPI1> | undefined): TransportType;
+export declare function ucTransportType(ext?: UCExt | undefined): TransportType;

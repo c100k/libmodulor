@@ -1,5 +1,6 @@
 import type { AppManifest } from '../../../app/index.js';
 import type { HTTPMethod, HTTPStatusNumber, URL, URLPath } from '../../../dt/index.js';
+import { type ServerError } from '../../../error/index.js';
 import type { SettingsManager, Worker } from '../../../std/index.js';
 import { UCBuilder, type UCDef, type UCInput, type UCManager, type UCManagerExecServerOpts, type UCOPIBase, type UCOutput } from '../../../uc/index.js';
 import type { HTTPDataEnvelope, HTTPReqData } from '../../../utils/index.js';
@@ -48,7 +49,7 @@ type Output<OPI0 extends UCOPIBase | undefined = undefined, OPI1 extends UCOPIBa
     body: undefined;
     status: BodylessStatus;
 } | {
-    body: UCOutput<OPI0, OPI1> | object;
+    body: UCOutput<OPI0, OPI1> | ServerError;
     rawErr?: Error;
     status: Exclude<HTTPStatusNumber, BodylessStatus>;
 }) & {

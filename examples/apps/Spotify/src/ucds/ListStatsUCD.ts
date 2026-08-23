@@ -19,19 +19,10 @@ export interface ListStatsOPI0 extends UCOPIBase {
     value: UIntQuantity;
 }
 
-interface TransformedOutput {
-    count: number;
-    items: ListStatsOPI0[];
-}
-
 export const ListStatsUCD: UCDef<ListStatsInput, ListStatsOPI0> = {
     ext: {
         http: {
             mountAt: '/stats',
-            transform: (output): TransformedOutput => ({
-                count: output.parts._0.total,
-                items: output.parts._0.items.map((v) => v),
-            }),
         },
     },
     io: {

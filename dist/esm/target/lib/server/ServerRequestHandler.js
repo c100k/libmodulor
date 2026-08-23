@@ -58,7 +58,7 @@ let ServerRequestHandler = class ServerRequestHandler {
                 url,
                 xForwardedProtoHeader: await header(X_FORWARDED_PROTO_HEADER_NAME),
             });
-            const { ext, sec } = ucd;
+            const { sec } = ucd;
             if (dangerouslySkipPubApiKeyCheck) {
                 logDevWarning('Skipping pub api key check');
             }
@@ -103,10 +103,8 @@ let ServerRequestHandler = class ServerRequestHandler {
                     status: 204,
                 };
             }
-            // TODO : Make this respect the contract defined in the OpenAPI spec
-            const transform = ext?.http?.transform;
             return {
-                body: transform ? transform(output) : output,
+                body: output,
                 status: 200,
             };
         }
