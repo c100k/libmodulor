@@ -113,7 +113,7 @@
     },
     "devDependencies": {
         "@babel/core": "^7.29.7",
-        "@biomejs/biome": "^2.5.7",
+        "@biomejs/biome": "^2.5.9",
         "@opentelemetry/auto-instrumentations-node": "^0.77.0",
         "@opentelemetry/exporter-trace-otlp-http": "^0.220.0",
         "@opentelemetry/resources": "^2.10.0",
@@ -124,11 +124,11 @@
         "@types/react": "^19.2.18",
         "@types/react-dom": "^19.2.4",
         "babel-plugin-transform-typescript-metadata": "^0.3.2",
-        "expo": "^57.0.11",
+        "expo": "^57.0.15",
         "expo-document-picker": "^14.0.8",
         "expo-image-picker": "^17.0.11",
-        "react-native-safe-area-context": "^5.8.1",
-        "wrangler": "^4.120.0",
+        "react-native-safe-area-context": "^5.9.1",
+        "wrangler": "^4.125.0",
         "zod": "^4.4.3"
     },
     "peerDependencies": {
@@ -146,9 +146,9 @@
         "express-fileupload": "^1.5.2",
         "fast-check": "^4.9.0",
         "helmet": "^8.3.0",
-        "hono": "^4.13.1",
+        "hono": "^4.13.3",
         "inversify": "^7.11.0",
-        "jose": "^6.2.8",
+        "jose": "^6.2.9",
         "knex": "^3.3.0",
         "next": "^15.5.23",
         "pg": "^8.23.0",
@@ -159,8 +159,8 @@
         "reflect-metadata": "^0.2.2",
         "sqlite3": "^5.1.7",
         "typescript": "^6.0.3",
-        "vite": "^8.2.1",
-        "vitest": "^4.1.10",
+        "vite": "^8.2.2",
+        "vitest": "^4.1.11",
         "zod": "^4.4.3"
     },
     "peerDependenciesMeta": {
