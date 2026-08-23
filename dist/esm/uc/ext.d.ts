@@ -1,4 +1,4 @@
-import type { HTTPMethod, TransportType, URLPath } from '../dt/index.js';
+import type { HTTPMethod, TransportType, URL, URLPath } from '../dt/index.js';
 import type { UCMountingPoint } from './utils/ucMountingPoint.js';
 export type UCHTTPMountingPoint = `/${URLPath}`;
 export interface UCExt {
@@ -11,6 +11,16 @@ export interface UCExt {
         mountAt?: UCMountingPoint;
     };
     http?: {
+        /**
+         * Some use cases produce an output that must conform to an external specification.
+         * When this property is set (the URL is simply for documentation purposes), the server
+         * does not return the usual `UCOutput`. Instead, it returns the response defined by
+         * the referenced specification.
+         *
+         * @example OAuth2 https://datatracker.ietf.org/doc/html/rfc8414#section-2
+         * @example RebootXOnPrem https://github.com/c100k/rebootx-on-prem
+         */
+        externalSpecResponse?: URL;
         /**
          * The verb on which the use case is mounted at
          *

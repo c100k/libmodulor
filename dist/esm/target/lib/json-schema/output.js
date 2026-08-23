@@ -99,15 +99,19 @@ export function ucOutputJsonSchema(uc) {
     if (!uc.hasOutputParts()) {
         return null;
     }
+    const part0 = uc.def.io.o?.parts?._0;
+    if (!part0) {
+        return null;
+    }
+    const externalSpecResponse = uc.def.ext?.http?.externalSpecResponse;
+    if (externalSpecResponse) {
+        return ucOPIJsonSchema(part0);
+    }
     const res = {
         additionalProperties: false,
         properties: {},
         type: 'object',
     };
-    const part0 = uc.def.io.o?.parts?._0;
-    if (!part0) {
-        return null;
-    }
     res.properties.parts = {
         additionalProperties: false,
         properties: {

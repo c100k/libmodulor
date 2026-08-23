@@ -11,3 +11,10 @@ export function buildSingleItemOutput(item) {
         },
     };
 }
+export function reqItem00(output) {
+    const val = output.parts._0.items[0];
+    if (!val) {
+        throw new Error('Expected an item00 to build externalSpecResponse but got nothing');
+    }
+    return val;
+}

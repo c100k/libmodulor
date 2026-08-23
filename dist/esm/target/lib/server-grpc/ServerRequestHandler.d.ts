@@ -41,7 +41,7 @@ type Output<OPI0 extends UCOPIBase | undefined = undefined, OPI1 extends UCOPIBa
     body: undefined;
     status: status;
 } | {
-    body: UCOutput<OPI0, OPI1> | ServerError;
+    body: UCOutput<OPI0, OPI1> | NonNullable<OPI0> | ServerError;
     rawErr?: Error;
     status: status;
 }) & {

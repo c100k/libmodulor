@@ -12,7 +12,7 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 };
 import { inject, injectable } from 'inversify';
 import { IllegalArgumentError, isEmptyJSON, logDevWarning, } from '../../../error/index.js';
-import { UCBuilder, UCOutputReader, UCOutputSideEffectType, } from '../../../uc/index.js';
+import { reqItem00, UCBuilder, UCOutputReader, UCOutputSideEffectType, } from '../../../uc/index.js';
 import { AUTHORIZATION_HEADER_NAME, X_FORWARDED_PROTO_HEADER_NAME, } from '../shared.js';
 import { AuthCookieCreator, } from './AuthCookieCreator.js';
 import { AuthenticationChecker } from './AuthenticationChecker.js';
@@ -58,7 +58,7 @@ let ServerRequestHandler = class ServerRequestHandler {
                 url,
                 xForwardedProtoHeader: await header(X_FORWARDED_PROTO_HEADER_NAME),
             });
-            const { sec } = ucd;
+            const { ext, sec } = ucd;
             if (dangerouslySkipPubApiKeyCheck) {
                 logDevWarning('Skipping pub api key check');
             }
@@ -101,6 +101,13 @@ let ServerRequestHandler = class ServerRequestHandler {
                 return {
                     body: undefined,
                     status: 204,
+                };
+            }
+            const externalSpecResponse = ext?.http?.externalSpecResponse;
+            if (externalSpecResponse) {
+                return {
+                    body: reqItem00(output),
+                    status: 200,
                 };
             }
             return {

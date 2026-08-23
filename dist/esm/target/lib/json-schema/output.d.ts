@@ -16,4 +16,4 @@ export declare function ucofJsonSchemaDef<OPI extends UCOPIBase, T extends DataT
 export declare function ucOPIJsonSchema<OPI extends UCOPIBase>(part: UCOutputPartDef<NonNullable<OPI>>): JSONSchemaObject<OPI>;
 export declare function ucOutputPartJsonSchema<OPI extends UCOPIBase>(part: UCOutputPartDef<NonNullable<OPI>>): JSONSchemaObject<UCOutputPart<OPI>>;
 export declare function ucOutputPartPaginationJsonSchema<OPI extends UCOPIBase>(): JSONSchemaObject<NonNullable<UCOutputPart<OPI>['pagination']>>;
-export declare function ucOutputJsonSchema<I extends UCInput | undefined = undefined, OPI0 extends UCOPIBase | undefined = undefined, OPI1 extends UCOPIBase | undefined = undefined>(uc: UC<I, OPI0, OPI1>): JSONSchemaObject<UCOutput<OPI0, OPI1>> | null;
+export declare function ucOutputJsonSchema<I extends UCInput | undefined = undefined, OPI0 extends UCOPIBase | undefined = undefined, OPI1 extends UCOPIBase | undefined = undefined>(uc: UC<I, OPI0, OPI1>): JSONSchemaObject<UCOutput<OPI0, OPI1>> | JSONSchemaObject<NonNullable<OPI0>> | null;

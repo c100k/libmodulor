@@ -4,6 +4,11 @@ export const Manifest = {
     languageCodes: ['de', 'en', 'es', 'fr'],
     name: 'Auth',
     ucReg: {
+        OAuthGetToken: {
+            action: 'Create',
+            icon: 'lock',
+            name: 'OAuthGetToken',
+        },
         SignIn: {
             action: 'Create',
             icon: 'right-to-bracket',

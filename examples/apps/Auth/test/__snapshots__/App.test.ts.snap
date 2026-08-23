@@ -1,5 +1,335 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
+exports[`Run > Use Cases > 'OAuthGetToken' > should execute with auth 'ADMIN' and input 'ALL_WITH_EXAMPLES' > hash = 2ec753b5bf381bd12659e5c7000939948b86a433d3a1283e3a279dae09befc90 1`] = `
+{
+  "args": {
+    "auth": {
+      "organization": {
+        "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+      },
+      "role": "admin",
+      "user": {
+        "firstname": "Dexter",
+        "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        "initials": "DM",
+      },
+    },
+    "authName": "ADMIN",
+    "inputFiller": [Function],
+    "inputFillerName": "ALL_WITH_EXAMPLES",
+  },
+  "err": null,
+  "hash": "2ec753b5bf381bd12659e5c7000939948b86a433d3a1283e3a279dae09befc90",
+  "io": {
+    "i": {
+      "client_id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+      "client_secret": "pk_bxa2HCdsT7CKwVSdem8fjS8rW",
+      "code": "pk_bxa2HCdsT7CKwVSdem8fjS8rW",
+      "code_verifier": "pk_bxa2HCdsT7CKwVSdem8fjS8rW",
+      "grant_type": "authorization_code",
+      "redirect_uri": "https://myservice.toto.com",
+    },
+    "o": {
+      "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJvcmdhbml6YXRpb24iOnsiaWQiOiJkZDk2NzBlNy0xZGQ1LTQxNTUtODVjMi0zMzU3MTQ3OTlmZjcifSwicm9sZSI6ImFkbWluIiwidXNlciI6eyJmaXJzdG5hbWUiOiJEZXh0ZXIiLCJpZCI6ImRkOTY3MGU3LTFkZDUtNDE1NS04NWMyLTMzNTcxNDc5OWZmNyIsImluaXRpYWxzIjoiRE0ifSwiYXVkIjoibGlibW9kdWxvciIsImV4cCI6MTY1MjY0OTgxMCwiaXNzIjoibGlibW9kdWxvciIsImlhdCI6MTY1MjY0NjIxMH0.jLYd7L-kdaZZ3Ym_k67yeS8wnHD4PgnnfKolACk2wv0",
+      "expires_in": 3600,
+      "id": "356a192b-7913-404c-9457-4d18c28d46e6",
+      "refresh_token": null,
+      "token_type": "Bearer",
+    },
+  },
+  "sideEffects": null,
+  "status": "success",
+}
+`;
+
+exports[`Run > Use Cases > 'OAuthGetToken' > should execute with auth 'ADMIN' and input 'ONLY_MANDATORY_WITH_EXAMPLES' > hash = 0c5053fe0b8fbd7a7feb736eeb704f60156ec0567e6b07c0d5410e4145aaffbe 1`] = `
+{
+  "args": {
+    "auth": {
+      "organization": {
+        "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+      },
+      "role": "admin",
+      "user": {
+        "firstname": "Dexter",
+        "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        "initials": "DM",
+      },
+    },
+    "authName": "ADMIN",
+    "inputFiller": [Function],
+    "inputFillerName": "ONLY_MANDATORY_WITH_EXAMPLES",
+  },
+  "err": null,
+  "hash": "0c5053fe0b8fbd7a7feb736eeb704f60156ec0567e6b07c0d5410e4145aaffbe",
+  "io": {
+    "i": {
+      "client_id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+      "client_secret": "pk_bxa2HCdsT7CKwVSdem8fjS8rW",
+      "code": "pk_bxa2HCdsT7CKwVSdem8fjS8rW",
+      "code_verifier": "pk_bxa2HCdsT7CKwVSdem8fjS8rW",
+      "grant_type": "authorization_code",
+      "redirect_uri": "https://myservice.toto.com",
+    },
+    "o": {
+      "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJvcmdhbml6YXRpb24iOnsiaWQiOiJkZDk2NzBlNy0xZGQ1LTQxNTUtODVjMi0zMzU3MTQ3OTlmZjcifSwicm9sZSI6ImFkbWluIiwidXNlciI6eyJmaXJzdG5hbWUiOiJEZXh0ZXIiLCJpZCI6ImRkOTY3MGU3LTFkZDUtNDE1NS04NWMyLTMzNTcxNDc5OWZmNyIsImluaXRpYWxzIjoiRE0ifSwiYXVkIjoibGlibW9kdWxvciIsImV4cCI6MTY1MjY0OTgxMCwiaXNzIjoibGlibW9kdWxvciIsImlhdCI6MTY1MjY0NjIxMH0.jLYd7L-kdaZZ3Ym_k67yeS8wnHD4PgnnfKolACk2wv0",
+      "expires_in": 3600,
+      "id": "356a192b-7913-404c-9457-4d18c28d46e6",
+      "refresh_token": null,
+      "token_type": "Bearer",
+    },
+  },
+  "sideEffects": null,
+  "status": "success",
+}
+`;
+
+exports[`Run > Use Cases > 'OAuthGetToken' > should execute with auth 'ADMIN' and input 'ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPL…' > hash = da488ac402bd3aa07a6640097314c8b625b4ff82a5069258f67d494f0d78390f 1`] = `
+{
+  "args": {
+    "auth": {
+      "organization": {
+        "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+      },
+      "role": "admin",
+      "user": {
+        "firstname": "Dexter",
+        "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        "initials": "DM",
+      },
+    },
+    "authName": "ADMIN",
+    "inputFiller": [Function],
+    "inputFillerName": "ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPLES",
+  },
+  "err": [IllegalArgumentError: Client id must be filled],
+  "hash": "da488ac402bd3aa07a6640097314c8b625b4ff82a5069258f67d494f0d78390f",
+  "io": {
+    "i": {
+      "client_id": undefined,
+      "client_secret": undefined,
+      "code": undefined,
+      "code_verifier": undefined,
+      "grant_type": undefined,
+      "redirect_uri": undefined,
+    },
+    "o": null,
+  },
+  "sideEffects": null,
+  "status": "warning",
+}
+`;
+
+exports[`Run > Use Cases > 'OAuthGetToken' > should execute with auth 'ANONYMOUS' and input 'ALL_WITH_EXAMPLES' > hash = b8c04866f351a60e61d1703a141c898e47ede695523ad49da28f444cef56d10b 1`] = `
+{
+  "args": {
+    "auth": null,
+    "authName": "ANONYMOUS",
+    "inputFiller": [Function],
+    "inputFillerName": "ALL_WITH_EXAMPLES",
+  },
+  "err": null,
+  "hash": "b8c04866f351a60e61d1703a141c898e47ede695523ad49da28f444cef56d10b",
+  "io": {
+    "i": {
+      "client_id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+      "client_secret": "pk_bxa2HCdsT7CKwVSdem8fjS8rW",
+      "code": "pk_bxa2HCdsT7CKwVSdem8fjS8rW",
+      "code_verifier": "pk_bxa2HCdsT7CKwVSdem8fjS8rW",
+      "grant_type": "authorization_code",
+      "redirect_uri": "https://myservice.toto.com",
+    },
+    "o": {
+      "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJvcmdhbml6YXRpb24iOnsiaWQiOiJkZDk2NzBlNy0xZGQ1LTQxNTUtODVjMi0zMzU3MTQ3OTlmZjcifSwicm9sZSI6ImFkbWluIiwidXNlciI6eyJmaXJzdG5hbWUiOiJEZXh0ZXIiLCJpZCI6ImRkOTY3MGU3LTFkZDUtNDE1NS04NWMyLTMzNTcxNDc5OWZmNyIsImluaXRpYWxzIjoiRE0ifSwiYXVkIjoibGlibW9kdWxvciIsImV4cCI6MTY1MjY0OTgxMCwiaXNzIjoibGlibW9kdWxvciIsImlhdCI6MTY1MjY0NjIxMH0.jLYd7L-kdaZZ3Ym_k67yeS8wnHD4PgnnfKolACk2wv0",
+      "expires_in": 3600,
+      "id": "356a192b-7913-404c-9457-4d18c28d46e6",
+      "refresh_token": null,
+      "token_type": "Bearer",
+    },
+  },
+  "sideEffects": null,
+  "status": "success",
+}
+`;
+
+exports[`Run > Use Cases > 'OAuthGetToken' > should execute with auth 'ANONYMOUS' and input 'ONLY_MANDATORY_WITH_EXAMPLES' > hash = d7ed61eca33552b804b106ee2b78c580329c7128121b66103ad249475d1de085 1`] = `
+{
+  "args": {
+    "auth": null,
+    "authName": "ANONYMOUS",
+    "inputFiller": [Function],
+    "inputFillerName": "ONLY_MANDATORY_WITH_EXAMPLES",
+  },
+  "err": null,
+  "hash": "d7ed61eca33552b804b106ee2b78c580329c7128121b66103ad249475d1de085",
+  "io": {
+    "i": {
+      "client_id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+      "client_secret": "pk_bxa2HCdsT7CKwVSdem8fjS8rW",
+      "code": "pk_bxa2HCdsT7CKwVSdem8fjS8rW",
+      "code_verifier": "pk_bxa2HCdsT7CKwVSdem8fjS8rW",
+      "grant_type": "authorization_code",
+      "redirect_uri": "https://myservice.toto.com",
+    },
+    "o": {
+      "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJvcmdhbml6YXRpb24iOnsiaWQiOiJkZDk2NzBlNy0xZGQ1LTQxNTUtODVjMi0zMzU3MTQ3OTlmZjcifSwicm9sZSI6ImFkbWluIiwidXNlciI6eyJmaXJzdG5hbWUiOiJEZXh0ZXIiLCJpZCI6ImRkOTY3MGU3LTFkZDUtNDE1NS04NWMyLTMzNTcxNDc5OWZmNyIsImluaXRpYWxzIjoiRE0ifSwiYXVkIjoibGlibW9kdWxvciIsImV4cCI6MTY1MjY0OTgxMCwiaXNzIjoibGlibW9kdWxvciIsImlhdCI6MTY1MjY0NjIxMH0.jLYd7L-kdaZZ3Ym_k67yeS8wnHD4PgnnfKolACk2wv0",
+      "expires_in": 3600,
+      "id": "356a192b-7913-404c-9457-4d18c28d46e6",
+      "refresh_token": null,
+      "token_type": "Bearer",
+    },
+  },
+  "sideEffects": null,
+  "status": "success",
+}
+`;
+
+exports[`Run > Use Cases > 'OAuthGetToken' > should execute with auth 'ANONYMOUS' and input 'ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPL…' > hash = 9a3e9c11654203d4a83377d6d787a2db916fb01718cd31e256cca3ea9b735cad 1`] = `
+{
+  "args": {
+    "auth": null,
+    "authName": "ANONYMOUS",
+    "inputFiller": [Function],
+    "inputFillerName": "ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPLES",
+  },
+  "err": [IllegalArgumentError: Client id must be filled],
+  "hash": "9a3e9c11654203d4a83377d6d787a2db916fb01718cd31e256cca3ea9b735cad",
+  "io": {
+    "i": {
+      "client_id": undefined,
+      "client_secret": undefined,
+      "code": undefined,
+      "code_verifier": undefined,
+      "grant_type": undefined,
+      "redirect_uri": undefined,
+    },
+    "o": null,
+  },
+  "sideEffects": null,
+  "status": "warning",
+}
+`;
+
+exports[`Run > Use Cases > 'OAuthGetToken' > should execute with auth 'REGULAR' and input 'ALL_WITH_EXAMPLES' > hash = 9d8b0b39e2b5bf14e41d63c932ffb213fb2b48902527007686b0be39008fdb7e 1`] = `
+{
+  "args": {
+    "auth": {
+      "organization": {
+        "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+      },
+      "role": "regular",
+      "user": {
+        "firstname": "Dexter",
+        "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        "initials": "DM",
+      },
+    },
+    "authName": "REGULAR",
+    "inputFiller": [Function],
+    "inputFillerName": "ALL_WITH_EXAMPLES",
+  },
+  "err": null,
+  "hash": "9d8b0b39e2b5bf14e41d63c932ffb213fb2b48902527007686b0be39008fdb7e",
+  "io": {
+    "i": {
+      "client_id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+      "client_secret": "pk_bxa2HCdsT7CKwVSdem8fjS8rW",
+      "code": "pk_bxa2HCdsT7CKwVSdem8fjS8rW",
+      "code_verifier": "pk_bxa2HCdsT7CKwVSdem8fjS8rW",
+      "grant_type": "authorization_code",
+      "redirect_uri": "https://myservice.toto.com",
+    },
+    "o": {
+      "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJvcmdhbml6YXRpb24iOnsiaWQiOiJkZDk2NzBlNy0xZGQ1LTQxNTUtODVjMi0zMzU3MTQ3OTlmZjcifSwicm9sZSI6ImFkbWluIiwidXNlciI6eyJmaXJzdG5hbWUiOiJEZXh0ZXIiLCJpZCI6ImRkOTY3MGU3LTFkZDUtNDE1NS04NWMyLTMzNTcxNDc5OWZmNyIsImluaXRpYWxzIjoiRE0ifSwiYXVkIjoibGlibW9kdWxvciIsImV4cCI6MTY1MjY0OTgxMCwiaXNzIjoibGlibW9kdWxvciIsImlhdCI6MTY1MjY0NjIxMH0.jLYd7L-kdaZZ3Ym_k67yeS8wnHD4PgnnfKolACk2wv0",
+      "expires_in": 3600,
+      "id": "356a192b-7913-404c-9457-4d18c28d46e6",
+      "refresh_token": null,
+      "token_type": "Bearer",
+    },
+  },
+  "sideEffects": null,
+  "status": "success",
+}
+`;
+
+exports[`Run > Use Cases > 'OAuthGetToken' > should execute with auth 'REGULAR' and input 'ONLY_MANDATORY_WITH_EXAMPLES' > hash = 229e6f45c14c7f5e9b8d26c5f64bea5080598363959fca45bf1de17e42e61e0c 1`] = `
+{
+  "args": {
+    "auth": {
+      "organization": {
+        "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+      },
+      "role": "regular",
+      "user": {
+        "firstname": "Dexter",
+        "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        "initials": "DM",
+      },
+    },
+    "authName": "REGULAR",
+    "inputFiller": [Function],
+    "inputFillerName": "ONLY_MANDATORY_WITH_EXAMPLES",
+  },
+  "err": null,
+  "hash": "229e6f45c14c7f5e9b8d26c5f64bea5080598363959fca45bf1de17e42e61e0c",
+  "io": {
+    "i": {
+      "client_id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+      "client_secret": "pk_bxa2HCdsT7CKwVSdem8fjS8rW",
+      "code": "pk_bxa2HCdsT7CKwVSdem8fjS8rW",
+      "code_verifier": "pk_bxa2HCdsT7CKwVSdem8fjS8rW",
+      "grant_type": "authorization_code",
+      "redirect_uri": "https://myservice.toto.com",
+    },
+    "o": {
+      "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJvcmdhbml6YXRpb24iOnsiaWQiOiJkZDk2NzBlNy0xZGQ1LTQxNTUtODVjMi0zMzU3MTQ3OTlmZjcifSwicm9sZSI6ImFkbWluIiwidXNlciI6eyJmaXJzdG5hbWUiOiJEZXh0ZXIiLCJpZCI6ImRkOTY3MGU3LTFkZDUtNDE1NS04NWMyLTMzNTcxNDc5OWZmNyIsImluaXRpYWxzIjoiRE0ifSwiYXVkIjoibGlibW9kdWxvciIsImV4cCI6MTY1MjY0OTgxMCwiaXNzIjoibGlibW9kdWxvciIsImlhdCI6MTY1MjY0NjIxMH0.jLYd7L-kdaZZ3Ym_k67yeS8wnHD4PgnnfKolACk2wv0",
+      "expires_in": 3600,
+      "id": "356a192b-7913-404c-9457-4d18c28d46e6",
+      "refresh_token": null,
+      "token_type": "Bearer",
+    },
+  },
+  "sideEffects": null,
+  "status": "success",
+}
+`;
+
+exports[`Run > Use Cases > 'OAuthGetToken' > should execute with auth 'REGULAR' and input 'ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPL…' > hash = d64d87ba8b6ea06f5ca8f867b1d83a5fd04d34316843e9044ad9737bcb7f0e68 1`] = `
+{
+  "args": {
+    "auth": {
+      "organization": {
+        "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+      },
+      "role": "regular",
+      "user": {
+        "firstname": "Dexter",
+        "id": "dd9670e7-1dd5-4155-85c2-335714799ff7",
+        "initials": "DM",
+      },
+    },
+    "authName": "REGULAR",
+    "inputFiller": [Function],
+    "inputFillerName": "ONLY_SET_PROGRAMMATICALLY_WITH_EXAMPLES",
+  },
+  "err": [IllegalArgumentError: Client id must be filled],
+  "hash": "d64d87ba8b6ea06f5ca8f867b1d83a5fd04d34316843e9044ad9737bcb7f0e68",
+  "io": {
+    "i": {
+      "client_id": undefined,
+      "client_secret": undefined,
+      "code": undefined,
+      "code_verifier": undefined,
+      "grant_type": undefined,
+      "redirect_uri": undefined,
+    },
+    "o": null,
+  },
+  "sideEffects": null,
+  "status": "warning",
+}
+`;
+
 exports[`Run > Use Cases > 'SignIn' > should execute with auth 'ADMIN' and input 'ALL_WITH_EXAMPLES' > hash = 51c300ed4b9089e7fbee998f77e93ff9d9a1b45bcb4e648ba651a3f63cdc231d 1`] = `
 {
   "args": {

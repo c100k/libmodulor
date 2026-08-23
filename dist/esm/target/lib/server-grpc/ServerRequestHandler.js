@@ -13,7 +13,7 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 import { status } from '@grpc/grpc-js';
 import { inject, injectable } from 'inversify';
 import { logDevWarning } from '../../../error/index.js';
-import { UCBuilder, UCOutputReader, UCOutputSideEffectType, } from '../../../uc/index.js';
+import { reqItem00, UCBuilder, UCOutputReader, UCOutputSideEffectType, } from '../../../uc/index.js';
 import { AuthenticationChecker } from '../server/AuthenticationChecker.js';
 import { CustomerFacingErrorBuilder } from '../server/CustomerFacingErrorBuilder.js';
 import { PublicApiKeyChecker } from '../server/PublicApiKeyChecker.js';
@@ -58,7 +58,7 @@ let ServerRequestHandler = class ServerRequestHandler {
                 url,
                 xForwardedProtoHeader: await metadata(X_FORWARDED_PROTO_HEADER_NAME),
             });
-            const { sec } = ucd;
+            const { ext, sec } = ucd;
             if (dangerouslySkipPubApiKeyCheck) {
                 logDevWarning('Skipping pub api key check');
             }
@@ -94,6 +94,13 @@ let ServerRequestHandler = class ServerRequestHandler {
             if (!output) {
                 return {
                     body: undefined,
+                    status: status.OK,
+                };
+            }
+            const externalSpecResponse = ext?.http?.externalSpecResponse;
+            if (externalSpecResponse) {
+                return {
+                    body: reqItem00(output),
                     status: status.OK,
                 };
             }

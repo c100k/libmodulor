@@ -1,4 +1,5 @@
 import type { URL } from '../../dt/index.js';
+export type HTTPBodylessStatus = 204 | 302;
 export type HTTPCSPType = 'defaultSrc' | 'imgSrc' | 'scriptSrc';
 export type HTTPCSPValue = URL[];
 export type HTTPCookieSameSite = 'lax' | 'none' | 'strict';

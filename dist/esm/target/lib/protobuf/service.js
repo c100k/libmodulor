@@ -1,5 +1,5 @@
 import { Field, Method, Service } from 'protobufjs';
-import { UC_OPI0_SUFFIX, UC_OPI1_SUFFIX, UC_OUTPUT_PART0_SUFFIX, UC_OUTPUT_PART1_SUFFIX, } from '../../../convention.js';
+import { UC_OPI0_SUFFIX, UC_OPI1_SUFFIX, UC_OUTPUT_PART0_SUFFIX, UC_OUTPUT_PART1_SUFFIX, UC_OUTPUT_SUFFIX, } from '../../../convention.js';
 import { UC_OUTPUT_PARTS_FIELD_1, ucTransportType, } from '../../../uc/index.js';
 import { ucEmptyType } from './field.js';
 import { ucInputType } from './input.js';
@@ -41,6 +41,11 @@ export function serviceTypes(ucd) {
     const { metadata: { name }, io: { o }, } = ucd;
     const part0 = o?.parts?._0;
     if (!part0) {
+        return res;
+    }
+    const externalSpecResponse = ucd.ext?.http?.externalSpecResponse;
+    if (externalSpecResponse) {
+        res.output = ucOPIType(`${name}${UC_OUTPUT_SUFFIX}`, part0);
         return res;
     }
     const pagination = ucOutputPartPaginationType();

@@ -3,7 +3,7 @@ import type { HTTPMethod, HTTPStatusNumber, URL, URLPath } from '../../../dt/ind
 import { type ServerError } from '../../../error/index.js';
 import type { SettingsManager, Worker } from '../../../std/index.js';
 import { UCBuilder, type UCDef, type UCInput, type UCManager, type UCManagerExecServerOpts, type UCOPIBase, type UCOutput } from '../../../uc/index.js';
-import type { HTTPDataEnvelope, HTTPReqData } from '../../../utils/index.js';
+import type { HTTPBodylessStatus, HTTPDataEnvelope, HTTPReqData } from '../../../utils/index.js';
 import { AuthCookieCreator, type Output as AuthCookieCreatorOutput } from './AuthCookieCreator.js';
 import { AuthenticationChecker } from './AuthenticationChecker.js';
 import { CustomerFacingErrorBuilder } from './CustomerFacingErrorBuilder.js';
@@ -44,14 +44,13 @@ export interface ServerRequestHandlerInput<I extends UCInput | undefined = undef
      */
     ucManager: UCManager;
 }
-type BodylessStatus = 204 | 302;
 type Output<OPI0 extends UCOPIBase | undefined = undefined, OPI1 extends UCOPIBase | undefined = undefined> = ({
     body: undefined;
-    status: BodylessStatus;
+    status: HTTPBodylessStatus;
 } | {
-    body: UCOutput<OPI0, OPI1> | ServerError;
+    body: UCOutput<OPI0, OPI1> | NonNullable<OPI0> | ServerError;
     rawErr?: Error;
-    status: Exclude<HTTPStatusNumber, BodylessStatus>;
+    status: Exclude<HTTPStatusNumber, HTTPBodylessStatus>;
 }) & {
     rawErr?: Error;
 };

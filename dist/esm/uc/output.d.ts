@@ -24,3 +24,4 @@ export interface UCOutputDef<OPI0 extends UCOPIBase | undefined = undefined, OPI
     sideEffects?: UCOutputSideEffect[];
 }
 export declare function buildSingleItemOutput<OPI0 extends UCOPIBase>(item: OPI0): UCOutput<OPI0>;
+export declare function reqItem00<OPI0 extends UCOPIBase | undefined = undefined, OPI1 extends UCOPIBase | undefined = undefined>(output: UCOutput<OPI0, OPI1>): NonNullable<OPI0>;
