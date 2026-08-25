@@ -46,7 +46,7 @@ export const OAuthGetTokenUCD: UCDef<OAuthGetTokenInput, OAuthGetTokenOPI0> = {
     ext: {
         http: {
             externalSpecResponse:
-                'https://datatracker.ietf.org/doc/html/rfc8414#section-2',
+                'https://datatracker.ietf.org/doc/html/rfc6749#section-4.1.4',
             mountAt: '/api/v1/oauth/token',
         },
     },
