@@ -1,6 +1,24 @@
 # CHANGELOG
 
-## v0.34.0 (unreleased)
+## v0.34.0 (2026-08-25)
+
+### 🚀 Added external specification responses
+
+* Added `externalSpecResponse` to use cases whose HTTP response must conform to an external specification.
+* Added an OAuth2 example demonstrating the new response format.
+* JSON Schema generation now reflects the external response specification.
+
+### ⚠️ Breaking changes
+
+* Removed `def.ext.http.transform`. HTTP and gRPC servers now return the use case output directly.
+* Added `Logger.table()` for structured table output.
+* Added `FSManager.catBytes()` and changed binary file writes from `ArrayBuffer` to `Uint8Array`.
+
+### 🔧 Other improvements
+
+* Added missing `err_unreachable` translations.
+* Simplified TypeScript imports in the AST parser.
+* Updated minor and patch dependencies.
 
 See all the changes here : https://github.com/c100k/libmodulor/compare/v0.33.0...master
 
