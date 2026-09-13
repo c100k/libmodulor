@@ -12,6 +12,7 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 };
 var CommandExecutor_1;
 import { inject, injectable } from 'inversify';
+import { TFile, } from '../../../dt/index.js';
 import { WordingManager } from '../../../i18n/index.js';
 import { FSManagerItemInfoType, } from '../../../std/index.js';
 import { ucifMustBeFilledManually, } from '../../../uc/index.js';
@@ -19,6 +20,7 @@ import { print, printError } from './renderer.js';
 let CommandExecutor = class CommandExecutor {
     static { CommandExecutor_1 = this; }
     fsManager;
+    fileMetadataManager;
     i18nManager;
     promptManager;
     ucManager;
@@ -27,8 +29,9 @@ let CommandExecutor = class CommandExecutor {
     static VERSION_FILE_NAME = 'package.json';
     static VERSION_FETCH_MAX_TRIES = 10;
     static VERSION_FETCH_START_PATH = import.meta.dirname;
-    constructor(fsManager, i18nManager, promptManager, ucManager, wordingManager) {
+    constructor(fsManager, fileMetadataManager, i18nManager, promptManager, ucManager, wordingManager) {
         this.fsManager = fsManager;
+        this.fileMetadataManager = fileMetadataManager;
         this.i18nManager = i18nManager;
         this.promptManager = promptManager;
         this.ucManager = ucManager;
@@ -41,6 +44,7 @@ let CommandExecutor = class CommandExecutor {
             if (!confirmed) {
                 return;
             }
+            await this.formatUCInput(uc);
             const ucor = await this.ucManager.execClient(uc, {
                 stream: {
                     onClose: async () => { },
@@ -87,6 +91,29 @@ let CommandExecutor = class CommandExecutor {
             return CommandExecutor_1.DEFAULT_VERSION;
         }
     }
+    async formatFilePathToFile(path) {
+        let name = 'tmp-1'; // Fine if not unique because never saved as is
+        const bytes = await this.fsManager.catBytes(path);
+        const blob = bytes;
+        // TODO : Optimize this for large files
+        // It loads them in memory for nothing, except getting the metadata
+        const tmpFile = new File([blob], name);
+        const { ext, mimeType } = await this.fileMetadataManager.info(tmpFile);
+        name = ext ? `${name}.${ext}` : name;
+        return new File([blob], name, {
+            type: mimeType,
+        });
+    }
+    async formatUCInput(uc) {
+        for (const f of uc.inputFields) {
+            const val = f.getValue();
+            if (!val || !(f.def.type instanceof TFile)) {
+                continue;
+            }
+            const file = await this.formatFilePathToFile(val);
+            f.setVal(file);
+        }
+    }
     async promptForSensitiveFields(uc) {
         const fields = uc
             .inputFieldsSensitive()
@@ -117,10 +144,11 @@ let CommandExecutor = class CommandExecutor {
 CommandExecutor = CommandExecutor_1 = __decorate([
     injectable(),
     __param(0, inject('FSManager')),
-    __param(1, inject('I18nManager')),
-    __param(2, inject('PromptManager')),
-    __param(3, inject('UCManager')),
-    __param(4, inject(WordingManager)),
-    __metadata("design:paramtypes", [Object, Object, Object, Object, WordingManager])
+    __param(1, inject('FileMetadataManager')),
+    __param(2, inject('I18nManager')),
+    __param(3, inject('PromptManager')),
+    __param(4, inject('UCManager')),
+    __param(5, inject(WordingManager)),
+    __metadata("design:paramtypes", [Object, Object, Object, Object, Object, WordingManager])
 ], CommandExecutor);
 export { CommandExecutor };

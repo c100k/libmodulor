@@ -4,11 +4,13 @@ import {
     bindCommon,
     bindProduct,
     CONTAINER_OPTS,
+    type ShellCommandExecutor,
     updateSettings,
 } from '../../../../../dist/esm/index.js';
 import {
     bindNodeCLI,
     bindNodeCore,
+    NodeSpawnShellCommandExecutor,
 } from '../../../../../dist/esm/index.node.js';
 import { I18n } from '../../i18n.js';
 import { Manifest } from '../../manifest.js';
@@ -21,5 +23,9 @@ updateSettings<S>(container, settings);
 bindNodeCore(container);
 bindNodeCLI(container);
 bindProduct(container, Manifest, I18n);
+
+(await container.rebind<ShellCommandExecutor>('ShellCommandExecutor')).to(
+    NodeSpawnShellCommandExecutor,
+);
 
 export default container;
