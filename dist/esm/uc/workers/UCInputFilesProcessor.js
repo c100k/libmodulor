@@ -37,7 +37,7 @@ let UCInputFilesProcessor = class UCInputFilesProcessor {
         if (!canHandleFiles) {
             return;
         }
-        const fileFields = uc.inputFields.filter((f) => f.def.type instanceof TFile);
+        const fileFields = uc.inputFields.filter((f) => !f.def.transient && f.def.type instanceof TFile);
         for await (const field of fileFields) {
             const [isRepeatable] = ucifRepeatability(field.def);
             if (isRepeatable) {
