@@ -17,7 +17,7 @@ A TypeScript library to create platform-agnostic applications.
 - [Documentation](https://libmodulor.c100k.eu/docs)
 - [Concepts > Philosophy](https://libmodulor.c100k.eu/docs/concepts/philosophy)
 - [Examples > Playground](https://libmodulor.c100k.eu/docs/examples/Playground)
-- [Guides > Playground](https://libmodulor.c100k.eu/docs/guides/create-project)
+- [Guides > Create a project](https://libmodulor.c100k.eu/docs/guides/create-project)
 
 ## Getting Started
 
