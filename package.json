@@ -113,7 +113,7 @@
     },
     "devDependencies": {
         "@babel/core": "^7.29.7",
-        "@biomejs/biome": "^2.5.13",
+        "@biomejs/biome": "^2.5.14",
         "@opentelemetry/auto-instrumentations-node": "^0.77.0",
         "@opentelemetry/exporter-trace-otlp-http": "^0.220.0",
         "@opentelemetry/resources": "^2.11.0",
@@ -124,15 +124,15 @@
         "@types/react": "^19.3.0",
         "@types/react-dom": "^19.3.0",
         "babel-plugin-transform-typescript-metadata": "^0.3.2",
-        "expo": "^57.0.22",
+        "expo": "^57.0.24",
         "expo-document-picker": "^14.0.8",
         "expo-image-picker": "^17.0.11",
-        "react-native-safe-area-context": "^5.9.1",
-        "wrangler": "^4.131.1",
-        "zod": "^4.6.2"
+        "react-native-safe-area-context": "^5.10.0",
+        "wrangler": "^4.136.3",
+        "zod": "^4.6.5"
     },
     "peerDependencies": {
-        "@grpc/grpc-js": "^1.14.4",
+        "@grpc/grpc-js": "^1.14.5",
         "@grpc/proto-loader": "^0.8.1",
         "@grpc/reflection": "^1.0.4",
         "@hono/node-server": "^1.19.17",
@@ -144,13 +144,13 @@
         "cookie-parser": "^1.4.7",
         "express": "^5.2.1",
         "express-fileupload": "^1.5.2",
-        "fast-check": "^4.10.0",
+        "fast-check": "^4.10.2",
         "helmet": "^8.3.0",
-        "hono": "^4.13.7",
+        "hono": "^4.13.8",
         "inversify": "^7.11.0",
         "jose": "^6.2.12",
         "knex": "^3.3.0",
-        "next": "^15.5.25",
+        "next": "^15.5.26",
         "pg": "^8.23.0",
         "protobufjs": "^8.8.0",
         "react": "19.2.8",
@@ -161,7 +161,7 @@
         "typescript": "^6.0.3",
         "vite": "^8.3.0",
         "vitest": "^4.1.11",
-        "zod": "^4.6.2"
+        "zod": "^4.6.5"
     },
     "peerDependenciesMeta": {
         "@grpc/grpc-js": {
