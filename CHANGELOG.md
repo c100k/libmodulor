@@ -1,6 +1,18 @@
 # CHANGELOG
 
-## v0.35.0 (unreleased)
+## v0.35.0 (2026-09-27)
+
+### 🚀 Features
+
+- **Target CLI**: Support handling files in `uc` input
+
+### 🐛 Fixes
+
+- **UC**: Skip processing files associated with transient input fields
+
+### 📦 Dependencies
+
+- Bump Node.js to `26`
 
 See all the changes here : https://github.com/c100k/libmodulor/compare/v0.34.0...master
 
