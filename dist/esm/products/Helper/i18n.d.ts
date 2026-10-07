@@ -99,8 +99,8 @@ export declare const I18n: {
         dt_YesNo_Y_label: string;
         uc_client_confirm_confirm: string;
         uc_client_confirm_message: string;
-        uc_client_confirm_cancel: string;
         uc_client_confirm_title: string;
+        uc_client_confirm_cancel: string;
         uc_i_submit_changing: string;
         uc_i_submit_idle: string;
         uc_i_submit_initializing: string;

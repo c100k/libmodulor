@@ -1,6 +1,6 @@
 import { type Factory } from 'inversify';
 import type { ClockManager, CryptoManager, Logger } from '../../std/index.js';
-import type { UCClientConfirmManager } from '../client.js';
+import { type UCClientConfirmManager } from '../client.js';
 import type { UCData } from '../data.js';
 import type { UCDataStore, UCDataStoreRecord } from '../data-store.js';
 import { UCOutputReader } from '../helpers/UCOutputReader.js';

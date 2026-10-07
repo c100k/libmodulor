@@ -19,6 +19,7 @@ export * from './LLMManager.js';
 export * from './Logger.js';
 export * from './lib/emails.js';
 export * from './lib/settings.js';
+export * from './ProcessOutputEmitter.js';
 export * from './PromptManager.js';
 export * from './RandManager.js';
 export * from './SettingsManager.js';

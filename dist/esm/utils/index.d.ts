@@ -25,5 +25,6 @@ export { capitalize, isCapitalized } from './strings/capitalize.js';
 export { humanize } from './strings/humanize.js';
 export { truncate } from './strings/truncate.js';
 export { fmtBold, fmtCommand, fmtPadEndFor, fmtSection, } from './terminal/fmt.js';
+export { type OSC7501Input, osc7501_isBase64able, } from './terminal/osc-7501.js';
 export { assertIsDefined, isBlank, range, sample, tupleOf, valuesIn, } from './types/funcs.js';
 export type { EnumOf, ExtractStrict, FirstNElements, RecursiveNonNullable, StringKeys, } from './types/utility-types.js';

@@ -5,6 +5,7 @@ import { NodeEnvironmentManager } from '../../std/impl/NodeEnvironmentManager.js
 import { NodeFileBinFileMetadataManager } from '../../std/impl/NodeFileBinFileMetadataManager.js';
 import { NodeFormDataBuilder } from '../../std/impl/NodeFormDataBuilder.js';
 import { NodeFSManager } from '../../std/impl/NodeFSManager.js';
+import { NodeProcessOutputEmitter } from '../../std/impl/NodeProcessOutputEmitter.js';
 export function bindNodeCore(container) {
     // std
     container.bind('BufferManager').to(NodeBufferManager);
@@ -23,6 +24,9 @@ export function bindNodeCore(container) {
         .rebindSync('SettingsManager')
         .to(EnvSettingsManager)
         .inSingletonScope();
+    container
+        .bind('ProcessOutputEmitter')
+        .to(NodeProcessOutputEmitter);
     // This one is voluntarily not bound by default, for safety reasons.
     // It is required by NodeFileBinFileMetadataManager though, so it must be bound when needed.
     // container.bind<ShellCommandExecutor>('ShellCommandExecutor').to(NodeSpawnShellCommandExecutor);

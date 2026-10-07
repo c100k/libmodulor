@@ -12,6 +12,7 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 };
 import { inject, injectable } from 'inversify';
 import { ForbiddenError } from '../../error/index.js';
+import { ucNeedsClientConfirm, } from '../client.js';
 import { UCExecMode } from '../exec.js';
 import { UCOutputReader } from '../helpers/UCOutputReader.js';
 import { rInput } from '../utils/rInput.js';
@@ -53,8 +54,7 @@ let SimpleUCManager = class SimpleUCManager {
     }
     async confirmClient(uc) {
         const { def } = uc;
-        const { metadata: { sensitive }, } = def;
-        if (!sensitive) {
+        if (!ucNeedsClientConfirm(def)) {
             return true;
         }
         return this.ucClientConfirmManager.exec(def);

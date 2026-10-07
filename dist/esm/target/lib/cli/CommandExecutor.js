@@ -15,13 +15,15 @@ import { inject, injectable } from 'inversify';
 import { TFile, } from '../../../dt/index.js';
 import { WordingManager } from '../../../i18n/index.js';
 import { FSManagerItemInfoType, } from '../../../std/index.js';
-import { ucifMustBeFilledManually, } from '../../../uc/index.js';
+import { ucifMustBeFilledManually, ucNeedsClientConfirm, } from '../../../uc/index.js';
+import { OSC7501Reporter } from './OSC7501Reporter.js';
 import { print, printError } from './renderer.js';
 let CommandExecutor = class CommandExecutor {
     static { CommandExecutor_1 = this; }
     fsManager;
     fileMetadataManager;
     i18nManager;
+    osc7501Reporter;
     promptManager;
     ucManager;
     wordingManager;
@@ -29,21 +31,37 @@ let CommandExecutor = class CommandExecutor {
     static VERSION_FILE_NAME = 'package.json';
     static VERSION_FETCH_MAX_TRIES = 10;
     static VERSION_FETCH_START_PATH = import.meta.dirname;
-    constructor(fsManager, fileMetadataManager, i18nManager, promptManager, ucManager, wordingManager) {
+    constructor(fsManager, fileMetadataManager, i18nManager, osc7501Reporter, promptManager, ucManager, wordingManager) {
         this.fsManager = fsManager;
         this.fileMetadataManager = fileMetadataManager;
         this.i18nManager = i18nManager;
+        this.osc7501Reporter = osc7501Reporter;
         this.promptManager = promptManager;
         this.ucManager = ucManager;
         this.wordingManager = wordingManager;
     }
     async exec({ uc }) {
         try {
+            await this.osc7501Reporter.exec({
+                state: 'working',
+            });
             await this.promptForSensitiveFields(uc);
+            if (ucNeedsClientConfirm(uc.def)) {
+                await this.osc7501Reporter.exec({
+                    kind: 'permission',
+                    state: 'blocked',
+                });
+            }
             const confirmed = await this.ucManager.confirmClient(uc);
             if (!confirmed) {
+                await this.osc7501Reporter.exec({
+                    state: 'idle',
+                });
                 return;
             }
+            await this.osc7501Reporter.exec({
+                state: 'working',
+            });
             await this.formatUCInput(uc);
             const ucor = await this.ucManager.execClient(uc, {
                 stream: {
@@ -58,8 +76,15 @@ let CommandExecutor = class CommandExecutor {
             if (output) {
                 print(JSON.stringify(output));
             }
+            await this.osc7501Reporter.exec({
+                state: 'done',
+            });
         }
         catch (err) {
+            await this.osc7501Reporter.exec({
+                msg: this.i18nManager.t(typeof err === 'string' ? err : err.message),
+                state: 'error',
+            });
             printError(this.i18nManager, err);
         }
     }
@@ -118,10 +143,18 @@ let CommandExecutor = class CommandExecutor {
         const fields = uc
             .inputFieldsSensitive()
             .filter((f) => ucifMustBeFilledManually(f.def, { noContext: true }));
+        const idx = 0;
+        const total = fields.length;
         for (const f of fields) {
             const { desc, label } = this.wordingManager.ucif(f);
             const help = desc ? ` (${desc})` : '';
             const invite = `${label}${help}`;
+            await this.osc7501Reporter.exec({
+                kind: 'question',
+                msg: invite,
+                progress: Math.floor((idx / total) * 100),
+                state: 'blocked',
+            });
             await this.promptManager.prompt(invite, {
                 validate: async (v) => {
                     f.setVal(v);
@@ -146,9 +179,10 @@ CommandExecutor = CommandExecutor_1 = __decorate([
     __param(0, inject('FSManager')),
     __param(1, inject('FileMetadataManager')),
     __param(2, inject('I18nManager')),
-    __param(3, inject('PromptManager')),
-    __param(4, inject('UCManager')),
-    __param(5, inject(WordingManager)),
-    __metadata("design:paramtypes", [Object, Object, Object, Object, Object, WordingManager])
+    __param(3, inject(OSC7501Reporter)),
+    __param(4, inject('PromptManager')),
+    __param(5, inject('UCManager')),
+    __param(6, inject(WordingManager)),
+    __metadata("design:paramtypes", [Object, Object, Object, OSC7501Reporter, Object, Object, WordingManager])
 ], CommandExecutor);
 export { CommandExecutor };
