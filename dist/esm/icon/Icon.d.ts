@@ -1,5 +1,5 @@
 /**
- * The icon code (e.g. https://fontawesome.com/v6/search?o=s&m=free)
+ * The icon code (e.g. https://fontawesome.com/v6/search?ic=free-collection)
  *
  * There are thousands of them so we voluntarily keep it a simple string and not a union type that would become unmaintainable.
  *
