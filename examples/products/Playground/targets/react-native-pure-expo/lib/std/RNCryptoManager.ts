@@ -25,7 +25,7 @@ export class RNCryptoManager implements CryptoManager {
 
     public hash(
         _algorithm: CryptoManagerHashAlgorithm,
-        _base: string,
+        _base: string | Uint8Array<ArrayBufferLike>,
         _binaryToTextEncoding: CryptoManagerBinaryToTextEncoding,
     ): CryptoManagerHash {
         throw new NotImplementedError<this>('hash');
@@ -33,7 +33,7 @@ export class RNCryptoManager implements CryptoManager {
 
     public hmacToBase64(
         _algorithm: CryptoManagerHashAlgorithm,
-        _base: string,
+        _base: string | Uint8Array<ArrayBufferLike>,
         _key: CryptoManagerHMACKey,
         _keyEncoding: CryptoManagerHMACKeyEncoding,
     ): BufferManagerBase64String {
@@ -42,7 +42,7 @@ export class RNCryptoManager implements CryptoManager {
 
     public hmacToHex(
         _algorithm: CryptoManagerHashAlgorithm,
-        _base: string,
+        _base: string | Uint8Array<ArrayBufferLike>,
         _key: CryptoManagerHash,
         _keyEncoding: CryptoManagerHMACKeyEncoding,
     ): CryptoManagerHash {
