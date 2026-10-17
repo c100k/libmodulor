@@ -30,7 +30,7 @@ let RequestLogger = class RequestLogger {
             return;
         }
         // TODO : Handle large payloads (e.g. containing buffer when doing file upload in gRPC)
-        this.logger.debug(prefix, JSON.stringify(body));
+        this.logger.debug(prefix, { body: JSON.stringify(body) });
     }
 };
 RequestLogger = __decorate([
