@@ -84,7 +84,7 @@ let NodeHonoServerManager = class NodeHonoServerManager {
         this.hono.use(serveStatic({ root: dirPath }));
     }
     async start() {
-        listen(this.server, this.entrypointsBuilder, this.logger, this.settingsManager);
+        await listen(this.server, this.entrypointsBuilder, this.logger, this.settingsManager);
     }
     async stop() {
         await stop(this.server, this.settingsManager);

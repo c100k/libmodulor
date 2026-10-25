@@ -71,7 +71,7 @@ let NodeGRPCServerManager = class NodeGRPCServerManager {
     }
     async start() {
         const { creds } = await this.serverCredentialsCreator.exec({});
-        listen(this.server, creds, this.entrypointsBuilder, this.logger);
+        await listen(this.server, creds, this.entrypointsBuilder, this.logger);
     }
     async stop() {
         await stop(this.server, this.settingsManager);

@@ -70,12 +70,15 @@ export function init() {
 }
 export function listen(server, creds, entrypointsBuilder, logger) {
     const { grpc } = entrypointsBuilder.exec();
-    server.bindAsync(grpc, creds, (err, _port) => {
-        if (err) {
-            logger.error(err);
-            return;
-        }
-        logger.info(`Listening on ${grpc}`);
+    return new Promise((resolve, reject) => {
+        server.bindAsync(grpc, creds, (err, _port) => {
+            if (err) {
+                logger.error(err);
+                return reject(err);
+            }
+            logger.info(`Listening on ${grpc}`);
+            resolve();
+        });
     });
 }
 export async function stop(server, settingsManager) {

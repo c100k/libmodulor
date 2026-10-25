@@ -1,8 +1,15 @@
-export function listen(server, entrypointsBuilder, logger, settingsManager) {
+export async function listen(server, entrypointsBuilder, logger, settingsManager) {
     const host = settingsManager.get()('server_binding_host');
     const port = settingsManager.get()('server_binding_port');
-    server.listen(port, host, () => {
-        logger.info(`Listening on ${entrypointsBuilder.exec().http}`);
+    // Resolve only once the server is actually bound, otherwise callers (e.g. tests) can hit it before it accepts connections.
+    return new Promise((resolve, reject) => {
+        const onError = (err) => reject(err);
+        server.once('error', onError);
+        server.listen(port, host, () => {
+            server.off('error', onError);
+            logger.info(`Listening on ${entrypointsBuilder.exec().http}`);
+            resolve();
+        });
     });
 }
 export async function stop(server, settingsManager) {

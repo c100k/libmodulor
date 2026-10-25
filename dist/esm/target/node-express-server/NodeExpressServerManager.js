@@ -89,7 +89,7 @@ let NodeExpressServerManager = class NodeExpressServerManager {
         this.express.use(express.static(dirPath));
     }
     async start() {
-        listen(this.server, this.entrypointsBuilder, this.logger, this.settingsManager);
+        await listen(this.server, this.entrypointsBuilder, this.logger, this.settingsManager);
     }
     async stop() {
         await stop(this.server, this.settingsManager);

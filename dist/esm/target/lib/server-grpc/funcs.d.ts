@@ -12,7 +12,7 @@ export declare function buildHandler<I extends UCInput | undefined = undefined, 
 export declare function buildStandardHandler<I extends UCInput | undefined = undefined, OPI0 extends UCOPIBase | undefined = undefined, OPI1 extends UCOPIBase | undefined = undefined>(appManifest: AppManifest, ucd: UCDef<I, OPI0, OPI1>, fileMetadataManager: FileMetadataManager, serverRequestHandler: ServerRequestHandler, ucManager: UCManager): StandardHandler<I, OPI0, OPI1>;
 export declare function buildStreamHandler<I extends UCInput | undefined = undefined, OPI0 extends UCOPIBase | undefined = undefined, OPI1 extends UCOPIBase | undefined = undefined>(appManifest: AppManifest, ucd: UCDef<I, OPI0, OPI1>, fileMetadataManager: FileMetadataManager, serverRequestHandler: ServerRequestHandler, ucManager: UCManager): StreamHandler<I, OPI0, OPI1>;
 export declare function init(): Server;
-export declare function listen(server: Server, creds: ServerCredentials, entrypointsBuilder: EntrypointsBuilder, logger: Logger): void;
+export declare function listen(server: Server, creds: ServerCredentials, entrypointsBuilder: EntrypointsBuilder, logger: Logger): Promise<void>;
 export declare function stop(server: Server, settingsManager: SettingsManager<StopSettings>): Promise<void>;
 export declare function toReq(fileMetadataManager: FileMetadataManager, call: ServerUnaryCall<unknown, unknown>): ServerRequestHandlerReq;
 export declare function toRes(metadata: Metadata): ServerRequestHandlerRes;
