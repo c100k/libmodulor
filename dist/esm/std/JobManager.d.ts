@@ -1,3 +1,4 @@
+import type { Percentage, UIntDuration, UIntQuantity } from '../dt/index.js';
 import type { Clearable, Initializable, SideEffectable } from '../utils/index.js';
 import type { Settings } from './SettingsManager.js';
 import type { Worker } from './Worker.js';
@@ -7,6 +8,14 @@ export interface JobManagerSettings extends Settings {
     job_manager_enabled: boolean;
     job_manager_processors: {
         queueName: JobManagerQueueName;
+        retry?: {
+            backoff?: {
+                type: 'exponential' | 'fixed';
+                delayInMS: UIntDuration;
+                jitter: Percentage;
+            };
+            maxAttempts?: UIntQuantity;
+        };
         workerClass: {
             new (...args: any[]): Worker<any, any>;
         };
