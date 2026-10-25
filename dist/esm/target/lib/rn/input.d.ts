@@ -13,6 +13,8 @@ export interface RNInputDef {
      *
      * @example `<TextInput {...attrs.spec} />`
      */
-    spec?: TextInputProps;
+    spec?: {
+        -readonly [K in keyof TextInputProps]: TextInputProps[K];
+    };
 }
 export declare function rnInputDef<T extends DataType>(field: UCInputField<T>, disabled: boolean, _errMsg: ErrorMessage | null): RNInputDef;

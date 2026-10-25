@@ -15,7 +15,7 @@ const WEB_DEFAULT_BTN_STYLE = {
     borderWidth: 1,
     padding: 2,
     textAlign: 'center',
-};
+} as const;
 const WEB_DEFAULT_INPUT_STYLE = {
     backgroundColor: '#ffffff',
     borderColor: WEB_DEFAULT_BTN_STYLE.borderColor,
