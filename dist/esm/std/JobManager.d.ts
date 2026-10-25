@@ -7,6 +7,10 @@ export type JobManagerQueueName = string;
 export interface JobManagerSettings extends Settings {
     job_manager_enabled: boolean;
     job_manager_processors: {
+        concurrency?: {
+            qty?: UIntQuantity;
+            type: 'in_process' | 'in_dedicated_thread';
+        };
         queueName: JobManagerQueueName;
         retry?: {
             backoff?: {
