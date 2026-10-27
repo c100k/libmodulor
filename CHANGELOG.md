@@ -1,5 +1,32 @@
 # CHANGELOG
 
+## v0.36.0 (2026-10-27)
+
+See all the changes here : https://github.com/c100k/libmodulor/compare/v0.35.0...master
+
+### 🚀 Features
+
+- **Target CLI**: Report use case execution state to the terminal via [OSC 7501](https://www.superlogical.com/rex/docs/build/program-status) (`working`, `blocked` on confirmation or input prompts, `done`, `error`), so compatible terminals can show progress and notifications
+- **Std**: Add `retry` settings to `JobManager` (max attempts, fixed or exponential backoff with jitter)
+- **Std**: Add `concurrency` settings to `JobManager` (quantity, in process or in a dedicated thread)
+- **Std**: Introduce `ProcessOutputEmitter` (with a Node implementation bound in `bindNodeCore`)
+
+### ⚠️ Breaking changes
+
+- **Std**: `CryptoManager.hash()`, `hmacToBase64()` and `hmacToHex()` now accept `string | Uint8Array` as `base`. Custom implementations must handle both types
+
+### 🐛 Fixes
+
+- **Target server**: `listen()` now resolves only once the server is actually bound, so tests can't hit it before it accepts connections
+- **Target server**: Fix the request debug log when the body contains `%s`
+
+### 📦 Dependencies
+
+- Bump React Native to `0.88` and React to `19.3`
+- Bump minor and patch dependencies
+
+See all the changes here : https://github.com/c100k/libmodulor/compare/v0.35.0...master
+
 ## v0.35.0 (2026-09-27)
 
 ### 🚀 Features
