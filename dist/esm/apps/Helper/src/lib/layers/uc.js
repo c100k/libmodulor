@@ -9,6 +9,7 @@ const UCD_TS = (name) => `import {
     TFreeTextShort,
     type UCDef,
     type UCInput,
+    type UCInputFieldValue,
     type UCOPIBase,
 } from '${LIB_NAME}';
 
@@ -17,7 +18,7 @@ import { ${name}${UC_MAIN_SERVER_SUFFIX} } from './${fileImportName(`${name}${UC
 
 export interface ${name}${UC_INPUT_SUFFIX} extends UCInput {
     ${TODO}
-    ${FIELD_NAME}: FreeTextShort;
+    ${FIELD_NAME}: UCInputFieldValue<FreeTextShort>;
 }
 
 export interface ${name}${UC_OPI0_SUFFIX} extends UCOPIBase {

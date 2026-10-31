@@ -16,6 +16,7 @@ import {
     TUIntQuantity,
     type UCDef,
     type UCInput,
+    type UCInputFieldValue,
     type UCMain,
     type UCMainInput,
     type UCOPIBase,
@@ -31,12 +32,12 @@ import {
 import { Manifest } from '../manifest.js';
 
 export interface SearchAccomodationInput extends UCInput {
-    adultsCount: UIntQuantity;
-    childrenCount: UIntQuantity;
-    country: CountryISO3166Alpha2;
-    from: DateISO8601;
-    roomsCount: UIntQuantity;
-    to: DateISO8601;
+    adultsCount: UCInputFieldValue<UIntQuantity>;
+    childrenCount: UCInputFieldValue<UIntQuantity>;
+    country: UCInputFieldValue<CountryISO3166Alpha2>;
+    from: UCInputFieldValue<DateISO8601>;
+    roomsCount: UCInputFieldValue<UIntQuantity>;
+    to: UCInputFieldValue<DateISO8601>;
 }
 
 export interface SearchAccomodationOPI0 extends UCOPIBase {

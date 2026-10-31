@@ -6,6 +6,7 @@ import {
     type UCData,
     type UCDef,
     type UCInput,
+    type UCInputFieldValue,
     type UCOPIBase,
 } from '../../../../../dist/esm/index.js';
 import { Manifest } from '../manifest.js';
@@ -16,7 +17,7 @@ export interface AskQuestionData extends UCData {
 }
 
 export interface AskQuestionInput extends UCInput {
-    prompt: FreeTextLong;
+    prompt: UCInputFieldValue<FreeTextLong>;
 }
 
 export interface AskQuestionOPI0 extends UCOPIBase {

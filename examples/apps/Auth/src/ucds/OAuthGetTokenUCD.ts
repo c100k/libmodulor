@@ -9,6 +9,7 @@ import {
     TUUID,
     type UCDef,
     type UCInput,
+    type UCInputFieldValue,
     type UCOPIBase,
     type UIntDuration,
     type URL,
@@ -26,12 +27,12 @@ import { Manifest } from '../manifest.js';
 import { OAuthGetTokenServerMain } from './OAuthGetTokenServerMain.js';
 
 export interface OAuthGetTokenInput extends UCInput {
-    client_id: UUID;
-    client_secret: ApiKey;
-    code: ApiKey;
-    code_verifier: ApiKey;
-    grant_type: OAuthGrantType;
-    redirect_uri: URL;
+    client_id: UCInputFieldValue<UUID>;
+    client_secret: UCInputFieldValue<ApiKey>;
+    code: UCInputFieldValue<ApiKey>;
+    code_verifier: UCInputFieldValue<ApiKey>;
+    grant_type: UCInputFieldValue<OAuthGrantType>;
+    redirect_uri: UCInputFieldValue<URL>;
 }
 
 export interface OAuthGetTokenOPI0 extends UCOPIBase {

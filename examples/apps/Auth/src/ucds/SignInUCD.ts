@@ -5,6 +5,7 @@ import {
     TJWT,
     type UCDef,
     type UCInput,
+    type UCInputFieldValue,
     type UCOPIBase,
     UCOutputSideEffectType,
 } from '../../../../../dist/esm/index.js';
@@ -13,7 +14,7 @@ import { Manifest } from '../manifest.js';
 import { SignInServerMain } from './SignInServerMain.js';
 
 export interface SignInInput extends UCInput {
-    role: Role;
+    role: UCInputFieldValue<Role>;
 }
 
 export interface SignInOPI0 extends UCOPIBase {

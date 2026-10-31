@@ -14,6 +14,7 @@ import {
     TFreeTextShort,
     type UCDef,
     type UCInput,
+    type UCInputFieldValue,
     type UCMain,
     type UCMainInput,
     type UCOutput,
@@ -24,10 +25,10 @@ import { type ActivityType, TActivityType } from '../lib/TActivityType.js';
 import { Manifest } from '../manifest.js';
 
 export interface CreateActivityInput extends UCInput {
-    date: DateISO8601;
-    description: FreeTextLong;
-    title: FreeTextShort;
-    type: ActivityType;
+    date: UCInputFieldValue<DateISO8601>;
+    description: UCInputFieldValue<FreeTextLong>;
+    title: UCInputFieldValue<FreeTextShort>;
+    type: UCInputFieldValue<ActivityType>;
 }
 
 export type CreateActivityOPI0 = AggregateOPI0;

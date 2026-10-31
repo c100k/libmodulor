@@ -6,6 +6,7 @@ import {
     TUIntQuantity,
     type UCDef,
     type UCInput,
+    type UCInputFieldValue,
     type UIntQuantity,
 } from '../../../../../dist/esm/index.js';
 import { type Order, OrderOPIDef } from '../lib/order.js';
@@ -14,9 +15,9 @@ import { Manifest } from '../manifest.js';
 import { BuyAssetServerMain } from './BuyAssetServerMain.js';
 
 export interface BuyAssetInput extends UCInput {
-    isin: ISIN;
-    limit: Amount;
-    qty: UIntQuantity;
+    isin: UCInputFieldValue<ISIN>;
+    limit: UCInputFieldValue<Amount>;
+    qty: UCInputFieldValue<UIntQuantity>;
 }
 
 export type BuyAssetOPI0 = Order;

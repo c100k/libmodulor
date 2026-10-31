@@ -5,6 +5,7 @@ import {
     TFile,
     type UCDef,
     type UCInput,
+    type UCInputFieldValue,
 } from '../../../../../dist/esm/index.js';
 import { AlbumOPIDef } from '../lib/album.js';
 import { type AlbumDesc, TAlbumDesc } from '../lib/TAlbumDesc.js';
@@ -21,15 +22,15 @@ import { CreateAlbumServerMain } from './CreateAlbumServerMain.js';
 import type { ListAlbumsOPI0 } from './ListAlbumsUCD.js';
 
 export interface CreateAlbumInput extends UCInput {
-    artist: Artist;
-    book: File;
-    cover: File;
-    description: AlbumDesc;
-    isPrivate: boolean;
-    language: Language;
-    name: AlbumName;
-    releaseYear: AlbumReleaseYear;
-    tags: Tag;
+    artist: UCInputFieldValue<Artist>;
+    book: UCInputFieldValue<File>;
+    cover: UCInputFieldValue<File>;
+    description: UCInputFieldValue<AlbumDesc>;
+    isPrivate: UCInputFieldValue<boolean>;
+    language: UCInputFieldValue<Language>;
+    name: UCInputFieldValue<AlbumName>;
+    releaseYear: UCInputFieldValue<AlbumReleaseYear>;
+    tags: UCInputFieldValue<Tag>;
 }
 
 export type CreateAlbumOPI0 = ListAlbumsOPI0;

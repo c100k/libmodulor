@@ -31,6 +31,7 @@ import {
     type UCDataStore,
     type UCDef,
     type UCInput,
+    type UCInputFieldValue,
     type UCMain,
     type UCMainInput,
     type UCManager,
@@ -89,9 +90,9 @@ const appI18n = {
 
 print('Declaring the UseCase');
 interface RegisterInput extends UCInput {
-    email: Email;
-    firstname: PersonFirstname;
-    lastname: PersonLastname;
+    email: UCInputFieldValue<Email>;
+    firstname: UCInputFieldValue<PersonFirstname>;
+    lastname: UCInputFieldValue<PersonLastname>;
 }
 
 interface RegisterOPI0 extends AggregateOPI0 {

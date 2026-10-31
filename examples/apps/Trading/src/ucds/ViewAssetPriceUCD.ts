@@ -4,6 +4,7 @@ import {
     SendClientMain,
     type UCDef,
     type UCInput,
+    type UCInputFieldValue,
     type UCOPIBase,
 } from '../../../../../dist/esm/index.js';
 import { TAssetPrice } from '../lib/TAssetPrice.js';
@@ -12,7 +13,7 @@ import { Manifest } from '../manifest.js';
 import { ViewAssetPriceServerMain } from './ViewAssetPriceServerMain.js';
 
 export interface ViewAssetPriceInput extends UCInput {
-    isin: ISIN;
+    isin: UCInputFieldValue<ISIN>;
 }
 
 export interface ViewAssetPriceOPI0 extends UCOPIBase {
