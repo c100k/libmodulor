@@ -1,16 +1,26 @@
-import type { DataType } from '../dt/index.js';
 import type { StringKeys } from '../utils/index.js';
-import type { UCInputFieldDef, UCInputFieldValue, UCInputFieldValueUnwrapped } from './input-field.js';
+import type { UCInputFieldDef, UCInputFieldValue } from './input-field.js';
 /**
  * Base interface all the use case input interfaces must extend
+ *
+ * Each field is declared with its {@link DataType} only (e.g. `email: Email`).
+ *
+ * At runtime, an input field is always optional and can hold multiple values (see {@link UCInputFieldValue}).
+ * Whether it's mandatory or repeatable is defined by its {@link UCInputFieldDef.cardinality}.
  */
 export type UCInput = {};
 export type UCInputUnwrapped<I extends UCInput | undefined> = {
-    [K in keyof I]: UCInputFieldValueUnwrapped<I[K]>;
+    [K in keyof I]: NonNullable<I[K]>;
 };
 export type UCInputKey<I extends UCInput | undefined> = StringKeys<UCInputUnwrapped<I>>;
-export type UCInputPartial<I extends UCInput | undefined> = Partial<Record<UCInputKey<I>, UCInputFieldValue<DataType>>>;
 export type UCInputKeyDataType<I extends UCInput | undefined, K extends UCInputKey<I>> = NonNullable<UCInputUnwrapped<I>[K]>;
+/**
+ * Runtime values of a use case input, where each field is a {@link UCInputFieldValue}
+ */
+export type UCInputValue<I extends UCInput | undefined> = {
+    [K in UCInputKey<I>]: UCInputFieldValue<UCInputKeyDataType<I, K>>;
+};
+export type UCInputPartial<I extends UCInput | undefined> = Partial<UCInputValue<I>>;
 /**
  * Definition of a use case input
  */

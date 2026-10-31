@@ -11,7 +11,6 @@ import {
     TUUID,
     type UCDef,
     type UCInput,
-    type UCInputFieldValue,
     type UCMain,
     type UCMainInput,
     type UCOPIBase,
@@ -23,7 +22,7 @@ import {
 import { Manifest } from '../manifest.js';
 
 export interface GenerateMiscDataInput extends UCInput {
-    uuidCount: UCInputFieldValue<UIntQuantity>;
+    uuidCount: UIntQuantity;
 }
 
 export interface GenerateMiscDataOPI0 extends UCOPIBase {

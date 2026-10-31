@@ -3,7 +3,7 @@ import type { UIntQuantity, UUID } from '../dt/index.js';
 import type { Clearable, EnumOf, Initializable, StringKeys } from '../utils/index.js';
 import type { UCData } from './data.js';
 import type { UCExecMode } from './exec.js';
-import type { UCInput } from './input.js';
+import type { UCInput, UCInputValue } from './input.js';
 import type { UCName } from './metadata.js';
 export type UCDataStoreDatasetName = string;
 export declare const UCDataStoreMode: {
@@ -57,7 +57,7 @@ export interface UCDataStoreRecord<I extends UCInput | undefined = undefined, D 
     data: D | null;
     executionMode: UCExecMode;
     id: UUID;
-    input: I | null;
+    input: UCInputValue<I> | null;
     name: UCName;
     organizationId: UUID | null;
     userId: UUID | null;

@@ -1,5 +1,5 @@
 import { TUUID } from '../../../dt/index.js';
-import { UCInputFieldFillingMode, } from '../../input-field.js';
+import { UCInputFieldFillingMode } from '../../input-field.js';
 export const AggregateInputDef = {
     fields: {
         id: {

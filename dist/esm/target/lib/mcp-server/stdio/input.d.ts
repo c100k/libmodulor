@@ -1,6 +1,6 @@
 import type { JSONSchemaObject } from '../../../../dt/index.js';
-import type { UCInput } from '../../../../uc/index.js';
-export type StdioToolInput<I extends UCInput | undefined = undefined> = I & {
+import type { UCInput, UCInputPartial } from '../../../../uc/index.js';
+export type StdioToolInput<I extends UCInput | undefined = undefined> = UCInputPartial<I> & {
     _reserved?: {
         confirmed?: boolean;
     };

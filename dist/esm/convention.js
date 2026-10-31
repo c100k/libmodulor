@@ -54,7 +54,6 @@ export const UC_DEF_SUFFIX = 'UCD';
 export const UC_DEF_FILE_NAME_SUFFIX = `${UC_DEF_SUFFIX}.ts`;
 export const UC_DEF_TYPE = 'UCDef';
 export const UC_INPUT_BASE = 'UCInput';
-export const UC_INPUT_FIELD_PATTERN = '^UCInputFieldValue<(.*)>$';
 export const UC_INPUT_SUFFIX = 'Input';
 export const UC_LIFECYCLE_PROP_NAME = 'lifecycle';
 export const UC_LIFECYCLE_CLIENT_PROP_NAME = 'client';

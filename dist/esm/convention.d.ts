@@ -41,7 +41,6 @@ export declare const UC_DEF_SUFFIX: string;
 export declare const UC_DEF_FILE_NAME_SUFFIX: string;
 export declare const UC_DEF_TYPE: string;
 export declare const UC_INPUT_BASE: string;
-export declare const UC_INPUT_FIELD_PATTERN: string;
 export declare const UC_INPUT_SUFFIX: string;
 export declare const UC_LIFECYCLE_PROP_NAME: string;
 export declare const UC_LIFECYCLE_CLIENT_PROP_NAME: string;

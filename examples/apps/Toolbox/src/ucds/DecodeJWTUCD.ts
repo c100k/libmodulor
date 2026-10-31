@@ -10,7 +10,6 @@ import {
     TJWT,
     type UCDef,
     type UCInput,
-    type UCInputFieldValue,
     type UCMain,
     type UCMainInput,
     type UCOPIBase,
@@ -20,7 +19,7 @@ import {
 import { Manifest } from '../manifest.js';
 
 export interface DecodeJWTInput extends UCInput {
-    jwt: UCInputFieldValue<JWT>;
+    jwt: JWT;
 }
 
 export interface DecodeJWTOPI0 extends UCOPIBase {

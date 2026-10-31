@@ -8,7 +8,6 @@ import {
     type UCDef,
     type UCInput,
     UCInputFieldFillingMode,
-    type UCInputFieldValue,
     type UCMain,
     type UCMainInput,
     type URL,
@@ -17,8 +16,8 @@ import type { LinkManager } from '../lib/link/LinkManager.js';
 import { Manifest } from '../manifest.js';
 
 export interface AuthenticateToStravaStep1Input extends UCInput {
-    clientId: UCInputFieldValue<ExternalServiceId>;
-    redirectURI: UCInputFieldValue<URL>;
+    clientId: ExternalServiceId;
+    redirectURI: URL;
 }
 
 @injectable()

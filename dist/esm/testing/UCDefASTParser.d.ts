@@ -15,11 +15,11 @@ export type OutputItemFieldIOField = OutputItemField<{
      */
     name: string | null;
     /**
-     * @example `name: UCInputField<FreeTextShort>`
+     * @example `name: FreeTextShort`
      */
     raw: string | null;
     /**
-     * @example `UCInputField<FreeTextShort>`
+     * @example `FreeTextShort`
      */
     type: string | null;
 }>;

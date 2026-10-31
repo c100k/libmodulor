@@ -135,6 +135,12 @@ let TypeScriptLibUCDefASTParser = class TypeScriptLibUCDefASTParser {
                             }
                         });
                     }
+                    else if (node1.kind === SyntaxKind.BooleanKeyword ||
+                        node1.kind === SyntaxKind.NumberKeyword ||
+                        node1.kind === SyntaxKind.StringKeyword) {
+                        field.value.dataType = node1.getText();
+                        field.value.type = node1.getText();
+                    }
                 });
             }
             return field;

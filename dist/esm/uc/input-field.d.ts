@@ -53,8 +53,13 @@ export interface UCInputFieldDef<T extends DataType> {
     transient?: boolean;
     type: TBase<T>;
 }
+/**
+ * Runtime value of an input field
+ *
+ * It is always optional (i.e. `null | undefined`) and can hold one or multiple values, whatever the {@link UCInputFieldDef.cardinality}.
+ * That's why, in a {@link UCInput}, the fields are declared with their {@link DataType} only (e.g. `email: Email`).
+ */
 export type UCInputFieldValue<T> = Value<T>;
-export type UCInputFieldValueUnwrapped<T> = T extends UCInputFieldValue<infer U> ? U : never;
 export declare function ucifExamples<T extends DataType>(def: UCInputFieldDef<T>): T[] | undefined;
 export declare function ucifHint<T extends DataType>(def: UCInputFieldDef<T>): string | undefined;
 /**

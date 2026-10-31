@@ -15,7 +15,6 @@ import {
     TTransportType,
     type UCDef,
     type UCInput,
-    type UCInputFieldValue,
     type UCMain,
     type UCMainInput,
     type UCOPIBase,
@@ -25,10 +24,10 @@ import {
 import { Manifest } from '../manifest.js';
 
 export interface PromptLLMInput extends UCInput {
-    apiKey: UCInputFieldValue<ApiKey>;
-    modelName: UCInputFieldValue<Slug>;
-    prompt: UCInputFieldValue<FreeTextLong>;
-    transportType: UCInputFieldValue<TransportType>;
+    apiKey: ApiKey;
+    modelName: Slug;
+    prompt: FreeTextLong;
+    transportType: TransportType;
 }
 
 export interface PromptLLMOPI0 extends UCOPIBase {

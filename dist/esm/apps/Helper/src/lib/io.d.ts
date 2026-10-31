@@ -1,10 +1,10 @@
 import { type DirPath } from '../../../../dt/index.js';
-import type { UCInput, UCInputDef, UCInputFieldValue } from '../../../../uc/index.js';
+import type { UCInput, UCInputDef } from '../../../../uc/index.js';
 export interface AppInput extends UCInput {
-    appsPath: UCInputFieldValue<DirPath>;
+    appsPath: DirPath;
 }
 export declare const AppInputFieldsDef: UCInputDef<AppInput>['fields'];
 export interface ProductInput extends UCInput {
-    productsPath: UCInputFieldValue<DirPath>;
+    productsPath: DirPath;
 }
 export declare const ProductInputFieldsDef: UCInputDef<ProductInput>['fields'];

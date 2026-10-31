@@ -11,14 +11,14 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
 import { inject, injectable } from 'inversify';
-import { APP_SRC_DIR_NAME, APP_SRC_UCDS_DIR_NAME, UC_DEF_FILE_NAME_SUFFIX, UC_DEF_SUFFIX, UC_INPUT_FIELD_PATTERN, UC_INPUT_SUFFIX, UC_OPI_SUFFIX, UC_POLICY_SUFFIX_FULL, } from '../../../convention.js';
+import { APP_SRC_DIR_NAME, APP_SRC_UCDS_DIR_NAME, UC_DEF_FILE_NAME_SUFFIX, UC_DEF_SUFFIX, UC_INPUT_SUFFIX, UC_OPI_SUFFIX, UC_POLICY_SUFFIX_FULL, } from '../../../convention.js';
 import { optsAllSet } from '../../opts.js';
 import { initOutputItem, } from '../../UCDefASTParser.js';
 const ERR_UCD_CONST_NAME = (name) => `The UCD const name '${name}' must follow the convention`;
 const ERR_UCD_FILE_SUFFIX = (fileName) => `The file '${fileName}' must end with ${UC_DEF_FILE_NAME_SUFFIX}`;
 const ERR_UCD_IMPORTS_EXTERNAL_ALLOWED = (aliasPrefix, allowed, text) => `External imports must be an alias '${aliasPrefix}*' or be one of ${allowed} (Got ${text})`;
 const ERR_UCD_IMPORTS_INTERNAL_MAX_DEPTH = (maxDepth) => `Internal imports must not be deeper than ${maxDepth}`;
-const ERR_UCD_INPUT_FIELD_DECLARATION = (raw) => `The input field def must match 'name: UCInputFieldValue<DataType>' (Got '${raw}')`;
+const ERR_UCD_INPUT_FIELD_DECLARATION = (raw) => `The input field def must match 'name: DataType' (Got '${raw}')`;
 const ERR_UCD_INPUT_TYPE_NAME = (ucName) => `The input type must be named ${ucName}${UC_INPUT_SUFFIX}`;
 const ERR_UCD_OPI_TYPE_NAME = (ucName, idx) => `The OPI must be named ${ucName}${UC_OPI_SUFFIX}${idx}`;
 // TODO : Improve the check* methods that look a little bit hacky
@@ -93,14 +93,8 @@ let UCDefSourcesChecker = class UCDefSourcesChecker {
         };
         item.ioIFields = fields;
         for (const f of item.ioIFields) {
-            const { dataType, name, raw, type } = f.value;
-            if (dataType &&
-                name &&
-                raw &&
-                type &&
-                type.match(new RegExp(UC_INPUT_FIELD_PATTERN)) !== null) {
-            }
-            else {
+            const { dataType, name, raw } = f.value;
+            if (!dataType || !name || raw !== `${name}: ${dataType}`) {
                 f.err = ERR_UCD_INPUT_FIELD_DECLARATION(raw);
             }
         }

@@ -14,7 +14,6 @@ import {
     type UCDef,
     type UCInput,
     UCInputFieldFillingMode,
-    type UCInputFieldValue,
     type UCMain,
     type UCMainInput,
     type UCOPIBase,
@@ -25,9 +24,9 @@ import {
 import { Manifest } from '../manifest.js';
 
 export interface AuthenticateToStravaStep2Input extends UCInput {
-    clientId: UCInputFieldValue<ExternalServiceId>;
-    clientSecret: UCInputFieldValue<ApiKey>;
-    url: UCInputFieldValue<URL>;
+    clientId: ExternalServiceId;
+    clientSecret: ApiKey;
+    url: URL;
 }
 
 export interface AuthenticateToStravaStep2OPI0 extends UCOPIBase {

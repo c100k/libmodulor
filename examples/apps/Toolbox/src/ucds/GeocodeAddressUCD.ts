@@ -10,7 +10,6 @@ import {
     TURL,
     type UCDef,
     type UCInput,
-    type UCInputFieldValue,
     type UCMain,
     type UCMainInput,
     type UCOPIBase,
@@ -23,7 +22,7 @@ import type { GeocodingManager } from '../lib/geocoding/GeocodingManager.js';
 import { Manifest } from '../manifest.js';
 
 export interface GeocodeAddressInput extends UCInput {
-    address: UCInputFieldValue<Address>;
+    address: Address;
 }
 
 export interface GeocodeAddressOPI0 extends UCOPIBase {

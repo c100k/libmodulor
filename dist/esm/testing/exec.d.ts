@@ -1,7 +1,7 @@
 import type { AppManifest } from '../app/index.js';
 import type { ErrorMessage, SemanticsVariant } from '../dt/index.js';
 import type { CryptoManagerHash } from '../std/index.js';
-import type { UCAuth, UCDef, UCInput, UCOPIBase, UCOutput } from '../uc/index.js';
+import type { UCAuth, UCDef, UCInput, UCInputValue, UCOPIBase, UCOutput } from '../uc/index.js';
 import type { ExtractStrict } from '../utils/index.js';
 import type { AppTesterConfiguratorSideEffects } from './AppTesterConfigurator.js';
 import type { UCAuthSetterName } from './uc-auth.js';
@@ -23,7 +23,7 @@ export interface AppTesterExecOutput<I extends UCInput | undefined = undefined, 
     err: Error | null;
     hash: CryptoManagerHash | null;
     io: {
-        i: I | null;
+        i: UCInputValue<I> | null;
         o: UCOutput<OPI0, OPI1> | null;
     };
     sideEffects: AppTesterConfiguratorSideEffects | null;

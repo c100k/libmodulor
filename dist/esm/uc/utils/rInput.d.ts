@@ -1,4 +1,4 @@
-import type { UCInput } from '../input.js';
+import type { UCInput, UCInputValue } from '../input.js';
 import type { UCOPIBase } from '../opi.js';
 import type { UC } from '../UC.js';
 interface Opts {
@@ -19,5 +19,5 @@ interface Opts {
      */
     ignoreUndefined?: boolean | undefined;
 }
-export declare function rInput<I extends UCInput | undefined = undefined, OPI0 extends UCOPIBase | undefined = undefined, OPI1 extends UCOPIBase | undefined = undefined>(uc: UC<I, OPI0, OPI1>, opts?: Opts): NonNullable<I>;
+export declare function rInput<I extends UCInput | undefined = undefined, OPI0 extends UCOPIBase | undefined = undefined, OPI1 extends UCOPIBase | undefined = undefined>(uc: UC<I, OPI0, OPI1>, opts?: Opts): UCInputValue<I>;
 export {};

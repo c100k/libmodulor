@@ -16,7 +16,6 @@ import {
     type UCDef,
     type UCInput,
     UCInputFieldFillingMode,
-    type UCInputFieldValue,
     type UCMain,
     type UCMainInput,
     type UCOPIBase,
@@ -29,9 +28,9 @@ import type { GeospatialManager } from '../lib/geospatial/GeospatialManager.js';
 import { Manifest } from '../manifest.js';
 
 export interface GenerateRunningMapFromStravaInput extends UCInput {
-    activitiesCount: UCInputFieldValue<UIntQuantity>;
-    mapboxAccessToken: UCInputFieldValue<ApiKey>;
-    stravaAccessToken: UCInputFieldValue<ApiKey>;
+    activitiesCount: UIntQuantity;
+    mapboxAccessToken: ApiKey;
+    stravaAccessToken: ApiKey;
 }
 
 export interface GenerateRunningMapFromStravaOPI0 extends UCOPIBase {

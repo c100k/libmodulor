@@ -14,7 +14,6 @@ import {
     TPassword,
     type UCDef,
     type UCInput,
-    type UCInputFieldValue,
     type UCMain,
     type UCMainInput,
     type UIntQuantity,
@@ -24,8 +23,8 @@ import {
 import { Manifest } from '../manifest.js';
 
 export interface ExportAsanaInput extends UCInput {
-    accessToken: UCInputFieldValue<Password>;
-    projectId: UCInputFieldValue<ExternalServiceId>;
+    accessToken: Password;
+    projectId: ExternalServiceId;
 }
 
 @injectable()
