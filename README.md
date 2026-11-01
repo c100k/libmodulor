@@ -52,6 +52,120 @@ For more params, checkout the help section : `pnpm libmodulor --help`.
 
 And for more details on the code, follow the ad-hoc guides in the documentation.
 
+## Full Example
+
+A condensed version of [examples/products/Basic](./examples/products/Basic/index.ts), with all 4 layers in a single file :
+
+```ts
+import { Container, inject, injectable } from 'inversify';
+import {
+    type AggregateOPI0,
+    type Amount,
+    type AppI18n,
+    type AppManifest,
+    bindCommon,
+    bindProduct,
+    CONTAINER_OPTS,
+    type Email,
+    EverybodyUCPolicy,
+    type I18nManager,
+    type PersonFirstname,
+    type ProductI18n,
+    type ProductManifest,
+    TAmount,
+    TEmail,
+    TPersonFirstname,
+    UC,
+    type UCDef,
+    type UCInput,
+    type UCInputFieldValue,
+    type UCMain,
+    type UCMainInput,
+    type UCManager,
+    type UCOutput,
+    UCOutputBuilder,
+} from 'libmodulor';
+import { I18nEN } from 'libmodulor/locales/en';
+import { bindNodeCore } from 'libmodulor/node';
+
+// App : a manifest listing its use cases + translations of their fields
+const appManifest = {
+    languageCodes: ['en'],
+    name: 'Event',
+    ucReg: { Register: { action: 'Create', icon: 'user', name: 'Register' } },
+} satisfies AppManifest;
+const appI18n = {
+    en: { ucif_email_label: 'Your email', ucof_amount_label: 'To pay' },
+} satisfies AppI18n;
+
+// UseCase : typed input / output
+interface RegisterInput extends UCInput {
+    email: UCInputFieldValue<Email>;
+    firstname: UCInputFieldValue<PersonFirstname>;
+}
+interface RegisterOPI0 extends AggregateOPI0 {
+    amount: Amount;
+}
+
+// UseCase : the business logic, executed client side here
+@injectable()
+class RegisterClientMain implements UCMain<RegisterInput, RegisterOPI0> {
+    constructor(@inject('UCManager') private ucManager: UCManager) {}
+
+    public async exec({
+        uc,
+    }: UCMainInput<RegisterInput, RegisterOPI0>): Promise<
+        UCOutput<RegisterOPI0>
+    > {
+        const { aggregateId } = await this.ucManager.persist(uc); // Saved in the UCDataStore
+        return new UCOutputBuilder<RegisterOPI0>()
+            .add({ amount: 99.99, id: aggregateId })
+            .get();
+    }
+}
+
+// UseCase : the definition binding fields to data types (validation, formatting...) and lifecycle
+const RegisterUCD: UCDef<RegisterInput, RegisterOPI0> = {
+    io: {
+        i: {
+            fields: {
+                email: { type: new TEmail() },
+                firstname: { type: new TPersonFirstname() },
+            },
+        },
+        o: {
+            parts: { _0: { fields: { amount: { type: new TAmount('EUR') } } } },
+        },
+    },
+    lifecycle: {
+        client: { main: RegisterClientMain, policy: EverybodyUCPolicy },
+    },
+    metadata: appManifest.ucReg.Register,
+};
+
+// Product : a combination of apps, with merged translations
+const productManifest = {
+    appReg: [{ name: 'Event' }],
+    name: 'Eventer',
+} satisfies ProductManifest;
+const productI18n = {
+    en: { ...I18nEN, ...appI18n.en },
+} satisfies ProductI18n;
+
+// Target : the runtime (here plain Node.js), wired via dependency injection
+const container = new Container(CONTAINER_OPTS);
+bindCommon(container);
+bindNodeCore(container);
+bindProduct(container, productManifest, productI18n);
+await container.get<I18nManager>('I18nManager').init();
+
+// Usage : fill the input (validated by the data types) and execute
+const uc = new UC(appManifest, RegisterUCD, null); // null = anonymous user
+uc.fill({ email: 'dexter@caramail.com', firstname: 'Dexter' });
+const ucor = await container.get<UCManager>('UCManager').execClient(uc);
+console.log(ucor.item00().item); // { amount: 99.99, id: '...' }
+```
+
 ## 👨‍💻 Contribute
 
 If you think you can help in any way, feel free to contact me (cf. `author` in `package.json`). I'd love to chat.
