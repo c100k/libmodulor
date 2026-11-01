@@ -16,18 +16,18 @@
 
 #### Input (I)
 
-|#|name|humanized|dataType|
-|---|---|---|---|
-|1|`prompt`|Prompt|`FreeTextLong`|
+| #   | name     | humanized | dataType       |
+| --- | -------- | --------- | -------------- |
+| 1   | `prompt` | Prompt    | `FreeTextLong` |
 
 #### Output (O)
 
 ##### Part 0 (OPI0)
 
-|#|name|humanized|dataType|
-|---|---|---|---|
-|1|`res`|Res|`FreeTextLong`|
-|2|`id`|Id|`UUID`|
+| #   | name  | humanized | dataType       |
+| --- | ----- | --------- | -------------- |
+| 1   | `res` | Res       | `FreeTextLong` |
+| 2   | `id`  | Id        | `UUID`         |
 
 ##### Part 1 (OPI1)
 
@@ -61,23 +61,23 @@ sequenceDiagram
 
 #### Input (I)
 
-|#|name|humanized|dataType|
-|---|---|---|---|
-|1|`isin`|Isin|`ISIN`|
-|2|`limit`|Limit|`Amount`|
-|3|`qty`|Qty|`UIntQuantity`|
+| #   | name    | humanized | dataType       |
+| --- | ------- | --------- | -------------- |
+| 1   | `isin`  | Isin      | `ISIN`         |
+| 2   | `limit` | Limit     | `Amount`       |
+| 3   | `qty`   | Qty       | `UIntQuantity` |
 
 #### Output (O)
 
 ##### Part 0 (OPI0)
 
-|#|name|humanized|dataType|
-|---|---|---|---|
-|1|`isin`|Isin|`ISIN`|
-|2|`limit`|Limit|`Amount`|
-|3|`qty`|Qty|`UIntQuantity`|
-|4|`status`|Status|`OrderStatus`|
-|5|`id`|Id|`UUID`|
+| #   | name     | humanized | dataType       |
+| --- | -------- | --------- | -------------- |
+| 1   | `isin`   | Isin      | `ISIN`         |
+| 2   | `limit`  | Limit     | `Amount`       |
+| 3   | `qty`    | Qty       | `UIntQuantity` |
+| 4   | `status` | Status    | `OrderStatus`  |
+| 5   | `id`     | Id        | `UUID`         |
 
 ##### Part 1 (OPI1)
 
@@ -114,21 +114,21 @@ sequenceDiagram
 
 #### Input (I)
 
-|#|name|humanized|dataType|
-|---|---|---|---|
-|1|`id`|Id|`UUID`|
+| #   | name | humanized | dataType |
+| --- | ---- | --------- | -------- |
+| 1   | `id` | Id        | `UUID`   |
 
 #### Output (O)
 
 ##### Part 0 (OPI0)
 
-|#|name|humanized|dataType|
-|---|---|---|---|
-|1|`isin`|Isin|`ISIN`|
-|2|`limit`|Limit|`Amount`|
-|3|`qty`|Qty|`UIntQuantity`|
-|4|`status`|Status|`OrderStatus`|
-|5|`id`|Id|`UUID`|
+| #   | name     | humanized | dataType       |
+| --- | -------- | --------- | -------------- |
+| 1   | `isin`   | Isin      | `ISIN`         |
+| 2   | `limit`  | Limit     | `Amount`       |
+| 3   | `qty`    | Qty       | `UIntQuantity` |
+| 4   | `status` | Status    | `OrderStatus`  |
+| 5   | `id`     | Id        | `UUID`         |
 
 ##### Part 1 (OPI1)
 
@@ -169,24 +169,24 @@ sequenceDiagram
 
 #### Input (I)
 
-|#|name|humanized|dataType|
-|---|---|---|---|
-|1|`id`|Id|`UUID`|
-|2|`limit`|Limit|`UIntQuantity`|
-|3|`offset`|Offset|`NumIndex`|
-|4|`q`|Q|`SearchQuery`|
+| #   | name     | humanized | dataType       |
+| --- | -------- | --------- | -------------- |
+| 1   | `id`     | Id        | `UUID`         |
+| 2   | `limit`  | Limit     | `UIntQuantity` |
+| 3   | `offset` | Offset    | `NumIndex`     |
+| 4   | `q`      | Q         | `SearchQuery`  |
 
 #### Output (O)
 
 ##### Part 0 (OPI0)
 
-|#|name|humanized|dataType|
-|---|---|---|---|
-|1|`isin`|Isin|`ISIN`|
-|2|`limit`|Limit|`Amount`|
-|3|`qty`|Qty|`UIntQuantity`|
-|4|`status`|Status|`OrderStatus`|
-|5|`id`|Id|`UUID`|
+| #   | name     | humanized | dataType       |
+| --- | -------- | --------- | -------------- |
+| 1   | `isin`   | Isin      | `ISIN`         |
+| 2   | `limit`  | Limit     | `Amount`       |
+| 3   | `qty`    | Qty       | `UIntQuantity` |
+| 4   | `status` | Status    | `OrderStatus`  |
+| 5   | `id`     | Id        | `UUID`         |
 
 ##### Part 1 (OPI1)
 
@@ -220,19 +220,19 @@ sequenceDiagram
 
 #### Input (I)
 
-|#|name|humanized|dataType|
-|---|---|---|---|
-|1|`isin`|Isin|`ISIN`|
+| #   | name   | humanized | dataType |
+| --- | ------ | --------- | -------- |
+| 1   | `isin` | Isin      | `ISIN`   |
 
 #### Output (O)
 
 ##### Part 0 (OPI0)
 
-|#|name|humanized|dataType|
-|---|---|---|---|
-|1|`evol`|Evol|`Amount`|
-|2|`price`|Price|`Amount`|
-|3|`id`|Id|`UUID`|
+| #   | name    | humanized | dataType |
+| --- | ------- | --------- | -------- |
+| 1   | `evol`  | Evol      | `Amount` |
+| 2   | `price` | Price     | `Amount` |
+| 3   | `id`    | Id        | `UUID`   |
 
 ##### Part 1 (OPI1)
 
@@ -260,10 +260,10 @@ sequenceDiagram
 
 ## Technical Summary
 
-|#|filePath|constName|metadataName|metadataAction|metadataBeta|metadataIcon|metadataNew|metadataSensitive|externalImports|internalImports|ioI|ioIFields|ioOPI0|ioOPI0Fields|ioOPI1|ioOPI1Fields|lifecycleClientPolicy|lifecycleServerPolicy|
-|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-|1|/src/ucds/AskQuestionUCD.ts|AskQuestionUCD|AskQuestion|Search||list||||../../../../../dist/esm/index.js<br>../manifest.js<br>./AskQuestionServerMain.js|AskQuestionInput|prompt: UCInputFieldValue&#60;FreeTextLong&#62;|AskQuestionOPI0|res: FreeTextLong<br>id: UUID|||Authenticated|Authenticated|
-|2|/src/ucds/BuyAssetUCD.ts|BuyAssetUCD|BuyAsset|Create||plus||||../../../../../dist/esm/index.js<br>../lib/order.js<br>../lib/TISIN.js<br>../manifest.js<br>./BuyAssetServerMain.js|BuyAssetInput|isin: UCInputFieldValue&#60;ISIN&#62;<br>limit: UCInputFieldValue&#60;Amount&#62;<br>qty: UCInputFieldValue&#60;UIntQuantity&#62;|BuyAssetOPI0|isin: ISIN<br>limit: Amount<br>qty: UIntQuantity<br>status: OrderStatus<br>id: UUID|||Authenticated|Authenticated|
-|3|/src/ucds/CancelOrderUCD.ts|CancelOrderUCD|CancelOrder|Delete||circle-xmark||true||../../../../../dist/esm/index.js<br>../lib/order.js<br>../manifest.js<br>./CancelOrderServerMain.js|CancelOrderInput|id: UCInputFieldValue&#60;UUID&#62;|CancelOrderOPI0|isin: ISIN<br>limit: Amount<br>qty: UIntQuantity<br>status: OrderStatus<br>id: UUID|||RoleAdmin|RoleAdmin|
-|4|/src/ucds/ListOrdersUCD.ts|ListOrdersUCD|ListOrders|List||list||||../../../../../dist/esm/index.js<br>../lib/order.js<br>../manifest.js<br>./ListOrdersServerMain.js|ListOrdersInput|id: UCInputFieldValue&#60;UUID&#62;<br>limit: UCInputFieldValue&#60;UIntQuantity&#62;<br>offset: UCInputFieldValue&#60;NumIndex&#62;<br>q: UCInputFieldValue&#60;SearchQuery&#62;|ListOrdersOPI0|isin: ISIN<br>limit: Amount<br>qty: UIntQuantity<br>status: OrderStatus<br>id: UUID|||Everybody|Everybody|
-|5|/src/ucds/ViewAssetPriceUCD.ts|ViewAssetPriceUCD|ViewAssetPrice|View||money-bill-wave||||../../../../../dist/esm/index.js<br>../lib/TAssetPrice.js<br>../lib/TISIN.js<br>../manifest.js<br>./ViewAssetPriceServerMain.js|ViewAssetPriceInput|isin: UCInputFieldValue&#60;ISIN&#62;|ViewAssetPriceOPI0|evol: Amount<br>price: Amount<br>id: UUID|||Everybody|Everybody|
+| #   | filePath                       | constName         | metadataName   | metadataAction | metadataBeta | metadataIcon    | metadataNew | metadataSensitive | externalImports | internalImports                                                                                                                 | ioI                 | ioIFields                                                                                                                                                                         | ioOPI0             | ioOPI0Fields                                                                        | ioOPI1 | ioOPI1Fields | lifecycleClientPolicy | lifecycleServerPolicy |
+| --- | ------------------------------ | ----------------- | -------------- | -------------- | ------------ | --------------- | ----------- | ----------------- | --------------- | ------------------------------------------------------------------------------------------------------------------------------- | ------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------ | ----------------------------------------------------------------------------------- | ------ | ------------ | --------------------- | --------------------- |
+| 1   | /src/ucds/AskQuestionUCD.ts    | AskQuestionUCD    | AskQuestion    | Search         |              | list            |             |                   |                 | ../../../../../dist/esm/index.js<br>../manifest.js<br>./AskQuestionServerMain.js                                                | AskQuestionInput    | prompt: UCInputFieldValue&#60;FreeTextLong&#62;                                                                                                                                   | AskQuestionOPI0    | res: FreeTextLong<br>id: UUID                                                       |        |              | Authenticated         | Authenticated         |
+| 2   | /src/ucds/BuyAssetUCD.ts       | BuyAssetUCD       | BuyAsset       | Create         |              | plus            |             |                   |                 | ../../../../../dist/esm/index.js<br>../lib/order.js<br>../lib/TISIN.js<br>../manifest.js<br>./BuyAssetServerMain.js             | BuyAssetInput       | isin: UCInputFieldValue&#60;ISIN&#62;<br>limit: UCInputFieldValue&#60;Amount&#62;<br>qty: UCInputFieldValue&#60;UIntQuantity&#62;                                                 | BuyAssetOPI0       | isin: ISIN<br>limit: Amount<br>qty: UIntQuantity<br>status: OrderStatus<br>id: UUID |        |              | Authenticated         | Authenticated         |
+| 3   | /src/ucds/CancelOrderUCD.ts    | CancelOrderUCD    | CancelOrder    | Delete         |              | circle-xmark    |             | true              |                 | ../../../../../dist/esm/index.js<br>../lib/order.js<br>../manifest.js<br>./CancelOrderServerMain.js                             | CancelOrderInput    | id: UCInputFieldValue&#60;UUID&#62;                                                                                                                                               | CancelOrderOPI0    | isin: ISIN<br>limit: Amount<br>qty: UIntQuantity<br>status: OrderStatus<br>id: UUID |        |              | RoleAdmin             | RoleAdmin             |
+| 4   | /src/ucds/ListOrdersUCD.ts     | ListOrdersUCD     | ListOrders     | List           |              | list            |             |                   |                 | ../../../../../dist/esm/index.js<br>../lib/order.js<br>../manifest.js<br>./ListOrdersServerMain.js                              | ListOrdersInput     | id: UCInputFieldValue&#60;UUID&#62;<br>limit: UCInputFieldValue&#60;UIntQuantity&#62;<br>offset: UCInputFieldValue&#60;NumIndex&#62;<br>q: UCInputFieldValue&#60;SearchQuery&#62; | ListOrdersOPI0     | isin: ISIN<br>limit: Amount<br>qty: UIntQuantity<br>status: OrderStatus<br>id: UUID |        |              | Everybody             | Everybody             |
+| 5   | /src/ucds/ViewAssetPriceUCD.ts | ViewAssetPriceUCD | ViewAssetPrice | View           |              | money-bill-wave |             |                   |                 | ../../../../../dist/esm/index.js<br>../lib/TAssetPrice.js<br>../lib/TISIN.js<br>../manifest.js<br>./ViewAssetPriceServerMain.js | ViewAssetPriceInput | isin: UCInputFieldValue&#60;ISIN&#62;                                                                                                                                             | ViewAssetPriceOPI0 | evol: Amount<br>price: Amount<br>id: UUID                                           |        |              | Everybody             | Everybody             |

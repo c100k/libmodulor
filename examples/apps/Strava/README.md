@@ -16,20 +16,20 @@
 
 #### Input (I)
 
-|#|name|humanized|dataType|
-|---|---|---|---|
-|1|`date`|Date|`DateISO8601`|
-|2|`description`|Description|`FreeTextLong`|
-|3|`title`|Title|`FreeTextShort`|
-|4|`type`|Type|`ActivityType`|
+| #   | name          | humanized   | dataType        |
+| --- | ------------- | ----------- | --------------- |
+| 1   | `date`        | Date        | `DateISO8601`   |
+| 2   | `description` | Description | `FreeTextLong`  |
+| 3   | `title`       | Title       | `FreeTextShort` |
+| 4   | `type`        | Type        | `ActivityType`  |
 
 #### Output (O)
 
 ##### Part 0 (OPI0)
 
-|#|name|humanized|dataType|
-|---|---|---|---|
-|1|`id`|Id|`UUID`|
+| #   | name | humanized | dataType |
+| --- | ---- | --------- | -------- |
+| 1   | `id` | Id        | `UUID`   |
 
 ##### Part 1 (OPI1)
 
@@ -53,6 +53,6 @@ sequenceDiagram
 
 ## Technical Summary
 
-|#|filePath|constName|metadataName|metadataAction|metadataBeta|metadataIcon|metadataNew|metadataSensitive|externalImports|internalImports|ioI|ioIFields|ioOPI0|ioOPI0Fields|ioOPI1|ioOPI1Fields|lifecycleClientPolicy|lifecycleServerPolicy|
-|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-|1|/src/ucds/CreateActivityUCD.ts|CreateActivityUCD|CreateActivity|Create||circle-plus|||inversify|../../../../../dist/esm/index.js<br>../lib/ActivityProcessor.js<br>../lib/TActivityType.js<br>../manifest.js|CreateActivityInput|date: UCInputFieldValue&#60;DateISO8601&#62;<br>description: UCInputFieldValue&#60;FreeTextLong&#62;<br>title: UCInputFieldValue&#60;FreeTextShort&#62;<br>type: UCInputFieldValue&#60;ActivityType&#62;|CreateActivityOPI0|id: UUID|||Nobody||
+| #   | filePath                       | constName         | metadataName   | metadataAction | metadataBeta | metadataIcon | metadataNew | metadataSensitive | externalImports | internalImports                                                                                              | ioI                 | ioIFields                                                                                                                                                                                                | ioOPI0             | ioOPI0Fields | ioOPI1 | ioOPI1Fields | lifecycleClientPolicy | lifecycleServerPolicy |
+| --- | ------------------------------ | ----------------- | -------------- | -------------- | ------------ | ------------ | ----------- | ----------------- | --------------- | ------------------------------------------------------------------------------------------------------------ | ------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------ | ------------ | ------ | ------------ | --------------------- | --------------------- |
+| 1   | /src/ucds/CreateActivityUCD.ts | CreateActivityUCD | CreateActivity | Create         |              | circle-plus  |             |                   | inversify       | ../../../../../dist/esm/index.js<br>../lib/ActivityProcessor.js<br>../lib/TActivityType.js<br>../manifest.js | CreateActivityInput | date: UCInputFieldValue&#60;DateISO8601&#62;<br>description: UCInputFieldValue&#60;FreeTextLong&#62;<br>title: UCInputFieldValue&#60;FreeTextShort&#62;<br>type: UCInputFieldValue&#60;ActivityType&#62; | CreateActivityOPI0 | id: UUID     |        |              | Nobody                |                       |
