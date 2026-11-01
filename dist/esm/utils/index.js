@@ -9,6 +9,7 @@ export { fmtSingleDataMsg, fmtSSEError, isSSEError, parseDataLine, SSE_HEADERS, 
 export { isClientError, isError, isServerError } from './http/status.js';
 export { bindFactory } from './ioc/bindFactory.js';
 export { CONTAINER_OPTS } from './ioc/container.js';
+export { md_pre, md_table } from './markdown/fmt.js';
 export { fmt as fmtNumber } from './numbers/fmt.js';
 export { baseFromSquareUnit, isSquareUnit, } from './numbers/units.js';
 export { defaultStreamOnClose } from './streams/funcs.js';

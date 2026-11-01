@@ -1,10 +1,7 @@
+import { md_table } from '../../../utils/index.js';
 import { OUTPUT_ITEM_FIELDS, } from '../../UCDefASTParser.js';
-import { thead } from './markdown.js';
 export function techSummary(items) {
-    return `${thead(OUTPUT_ITEM_FIELDS)}
-${items
-        .map((item, idx) => ['', idx + 1, ...OUTPUT_ITEM_FIELDS.map((f) => val(item[f])), ''].join('|'))
-        .join('\n')}`;
+    return md_table(OUTPUT_ITEM_FIELDS, items.map((item) => OUTPUT_ITEM_FIELDS.map((f) => val(item[f]))));
 }
 function val(value) {
     if (!value) {

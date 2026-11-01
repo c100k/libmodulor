@@ -17,6 +17,7 @@ export type { HTTPBodylessStatus, HTTPCookieSameSite, HTTPCSPType, HTTPCSPValue,
 export { bindFactory } from './ioc/bindFactory.js';
 export { CONTAINER_OPTS } from './ioc/container.js';
 export type { Class } from './ioc/types.js';
+export { md_pre, md_table } from './markdown/fmt.js';
 export { fmt as fmtNumber } from './numbers/fmt.js';
 export { baseFromSquareUnit, type CoreUnit, isSquareUnit, type SquareableUnit, type SquareUnit, type Unit, } from './numbers/units.js';
 export { defaultStreamOnClose } from './streams/funcs.js';
