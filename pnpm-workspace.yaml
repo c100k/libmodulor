@@ -1,8 +1,8 @@
 minimumReleaseAge: 2880
 onlyBuiltDependencies:
-  - '@biomejs/biome'
-  - '@tailwindcss/oxide'
-  - esbuild
-  - sharp
-  - sqlite3
-  - workerd
+    - "@biomejs/biome"
+    - "@tailwindcss/oxide"
+    - esbuild
+    - sharp
+    - sqlite3
+    - workerd

@@ -49,21 +49,21 @@ See all the changes here : https://github.com/c100k/libmodulor/compare/v0.34.0..
 
 ### 🚀 Added external specification responses
 
-* Added `externalSpecResponse` to use cases whose HTTP response must conform to an external specification.
-* Added an OAuth2 example demonstrating the new response format.
-* JSON Schema generation now reflects the external response specification.
+- Added `externalSpecResponse` to use cases whose HTTP response must conform to an external specification.
+- Added an OAuth2 example demonstrating the new response format.
+- JSON Schema generation now reflects the external response specification.
 
 ### ⚠️ Breaking changes
 
-* Removed `def.ext.http.transform`. HTTP and gRPC servers now return the use case output directly.
-* Added `Logger.table()` for structured table output.
-* Added `FSManager.catBytes()` and changed binary file writes from `ArrayBuffer` to `Uint8Array`.
+- Removed `def.ext.http.transform`. HTTP and gRPC servers now return the use case output directly.
+- Added `Logger.table()` for structured table output.
+- Added `FSManager.catBytes()` and changed binary file writes from `ArrayBuffer` to `Uint8Array`.
 
 ### 🔧 Other improvements
 
-* Added missing `err_unreachable` translations.
-* Simplified TypeScript imports in the AST parser.
-* Updated minor and patch dependencies.
+- Added missing `err_unreachable` translations.
+- Simplified TypeScript imports in the AST parser.
+- Updated minor and patch dependencies.
 
 See all the changes here : https://github.com/c100k/libmodulor/compare/v0.33.0...master
 
@@ -73,8 +73,8 @@ See all the changes here : https://github.com/c100k/libmodulor/compare/v0.33.0..
 
 - Introduced a new `node-grpc-server` target to expose use cases through gRPC.
 - Generalized transport abstractions to support multiple transports :
-    - Replaced HTTP-specific contracts with `UCTransportContract`
-    - Decoupled use cases from HTTP-only execution
+  - Replaced HTTP-specific contracts with `UCTransportContract`
+  - Decoupled use cases from HTTP-only execution
 
 ### 🧪 Improved testing experience
 
@@ -258,15 +258,15 @@ See all the changes here : https://github.com/c100k/libmodulor/compare/v0.25.0..
 **Highlights**
 
 - Added use case summary in the auto-generated app docs : In addition to the existing mermaid diagram, there is now a summary of the lifecyle, input and output in a dedicated table
-    - Example : https://github.com/c100k/libmodulor/tree/42fd11307cdd9f8cdec19b4de75d4959bc9f9a9e/examples/apps/Spotify#createalbum
+  - Example : https://github.com/c100k/libmodulor/tree/42fd11307cdd9f8cdec19b4de75d4959bc9f9a9e/examples/apps/Spotify#createalbum
 - Improved the `File` data type
-    - Changed the property `path` to `uri` to conform to the `FormData` spec (this is a breaking change)
-    - Simplified the declaration by inlining the accepted types via `accept` instead of `type.allowed` (this is also a breaking change)
-    - Added `maxSizeInBytes` and `minSizeInBytes` for size validation
+  - Changed the property `path` to `uri` to conform to the `FormData` spec (this is a breaking change)
+  - Simplified the declaration by inlining the accepted types via `accept` instead of `type.allowed` (this is also a breaking change)
+  - Added `maxSizeInBytes` and `minSizeInBytes` for size validation
 - Added `getConstraintsForHuman` to format constraints for the end user in the targets. For instance :
-    - For `FreeTextShort`, it displays `Max length: 150` 🇬🇧 when present
-    - For `File`, it displays `Max size: 8MB - Accepted types: application/png, application/jpg` 🇬🇧 when present
-    - Applied to the `react-native-pure` and `react-native-web` targets (see `UCFormFieldHelp.tsx`)
+  - For `FreeTextShort`, it displays `Max length: 150` 🇬🇧 when present
+  - For `File`, it displays `Max size: 8MB - Accepted types: application/png, application/jpg` 🇬🇧 when present
+  - Applied to the `react-native-pure` and `react-native-web` targets (see `UCFormFieldHelp.tsx`)
 
 See all the changes here : https://github.com/c100k/libmodulor/compare/v0.24.0...master
 
@@ -309,7 +309,7 @@ See all the changes here : https://github.com/c100k/libmodulor/compare/v0.22.0..
 **BREAKING**
 
 - Infer UC input field type without explicit generic when using `UC` methods like `inputField`, `reqVal0`, `rVal0`, `rValArr` : simply fix the TypeScript errors by removing the generic (e.g `uc.reqVal<DateISO8601>('from')` => `uc.reqVal('from')`)
-- Change `UCInputField.setValue` to `UCInputField.setVal`, `UCInputField.addVal`, `UCInputField.rmVal` : simply fix the TypeScript errors by replacing `setValue` to  the appropriate method. Also, `UCInputFieldChangeOperator` has been removed as it became useless. If you created custom `UCForm` field controls, you need to call the appropriate method to set the value in the field.
+- Change `UCInputField.setValue` to `UCInputField.setVal`, `UCInputField.addVal`, `UCInputField.rmVal` : simply fix the TypeScript errors by replacing `setValue` to the appropriate method. Also, `UCInputFieldChangeOperator` has been removed as it became useless. If you created custom `UCForm` field controls, you need to call the appropriate method to set the value in the field.
 
 **Added**
 
